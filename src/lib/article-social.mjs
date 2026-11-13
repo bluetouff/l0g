@@ -4,6 +4,7 @@ import { resolve, sep } from 'node:path';
 
 // Bump for every visual/font change: social crawlers must receive a new URL.
 export const ARTICLE_SOCIAL_VERSION = 'photo-title-excerpt-v2';
+export const ARTICLE_SOCIAL_IMMERSIVE_VERSION = 'photo-title-excerpt-immersive-v1';
 const illustration = /^\/illustrations\/news\/[a-zA-Z0-9][a-zA-Z0-9._-]*\.(?:jpe?g|png|webp)$/u;
 const digest = bytes => createHash('sha256').update(bytes).digest('hex');
 
@@ -59,6 +60,7 @@ export function articleSocialCard(entry, lang, { publicDirectory } = {}) {
   if (!['fr', 'en'].includes(lang)) throw new TypeError('Article OG: unsupported language.');
   const data = entry?.data;
   if (!data || typeof data !== 'object' || Array.isArray(data)) throw new TypeError('Article OG: missing article metadata.');
+  if (data.ogLayout !== undefined && data.ogLayout !== 'immersive') throw new TypeError('Article OG: invalid layout.');
   if (data.draft !== undefined && typeof data.draft !== 'boolean') throw new TypeError('Article OG: invalid draft flag.');
   if (data.draft || typeof data.ogImage !== 'string' || !illustration.test(data.ogImage)) return null;
   if (typeof entry.id !== 'string' || entry.id.length > 180 || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/u.test(entry.id)) throw new TypeError('Article OG: invalid slug.');
@@ -73,7 +75,9 @@ export function articleSocialCard(entry, lang, { publicDirectory } = {}) {
     day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Paris',
   }).toLocaleUpperCase(lang);
   const artworkHash = digest(readArticleIllustration(data.ogImage, publicDirectory));
-  const content = { version: ARTICLE_SOCIAL_VERSION, lang, title, description, label, publishedAt: date.toISOString(), dateLabel, illustration: data.ogImage, artworkHash };
+  const version = data.ogLayout === 'immersive' ? ARTICLE_SOCIAL_IMMERSIVE_VERSION : ARTICLE_SOCIAL_VERSION;
+  const content = { version, lang, title, description, label, publishedAt: date.toISOString(), dateLabel, illustration: data.ogImage, artworkHash };
+  if (data.ogLayout !== undefined) content.layout = data.ogLayout;
   const fingerprint = digest(JSON.stringify(content)).slice(0, 16);
   return { ...content, image: `/og/analysis/${lang}/${entry.id}-${fingerprint}.jpg`, alt: `${title}. ${description} l0g.fr` };
 }

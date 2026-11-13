@@ -21,6 +21,7 @@ const posts = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
+    ogLayout: z.enum(['immersive']).optional(),
     quickTake: z.object({
       fact: z.string(),
       importance: z.string(),
@@ -85,6 +86,7 @@ const postsEn = defineCollection({
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
     ogImage: z.string().optional(),
+    ogLayout: z.enum(['immersive']).optional(),
     quickTake: z.object({
       fact: z.string(),
       importance: z.string(),

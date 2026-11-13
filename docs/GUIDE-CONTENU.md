@@ -62,6 +62,15 @@ draft: false
 | `tags`        | Liste de tags.                                              |
 | `draft`       | `true` = invisible sur le site (brouillon). `false` = publié. |
 
+Pour les nouvelles illustrations OG des articles FR/EN, composer une image de
+1200 × 630 px sur tout le cadre. Le fond sous le texte doit rester sombre,
+travaillé et lisible : détails discrets, contraste maîtrisé et dégradé translucide.
+Choisir `ogLayout: "immersive"` avec une illustration locale dans `ogImage` pour
+un titre régulier de 42 px au plus, un écart titre-description de 16 px et une
+marge d'au moins 48 px, soit environ 50 px, avant le pied de carte. Préserver les compositions déjà
+validées. Vérifier ensemble l'image d'ouverture et les cartes de partage FR/EN,
+y compris à l'échelle des aperçus sociaux.
+
 ### 1.3 Écrire
 
 Sous le frontmatter, du markdown classique :

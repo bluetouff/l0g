@@ -42,6 +42,36 @@ test('native FR/EN metadata is deterministic, dated in Paris and namespaced sepa
   assert.equal(articleSocialCard(dateObject, 'fr', f.options).image, fr.image);
 });
 
+test('legacy cards retain their exact metadata fingerprint and SVG when layout is absent', async t => {
+  const f = fixture(t), card = f.card('fr');
+  const legacy = {
+    version: 'photo-title-excerpt-v2', lang: 'fr', title: 'Le financement du risque',
+    description: 'Des prêts, des réseaux et des engagements financiers dont les mécanismes méritent une lecture précise.',
+    label: 'ENQUÊTE · INFRASTRUCTURES', publishedAt: '2026-11-06T12:39:00.000Z', dateLabel: '6 NOV. 2026',
+    illustration: '/illustrations/news/art.jpg', artworkHash: hash(photo),
+  };
+  const image = `/og/analysis/fr/risk-funding-${hash(JSON.stringify(legacy)).slice(0, 16)}.jpg`;
+  assert.deepEqual(card, { ...legacy, image, alt: `${legacy.title}. ${legacy.description} l0g.fr` });
+  const svgCard = { title: legacy.title, description: legacy.description, label: legacy.label, dateLabel: legacy.dateLabel, lang: 'fr', image: '/test.jpg' };
+  assert.equal(hash(await renderArticleSocialSvg(svgCard)), '8f58fcf0b24b01da5785ab759eb487be8f3cc906604d49bae670002a21013bab');
+});
+
+test('immersive layout is an explicit closed choice with independent social and HTML fingerprints', async t => {
+  const f = fixture(t), article = entry(), legacy = f.card('fr');
+  const originalKey = htmlKey('base', article, 'fr', f.options);
+  article.data.ogLayout = 'immersive';
+  const card = articleSocialCard(article, 'fr', f.options);
+  assert.equal(card.layout, 'immersive');
+  assert.equal(card.version, 'photo-title-excerpt-immersive-v1');
+  assert.notEqual(card.image, legacy.image);
+  assert.notEqual(htmlKey('base', article, 'fr', f.options), originalKey);
+  for (const invalid of [null, '', 'classic', 'IMMERSIVE', true, 1, {}, []]) {
+    article.data.ogLayout = invalid;
+    assert.throws(() => articleSocialCard(article, 'fr', f.options), /invalid layout/);
+    await assert.rejects(renderArticleSocialSvg({ ...legacy, layout: invalid }), /invalid layout/);
+  }
+});
+
 test('every visible copy/artwork change invalidates both the social URL and editorial HTML key', async t => {
   const f = fixture(t), original = f.card('fr');
   const firstKey = htmlKey('base', entry(), 'fr', f.options);
@@ -121,6 +151,44 @@ test('FR/EN layouts keep full titles, regular type and all text inside the safe 
   assert.equal(meta.format, 'jpeg'); assert.equal(meta.width, 1200); assert.equal(meta.height, 630);
   assert.ok(image.length < 400_000);
   await assert.rejects(renderArticleSocialJpeg({ ...f.card('fr'), artworkHash: '0'.repeat(64) }, f.options), /changed/);
+});
+
+test('immersive FR/EN cards use measured compact text and preserve a translucent full-frame background', async t => {
+  const f = fixture(t);
+  for (const [lang, title, description] of [
+    ['fr', 'Nvidia : qui garantit les milliards de l’IA ?', 'Nvidia doit arbitrer ses garanties aux prêteurs, alors que Singapour et la Malaisie précisent leurs enquêtes.'],
+    ['en', 'Nvidia: who backs AI’s billions?', 'Nvidia faces demands for stronger guarantees as Singapore and Malaysia sharpen their scrutiny of server deals.'],
+    ['fr', 'La contagion silencieuse : comment le crédit privé tisse une toile invisible entre banques, assureurs, marchés actions, crypto et stablecoins', 'De Saras à Engen, les acquisitions de Vitol changent les choix d’approvisionnement. Enquête sur la propriété des actifs et les conditions de concurrence.'],
+    ['en', 'SpaceX goes public, 12 June 2026: the red carpet the SEC rolls out for the most expensive IPO in history by bending its own rules', 'A detailed investigation into funding commitments, safeguards and the contractual rights governing a project through periods of financial stress.'],
+  ]) {
+    const article = entry(); Object.assign(article.data, { title, description, ogLayout: 'immersive' });
+    const card = articleSocialCard(article, lang, f.options), nodes = [];
+    const svg = await renderArticleSocialSvg(card, { onNodeDetected: node => nodes.push(node) });
+    const headline = nodes.find(node => node.textContent === card.title), excerpt = nodes.find(node => node.textContent === card.description);
+    assert.ok(headline && excerpt);
+    assert.ok(headline.props.style.fontSize >= 36 && headline.props.style.fontSize <= 42);
+    assert.equal(excerpt.props.style.fontSize, 28);
+    assert.equal(excerpt.props.style.color, '#e7e9ee');
+    assert.ok(Math.abs(excerpt.top - headline.top - headline.height - 16) < 0.01);
+    assert.ok(headline.top >= 250 && excerpt.top + excerpt.height <= 532);
+    assert.ok(Math.abs(excerpt.top + excerpt.height - 530) < 0.01);
+    assert.ok(580 - excerpt.top - excerpt.height >= 48, 'the footer keeps a separate safe margin');
+    assert.ok(nodes.every(node => [node.left, node.top, node.width, node.height].every(Number.isFinite)
+      && node.left >= 0 && node.top >= 0 && node.left + node.width <= 1200 && node.top + node.height <= 630));
+    assert.ok(nodes.filter(node => node.props.style?.fontWeight !== undefined).every(node => node.props.style.fontWeight === 400));
+    const shade = nodes.find(node => node.props.style?.backgroundImage?.includes('rgba(12,13,16,0.82)'));
+    assert.ok(shade && shade.width === 1200 && shade.height === 630);
+    assert.doesNotMatch(shade.props.style.backgroundImage, /#0c0d10|rgba\(12,13,16,1\)/u);
+    assert.doesNotMatch(svg, /<script|<foreignObject|(?:href|src)=["']https?:\/\//u);
+  }
+  const article = entry(); article.data.ogLayout = 'immersive';
+  const card = articleSocialCard(article, 'fr', f.options);
+  await assert.rejects(renderArticleSocialSvg({ ...card, title: 'A'.repeat(500) }), /too long/);
+  await assert.rejects(renderArticleSocialSvg({ ...card, description: 'A'.repeat(500) }), /too long/);
+  const image = await renderArticleSocialJpeg(card, { ...f.options, cacheDirectory: null });
+  const meta = await sharp(image).metadata();
+  assert.equal(meta.format, 'jpeg'); assert.equal(meta.width, 1200); assert.equal(meta.height, 630);
+  assert.ok(image.length < 400_000);
 });
 
 test('warm JPEG cache returns exact bytes without rerendering; changed inputs regenerate', async t => {
