@@ -6,15 +6,16 @@ import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import dataset from '../../data/engagement-atlas.json';
 ---
 
-<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, Anthropic et dette | l0g" description="Nvidia, Anthropic, Google, Broadcom et OpenAI : suivez les investissements, les achats cloud, les garanties et la dette des infrastructures d’IA." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
+<BaseLayout title={dataset.title} seoTitle="Atlas du financement de l’IA : Nvidia, Shanghai et garanties | l0g" description="Explorez les financements de Nvidia, Anthropic et OpenAI, puis les garanties sur serveurs rapportées à Shanghai. Chaque relation conserve ses sources et ses limites." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
   <EngagementAtlas
     dataset={dataset}
     subject="financement de l’IA"
-    intro="Un fournisseur peut vendre des puces, financer son client et garantir la valeur des équipements. Suivez ces rôles chez Nvidia, Anthropic, Google et Broadcom, puis explorez les autres circuits : OpenAI, SB Energy, Aligned, Nebius et SpaceX."
-    boundary="Souscriptions en actions, achats de calcul et garanties sont des obligations différentes. Plusieurs montants peuvent couvrir des étapes d’un même circuit et ne s’additionnent pas. Chaque relation conserve sa date de publication et ses conditions. Le préfinancement de SB Energy reste distinct des garanties du campus, sans financement d’AIP déduit."
-    selectedRelation="nvidia-anthropic-equity"
-    hubs={['nvidia', 'anthropic', 'aip']}
+    intro="Un fournisseur peut vendre des puces, financer son client et garantir la valeur des équipements. Suivez ces rôles chez Nvidia, Anthropic, Google et Broadcom, puis les circuits d’OpenAI, SB Energy, Aligned, Nebius et SpaceX. À Shanghai, un circuit séparé représente les garanties sur serveurs rapportées par Bloomberg."
+    boundary="Souscriptions en actions, achats de calcul et garanties sont des obligations différentes. Plusieurs montants peuvent couvrir des étapes d’un même circuit et ne s’additionnent pas. Chaque relation conserve sa date de publication et ses conditions. Le préfinancement de SB Energy reste distinct des garanties du campus, sans financement d’AIP déduit. À Shanghai, la valeur déclarée du matériel est en CNY. Le principal des prêts reste à établir."
+    selectedRelation="shanghai-collateral-registrations"
+    hubs={['nvidia', 'anthropic', 'aip', 'shanghai-longjie-yaoteng']}
     entryPoints={[
+      { label: 'Shanghai : les serveurs déclarés en garantie', relation: 'shanghai-collateral-registrations', date: '2026-11-13' },
       { label: 'Nvidia : souscription proposée à Anthropic', relation: 'nvidia-anthropic-equity', date: '2026-11-10' },
       { label: 'Google : capital et achats cloud', relation: 'google-anthropic-equity', date: '2026-11-10' },
       { label: 'Broadcom finance les loyers', relation: 'broadcom-anthropic-rent-facility', date: '2026-11-02' },
@@ -26,6 +27,7 @@ import dataset from '../../data/engagement-atlas.json';
     ]}
     outlinks={[
       { href: '/dossiers/financement-ia/', label: 'Toutes les enquêtes du dossier Financement de l’IA' },
+      { href: '/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/', label: 'Nvidia VIII : les serveurs de Shanghai et la bataille de Washington' },
       { href: '/posts/anthropic-financement-fournisseurs-ipo/', label: 'Anthropic : les fournisseurs financent leur client' },
       { href: '/posts/nvidia-garanties-financement-ia-enquetes-asie/', label: 'Nvidia : garanties financières et enquêtes en Asie' },
       { href: '/atlas/credit-prive/', label: 'Apollo, Athene et les circuits du crédit privé' },
@@ -39,7 +41,20 @@ import dataset from '../../data/engagement-atlas.json';
       <p class="ia-review-date">Revue du <time datetime="2026-11-13">13 novembre 2026</time></p>
       <div class="ia-review-grid">
         <div>
-          <h2 id="ia-review-title">Nvidia change de direction</h2>
+          <h2 id="ia-review-title">Shanghai : des machines déclarées en garantie</h2>
+          <p>Une <a href="https://ba.bloombergadria.com/tehnologija/ai/117069/kompanija-povezana-s-alice-huang-nabavljala-zabranjene-nvidia-cipove-u-kini/news">enquête Bloomberg publiée le 13 novembre</a>, détaillée par <a href="https://www.taisounds.com/news/content/84/309645">TaiSounds</a>, décrit 193 serveurs donnés en garantie en janvier 2025 par Shanghai Longjie Yaoteng. La valeur déclarée des équipements atteint 485 millions de yuans.</p>
+          <p>TaiSounds évoque deux prêts. La carte regroupe ces garanties rapportées, avec des créanciers à identifier et un montant emprunté à établir. Le <a href="https://fgw.sh.gov.cn/cmsres/00/00ed174f4ac74c55abec30d9b33b44fb/20235839cd48ee3784ef54b789d67706.pdf">règlement du registre</a> précise le rôle des déclarants et du créancier. Le dépôt individuel reste à obtenir.</p>
+        </div>
+        <div>
+          <h2>Washington : le contrôle des exportations sous pression</h2>
+          <p>Sur <a href="https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html">CNBC, le 13 novembre</a>, Scott Bessent affirme que plusieurs administrations favorisaient des restrictions visant Megaspeed et renvoie les questions au Commerce. Le Trésor place ainsi publiquement le département de Howard Lutnick devant ses arbitrages.</p>
+          <p>Le <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-744/appendix-Supplement%20No.%205%20to%20Part%20744">comité chargé des inscriptions à l’Entity List est présidé par le Commerce</a>. Ce contexte politique est développé dans le <a href="/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/">volet VIII</a>. Les flèches de la carte restent consacrées aux relations financières et aux garanties.</p>
+        </div>
+      </div>
+      <details class="ia-previous"><summary>Nvidia et Anthropic : les repères précédents</summary>
+      <div class="ia-review-grid">
+        <div>
+          <h2>Nvidia change de direction</h2>
           <p>Le <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition">12 novembre, Nvidia annonce la démission immédiate de Jensen Huang</a> de ses fonctions de président, directeur général et administrateur. Colette Kress assure la direction par intérim. Le conseil affirme vouloir maintenir les engagements clients.</p>
           <p>La carte suit les obligations des sociétés à partir de leurs documents. L’effet de cette transition sur les nouveaux investissements reste à observer.</p>
         </div>
@@ -49,6 +64,7 @@ import dataset from '../../data/engagement-atlas.json';
           <p>Le <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm">contrat Broadcom déposé le 2 novembre</a> permet aussi de financer certains loyers en émettant une dette convertible. Le plafond de cette facilité et le financement du matériel couvrent des objets distincts.</p>
         </div>
       </div>
+      </details>
       <details class="ia-previous"><summary>Ajouts du 31 octobre : SpaceX et les autres circuits</summary>
       <p>Le <a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm">8-K de SpaceX du 26 octobre</a> documente un engagement de crédit-bail GPU avec un véhicule géré par Apollo. Les quelque 40 milliards de dollars désignent le principal attendu sur les locations. La réalisation reste conditionnelle et les premières locations sont prévues au premier semestre 2027.</p>
       <p>Le <a href="https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever">communiqué publié par Apollo</a> précise les financeurs annoncés, sans donner leurs parts. Aucun apport d’AIP ou d’Athene n’est déduit. Les garanties Nvidia–SB Energy, le préfinancement, Aligned et le prêt Citi–Nebius conservent leurs observations antérieures. Le <a href="https://data.sec.gov/submissions/CIK0002133037.json">registre SEC de SB Energy</a> consulté le 31 octobre ne présente aucun dépôt postérieur au S-1/A du 21 septembre ; ce contrôle ne confirme pas la réalisation de l’introduction.</p>

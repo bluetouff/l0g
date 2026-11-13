@@ -2,7 +2,7 @@ export type AtlasLanguage = 'fr' | 'en';
 
 export const atlasUi = {
   fr: {
-    kinds: { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées' },
+    kinds: { announcement: 'Annonce des parties', contract: 'Relation déclarée', limitation: 'Limites documentées', 'press-report': 'Presse : relation rapportée' },
     kicker: '// carte interactive · acteurs et contrats', titlePrefix: 'Atlas du',
     circuit: 'La relation en un regard', circuitFrom: 'Départ', circuitTo: 'Arrivée', circuitProof: 'Lire la preuve et ses limites',
     network: 'Le réseau documenté', actors: 'acteurs et structures', relations: 'relations',
@@ -20,14 +20,14 @@ export const atlasUi = {
     methodExplanation: 'Les annonces sont attribuées à leurs auteurs. Les engagements conditionnels restent distincts des paiements. L’absence d’un lien signifie qu’il n’est pas établi dans ce corpus, sans démontrer son inexistence.',
   },
   en: {
-    kinds: { announcement: 'Announcement by the parties', contract: 'Reported relationship', limitation: 'Documented limits' },
+    kinds: { announcement: 'Announcement by the parties', contract: 'Reported relationship', limitation: 'Documented limits', 'press-report': 'Press-reported relationship' },
     kicker: '// interactive map · actors and contracts', titlePrefix: 'Atlas of',
     circuit: 'The relationship at a glance', circuitFrom: 'From', circuitTo: 'To', circuitProof: 'Read the evidence and limitations',
     network: 'The documented network', actors: 'actors and entities', relations: 'relationships',
     chooseDate: 'Choose a publication date', announcement: 'Announcement', contract: 'Reported relationship', selected: 'Selected relationship',
     legend: 'Lines do not show financial scale; select a relationship for its meaning',
     chooseRelation: 'Choose a relationship', all: 'All', allRelations: 'All relationships at this date', relatedTo: 'Relationships involving', explore: 'explore',
-    published: 'Published', reviewed: 'reviewed', limit: 'The limitation', watch: 'What to check next',
+    published: 'Published', reviewed: 'reviewed', limit: 'The limitation', watch: 'Next checks',
     scenarioOpen: 'Explore a tenant default', scenarioClose: 'Close the default scenario',
     scenarioWarning: 'Hypothetical scenario; no actual default is represented.',
     scenarioExplanation: 'The path highlights the lease, guarantee and reimbursement claim. Contract terms and recoveries remain decisive; no loss amount is calculated.',

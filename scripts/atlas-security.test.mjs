@@ -6,7 +6,98 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { readAtlasJson, MAX_ATLAS_BYTES } from './read-atlas-json.mjs';
-import { atlasSourceUrl } from '../src/lib/engagement-atlas.ts';
+import { assertAtlasDataset, atlasSourceUrl } from '../src/lib/engagement-atlas.ts';
+
+const shanghaiPressSources = [
+  'https://ba.bloombergadria.com/tehnologija/ai/117069/kompanija-povezana-s-alice-huang-nabavljala-zabranjene-nvidia-cipove-u-kini/news',
+  'https://www.taisounds.com/news/content/84/309645',
+];
+const shanghaiRulesSource = 'https://fgw.sh.gov.cn/cmsres/00/00ed174f4ac74c55abec30d9b33b44fb/20235839cd48ee3784ef54b789d67706.pdf';
+
+function pressDataset() {
+  return {
+    version: 1, id: 'financement-ia', title: 'Source classification fixture', reconstructedOn: '2026-09-16',
+    sources: [
+      ...shanghaiPressSources.map((url, index) => ({ id: `press-${index}`, title: 'Reviewed reporting', url, publishedOn: '2026-11-13', locator: 'Reporting, not the underlying registration.' })),
+      { id: 'registry-rules', title: 'General registry rules', url: shanghaiRulesSource, publishedOn: '2021-12-28', locator: 'General rules, not an individual registration.' },
+    ],
+    nodes: [
+      { id: 'declarant', label: 'Reported declarant', role: 'Reporting attribution fixture', column: 0, row: 0 },
+      { id: 'counterparty', label: 'Unidentified counterparty', role: 'Unknown identity', column: 1, row: 0 },
+    ],
+    relations: [{
+      id: 'reported-collateral', from: 'declarant', to: 'counterparty',
+      observations: [{
+        publishedOn: '2026-11-13', recordedOn: '2026-11-13', review: 'reviewed', kind: 'press-report',
+        label: 'Reported registration', claim: 'The registration is attributed to the reporting.',
+        limit: 'The individual filing was not inspected.', watch: 'Obtain the individual filing.',
+        sources: ['press-0', 'registry-rules'],
+      }],
+    }],
+    milestones: [{ date: '2026-11-13', label: 'Reporting published', change: 'Add the attributed report.' }],
+  };
+}
+
+test('Shanghai sources are restricted to the two reviewed reports and exact government rules document', () => {
+  for (const source of [...shanghaiPressSources, shanghaiRulesSource]) {
+    assert.equal(atlasSourceUrl(source), source);
+    const url = new URL(source);
+    for (const value of [
+      `${url.origin}/`, `${url.origin}/admin`, source + '/other',
+      source + '?download=true', source + '?', source + '#page=1', source + '#',
+      source.replace(url.hostname, `${url.hostname}.evil.example`),
+      source.replace('https://', 'https://user:pass@'),
+      source.replace('https://', 'http://'),
+    ]) assert.throws(() => atlasSourceUrl(value), value);
+  }
+  assert.throws(() => atlasSourceUrl('https://www.taisounds.com/news/content/84/309646'));
+  assert.throws(() => atlasSourceUrl(shanghaiRulesSource.replace('.pdf', '-other.pdf')));
+});
+
+test('reviewed press sources cannot be presented as contracts, party announcements or primary limitations', () => {
+  for (const pressId of ['press-0', 'press-1']) {
+    const valid = pressDataset();
+    valid.relations[0].observations[0].sources = [pressId, 'registry-rules'];
+    assert.doesNotThrow(() => assertAtlasDataset(valid));
+    for (const kind of ['contract', 'announcement', 'limitation']) {
+      const changed = structuredClone(valid);
+      changed.relations[0].observations[0].kind = kind;
+      assert.throws(() => assertAtlasDataset(changed), /source de presse incompatible/);
+    }
+  }
+});
+
+test('a press-report needs a cited reviewed press URL, not merely a press source elsewhere in the dataset', () => {
+  const primaryOnly = pressDataset();
+  primaryOnly.relations[0].observations[0].sources = ['registry-rules'];
+  assert.throws(() => assertAtlasDataset(primaryOnly), /sans source de presse revue/);
+
+  const primaryContract = structuredClone(primaryOnly);
+  primaryContract.relations[0].observations[0].kind = 'contract';
+  primaryContract.relations[0].observations[0].publishedOn = '2021-12-28';
+  primaryContract.milestones[0].date = '2021-12-28';
+  assert.doesNotThrow(() => assertAtlasDataset(primaryContract));
+});
+
+test('press classification uses canonical URLs so host casing and the default HTTPS port cannot bypass it', () => {
+  const changed = pressDataset();
+  changed.sources[0].url = changed.sources[0].url.replace('https://ba.bloombergadria.com', 'HTTPS://BA.BLOOMBERGADRIA.COM:443');
+  assert.doesNotThrow(() => assertAtlasDataset(changed));
+  changed.relations[0].observations[0].kind = 'contract';
+  assert.throws(() => assertAtlasDataset(changed), /source de presse incompatible/);
+});
+
+test('press reports reject even a valid USD conditional cap while the primary Nvidia guarantee retains its amount', () => {
+  const published = JSON.parse(fs.readFileSync(new URL('../src/data/engagement-atlas.json', import.meta.url), 'utf8'));
+  assert.doesNotThrow(() => assertAtlasDataset(published));
+  const guarantee = published.relations.find(relation => relation.id === 'nvidia-sb-guarantee').observations.at(-1).amount;
+  assert.deepEqual(guarantee, { value: '105000000000', currency: 'USD', kind: 'conditional-cap', label: '105 Md$ · plafond initial cumulé' });
+  for (const amount of [structuredClone(guarantee), undefined]) {
+    const changed = pressDataset();
+    changed.relations[0].observations[0].amount = amount;
+    assert.throws(() => assertAtlasDataset(changed), /montant structuré interdit pour une relation de presse/);
+  }
+});
 
 test('Blackstone source access is restricted to the reviewed Broadcom financing release', () => {
   const source = 'https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/';

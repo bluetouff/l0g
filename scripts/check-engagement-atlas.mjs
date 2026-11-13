@@ -18,7 +18,7 @@ try {
     if (!proposal) localizeAtlas(data, readAtlasJson(path.replace(/\.json$/, '.en.json')));
     console.log(proposal
       ? 'Structure de proposition valide. Aucune approbation éditoriale ni écriture dans le corpus publié.'
-      : `Atlas valide : ${data.nodes.length} acteurs et structures, ${data.relations.length} relations, ${data.sources.length} pièces primaires.`);
+      : `Atlas valide : ${data.nodes.length} acteurs et structures, ${data.relations.length} relations, ${data.sources.length} sources documentaires.`);
   }
 } catch {
   // Input paths, source URLs and raw JSON may be private; do not print them.

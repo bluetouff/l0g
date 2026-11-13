@@ -7,16 +7,17 @@ import { atlasAlternateLinks } from '../../../config/atlases';
 const dataset = englishAtlasDatasets['ai-financing'];
 ---
 
-<EnglishGuidesLayout title={dataset.title} seoTitle="AI financing atlas: Nvidia, Anthropic and debt | l0g" description="Follow investments, cloud purchases, guarantees and infrastructure debt through Nvidia, Anthropic, Google, Broadcom and OpenAI’s documented relationships." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
+<EnglishGuidesLayout title={dataset.title} seoTitle="AI financing atlas: Nvidia, Shanghai collateral and guarantees | l0g" description="Trace Nvidia, Anthropic and OpenAI financing, then inspect the collateral registrations reported in Shanghai. Every relationship retains its sources and limitations." ogImage="/illustrations/news/ai-financing-dossier-v1.jpg" alternateLinks={atlasAlternateLinks(dataset.id)}>
   <EngagementAtlas
     language="en"
     dataset={dataset}
     subject="AI financing"
-    intro="A supplier can sell chips, fund its customer and back the value of equipment. Trace these roles across Nvidia, Anthropic, Google and Broadcom, then explore the other circuits around OpenAI, SB Energy, Aligned, Nebius and SpaceX."
-    boundary="Share subscriptions, compute purchases and guarantees are different obligations. Amounts can cover successive stages of the same circuit and cannot be added together. Each relationship retains its publication date and conditions. SB Energy’s prepayment remains separate from the campus guarantees, with no AIP funding inferred."
-    selectedRelation="nvidia-anthropic-equity"
-    hubs={['nvidia', 'anthropic', 'aip']}
+    intro="A supplier can sell chips, fund its customer and back the value of equipment. Trace these roles across Nvidia, Anthropic, Google and Broadcom, then the circuits around OpenAI, SB Energy, Aligned, Nebius and SpaceX. A separate Shanghai circuit shows the server collateral reported by Bloomberg."
+    boundary="Share subscriptions, compute purchases and guarantees are different obligations. Amounts can cover successive stages of the same circuit and cannot be added together. Each relationship retains its publication date and conditions. SB Energy’s prepayment remains separate from the campus guarantees, with no AIP funding inferred. Shanghai’s declared equipment value is in CNY. Loan principal is unknown."
+    selectedRelation="shanghai-collateral-registrations"
+    hubs={['nvidia', 'anthropic', 'aip', 'shanghai-longjie-yaoteng']}
     entryPoints={[
+      { label: 'Shanghai: the reported collateral registrations', relation: 'shanghai-collateral-registrations', date: '2026-11-13' },
       { label: 'Nvidia’s proposed Anthropic subscription', relation: 'nvidia-anthropic-equity', date: '2026-11-10' },
       { label: 'Google: equity and cloud purchases', relation: 'google-anthropic-equity', date: '2026-11-10' },
       { label: 'Broadcom finances rents', relation: 'broadcom-anthropic-rent-facility', date: '2026-11-02' },
@@ -28,6 +29,7 @@ const dataset = englishAtlasDatasets['ai-financing'];
     ]}
     outlinks={[
       { href: '/en/topics/ai-financing/', label: 'All investigations in the AI financing dossier' },
+      { href: '/en/analysis/nvidia-shanghai-server-collateral-lutnick-bessent/', label: 'Nvidia VIII: Shanghai’s servers and Washington’s blame game' },
       { href: '/en/analysis/anthropic-supplier-financing-ipo/', label: 'Anthropic: suppliers financing their customer' },
       { href: '/en/analysis/nvidia-ai-financing-guarantees-asian-investigations/', label: 'Nvidia: financial guarantees and Asian investigations' },
       { href: '/en/atlas/private-credit/', label: 'Apollo, Athene and private credit funding chains' },
@@ -41,7 +43,20 @@ const dataset = englishAtlasDatasets['ai-financing'];
       <p class="ia-review-date">Reviewed <time datetime="2026-11-13">13 November 2026</time></p>
       <div class="ia-review-grid">
         <div>
-          <h2 id="ai-review-title">Nvidia’s leadership changes</h2>
+          <h2 id="ai-review-title">Shanghai: servers reported as collateral</h2>
+          <p>A <a href="https://ba.bloombergadria.com/tehnologija/ai/117069/kompanija-povezana-s-alice-huang-nabavljala-zabranjene-nvidia-cipove-u-kini/news">Bloomberg investigation published on November 13</a>, with details reported by <a href="https://www.taisounds.com/news/content/84/309645">TaiSounds</a>, describes Shanghai Longjie Yaoteng pledging 193 servers in January 2025. Their declared equipment value was CNY485m.</p>
+          <p>TaiSounds mentions two loans. The map groups the reported security interests, leaving the lenders and loan amounts to be established. The <a href="https://fgw.sh.gov.cn/cmsres/00/00ed174f4ac74c55abec30d9b33b44fb/20235839cd48ee3784ef54b789d67706.pdf">registration rules</a> define the parties’ and creditor’s responsibilities. The individual filings have not been obtained.</p>
+        </div>
+        <div>
+          <h2>Washington: pressure over export controls</h2>
+          <p>On <a href="https://www.cnbc.com/2026/11/13/us-inflation-outlook-federal-reserve-rate-hike.html">CNBC on November 13</a>, Scott Bessent said several agencies had supported restrictions on Megaspeed and directed questions to Commerce. Treasury is publicly leaving Howard Lutnick’s department to explain the outcome.</p>
+          <p>The <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-744/appendix-Supplement%20No.%205%20to%20Part%20744">committee responsible for Entity List designations is chaired by Commerce</a>. <a href="/en/analysis/nvidia-shanghai-server-collateral-lutnick-bessent/">Part VIII</a> examines this political context. Map arrows continue to represent financial relationships and guarantees.</p>
+        </div>
+      </div>
+      <details class="ia-previous"><summary>Nvidia and Anthropic: earlier developments</summary>
+      <div class="ia-review-grid">
+        <div>
+          <h2>Nvidia’s leadership changes</h2>
           <p>On <a href="https://nvidianews.nvidia.com/news/nvidia-announces-ceo-transition">November 12, Nvidia announced Jensen Huang’s immediate resignation</a> as president, chief executive and director. Colette Kress became interim CEO. The board said it expected customer commitments to continue.</p>
           <p>The map traces corporate obligations through the documents. The transition’s effect on new investments remains to be seen.</p>
         </div>
@@ -51,6 +66,7 @@ const dataset = englishAtlasDatasets['ai-financing'];
           <p><a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/exhibit44-sx1a1.htm">The Broadcom agreement filed on November 2</a> also allows convertible debt to finance eligible rents. That facility’s cap and the equipment financing cover different parts of the chain.</p>
         </div>
       </div>
+      </details>
       <details class="ia-previous"><summary>October 31 additions: SpaceX and other circuits</summary>
       <p><a href="https://www.sec.gov/Archives/edgar/data/1181412/000110465926118614/tm2628247d1_8k.htm">SpaceX’s October 26 Form 8-K</a> documents a GPU finance lease commitment with an Apollo-managed entity. About $40 billion represents expected principal payments over the leases. Closing remains conditional, with the first leases expected to begin in the first half of 2027.</p>
       <p><a href="https://www.apollo.com/insights-news/pressreleases/2026/10/spacex-secures--40-billion-in-the-largest-gpu-financing-ever">The release published by Apollo</a> identifies announced financing parties without individual allocations. No AIP or Athene contribution is inferred. Nvidia–SB Energy guarantees, prepayment, Aligned and Citi–Nebius retain their earlier observations. <a href="https://data.sec.gov/submissions/CIK0002133037.json">SB Energy’s SEC register</a>, checked on October 31, shows no filing after the September 21 S-1/A; that check does not confirm a completed IPO.</p>

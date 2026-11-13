@@ -6,7 +6,7 @@ export const atlases = [
     theme: 'ia',
     image: '/illustrations/news/ai-financing-dossier-v1.jpg',
     eyebrow: 'Infrastructures · Capital · Garanties',
-    description: 'De Nvidia à Anthropic, suivez les fournisseurs devenus financeurs, les contrats cloud et les garanties des infrastructures. Chaque relation mène aux pièces qui la documentent.',
+    description: 'Des fournisseurs qui financent leurs clients aux serveurs déclarés en garantie à Shanghai, suivez les contrats, les sources et les limites de chaque circuit.',
     actors: 'Nvidia · Anthropic · OpenAI · Broadcom · Microsoft · Google',
     question: 'Qui finance les infrastructures de l’IA ?',
   },
@@ -38,7 +38,7 @@ export const englishAtlases = [
   {
     ...atlases[0], href: '/en/atlas/ai-financing/', label: 'AI financing',
     eyebrow: 'Infrastructure · Capital · Guarantees',
-    description: 'From Nvidia to Anthropic, follow suppliers funding customers, cloud contracts and infrastructure guarantees. Each relationship leads to its documentary sources.',
+    description: 'From suppliers funding customers to the server collateral reported in Shanghai, trace the contracts, sources and limitations behind each circuit.',
     question: 'Who finances AI infrastructure?',
   },
   {

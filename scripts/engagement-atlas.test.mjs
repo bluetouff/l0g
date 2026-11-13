@@ -22,6 +22,67 @@ const credit = JSON.parse(readFileSync(new URL('../src/data/private-credit-atlas
 const oil = JSON.parse(readFileSync(new URL('../src/data/oil-financing-atlas.json', import.meta.url), 'utf8'));
 const documentaryRelation = ({ changed, ...relation }) => relation;
 
+test('Shanghai collateral enters at the reporting date, with asset value distinct from unidentified loans', () => {
+  const before = atlasAt(source, '2026-11-12');
+  assert.deepEqual([before.nodes.length, before.relations.length, before.sources.length], [24, 30, 15]);
+  for (const id of ['shanghai-longjie-yaoteng', 'shanghai-unidentified-creditors']) {
+    assert.equal(before.nodes.some(node => node.id === id), false);
+  }
+  assert.equal(before.sources.some(item => /shanghai|pboc-registration/.test(item.id)), false);
+  const after = atlasAt(source, '2026-11-13');
+  assert.deepEqual([after.nodes.length, after.relations.length, after.sources.length], [26, 31, 18]);
+  const relation = after.relations.find(item => item.id === 'shanghai-collateral-registrations');
+  assert.deepEqual([relation.from, relation.to], ['shanghai-longjie-yaoteng', 'shanghai-unidentified-creditors']);
+  assert.equal(relation.observation.kind, 'press-report');
+  assert.equal(relation.observation.publishedOn, '2026-11-13');
+  assert.equal(relation.observation.recordedOn, '2026-11-13');
+  assert.equal(relation.observation.amount, undefined, 'Equipment value must not become a guarantee cap or loan principal');
+  for (const words of [/193 serveurs/, /janvier 2025/, /485 millions de yuans \(CNY\)/, /deux prêts/]) assert.match(relation.observation.claim, words);
+  assert.match(relation.observation.limit, /dépôt individuel.*contrats.*obtenir/i);
+  assert.match(relation.observation.limit, /Identités et nombre des créanciers/);
+  assert.equal(relation.reading.href, '/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/');
+  for (const old of before.relations) assert.deepEqual(documentaryRelation(after.relations.find(item => item.id === old.id)), documentaryRelation(old));
+});
+
+test('Shanghai remains a separate reported circuit, without inferred counterparties or the Ohio default scenario', () => {
+  const shanghai = new Set(['shanghai-longjie-yaoteng', 'shanghai-unidentified-creditors']);
+  const links = source.relations.filter(item => shanghai.has(item.from) || shanghai.has(item.to));
+  assert.equal(links.length, 1);
+  assert.ok(links.every(item => shanghai.has(item.from) && shanghai.has(item.to)));
+  assert.equal(source.nodes.some(item => /aperia|commerce|bessent/i.test(item.id)), false);
+  assert.equal(atlasSelection(source, '#date=2026-11-13&relation=shanghai-collateral-registrations&scenario=default').scenario, false);
+  assert.notEqual(atlasSelection(source, '#date=2026-11-10&relation=shanghai-collateral-registrations').relation, 'shanghai-collateral-registrations');
+});
+
+test('Shanghai cannot backdate its reporting or place CNY equipment values in the USD guarantee-cap field', () => {
+  for (const mutate of [
+    observation => { observation.publishedOn = '2025-01-01'; },
+    observation => { observation.amount = { value: '485000000', currency: 'CNY', kind: 'conditional-cap', label: 'Valeur déclarée' }; },
+  ]) {
+    const candidate = structuredClone(source);
+    mutate(candidate.relations.find(item => item.id === 'shanghai-collateral-registrations').observations[0]);
+    assert.throws(() => assertAtlasDataset(candidate));
+  }
+});
+
+test('Shanghai’s additional row remains bounded and is reserved for the AI atlas', () => {
+  assert.equal(Math.max(...source.nodes.map(item => item.row)), 6);
+  for (const row of [-1, 7, 1000, 6.5]) {
+    const candidate = structuredClone(source);
+    candidate.nodes.find(item => item.id === 'shanghai-longjie-yaoteng').row = row;
+    assert.throws(() => assertAtlasDataset(candidate), /position invalide/);
+  }
+  const overlap = structuredClone(source);
+  const node = overlap.nodes.find(item => item.id === 'shanghai-longjie-yaoteng');
+  node.column = 1;
+  assert.throws(() => assertAtlasDataset(overlap), /positions superposées/);
+  for (const dataset of [credit, oil]) {
+    const candidate = structuredClone(dataset);
+    candidate.nodes[0].row = 6;
+    assert.throws(() => assertAtlasDataset(candidate), /position invalide/);
+  }
+});
+
 test('Anthropic supplier finance preserves disclosure cutoffs and separate purchase, equity and rent obligations', () => {
   const before = atlasAt(source, '2026-10-25');
   assert.equal(before.nodes.some(item => ['anthropic', 'google-ai', 'broadcom-ai', 'broadcom-spv'].includes(item.id)), false);

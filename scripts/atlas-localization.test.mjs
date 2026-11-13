@@ -66,6 +66,26 @@ test('English reading links retain a narrow safe local destination contract', ()
   }
 });
 
+test('Shanghai’s English edition preserves press provenance and requires all new source and relation prose', () => {
+  const source = read('engagement-atlas'), words = read('engagement-atlas.en');
+  const en = localizeAtlas(source, words);
+  const relation = atlasAt(en, '2026-11-13').relations.find(item => item.id === 'shanghai-collateral-registrations');
+  assert.equal(relation.observation.kind, 'press-report');
+  assert.equal(relation.observation.amount, undefined);
+  assert.match(relation.observation.claim, /CNY485m/);
+  assert.match(relation.observation.claim, /two loans/);
+  assert.equal(relation.reading.href, '/en/analysis/nvidia-shanghai-server-collateral-lutnick-bessent/');
+  for (const mutate of [
+    value => { delete value.sources['bloomberg-shanghai-20261113']; },
+    value => { delete value.nodes['shanghai-unidentified-creditors']; },
+    value => { delete value.relations['shanghai-collateral-registrations'].observations['2026-11-13'].limit; },
+    value => { value.relations['shanghai-collateral-registrations'].observations['2026-11-13'].kind = 'contract'; },
+  ]) {
+    const candidate = structuredClone(words); mutate(candidate);
+    assert.throws(() => localizeAtlas(source, candidate));
+  }
+});
+
 test('Atlas language pairs preserve French routes and default date formatting', () => {
   assert.equal(formatAtlasDate('2026-09-21'), '21 sept. 2026');
   assert.equal(formatAtlasDate('2026-09-21', 'en'), '21 Sept 2026');

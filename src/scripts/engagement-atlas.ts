@@ -69,6 +69,7 @@ function initAtlas(root: HTMLElement) {
       path.setAttribute('opacity', selected ? '1' : focusNode || state.scenario ? '.2' : '.55');
       path.setAttribute('marker-end', 'url(#atlas-arrow)');
       if (relation.observation.kind === 'announcement') path.setAttribute('stroke-dasharray', '5 5');
+      if (relation.observation.kind === 'press-report') path.setAttribute('stroke-dasharray', '2 4');
       paths.append(path);
     }
   }

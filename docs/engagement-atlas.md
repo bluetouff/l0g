@@ -93,11 +93,15 @@ Ces enrichissements sont réalisés à la demande. La veille automatique reste e
 
 ### Convention du corpus
 
-- `publishedOn` : date de publication de la pièce primaire, jamais la seule date de signature du contrat ni la date de fin du trimestre.
+- `publishedOn` : date de publication de la source documentaire, pièce primaire ou reportage identifié, jamais la seule date de signature du contrat ni la date de fin du trimestre.
 - `recordedOn` : date réelle de lecture et de revue pour l’atlas.
 - `reconstructedOn` : création de cette reconstitution documentaire. Elle ne constitue pas une archive attestée de connaissances de l0g aux dates anciennes.
 
 Une relation possède des observations ordonnées. Ajouter une observation datée pour une nouvelle pièce, une révision ou une limite ; conserver les précédentes. Une correction d’extraction erronée conserve la date de publication de la source, actualise la date de revue et doit être explicitée dans le commit de correction. Git conserve l’édition précédente ; la reconstitution affichée est corrigée et ne prétend pas restituer un ancien état attesté de l0g. Ne pas antidater la revue. La sélection chronologique prend la dernière observation relue publiée au plus tard à la date choisie et exclut les sources postérieures.
+
+L’ajout Shanghai revu le 13 novembre 2026 utilise `press-report` pour distinguer un ensemble de garanties rapportées par Bloomberg et TaiSounds d’un contrat consulté. Les éditions et reprises du même reportage gardent leur origine commune. Les sources de presse sont limitées aux URL exactes relues et exigent ce statut. Le règlement général du registre fournit le cadre institutionnel, sans confirmer le dépôt individuel. La publication du reportage détermine l’entrée dans la chronologie, même si les événements décrits remontent à janvier 2025.
+
+Le circuit Shanghai reste isolé, avec un groupe de créanciers dont l’identité et le nombre sont inconnus. La valeur du matériel en CNY demeure textuelle : `amount` conserve son seul sens de plafond conditionnel en USD. Une septième ligne de positions est admise uniquement dans l’atlas IA, avec les mêmes contrôles de bornes et de chevauchement. Les déclarations politiques du volet VIII figurent dans la présentation éditoriale, sans créer de relations financières.
 
 ## Travail récurrent des agents
 

@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "7f782687dfac774020e5f00537a6d3286fb1e7e53c9820f4478961bbc28fea8f",
+  "sourceSha256": "d243dc38bdf6a2c7ff8edc1d397bf700c8a9e284445ee3cbe6ea7ff391942e09",
   "title": "AI financing atlas",
   "sources": {
     "aip-2024": {
@@ -61,6 +61,18 @@
     "broadcom-spv-20261026": {
       "title": "Blackstone and partners: $63bn equipment financing",
       "locator": "Opening: special purpose vehicle, first- and second-lien financing, Broadcom residual value support, deliveries expected from 2027."
+    },
+    "bloomberg-shanghai-20261113": {
+      "title": "Bloomberg Adria: investigation into the Shanghai servers",
+      "locator": "Third introductory summary: CNY485m declared value of the equipment offered as collateral. Edition of the Bloomberg investigation, with public passages and subscriber-only full text."
+    },
+    "taisounds-shanghai-20261113": {
+      "title": "TaiSounds, citing Bloomberg: details of the reported security interests",
+      "locator": "Sections on the Longjie Yaoteng subsidiary, January 2025 and 193 servers: 22 Dell H800, 52 Supermicro H100/H200 and 119 Gigabyte with unidentified GPUs. Final section: two loans. Account of the same Bloomberg reporting. The individual filing has not been reviewed."
+    },
+    "pboc-registration-20211228": {
+      "title": "People’s Bank of China: movable property security registration rules",
+      "locator": "Order [2021] No. 7, Articles 4, 7, 9, 23, 24 and 34. Effective February 1, 2022: declarations, creditor verification and parties’ responsibilities. General rules, without the individual Shanghai filing."
     }
   },
   "nodes": {
@@ -159,6 +171,14 @@
     "broadcom-spv": {
       "label": "Broadcom equipment vehicle",
       "role": "Debt-financed lessor"
+    },
+    "shanghai-longjie-yaoteng": {
+      "label": "Shanghai Longjie Yaoteng",
+      "role": "Longteng subsidiary · per Bloomberg"
+    },
+    "shanghai-unidentified-creditors": {
+      "label": "Unidentified creditors",
+      "role": "Identities and count unknown"
     }
   },
   "relations": {
@@ -521,6 +541,20 @@
         "href": "/en/analysis/broadcom-anthropic-blackstone-63-billion-risk/",
         "label": "Read the Broadcom–Anthropic financing analysis"
       }
+    },
+    "shanghai-collateral-registrations": {
+      "reading": {
+        "href": "/en/analysis/nvidia-shanghai-server-collateral-lutnick-bessent/",
+        "label": "Read part VIII: Shanghai’s servers and responsibility in Washington"
+      },
+      "observations": {
+        "2026-11-13": {
+          "label": "193 servers reportedly pledged",
+          "claim": "TaiSounds’s account of Bloomberg’s investigation identifies Shanghai Longjie Yaoteng, a Shanghai Longteng Intelligent Computing subsidiary, as the company pledging 193 servers in January 2025. The equipment’s declared value is CNY485m. The reported inventory comprises 22 Dell, 52 Supermicro and 119 Gigabyte servers. TaiSounds mentions two loans. These are server counts, and each server can contain several GPUs.",
+          "limit": "The individual filings and contracts have not been obtained. Creditor identities and count, loan principal, disbursements, priority and the security interests’ current status remain unknown. CNY485m is the declared equipment value. The general registration rules do not confirm any individual filing.",
+          "watch": "Obtain the filings and contracts, identify the parties, and verify serial numbers and recovery rights."
+        }
+      }
     }
   },
   "milestones": {
@@ -571,6 +605,10 @@
     "2026-11-10": {
       "label": "Anthropic · suppliers and customer",
       "change": "The prospectus and agreements add proposed subscriptions by Nvidia, Google, Microsoft and Broadcom. Cloud purchases and rent financing reveal the partners’ overlapping roles, without adding commitments to payments."
+    },
+    "2026-11-13": {
+      "label": "Shanghai · reported collateral",
+      "change": "Bloomberg’s November 13 investigation describes January 2025 security registrations over 193 servers. This separate circuit retains the declared equipment value in CNY. Loan amounts and lenders remain unidentified. The relationship is classified as a press report."
     }
   }
 }

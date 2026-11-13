@@ -5,7 +5,7 @@ export type AtlasObservation = {
   publishedOn: string;
   recordedOn: string;
   review: 'reviewed' | 'proposed';
-  kind: 'announcement' | 'contract' | 'limitation';
+  kind: 'announcement' | 'contract' | 'limitation' | 'press-report';
   label: string;
   claim: string;
   limit: string;
@@ -35,8 +35,16 @@ const allowedOrigins = new Set([
   'https://www.volareshipping.com', 'https://mb.cision.com',
   'https://www.partnersgroup.com',
   'https://www.blackstone.com',
+  'https://ba.bloombergadria.com', 'https://www.taisounds.com',
+  'https://fgw.sh.gov.cn',
 ]);
 const broadcomFinancingRelease = 'https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/';
+const reviewedPressSources = new Set([
+  'https://ba.bloombergadria.com/tehnologija/ai/117069/kompanija-povezana-s-alice-huang-nabavljala-zabranjene-nvidia-cipove-u-kini/news',
+  'https://www.taisounds.com/news/content/84/309645',
+]);
+const shanghaiRegistryRules = 'https://fgw.sh.gov.cn/cmsres/00/00ed174f4ac74c55abec30d9b33b44fb/20235839cd48ee3784ef54b789d67706.pdf';
+const shanghaiSourceOrigins = new Set(['https://ba.bloombergadria.com', 'https://www.taisounds.com', 'https://fgw.sh.gov.cn']);
 /** Canonical source URL shared by corpus validation and the browser link sink. */
 export function atlasSourceUrl(value: string): string {
   text(value, 1500);
@@ -46,6 +54,7 @@ export function atlasSourceUrl(value: string): string {
     && /^\?news_id=[a-f0-9]{8}-(?:[a-f0-9]{4}-){3}[a-f0-9]{12}$/.test(url.search);
   if (url.protocol !== 'https:' || !allowedOrigins.has(url.origin) || url.username || url.password || (url.search && !partnersRelease) || url.hash) throw new Error('Atlas : origine ou URL source refusée');
   if (url.origin === 'https://www.blackstone.com' && url.href !== broadcomFinancingRelease) throw new Error('Atlas : communiqué Broadcom refusé');
+  if (shanghaiSourceOrigins.has(url.origin) && !reviewedPressSources.has(url.href) && url.href !== shanghaiRegistryRules) throw new Error('Atlas : source Shanghai refusée');
   if (url.origin === 'https://www.partnersgroup.com' && !partnersRelease) throw new Error('Atlas : communiqué Partners Group refusé');
   if (url.origin === 'https://www.sec.gov' && !/^\/Archives\/edgar\/data\/\d+\/\d+\/[a-zA-Z0-9._-]+\.htm$/.test(url.pathname)) throw new Error('Atlas : chemin SEC refusé');
   if (url.origin === 'https://newsweb.oslobors.no' && !/^\/message\/\d+$/.test(url.pathname)) throw new Error('Atlas : chemin NewsWeb refusé');
@@ -90,17 +99,20 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
   const sourceIds = uniqueIds(value.sources), nodeIds = uniqueIds(value.nodes);
   uniqueIds(value.relations);
   const sources = new Map<string, string>();
+  const pressSourceIds = new Set<string>();
   for (const source of value.sources) {
     object(source); id(source.id); text(source.title, 240); text(source.locator, 400); date(source.publishedOn); text(source.url, 1500);
     keys(source, ['id', 'title', 'url', 'publishedOn', 'locator']);
-    atlasSourceUrl(source.url);
+    const canonicalSource = atlasSourceUrl(source.url);
+    if (reviewedPressSources.has(canonicalSource)) pressSourceIds.add(source.id);
     sources.set(source.id, source.publishedOn);
   }
   const positions = new Set<string>();
+  const maximumRow = value.id === 'financement-ia' ? 6 : 5;
   for (const node of value.nodes) {
     object(node); text(node.label, 45); text(node.role, 70);
     keys(node, ['id', 'label', 'role', 'column', 'row']);
-    requireValue(Number.isInteger(node.column) && Number(node.column) >= 0 && Number(node.column) <= 3 && Number.isInteger(node.row) && Number(node.row) >= 0 && Number(node.row) <= 5, 'position invalide');
+    requireValue(Number.isInteger(node.column) && Number(node.column) >= 0 && Number(node.column) <= 3 && Number.isInteger(node.row) && Number(node.row) >= 0 && Number(node.row) <= maximumRow, 'position invalide');
     const position = `${node.column}:${node.row}`; requireValue(!positions.has(position), 'positions superposées'); positions.add(position);
   }
   const observationDates = new Set<string>();
@@ -121,11 +133,14 @@ export function assertAtlasDataset(value: unknown, allowProposals = false): asse
       requireValue(observation.publishedOn > previous, 'observations non ordonnées ou dupliquées'); previous = observation.publishedOn;
       requireValue(observation.recordedOn >= observation.publishedOn && observation.recordedOn >= value.reconstructedOn, 'antidatage de la revue');
       requireValue(observation.review === 'reviewed' || (allowProposals && observation.review === 'proposed'), 'proposition non relue');
-      requireValue(['announcement', 'contract', 'limitation'].includes(String(observation.kind)), 'type d’observation invalide');
+      requireValue(['announcement', 'contract', 'limitation', 'press-report'].includes(String(observation.kind)), 'type d’observation invalide');
       for (const key of ['label', 'claim', 'limit', 'watch']) text(observation[key], key === 'label' ? 100 : 1400);
       list(observation.sources, 12);
       for (const source of observation.sources) requireValue(typeof source === 'string' && sourceIds.has(source) && sources.get(source)! <= observation.publishedOn, 'source absente ou publiée dans le futur');
+      const citesPress = observation.sources.some(source => pressSourceIds.has(String(source)));
+      requireValue(observation.kind === 'press-report' ? citesPress : !citesPress, observation.kind === 'press-report' ? 'relation de presse sans source de presse revue' : 'source de presse incompatible avec le type de relation');
       requireValue(observation.sources.some(source => sources.get(String(source)) === observation.publishedOn), 'date sans publication justificative');
+      requireValue(observation.kind !== 'press-report' || !Object.hasOwn(observation, 'amount'), 'montant structuré interdit pour une relation de presse');
       if (observation.amount !== undefined) {
         object(observation.amount);
         keys(observation.amount, ['value', 'currency', 'kind', 'label']);

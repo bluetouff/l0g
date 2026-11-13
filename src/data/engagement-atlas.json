@@ -108,6 +108,27 @@
       "url": "https://www.blackstone.com/news/press/bank-of-america-blackstone-citi-and-morgan-stanley-announce-landmark-63-billion-financing-structure-to-enable-ai-compute/",
       "publishedOn": "2026-10-26",
       "locator": "Ouverture : véhicule dédié, dette de premier et second rang, soutien de valeur résiduelle de Broadcom, livraisons attendues à partir de 2027."
+    },
+    {
+      "id": "bloomberg-shanghai-20261113",
+      "title": "Bloomberg Adria : enquête sur les serveurs de Shanghai",
+      "url": "https://ba.bloombergadria.com/tehnologija/ai/117069/kompanija-povezana-s-alice-huang-nabavljala-zabranjene-nvidia-cipove-u-kini/news",
+      "publishedOn": "2026-11-13",
+      "locator": "Troisième résumé introductif : 485 millions de yuans de valeur du matériel proposé en garantie. Édition de l’enquête Bloomberg, avec passages publics et texte intégral réservé aux abonnés."
+    },
+    {
+      "id": "taisounds-shanghai-20261113",
+      "title": "TaiSounds, d’après Bloomberg : détail des garanties rapportées",
+      "url": "https://www.taisounds.com/news/content/84/309645",
+      "publishedOn": "2026-11-13",
+      "locator": "Sections sur la filiale Longjie Yaoteng, janvier 2025 et 193 serveurs : 22 Dell H800, 52 Supermicro H100/H200 et 119 Gigabyte aux GPU inconnus. Dernière section : deux prêts. Reprise du même reportage Bloomberg, dépôt individuel non consulté."
+    },
+    {
+      "id": "pboc-registration-20211228",
+      "title": "Banque populaire de Chine : règlement sur les sûretés mobilières",
+      "url": "https://fgw.sh.gov.cn/cmsres/00/00ed174f4ac74c55abec30d9b33b44fb/20235839cd48ee3784ef54b789d67706.pdf",
+      "publishedOn": "2021-12-28",
+      "locator": "Ordre [2021] no 7, articles 4, 7, 9, 23, 24 et 34. En vigueur depuis le 1er février 2022 : déclarations, vérification par le créancier et responsabilité des parties. Cadre général, sans dépôt individuel de Shanghai."
     }
   ],
   "nodes": [
@@ -278,6 +299,20 @@
       "role": "Bailleur financé par dette",
       "column": 3,
       "row": 4
+    },
+    {
+      "id": "shanghai-longjie-yaoteng",
+      "label": "Shanghai Longjie Yaoteng",
+      "role": "Filiale de Longteng · selon Bloomberg",
+      "column": 0,
+      "row": 6
+    },
+    {
+      "id": "shanghai-unidentified-creditors",
+      "label": "Créanciers à identifier",
+      "role": "Identités et nombre non établis",
+      "column": 1,
+      "row": 6
     }
   ],
   "relations": [
@@ -973,6 +1008,32 @@
         "href": "/posts/broadcom-anthropic-blackstone-risque-63-milliards/",
         "label": "Lire le montage Broadcom–Anthropic"
       }
+    },
+    {
+      "id": "shanghai-collateral-registrations",
+      "from": "shanghai-longjie-yaoteng",
+      "to": "shanghai-unidentified-creditors",
+      "observations": [
+        {
+          "publishedOn": "2026-11-13",
+          "recordedOn": "2026-11-13",
+          "review": "reviewed",
+          "kind": "press-report",
+          "label": "193 serveurs déclarés en garantie",
+          "claim": "Selon l’enquête Bloomberg reprise par TaiSounds, Shanghai Longjie Yaoteng, filiale de Shanghai Longteng Intelligent Computing, a donné 193 serveurs en garantie en janvier 2025. Leur valeur déclarée est de 485 millions de yuans (CNY). L’inventaire cité compte 22 Dell, 52 Supermicro et 119 Gigabyte. TaiSounds évoque deux prêts. Ces nombres comptent des serveurs, chacun pouvant contenir plusieurs GPU.",
+          "limit": "Le dépôt individuel et les contrats restent à obtenir. Identités et nombre des créanciers, principal, décaissements, rang et statut actuel des sûretés restent à établir. Les 485 millions CNY représentent la valeur déclarée du matériel. Le règlement général du registre ne confirme aucune inscription individuelle.",
+          "watch": "Obtenir les déclarations et les contrats, identifier les parties, vérifier les numéros de série et les droits de récupération.",
+          "sources": [
+            "bloomberg-shanghai-20261113",
+            "taisounds-shanghai-20261113",
+            "pboc-registration-20211228"
+          ]
+        }
+      ],
+      "reading": {
+        "href": "/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/",
+        "label": "Lire le volet VIII : serveurs de Shanghai et responsabilités à Washington"
+      }
     }
   ],
   "milestones": [
@@ -1035,6 +1096,11 @@
       "date": "2026-11-10",
       "label": "Anthropic · fournisseurs et client",
       "change": "Le prospectus et les conventions ajoutent les souscriptions proposées de Nvidia, Google, Microsoft et Broadcom. Les achats cloud et le financement des loyers montrent les rôles croisés des partenaires, sans additionner engagements et versements."
+    },
+    {
+      "date": "2026-11-13",
+      "label": "Shanghai · garanties rapportées",
+      "change": "L’enquête Bloomberg publiée le 13 novembre décrit des déclarations de garantie de janvier 2025 sur 193 serveurs. Ce circuit séparé conserve la valeur déclarée des équipements en CNY. Le montant du crédit et les prêteurs restent à identifier. Le lien est classé comme reportage de presse."
     }
   ]
 }
