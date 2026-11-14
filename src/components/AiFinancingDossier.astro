@@ -19,13 +19,13 @@ const ui = fr ? {
   description: 'Nvidia, Anthropic, OpenAI : enquêtes sur les fournisseurs devenus financeurs, la dette des centres de données et le partage du risque. Explorez le dossier et son atlas.',
   eyebrow: 'Le grand dossier · Financement de l’IA',
   lede: 'Les puces se vendent. Les centres de données s’endettent. Entre les deux, des contrats, des garanties et des promesses de revenus engagent toute une chaîne financière. l0g suit l’argent, les actifs et ceux qui prennent le risque.',
-  updated: 'Édition du 13 novembre 2026', alternate: 'Read in English',
+  updated: 'Édition du 14 novembre 2026', alternate: 'Read in English',
   analyses: 'analyses dans ce dossier', series: 'volets sur l’affaire Nvidia', relations: 'relations dans l’atlas',
-  latest: 'À la une · Nvidia / IX', leadTitle: 'Nvidia : le crédit chinois face aux contrôles américains',
-  leadNote: 'Des projets chinois cherchent des prêts pour leurs GPU, tandis que la piste Haas remet les liens avec SoftBank au premier plan.',
+  latest: 'À la une · Nvidia',
+  leadNote: 'La Fed décrit la circulation du risque financier, tandis que Nscale commande des équipements et cherche encore des financements.',
   read: 'Lire l’enquête', explore: 'Explorer les parcours', atlas: 'Ouvrir l’atlas',
   nvidiaTitle: 'L’affaire Nvidia, du pouvoir aux garanties',
-  nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, neuf enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
+  nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, les enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
   nvidiaCurrent: 'Dernier volet',
   paths: 'Cinq parcours pour suivre l’argent',
   pathsNote: 'Entrer par les fournisseurs, les échéances de dette ou le réseau électrique : chaque parcours éclaire une partie du même système.',
@@ -47,13 +47,13 @@ const ui = fr ? {
   description: 'Nvidia, Anthropic and OpenAI: investigations into suppliers funding customers, data-centre debt and the distribution of risk. Explore the dossier and its evidence atlas.',
   eyebrow: 'The dossier · AI financing',
   lede: 'Chips are sold. Data centres borrow. Contracts, guarantees and future revenue connect them to a much wider financial system. l0g follows the money, the assets and the people taking the risk.',
-  updated: '13 November 2026 edition', alternate: 'Version française',
+  updated: '14 November 2026 edition', alternate: 'Version française',
   analyses: 'analyses in this dossier', series: 'Nvidia investigations', relations: 'atlas relationships',
-  latest: 'In focus · Nvidia / IX', leadTitle: 'Nvidia: Chinese AI credit meets US export controls',
-  leadNote: 'Chinese AI projects seek bank funding as US export rules shape delivery and the Haas report brings SoftBank ties into focus.',
+  latest: 'In focus · Nvidia',
+  leadNote: 'The Fed maps financing risks as Nscale commits to equipment while still raising the money required to deliver compute.',
   read: 'Read the investigation', explore: 'Choose a reading path', atlas: 'Open the atlas',
   nvidiaTitle: 'Nvidia, from political influence to financial guarantees',
-  nvidiaNote: 'Nine investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
+  nvidiaNote: 'The investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
   nvidiaCurrent: 'Latest instalment',
   paths: 'Five ways to follow the money',
   pathsNote: 'Start with suppliers, repayment dates or the electricity grid. Each path opens a different part of the financing system.',
@@ -106,13 +106,13 @@ const resources = [{ title: fr ? 'Atlas du financement de l’IA' : 'AI financin
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'CollectionPage',
   '@id': `https://l0g.fr${canonicalPath}#collection`, url: `https://l0g.fr${canonicalPath}`,
-  name: ui.title, description: ui.description, inLanguage: language, dateModified: '2026-11-13',
+  name: ui.title, description: ui.description, inLanguage: language, dateModified: '2026-11-14',
   isPartOf: { '@id': 'https://l0g.fr/#website' },
   mainEntity: { '@type': 'ItemList', numberOfItems: resources.length, itemListElement: resources.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.title, url: `https://l0g.fr${item.href}` })) },
 };
 ---
 
-<Layout title={ui.title} seoTitle={`${fr ? 'Financement de l’IA : Nvidia, dette et garanties' : 'AI financing: Nvidia, debt and guarantees'} | l0g`} description={ui.description} ogImage={dossierImage} ogImageAlt={ui.leadTitle} alternateLinks={[
+<Layout title={ui.title} seoTitle={`${fr ? 'Financement de l’IA : Nvidia, dette et garanties' : 'AI financing: Nvidia, debt and guarantees'} | l0g`} description={ui.description} ogImage={dossierImage} ogImageAlt={lead.title} alternateLinks={[
   { hreflang: 'fr', href: 'https://l0g.fr/dossiers/financement-ia/' },
   { hreflang: 'en', href: 'https://l0g.fr/en/topics/ai-financing/' },
   { hreflang: 'x-default', href: 'https://l0g.fr/dossiers/financement-ia/' },
@@ -122,10 +122,10 @@ const jsonLd = {
     <header class="ai-hero">
       <div class="ai-context"><p class="ai-eyebrow">{ui.eyebrow}</p><a href={alternateHref} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{ui.alternate} ↗</a></div>
       <div class="ai-intro"><h1>{ui.title}</h1><p>{ui.lede}</p></div>
-      <div class="ai-edition"><time datetime="2026-11-13">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
+      <div class="ai-edition"><time datetime="2026-11-14">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
       <div class="ai-cover">
-        <a class="ai-cover-image" href={lead.href} aria-label={ui.leadTitle}><img src={dossierImage} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a>
-        <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{ui.leadTitle}</a></h2><p>{ui.leadNote}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
+        <a class="ai-cover-image" href={lead.href} aria-label={lead.title}><img src={dossierImage} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a>
+        <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{lead.title}</a></h2><p>{ui.leadNote}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
       </div>
       <dl class="ai-counts"><div><dt>{ui.analyses}</dt><dd>{corpus.length}</dd></div><div><dt>{ui.series}</dt><dd>{nvidia.length}</dd></div><div><dt>{ui.relations}</dt><dd>{snapshot.relations.length}</dd></div></dl>
     </header>
