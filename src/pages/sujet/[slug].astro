@@ -47,9 +47,9 @@ export async function getStaticPaths() {
   const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort(
     (a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime()
   );
-  return topics.map((topic) => ({
+  return topics.filter((topic) => !topic.href).map((topic) => ({
     params: { slug: topic.slug },
-    props: { topic, matched: posts.filter((p) => postMatchesTopic(p.data.tags, topic)) },
+    props: { topic, matched: posts.filter((p) => postMatchesTopic(p.data.tags, topic, p.id)) },
   }));
 }
 
@@ -271,7 +271,7 @@ const topicJsonLd = {
           readingTime={readingTime(post.body)}
           index={i + 1}
           accent={topicAccent}
-          accentLabel={topicLabelForTags(post.data.tags || [])}
+          accentLabel={topicLabelForTags(post.data.tags || [], true, post.id)}
         />
       ))
     }

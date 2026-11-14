@@ -1,5 +1,5 @@
 import type { APIRoute } from 'astro';
-import { topics } from '../config/topics.ts';
+import { topics, topicHref } from '../config/topics.ts';
 import { methodologyPages } from '../config/methodology.ts';
 import { editorialChangelog, editorialProtocol, editorialProtocolRelease } from '../config/editorial.ts';
 import { textResponse } from '../lib/agent-surface.ts';
@@ -153,7 +153,7 @@ export const GET: APIRoute = async () => {
 
   lines.push('## Sujets');
   for (const t of topics) {
-    lines.push(`- [${t.label}](${SITE}/sujet/${t.slug}/): ${t.blurb}`);
+    lines.push(`- [${t.label}](${SITE}${topicHref(t)}): ${t.blurb}`);
   }
   lines.push('');
 

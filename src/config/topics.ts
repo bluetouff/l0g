@@ -1,3 +1,5 @@
+import { aiFinancingNvidiaIds, aiFinancingSections, aiFinancingSourceArticles } from './ai-financing-dossier.ts';
+
 /**
  * Taxonomie curée des sujets (hubs thématiques).
  * Les tags bruts des articles sont incohérents (« private-credit » vs « private credit »,
@@ -5,17 +7,21 @@
  * générer un hub par tag brut (doublons, hubs orphelins), on définit ici une liste de
  * sujets canoniques, chacun agrégeant les tags bruts qui lui correspondent.
  *
- * Pour rattacher un article à un sujet : intersection (insensible à la casse et aux
- * espaces) entre ses tags et le tableau `tags` du sujet. Un article peut appartenir à
- * plusieurs sujets, c'est voulu.
+ * Un article rejoint un sujet par ses tags (casse et espaces normalisés), ou par son
+ * identifiant lorsqu'un dossier existant l'a déjà retenu. Un article peut appartenir
+ * à plusieurs sujets, c'est voulu.
  */
 export interface Topic {
   slug: string;
+  /** Destination canonique lorsqu'un dossier éditorial existe déjà. */
+  href?: string;
   label: string;
   blurb: string;
   question: string;
   accent: string; // teal | blue | pink | amber (couleurs de la charte)
   tags: string[];
+  /** Analyses déjà retenues dans un dossier, sans modifier leurs métadonnées historiques. */
+  articleIds?: string[];
   entryPoints: {
     kind: 'guide' | 'glossaire' | 'méthodologie';
     label: string;
@@ -285,7 +291,53 @@ export const topics: Topic[] = [
       },
     ],
   },
+  {
+    slug: 'financement-ia',
+    href: '/dossiers/financement-ia/',
+    label: 'Financement de l’IA',
+    blurb:
+      'Nvidia, Anthropic, OpenAI, dette des centres de données et garanties. Les enquêtes suivent les fournisseurs devenus financeurs et la répartition du risque entre entreprises, banques, fonds et assureurs.',
+    question:
+      'Qui apporte les capitaux, quels revenus soutiennent le remboursement et quels engagements relient les acteurs du financement de l’IA ?',
+    accent: 'blue',
+    tags: [
+      'financement de l’ia', "financement de l'ia", 'financement ia',
+      'financement-ia', 'ai financing', 'ai-financing',
+    ],
+    articleIds: [...new Set([
+      ...aiFinancingNvidiaIds,
+      ...aiFinancingSections.flatMap((section) => section.readings.map((reading) => reading.id)),
+      ...Object.values(aiFinancingSourceArticles),
+    ])],
+    entryPoints: [
+      {
+        kind: 'guide',
+        label: 'Lire la dette d’une entreprise',
+        detail: 'Échéances, trésorerie disponible, sûretés et clauses financières.',
+        href: '/guides/lire-la-dette-d-une-entreprise/',
+      },
+      {
+        kind: 'guide',
+        label: 'Du bénéfice au cash',
+        detail: 'Flux d’exploitation, investissements et besoins de financement.',
+        href: '/guides/du-benefice-au-cash-bfr-investissements/',
+      },
+      {
+        kind: 'guide',
+        label: 'Lire une notation de crédit',
+        detail: 'Entité notée, échelle de risque et garanties prises en compte.',
+        href: '/guides/lire-une-notation-de-credit/',
+      },
+    ],
+  },
 ];
+
+/** Destination canonique d'un sujet, partagée par les cartes et les liens de tags. */
+export function topicHref(topic: Topic | string): string {
+  const entry = typeof topic === 'string' ? topics.find((item) => item.slug === topic) : topic;
+  const slug = typeof topic === 'string' ? topic : topic.slug;
+  return entry?.href ?? `/sujet/${slug}/`;
+}
 
 const norm = (s: string) => s.trim().toLowerCase();
 
@@ -302,15 +354,16 @@ export function topicForTag(tag: string): string | undefined {
   return tagToSlug.get(norm(tag));
 }
 
-/** Vrai si l'article (par ses tags) appartient au sujet. */
-export function postMatchesTopic(postTags: string[], topic: Topic): boolean {
+/** Appartenance par tag explicite ou par sélection éditoriale d'une analyse existante. */
+export function postMatchesTopic(postTags: string[], topic: Topic, articleId?: string): boolean {
+  if (articleId && topic.articleIds?.includes(articleId)) return true;
   const set = new Set(topic.tags.map(norm));
   return (postTags || []).some((t) => set.has(norm(t)));
 }
 
-/** Sujet principal d'un article : premier sujet (dans l'ordre) qui matche ses tags. */
-export function primaryTopic(postTags: string[]): Topic | undefined {
-  return topics.find((t) => postMatchesTopic(postTags || [], t));
+/** Sujet principal d'un article : premier sujet correspondant dans l'ordre établi. */
+export function primaryTopic(postTags: string[], articleId?: string): Topic | undefined {
+  return topics.find((t) => postMatchesTopic(postTags || [], t, articleId));
 }
 
 /** Accents de la charte → valeur CSS (aligné sur sidebar / dashboards). */
@@ -322,8 +375,8 @@ export const ACCENT_HEX: Record<string, string> = {
 };
 
 /** Couleur CSS du sujet principal d'un article (teal par défaut). */
-export function accentForTags(postTags: string[]): string {
-  const t = primaryTopic(postTags);
+export function accentForTags(postTags: string[], articleId?: string): string {
+  const t = primaryTopic(postTags, articleId);
   return ACCENT_HEX[t?.accent ?? 'teal'] ?? ACCENT_HEX.teal;
 }
 
@@ -338,11 +391,12 @@ const SHORT_LABEL: Record<string, string> = {
   crypto: 'crypto',
   'marches-valorisations': 'marchés',
   'politique-us': 'politique us',
+  'financement-ia': 'financement IA',
 };
 
 /** Libellé du sujet principal d'un article (court par défaut pour les pastilles). */
-export function topicLabelForTags(postTags: string[], short = true): string | undefined {
-  const t = primaryTopic(postTags || []);
+export function topicLabelForTags(postTags: string[], short = true, articleId?: string): string | undefined {
+  const t = primaryTopic(postTags || [], articleId);
   if (!t) return undefined;
   return short ? SHORT_LABEL[t.slug] ?? t.label : t.label;
 }

@@ -43,7 +43,7 @@ import { articleGlossaryTerms } from '../../lib/article-glossary.ts';
 import '../../styles/article-print.css';
 import '../../styles/analysis-infographics.css';
 import { ORGANIZATION_ID, authorEntity, organizationEntity } from '../../config/entities.ts';
-import { topicForTag } from '../../config/topics.ts';
+import { topicForTag, topicHref } from '../../config/topics.ts';
 import { topics, postMatchesTopic } from '../../config/topics.ts';
 import { glossaryEntries, glossaryEntryBySlug } from '../../config/glossary.ts';
 import { buildArticleEvidence, type ClaimEvidence } from '../../lib/article-evidence.ts';
@@ -303,9 +303,9 @@ const articleTerms = Array.from(new Set([...linkedGlossarySlugs, ...mentionedGlo
     href: entry.url,
   }));
 const relatedTopics = topics
-  .filter((topic) => postMatchesTopic(post.data.tags, topic))
+  .filter((topic) => postMatchesTopic(post.data.tags, topic, post.id))
   .slice(0, 3)
-  .map((topic) => ({ label: topic.label, href: `/sujet/${topic.slug}/` }));
+  .map((topic) => ({ label: topic.label, href: topicHref(topic) }));
 const articleHeadings = [
   { depth: 2, slug: 'analyse-complete', text: 'Analyse complète' },
   ...headings,
@@ -428,7 +428,7 @@ const quickUncertainty = post.data.quickTake?.uncertainty;
                   {post.data.tags.map((tag) => {
                     const slug = topicForTag(tag);
                     return slug
-                      ? <a href={`/sujet/${slug}/`} class="post-tag">#{tag}</a>
+                      ? <a href={topicHref(slug)} class="post-tag">#{tag}</a>
                       : <span class="post-tag">#{tag}</span>;
                   })}
                 </span>

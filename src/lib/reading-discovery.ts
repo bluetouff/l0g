@@ -12,8 +12,8 @@ export function buildDiscoveryCatalog(posts: Entry[], lang: 'fr' | 'en' = 'fr'):
     const entry: DiscoveryEntry = { path, title: p.data.title, description: p.data.description,
       published: p.data.pubDate.toISOString(), ...(p.data.updatedDate ? { updated: p.data.updatedDate.toISOString() } : {}),
       ...(p.data.updatedDate && p.data.revisionNote ? { revisionNote: p.data.revisionNote } : {}),
-      minutes: readingTime(p.body), topics: topics.filter(t => postMatchesTopic(p.data.tags ?? [], t)).map(t => t.slug),
-      topicLabel: topicLabelForTags(p.data.tags ?? []) ?? (lang === 'fr' ? 'analyse' : 'analysis'), ...(p.data.quickTake ? { summary: p.data.quickTake } : {}),
+      minutes: readingTime(p.body), topics: topics.filter(t => postMatchesTopic(p.data.tags ?? [], t, p.id)).map(t => t.slug),
+      topicLabel: topicLabelForTags(p.data.tags ?? [], true, p.id) ?? (lang === 'fr' ? 'analyse' : 'analysis'), ...(p.data.quickTake ? { summary: p.data.quickTake } : {}),
       ...(discoveryTool(path, lang) ? { tool: discoveryTool(path, lang) } : {}) };
     if (!validDiscoveryEntry(entry)) throw new Error(`Invalid reading catalogue entry: ${path}`);
     return entry;

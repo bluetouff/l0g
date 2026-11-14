@@ -62,6 +62,17 @@ draft: false
 | `tags`        | Liste de tags.                                              |
 | `draft`       | `true` = invisible sur le site (brouillon). `false` = publié. |
 
+Pour les analyses consacrées au financement de l’IA, ajouter le tag
+`Financement de l’IA` en français et `AI financing` en anglais. Ils rattachent
+l’article au sujet `financement-ia` dans le catalogue et le flux de suivi Watch.
+Le tag général `IA` reste réservé au classement plus large des marchés.
+Les analyses déjà retenues dans le grand dossier sont aussi reconnues par leur
+identifiant, avec des correspondances FR/EN testées dans sa configuration.
+Les parcours restent une sélection éditoriale des analyses du sujet.
+
+Un nouveau sujet de suivi doit être accepté par Watch avant sa publication dans
+le flux l0g : ses validateurs contrôlent la liste des identifiants autorisés.
+
 Pour les nouvelles illustrations OG des articles FR/EN, composer une image de
 1200 × 630 px sur tout le cadre. Le fond sous le texte doit rester sombre,
 travaillé et lisible : détails discrets, contraste maîtrisé et dégradé translucide.

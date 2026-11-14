@@ -12,10 +12,11 @@ const englishTopicLabels: Record<string, string> = {
   crypto: 'Crypto and stablecoins',
   'marches-valorisations': 'Markets and valuations',
   'politique-us': 'US politics',
+  'financement-ia': 'AI financing',
 };
 
-export function searchTopicLabels(tags: string[], lang: 'fr' | 'en') {
-  return topics.filter((topic) => postMatchesTopic(tags, topic))
+export function searchTopicLabels(tags: string[], lang: 'fr' | 'en', articleId?: string) {
+  return topics.filter((topic) => postMatchesTopic(tags, topic, articleId))
     .map((topic) => lang === 'en' ? englishTopicLabels[topic.slug] ?? topic.label : topic.label);
 }
 

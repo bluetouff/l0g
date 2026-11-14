@@ -55,14 +55,14 @@ const pageDescription = isFirst
 const items = page.data.map((post: PostEntry, i: number) => ({
   post,
   absIndex: page.start + i + 1,
-  accent: accentForTags(post.data.tags || []),
-  accentLabel: topicLabelForTags(post.data.tags || []),
+  accent: accentForTags(post.data.tags || [], post.id),
+  accentLabel: topicLabelForTags(post.data.tags || [], true, post.id),
   rt: readingTime(post.body),
 }));
 const hero = isFirst && homeFeaturedPost ? {
   post: homeFeaturedPost,
-  accent: accentForTags(homeFeaturedPost.data.tags || []),
-  accentLabel: topicLabelForTags(homeFeaturedPost.data.tags || []),
+  accent: accentForTags(homeFeaturedPost.data.tags || [], homeFeaturedPost.id),
+  accentLabel: topicLabelForTags(homeFeaturedPost.data.tags || [], true, homeFeaturedPost.id),
   rt: readingTime(homeFeaturedPost.body),
 } : null;
 const feed = isFirst && hero ? items.filter((item) => item.post.id !== hero.post.id) : items;
