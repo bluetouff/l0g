@@ -13,7 +13,8 @@ const scenes = ['fr', 'en'].flatMap(lang => ['desktop', 'mobile'].map(mode => ({
 const bytes = readFileSync(new URL('../public/fonts/ukraine-reparations/liberation-sans-400.ttf', import.meta.url));
 const font = opentype.parse(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength));
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@', parseTagValue: false, trimValues: false });
-const decode = s => s.replaceAll('&amp;', '&').replaceAll('&gt;', '>').replaceAll('&lt;', '<');
+const entities = Object.freeze({ '&amp;': '&', '&gt;': '>', '&lt;': '<' });
+const decode = value => value.replace(/&(?:amp|gt|lt);/gu, entity => entities[entity]);
 const attrs = str => Object.fromEntries([...str.matchAll(/([a-zA-Z0-9:-]+)="([^"]*)"/gu)].map(m => [m[1], m[2]]));
 function assertPathBounds(d, w, h) {
   const tokens = d.match(/[MLHVQCZ]|[-+]?(?:\d*\.\d+|\d+)/gu);
@@ -31,6 +32,15 @@ function assertPathBounds(d, w, h) {
     else assert.equal(op, 'Z');
   }
 }
+
+test('label decoding consumes one entity layer while preserving ordinary text', () => {
+  assert.equal(decode('&amp;lt;script&amp;gt;'), '&lt;script&gt;');
+  assert.equal(decode('&amp;lt;&lt;'), '&lt;<');
+  assert.equal(decode('&amp;amp; &amp;gt;'), '&amp; &gt;');
+  assert.equal(decode('R&amp;D &lt;GPU&gt;'), 'R&D <GPU>');
+  assert.equal(decode('GPU · 25 %'), 'GPU · 25 %');
+  assert.equal(decode('&#60; &quot;'), '&#60; &quot;');
+});
 
 test('mandate map keeps only documented, separate relations in every language and layout', () => {
   for (const { lang, mode, svg } of scenes) {
