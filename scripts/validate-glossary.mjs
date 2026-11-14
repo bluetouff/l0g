@@ -1393,7 +1393,20 @@ for (const [entries, article] of [
   assert.equal(entry.reference, undefined);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('obligation-hybride')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 442, 'Le corpus bilingue inclut AI washing, externalisation et délocalisation');
+// Targeted central-bank funding leaves the borrower credit risk with the bank.
+for (const [entry, article] of [
+  [glossaryEntries.find(item => item.slug === 'refinancement-cible'), '/posts/chine-credit-1-pourcent-rachats-actions/'],
+  [glossaryAtlasEnBySlug.get('refinancement-cible'), '/en/analysis/chine-credit-1-pourcent-rachats-actions/'],
+]) {
+  assert(entry?.atlas);
+  assert.equal(entry.guide, article);
+  assert.equal(entry.atlas.sources[0].href, 'https://www.csrc.gov.cn/anhui/c106363/c7515405/content.shtml');
+  assert.deepEqual(entry.atlas.related, ['rachat-d-actions', 'actions-propres', 'additionnalite-financiere']);
+}
+assert.match(glossaryEntries.find(item => item.slug === 'refinancement-cible').def, /conservent le risque de crédit/);
+assert.match(glossaryAtlasEnBySlug.get('refinancement-cible').def, /retain the credit risk/);
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('refinancement-cible')), 'noindex,follow');
+assert.equal(glossaryAtlasEnBySlug.size, 443, 'Le corpus bilingue inclut le refinancement ciblé');
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'prix-plancher'), '/posts/intel-mp-materials-portefeuille-trump/'], [glossaryAtlasEnBySlug.get('prix-plancher'), '/en/analysis/intel-mp-materials-trump-portfolio/']]) {
   assert(entry?.atlas, 'Le prix plancher dispose de sa définition et de ses sources');
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
@@ -1604,8 +1617,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 822, 'Le corpus conserve ses notions et ajoute AI washing, externalisation et délocalisation');
-assert.equal(glossaryAtlasEntries.length, 432, 'Les nouvelles notions disposent de définitions courtes sourcées');
+assert.equal(glossaryEntries.length, 823, 'Le corpus conserve ses notions et ajoute le refinancement ciblé');
+assert.equal(glossaryAtlasEntries.length, 433, 'Les nouvelles notions disposent de définitions courtes sourcées');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2032,7 +2045,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1091, 'Les nouvelles notions conservent leurs relations explicatives');
+assert.equal(glossaryAtlasEdgeCount, 1094, 'Les nouvelles notions conservent leurs relations explicatives');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],
