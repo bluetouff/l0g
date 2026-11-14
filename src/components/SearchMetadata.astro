@@ -9,7 +9,8 @@ interface Props {
 const { path, date, tags = [] } = Astro.props;
 const kind = searchContentType(path);
 const dated = searchDateMetadata(date);
-const topics = searchTopicLabels(tags, path.startsWith('/en/') ? 'en' : 'fr');
+const articleId = kind === 'analysis' ? path.match(/^\/(?:posts|en\/analysis)\/(.+?)\/?$/)?.[1] : undefined;
+const topics = searchTopicLabels(tags, path.startsWith('/en/') ? 'en' : 'fr', articleId);
 ---
 
 <meta name="l0g:search-type" data-pagefind-filter="type[content]" data-pagefind-meta="kind[content]" content={kind} />

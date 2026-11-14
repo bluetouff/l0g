@@ -12,7 +12,7 @@ import FreshnessBadge from '../../components/FreshnessBadge.astro';
 import FrenchRelatedReading from '../../components/FrenchRelatedReading.astro';
 import TrustBar from '../../components/TrustBar.astro';
 import { organizationEntity } from '../../config/entities.ts';
-import { topicForTag } from '../../config/topics.ts';
+import { topicForTag, topicHref } from '../../config/topics.ts';
 import { readingTime } from '../../lib/reading-time.ts';
 
 export async function getStaticPaths() {
@@ -150,7 +150,7 @@ const safeLd = JSON.stringify(ld).replace(/</g, '\\u003c');
           {guide.data.tags.map((tag) => {
             const slug = topicForTag(tag);
             return slug
-              ? <a href={`/sujet/${slug}/`} class="link-term text-signal">#{tag}</a>
+              ? <a href={topicHref(slug)} class="link-term text-signal">#{tag}</a>
               : <span class="text-signal">#{tag}</span>;
           })}
         </span>

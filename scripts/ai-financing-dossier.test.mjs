@@ -4,7 +4,8 @@ import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 import { load } from 'js-yaml';
-import { aiFinancingGuides, aiFinancingNvidiaIds, aiFinancingSections } from '../src/config/ai-financing-dossier.ts';
+import { aiFinancingGuides, aiFinancingNvidiaIds, aiFinancingSections, aiFinancingSourceArticles } from '../src/config/ai-financing-dossier.ts';
+import { postMatchesTopic, topics } from '../src/config/topics.ts';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
 const EDITION_CUTOFF = Date.parse('2026-11-14T23:59:59.999+01:00');
@@ -39,6 +40,32 @@ test('the curated AI dossier leads to distinct published article pairs in both l
   assert.equal(new Set(analyses.map(item => item.id)).size, analyses.length, 'duplicate English analysis');
   const frenchIds = analyses.map(item => bilingualPair(item.id).frenchId);
   assert.equal(new Set(frenchIds).size, analyses.length, 'multiple readings resolve to the same French article');
+});
+
+test('the historical topic identities exactly follow the curated dossier and actual translation source links', () => {
+  const ids = [...new Set([...aiFinancingNvidiaIds, ...analyses.map(item => item.id)])];
+  assert.deepEqual(Object.keys(aiFinancingSourceArticles).sort(), [...ids].sort());
+  const expectedArticleIds = [];
+  for (const id of ids) {
+    const pair = bilingualPair(id);
+    assert.equal(aiFinancingSourceArticles[id], pair.frenchId, `stale sourceArticle mapping: ${id}`);
+    expectedArticleIds.push(id, pair.frenchId);
+  }
+  const topic = topics.find(topic => topic.slug === 'financement-ia');
+  assert.deepEqual([...topic.articleIds].sort(), expectedArticleIds.sort());
+});
+
+test('every curated investigation is classified for the Watch topic in both languages', () => {
+  const topic = topics.find(topic => topic.slug === 'financement-ia');
+  assert.ok(topic, 'missing followable AI financing topic');
+  const ids = new Set([...aiFinancingNvidiaIds, ...analyses.map(item => item.id)]);
+  for (const id of ids) {
+    const pair = bilingualPair(id);
+    for (const language of ['french', 'english']) {
+      const articleId = language === 'french' ? pair.frenchId : id;
+      assert.ok(postMatchesTopic(pair[language].tags, topic, articleId), `${language} article missing from topic: ${id}`);
+    }
+  }
 });
 
 test('the Nvidia series preserves eleven published bilingual instalments in publication order', () => {

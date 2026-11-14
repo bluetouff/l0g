@@ -3597,7 +3597,7 @@ export function buildArticleRecord(
     updated: isoDate(post.data.updatedDate),
     description: post.data.description,
     tags: post.data.tags ?? [],
-    topics: topics.filter((topic) => postMatchesTopic(post.data.tags ?? [], topic)).map((topic) => topic.slug),
+    topics: topics.filter((topic) => postMatchesTopic(post.data.tags ?? [], topic, post.id)).map((topic) => topic.slug),
     ...(language === 'fr' ? { evidence: buildArticleEvidenceRecord(post) } : {}),
     evidenceRef,
     revisions: {
@@ -3768,7 +3768,7 @@ export function buildRecentArticleFeed(posts: PostEntry[]) {
     description: article.data.description,
     topics: topics
       .filter((topic) =>
-        postMatchesTopic(article.data.tags ?? [], topic),
+        postMatchesTopic(article.data.tags ?? [], topic, article.id),
       )
       .map((topic) => topic.slug),
   }));

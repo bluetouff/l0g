@@ -3,6 +3,7 @@ import { readFileSync } from 'node:fs';
 import test from 'node:test';
 import vm from 'node:vm';
 import { searchContentType, searchDateMetadata, searchTopicLabels } from '../src/lib/search-metadata.ts';
+import { postMatchesTopic, primaryTopic, topicForTag, topicHref, topics } from '../src/config/topics.ts';
 
 const source = readFileSync(new URL('../src/scripts/pagefind-init.js', import.meta.url), 'utf8');
 const importBoundary = "import('/pagefind/pagefind.js')";
@@ -184,17 +185,65 @@ test('multilingual tags retain every matching topic once, including overlapping 
   assert.deepEqual(searchTopicLabels(['ORMUZ'], 'fr'), ['Ormuz & marché pétrolier', 'Géopolitique & énergie']);
 });
 
-test('topic facets expose the curated nine subjects and never invent a topic from unknown raw tags', () => {
-  const tags = ['private-credit', 'repo', 'ormuz', 'clarity act', 'macro', 'energy', 'bitcoin', 'markets', 'us politics'];
+test('topic facets expose the curated ten subjects and never invent a topic from unknown raw tags', () => {
+  const tags = ['private-credit', 'repo', 'ormuz', 'clarity act', 'macro', 'energy', 'bitcoin', 'markets', 'us politics', 'ai financing'];
   assert.deepEqual(searchTopicLabels(tags, 'en'), [
     'Private credit and private markets', 'Liquidity, repo and collateral', 'Hormuz and oil', 'US crypto regulation',
     'Macro and central banks', 'Geopolitics and energy', 'Crypto and stablecoins', 'Markets and valuations', 'US politics',
+    'AI financing',
   ]);
   for (const lang of ['fr', 'en']) {
     for (const input of [[], ['unlisted-subject'], ['<script>custom-subject</script>'], ['', '   ']]) {
       assert.deepEqual(searchTopicLabels(input, lang), []);
     }
     assert.deepEqual(searchTopicLabels(['repo', 'unlisted-subject'], lang), searchTopicLabels(['repo'], lang));
+  }
+});
+
+test('AI financing aliases form one bilingual facet without classifying generic AI coverage', () => {
+  const topic = topics.find(topic => topic.slug === 'financement-ia');
+  assert.ok(topic);
+  const aliases = ['financement de l’ia', "financement de l'ia", 'financement ia', 'financement-ia', 'ai financing', 'ai-financing'];
+  for (const alias of aliases) {
+    const tag = `  ${alias.toUpperCase()}  `;
+    assert.equal(topicForTag(tag), 'financement-ia');
+    assert.deepEqual(searchTopicLabels([tag], 'fr'), ['Financement de l’IA']);
+    assert.deepEqual(searchTopicLabels([tag], 'en'), ['AI financing']);
+  }
+  assert.deepEqual(searchTopicLabels(aliases, 'en'), ['AI financing']);
+  for (const tag of ['AI', 'IA', 'Nvidia', 'OpenAI', 'Anthropic', 'intelligence artificielle', 'data centers']) {
+    assert.equal(postMatchesTopic([tag], topic), false, tag);
+    assert.ok(!searchTopicLabels([tag], 'en').includes('AI financing'), tag);
+  }
+  assert.deepEqual(searchTopicLabels(['IA'], 'en'), ['Markets and valuations']);
+  assert.equal(primaryTopic(['private-credit', 'ai financing'])?.slug, 'credit-prive');
+});
+
+test('curated historical analyses receive the financing facet by identity while unrelated articles keep tag classification', () => {
+  const topic = topics.find(topic => topic.slug === 'financement-ia');
+  const frenchId = 'financement-circulaire-ia';
+  const englishId = 'ai-circular-financing';
+  for (const id of [frenchId, englishId]) {
+    assert.equal(postMatchesTopic([], topic, id), true);
+    assert.equal(primaryTopic([], id)?.slug, 'financement-ia');
+  }
+  assert.deepEqual(searchTopicLabels(['marchés'], 'fr', frenchId), ['Marchés & valorisations', 'Financement de l’IA']);
+  assert.deepEqual(searchTopicLabels(['markets'], 'en', englishId), ['Markets and valuations', 'AI financing']);
+  assert.deepEqual(searchTopicLabels(['IA'], 'en', 'unrelated-ai-analysis'), ['Markets and valuations']);
+  assert.equal(postMatchesTopic([], topic, 'ai-circular-financing-copy'), false);
+  assert.equal(postMatchesTopic([], topic), false);
+});
+
+test('AI financing uses its existing canonical dossier while previous topic routes and order stay stable', () => {
+  const existingSlugs = [
+    'credit-prive', 'liquidite-repo', 'ormuz-petrole', 'regulation-crypto-us', 'macro-banques-centrales',
+    'geopolitique-energie', 'crypto', 'marches-valorisations', 'politique-us',
+  ];
+  assert.deepEqual(topics.map(topic => topic.slug), [...existingSlugs, 'financement-ia']);
+  for (const topic of topics) {
+    const expected = topic.slug === 'financement-ia' ? '/dossiers/financement-ia/' : `/sujet/${topic.slug}/`;
+    assert.equal(topicHref(topic), expected);
+    assert.equal(topicHref(topic.slug), expected);
   }
 });
 

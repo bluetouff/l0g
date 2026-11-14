@@ -15,6 +15,43 @@ export interface AiFinancingSection {
   readings: AiFinancingReading[];
 }
 
+/** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
+export const aiFinancingSourceArticles: Record<string, string> = {
+  'nvidia-trump-warning-at-the-top': 'nvidia-trump-alerte-sommet',
+  'nvidia-trump-lutnick-national-security-influence': 'nvidia-trump-lutnick-securite-nationale-influence',
+  'nvidia-huang-nda-board-ai-financing': 'nvidia-huang-nda-conseil-financement-ia',
+  'nvidia-after-huang-singapore-washington-ai-financing': 'nvidia-apres-huang-singapour-washington-financement-ia',
+  'nvidia-trump-tim-cook-lutnick-state-leverage': 'nvidia-trump-tim-cook-lutnick-leviers-etat',
+  'nvidia-congress-teter-kessler-export-controls': 'nvidia-congres-teter-kessler-controles-exportation',
+  'nvidia-ai-financing-guarantees-asian-investigations': 'nvidia-garanties-financement-ia-enquetes-asie',
+  'nvidia-shanghai-server-collateral-lutnick-bessent': 'nvidia-shanghai-serveurs-garantie-lutnick-bessent',
+  'nvidia-china-ai-credit-us-controls-rene-haas': 'nvidia-credit-chinois-controles-us-rene-haas',
+  'nvidia-fed-nscale-ai-guarantees-credit': 'nvidia-fed-nscale-garanties-credit-ia',
+  'nvidia-huang-teter-board-inquiry-port-klang': 'nvidia-huang-teter-enquete-conseil-port-klang',
+  'anthropic-supplier-financing-ipo': 'anthropic-financement-fournisseurs-ipo',
+  'broadcom-anthropic-blackstone-63-billion-risk': 'broadcom-anthropic-blackstone-risque-63-milliards',
+  'ai-circular-financing': 'financement-circulaire-ia',
+  'microsoft-ai-profit-segments-capex-cash-flow': 'microsoft-profit-ia-segments-capex-tresorerie',
+  'oracle-who-funds-the-225-billion-buildout': 'oracle-qui-finance-le-chantier-des-225-milliards',
+  'nebius-citi-364-day-gpu-credit': 'nebius-citi-credit-364-jours-gpu',
+  'softbank-openai-financing-freedom-to-wait': 'softbank-openai-echeances-liberte-attendre',
+  'ai-pik-financing-cost-of-deferring-interest': 'ia-pik-interets-reportes-prix-attente',
+  'openai-credit-rating-nvidia-guarantee-ipo': 'openai-note-credit-garantie-nvidia-ipo',
+  'collateral-that-cannot-leave-the-building': 'gpu-collateral-ce-que-le-preteur-recupere',
+  'gpu-backed-debt-fourth-year': 'gpu-credit-prix-quatrieme-annee',
+  'ai-compute-price-collapse-gpu-debt': 'prix-calcul-ia-gpu-dette',
+  'how-long-does-ai-server-live': 'combien-de-temps-vit-serveur-ia',
+  'ai-loan-insurance-banks-reinsurers': 'assurance-prets-ia-banques-reassureurs',
+  'nvidia-from-gpu-to-bond-data-center': 'nvidia-du-gpu-a-l-obligation-data-center',
+  'from-data-center-to-money-market-fund-who-bears-the-risk': 'du-data-center-au-fonds-qui-porte-le-risque',
+  'residual-value-guarantee-ai-infrastructure-credit': 'valeur-residuelle-garantie-credit-infrastructure-ia',
+  'when-meta-data-center-too-big-insurance-sopaipilla': 'data-center-meta-trop-gros-assurance-sopaipilla',
+  'tsmc-chip-demand-data-center-power-risk': 'tsmc-puces-data-centers-risque-electrique',
+  'google-ozans-who-pays-for-the-infrastructure': 'google-ozans-qui-finance-les-infrastructures',
+  'the-ghost-kilowatt': 'kilowatt-fantome-reseau-data-center',
+  'pjm-electricity-forecast-7-billion': 'pjm-prevision-electrique-7-milliards',
+};
+
 export const aiFinancingNvidiaIds = [
   'nvidia-trump-warning-at-the-top',
   'nvidia-trump-lutnick-national-security-influence',

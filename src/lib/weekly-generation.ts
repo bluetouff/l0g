@@ -175,7 +175,7 @@ export function createAutomatedWeeklyEdition({
   const readingPosts: WeeklyPostInput[] = [];
   const topics = new Set<string>();
   for (const post of structured) {
-    const topic = topicLabelForTags(post.tags ?? []) ?? 'analyse';
+    const topic = topicLabelForTags(post.tags ?? [], true, post.id) ?? 'analyse';
     if (!topics.has(topic)) { readingPosts.push(post); topics.add(topic); }
     if (readingPosts.length === 4) break;
   }
@@ -275,7 +275,7 @@ export function createAutomatedWeeklyEdition({
     briefs: readingPosts.map((post) => ({
       title: post.title,
       href: `/posts/${post.id}/`,
-      topic: topicLabelForTags(post.tags ?? []) ?? 'analyse',
+      topic: topicLabelForTags(post.tags ?? [], true, post.id) ?? 'analyse',
       fact: post.quickTake!.fact,
       importance: post.quickTake!.importance,
       uncertainty: post.quickTake!.uncertainty,

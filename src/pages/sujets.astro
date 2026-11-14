@@ -3,7 +3,7 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import L0gGlyph, { type GlyphName } from '../components/L0gGlyph.astro';
 import PageHero from '../components/PageHero.astro';
-import { topics, postMatchesTopic } from '../config/topics.ts';
+import { topics, postMatchesTopic, topicHref } from '../config/topics.ts';
 
 const posts = (await getCollection('posts', ({ data }) => !data.draft)).sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 const accentVar: Record<string, string> = {
@@ -15,7 +15,7 @@ const accentVar: Record<string, string> = {
 
 const cards = topics
   .map((t) => {
-    const matched = posts.filter((p) => postMatchesTopic(p.data.tags, t));
+    const matched = posts.filter((p) => postMatchesTopic(p.data.tags, t, p.id));
     const readingLinks = [
       ...t.entryPoints,
       ...matched.slice(1).map(post => ({ kind: 'analyse', label: post.data.title, href: `/posts/${post.id}/` })),
@@ -34,12 +34,13 @@ const topicGlyphs: Record<string, GlyphName> = {
   'politique-us': 'understand',
   'ormuz-petrole': 'impact',
   'regulation-crypto-us': 'verify',
+  'financement-ia': 'retrieve',
 };
 ---
 
 <BaseLayout
   title="Sujets"
-  description="Les pages-piliers de l0g : crédit privé, liquidité et repo, Ormuz et pétrole, CLARITY Act, macro, crypto, marchés et politique US."
+  description="Les dossiers de l0g : financement de l’IA, crédit privé, liquidité et repo, Ormuz et pétrole, CLARITY Act, macro, crypto, marchés et politique US."
 >
   <PageHero
     index="01"
@@ -58,14 +59,14 @@ const topicGlyphs: Record<string, GlyphName> = {
   <section class="topic-grid" id="dossiers" data-pagefind-ignore aria-label="Dossiers thématiques">
     {cards.map((t) => (
       <article class="topic-card" style={`--a:${accentVar[t.accent]}`}>
-        <header><L0gGlyph name={topicGlyphs[t.slug] ?? 'understand'} /><h2><a href={`/sujet/${t.slug}/`}>{t.label}</a></h2><span>{t.n} analyse{t.n > 1 ? 's' : ''}</span></header>
+        <header><L0gGlyph name={topicGlyphs[t.slug] ?? 'understand'} /><h2><a href={topicHref(t)}>{t.label}</a></h2><span>{t.n} analyse{t.n > 1 ? 's' : ''}</span></header>
         <p class="topic-blurb">{t.blurb}</p>
         {t.latest && <a class="topic-feature" href={`/posts/${t.latest.id}/`}>
           <img src={t.latest.data.ogImage ?? `/og/${t.latest.id}.png`} alt="" width="1200" height="630" loading="lazy" decoding="async" />
           <div><span class="topic-label">Analyse récente · <time datetime={t.latest.data.pubDate.toISOString()}>{t.latest.data.pubDate.toLocaleDateString('fr-FR',{day:'numeric',month:'short',year:'numeric',timeZone:'Europe/Paris'})}</time></span><h3>{t.latest.data.title}</h3><span class="topic-arrow" aria-hidden="true">↗</span></div>
         </a>}
         <nav class="topic-path" aria-label={`Repères pour ${t.label}`}><p>Repères et lectures</p><ol>{t.readingLinks.map(entry => <li><a href={entry.href}><span>{entry.kind}</span>{entry.label}<span aria-hidden="true">↗</span></a></li>)}</ol></nav>
-        <a class="topic-open" href={`/sujet/${t.slug}/`}>Tout le dossier <span aria-hidden="true">→</span></a>
+        <a class="topic-open" href={topicHref(t)}>Tout le dossier <span aria-hidden="true">→</span></a>
       </article>
     ))}
   </section>
