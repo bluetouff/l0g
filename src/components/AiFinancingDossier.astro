@@ -132,7 +132,7 @@ const jsonLd = {
 
     <section id="nvidia" class="ai-section ai-nvidia" aria-labelledby="nvidia-title">
       <div class="ai-section-heading"><p class="ai-eyebrow">01 / Nvidia</p><h2 id="nvidia-title">{ui.nvidiaTitle}</h2><p>{ui.nvidiaNote}</p></div>
-      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
+      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
     </section>
 
     <section id="parcours" class="ai-section" aria-labelledby="paths-title">
