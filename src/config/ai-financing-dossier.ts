@@ -26,6 +26,7 @@ export const aiFinancingNvidiaIds = [
   'nvidia-shanghai-server-collateral-lutnick-bessent',
   'nvidia-china-ai-credit-us-controls-rene-haas',
   'nvidia-fed-nscale-ai-guarantees-credit',
+  'nvidia-huang-teter-board-inquiry-port-klang',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [

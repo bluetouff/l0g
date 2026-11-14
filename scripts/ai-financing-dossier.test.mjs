@@ -41,8 +41,8 @@ test('the curated AI dossier leads to distinct published article pairs in both l
   assert.equal(new Set(frenchIds).size, analyses.length, 'multiple readings resolve to the same French article');
 });
 
-test('the Nvidia series preserves ten published bilingual instalments in publication order', () => {
-  assert.equal(aiFinancingNvidiaIds.length, 10);
+test('the Nvidia series preserves eleven published bilingual instalments in publication order', () => {
+  assert.equal(aiFinancingNvidiaIds.length, 11);
   assert.equal(new Set(aiFinancingNvidiaIds).size, aiFinancingNvidiaIds.length);
   const pairs = aiFinancingNvidiaIds.map(id => bilingualPair(id));
   assert.equal(new Set(pairs.map(pair => pair.frenchId)).size, pairs.length);
