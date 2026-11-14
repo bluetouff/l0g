@@ -22,7 +22,6 @@ const ui = fr ? {
   updated: 'Édition du 14 novembre 2026', alternate: 'Read in English',
   analyses: 'analyses dans ce dossier', series: 'volets sur l’affaire Nvidia', relations: 'relations dans l’atlas',
   latest: 'À la une · Nvidia',
-  leadNote: 'La Fed décrit la circulation du risque financier, tandis que Nscale commande des équipements et cherche encore des financements.',
   read: 'Lire l’enquête', explore: 'Explorer les parcours', atlas: 'Ouvrir l’atlas',
   nvidiaTitle: 'L’affaire Nvidia, du pouvoir aux garanties',
   nvidiaNote: 'Des alertes à Washington aux exigences des prêteurs, les enquêtes relient gouvernance, contrôle des puces et financement. Retrouvez la progression du dossier dans l’ordre de publication.',
@@ -50,7 +49,6 @@ const ui = fr ? {
   updated: '14 November 2026 edition', alternate: 'Version française',
   analyses: 'analyses in this dossier', series: 'Nvidia investigations', relations: 'atlas relationships',
   latest: 'In focus · Nvidia',
-  leadNote: 'The Fed maps financing risks as Nscale commits to equipment while still raising the money required to deliver compute.',
   read: 'Read the investigation', explore: 'Choose a reading path', atlas: 'Open the atlas',
   nvidiaTitle: 'Nvidia, from political influence to financial guarantees',
   nvidiaNote: 'The investigations connect Washington’s warnings, corporate oversight, chip controls and lenders’ demands. Follow the reporting in publication order.',
@@ -88,7 +86,7 @@ function analysis(id: string) {
   const source = englishPosts.find(post => post.id === id);
   const entry = fr ? frenchPosts.find(post => post.id === source?.data.sourceArticle) : source;
   if (!entry) throw new Error(`Missing published ${language} AI dossier analysis: ${id}`);
-  return { id, title: entry.data.title, href: `${fr ? '/posts' : '/en/analysis'}/${entry.id}/`, image: entry.data.ogImage, date: entry.data.pubDate };
+  return { id, title: entry.data.title, description: entry.data.description, href: `${fr ? '/posts' : '/en/analysis'}/${entry.id}/`, image: entry.data.ogImage, date: entry.data.pubDate };
 }
 const nvidia = aiFinancingNvidiaIds.map(analysis);
 const lead = nvidia.at(-1)!;
@@ -125,7 +123,7 @@ const jsonLd = {
       <div class="ai-edition"><time datetime="2026-11-14">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
       <div class="ai-cover">
         <a class="ai-cover-image" href={lead.href} aria-label={lead.title}><img src={dossierImage} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a>
-        <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{lead.title}</a></h2><p>{ui.leadNote}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
+        <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{lead.title}</a></h2><p>{lead.description}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
       </div>
       <dl class="ai-counts"><div><dt>{ui.analyses}</dt><dd>{corpus.length}</dd></div><div><dt>{ui.series}</dt><dd>{nvidia.length}</dd></div><div><dt>{ui.relations}</dt><dd>{snapshot.relations.length}</dd></div></dl>
     </header>
