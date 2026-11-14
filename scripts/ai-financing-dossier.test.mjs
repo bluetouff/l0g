@@ -7,7 +7,7 @@ import { load } from 'js-yaml';
 import { aiFinancingGuides, aiFinancingNvidiaIds, aiFinancingSections } from '../src/config/ai-financing-dossier.ts';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const EDITION_CUTOFF = Date.parse('2026-11-13T23:59:59.999+01:00');
+const EDITION_CUTOFF = Date.parse('2026-11-14T23:59:59.999+01:00');
 const analyses = aiFinancingSections.flatMap(section => section.readings);
 
 function publishedEntry(collection, id) {
@@ -20,7 +20,7 @@ function publishedEntry(collection, id) {
   assert.notEqual(data.draft, true, `draft linked by dossier: ${collection}/${id}`);
   const publicationDate = new Date(data.pubDate).getTime();
   assert.ok(Number.isFinite(publicationDate), `invalid publication date: ${collection}/${id}`);
-  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 13 November edition: ${collection}/${id}`);
+  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 14 November edition: ${collection}/${id}`);
   return data;
 }
 
@@ -41,8 +41,8 @@ test('the curated AI dossier leads to distinct published article pairs in both l
   assert.equal(new Set(frenchIds).size, analyses.length, 'multiple readings resolve to the same French article');
 });
 
-test('the Nvidia series preserves nine published bilingual instalments in publication order', () => {
-  assert.equal(aiFinancingNvidiaIds.length, 9);
+test('the Nvidia series preserves ten published bilingual instalments in publication order', () => {
+  assert.equal(aiFinancingNvidiaIds.length, 10);
   assert.equal(new Set(aiFinancingNvidiaIds).size, aiFinancingNvidiaIds.length);
   const pairs = aiFinancingNvidiaIds.map(id => bilingualPair(id));
   assert.equal(new Set(pairs.map(pair => pair.frenchId)).size, pairs.length);
