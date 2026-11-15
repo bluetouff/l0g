@@ -5424,5 +5424,436 @@
       "windowStart": "2026-11-01T08:30:00+01:00",
       "windowEnd": "2026-11-08T08:30:00+01:00"
     }
+  },
+  {
+    "issue": 16,
+    "slug": "2026-11-15",
+    "publishedAt": "2026-11-15T08:30:00+01:00",
+    "title": "L’Hebdo du 15 novembre. Nvidia : les assurances de Huang à l’épreuve de l’enquête",
+    "description": "Édition automatisée du 15 novembre : 26 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Nvidia : les assurances de Huang à l’épreuve de l’enquête",
+      "href": "/posts/nvidia-huang-teter-enquete-conseil-port-klang/",
+      "update": "Reuters décrit les messages de Huang à ses dirigeants. À Port Klang, l’offre foncière de Speedmatrix expire. La gouvernance de Nvidia à l’épreuve."
+    },
+    "lead": "Reuters a examiné des messages d’octobre dans lesquels Huang présentait ses interactions avec Alice Huang comme des relations commerciales ordinaires.",
+    "number": {
+      "value": "26",
+      "label": "analyses publiées du 8 novembre à 08 h 30 au 15 novembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "L’enquête du conseil doit éclairer la circulation de l’information au sommet, alors que Nvidia prépare sa succession et porte des engagements financiers.",
+    "test": "Les conclusions de l’enquête restent attendues. À Port Klang, PKFZ décrit une offre de terrain expirée, dont les documents contractuels restent indisponibles.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "26 analyses publiées en sept jours",
+      "subtitle": "du 8 novembre à 08 h 30 au 15 novembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-11-15",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 08/11",
+          "shortLabel": "dim 08/11",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-11-08",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 09/11",
+          "shortLabel": "lun 09/11",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-11-09",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 10/11",
+          "shortLabel": "mar 10/11",
+          "value": 2,
+          "valueLabel": "2",
+          "nature": "analyses publiées",
+          "scope": "2026-11-10",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 11/11",
+          "shortLabel": "mer 11/11",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-11-11",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 12/11",
+          "shortLabel": "jeu 12/11",
+          "value": 5,
+          "valueLabel": "5",
+          "nature": "analyses publiées",
+          "scope": "2026-11-12",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 13/11",
+          "shortLabel": "ven 13/11",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-11-13",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 14/11",
+          "shortLabel": "sam 14/11",
+          "value": 3,
+          "valueLabel": "3",
+          "nature": "analyses publiées",
+          "scope": "2026-11-14",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 15/11",
+          "shortLabel": "dim 15/11",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-11-15",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "Reuters a examiné des messages d’octobre dans lesquels Huang présentait ses interactions avec Alice Huang comme des relations commerciales ordinaires.",
+    "linkedin": "26 analyses publiées sur l0g du 8 novembre à 08 h 30 au 15 novembre à 08 h 30.\n\nFocus structuré : Nvidia : les assurances de Huang à l’épreuve de l’enquête.\n\nReuters a examiné des messages d’octobre dans lesquels Huang présentait ses interactions avec Alice Huang comme des relations commerciales ordinaires.\n\nPourquoi le lire : L’enquête du conseil doit éclairer la circulation de l’information au sommet, alors que Nvidia prépare sa succession et porte des engagements financiers.\n\nLimite à garder : Les conclusions de l’enquête restent attendues. À Port Klang, PKFZ décrit une offre de terrain expirée, dont les documents contractuels restent indisponibles.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-11-15/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 15 novembre compte 26 analyses publiées. Focus : Nvidia : les assurances de Huang à l’épreuve de l’enquête.",
+      "2/5 Reuters a examiné des messages d’octobre dans lesquels Huang présentait ses interactions avec Alice Huang comme des relations commerciales ordinaires.",
+      "3/5 Pourquoi le lire : L’enquête du conseil doit éclairer la circulation de l’information au sommet, alors que Nvidia prépare sa succession et porte des engagements financiers.",
+      "4/5 Limite : Les conclusions de l’enquête restent attendues. À Port Klang, PKFZ décrit une offre de terrain expirée, dont les documents contractuels restent indisponibles.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-11-15/"
+    ],
+    "sources": [
+      {
+        "label": "Nvidia : les assurances de Huang à l’épreuve de l’enquête",
+        "href": "/posts/nvidia-huang-teter-enquete-conseil-port-klang/",
+        "role": "Analyse publiée le 14 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : les garanties de l’IA engagent toute la chaîne du crédit",
+        "href": "/posts/nvidia-fed-nscale-garanties-credit-ia/",
+        "role": "Analyse publiée le 14 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Chine : la dette derrière les rachats d’actions",
+        "href": "/posts/chine-credit-1-pourcent-rachats-actions/",
+        "role": "Analyse publiée le 14 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Qantas : l’IA et la délocalisation des fonctions support",
+        "href": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : le crédit chinois face aux contrôles américains",
+        "href": "/posts/nvidia-credit-chinois-controles-us-rene-haas/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : les serveurs gagés de Shanghai et la bataille de Washington",
+        "href": "/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : les garanties derrière les milliards de l’IA",
+        "href": "/posts/nvidia-garanties-financement-ia-enquetes-asie/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Treasuries à sept ans : trois ventes d’une même obligation",
+        "href": "/posts/dette-americaine-sept-ans-reouvertures-liquidite/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : le Congrès remonte la chaîne des contrôles",
+        "href": "/posts/nvidia-congres-teter-kessler-controles-exportation/",
+        "role": "Analyse publiée le 13 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Kalshi, Trump Jr. et la CFTC : l’hypothèse de représailles examinée",
+        "href": "/posts/kalshi-trump-jr-cftc-enquete-represailles/",
+        "role": "Analyse publiée le 12 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : Trump avance Tim Cook, Lutnick sous pression",
+        "href": "/posts/nvidia-trump-tim-cook-lutnick-leviers-etat/",
+        "role": "Analyse publiée le 12 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia après Huang : les réponses attendues de Washington",
+        "href": "/posts/nvidia-apres-huang-singapour-washington-financement-ia/",
+        "role": "Analyse publiée le 12 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Anthropic : la formation du cours sous pression indicielle",
+        "href": "/posts/anthropic-ipo-indices-formation-prix/",
+        "role": "Analyse publiée le 12 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : le conseil face au risque Huang",
+        "href": "/posts/nvidia-huang-nda-conseil-financement-ia/",
+        "role": "Analyse publiée le 12 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Crédit privé : la Fed prend le pouls des nouveaux prêts",
+        "href": "/posts/credit-prive-fed-enquete-nouveaux-prets/",
+        "role": "Analyse publiée le 11 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Prêts à l’IA : qui paiera derrière la police d’assurance ?",
+        "href": "/posts/assurance-prets-ia-banques-reassureurs/",
+        "role": "Analyse publiée le 11 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia, Trump, Lutnick : la sécurité nationale sous influence",
+        "href": "/posts/nvidia-trump-lutnick-securite-nationale-influence/",
+        "role": "Analyse publiée le 11 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Anthropic : les fournisseurs de calcul financent leur client",
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "role": "Analyse publiée le 11 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dubai Papers : le commerce de l’opacité face aux juges",
+        "href": "/posts/dubai-papers-intermediaires-opacite/",
+        "role": "Analyse publiée le 10 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "XWELL, les fils Trump et les 38,8 millions engagés par Washington",
+        "href": "/posts/xwell-argent-contrats-publics/",
+        "role": "Analyse publiée le 10 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Palantir et les hôpitaux anglais : le prix de la liberté de partir",
+        "href": "/posts/palantir-nhs-prix-sortie/",
+        "role": "Analyse publiée le 9 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Lutnick vend Cantor à ses enfants, Tether aurait prêté au trust familial",
+        "href": "/posts/lutnick-tether-credit-cession-familiale/",
+        "role": "Analyse publiée le 9 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia, Trump : une alerte au sommet",
+        "href": "/posts/nvidia-trump-alerte-sommet/",
+        "role": "Analyse publiée le 9 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Circle, Tether : la bataille pour l’argent des comptes bancaires",
+        "href": "/posts/stablecoins-depots-circle-tether-banques/",
+        "role": "Analyse publiée le 8 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Des sites web rejouent votre navigation : le business de vos clics",
+        "href": "/posts/rejeu-session-valeur-visite/",
+        "role": "Analyse publiée le 8 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Amazon Ads : le prix du clic sous accusation",
+        "href": "/posts/amazon-ads-prix-du-clic/",
+        "role": "Analyse publiée le 8 novembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Nvidia : les assurances de Huang à l’épreuve de l’enquête",
+        "href": "/posts/nvidia-huang-teter-enquete-conseil-port-klang/",
+        "publishedAt": "2026-11-14T10:20:00.000Z"
+      },
+      {
+        "title": "Nvidia : les garanties de l’IA engagent toute la chaîne du crédit",
+        "href": "/posts/nvidia-fed-nscale-garanties-credit-ia/",
+        "publishedAt": "2026-11-14T07:35:00.000Z"
+      },
+      {
+        "title": "Chine : la dette derrière les rachats d’actions",
+        "href": "/posts/chine-credit-1-pourcent-rachats-actions/",
+        "publishedAt": "2026-11-14T00:00:00.000Z"
+      },
+      {
+        "title": "Qantas : l’IA et la délocalisation des fonctions support",
+        "href": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/",
+        "publishedAt": "2026-11-13T21:39:09.000Z"
+      },
+      {
+        "title": "Nvidia : le crédit chinois face aux contrôles américains",
+        "href": "/posts/nvidia-credit-chinois-controles-us-rene-haas/",
+        "publishedAt": "2026-11-13T18:40:00.000Z"
+      },
+      {
+        "title": "Nvidia : les serveurs gagés de Shanghai et la bataille de Washington",
+        "href": "/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/",
+        "publishedAt": "2026-11-13T17:00:00.000Z"
+      },
+      {
+        "title": "Nvidia : les garanties derrière les milliards de l’IA",
+        "href": "/posts/nvidia-garanties-financement-ia-enquetes-asie/",
+        "publishedAt": "2026-11-13T12:05:00.000Z"
+      },
+      {
+        "title": "Treasuries à sept ans : trois ventes d’une même obligation",
+        "href": "/posts/dette-americaine-sept-ans-reouvertures-liquidite/",
+        "publishedAt": "2026-11-13T09:09:52.000Z"
+      },
+      {
+        "title": "Nvidia : le Congrès remonte la chaîne des contrôles",
+        "href": "/posts/nvidia-congres-teter-kessler-controles-exportation/",
+        "publishedAt": "2026-11-13T06:00:00.000Z"
+      },
+      {
+        "title": "Kalshi, Trump Jr. et la CFTC : l’hypothèse de représailles examinée",
+        "href": "/posts/kalshi-trump-jr-cftc-enquete-represailles/",
+        "publishedAt": "2026-11-12T21:10:00.000Z"
+      },
+      {
+        "title": "Nvidia : Trump avance Tim Cook, Lutnick sous pression",
+        "href": "/posts/nvidia-trump-tim-cook-lutnick-leviers-etat/",
+        "publishedAt": "2026-11-12T20:27:00.000Z"
+      },
+      {
+        "title": "Nvidia après Huang : les réponses attendues de Washington",
+        "href": "/posts/nvidia-apres-huang-singapour-washington-financement-ia/",
+        "publishedAt": "2026-11-12T16:00:00.000Z"
+      },
+      {
+        "title": "Anthropic : la formation du cours sous pression indicielle",
+        "href": "/posts/anthropic-ipo-indices-formation-prix/",
+        "publishedAt": "2026-11-12T12:58:00.000Z"
+      },
+      {
+        "title": "Nvidia : le conseil face au risque Huang",
+        "href": "/posts/nvidia-huang-nda-conseil-financement-ia/",
+        "publishedAt": "2026-11-12T09:45:00.000Z"
+      },
+      {
+        "title": "Crédit privé : la Fed prend le pouls des nouveaux prêts",
+        "href": "/posts/credit-prive-fed-enquete-nouveaux-prets/",
+        "publishedAt": "2026-11-11T18:05:00.000Z"
+      },
+      {
+        "title": "Prêts à l’IA : qui paiera derrière la police d’assurance ?",
+        "href": "/posts/assurance-prets-ia-banques-reassureurs/",
+        "publishedAt": "2026-11-11T14:48:00.000Z"
+      },
+      {
+        "title": "Nvidia, Trump, Lutnick : la sécurité nationale sous influence",
+        "href": "/posts/nvidia-trump-lutnick-securite-nationale-influence/",
+        "publishedAt": "2026-11-11T10:55:00.000Z"
+      },
+      {
+        "title": "Anthropic : les fournisseurs de calcul financent leur client",
+        "href": "/posts/anthropic-financement-fournisseurs-ipo/",
+        "publishedAt": "2026-11-11T09:28:07.000Z"
+      },
+      {
+        "title": "Dubai Papers : le commerce de l’opacité face aux juges",
+        "href": "/posts/dubai-papers-intermediaires-opacite/",
+        "publishedAt": "2026-11-10T14:40:01.000Z"
+      },
+      {
+        "title": "XWELL, les fils Trump et les 38,8 millions engagés par Washington",
+        "href": "/posts/xwell-argent-contrats-publics/",
+        "publishedAt": "2026-11-10T10:03:45.000Z"
+      },
+      {
+        "title": "Palantir et les hôpitaux anglais : le prix de la liberté de partir",
+        "href": "/posts/palantir-nhs-prix-sortie/",
+        "publishedAt": "2026-11-09T21:19:53.000Z"
+      },
+      {
+        "title": "Lutnick vend Cantor à ses enfants, Tether aurait prêté au trust familial",
+        "href": "/posts/lutnick-tether-credit-cession-familiale/",
+        "publishedAt": "2026-11-09T18:33:16.000Z"
+      },
+      {
+        "title": "Nvidia, Trump : une alerte au sommet",
+        "href": "/posts/nvidia-trump-alerte-sommet/",
+        "publishedAt": "2026-11-09T00:00:00.000Z"
+      },
+      {
+        "title": "Circle, Tether : la bataille pour l’argent des comptes bancaires",
+        "href": "/posts/stablecoins-depots-circle-tether-banques/",
+        "publishedAt": "2026-11-08T16:02:52.000Z"
+      },
+      {
+        "title": "Des sites web rejouent votre navigation : le business de vos clics",
+        "href": "/posts/rejeu-session-valeur-visite/",
+        "publishedAt": "2026-11-08T14:12:23.000Z"
+      },
+      {
+        "title": "Amazon Ads : le prix du clic sous accusation",
+        "href": "/posts/amazon-ads-prix-du-clic/",
+        "publishedAt": "2026-11-08T09:44:21.000Z"
+      }
+    ],
+    "briefs": [
+      {
+        "title": "Nvidia : les assurances de Huang à l’épreuve de l’enquête",
+        "href": "/posts/nvidia-huang-teter-enquete-conseil-port-klang/",
+        "topic": "financement IA",
+        "fact": "Reuters a examiné des messages d’octobre dans lesquels Huang présentait ses interactions avec Alice Huang comme des relations commerciales ordinaires.",
+        "importance": "L’enquête du conseil doit éclairer la circulation de l’information au sommet, alors que Nvidia prépare sa succession et porte des engagements financiers.",
+        "uncertainty": "Les conclusions de l’enquête restent attendues. À Port Klang, PKFZ décrit une offre de terrain expirée, dont les documents contractuels restent indisponibles."
+      },
+      {
+        "title": "Nvidia : les garanties de l’IA engagent toute la chaîne du crédit",
+        "href": "/posts/nvidia-fed-nscale-garanties-credit-ia/",
+        "topic": "macro",
+        "fact": "La Fed documente l’essor de la dette et des engagements dans le calcul avancé. Nscale annonce devoir réunir des financements supplémentaires pour 2027.",
+        "importance": "Une garantie du fournisseur peut faciliter l’achat des machines tout en exposant ce fournisseur aux difficultés de ses clients.",
+        "uncertainty": "Les pertes dépendront des contrats et de leurs déclencheurs. Le financement supplémentaire de Nscale reste à conclure dans les documents consultés."
+      },
+      {
+        "title": "Qantas : l’IA et la délocalisation des fonctions support",
+        "href": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/",
+        "topic": "analyse",
+        "fact": "Qantas annonce environ 850 postes concernés sur plusieurs années, avec de premiers changements attendus à mi-2027.",
+        "importance": "Le travail peut changer d’employeur et de pays pendant que ses tâches sont progressivement automatisées.",
+        "uncertainty": "La répartition des départs, des reclassements et des heures réellement automatisées reste à établir."
+      },
+      {
+        "title": "Nvidia : le crédit chinois face aux contrôles américains",
+        "href": "/posts/nvidia-credit-chinois-controles-us-rene-haas/",
+        "topic": "marchés",
+        "fact": "Un projet publié par le Jilin prévoit environ 80 % de prêts bancaires et des serveurs H100. Le FT rapporte que Rene Haas a été approché pour la succession de Huang.",
+        "importance": "La disponibilité des équipements conditionne les recettes attendues des projets. Le prochain patron de Nvidia devra aussi arbitrer des relations industrielles et financières déjà nouées.",
+        "uncertainty": "Le financement de Songyuan reste un objectif publié. Les banques, les versements et les modalités du contact avec Haas demeurent inconnus."
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-11-15T08:42:04.602Z",
+      "windowStart": "2026-11-08T08:30:00+01:00",
+      "windowEnd": "2026-11-15T08:30:00+01:00"
+    }
   }
 ]
