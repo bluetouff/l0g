@@ -1,0 +1,754 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:83c3f299-10c8-462d-8b24-8e3f86665d7e",
+  "lang": "fr",
+  "date": "2026-11-15",
+  "modified": "2026-11-15T12:46:33Z",
+  "sourceArticles": [
+    {
+      "lang": "fr",
+      "chapter": 1,
+      "file": "src/content/posts/nvidia-trump-alerte-sommet.md",
+      "canonical": "https://l0g.fr/posts/nvidia-trump-alerte-sommet/",
+      "sha256": "bad09477ab9b3f3867b876e635954428f0994362a02b390cde2e577b213d45e6",
+      "published": "2026-11-09",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 2,
+      "file": "src/content/posts/nvidia-trump-lutnick-securite-nationale-influence.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-trump-lutnick-securite-nationale-influence/",
+      "sha256": "00d0c0cae2066d13772e9daf107c77b079cbced15c24c6eaec1cffd57c89ebb9",
+      "published": "2026-11-11T11:55:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 3,
+      "file": "src/content/posts/nvidia-huang-nda-conseil-financement-ia.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-huang-nda-conseil-financement-ia/",
+      "sha256": "38698b5bef816a3d17b8a2ee5d20529c8d648f2a9701e4154c0ef0dfe3fabe28",
+      "published": "2026-11-12T10:45:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 4,
+      "file": "src/content/posts/nvidia-apres-huang-singapour-washington-financement-ia.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-apres-huang-singapour-washington-financement-ia/",
+      "sha256": "0a1bb7730d8d9f1b1958be3681a3fcba134ab1a006e2ee48771c70174f1174f5",
+      "published": "2026-11-12T17:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 5,
+      "file": "src/content/posts/nvidia-trump-tim-cook-lutnick-leviers-etat.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-trump-tim-cook-lutnick-leviers-etat/",
+      "sha256": "fe8ce28345e1535c8cb94065fce9ac55187bbc5a3fee0dff8920470dadf7b662",
+      "published": "2026-11-12T21:27:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 6,
+      "file": "src/content/posts/nvidia-congres-teter-kessler-controles-exportation.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-congres-teter-kessler-controles-exportation/",
+      "sha256": "5b351ccbca22a56c738998bb7c8212dc24a6c8c24cf666d1cb8ded6047e25163",
+      "published": "2026-11-13T07:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 7,
+      "file": "src/content/posts/nvidia-garanties-financement-ia-enquetes-asie.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-garanties-financement-ia-enquetes-asie/",
+      "sha256": "3b4e9fffde42273f4befda6f589989d091e0c15eac93fde84e7a8a27c13a1eaf",
+      "published": "2026-11-13T13:05:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 8,
+      "file": "src/content/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-shanghai-serveurs-garantie-lutnick-bessent/",
+      "sha256": "bcf5146806fa66666f4e897d0b813397d24d1bc5ece32f3b0955bdd90a2cc0f1",
+      "published": "2026-11-13T18:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 9,
+      "file": "src/content/posts/nvidia-credit-chinois-controles-us-rene-haas.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-credit-chinois-controles-us-rene-haas/",
+      "sha256": "e585e3144d72eb659f25c0d295236de9d58da20352ae776403f98b760dfcfe2f",
+      "published": "2026-11-13T19:40:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 10,
+      "file": "src/content/posts/nvidia-fed-nscale-garanties-credit-ia.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-fed-nscale-garanties-credit-ia/",
+      "sha256": "5421865e1b75973f24c9d0156abd3206451e9420b34a90f7adb621dbc75fce4f",
+      "published": "2026-11-14T08:35:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 11,
+      "file": "src/content/posts/nvidia-huang-teter-enquete-conseil-port-klang.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-huang-teter-enquete-conseil-port-klang/",
+      "sha256": "7aee5f9eee9beec2a903c954412324bf74bafb0043a0bd82575b7538529345ea",
+      "published": "2026-11-14T11:20:00+01:00",
+      "updated": "2026-11-14T11:20:00+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 12,
+      "file": "src/content/posts/nvidia-apres-huang-contrats-garanties-cout-crise.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-apres-huang-contrats-garanties-cout-crise/",
+      "sha256": "437452e69f0fd5be0aad2bd447788f6dafd181eba51dc44657e62d3a31ce5c18",
+      "published": "2026-11-15T09:39:42+01:00",
+      "updated": "2026-11-15T09:39:42+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 1,
+      "file": "src/content/posts-en/nvidia-trump-warning-at-the-top.md",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-trump-warning-at-the-top/",
+      "sha256": "f956939a8608ff91bfe3b4b1ffb1e6fa5aeca682c3a0b33442be06a1f75cc75e",
+      "published": "2026-11-09",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 2,
+      "file": "src/content/posts-en/nvidia-trump-lutnick-national-security-influence.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-trump-lutnick-national-security-influence/",
+      "sha256": "1f0915b90e2984b80546a4f2bf32a7c5618c4dbe424e9c6354f0476d2bd70d15",
+      "published": "2026-11-11T11:55:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 3,
+      "file": "src/content/posts-en/nvidia-huang-nda-board-ai-financing.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-huang-nda-board-ai-financing/",
+      "sha256": "7c830fd2194539c83eaa2fbe4163a9bb9a35e0d0a13e893f8f1a86b0e6c8c6f9",
+      "published": "2026-11-12T10:45:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 4,
+      "file": "src/content/posts-en/nvidia-after-huang-singapore-washington-ai-financing.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-after-huang-singapore-washington-ai-financing/",
+      "sha256": "53842703269d54c22134d564f3e1b60c85893b6f1e14e2bed5b2f5777db8000a",
+      "published": "2026-11-12T17:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 5,
+      "file": "src/content/posts-en/nvidia-trump-tim-cook-lutnick-state-leverage.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-trump-tim-cook-lutnick-state-leverage/",
+      "sha256": "f8b575d17f39280dd5bee00350f61b735262f82dddf53fff313e9e9ddfeb851b",
+      "published": "2026-11-12T21:27:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 6,
+      "file": "src/content/posts-en/nvidia-congress-teter-kessler-export-controls.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-congress-teter-kessler-export-controls/",
+      "sha256": "b91b52058aeb76805e11788a0c6e5c7ba0100bb8ced33cd058a556f04c60bde8",
+      "published": "2026-11-13T07:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 7,
+      "file": "src/content/posts-en/nvidia-ai-financing-guarantees-asian-investigations.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-ai-financing-guarantees-asian-investigations/",
+      "sha256": "562510bc18328257af68bb77cf0ced11ee3648dcb16090a3bcc4377712114fdc",
+      "published": "2026-11-13T13:05:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 8,
+      "file": "src/content/posts-en/nvidia-shanghai-server-collateral-lutnick-bessent.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-shanghai-server-collateral-lutnick-bessent/",
+      "sha256": "7ffbc27c2c5e5032ad0b232432bd722de7be891a0e22d381ed5bd3a368d0a69e",
+      "published": "2026-11-13T18:00:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 9,
+      "file": "src/content/posts-en/nvidia-china-ai-credit-us-controls-rene-haas.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-china-ai-credit-us-controls-rene-haas/",
+      "sha256": "d1e1e8e79b003a38e1bba77a93d72fddbf06a37e1e4b5a52ea97b0084e679d00",
+      "published": "2026-11-13T19:40:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 10,
+      "file": "src/content/posts-en/nvidia-fed-nscale-ai-guarantees-credit.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-fed-nscale-ai-guarantees-credit/",
+      "sha256": "cdd46e602651ea60fdc6117e8cfbcfe027f83f5f05c09c16bf2e66e5bbbf0dc5",
+      "published": "2026-11-14T08:35:00+01:00",
+      "updated": "2026-11-15T11:39:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 11,
+      "file": "src/content/posts-en/nvidia-huang-teter-board-inquiry-port-klang.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-huang-teter-board-inquiry-port-klang/",
+      "sha256": "42abc65a4b603857dc34eed6a1596f52fe68860981db28a9a96627eaf986c12e",
+      "published": "2026-11-14T11:20:00+01:00",
+      "updated": "2026-11-14T11:20:00+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 12,
+      "file": "src/content/posts-en/nvidia-after-huang-contracts-guarantees-crisis-costs.mdx",
+      "canonical": "https://l0g.fr/en/analysis/nvidia-after-huang-contracts-guarantees-crisis-costs/",
+      "sha256": "ece3f6e32e8a4631c4eeea9aa45a6217cfc460f691833d9bf9fe5774bca0855c",
+      "published": "2026-11-15T09:39:42+01:00",
+      "updated": "2026-11-15T09:39:42+01:00"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "inline-1",
+      "mobile": false,
+      "sourceSha256": "637529477f49eae2fd229f18e6f7145f753379d87b1bb8568eb47b2b8d10ed4b",
+      "epubFile": "EPUB/media/file0.svg",
+      "epubSha256": "0143aac16e57985545f7c5b8a01a197d66a5d188e2d1881f5c719c413a1a5649"
+    },
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "inline-1",
+      "mobile": true,
+      "sourceSha256": "7d97d6a7ec0078693c66b1d8201fc6afe252fbe0763a1b39fecf46e449a7ea1f",
+      "epubFile": "EPUB/media/file1.svg",
+      "epubSha256": "670a546357b829807e847556e875c9ce07c86443b547cf9f41bdf401e5025372"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "inline-2",
+      "mobile": false,
+      "sourceSha256": "a07ae577b07f794e3f0bbc2e20a90bbc4ac69013821d8890276fb967f133960a",
+      "epubFile": "EPUB/media/file2.svg",
+      "epubSha256": "7aa1b517343da701f3980d646ddeb928789bda3405a01ceebeb3a5c11f664bbf"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "inline-2",
+      "mobile": true,
+      "sourceSha256": "26f660925e3bab97c7e76f5ddb5aea8b4753d7aa1b0e38ad21803f4aba376682",
+      "epubFile": "EPUB/media/file3.svg",
+      "epubSha256": "1eca71b0b6c8ae0e171c8eac1fe73be15f4f06c63e2563dbe46b3a88aa05188e"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "inline-3",
+      "mobile": false,
+      "sourceSha256": "0f024668179876b7542d7ccd4b7fa9afd13b6409fcd441b331d15fe976ff4491",
+      "epubFile": "EPUB/media/file4.svg",
+      "epubSha256": "23fb49b0be3b9df271acbc5103831f57ddf551a6b45322b58abb8f4c83376e90"
+    },
+    {
+      "chapter": 1,
+      "figure": 3,
+      "kind": "inline-3",
+      "mobile": true,
+      "sourceSha256": "e1094acbdad0f5d4787a7dbbae0bc1d1f88ef03613324569863b5da833612985",
+      "epubFile": "EPUB/media/file5.svg",
+      "epubSha256": "2f3b73e2f91a5ce7b56013fa324527c805eb0109a527b443c84fecf064824a98"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "access",
+      "mobile": false,
+      "sourceSha256": "b8e15279931cc293e7bfc95217536b27eaf3abe96d5e690575687393feeded90",
+      "epubFile": "EPUB/media/file6.svg",
+      "epubSha256": "e3d251b3e75c4586c1129c710ab27223a82fdd1d8a34a3e5db31ccfab4f28660"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "access",
+      "mobile": true,
+      "sourceSha256": "8810467cff0598d80a542be2a1af784eab8c21463dfa5f29f68e5e61912193a4",
+      "epubFile": "EPUB/media/file7.svg",
+      "epubSha256": "79c2edd867371119a403860029a9a23b06e90f5b6e42fccaf3b8a330529c638c"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "finance",
+      "mobile": false,
+      "sourceSha256": "9783466255445db14abc71d977ff732b8b3c2f7053b2b6dd123473bcc9acb77c",
+      "epubFile": "EPUB/media/file8.svg",
+      "epubSha256": "1b1d9b1c0563983fe00626f7cb2ae31a4f36406102ea5ca958eeec17e5a2209a"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "finance",
+      "mobile": true,
+      "sourceSha256": "085ef15796ba9d5616c405ed2ff0fb81bcdf78d72d95cb39c75fa867877258a1",
+      "epubFile": "EPUB/media/file9.svg",
+      "epubSha256": "b882024fe20f679b6d123e97cf3a80cd31afd17e756622f284ee8ec52b527503"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "control",
+      "mobile": false,
+      "sourceSha256": "5b8fda933364a9be0a3af1ff9daa01e64540856d15ea116891929b87adbd62ab",
+      "epubFile": "EPUB/media/file10.svg",
+      "epubSha256": "647b6d9ead4e982cab668b3f356f4b9ee2c694fee0013cc3643afc1c7b627331"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "control",
+      "mobile": true,
+      "sourceSha256": "adc468e345ca9cda6923066ef23ce60e8f50f4ff8cf7ecd352202c310ad2f78b",
+      "epubFile": "EPUB/media/file11.svg",
+      "epubSha256": "bd9d8f1ad0f23a42f4cc0542d96d9844b789d0ca2c287e1485b83004af27dcd9"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "finance",
+      "mobile": false,
+      "sourceSha256": "9f438fd758bbbe97ce44739e777cdf53f15d6ecc81eb3dfd5cad74f930036dca",
+      "epubFile": "EPUB/media/file12.svg",
+      "epubSha256": "55280ceefdc659de9217f78388a82033de2c9d53df3157106bff4a389eb0f2db"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "finance",
+      "mobile": true,
+      "sourceSha256": "fc40eb40ba06c1c8426efc2ccca34476a1a059cf50020bfdc37bd1409b1627c9",
+      "epubFile": "EPUB/media/file13.svg",
+      "epubSha256": "22df59534cda061bb7136aeb31ff266618d0d216e2f50215ff360508447ea3fc"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "leverage",
+      "mobile": false,
+      "sourceSha256": "cfb40e90be792d9e4b3aa04a8d068a0a169d55f7a4468dfcda590e75abe15af4",
+      "epubFile": "EPUB/media/file14.svg",
+      "epubSha256": "85d92e510db3a96b05e5dbbdb7876afb5547078b8f6d79be527cf2f43cfb4f74"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "leverage",
+      "mobile": true,
+      "sourceSha256": "462cd12ef19a070432748c7eb11555aa9efe5198e21c03d6324d803661d38b0e",
+      "epubFile": "EPUB/media/file15.svg",
+      "epubSha256": "7f7cff225fcc94f434e912fb4daf4651026f3da46263714f170326c11a246cda"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records1",
+      "mobile": false,
+      "sourceSha256": "af9fd8a695d1764e7207081114f435c172876f22464169d0be1edc4b96ac7d7c",
+      "epubFile": "EPUB/media/file16.svg",
+      "epubSha256": "73e94b6a75372feb466e1610558fe8f68d71e5a80fa9f55985d2a83cfcfea2ef"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records1",
+      "mobile": true,
+      "sourceSha256": "17385ffb087641079157cfd724e939c460619cea8777a693384042069388337e",
+      "epubFile": "EPUB/media/file17.svg",
+      "epubSha256": "a8149698e0a086bc492830cdde14d3521daec80c5d8f3d9d3a4c84084d49563c"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records2",
+      "mobile": false,
+      "sourceSha256": "1a62ea2bb8908284c9821936b0486bf88e8b030eaae0156d45428133969563a7",
+      "epubFile": "EPUB/media/file18.svg",
+      "epubSha256": "9a5ac6c7d9050a446ab7312d7df84d618bcb92d07a7e6d5034ec1743878b09c3"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records2",
+      "mobile": true,
+      "sourceSha256": "c4a068e036e3a5177927488c3b8651bef692a463e9ebcefd16c50bc9e6227ae2",
+      "epubFile": "EPUB/media/file19.svg",
+      "epubSha256": "90a438a7ab8d3551e859597da063ac255af3a90cb33c82e91588347c0b174908"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records3",
+      "mobile": false,
+      "sourceSha256": "1a07bd02a194cc4a5ad34aabf789f02ad6643655dd7b6c84fb33666483232583",
+      "epubFile": "EPUB/media/file20.svg",
+      "epubSha256": "a91fbf4dc16c62a84d9a7d6ee619fc976ef7ec137239c4de9705ff283ba4ecc6"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "records3",
+      "mobile": true,
+      "sourceSha256": "1ce60dd0e05a7bbe05397af23de2d4738723ca0673ca5a74f7a2c9e82119545d",
+      "epubFile": "EPUB/media/file21.svg",
+      "epubSha256": "1b6e423dc1d4ac2398be3cc9fb80f100a0129a7baa87642ddd7f8b3ca9202778"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "credit",
+      "mobile": false,
+      "sourceSha256": "67ead45fce78e1337ed72de809e10016bdc7874ba33e6bac3c4a85cd3a84f83e",
+      "epubFile": "EPUB/media/file22.svg",
+      "epubSha256": "0941e58a08d6d7ba28e7e229b98aef82ddbd7a0d7e461fde6142b9f00d47045f"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "credit",
+      "mobile": true,
+      "sourceSha256": "d63ea358195e86d56389f492381aa32e1bdf35f3e8076ba325e8f69f2144c0fb",
+      "epubFile": "EPUB/media/file23.svg",
+      "epubSha256": "cd7cccc631500f96c8f5c635b3fc0778eb0639c12608907bb572d91d1052de9d"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "power",
+      "mobile": false,
+      "sourceSha256": "4d5fda332a6e88b3d765b48a43abddfa7bdf997fc715e07ec464843eb3632f18",
+      "epubFile": "EPUB/media/file24.svg",
+      "epubSha256": "6d79db9145ef389158bbc84f2fb143ab54bdd88bcf51ba50a223b2ecb32da202"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "power",
+      "mobile": true,
+      "sourceSha256": "76952f7317171434493781bfd64bd2d66d559bc7522714cba8c5cb706e89ea21",
+      "epubFile": "EPUB/media/file25.svg",
+      "epubSha256": "a5a8921d9dd29c3fbec583c9bba5f0e5cff155666288b5cc9845316def124d63"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "justice",
+      "mobile": false,
+      "sourceSha256": "b94e58632e10aa80c0a1bd0ffa2224a1fee9186a95c886ba56af9d512face982",
+      "epubFile": "EPUB/media/file26.svg",
+      "epubSha256": "48a0e88d579f22d9eb516027d7eb70256028a392bacaec472154119aafa2bd9f"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "justice",
+      "mobile": true,
+      "sourceSha256": "d6db95d8971397852946a6b5160cdc536ea3f4b16ebf1b0cd5841651caff602b",
+      "epubFile": "EPUB/media/file27.svg",
+      "epubSha256": "a3f642154ad051968f00cc2c89402b4a7bef9425df403710999064f4d7c0a5e3"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "project",
+      "mobile": false,
+      "sourceSha256": "fbd35e698a0187eda932b24813247ca59a4a0057643ce07a3efdf98cdba3bc15",
+      "epubFile": "EPUB/media/file28.svg",
+      "epubSha256": "9fa65235518ff2b66f23b4b2beb4cee7088e34a221234df2c36576486b28bf4a"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "project",
+      "mobile": true,
+      "sourceSha256": "32283ce1ae2608f2653c66dfab0f132db120d2038989e53242d6c777e2b93c50",
+      "epubFile": "EPUB/media/file29.svg",
+      "epubSha256": "a75db5ad01e416afb23b69b3cb5731c727ef779f2955af420c634708af3485b6"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "agenda",
+      "mobile": false,
+      "sourceSha256": "d063b6a9af217c06e8d929a15af8b2e787c51889925472e25935c07cd51a0887",
+      "epubFile": "EPUB/media/file30.svg",
+      "epubSha256": "6851cfe96bd987a41869189f93f15bc3a35c5b358197871b03a69c9d5f479fa0"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "agenda",
+      "mobile": true,
+      "sourceSha256": "e755c979c2ee846ba04b75e3031072aa7ef01d766c4749ccb8d34a314d99e0d3",
+      "epubFile": "EPUB/media/file31.svg",
+      "epubSha256": "3448b5f969c8c29403052429ad61b4b261271f889d7b76b7c28a04cefdfdf0d6"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "records",
+      "mobile": false,
+      "sourceSha256": "320da95960136ffdf25dcf3cdc2e0eced8027dc34a499fdfec3a0a63284b4646",
+      "epubFile": "EPUB/media/file32.svg",
+      "epubSha256": "7cb92115663724e22f371981b5d8f4d1d38b9084dcf965c847e338e328f2ac82"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "records",
+      "mobile": true,
+      "sourceSha256": "8b0da2ffdbd4c0256bdc51d636e8a0f7fed549d57ef02b6ace939cef05b61468",
+      "epubFile": "EPUB/media/file33.svg",
+      "epubSha256": "cd37dbdae7bc2ed5dc34da06a11951b0e341352674ae2856a1cd11b672652b74"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "financing",
+      "mobile": false,
+      "sourceSha256": "c5080b2d47086e76e6edbe4b32dc8d6164ad71ff8515f8e13f8c835a327ad64e",
+      "epubFile": "EPUB/media/file34.svg",
+      "epubSha256": "68520c0595e589b241b8a82101d296fb9de16cae111c6ef8c07ee204aa054b39"
+    },
+    {
+      "chapter": 7,
+      "figure": 1,
+      "kind": "financing",
+      "mobile": true,
+      "sourceSha256": "c73e814e7175db31eb22d7a82b238fcba4fe77911a4cbd6d1c14d7b9a2d54469",
+      "epubFile": "EPUB/media/file35.svg",
+      "epubSha256": "3d1da65d51af91111f5f6f3ee93f0706feb706c2d7da1c489ad6467d73b63e70"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "asia",
+      "mobile": false,
+      "sourceSha256": "bc30c00896b194ac099b10c028a0312ab2f2fd562da0f0d365fc612cda3c420c",
+      "epubFile": "EPUB/media/file36.svg",
+      "epubSha256": "7198f917ac40753fd4f42271b8df1e6d19d27f2d87c7de09c80dd67d701f88e9"
+    },
+    {
+      "chapter": 7,
+      "figure": 2,
+      "kind": "asia",
+      "mobile": true,
+      "sourceSha256": "f1be519638a6846ea9bff21b32a89520d04eb7ada25f91af70c03e996ced7dc9",
+      "epubFile": "EPUB/media/file37.svg",
+      "epubSha256": "611ba7978462e2464c87effa5b0f6fe119a983097bbaca30cd3ca883b287987c"
+    },
+    {
+      "chapter": 8,
+      "figure": 1,
+      "kind": "collateral",
+      "mobile": false,
+      "sourceSha256": "f5c99dc5584134d87e4ef4104a812ead083e25967dfa174cdcff3556ad3b101b",
+      "epubFile": "EPUB/media/file38.svg",
+      "epubSha256": "d4101b635c8751c79448b15c964b366571807348b700f9751e2695f9216dea77"
+    },
+    {
+      "chapter": 8,
+      "figure": 1,
+      "kind": "collateral",
+      "mobile": true,
+      "sourceSha256": "3596aeb0d856e6a0406221d9ea3ace9d5c3ffa36ce166a582687666e9ff02264",
+      "epubFile": "EPUB/media/file39.svg",
+      "epubSha256": "cbf51f638b60f4ee8a078cac22ecfc9990ff5be80588c612648b1948b42d6518"
+    },
+    {
+      "chapter": 8,
+      "figure": 2,
+      "kind": "governance",
+      "mobile": false,
+      "sourceSha256": "9311fce404b671e30a55e868503fb1ec75bb56835c7d63db8cefeb4e9f960787",
+      "epubFile": "EPUB/media/file40.svg",
+      "epubSha256": "0b4142abd0fd114e976295e9367b1fb038c0cbc42ac3d8ef5ec29db56eb05f7c"
+    },
+    {
+      "chapter": 8,
+      "figure": 2,
+      "kind": "governance",
+      "mobile": true,
+      "sourceSha256": "8fb49b3d72df5ced4c2112751cddf793e70343ef41f23e40e6984e883511e4d6",
+      "epubFile": "EPUB/media/file41.svg",
+      "epubSha256": "e22a331bbbf97fcbcc3e8ae33ab9e5dedd2a864bd20a4399361fa30af153443c"
+    },
+    {
+      "chapter": 9,
+      "figure": 1,
+      "kind": "funding",
+      "mobile": false,
+      "sourceSha256": "99bb510427e220d0f3bb02d01e89ca7ad1786fa68582aa88e80b9277faad8a8f",
+      "epubFile": "EPUB/media/file42.svg",
+      "epubSha256": "983dd94740a1b929686f282271a69c0162891661f30c4ed9d36756a8de8f7381"
+    },
+    {
+      "chapter": 9,
+      "figure": 1,
+      "kind": "funding",
+      "mobile": true,
+      "sourceSha256": "a67379ef1c8361b711824e5a3b2585a8aca0d609558b5399fcaa4fff8a147017",
+      "epubFile": "EPUB/media/file43.svg",
+      "epubSha256": "c73b864929c74ec52fc1fdb654360db4fbb3127c7de1d08700d1295ce03fbab3"
+    },
+    {
+      "chapter": 9,
+      "figure": 2,
+      "kind": "licensing",
+      "mobile": false,
+      "sourceSha256": "20eb3032374a9235f7657c0c4774fbcafa8fdc1c407bbf3bb383862ed849b364",
+      "epubFile": "EPUB/media/file44.svg",
+      "epubSha256": "faaddef39e584cfa98ff8cc41d3874f1f37463b2cb23d19eead9e7b2bdd43cde"
+    },
+    {
+      "chapter": 9,
+      "figure": 2,
+      "kind": "licensing",
+      "mobile": true,
+      "sourceSha256": "18141c5c769ab191eb9a4c7d225eea8473afe4ae6f69169f64bb32c7df02525c",
+      "epubFile": "EPUB/media/file45.svg",
+      "epubSha256": "a48a900e0f83f367e669ba9d7bcad35df1ea36b8e4e1608337a3b47def0ac3cb"
+    },
+    {
+      "chapter": 10,
+      "figure": 1,
+      "kind": "issuance",
+      "mobile": false,
+      "sourceSha256": "c8a6a23dd1234607691e5441ee93a3eff16f7ce384079be3ec3bfb420ef8870e",
+      "epubFile": "EPUB/media/file46.svg",
+      "epubSha256": "2b23b74312f7dcb46b9ff6fcc941b793907abf018929cec97a7d0efddf102dec"
+    },
+    {
+      "chapter": 10,
+      "figure": 1,
+      "kind": "issuance",
+      "mobile": true,
+      "sourceSha256": "b5e01f8a0ae746ea40e0c3cc598826d08e0c47b2dadd45dbfff11dfd7eb3eabe",
+      "epubFile": "EPUB/media/file47.svg",
+      "epubSha256": "b5bd3d38533df08564dfa2db042ee4fb634c4f4ec8b2651a9e254d927ca223c4"
+    },
+    {
+      "chapter": 10,
+      "figure": 2,
+      "kind": "risk",
+      "mobile": false,
+      "sourceSha256": "c03638cc58d122a613723ecb5002ece7881851f7aff5da6af6887ed39b78cd76",
+      "epubFile": "EPUB/media/file48.svg",
+      "epubSha256": "d3089a7bf6687e7368cd671425b64370dd773aec76a383e3c5a7c4d950dad4e6"
+    },
+    {
+      "chapter": 10,
+      "figure": 2,
+      "kind": "risk",
+      "mobile": true,
+      "sourceSha256": "636d9c38ed5cd92125cb8a297faa01bc8b2765c9c7c2243690f29e106f28849a",
+      "epubFile": "EPUB/media/file49.svg",
+      "epubSha256": "c016a0a17d5f54d816b8228621cea20121e1762c5f09fa97f35b4751e5981021"
+    },
+    {
+      "chapter": 11,
+      "figure": 1,
+      "kind": "mandates",
+      "mobile": false,
+      "sourceSha256": "e19f9bdf325bdbb75bdcc39b0123fb20eb8a023bdf815e6ed296a764706f9ca8",
+      "epubFile": "EPUB/media/file50.svg",
+      "epubSha256": "98e4930532802296dd8756cd2fa3a7d4931e992e248f354d5f042e5a095d4507"
+    },
+    {
+      "chapter": 11,
+      "figure": 1,
+      "kind": "mandates",
+      "mobile": true,
+      "sourceSha256": "aff474ba3cc49b03cd3afb68a7fa12f3551895acf153c27aaebffb802737ef0f",
+      "epubFile": "EPUB/media/file51.svg",
+      "epubSha256": "cb76983d9708bef0376f947a2c48076032ae317207dd3336383fb30e19a27066"
+    },
+    {
+      "chapter": 12,
+      "figure": 1,
+      "kind": "naver",
+      "mobile": false,
+      "sourceSha256": "734c40a75e2cf76e195933f6622ca7afb1e1807ffc0c7ed24c3bc9ec067d5dcf",
+      "epubFile": "EPUB/media/file52.svg",
+      "epubSha256": "2e14f296848965ef1c56ff7a2822e34219e8561d83cf3a62b53e0e5d85895fac"
+    },
+    {
+      "chapter": 12,
+      "figure": 1,
+      "kind": "naver",
+      "mobile": true,
+      "sourceSha256": "d4caf84e8a3f3da83785737616a3418170607327480dd106828304c07d9d3ced",
+      "epubFile": "EPUB/media/file53.svg",
+      "epubSha256": "f8c52c12f36d84ab75a9bb0f26ac98a4d9c67acce28b47bf55dc48932d123802"
+    },
+    {
+      "chapter": 12,
+      "figure": 2,
+      "kind": "public-compute",
+      "mobile": false,
+      "sourceSha256": "21619697d60cf13e098314dbc3ac75e28a5e16e4afb3b3ac1d1ead67bbf5deb6",
+      "epubFile": "EPUB/media/file54.svg",
+      "epubSha256": "4ed70090ad028f53885f7973d5b41cd69bd71d45d58a738b45708acd765594e9"
+    },
+    {
+      "chapter": 12,
+      "figure": 2,
+      "kind": "public-compute",
+      "mobile": true,
+      "sourceSha256": "bb08db59cf7240d04a4e4df45c62c2d7f55d6a07b0a020759ecdc57f1176905a",
+      "epubFile": "EPUB/media/file55.svg",
+      "epubSha256": "0e093d87beaac298a80930f3809fcd1c45d6d320f86789e60f427cbb69b33c02"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
+    },
+    {
+      "file": "public/fonts/ukraine-reparations/liberation-sans-400.ttf",
+      "sha256": "76d04c18ea243f426b7de1f3ad208e927008f961dc5945e5aad352d0dfde8ee8"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    }
+  ],
+  "cover": {
+    "file": "public/publications/le-systeme-nvidia-cover.jpg",
+    "sha256": "841a5f88525e53a009dfb28cbb9d9f230323482981a3e6161ac1d9739bf922a2"
+  },
+  "transformation": "Complete twelve-article source corpus and all 293 reference notices. Passive offline text. Original 26 figure compositions, including a three-panel chronology, in 56 desktop/mobile SVG scenes. CSS paints resolved and licensed local fonts embedded. Original source date precision preserved. No JavaScript, active forms or external media resources."
+}

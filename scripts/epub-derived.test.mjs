@@ -138,7 +138,7 @@ test('the production catalogue accounts for every raw generator and every source
  const pkg=JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'),'utf8'));
  const raw=[...pkg.scripts['build:epub:generate'].matchAll(/node (scripts\/[^ &]+\.mjs)/gu)].map(match=>match[1]).filter(file=>file!=='scripts/build-epub.mjs');
  assert.deepEqual(groups.flatMap(group=>group.generators).sort(),raw.sort());
- assert.equal(groups.length,20);
+ assert.equal(groups.length,21);
  assert.ok(groups.every(group=>group.snapshot&&group.books.length&&group.outputs.length));
  assert.ok(groups.every(group=>!group.inputs.includes('src/content')));
  assert.ok(groups.every(group=>!['scripts','src/components','src/lib','src/config','src/figures'].some(directory=>group.inputs.includes(directory))));
@@ -156,6 +156,14 @@ test('the production catalogue accounts for every raw generator and every source
   for(const file of group.inputs.filter(file=>file.startsWith('src/content/')))assert.ok(fs.statSync(path.join(ROOT,file)).isFile());
   for(const file of group.outputs)assert.ok(fs.existsSync(path.join(ROOT,file)),file);
  }
+ const nvidia=groups.find(group=>group.name==='epub-nvidia');
+ assert.ok(nvidia);
+ assert.deepEqual(nvidia.books,['le-systeme-nvidia','the-nvidia-system']);
+ assert.equal(nvidia.inputs.filter(file=>file.startsWith('src/content/')).length,24);
+ assert.ok(nvidia.inputs.includes('src/publication-text/nvidia-book.mjs'));
+ assert.equal(nvidia.inputs.filter(file=>file.startsWith('src/components/')&&/Nvidia[^/]*\.astro$/u.test(file)).length,12,'the twenty-four chapter imports include every controlled figure component');
+ assert.ok(nvidia.inputs.includes('public/publications/le-systeme-nvidia-cover.jpg'));
+ assert.ok(!nvidia.outputs.includes('public/publications/le-systeme-nvidia-cover.jpg'),'artwork retains ownership of the new book covers');
  const insurance=groups.find(group=>group.name==='epub-insurance');
  assert.ok(insurance.inputs.some(file=>file.startsWith('src/content/posts-en/')));
  assert.ok(insurance.inputs.some(file=>file.startsWith('public/illustrations/')));

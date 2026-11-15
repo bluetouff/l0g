@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/le-systeme-nvidia/index.html', 'le-systeme-nvidia'],
+  ['en/publications/the-nvidia-system/index.html', 'the-nvidia-system'],
   ['publications/le-cout-d-une-porte-derobee/index.html', 'le-cout-d-une-porte-derobee'],
   ['en/publications/the-cost-of-a-backdoor/index.html', 'the-cost-of-a-backdoor'],
   ['publications/la-guerre-des-machines-ordinaires/index.html', 'la-guerre-des-machines-ordinaires'],
