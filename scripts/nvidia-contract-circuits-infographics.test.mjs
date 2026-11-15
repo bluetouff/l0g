@@ -17,9 +17,16 @@ const bytes = readFileSync(fontFile);
 const font = opentype.parse(bytes.buffer.slice(bytes.byteOffset, bytes.byteOffset + bytes.byteLength));
 const parser = new XMLParser({ ignoreAttributes: false, attributeNamePrefix: '@', parseTagValue: false, trimValues: false });
 const attrs = str => Object.fromEntries([...str.matchAll(/([a-zA-Z0-9:-]+)="([^"]*)"/gu)].map(m => [m[1], m[2]]));
-const decode = value => value.replaceAll('&amp;', '&').replaceAll('&lt;', '<').replaceAll('&gt;', '>').replaceAll('&#x27;', "'").replaceAll('&quot;', '"');
+const entities = new Map([['&amp;', '&'], ['&lt;', '<'], ['&gt;', '>'], ['&#x27;', "'"], ['&quot;', '"']]);
+const decode = value => value.replace(/&(?:amp|lt|gt|#x27|quot);/gu, entity => entities.get(entity));
 const colors = { surface: '#121419', paper: '#e7e9ee', muted: '#8b909b', 'line-strong': '#414349', signal: '#5eead4', amber: '#f5b13d' };
 const scenes = components.flatMap(component => ['fr', 'en'].flatMap(lang => ['desktop', 'mobile'].map(mode => ({ ...component, lang, mode, svg: component.art[lang][mode] }))));
+
+test('SVG label entities are decoded once for geometry measurements', () => {
+  assert.equal(decode('&amp;lt; &amp;gt; &amp;quot;'), '&lt; &gt; &quot;');
+  assert.equal(decode('&amp; &lt; &gt; &#x27; &quot;'), '& < > \' "');
+  assert.equal(decode('&unknown; NVIDIA'), '&unknown; NVIDIA');
+});
 
 test('contract diagrams use passive XML, accessible descriptions and separate documented flows', () => {
   for (const { name, lang, mode, svg } of scenes) {
