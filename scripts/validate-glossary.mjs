@@ -1406,7 +1406,17 @@ for (const [entry, article] of [
 assert.match(glossaryEntries.find(item => item.slug === 'refinancement-cible').def, /conservent le risque de crédit/);
 assert.match(glossaryAtlasEnBySlug.get('refinancement-cible').def, /retain the credit risk/);
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('refinancement-cible')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 443, 'Le corpus bilingue inclut le refinancement ciblé');
+assert.equal(glossaryAtlasEnBySlug.size, 444, 'Le corpus bilingue inclut la définition D&O');
+for (const [entry, article] of [
+  [glossaryEntries.find(item => item.slug === 'assurance-d-o'), '/posts/nvidia-apres-huang-contrats-garanties-cout-crise/'],
+  [glossaryAtlasEnBySlug.get('assurance-d-o'), '/en/analysis/nvidia-after-huang-contracts-guarantees-crisis-costs/'],
+]) {
+  assert(entry?.atlas);
+  assert.equal(entry.guide, article);
+  for (const side of ['Side A', 'Side B', 'Side C']) assert(entry.def.includes(side));
+  assert.equal(entry.atlas.sources.length, 1);
+}
+assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('assurance-d-o')), 'noindex,follow');
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'prix-plancher'), '/posts/intel-mp-materials-portefeuille-trump/'], [glossaryAtlasEnBySlug.get('prix-plancher'), '/en/analysis/intel-mp-materials-trump-portfolio/']]) {
   assert(entry?.atlas, 'Le prix plancher dispose de sa définition et de ses sources');
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
@@ -1617,8 +1627,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 823, 'Le corpus conserve ses notions et ajoute le refinancement ciblé');
-assert.equal(glossaryAtlasEntries.length, 433, 'Les nouvelles notions disposent de définitions courtes sourcées');
+assert.equal(glossaryEntries.length, 824, 'Le corpus conserve ses notions et ajoute l’assurance D&O');
+assert.equal(glossaryAtlasEntries.length, 434, 'Les nouvelles notions disposent de définitions courtes sourcées');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
