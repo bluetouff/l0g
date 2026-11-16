@@ -82,6 +82,20 @@ marge d'au moins 48 px, soit environ 50 px, avant le pied de carte. Préserver l
 validées. Vérifier ensemble l'image d'ouverture et les cartes de partage FR/EN,
 y compris à l'échelle des aperçus sociaux.
 
+**Consigne permanente, précisée le 16 novembre 2026 : image continue sur toute
+la surface des OG.** L’illustration doit aller jusqu’aux quatre bords et rester
+présente sous le titre, la description et le pied de carte. Composer le sujet
+dès le départ pour le ratio 1200 × 630 et préserver ses éléments importants.
+Le bas doit s’assombrir progressivement avec un dégradé translucide qui laisse
+percevoir les détails de l’image et garantit la lisibilité du texte. Toute
+bande uniforme réservée au texte, rupture horizontale, image arrêtée avant le
+bas ou panneau opaque qui tronque visuellement l’illustration est à reprendre.
+Cette règle vaut aussi pour un SVG utilisé dans une carte OG. Les prompts de
+génération doivent demander une scène continue et sombre derrière le texte,
+plutôt qu’une zone vide. Inspecter l’illustration seule, puis les cartes FR/EN
+complètes, avant le push. Préserver la marge sous la description sans la
+transformer en bande vide dans l’image.
+
 ### 1.3 Écrire
 
 Sous le frontmatter, du markdown classique :
