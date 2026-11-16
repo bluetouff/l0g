@@ -1,0 +1,118 @@
+---
+title: "Nvidia : Washington vise les usages du calcul à distance"
+seoTitle: "Nvidia et BIS : les nouveaux contrôles du calcul distant | l0g"
+ogTitle: "Nvidia et les clients du cloud"
+description: "Le BIS annonce des contrôles sur les clients du calcul distant. Licences, vérifications et exceptions peuvent modifier les débouchés de Nvidia."
+pubDate: "2026-11-16T19:31:16+01:00"
+tags: ["Nvidia", "BIS", "Financement de l’IA", "États-Unis", "Asie", "Contrôles d’exportation"]
+draft: false
+ogImage: "/illustrations/news/nvidia-bis-cloud-v1.jpg"
+ogLayout: "immersive"
+quickTake:
+  fact: "Le BIS met en ligne une interim final rule sur les destinations des puces et les clients utilisant à distance les centres de données."
+  importance: "La clientèle accessible et les informations exigées des opérateurs peuvent peser sur la vente de calcul, les revenus contractuels et le financement des infrastructures."
+  uncertainty: "La version consultée conserve une date d’effet à compléter. L’application à un projet exige de vérifier les matériels, les usages et les contreparties."
+---
+
+import NvidiaCloudControls2026 from "../../components/infographics/NvidiaCloudControls2026.astro";
+import NvidiaCloudDiligence2026 from "../../components/infographics/NvidiaCloudDiligence2026.astro";
+
+**Une puce peut rester dans un centre de données étranger tout en fournissant du calcul à une entreprise chinoise. Washington veut suivre aussi cet usage.** Le **16 novembre**, le Bureau of Industry and Security, le BIS, annonce un texte qui combine de nouvelles licences par destination et un contrôle des clients accédant aux capacités à distance. Le communiqué attribue sa rédaction et son instruction au **Trésor et au Conseil de sécurité nationale**, le NSC. [S01](#source-S01)
+
+Le document de **132 pages** donne une suite précise aux propositions décrites dans [le volet XV sur Lutnick, Cantor et Bitdeer](/posts/nvidia-lutnick-cantor-exportations-bitdeer/). Le [XVI](/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/) examinait les vérifications commerciales dans une procédure taïwanaise. Ce dix-septième volet porte sur les informations que l’autorité américaine entend exiger de la chaîne du calcul. Les dispositions visent des catégories de technologies et de transactions, dont les produits Nvidia peuvent relever. [S02](#source-S02)
+
+Le BIS présente ce texte comme une **interim final rule**, une règle adoptée selon une procédure permettant de recueillir ensuite des commentaires. Sa version mise en ligne laisse toutefois la date d’effet dépendre d’une publication au *Federal Register* encore à renseigner. Au contrôle du **16 novembre à 18:30 UTC**, soit **19:30 à Paris**, aucune notice correspondante n’a été retrouvée dans les registres consultés. Les mécanismes analysés ici sont ceux du texte rendu public, avec ce calendrier encore incomplet. [S02](#source-S02) [S03](#source-S03)
+
+## Deux contrôles suivent la même infrastructure
+
+Le premier contrôle porte sur la destination. Le texte ajoute une exigence de licence pour les exportations, réexportations et transferts locaux de matériels avancés visés vers ou dans **le Brésil, l’Indonésie, la Malaisie, Singapour et la Thaïlande**. L’examen des demandes est prévu au cas par cas. Le BIS entend notamment apprécier l’efficacité des contrôles du pays et sa coopération avec les autorités américaines. [S02](#source-S02)
+
+Une exclusion concerne certains destinataires ou utilisateurs dont le siège, ou celui de la société mère ultime, est aux États-Unis. Elle dépend de déclarations au BIS précisant les parties, les matériels et les transactions. Le texte prévoit un reporting mensuel. Cette exclusion appartient au contrôle par destination ; les autres exigences des règles américaines EAR continuent d’appeler leur propre examen. [S02](#source-S02)
+
+Le second contrôle suit l’usage du calcul. Le nouveau **§744.24** soumet les transactions couvertes à licence lorsqu’il existe une connaissance de leur destination vers un centre donnant, ou devant donner, accès à une puissance dépassant le seuil prévu à des entreprises ayant leur siège, ou leur société mère ultime, à **Macao ou dans le groupe D:5**, qui comprend la Chine. Le mécanisme peut concerner des centres situés ailleurs que dans les cinq pays précédents. [S02](#source-S02)
+
+<NvidiaCloudControls2026 lang="fr" />
+
+Pour l’opérateur, il faut donc examiner à la fois le matériel reçu et les clients auxquels il vend du calcul. Le passage par un intermédiaire reste dans le champ décrit par le préambule lorsqu’il entraîne ou fournit des modèles pour le compte d’un acteur visé. La structure commerciale entre le fournisseur de puces et le laboratoire utilisateur devient une information de conformité. [S02](#source-S02)
+
+## Le seuil agrège la performance des machines
+
+Le nouveau contrôle retient un **TPP agrégé strictement supérieur à 12 millions**. Le *total processing performance* est un indice réglementaire calculé à partir des caractéristiques techniques des puces. Le [TPP agrégé](/glossaire/tpp-agrege/) additionne les performances des composants ou équipements appartenant aux catégories énumérées. Son calcul demande les références précises des matériels. [S02](#source-S02)
+
+Le texte prévoit aussi l’agrégation entre **centres liés**. La définition comprend les installations connectées numériquement pour partager des ressources, répartir les charges ou fonctionner comme un ensemble. Répartir une capacité entre plusieurs bâtiments peut donc laisser subsister le même examen. Un nombre de GPU, une puissance électrique en mégawatts ou une part de chiffre d’affaires ne suffisent pas à établir le franchissement du seuil. [S02](#source-S02)
+
+L’origine du matériel garde ainsi son importance, mais l’analyse se prolonge dans le réseau et dans les contrats d’accès. Pour une même infrastructure, la liste des clients et l’organisation des capacités peuvent changer au cours de la vie des serveurs.
+
+## Les informations clients engagent toute la chaîne
+
+Le texte détaille la connaissance du client, ou KYC (*Know Your Customer*). Il demande aux fournisseurs de disposer d’informations suffisantes sur les vérifications du centre étranger. Elles doivent notamment éclairer la détention ou le contrôle, direct ou indirect, des clients par des personnes situées à Macao ou en D:5, ou dont le siège ou la société mère ultime s’y trouve. Le texte prévoit un traitement particulier du refus ou de l’incapacité à transmettre ces informations : cette situation constitue un signal d’alerte donnant présomptivement connaissance du risque, sauf résolution avant la transaction. [S02](#source-S02)
+
+Cette rédaction donne une conséquence commerciale à une information manquante. Le fournisseur doit pouvoir expliquer sur quelles pièces repose sa décision. L’opérateur doit connaître sa clientèle et ses usages assez précisément pour répondre. Les contrôles remontent ainsi du laboratoire achetant du calcul vers le centre qui le fournit, puis vers les entreprises livrant les équipements.
+
+<NvidiaCloudDiligence2026 lang="fr" />
+
+Un changement ultérieur d’usage appelle également un examen. Pour les transactions réalisées après la date de publication prévue, le texte impose d’avertir le destinataire qu’une autorisation du BIS sera nécessaire si les équipements passent à l’usage couvert par le nouveau contrôle. L’opérateur peut donc devoir obtenir cette autorisation alors qu’il n’était pas partie à l’expédition initiale. [S02](#source-S02)
+
+Le [contrôle de l’utilisateur final](/glossaire/utilisateur-final/) devient alors un suivi de la relation. Au moment d’une vente, il porte sur le projet connu. Pendant l’exploitation, il peut concerner une capacité réaffectée, un client remplacé ou un usage modifié. Ces situations demandent de relier les pièces commerciales aux caractéristiques techniques des machines.
+
+## Les recommandations commerciales ont un traitement étroit
+
+Le nouveau §744.24 prévoit une exception pour le calcul exclusivement consacré à des **systèmes de recommandation commerciale**, comme le classement de produits ou de contenus selon le comportement des utilisateurs. Elle exige de transmettre au BIS l’identité de l’entreprise concernée, la performance agrégée et les diligences justifiant cet usage exclusif. [S02](#source-S02)
+
+La définition écarte les systèmes produisant des contenus nouveaux, qu’il s’agisse de texte, d’images, d’audio, de vidéo ou de logiciel, y compris lorsqu’ils remplissent aussi une fonction de recommandation. Il faut donc examiner les fonctions réellement assurées et les modèles incorporés. Une simple étiquette commerciale sur le service serait insuffisante pour démontrer les conditions de cette exception. [S02](#source-S02)
+
+L’articulation avec les autres dispositions reste déterminante. Dans son explication du §744.23, le BIS rappelle que certains usages distants étaient déjà couverts par ses contrôles, notamment lorsqu’un acteur D:5 ou de Macao achetait pour son compte ou représentait l’utilisateur distant principal. Le préambule mentionne aussi une licence après transition pour certains services de recommandation au titre de ce cadre. L’exception du nouveau paragraphe doit donc être lue avec l’ensemble des bases applicables à la transaction. [S02](#source-S02)
+
+## Les centres déjà actifs doivent aussi examiner la transition
+
+Pour les centres fournissant déjà les capacités visées avant la publication, le texte demande **d’obtenir une licence dans les 90 jours suivant l’entrée en vigueur** pour poursuivre les services, sous peine de restrictions sur les exportations futures. L’exigence porte sur l’obtention de la licence. Le point de départ du délai dépend encore de la date laissée à compléter dans la version consultée. [S02](#source-S02)
+
+Cette disposition fait progresser l’analyse du XV, qui présentait les paramètres d’un projet rapporté par la presse. Le texte du BIS permet désormais d’examiner un dispositif transitoire visant certaines activités existantes. Son application à une installation précise demande le calendrier des opérations, les équipements concernés et les usages couverts.
+
+## La clientèle accessible compte dans le financement
+
+Le cas **A201 de Bitdeer, en Malaisie**, illustre l’intérêt économique de ces distinctions. Dans ses résultats du **10 novembre**, l’opérateur cible une mise en service et un déploiement complet au **deuxième trimestre 2027**. Il déclare des engagements couvrant **plus de 70 % de la capacité**, représentant **plus de 1,7 milliard de dollars de revenus attendus sur cinq ans**. Ces engagements et ces prévisions précèdent le texte du BIS. [S04](#source-S04)
+
+Pour apprécier le traitement d’un tel projet, il faut connaître les destinataires, les clients distants, la performance des équipements et l’usage du calcul. L’enjeu financier apparaît ensuite : une capacité construite doit trouver des clients autorisés, dans les délais prévus. Si une autorisation devient nécessaire ou qu’un client doit être remplacé, l’analyse porte sur le calendrier de facturation et les droits de chaque partie au contrat.
+
+Les propres engagements de Nvidia donnent une autre raison de suivre ces débouchés. Son **10-Q arrêté au 26 juillet** décrit des accords dans lesquels des clouds achètent ses infrastructures et le fabricant réserve du calcul. Ces clouds peuvent vendre la capacité à des clients tiers à de meilleures conditions. L’engagement restant de Nvidia diminue à mesure que la capacité est utilisée par ces tiers ou par le groupe pour sa recherche. [S05](#source-S05)
+
+Le [volet XIV](/posts/nvidia-apres-huang-financement-clients/) expliquait ce circuit. Le texte du BIS ajoute une question à l’examen des clients susceptibles de remplir les machines : leur accès est-il compatible avec les autorisations requises ? Les conséquences sur un financement dépendront des contrats concernés, des licences et des possibilités de réaffectation.
+
+Le levier public documenté porte ainsi sur l’accès au marché et sur les conditions d’utilisation des équipements. Le Trésor et le NSC apparaissent dans la fabrication annoncée de la règle, tandis que le BIS conserve ses mécanismes de licence et de contrôle. Pour Nvidia et ses partenaires, les prochaines pièces décisives seront les dates opposables, les autorisations, les réponses des opérateurs et les adaptations contractuelles effectivement exécutées. [S01](#source-S01) [S02](#source-S02)
+
+## Sources
+
+Collecte ciblée le **16 novembre 2026**. Le communiqué original porte cette date, sans heure initiale établie. Le PDF réglementaire a été téléchargé et comparé à la version recueillie plus tôt. Les pièces financières décrivent des situations antérieures ; leurs dates sont conservées.
+
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · BIS, Commerce américain · Publication : 2026-11-16, heure originale inconnue · Consulté le : 2026-11-16</span>
+<a href="https://media.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology" target="_blank" rel="noopener noreferrer">BIS Issues Rule Addressing Remote Access to American Super Intelligence Technology</a>
+<details><summary>Passages et périmètre</summary><p>Communiqué original intégral lu par HTTP puis récupération directe Firecrawl sans cache à partir de 18:17 UTC. Attribution de la rédaction et de l’instruction au Treasury et au National Security Council. Le <a href="https://media.bis.gov/sites/default/files/documents/BIS%20Issues%20Rule%20Addressing%20Remote%20Access%20to%20American%20Super%20Intelligence%20Technology.pdf" target="_blank" rel="noopener noreferrer">PDF officiel du communiqué</a> porte également le 16 novembre. La date du 15 affichée par une extraction indexée antérieure n’est pas retenue face aux originaux. Les métadonnées de modification du fichier ne datent pas la première publication.</p></details>
+</li>
+<li id="source-S02">
+<span class="source-meta">S02 · BIS · Publication : mise à disposition annoncée le 2026-11-16, heure inconnue · Date d’effet calendaire non établie · Consulté le : 2026-11-16</span>
+<a href="https://media.bis.gov/media/documents/rin-0694-ak50.pdf" target="_blank" rel="noopener noreferrer">Addressing Remote Access to Advanced Semiconductors, RIN 0694-AK50</a>
+<details><summary>Passages et périmètre</summary><p>PDF original de 132 pages, récupéré par HTTP à 18:16:59 UTC, identique à celui lu à 16:42 UTC. Pages pertinentes lues : 1–18, 26–37, 43–44 et 81. Page 3 : dates de publication et d’effet à compléter. Pages 26–30 : cinq destinations, exclusion sous conditions et déclarations. Pages 33–37 : nouveau §744.24, seuil strict, connaissance, vérification des clients, exception de recommandation, transition et changement d’usage. Pages 12–14 et 31–32 : articulation avec §744.23. Pages 44 et 81 : TPP agrégé et calcul technique du TPP. Les pages 3 et 36 ont également été inspectées visuellement. Le texte traite aussi de la révocation du cadre AI Diffusion et d’autres modifications, dont cet article ne donne pas une analyse exhaustive.</p></details>
+</li>
+<li id="source-S03">
+<span class="source-meta">S03 · Office of the Federal Register · Publication : flux courant du 2026-11-16 · Consulté le : 2026-11-16 à 18:30:18 UTC</span>
+<a href="https://www.federalregister.gov/api/v1/public-inspection-documents/current.json" target="_blank" rel="noopener noreferrer">Registre courant des documents proposés à l’inspection publique</a>
+<details><summary>Passages et périmètre</summary><p>Les 100 notices renvoyées ont été inspectées, sans correspondance avec le titre, le RIN ou le BIS. Le flux affiche des mises à jour des dépôts ordinaires à 13:45 UTC et spéciaux à 16:15 UTC. Les recherches complémentaires dans les documents du Federal Register par RIN et titre exact n’ont pas donné de résultat au même contrôle. Ce constat concerne les surfaces et horaires consultés ; il ne vaut pas certification de l’absence du texte dans tout circuit administratif. La version BIS garde elle-même une date d’effet variable.</p></details>
+</li>
+<li id="source-S04">
+<span class="source-meta">S04 · Bitdeer / SEC · Publication : 2026-11-10, heure originale inconnue · Dépôt : 2026-11-10 à 13:38:39 UTC · Consulté le : 2026-11-16 à 18:22:30 UTC</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1899123/000121390026117797/ea031140301ex99-1.htm" target="_blank" rel="noopener noreferrer">Résultats du troisième trimestre 2026 : état du projet A201</a>
+<details><summary>Passages et périmètre</summary><p>Texte original relu par HTTP. Power Infrastructure Summary, page 4, ligne A201 : engagements couvrant plus de 70 % de la capacité, plus de 1,7 milliard USD de revenus attendus sur cinq ans et cible de déploiement et mise en service au T2 2027. Déclarations de l’opérateur, distinctes des recettes réalisées. La ligne n’identifie pas les clients et ne détermine pas le traitement juridique du projet sous la règle BIS annoncée.</p></details>
+</li>
+<li id="source-S05">
+<span class="source-meta">S05 · Nvidia / SEC · Dépôt : 2026-08-26 à 20:36 UTC · Comptes au : 2026-07-26 · Publication : 2026-08-26 · Consulté le : 2026-11-16 à 18:22:30 UTC</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm" target="_blank" rel="noopener noreferrer">Form 10-Q : accords de capacité avec les clouds IA</a>
+<details><summary>Passages et périmètre</summary><p>Texte original relu par HTTP. Note 10, pages imprimées 18–19, et MD&amp;A, page 26 : achats d’infrastructures, engagements de services cloud, possibilité de vendre la capacité à des clients tiers et diminution des engagements avec l’utilisation. Mécanisme déjà publié et antérieur au départ de Huang. Ces passages n’identifient pas un contrat modifié à cause de la règle du 16 novembre.</p></details>
+</li>
+</ol>
+
+## Limites
+
+L’analyse porte sur la version BIS effectivement recueillie, dont le calendrier d’effet reste à compléter. Les pages financières servent à expliquer les mécanismes économiques ; elles n’établissent pas l’exposition d’un contrat précis au nouveau contrôle. Aucun montant de perte, retrait de financement, licence individuelle accordée ou refusée, ni modification contractuelle liée à ce texte n’a été documenté dans cette collecte. L’application à un projet exige ses caractéristiques techniques, ses clients, ses usages et les autres règles EAR pertinentes.
