@@ -2,6 +2,7 @@
 // Keep new SVG suites here: svg-test-suites.test.mjs rejects missing or duplicate coverage.
 export const SVG_TEST_SUITES = Object.freeze({
   source: Object.freeze([
+    'scripts/nvidia-cantor-export-infographics.test.mjs',
     'scripts/nvidia-client-financing-infographics.test.mjs',
     'scripts/nvidia-succession-export-infographics.test.mjs',
     'scripts/nvidia-contract-circuits-infographics.test.mjs',

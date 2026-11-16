@@ -211,6 +211,17 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {"slug": "qualification-industrielle", "sigle": "Industrial qualification", "nom": "Evaluating a technology for a production application", "def": "Testing and evaluation used to assess a technology for a defined industrial application. In semiconductors, this may examine process consistency, compatibility with other production steps and effects on product quality. Results inform a decision against the customer’s requirements. Sales terms and purchase orders are then governed by the commercial agreement.", "guide": "/en/analysis/sk-hynix-preuve-industrielle/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "SK hynix and industrial proof", "href": "/en/analysis/sk-hynix-preuve-industrielle/", "kind": "article"}], "sources": [{"label": "NIST, Prototyping Platforms for Emerging Technologies", "href": "https://www.nist.gov/programs-projects/prototyping-platforms-emerging-technologies", "kind": "source"}, {"label": "imec, NanoIC pilot line", "href": "https://www.imec-int.com/en/what-we-offer/nanoic-pilot-line-accelerating-beyond-2nm-innovation-across-europe", "kind": "source"}], "related": ["wafer"]}},
   {
+    slug: 'programme-atm', sigle: 'ATM programme', nom: 'At-the-market share issuance',
+    def: 'A programme allowing a company to sell shares over time through designated intermediaries. Instructions and contractual terms determine the sales completed, their price and the intermediary’s compensation. The agreement may also permit an intermediary to buy shares as principal. An authorized ceiling describes funding capacity, while net proceeds depend on the transactions executed and their costs.',
+    guide: '/en/analysis/nvidia-lutnick-cantor-bitdeer-export-controls/',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Lutnick, Cantor and the financial stakes in Nvidia chips', href: '/en/analysis/nvidia-lutnick-cantor-bitdeer-export-controls/', kind: 'article' }],
+      sources: [{ label: 'Bitdeer / SEC, prospectus dated 10 August 2026', href: 'https://www.sec.gov/Archives/edgar/data/1899123/000121390026087060/ea030073702-424b5_bitdeer.htm', detail: 'Cover, The Offering and Plan of Distribution: instructions, sales as agent or principal and commissions. An example of an ATM programme.', kind: 'source' }],
+      related: ['vendor-financing', 'dette-convertible'],
+    },
+  },
+  {
     slug: 'vendor-financing', sigle: 'Vendor financing', nom: 'A supplier helps fund its customers',
     def: 'Financial support through which a supplier facilitates customers’ purchases or the development of their business. It can involve credit, an equity investment or commitments that help finance infrastructure. Contract terms determine the funds available, payment obligations and the exposure retained by the supplier.',
     guide: '/en/analysis/nvidia-after-huang-customer-financing/',
