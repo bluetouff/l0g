@@ -68,8 +68,8 @@ test('every curated investigation is classified for the Watch topic in both lang
   }
 });
 
-test('the Nvidia series preserves thirteen published bilingual instalments in publication order', () => {
-  assert.equal(aiFinancingNvidiaIds.length, 13);
+test('the Nvidia series preserves fourteen published bilingual instalments in publication order', () => {
+  assert.equal(aiFinancingNvidiaIds.length, 14);
   assert.equal(new Set(aiFinancingNvidiaIds).size, aiFinancingNvidiaIds.length);
   const pairs = aiFinancingNvidiaIds.map(id => bilingualPair(id));
   assert.equal(new Set(pairs.map(pair => pair.frenchId)).size, pairs.length);

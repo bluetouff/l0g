@@ -211,6 +211,17 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {"slug": "qualification-industrielle", "sigle": "Industrial qualification", "nom": "Evaluating a technology for a production application", "def": "Testing and evaluation used to assess a technology for a defined industrial application. In semiconductors, this may examine process consistency, compatibility with other production steps and effects on product quality. Results inform a decision against the customer’s requirements. Sales terms and purchase orders are then governed by the commercial agreement.", "guide": "/en/analysis/sk-hynix-preuve-industrielle/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "SK hynix and industrial proof", "href": "/en/analysis/sk-hynix-preuve-industrielle/", "kind": "article"}], "sources": [{"label": "NIST, Prototyping Platforms for Emerging Technologies", "href": "https://www.nist.gov/programs-projects/prototyping-platforms-emerging-technologies", "kind": "source"}, {"label": "imec, NanoIC pilot line", "href": "https://www.imec-int.com/en/what-we-offer/nanoic-pilot-line-accelerating-beyond-2nm-innovation-across-europe", "kind": "source"}], "related": ["wafer"]}},
   {
+    slug: 'vendor-financing', sigle: 'Vendor financing', nom: 'A supplier helps fund its customers',
+    def: 'Financial support through which a supplier facilitates customers’ purchases or the development of their business. It can involve credit, an equity investment or commitments that help finance infrastructure. Contract terms determine the funds available, payment obligations and the exposure retained by the supplier.',
+    guide: '/en/analysis/nvidia-after-huang-customer-financing/',
+    sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Nvidia after Huang: customer financing', href: '/en/analysis/nvidia-after-huang-customer-financing/', kind: 'article' }],
+      sources: [{ label: 'Nvidia / SEC, Form 10-Q as of 26 July 2026', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000075/nvda-20260726.htm', detail: 'Notes 7 and 10: payment terms, commitments and AI cloud agreements. MD&A: ecosystem financing and investments.', kind: 'source' }],
+      related: ['dette-convertible', 'garantie-de-pret'],
+    },
+  },
+  {
     slug: 'exim', sigle: 'EXIM', nom: 'Export-Import Bank of the United States',
     def: 'The US government’s export credit agency. It facilitates sales abroad through direct loans, guarantees and insurance. Financing for a buyer or project remains subject to the eligibility rules, credit assessment and repayment requirements applicable to each transaction.',
     guide: '/en/analysis/nvidia-succession-washington-ai-champions/',

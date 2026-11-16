@@ -30,6 +30,7 @@ export const aiFinancingSourceArticles: Record<string, string> = {
   'nvidia-huang-teter-board-inquiry-port-klang': 'nvidia-huang-teter-enquete-conseil-port-klang',
   'nvidia-after-huang-contracts-guarantees-crisis-costs': 'nvidia-apres-huang-contrats-garanties-cout-crise',
   'nvidia-succession-washington-ai-champions': 'nvidia-succession-washington-champions-ia',
+  'nvidia-after-huang-customer-financing': 'nvidia-apres-huang-financement-clients',
   'anthropic-supplier-financing-ipo': 'anthropic-financement-fournisseurs-ipo',
   'broadcom-anthropic-blackstone-63-billion-risk': 'broadcom-anthropic-blackstone-risque-63-milliards',
   'ai-circular-financing': 'financement-circulaire-ia',
@@ -68,6 +69,7 @@ export const aiFinancingNvidiaIds = [
   'nvidia-huang-teter-board-inquiry-port-klang',
   'nvidia-after-huang-contracts-guarantees-crisis-costs',
   'nvidia-succession-washington-ai-champions',
+  'nvidia-after-huang-customer-financing',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [
