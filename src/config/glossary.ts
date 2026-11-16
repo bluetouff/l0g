@@ -933,6 +933,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Sanctions secondaires', nom: 'Pression américaine sur une personne étrangère', def: "Mesures qui placent une personne ou une banque non américaine devant un choix : cesser certaines opérations avec une cible sanctionnée ou perdre un accès important aux États-Unis, notamment aux comptes correspondants en dollars. Elles ne créent pas une interdiction universelle ; elles utilisent l'accès au marché et au système financier américains comme moyen de contrainte.", guide: '/posts/iran-jusqu-ou-bessent-peut-fermer-le-dollar/' },
       { sigle: 'IEEPA', nom: 'International Emergency Economic Powers Act', def: "Loi américaine de 1977 accordant au président des pouvoirs économiques d’urgence face à certaines menaces d’origine étrangère. Elle sert notamment de base à des sanctions et à des restrictions sur les transactions. Le 20 février 2026, la Cour suprême a jugé qu’elle n’autorise pas le président à imposer des droits de douane. Cette décision porte sur l’IEEPA, pas sur toutes les autres bases légales des tarifs américains." },
       { sigle: 'Contrôle export', nom: 'Export control', def: "Restriction administrative imposée à l'exportation de biens, logiciels ou technologies sensibles. Dans les semi-conducteurs, il vise notamment les puces de calcul avancé, les équipements de fabrication, les logiciels de conception et certains usages militaires ou de supercalcul.", guide: '/posts/nvidia-trump-alerte-sommet/' },
+      { sigle: 'Présomption d’innocence', nom: 'Preuve de la culpabilité en matière pénale', def: 'Principe selon lequel une personne est tenue pour innocente jusqu’à l’établissement légal de sa culpabilité. À Taïwan, l’article 154 du Code de procédure pénale maintient cette présomption jusqu’à une condamnation définitive et exige que les faits constitutifs de l’infraction soient établis par des preuves. La poursuite, les conditions de liberté provisoire et le jugement de la culpabilité répondent à des objets différents.', guide: '/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/' },
       {
         sigle: 'Utilisateur final', nom: 'End-user dans les règles américaines EAR',
         def: 'Dans les règles américaines EAR, personne située à l’étranger qui reçoit et utilise finalement les biens, logiciels ou technologies exportés ou réexportés. Elle peut être l’acheteur ou le destinataire final. Le transitaire et les autres intermédiaires remplissent des rôles distincts. Identifier cet utilisateur demande de suivre l’opération au-delà de la seule adresse de livraison.',
@@ -1323,6 +1324,11 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'presomption-d-innocence': {
+    articles: [{ label: 'Nvidia à Taïwan : démarches politiques et procédure judiciaire', href: '/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/', kind: 'article' }],
+    sources: [{ label: 'Ministère taïwanais de la Justice, Code de procédure pénale, article 154', href: 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0010001&flno=154', detail: 'Présomption jusqu’à une condamnation définitive et établissement des faits par les preuves. Texte officiel chinois consulté le 16 novembre 2026.', kind: 'source' }],
+    related: ['chaine-de-conservation-de-la-preuve'],
+  },
   'programme-atm': {
     articles: [{ label: 'Lutnick, Cantor et les intérêts financiers des puces', href: '/posts/nvidia-lutnick-cantor-exportations-bitdeer/', kind: 'article' }],
     sources: [{ label: 'Bitdeer / SEC, prospectus du 10 août 2026', href: 'https://www.sec.gov/Archives/edgar/data/1899123/000121390026087060/ea030073702-424b5_bitdeer.htm', detail: 'Couverture, The Offering et Plan of Distribution : instructions, ventes par agent ou principal et commissions. Exemple de programme ATM.', kind: 'source' }],

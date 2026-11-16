@@ -209,6 +209,17 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'presomption-d-innocence', sigle: 'Presumption of innocence', nom: 'Evidence and criminal guilt',
+    def: 'A criminal-law principle requiring a person to be treated as innocent until guilt is legally established. Article 154 of Taiwan’s Code of Criminal Procedure preserves that presumption until a final conviction and requires criminal facts to be based on evidence. Prosecution, interim custody decisions and the determination of guilt have different procedural purposes.',
+    guide: '/en/analysis/nvidia-taiwan-political-outreach-server-trial/',
+    sectionTitle: 'Digital economy & data', accent: 'var(--color-signal)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Nvidia in Taiwan: political outreach and court proceedings', href: '/en/analysis/nvidia-taiwan-political-outreach-server-trial/', kind: 'article' }],
+      sources: [{ label: 'Taiwan Ministry of Justice, Code of Criminal Procedure, article 154', href: 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0010001&flno=154', detail: 'Presumption until final conviction and criminal facts based on evidence. Official Chinese text accessed on 16 November 2026.', kind: 'source' }],
+      related: ['chaine-de-conservation-de-la-preuve'],
+    },
+  },
   {"slug": "qualification-industrielle", "sigle": "Industrial qualification", "nom": "Evaluating a technology for a production application", "def": "Testing and evaluation used to assess a technology for a defined industrial application. In semiconductors, this may examine process consistency, compatibility with other production steps and effects on product quality. Results inform a decision against the customer’s requirements. Sales terms and purchase orders are then governed by the commercial agreement.", "guide": "/en/analysis/sk-hynix-preuve-industrielle/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "SK hynix and industrial proof", "href": "/en/analysis/sk-hynix-preuve-industrielle/", "kind": "article"}], "sources": [{"label": "NIST, Prototyping Platforms for Emerging Technologies", "href": "https://www.nist.gov/programs-projects/prototyping-platforms-emerging-technologies", "kind": "source"}, {"label": "imec, NanoIC pilot line", "href": "https://www.imec-int.com/en/what-we-offer/nanoic-pilot-line-accelerating-beyond-2nm-innovation-across-europe", "kind": "source"}], "related": ["wafer"]}},
   {
     slug: 'programme-atm', sigle: 'ATM programme', nom: 'At-the-market share issuance',
