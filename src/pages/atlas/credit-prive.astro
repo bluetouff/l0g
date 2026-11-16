@@ -13,9 +13,11 @@ const latestDate = dataset.milestones.at(-1)!.date;
     subject="crédit privé"
     intro="Qui apporte les capitaux, qui gère les fonds et qui emprunte ? Explorez les prêts aux entreprises autour d’Ares Capital et le crédit adossé à des actifs autour d’Apollo, d’Athene et d’ATLAS SP, jusqu’aux titrisations de Pagaya et aux feeders de Partners Group destinés aux assureurs."
     boundary="La carte couvre une sélection de relations publiées, principalement aux États-Unis. Un même acteur peut intervenir dans plusieurs circuits : cela n’établit pas qu’une banque finance un prêt précis, ni qu’elle garantit les autres participants. ATLAS SP désigne ici une société, distincte des atlas l0g."
-    selectedRelation="insurers-pg-rated-feeder"
+    selectedRelation="athene-credit-suisse-guarantees"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Qui garantit le prix différé d’Atlas ?', relation: 'athene-credit-suisse-guarantees', date: latestDate },
+      { label: 'Quels titres d’affiliés d’Atlas Athene détient-elle ?', relation: 'athene-atlas', date: latestDate },
       { label: 'Comment les assureurs investissent-ils via un feeder ?', relation: 'insurers-pg-rated-feeder', date: '2026-10-22' },
       { label: 'Comment Pagaya titrise-t-elle les prêts automobiles ?', relation: 'investors-rpm-securitization', date: latestDate },
       { label: 'Quelle émission porte les prêts personnels ?', relation: 'investors-paid-securitization', date: '2026-10-05' },
@@ -35,7 +37,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
-      <p class="credit-review"><strong>Ajouts vérifiés le <time datetime="2026-10-28">28 octobre 2026</time>.</strong> Le <a href="https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc">communiqué de Partners Group du 22 octobre</a> ajoute un feeder de 510 millions de dollars souscrit par des assureurs américains. Notes investment grade, notes junior et capital restent distingués. Le gérant ne publie ni les contrats, ni la ventilation des tranches, ni l’identité juridique du fonds sous-jacent. Le circuit de janvier n’est pas confondu avec celui d’octobre. Les autres observations et inventaires gardent leurs dates antérieures ; aucune actualisation générale des portefeuilles ARCC ou Athene n’est revendiquée.</p>
+      <p class="credit-review"><strong>Ajouts vérifiés le <time datetime="2026-11-16">16 novembre 2026</time>.</strong> Le <a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000085/ahl-20260930.htm">10-Q d’Athene du 5 novembre</a> chiffre à 6,5 milliards de dollars les titres d’affiliés d’Atlas détenus au 30 septembre. Il décrit aussi les garanties du prix différé dû par Atlas à Credit Suisse, représentées dans une relation distincte. Le <a href="https://www.sec.gov/Archives/edgar/data/1287750/000162828026067383/arcc-20260930.htm">rapport trimestriel d’ARCC</a> actualise l’encours de la facilité BNP. Les anciennes observations restent accessibles, avec leurs périodes propres pour les positions encore documentées au 30 juin.</p>
       <details>
       <summary id="credit-circuits-title">Comprendre les rôles dans le circuit du crédit privé</summary>
       <p>Dans les circuits présentés, ARCC prête aux entreprises tandis qu’ATLAS SP finance des portefeuilles de créances, dont des prêts personnels. Les banques restent présentes dans le financement des intermédiaires.</p>

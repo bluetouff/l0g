@@ -15,9 +15,11 @@ const latestDate = dataset.milestones.at(-1)!.date;
     subject="private credit"
     intro="Who supplies the capital, who manages the funds, and who borrows? Explore corporate lending around Ares Capital and asset-backed finance around Apollo, Athene and ATLAS SP, including Pagaya’s securitizations and Partners Group’s rated feeders for insurers."
     boundary="The map covers selected published relationships, mainly in the United States. One actor can participate in several financing chains: that does not establish that a bank funds a particular loan or guarantees the other participants. ATLAS SP is a company, separate from l0g’s financial atlases."
-    selectedRelation="insurers-pg-rated-feeder"
+    selectedRelation="athene-credit-suisse-guarantees"
     hubs={['arcc', 'atlas-sp', 'athene']}
     entryPoints={[
+      { label: 'Which guarantees support Atlas’s deferred purchase price?', relation: 'athene-credit-suisse-guarantees', date: latestDate },
+      { label: 'Which Atlas affiliate securities does Athene hold?', relation: 'athene-atlas', date: latestDate },
       { label: 'How do insurers invest through a rated feeder?', relation: 'insurers-pg-rated-feeder', date: '2026-10-22' },
       { label: 'How does Pagaya securitize auto loans?', relation: 'investors-rpm-securitization', date: latestDate },
       { label: 'Which issue contains personal loans?', relation: 'investors-paid-securitization', date: '2026-10-05' },
@@ -37,7 +39,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="credit-overview" aria-labelledby="credit-circuits-title">
-      <p class="credit-review"><strong>Additions verified on <time datetime="2026-10-28">28 October 2026</time>.</strong> <a href="https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc">Partners Group’s 22 October release</a> adds a $510 million feeder subscribed by US insurers. Investment grade notes, junior notes and equity remain distinct. The manager does not disclose contracts, tranche allocations or the underlying fund’s legal identity. January’s financing is kept separate from October’s vehicle. Other observations and portfolio inventories retain their earlier dates; no fresh review of ARCC’s or Athene’s whole portfolio is claimed.</p>
+      <p class="credit-review"><strong>Additions verified on <time datetime="2026-11-16">16 November 2026</time>.</strong> <a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000085/ahl-20260930.htm">Athene’s 5 November 10-Q</a> reports $6.5 billion of Atlas affiliate securities held at September 30. It also documents the guarantees supporting Atlas’s deferred purchase price owed to Credit Suisse, shown in a separate relationship. <a href="https://www.sec.gov/Archives/edgar/data/1287750/000162828026067383/arcc-20260930.htm">ARCC’s third-quarter filing</a> updates the BNP facility balance. Earlier observations remain available, including holdings still documented at June 30.</p>
       <details>
         <summary id="credit-circuits-title">Understand the roles in private credit</summary>
         <p>In these financing chains, ARCC lends to companies while ATLAS SP finances portfolios of receivables, including personal loans. Banks remain involved in funding the intermediaries.</p>

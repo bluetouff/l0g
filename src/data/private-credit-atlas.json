@@ -80,6 +80,20 @@
       "url": "https://www.partnersgroup.com/news-and-views/press-releases/corporate-news/detail?news_id=ac75f52a-67b8-427a-8a95-3bf8855bf5fc",
       "publishedOn": "2026-10-22",
       "locator": "Puces et quatre premiers paragraphes : levée déclarée, assureurs américains, notes investment grade et junior, participations au capital et stratégie evergreen."
+    },
+    {
+      "id": "arcc-q3-2026",
+      "title": "Ares Capital : financement bancaire au troisième trimestre 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1287750/000162828026067383/arcc-20260930.htm",
+      "publishedOn": "2026-10-27",
+      "locator": "Note 5, tableau des financements et rubrique BNP Funding Facility : capacité et principal restant dû au 30 septembre, en millions de dollars. Dépôt du 27 octobre."
+    },
+    {
+      "id": "athene-q3-2026",
+      "title": "Athene : rapport trimestriel au 30 septembre 2026",
+      "url": "https://www.sec.gov/Archives/edgar/data/1527469/000152746926000085/ahl-20260930.htm",
+      "publishedOn": "2026-11-05",
+      "locator": "Note 11, Related Parties, rubriques Apollo et Atlas : gestion, détention indirecte et titres disponibles à la vente. Note 12, Assurance Letter : prix différé et ordre des garanties envers Credit Suisse. Dépôt du 5 novembre."
     }
   ],
   "nodes": [
@@ -236,6 +250,13 @@
       "role": "Crédit privé evergreen",
       "column": 2,
       "row": 5
+    },
+    {
+      "id": "credit-suisse",
+      "label": "Credit Suisse AG",
+      "role": "Créancier nommé dans le 10-Q",
+      "column": 2,
+      "row": 3
     }
   ],
   "relations": [
@@ -336,6 +357,19 @@
           "sources": [
             "arcc-q2-2026"
           ]
+        },
+        {
+          "publishedOn": "2026-10-27",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Facilité BNP · situation au 30 septembre",
+          "claim": "Le 10-Q d’ARCC indique une capacité de 1 465 millions de dollars et un principal restant dû de 733 millions pour la facilité BNP d’ARCC FB Funding au 30 septembre 2026.",
+          "limit": "La capacité reste soumise à la base d’emprunt et aux conditions du crédit. L’encours est celui du véhicule, sans affectation publiée à un emprunteur final précis.",
+          "watch": "Tirages, remboursements et actifs donnés en garantie.",
+          "sources": [
+            "arcc-q3-2026"
+          ]
         }
       ]
     },
@@ -396,6 +430,19 @@
           "sources": [
             "athene-q2-2026"
           ]
+        },
+        {
+          "publishedOn": "2026-11-05",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Mandat de gestion · troisième trimestre",
+          "claim": "Athene indique dans son rapport au 30 septembre 2026 qu’Apollo gère la quasi-totalité de ses investissements. Le mandat comprend la gestion directe, l’allocation d’actifs et des services d’appui.",
+          "limit": "Les placements et obligations d’Athene appartiennent au périmètre de l’assureur. Le mandat porte sur leur gestion.",
+          "watch": "Commissions, gouvernance et transactions entre affiliés.",
+          "sources": [
+            "athene-q3-2026"
+          ]
         }
       ]
     },
@@ -436,6 +483,19 @@
           "sources": [
             "apollo-q2-2026"
           ]
+        },
+        {
+          "publishedOn": "2026-11-05",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Capital d’Atlas · détention indirecte confirmée",
+          "claim": "Athene confirme détenir une participation au capital d’Atlas Securitized Products Holdings LP par ses investissements dans AAA et AAA Lux, au 30 septembre 2026.",
+          "limit": "La pièce décrit la chaîne de détention. Elle donne séparément le montant des titres d’affiliés d’Atlas détenus par Athene, sans chiffrer ici cette participation au capital.",
+          "watch": "Ventilation des participations dans AAA, AAA Lux et Atlas.",
+          "sources": [
+            "athene-q3-2026"
+          ]
         }
       ]
     },
@@ -455,6 +515,19 @@
           "watch": "Émetteurs, valorisation et engagements supplémentaires.",
           "sources": [
             "athene-q2-2026"
+          ]
+        },
+        {
+          "publishedOn": "2026-11-05",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Titres d’affiliés d’Atlas · 6,5 Md$",
+          "claim": "Athene déclare détenir 6,5 milliards de dollars de titres disponibles à la vente, émis par certains affiliés d’Atlas, au 30 septembre 2026.",
+          "limit": "Ce stock de titres est distinct de la participation indirecte au capital et des garanties du prix d’acquisition différé. Il ne chiffre pas les achats du trimestre ni les financements de Pagaya.",
+          "watch": "Émetteurs, valorisation et évolution du portefeuille.",
+          "sources": [
+            "athene-q3-2026"
           ]
         }
       ]
@@ -639,6 +712,26 @@
           ]
         }
       ]
+    },
+    {
+      "id": "athene-credit-suisse-guarantees",
+      "from": "athene",
+      "to": "credit-suisse",
+      "observations": [
+        {
+          "publishedOn": "2026-11-05",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Garanties du prix différé d’Atlas",
+          "claim": "Athene décrit une obligation d’Atlas de 2,5 milliards de dollars envers Credit Suisse pour l’acquisition d’actifs. L’ordre indiqué est Atlas, puis AAA, Apollo Asset Management (AAM), Athene Holding (AHL) et Athene Annuity Re (AARe). AAM et AARe ont chacune émis une lettre garantissant le montant intégral à Credit Suisse.",
+          "limit": "Le nœud Athene regroupe ici AHL et AARe. Les engagements successifs portent sur la même obligation et ne s’additionnent pas. Athene juge le paiement de ses garanties non probable et ne comptabilise aucun passif à ce titre.",
+          "watch": "Solde du prix différé, apports des investisseurs et éventuel appel des garanties.",
+          "sources": [
+            "athene-q3-2026"
+          ]
+        }
+      ]
     }
   ],
   "milestones": [
@@ -691,6 +784,16 @@
       "date": "2026-10-22",
       "label": "Partners Group · assureurs et feeder",
       "change": "Le communiqué ajoute un véhicule de 510 M$ et son accès à la stratégie evergreen. Notes de dette et capital sont distingués, sans attribuer les caractéristiques du véhicule de janvier à celui d’octobre."
+    },
+    {
+      "date": "2026-10-27",
+      "label": "ARCC · facilité BNP au troisième trimestre",
+      "change": "Le 10-Q actualise la capacité et le principal restant dû de la facilité BNP au 30 septembre. Les autres positions d’ARCC conservent leurs observations antérieures."
+    },
+    {
+      "date": "2026-11-05",
+      "label": "Athene · titres Atlas et garanties du prix différé",
+      "change": "Le 10-Q actualise le mandat Apollo, la détention indirecte d’Atlas et les titres d’affiliés au 30 septembre. Une relation distincte décrit les garanties du prix différé envers Credit Suisse, sans additionner ces engagements au portefeuille."
     }
   ]
 }

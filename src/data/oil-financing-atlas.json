@@ -101,6 +101,27 @@
       "url": "https://mb.cision.com/Public/24324/4414225/96db6173df9d2909.pdf",
       "publishedOn": "2026-10-23",
       "locator": "Page PDF 1 : calendrier, agent et quantités des transactions ; détail des achats dans les pages suivantes. Les prix de marché ne sont pas repris dans cet atlas."
+    },
+    {
+      "id": "volare-stabilisation-end-20261103",
+      "title": "Volare : fin de stabilisation et exercice de l’option",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-end-of-stabilisation-period-and-exercise-of-greenshoe-option/",
+      "publishedOn": "2026-11-03",
+      "locator": "Deux paragraphes après le rappel du placement : 1 185 769 actions achetées en stabilisation et option exercée pour 3 119 060 actions nouvelles. Restitution prévue à Trafigura Volare Holdings B.V. Les prix de marché ne sont pas repris."
+    },
+    {
+      "id": "volare-capital-20261104",
+      "title": "Volare : enregistrement des actions issues de l’option",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-new-share-capital-registered-1/",
+      "publishedOn": "2026-11-04",
+      "locator": "Deuxième paragraphe : actions issues de l’exercice émises et enregistrées, total de 73 738 539 actions ordinaires. Le capital social ne sert pas à calculer la trésorerie nette reçue."
+    },
+    {
+      "id": "volare-vessel-20261111",
+      "title": "Volare : accord d’achat d’un VLCC supplémentaire",
+      "url": "https://www.volareshipping.com/news/volare-shipping-ltd-acquisition-of-vlcc-newbuild/",
+      "publishedOn": "2026-11-11",
+      "locator": "Corps du communiqué, de l’accord d’acquisition aux conditions de réalisation : vendeur affilié à TML, prix de 210 millions de dollars, livraison prévue le 20 novembre et financement envisagé. Les huit commandes antérieures restent distinctes."
     }
   ],
   "nodes": [
@@ -738,6 +759,33 @@
           "sources": [
             "volare-stabilisation-20261013"
           ]
+        },
+        {
+          "publishedOn": "2026-11-03",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Option supplémentaire · 3 119 060 actions",
+          "claim": "Volare annonce que Clarksons a exercé l’option pour 3 119 060 actions nouvelles. Ces actions et les titres achetés en stabilisation doivent être restitués au prêteur de titres, Trafigura Volare Holdings B.V.",
+          "limit": "L’exercice annoncé est distinct des 300 000 actions d’octobre. La pièce du 3 novembre décrit l’exercice de l’option, avant confirmation de l’émission et de l’enregistrement.",
+          "watch": "Émission, enregistrement des actions et produit net du placement.",
+          "sources": [
+            "volare-stabilisation-end-20261103"
+          ]
+        },
+        {
+          "publishedOn": "2026-11-04",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Actions de l’option émises et enregistrées",
+          "claim": "Volare confirme l’émission et l’enregistrement des actions issues de l’exercice annoncé le 3 novembre. Le total atteint 73 738 539 actions ordinaires.",
+          "limit": "Le capital social déclaré et le nombre d’actions ne mesurent pas la trésorerie nette encaissée. Cette publication ne ventile pas l’actionnariat après stabilisation.",
+          "watch": "Produit net et répartition du capital après stabilisation.",
+          "sources": [
+            "volare-stabilisation-end-20261103",
+            "volare-capital-20261104"
+          ]
         }
       ]
     },
@@ -797,6 +845,19 @@
           "watch": "Signature des financements complémentaires et paiements du programme de construction.",
           "sources": [
             "volare-information-20261005"
+          ]
+        },
+        {
+          "publishedOn": "2026-11-11",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "announcement",
+          "label": "Achat de navire · financement sous conditions",
+          "claim": "Volare annonce un accord d’achat du VLCC M.T. VENI VIDI VICI à une affiliée de Trafigura Maritime Logistics pour 210 millions de dollars. Elle prévoit d’utiliser sa trésorerie et un financement locatif à long terme. La livraison est prévue le 20 novembre, en plus des huit navires déjà commandés pour 2027 et 2028.",
+          "limit": "La réalisation reste soumise au financement et aux conditions usuelles de clôture. Le bailleur et la répartition entre trésorerie et location ne sont pas publiés. Le besoin de liquidité de 59 millions estimé le 5 octobre reste une prévision historique, sans rapprochement actualisé dans cette pièce.",
+          "watch": "Signature du financement, réalisation, livraison et calendrier des paiements.",
+          "sources": [
+            "volare-vessel-20261111"
           ]
         }
       ]
@@ -886,6 +947,19 @@
             "volare-stabilisation-20261023",
             "volare-stabilisation-report-20261023"
           ]
+        },
+        {
+          "publishedOn": "2026-11-03",
+          "recordedOn": "2026-11-16",
+          "review": "reviewed",
+          "kind": "contract",
+          "label": "Stabilisation terminée · achats et option séparés",
+          "claim": "Volare annonce la fin de la stabilisation. Clarksons a acheté au total 1 185 769 actions entre le 7 et le 28 octobre. L’option exercée pour 3 119 060 actions nouvelles complète les titres à restituer au prêteur.",
+          "limit": "Les achats en Bourse sont des transactions de marché secondaire. Ils restent séparés des émissions d’actions et de leur produit pour Volare.",
+          "watch": "Règlement et restitution des titres au prêteur.",
+          "sources": [
+            "volare-stabilisation-end-20261103"
+          ]
         }
       ]
     }
@@ -935,6 +1009,21 @@
       "date": "2026-10-23",
       "label": "Volare · suivi de stabilisation",
       "change": "Le rapport couvre les achats de stabilisation jusqu’au 22 octobre. Les opérations de marché secondaire restent distinctes de l’émission de 300 000 actions annoncée le 13 ; aucune nouvelle levée n’est déduite de ces achats."
+    },
+    {
+      "date": "2026-11-03",
+      "label": "Volare · fin de stabilisation",
+      "change": "Les achats de stabilisation et le nouvel exercice de l’option sont documentés séparément. L’émission des actions supplémentaires reste à confirmer à cette date."
+    },
+    {
+      "date": "2026-11-04",
+      "label": "Volare · actions nouvelles enregistrées",
+      "change": "L’émetteur confirme l’émission et l’enregistrement des actions issues de l’option. Le total d’actions n’est pas assimilé au produit net du placement."
+    },
+    {
+      "date": "2026-11-11",
+      "label": "Volare · achat supplémentaire sous conditions",
+      "change": "Un accord d’achat de navire à 210 millions de dollars s’ajoute au programme antérieur. Trésorerie et financement locatif sont envisagés, avec une réalisation soumise au financement et aux conditions de clôture."
     }
   ]
 }

@@ -31,6 +31,13 @@ Chaque traduction porte `sourceSha256`, le SHA-256 du `JSON.stringify` du corpus
 
 ## Trois dates distinctes
 
+### Enrichissement revu le 16 novembre 2026
+
+- Crédit privé : le 10-Q d’Athene du 5 novembre actualise le mandat d’Apollo, la détention indirecte d’Atlas via AAA/AAA Lux et les 6,5 milliards de dollars de titres d’affiliés détenus au 30 septembre. La note 12 documente séparément les garanties du prix différé de 2,5 milliards envers Credit Suisse. Le nœud Athene regroupe explicitement AHL et AARe pour cette relation, avec l’ordre contractuel Atlas, AAA, AAM, AHL et AARe. Les garanties successives couvrent la même obligation et ne sont pas additionnées. Le 10-Q d’ARCC du 27 octobre actualise seulement la capacité et le principal restant dû de la facilité BNP. Les autres positions gardent leur période documentaire.
+- Pétrole : les communiqués Volare des 3 et 4 novembre distinguent fin de stabilisation, nouvel exercice de l’option, puis émission et enregistrement des actions. Les achats de marché secondaire restent séparés des actions émises. Le communiqué du 11 novembre ajoute l’achat prévu du VENI VIDI VICI pour 210 millions de dollars, financé par trésorerie et location à long terme sous conditions. La livraison du 20 novembre est une date prévue. Les huit navires commandés antérieurement et la prévision de liquidité du 5 octobre restent distincts.
+
+Les nouvelles observations portent `recordedOn: "2026-11-16"`. Les dates de publication et les anciennes observations restent inchangées. Les éditions anglaises sont relues avant renouvellement des empreintes. Aucun prix de marché, domaine source, calcul de perte ou nouveau modèle monétaire n’est ajouté.
+
 ### Enrichissement revu le 28 octobre 2026
 
 - IA : le 6-K de Nebius du 22 octobre ajoute le crédit à terme senior garanti de Citi. Un seul lien regroupe les trois coemprunteurs ; le principal de 3,5 milliards de dollars ne devient pas un tirage attesté. L’échéance est le 16 octobre 2027. Aucun financement avec les autres circuits de la carte n’est inféré.

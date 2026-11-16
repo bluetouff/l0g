@@ -18,14 +18,15 @@ const latestDate = dataset.milestones.at(-1)!.date;
     dataset={dataset}
     subject="financement du pétrole"
     intro="Qui paie le vendeur, qui avance l’argent et qui reçoit les recettes ? Suivez une cargaison, le financement d’un négociant, un prêt pétrolier au Tchad et le financement de la flotte Volare."
-    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Volare est coté depuis le 5 octobre et annonce un exercice partiel de l’option d’émission le 13. Les garanties de construction, les locations de navires, l’achat d’actions et les crédits d’entreprise de Trafigura restent distincts. Les deux rôles de Glencore restent séparés : acheteur et créancier."
-    selectedRelation="volare-clarksons-option"
+    boundary="Quatre cas documentés, à des périodes différentes. Les flèches représentent la relation décrite dans chaque fiche, pas toujours un versement. Les actions supplémentaires issues de l’option de Volare sont enregistrées le 4 novembre. Son achat de navire annoncé le 11 reste soumis au financement et aux conditions de clôture. Les garanties de construction, les locations de navires, l’achat d’actions et les crédits d’entreprise de Trafigura restent distincts. Les deux rôles de Glencore restent séparés : acheteur et créancier."
+    selectedRelation="volare-fleet-programme"
     hubs={['unicredit', 'trafigura', 'escrow']}
     entryPoints={[
+      { label: 'Comment Volare compte-t-il financer le navire supplémentaire ?', relation: 'volare-fleet-programme', date: latestDate },
       { label: 'Où en est le financement de Volare ?', relation: 'investors-volare', date: latestDate },
       { label: 'Comment les navires exploités sont-ils financés ?', relation: 'bocomm-volare-leasebacks', date: '2026-10-05' },
       { label: 'Quels engagements de construction Trafigura garantit-il ?', relation: 'trafigura-volare-construction-guarantees', date: '2026-10-05' },
-      { label: 'Comment se poursuit la stabilisation de Volare ?', relation: 'volare-clarksons-option', date: latestDate },
+      { label: 'Comment s’est terminée la stabilisation de Volare ?', relation: 'volare-clarksons-option', date: latestDate },
       { label: 'Quel financement reste à compléter ?', relation: 'volare-fleet-programme', date: '2026-10-05' },
       { label: 'Qui paie la cargaison ?', relation: 'unicredit-bp-payment', date: '2023-05-04' },
       { label: 'Que refinance Trafigura en octobre ?', relation: 'usd-cnh-trafigura-credit', date: '2026-10-01' },
@@ -39,7 +40,7 @@ const latestDate = dataset.milestones.at(-1)!.date;
     ]}
   >
     <section slot="overview" class="oil-overview" aria-labelledby="oil-circuits-title">
-      <p><strong>Ajouts vérifiés le <time datetime="2026-10-28">28 octobre 2026</time>.</strong> Le <a href="https://www.volareshipping.com/news/volare-shipping-ltd-stabilisation-notice-1/">communiqué Volare du 23 octobre</a> et son <a href="https://mb.cision.com/Public/24324/4414225/96db6173df9d2909.pdf">rapport de stabilisation</a> documentent des achats jusqu’au 22 octobre. La période annoncée court jusqu’au 3 novembre. Ces opérations de marché secondaire ne constituent pas une nouvelle levée de fonds et ne sont pas ajoutées aux 300 000 actions émises par exercice de l’option le 13 octobre. Les garanties aux chantiers, locations de navires et crédits de Trafigura conservent leurs pièces et dates antérieures ; le cas tchadien garde sa période documentaire.</p>
+      <p><strong>Ajouts vérifiés le <time datetime="2026-11-16">16 novembre 2026</time>.</strong> Volare annonce la <a href="https://www.volareshipping.com/news/volare-shipping-ltd-end-of-stabilisation-period-and-exercise-of-greenshoe-option/">fin de la stabilisation le 3 novembre</a>, puis confirme <a href="https://www.volareshipping.com/news/volare-shipping-ltd-new-share-capital-registered-1/">l’émission et l’enregistrement des actions de l’option le 4</a>. Son <a href="https://www.volareshipping.com/news/volare-shipping-ltd-acquisition-of-vlcc-newbuild/">accord d’achat d’un navire du 11 novembre</a> ajoute une acquisition à financer par la trésorerie et une location à long terme. La réalisation reste soumise au financement et aux conditions de clôture. Le programme antérieur, les garanties de construction et les facilités de Trafigura gardent leurs pièces propres.</p>
       <details>
         <summary id="oil-circuits-title">Quatre circuits pour lire le financement</summary>
         <ol>

@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "48fd8666df4f54e26a38bb165ee8a0268ede1512829dc7b75aab44f76e9c46cc",
+  "sourceSha256": "31e11b48137e01ceea72fa6c9c87e80a3458aa82db0e5f6967a8959b6ba86633",
   "title": "Private credit atlas",
   "sources": {
     "apollo-bnp-2024": {
@@ -45,6 +45,14 @@
     "pg-rated-feeder-20261022": {
       "title": "Partners Group: second rated feeder of 2026",
       "locator": "Bullet points and first four paragraphs: reported capital raised, US insurers, investment grade and junior notes, equity subscriptions and evergreen strategy."
+    },
+    "arcc-q3-2026": {
+      "title": "Ares Capital: bank financing in the third quarter of 2026",
+      "locator": "Note 5, debt table and BNP Funding Facility section: capacity and principal outstanding at September 30, in millions of dollars. Filed October 27."
+    },
+    "athene-q3-2026": {
+      "title": "Athene: quarterly report as of September 30, 2026",
+      "locator": "Note 11, Related Parties, Apollo and Atlas sections: management, indirect ownership and available-for-sale securities. Note 12, Assurance Letter: deferred price and guarantee sequence for Credit Suisse. Filed November 5."
     }
   },
   "nodes": {
@@ -135,6 +143,10 @@
     "pg-evergreen": {
       "label": "PG private loans strategy",
       "role": "Evergreen private credit"
+    },
+    "credit-suisse": {
+      "label": "Credit Suisse AG",
+      "role": "Creditor named in the 10-Q"
     }
   },
   "relations": {
@@ -185,6 +197,12 @@
           "claim": "BNP Paribas is a lender and the administrative agent for the ARCC FB Funding facility.",
           "limit": "The facility finances this vehicle; it does not identify a particular ultimate borrower.",
           "watch": "Drawdowns and collateral."
+        },
+        "2026-10-27": {
+          "label": "BNP facility · September 30 position",
+          "claim": "ARCC’s 10-Q reports $1,465 million of capacity and $733 million of principal outstanding under ARCC FB Funding’s BNP facility at September 30, 2026.",
+          "limit": "Capacity remains subject to the borrowing base and credit terms. The balance belongs to the financing vehicle, with no disclosed allocation to a specific ultimate borrower.",
+          "watch": "Drawdowns, repayments and pledged assets."
         }
       }
     },
@@ -215,6 +233,12 @@
           "claim": "Athene states that Apollo manages substantially all of its investments as of June 30, 2026.",
           "limit": "This mandate does not turn the insurer's obligations into debts of Apollo-managed funds.",
           "watch": "Mandate, fees and affiliate transactions."
+        },
+        "2026-11-05": {
+          "label": "Investment management · third quarter",
+          "claim": "Athene’s September 30, 2026 report states that Apollo manages substantially all of its investments. Services include direct investment management, asset allocation and operational support.",
+          "limit": "The investments and obligations remain within Athene’s insurance business. This relationship describes their management.",
+          "watch": "Fees, governance and related-party transactions."
         }
       }
     },
@@ -235,6 +259,12 @@
           "claim": "Athene's equity interest in Atlas is held through its investments in AAA and AAA Lux.",
           "limit": "This ownership chain is separate from the Atlas securities Athene holds directly.",
           "watch": "Changes in ownership interests and scope."
+        },
+        "2026-11-05": {
+          "label": "Atlas equity · indirect ownership confirmed",
+          "claim": "Athene confirms an equity investment in Atlas Securitized Products Holdings LP through AAA and AAA Lux at September 30, 2026.",
+          "limit": "The filing describes the ownership chain. It reports securities issued by Atlas affiliates separately, without quantifying this equity interest in that section.",
+          "watch": "Ownership breakdown across AAA, AAA Lux and Atlas."
         }
       }
     },
@@ -245,6 +275,12 @@
           "claim": "Athene reports holding available-for-sale securities issued by Atlas or its affiliates as of June 30, 2026.",
           "limit": "This link groups the Atlas and affiliate issuers cited in the report. It measures neither a loss nor a new flow of funds.",
           "watch": "Issuers, valuations and additional commitments."
+        },
+        "2026-11-05": {
+          "label": "Atlas affiliate securities · $6.5bn",
+          "claim": "Athene reports holding $6.5 billion of available-for-sale securities issued by certain Atlas affiliates at September 30, 2026.",
+          "limit": "This securities balance is separate from indirect equity ownership and deferred purchase price guarantees. It does not measure quarterly purchases or Pagaya financing.",
+          "watch": "Issuers, valuation and portfolio changes."
         }
       }
     },
@@ -341,6 +377,16 @@
           "watch": "The fund actually held, redemption terms and regulatory treatment specific to the securities."
         }
       }
+    },
+    "athene-credit-suisse-guarantees": {
+      "observations": {
+        "2026-11-05": {
+          "label": "Guarantees of Atlas’s deferred purchase price",
+          "claim": "Athene describes Atlas’s $2.5 billion deferred purchase obligation to Credit Suisse for acquired assets. The stated order is Atlas, then AAA, Apollo Asset Management (AAM), Athene Holding (AHL) and Athene Annuity Re (AARe). AAM and AARe each issued a letter guaranteeing the full amount to Credit Suisse.",
+          "limit": "The Athene node groups AHL and AARe here. Successive guarantees cover the same obligation and are not additive. Athene considers payment under its guarantees not probable and records no liability for them.",
+          "watch": "Deferred price balance, investor contributions and any guarantee call."
+        }
+      }
     }
   },
   "milestones": {
@@ -383,6 +429,14 @@
     "2026-10-22": {
       "label": "Partners Group · insurers and feeder",
       "change": "The release adds a $510m vehicle and its access to the evergreen strategy. Debt notes and equity are distinguished, without applying January’s vehicle terms to the October financing."
+    },
+    "2026-10-27": {
+      "label": "ARCC · third-quarter BNP facility",
+      "change": "The 10-Q updates BNP facility capacity and principal outstanding at September 30. Other ARCC holdings retain their earlier observations."
+    },
+    "2026-11-05": {
+      "label": "Athene · Atlas securities and deferred price guarantees",
+      "change": "The 10-Q updates Apollo’s mandate, indirect Atlas ownership and affiliate securities at September 30. A separate relationship describes deferred price guarantees for Credit Suisse, without adding them to the securities balance."
     }
   }
 }

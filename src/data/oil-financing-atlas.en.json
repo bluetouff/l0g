@@ -1,5 +1,5 @@
 {
-  "sourceSha256": "d56b63979520df6f94ebc340a7fd502229b6302838f9163ca835a7f0ee8a511c",
+  "sourceSha256": "04d0ed45dcea0f2bd26a06ac998e17d737a3a386338be4a28af2e656b58c225d",
   "title": "Oil financing atlas",
   "sources": {
     "sienna-judgment-2023": {
@@ -57,6 +57,18 @@
     "volare-stabilisation-report-20261023": {
       "title": "Volare: stabilisation transaction report",
       "locator": "PDF p. 1: dates, agent and transaction quantities; individual purchases follow. Market prices are not reproduced in this atlas."
+    },
+    "volare-stabilisation-end-20261103": {
+      "title": "Volare: end of stabilisation and option exercise",
+      "locator": "Two paragraphs after the placement recap: 1,185,769 shares bought in stabilisation and option exercised for 3,119,060 new shares. Shares to be returned to Trafigura Volare Holdings B.V. Market prices are not reproduced."
+    },
+    "volare-capital-20261104": {
+      "title": "Volare: registration of shares from the option exercise",
+      "locator": "Second paragraph: option shares issued and registered, taking the total to 73,738,539 ordinary shares. Stated share capital is not used to calculate net cash proceeds."
+    },
+    "volare-vessel-20261111": {
+      "title": "Volare: agreement to acquire an additional VLCC",
+      "locator": "Main release, from the acquisition agreement to its closing conditions: TML-affiliated seller, $210 million price, delivery scheduled for November 20 and intended financing. The eight earlier newbuild orders remain separate."
     }
   },
   "nodes": {
@@ -411,6 +423,18 @@
           "claim": "Volare reports issuing 300,000 additional shares through a partial exercise of the option, bringing the announced total to 70,619,479 shares.",
           "limit": "The option has not been exercised in full. Stabilization runs until November 3; this notice does not detail net cash received or final ownership.",
           "watch": "End of stabilization, further share issuance and final ownership."
+        },
+        "2026-11-03": {
+          "label": "Further option exercise · 3,119,060 shares",
+          "claim": "Volare announces that Clarksons exercised the option for 3,119,060 new shares. These and the shares bought in stabilisation are to be returned to the share lender, Trafigura Volare Holdings B.V.",
+          "limit": "This exercise is separate from October’s 300,000 shares. The November 3 release describes the option exercise, ahead of confirmation of issuance and registration.",
+          "watch": "Issuance, registration and net placement proceeds."
+        },
+        "2026-11-04": {
+          "label": "Option shares issued and registered",
+          "claim": "Volare confirms that the shares from the exercise announced on November 3 have been issued and registered. Total ordinary shares reach 73,738,539.",
+          "limit": "Stated share capital and the share count do not measure net cash received. The release does not provide the post-stabilisation ownership breakdown.",
+          "watch": "Net proceeds and ownership after stabilisation."
         }
       }
     },
@@ -439,6 +463,12 @@
           "claim": "The admission document estimates a liquidity shortfall of about $59 million over the twelve months after admission. No loan covering that need is signed at the document’s date.",
           "limit": "This forecast is neither a realized loss nor debt already due. Additional financing being sought is not secured; shipyard payments remain to be documented.",
           "watch": "Execution of further financing agreements and payments for the newbuild program."
+        },
+        "2026-11-11": {
+          "label": "Vessel acquisition · financing conditions outstanding",
+          "claim": "Volare announces an agreement to buy the VLCC M.T. VENI VIDI VICI from a Trafigura Maritime Logistics affiliate for $210 million. It plans to use existing cash and long-term lease financing. Delivery is scheduled for November 20, in addition to the eight vessels already ordered for 2027 and 2028.",
+          "limit": "Completion remains subject to financing and customary closing conditions. The lessor and cash-versus-lease split are undisclosed. The $59 million liquidity shortfall estimated on October 5 remains a historical forecast, without an updated reconciliation in this release.",
+          "watch": "Financing agreements, completion, delivery and payment schedule."
         }
       }
     },
@@ -481,6 +511,12 @@
           "claim": "Volare publishes a stabilisation report covering 13–22 October. Its table lists purchases on 15, 16, 20, 21 and 22 October; Clarksons remains the stabilisation agent. The announced stabilisation period runs from 5 October to 3 November 2026.",
           "limit": "These secondary-market purchases are not new capital raised for Volare. The release reports no further option exercise or additional net proceeds. The 300,000 shares announced on 13 October remain a separate event from the reported purchases.",
           "watch": "Final stabilisation report, return of borrowed shares and any further option exercise."
+        },
+        "2026-11-03": {
+          "label": "Stabilisation ended · purchases and option separated",
+          "claim": "Volare announces the end of stabilisation. Clarksons bought a total of 1,185,769 shares between October 7 and 28. The option for 3,119,060 new shares supplies the remaining shares to be returned to the lender.",
+          "limit": "Exchange purchases are secondary-market transactions. They remain separate from share issuance and the proceeds raised by Volare.",
+          "watch": "Settlement and return of shares to the lender."
         }
       }
     }
@@ -521,6 +557,18 @@
     "2026-10-23": {
       "label": "Volare · stabilisation update",
       "change": "The report documents stabilisation purchases through 22 October. Secondary-market transactions remain separate from the 300,000-share issuance announced on 13 October; no new capital raising is inferred from these purchases."
+    },
+    "2026-11-03": {
+      "label": "Volare · stabilisation ends",
+      "change": "Stabilisation purchases and the further option exercise are recorded separately. Issuance of the additional shares still awaits confirmation at this date."
+    },
+    "2026-11-04": {
+      "label": "Volare · new shares registered",
+      "change": "The issuer confirms issuance and registration of the option shares. The share count is not treated as net placement proceeds."
+    },
+    "2026-11-11": {
+      "label": "Volare · additional acquisition subject to conditions",
+      "change": "A $210 million vessel purchase agreement adds to the earlier fleet programme. Cash and lease financing are planned, with completion subject to financing and closing conditions."
     }
   }
 }
