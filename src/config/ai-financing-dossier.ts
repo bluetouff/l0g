@@ -28,6 +28,8 @@ export const aiFinancingSourceArticles: Record<string, string> = {
   'nvidia-china-ai-credit-us-controls-rene-haas': 'nvidia-credit-chinois-controles-us-rene-haas',
   'nvidia-fed-nscale-ai-guarantees-credit': 'nvidia-fed-nscale-garanties-credit-ia',
   'nvidia-huang-teter-board-inquiry-port-klang': 'nvidia-huang-teter-enquete-conseil-port-klang',
+  'nvidia-after-huang-contracts-guarantees-crisis-costs': 'nvidia-apres-huang-contrats-garanties-cout-crise',
+  'nvidia-succession-washington-ai-champions': 'nvidia-succession-washington-champions-ia',
   'anthropic-supplier-financing-ipo': 'anthropic-financement-fournisseurs-ipo',
   'broadcom-anthropic-blackstone-63-billion-risk': 'broadcom-anthropic-blackstone-risque-63-milliards',
   'ai-circular-financing': 'financement-circulaire-ia',
@@ -64,6 +66,8 @@ export const aiFinancingNvidiaIds = [
   'nvidia-china-ai-credit-us-controls-rene-haas',
   'nvidia-fed-nscale-ai-guarantees-credit',
   'nvidia-huang-teter-board-inquiry-port-klang',
+  'nvidia-after-huang-contracts-guarantees-crisis-costs',
+  'nvidia-succession-washington-ai-champions',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [

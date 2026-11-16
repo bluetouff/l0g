@@ -1420,7 +1420,7 @@ for (const [entry, href] of [
   assert.deepEqual(entry.atlas.related, ['wafer']);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('qualification-industrielle')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 445, 'Le corpus bilingue inclut la qualification industrielle');
+assert.equal(glossaryAtlasEnBySlug.size, 446, 'Le corpus bilingue inclut la qualification industrielle et EXIM');
 for (const [entry, article] of [
   [glossaryEntries.find(item => item.slug === 'assurance-d-o'), '/posts/nvidia-apres-huang-contrats-garanties-cout-crise/'],
   [glossaryAtlasEnBySlug.get('assurance-d-o'), '/en/analysis/nvidia-after-huang-contracts-guarantees-crisis-costs/'],
@@ -1431,6 +1431,26 @@ for (const [entry, article] of [
   assert.equal(entry.atlas.sources.length, 1);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('assurance-d-o')), 'noindex,follow');
+
+// EXIM remains a short, sourced definition with bilingual links and no index promotion.
+const eximFr = glossaryEntries.filter(entry => entry.slug === 'exim');
+const eximEn = glossaryAtlasEn.filter(entry => entry.slug === 'exim');
+assert.equal(eximFr.length, 1); assert.equal(eximEn.length, 1);
+assert.equal(eximFr[0].referenceCandidate, false); assert.equal(eximFr[0].reference, undefined);
+assert.equal(englishGlossaryRobots(eximEn[0]), 'noindex,follow');
+for (const [entry, article] of [
+  [eximFr[0], '/posts/nvidia-succession-washington-champions-ia/'],
+  [eximEn[0], '/en/analysis/nvidia-succession-washington-ai-champions/'],
+]) {
+  assert(entry.atlas);
+  assert.equal(entry.guide, article);
+  assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+  assert.deepEqual(entry.atlas.sources.map(link => link.href), [
+    'https://www.exim.gov/news/exim-launches-exportai-initiative-strengthen-american-leadership-ai',
+    'https://exim.gov/about/special-initiatives/export-si-initiative',
+  ]);
+  assert.deepEqual(entry.atlas.related, ['garantie-de-pret', 'controle-export']);
+}
 for (const [entry, article] of [[glossaryEntries.find(entry => entry.slug === 'prix-plancher'), '/posts/intel-mp-materials-portefeuille-trump/'], [glossaryAtlasEnBySlug.get('prix-plancher'), '/en/analysis/intel-mp-materials-trump-portfolio/']]) {
   assert(entry?.atlas, 'Le prix plancher dispose de sa définition et de ses sources');
   assert.equal(entry.atlas.articles.filter(link => link.href === article).length, 1);
@@ -1641,8 +1661,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 825, 'Le corpus conserve ses notions et ajoute la qualification industrielle');
-assert.equal(glossaryAtlasEntries.length, 435, 'Les nouvelles notions disposent de définitions courtes sourcées');
+assert.equal(glossaryEntries.length, 826, 'Le corpus conserve ses notions, dont la qualification industrielle et EXIM');
+assert.equal(glossaryAtlasEntries.length, 436, 'Les nouvelles notions disposent de définitions courtes sourcées');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2069,7 +2089,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1095, 'Les nouvelles notions conservent leurs relations explicatives');
+assert.equal(glossaryAtlasEdgeCount, 1097, 'Les nouvelles notions conservent leurs relations explicatives');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

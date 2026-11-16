@@ -8,7 +8,7 @@ import { aiFinancingGuides, aiFinancingNvidiaIds, aiFinancingSections, aiFinanci
 import { postMatchesTopic, topics } from '../src/config/topics.ts';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const EDITION_CUTOFF = Date.parse('2026-11-14T23:59:59.999+01:00');
+const EDITION_CUTOFF = Date.parse('2026-11-16T23:59:59.999+01:00');
 const analyses = aiFinancingSections.flatMap(section => section.readings);
 
 function publishedEntry(collection, id) {
@@ -21,7 +21,7 @@ function publishedEntry(collection, id) {
   assert.notEqual(data.draft, true, `draft linked by dossier: ${collection}/${id}`);
   const publicationDate = new Date(data.pubDate).getTime();
   assert.ok(Number.isFinite(publicationDate), `invalid publication date: ${collection}/${id}`);
-  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 14 November edition: ${collection}/${id}`);
+  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 16 November edition: ${collection}/${id}`);
   return data;
 }
 
@@ -68,8 +68,8 @@ test('every curated investigation is classified for the Watch topic in both lang
   }
 });
 
-test('the Nvidia series preserves eleven published bilingual instalments in publication order', () => {
-  assert.equal(aiFinancingNvidiaIds.length, 11);
+test('the Nvidia series preserves thirteen published bilingual instalments in publication order', () => {
+  assert.equal(aiFinancingNvidiaIds.length, 13);
   assert.equal(new Set(aiFinancingNvidiaIds).size, aiFinancingNvidiaIds.length);
   const pairs = aiFinancingNvidiaIds.map(id => bilingualPair(id));
   assert.equal(new Set(pairs.map(pair => pair.frenchId)).size, pairs.length);

@@ -872,6 +872,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Régulation & institutions US',
     accent: 'var(--color-topic-blue)',
     entries: [
+      {
+        sigle: 'EXIM', nom: 'Export-Import Bank of the United States',
+        def: 'Agence publique américaine de crédit à l’exportation. Elle facilite les ventes à l’étranger par des prêts directs, des garanties et des assurances. Le financement d’un acheteur ou d’un projet reste soumis aux critères d’éligibilité, à l’analyse du risque de crédit et aux conditions de remboursement applicables à chaque opération.',
+        guide: '/posts/nvidia-succession-washington-champions-ia/',
+      },
       {"sigle": "NDA", "nom": "Accord de confidentialité", "def": "Contrat ou clause définissant les informations à conserver confidentielles, leurs destinataires et les usages autorisés. Sa portée dépend du texte et du droit applicable. Aux États-Unis, une restriction entravant un signalement direct à la SEC concernant une possible violation boursière peut relever de la règle 21F-17. Les clauses et le contexte doivent être examinés.", "guide": "/posts/nvidia-huang-nda-conseil-financement-ia/"},
       {
         sigle: 'Crédits budgétaires américains', nom: 'Appropriations fédérales',
@@ -1074,7 +1079,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-15';
+export const glossaryUpdatedIso = '2026-11-16';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1318,6 +1323,14 @@ const treasuryRelated = [
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "qualification-industrielle": {"articles": [{"label": "SK hynix et la preuve industrielle", "href": "/posts/sk-hynix-preuve-industrielle/", "kind": "article"}], "sources": [{"label": "NIST, Prototyping Platforms for Emerging Technologies", "href": "https://www.nist.gov/programs-projects/prototyping-platforms-emerging-technologies", "kind": "source"}, {"label": "imec, NanoIC pilot line", "href": "https://www.imec-int.com/en/what-we-offer/nanoic-pilot-line-accelerating-beyond-2nm-innovation-across-europe", "kind": "source"}], "related": ["wafer"]},
+  exim: {
+    articles: [{ label: 'Nvidia : succession et leviers de Washington', href: '/posts/nvidia-succession-washington-champions-ia/', kind: 'article' }],
+    sources: [
+      { label: 'EXIM, lancement d’ExportAI, 21 mai 2026', href: 'https://www.exim.gov/news/exim-launches-exportai-initiative-strengthen-american-leadership-ai', detail: 'Agence de crédit à l’exportation et outils de financement.', kind: 'source' },
+      { label: 'EXIM, ExportSI Initiative', href: 'https://exim.gov/about/special-initiatives/export-si-initiative', detail: 'Éligibilité des opérations et maintien des critères de crédit et de remboursement. Page non datée, consultée le 16 novembre 2026.', kind: 'source' },
+    ],
+    related: ['garantie-de-pret', 'controle-export'],
+  },
   "assurance-d-o": {"articles": [{"label": "Nvidia après Huang : les engagements à l’épreuve de la crise", "href": "/posts/nvidia-apres-huang-contrats-garanties-cout-crise/", "kind": "article"}], "sources": [{"label": "Chubb et Clyde & Co, Emerging multinational management liability risks", "href": "https://www.chubb.com/content/dam/chubb-sites/chubb-com/us-en/business-insurance/management-liability-insights/documents/pdf/2020-01.17-17-01-0262-emerging-mn-mgmt-liability-risks.pdf", "detail": "Section 4 : The make-up of a multinational D&O policy, distinction entre Side A, B et C. Présentation générale, distincte des contrats de Nvidia.", "kind": "source"}]},
   "refinancement-cible": {"articles": [{"label": "Chine : crédit et rachats d’actions", "href": "/posts/chine-credit-1-pourcent-rachats-actions/", "kind": "article"}], "sources": [{"label": "PBOC, NFRA et CSRC : notice fondatrice du refinancement des rachats", "href": "https://www.csrc.gov.cn/anhui/c106363/c7515405/content.shtml", "kind": "source"}], "related": ["rachat-d-actions", "actions-propres", "additionnalite-financiere"]},
   "ai-washing": {"articles": [{"label": "Qantas, IA et travail transféré", "href": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/", "kind": "article"}], "sources": [{"label": "SEC, affirmations trompeuses sur l’usage de l’IA, 18 mars 2024", "href": "https://www.sec.gov/newsroom/press-releases/2024-36", "detail": "Usage du terme dans le conseil en investissement. Les affaires citées concernent Delphia et Global Predictions, pas les restructurations australiennes.", "kind": "source"}], "related": ["externalisation", "exposition-professionnelle-ia"]},
