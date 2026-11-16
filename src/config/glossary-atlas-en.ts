@@ -209,6 +209,7 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {"slug": "commissionnaire-de-transport", "sigle": "Freight forwarding", "nom": "Arranging transport for a client", "def": "Organising transport for a client. Under French law, a commissionnaire de transport arranges and procures the shipment in its own name and under its own responsibility on the client’s behalf. It may purchase services from carriers. Analysing forwarding economics requires invoiced amounts and purchased services to be distinguished to understand the margin retained before the organiser’s own expenses.", "guide": "/en/analysis/cma-cgm-shipping-logistics-margins/", "sectionTitle": "Macro & central banks", "accent": "var(--color-signal)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "CMA CGM: from ship to warehouse", "href": "/en/analysis/cma-cgm-shipping-logistics-margins/", "kind": "article"}], "sources": [{"label": "French Transport Code, Article L1411-1, I, 1°", "href": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023085479", "kind": "source"}, {"label": "Kuehne+Nagel, 2025 consolidated income statement", "href": "https://2025-annual-report.kuehne-nagel.com/annual-report/consolidated-financial-statements-2025/income-statement", "kind": "source"}], "related": ["ebitda"]}},
   {
     slug: 'presomption-d-innocence', sigle: 'Presumption of innocence', nom: 'Evidence and criminal guilt',
     def: 'A criminal-law principle requiring a person to be treated as innocent until guilt is legally established. Article 154 of Taiwan’s Code of Criminal Procedure preserves that presumption until a final conviction and requires criminal facts to be based on evidence. Prosecution, interim custody decisions and the determination of guilt have different procedural purposes.',
@@ -3324,6 +3325,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     "intuition": "Inspect adjustments before comparing debt with earnings.",
     "formula": "EBITDA = net income + interest + taxes + depreciation and amortisation",
     "articles": [
+      {"label": "CMA CGM: from ship to warehouse", "href": "/en/analysis/cma-cgm-shipping-logistics-margins/", "kind": "article"},
       {
         "label": "Paramount–Warner: capital, debt and editorial control",
         "href": "/en/analysis/paramount-warner-ellison-trump-fcc-media/",

@@ -153,6 +153,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Macro & banques centrales',
     accent: 'var(--color-signal)',
     entries: [
+      {"sigle": "Commissionnaire de transport", "nom": "Organisateur de transport pour le compte d’un client", "def": "En droit français, opérateur qui organise et fait exécuter un transport sous sa responsabilité et en son propre nom pour le compte d’un client. Il peut acheter des prestations à d’autres transporteurs. Dans l’analyse économique du transit, les montants facturés et les services achetés doivent être distingués pour comprendre la rémunération conservée, avant les charges propres de l’organisateur.", "guide": "/posts/cma-cgm-maritime-logistique-marges/"},
       {"sigle": "Qualification industrielle", "nom": "Évaluation d’une technologie dans son usage de production", "def": "Démarche d’essais et d’évaluation visant à apprécier une technologie dans un usage industriel défini. Pour les semi-conducteurs, elle peut examiner la régularité d’un procédé, sa compatibilité avec les autres étapes et ses effets sur la qualité des produits. Les résultats alimentent une décision selon les exigences du client. Les conditions de vente et la commande relèvent ensuite de l’accord commercial.", "guide": "/posts/sk-hynix-preuve-industrielle/"},
       {"sigle": "Externalisation", "nom": "Activité confiée à un prestataire extérieur", "def": "Recours à un prestataire extérieur pour réaliser une activité de l’entreprise. Le travail peut rester dans le même pays ou être effectué à l’étranger. Le changement porte sur l’organisation qui exécute l’activité.", "guide": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/"},
       {"sigle": "Délocalisation", "nom": "Transfert d’une activité vers un autre pays", "def": "Transfert total ou partiel d’une activité vers un autre pays. Elle peut rester dans le même groupe ou être confiée à une entreprise extérieure. Une délocalisation avec prestataire étranger combine changement de pays et externalisation.", "guide": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/"},
@@ -1324,6 +1325,7 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "commissionnaire-de-transport": {"articles": [{"label": "CMA CGM : du navire à l’entrepôt", "href": "/posts/cma-cgm-maritime-logistique-marges/", "kind": "article"}], "sources": [{"label": "Code des transports, article L1411-1, I, 1°", "href": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023085479", "kind": "source"}, {"label": "Kuehne+Nagel, compte de résultat consolidé 2025", "href": "https://2025-annual-report.kuehne-nagel.com/annual-report/consolidated-financial-statements-2025/income-statement", "kind": "source"}], "related": ["ebitda"]},
   'presomption-d-innocence': {
     articles: [{ label: 'Nvidia à Taïwan : démarches politiques et procédure judiciaire', href: '/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/', kind: 'article' }],
     sources: [{ label: 'Ministère taïwanais de la Justice, Code de procédure pénale, article 154', href: 'https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=C0010001&flno=154', detail: 'Présomption jusqu’à une condamnation définitive et établissement des faits par les preuves. Texte officiel chinois consulté le 16 novembre 2026.', kind: 'source' }],
@@ -3439,6 +3441,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   "intuition": "Examiner les ajustements avant de rapporter la dette au résultat.",
   "formula": "EBITDA = résultat net + intérêts + impôts + dépréciations et amortissements",
   "articles": [
+    {"label": "CMA CGM : du navire à l’entrepôt", "href": "/posts/cma-cgm-maritime-logistique-marges/", "kind": "article"},
     {
       "label": "Paramount–Warner : capitaux, dette et contrôle éditorial",
       "href": "/posts/paramount-warner-ellison-trump-fcc-medias/",
