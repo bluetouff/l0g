@@ -7,7 +7,7 @@ import dataset from '../../data/private-credit-atlas.json';
 const latestDate = dataset.milestones.at(-1)!.date;
 ---
 
-<BaseLayout title={dataset.title} seoTitle="Atlas du crédit privé : fonds, assureurs et banques | l0g" description="Explorez les circuits du crédit privé : Apollo, Athene, Ares Capital, ATLAS SP, Pagaya et les banques. Relations, contrats et sources." alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
+<BaseLayout title={dataset.title} seoTitle="Atlas du crédit privé : fonds, assureurs et banques | l0g" description="Explorez les circuits du crédit privé : Apollo, Athene, Ares Capital, ATLAS SP, Pagaya et les banques. Relations, contrats et sources." ogImage="/og/atlas/private-credit-fr-v1.jpg" ogImageAlt="Atlas du crédit privé : fonds, assureurs et banques reliés par des circuits de capitaux et de garanties." alternateLinks={atlasAlternateLinks(dataset.id)} sidebar={false}>
   <EngagementAtlas
     dataset={dataset}
     subject="crédit privé"
