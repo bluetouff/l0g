@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../config/crisis-gallery';
+---
+<BaseLayout title="Lehman et les fonds monétaires : rejouer septembre 2008" description="Explorez la contagion après Lehman : pertes du Reserve Primary Fund, retraits, financement AMLF et garantie du Trésor. Six étapes et sept sources primaires." ogImage="/illustrations/crisis-replay/og/lehman-fr.jpg" ogImageAlt={crisisGallery.lehman.alt.fr} sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/lehman/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/lehman/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/lehman/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="lehman" />
+</BaseLayout>

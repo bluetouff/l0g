@@ -3,7 +3,11 @@ import { svbActors, svbChapters, svbSources } from './crisis-svb.ts';
 import { terraActors, terraChapters, terraSources } from './crisis-terra.ts';
 import { aigActors, aigChapters, aigSources } from './crisis-aig.ts';
 import { ltcmActors, ltcmChapters, ltcmSources } from './crisis-ltcm.ts';
-export type ReplayEpisodeId = 'gilts' | 'svb' | 'terra' | 'aig' | 'ltcm';
+import { lehmanActors, lehmanChapters, lehmanSources } from './crisis-lehman.ts';
+import { asiaActors, asiaChapters, asiaSources } from './crisis-asia.ts';
+import { nickelActors, nickelChapters, nickelSources } from './crisis-nickel.ts';
+import { chfActors, chfChapters, chfSources } from './crisis-chf.ts';
+export type ReplayEpisodeId = 'gilts' | 'svb' | 'terra' | 'aig' | 'ltcm' | 'lehman' | 'asia' | 'nickel' | 'chf';
 export const replayEpisodes = {
   gilts: {
     id:'gilts',number:'01',frHref:'/outils/replay-crises/gilts/',enHref:'/en/tools/crisis-replay/gilts/',initialChapter:3,checkedAt:'2026-11-16',
@@ -54,6 +58,46 @@ export const replayEpisodes = {
     label:{fr:'LTCM, la crise de 1998',en:'LTCM, the 1998 crisis'},themes:{fr:'Convergence · levier · contreparties',en:'Convergence · leverage · counterparties'},
     rangeStart:{fr:'AOÛT 1998',en:'AUG 1998'},rangeEnd:{fr:'NOV. 1999',en:'NOV 1999'},
     actorSource:'L03',actorSourceLabel:{fr:'Contexte documentaire · auditions du 1er octobre 1998',en:'Documentary context · 1 October 1998 hearings'},
+  },
+  lehman:{
+    id:'lehman',number:'06',frHref:'/outils/replay-crises/lehman/',enHref:'/en/tools/crisis-replay/lehman/',initialChapter:1,checkedAt:'2026-11-17',
+    chapters:lehmanChapters,sources:lehmanSources,actors:lehmanActors,
+    country:{fr:'ÉTATS-UNIS',en:'UNITED STATES'},place:{fr:'New York / Washington',en:'New York / Washington'},period:{fr:'Septembre 2008',en:'September 2008'},
+    title:{fr:'Lehman. La contagion aux fonds monétaires.',en:'Lehman. The money fund run.'},subtitle:{fr:'Rejouer la crise de septembre 2008.',en:'Replay the September 2008 crisis.'},
+    deck:{fr:'Un fonds monétaire perd de la valeur sur la dette Lehman. Les investisseurs réclament leur cash. Suivez la propagation aux financements courts, puis les réponses distinctes de la Fed et du Trésor.',en:'A money market fund loses value on Lehman debt. Investors demand their cash. Follow transmission to short-term funding and the separate responses of the Fed and Treasury.'},
+    label:{fr:'Lehman et les fonds monétaires',en:'Lehman and money market funds'},themes:{fr:'Crédit · rachats · garantie',en:'Credit · redemptions · guarantee'},
+    rangeStart:{fr:'15 SEPT. 2008',en:'15 SEP 2008'},rangeEnd:{fr:'29 SEPT. 2008',en:'29 SEP 2008'},
+    actorSource:'M07',actorSourceLabel:{fr:'Analyse rétrospective · SEC, 21 juin 2012',en:'Retrospective analysis · SEC, 21 June 2012'},
+  },
+  asia:{
+    id:'asia',number:'07',frHref:'/outils/replay-crises/asie-1997/',enHref:'/en/tools/crisis-replay/asia-1997/',initialChapter:2,checkedAt:'2026-11-17',
+    chapters:asiaChapters,sources:asiaSources,actors:asiaActors,
+    country:{fr:'ASIE',en:'ASIA'},place:{fr:'Bangkok / Jakarta / Séoul',en:'Bangkok / Jakarta / Seoul'},period:{fr:'Juillet 1997 → juin 1998',en:'July 1997 → June 1998'},
+    title:{fr:'Asie. Le piège de la dette en devises.',en:'Asia. The foreign-currency debt trap.'},subtitle:{fr:'Rejouer la crise de 1997–1998.',en:'Replay the 1997–1998 crisis.'},
+    deck:{fr:'Des financements étrangers à renouveler. Des monnaies qui se déprécient. Explorez les tensions en Thaïlande, en Indonésie et en Corée, les bilans exposés au change et les programmes de financement.',en:'Foreign funding to roll over. Depreciating currencies. Explore strains in Thailand, Indonesia and Korea, balance sheets exposed to currency risk and the financing programs.'},
+    label:{fr:'Asie, la crise de 1997–1998',en:'Asia’s 1997–1998 crisis'},themes:{fr:'Change · dette extérieure · banques',en:'Currencies · external debt · banks'},
+    rangeStart:{fr:'JUILLET 1997',en:'JULY 1997'},rangeEnd:{fr:'JUIN 1998',en:'JUN 1998'},
+    actorSource:'E08',actorSourceLabel:{fr:'Bilan comparé · FMI, édition de juin 1999',en:'Comparative assessment · IMF, June 1999 edition'},
+  },
+  nickel:{
+    id:'nickel',number:'08',frHref:'/outils/replay-crises/nickel/',enHref:'/en/tools/crisis-replay/nickel/',initialChapter:2,checkedAt:'2026-11-17',
+    chapters:nickelChapters,sources:nickelSources,actors:nickelActors,
+    country:{fr:'ROYAUME-UNI / MARCHÉS MONDIAUX',en:'UNITED KINGDOM / GLOBAL MARKETS'},place:{fr:'Londres',en:'London'},period:{fr:'Mars 2022 → janvier 2023',en:'March 2022 → January 2023'},
+    title:{fr:'Nickel. Le marché suspendu.',en:'Nickel. Trading suspended.'},subtitle:{fr:'Rejouer la crise du LME de 2022.',en:'Replay the LME crisis of 2022.'},
+    deck:{fr:'Des positions vendeuses sous pression. Des garanties à trouver. Le LME suspend le nickel et annule des transactions. Explorez les intermédiaires, les marges et les conditions de reprise.',en:'Short positions under pressure. Collateral to find. The LME suspends nickel trading and cancels trades. Explore intermediaries, margin requirements and the conditions for reopening.'},
+    label:{fr:'Nickel, la crise du LME',en:'Nickel’s LME crisis'},themes:{fr:'Positions vendeuses · marges · compensation',en:'Short positions · margin · clearing'},
+    rangeStart:{fr:'MARS 2022',en:'MAR 2022'},rangeEnd:{fr:'JANVIER 2023',en:'JAN 2023'},
+    actorSource:'N06',actorSourceLabel:{fr:'Revue de marché · 10 janvier 2023',en:'Market review · 10 January 2023'},
+  },
+  chf:{
+    id:'chf',number:'09',frHref:'/outils/replay-crises/franc-suisse/',enHref:'/en/tools/crisis-replay/swiss-franc/',initialChapter:2,checkedAt:'2026-11-17',
+    chapters:chfChapters,sources:chfSources,actors:chfActors,
+    country:{fr:'SUISSE / MARCHÉ DES CHANGES',en:'SWITZERLAND / FOREIGN EXCHANGE'},place:{fr:'Zurich',en:'Zurich'},period:{fr:'Septembre 2011 → avril 2015',en:'September 2011 → April 2015'},
+    title:{fr:'Franc suisse. Le plancher disparaît.',en:'Swiss franc. The floor disappears.'},subtitle:{fr:'Rejouer la rupture de janvier 2015.',en:'Replay the January 2015 break.'},
+    deck:{fr:'La BNS retire son cours plancher face à l’euro. Les taux négatifs et les interventions possibles restent dans sa boîte à outils. Suivez le changement de régime et les expositions des intermédiaires au change.',en:'The SNB removes its minimum exchange rate against the euro. Negative interest and possible interventions remain in its toolkit. Follow the regime change and intermediaries’ currency exposures.'},
+    label:{fr:'Franc suisse, janvier 2015',en:'Swiss franc, January 2015'},themes:{fr:'Plancher · change · intermédiation',en:'Minimum rate · FX · intermediation'},
+    rangeStart:{fr:'SEPTEMBRE 2011',en:'SEP 2011'},rangeEnd:{fr:'AVRIL 2015',en:'APR 2015'},
+    actorSource:'C07',actorSourceLabel:{fr:'Analyse rétrospective · BRI, décembre 2016',en:'Retrospective analysis · BIS, December 2016'},
   },
 } as const;
 export function getReplayEpisode(id: ReplayEpisodeId = 'gilts') { return replayEpisodes[id]; }

@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title="Asian crisis of 1997–1998: currency debt and funding" description="Replay the crisis in Thailand, Indonesia and Korea: currencies, external debt and IMF programs. Seven documented stages and an interactive map." ogImage="/illustrations/crisis-replay/og/asia-en.jpg" ogImageAlt={crisisGallery.asia.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/asie-1997/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/asia-1997/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/asie-1997/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="asia" />
+</EnglishGuidesLayout>

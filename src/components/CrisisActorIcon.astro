@@ -1,0 +1,18 @@
+---
+interface Props { name:string; }
+const { name }=Astro.props;
+---
+<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:auto">
+  {name==='bank'&&<path d="M3 8l9-5 9 5zM3 21h18M5 18h14M6 10v6M10 10v6M14 10v6M18 10v6" />}
+  {name==='tower'&&<path d="M6 21V5h4V2h4v3h4v16M3 21h18M9 8h2M13 8h2M9 12h2M13 12h2M10 21v-5h4v5" />}
+  {name==='fund'&&<><path d="M4 5h16v15H4zM4 10h16M8 2v5M16 2v5M8 14h8M8 17h4" /><path d="M16 17h1" /></>}
+  {name==='people'&&<><circle cx="9" cy="7" r="3" /><path d="M3 21v-4a6 6 0 0 1 12 0v4M16 4a3 3 0 0 1 0 6M18 13a5 5 0 0 1 3 5v3" /></>}
+  {name==='paper'&&<path d="M6 2h9l4 4v16H6zM15 2v5h4M9 11h7M9 15h7M9 19h4M3 6v16" />}
+  {name==='shield'&&<><path d="M12 2l8 3v6c0 5-5 9-8 11-3-2-8-6-8-11V5zM8 12l3 3 5-6" /></>}
+  {name==='globe'&&<><circle cx="12" cy="12" r="9" /><path d="M3 12h18M12 3c-5 5-5 13 0 18M12 3c5 5 5 13 0 18M5 7h14M5 17h14" /></>}
+  {name==='factory'&&<path d="M3 21V10l6-4v5l6-4v14M15 12h6v9H3M17 12V3h3v9M6 16h2M11 16h2M18 17h1" />}
+  {name==='chain'&&<><path d="M10 7l2-2a5 5 0 0 1 7 7l-3 3a5 5 0 0 1-7 0M14 17l-2 2a5 5 0 0 1-7-7l3-3a5 5 0 0 1 7 0M8 16l8-8" /></>}
+  {name==='gate'&&<path d="M4 21V4h3v17M17 21V4h3v17M7 8h10M7 16h10M11 8v8M14 8v8M2 21h7M15 21h7" />}
+  {name==='rates'&&<><path d="M3 4v17h18M7 7l5 4 4-1 5 7M16 17h5v-5" /><path d="M7 16h4" /></>}
+  {name==='arrows'&&<path d="M3 7h16M15 3l4 4-4 4M21 17H5M9 13l-4 4 4 4" />}
+</svg>

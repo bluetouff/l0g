@@ -8,7 +8,7 @@ const meta=crisisCollection[lang];
 const canonical=new URL(Astro.url.pathname,Astro.site).toString();
 const collection={'@context':'https://schema.org','@type':'CollectionPage',name:meta.title,description:meta.description,url:canonical,mainEntity:{'@type':'ItemList',itemListElement:getCrisisGallery(lang).map((episode,index)=>({'@type':'ListItem',position:index+1,item:{'@type':'WebPage',name:episode.name[lang],url:new URL(episode.href,Astro.site).toString(),image:new URL(`/illustrations/crisis-replay/og/${episode.id}-${lang}.jpg`,Astro.site).toString()}}))}};
 ---
-<EnglishGuidesLayout title={meta.title} description={meta.description} ogImage="/illustrations/crisis-replay/og/collection-en.jpg" ogImageAlt="Five illustrations of the gilt, SVB, Terra / Luna, AIG and LTCM crises."  alternateLinks={[
+<EnglishGuidesLayout title={meta.title} description={meta.description} ogImage="/illustrations/crisis-replay/og/collection-en.jpg" ogImageAlt="Nine conceptual illustrations of the collection’s financial crises."  alternateLinks={[
   {hreflang:'fr',href:new URL('/outils/replay-crises/',Astro.site).toString()},
   {hreflang:'en',href:new URL('/en/tools/crisis-replay/',Astro.site).toString()},
   {hreflang:'x-default',href:new URL('/outils/replay-crises/',Astro.site).toString()},

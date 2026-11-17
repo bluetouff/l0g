@@ -5,6 +5,7 @@ import sharp from 'sharp';
 import { getCrisisGallery } from '../src/config/crisis-gallery.ts';
 import { replayChapters, replaySources, retrospectiveSource } from '../src/data/crisis-replay.ts';
 import { INITIAL_REPLAY_CHAPTER, parseReplayHash, replayHash, replayMapState } from '../src/lib/crisis-replay.ts';
+import { crisisNetworks, networkMapState, isNetworkEpisode } from '../src/data/crisis-networks.ts';
 import { replayEpisodes } from '../src/data/crisis-episodes.ts';
 
 test('public chronology resolves every claim to a source available by that date', () => {
@@ -225,4 +226,86 @@ test('LTCM separates dated reconstruction, private equity, Fed facilitation and 
   for(const index of [-1,8,NaN,Infinity,1.5]) assert.throws(()=>replayHash(index,'announcements','ltcm'),RangeError);
   for(const id of ['gilts','svb','terra','aig']) assert.equal(parseReplayHash('#etape=rapport-gao',id).index,replayEpisodes[id].initialChapter);
   assert.equal(parseReplayHash('#etape=maiden-lane-iii','ltcm').index,episode.initialChapter);
+});
+
+test('network relationships resolve actors and sources, and never import future events through hindsight', () => {
+  for (const [id,network] of Object.entries(crisisNetworks)) {
+    const episode=replayEpisodes[id];
+    assert.equal(network.nodes.length,episode.actors.length);
+    assert.equal(new Set(network.links.map(link=>link.id)).size,network.links.length);
+    for (const actor of episode.actors) assert.ok(episode.sources.some(source=>source.id===actor.source));
+    for (const link of network.links) {
+      assert.ok(episode.actors.some(actor=>actor.id===link.from));
+      assert.ok(episode.actors.some(actor=>actor.id===link.to));
+      assert.ok(episode.sources.some(source=>source.id===link.source));
+      assert.ok(!link.until||link.until>link.since);
+      for (const chapter of episode.chapters) for (const mode of ['announcements','hindsight']) {
+        const state=networkMapState(id,chapter.date,mode).links.find(item=>item.id===link.id);
+        if(chapter.date<link.since||(link.until&&chapter.date>=link.until)) assert.equal(state.active,false);
+        if(state.retrospective) assert.equal(mode,'hindsight');
+      }
+    }
+    for(const index of [-1,NaN,Infinity,1.5,episode.chapters.length]) assert.throws(()=>replayHash(index,'announcements',id),RangeError);
+  }
+  assert.equal(isNetworkEpisode('__proto__'),false);
+  assert.equal(isNetworkEpisode('constructor'),false);
+  assert.equal(networkMapState('gilts','2022-09-28','announcements'),null);
+});
+
+test('Lehman separates conditional Treasury coverage from Fed-funded bank purchases', () => {
+  const byId=(date,mode,id)=>networkMapState('lehman',date,mode).links.find(link=>link.id===id);
+  assert.equal(byId('2008-09-16','hindsight','mmf-guarantee').active,false);
+  assert.equal(byId('2008-09-16','hindsight','mmf-amlf').active,false);
+  assert.equal(byId('2008-09-16','announcements','mmf-contagion').active,false);
+  assert.equal(byId('2008-09-16','hindsight','mmf-contagion').retrospective,true);
+  assert.equal(byId('2008-09-19','announcements','mmf-amlf').active,true);
+  const guarantee=crisisNetworks.lehman.links.find(link=>link.id==='mmf-guarantee');
+  assert.equal(guarantee.from,'treasury');assert.equal(guarantee.kind,'commitment');
+  assert.equal(crisisNetworks.lehman.links.find(link=>link.id==='mmf-amlf').from,'banks');
+  assert.match(crisisNetworks.lehman.method.en,/not a depiction of protection for Reserve Primary Fund/);
+});
+
+test('Asian program approvals retain their own country dates', () => {
+  const state=(date)=>Object.fromEntries(networkMapState('asia',date,'hindsight').links.map(link=>[link.id,link.active]));
+  assert.equal(state('1997-07-02')['asia-thai-program'],false);
+  assert.equal(state('1997-08-20')['asia-thai-program'],true);
+  assert.equal(state('1997-08-20')['asia-indo-program'],false);
+  assert.equal(state('1997-11-05')['asia-indo-program'],true);
+  assert.equal(state('1997-11-05')['asia-korea-program'],false);
+  assert.equal(state('1997-12-04')['asia-korea-program'],true);
+  assert.equal(replayEpisodes.asia.chapters.at(-1).date,'1998-06-19');
+});
+
+test('nickel reconstruction preserves suspension timing and the independent review scope', () => {
+  const current=networkMapState('nickel','2022-03-08','announcements');
+  assert.equal(current.suspended,true);assert.equal(current.links.find(link=>link.id==='nickel-cover').active,false);
+  const later=networkMapState('nickel','2022-03-08','hindsight');
+  assert.equal(later.links.find(link=>link.id==='nickel-cover').retrospective,true);
+  assert.equal(networkMapState('nickel','2022-03-15','announcements').suspended,true);
+  assert.equal(networkMapState('nickel','2022-03-29','announcements').suspended,false);
+  assert.equal(networkMapState('nickel','2023-01-10','announcements').links.find(link=>link.id==='nickel-cover').retrospective,false);
+  assert.match(replayEpisodes.nickel.sources.find(source=>source.id==='N06').scope.en,/excludes examination/);
+});
+
+test('Swiss floor withdrawal is irreversible in hindsight and keeps separate policy instruments', () => {
+  for(const mode of ['announcements','hindsight']) {
+    const before=networkMapState('chf','2014-12-18',mode);
+    assert.equal(before.floor,true);assert.equal(before.links.find(link=>link.id==='chf-exposure').active,false);
+    const withdrawn=networkMapState('chf','2015-01-15',mode);
+    assert.equal(withdrawn.floor,false);assert.equal(withdrawn.links.find(link=>link.id==='chf-floor').active,false);
+    assert.equal(withdrawn.links.find(link=>link.id==='chf-intervention').active,true);
+  }
+  assert.equal(networkMapState('chf','2011-09-06','hindsight').links.find(link=>link.id==='chf-negative').active,false);
+  assert.equal(replayEpisodes.chf.sources.find(source=>source.id==='C07').published,'2016-12-11');
+  assert.match(crisisNetworks.chf.method.en,/from 22 January/);
+});
+
+test('map notes follow the selected date without announcing future instruments or withdrawal', () => {
+  const introduction=networkMapState('chf','2011-09-06','announcements');
+  assert.doesNotMatch(introduction.note.en,/negative interest|removed/);
+  const december=networkMapState('chf','2014-12-18','announcements');
+  assert.match(december.note.en,/reaffirmed/);assert.doesNotMatch(december.note.en,/removed/);
+  assert.match(networkMapState('chf','2015-01-15','announcements').note.en,/removed/);
+  assert.doesNotMatch(networkMapState('lehman','2008-09-16','announcements').note.en,/Treasury|guarantee/);
+  assert.match(networkMapState('lehman','2008-09-19','announcements').note.en,/Treasury/);
 });

@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../config/crisis-gallery';
+---
+<BaseLayout title="Nickel au LME : rejouer la crise et la suspension de 2022" description="Explorez les positions vendeuses, les appels de marge, la suspension et les annulations au LME. Six étapes documentées et les revues ultérieures." ogImage="/illustrations/crisis-replay/og/nickel-fr.jpg" ogImageAlt={crisisGallery.nickel.alt.fr} sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/nickel/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/nickel/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/nickel/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="nickel" />
+</BaseLayout>

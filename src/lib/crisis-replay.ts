@@ -1,4 +1,5 @@
 import { getReplayEpisode, type ReplayEpisodeId } from '../data/crisis-episodes.ts';
+import { networkMapState } from '../data/crisis-networks.ts';
 
 export const INITIAL_REPLAY_CHAPTER = 3;
 export type ReplayMode = 'announcements' | 'hindsight';
@@ -21,6 +22,8 @@ export function replayMapState(index: number, mode: ReplayMode, episodeId: Repla
   const ltcm = { ltcmModel:false, ltcmCapital:false, ltcmCoordination:false, ltcmFunding:false, ltcmRisk:false };
   const aig = { ...ltcm, aigCredit:false, aigLending:false, aigCds:false, aigMl2:false, aigMl3:false, aigLendingRetro:false, aigCdsRetro:false };
   const terra = { conversion:false, support:false, halt:false, ...aig };
+  const network=networkMapState(episodeId,chapter.date,mode);
+  if (network) return { ...terra, loop:false,purchases:false,repo:false,retrospective:network.retrospective,exit:false,securities:false,resolution:false,protection:false,funding:false };
   if (episodeId === 'ltcm') {
     const available=mode==='hindsight'||chapter.date>='1998-10-01';
     return { ...terra, loop:available, purchases:false, repo:false, retrospective:available&&chapter.date<'1998-10-01', exit:false,

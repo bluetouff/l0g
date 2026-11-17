@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../config/crisis-gallery';
+---
+<BaseLayout title="Crise asiatique de 1997–1998 : dette en devises et financement" description="Rejouez la crise en Thaïlande, en Indonésie et en Corée : change, dette extérieure et programmes du FMI. Sept étapes documentées et une carte interactive." ogImage="/illustrations/crisis-replay/og/asia-fr.jpg" ogImageAlt={crisisGallery.asia.alt.fr} sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/asie-1997/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/asia-1997/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/asie-1997/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="asia" />
+</BaseLayout>

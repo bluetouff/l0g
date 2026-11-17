@@ -23,7 +23,7 @@ const documents=new Set(Object.values(replayEpisodes).flatMap(episode=>episode.s
     </div>
     <div class="cg-contact-wrap">
       <div class="cg-contact" aria-label={t('Accès direct aux épisodes','Open an episode')}>
-        {episodes.map(episode=><a href={episode.href} aria-label={episode.name[lang]}><img src={`/illustrations/crisis-replay/${episode.art}-640.webp`} width="640" height="360" alt="" loading="lazy" decoding="async" /><span class="cg-contact-number">{episode.number}</span><span class="cg-contact-name">{episode.name[lang]}</span><span class="cg-contact-arrow" aria-hidden="true">↗</span></a>)}
+        {episodes.map(episode=><a href={episode.href} aria-label={episode.name[lang]}><img src={`/illustrations/crisis-replay/${episode.art}-640.webp`} width="640" height="360" alt="" loading="lazy" decoding="async" /><span class="cg-contact-number">{episode.number}</span><span class="cg-contact-name">{episode.shortName?.[lang]??episode.name[lang]}</span><span class="cg-contact-arrow" aria-hidden="true">↗</span></a>)}
       </div>
       <p class="cg-contact-caption"><span aria-hidden="true">↺</span>{t('Reprendre le fil, document par document.','Pick up the thread, document by document.')}</p>
     </div>

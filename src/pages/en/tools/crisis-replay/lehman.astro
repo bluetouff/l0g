@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title="Lehman and money funds: replay September 2008" description="Explore contagion after Lehman: Reserve Primary Fund losses, redemptions, AMLF funding and Treasury’s guarantee. Six stages and seven primary sources." ogImage="/illustrations/crisis-replay/og/lehman-en.jpg" ogImageAlt={crisisGallery.lehman.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/lehman/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/lehman/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/lehman/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="lehman" />
+</EnglishGuidesLayout>

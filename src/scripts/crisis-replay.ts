@@ -1,9 +1,11 @@
-import { getReplayEpisode, type ReplayEpisodeId } from '../data/crisis-episodes';
+import { getReplayEpisode, replayEpisodes, type ReplayEpisodeId } from '../data/crisis-episodes';
 import { parseReplayHash, replayHash, replayMapState } from '../lib/crisis-replay';
+import { networkMapState } from '../data/crisis-networks';
 
 for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]')) {
   const fr = root.dataset.language !== 'en';
-  const episodeId: ReplayEpisodeId = root.dataset.episode === 'ltcm' ? 'ltcm' : root.dataset.episode === 'aig' ? 'aig' : root.dataset.episode === 'terra' ? 'terra' : root.dataset.episode === 'svb' ? 'svb' : 'gilts';
+  const candidate=root.dataset.episode??'';
+  const episodeId: ReplayEpisodeId = Object.hasOwn(replayEpisodes,candidate) ? candidate as ReplayEpisodeId : 'gilts';
   const replayChapters = getReplayEpisode(episodeId).chapters;
   const t = (f: string, e: string) => fr ? f : e;
   const find = <T extends HTMLElement>(selector: string) => {
@@ -20,6 +22,9 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
   const status = find<HTMLElement>('[data-replay-status]');
   const perspective = find<HTMLElement>('[data-map-perspective]');
   let { index, mode } = parseReplayHash(location.hash, episodeId);
+  const episodeNav=root.querySelector<HTMLElement>('.replay-episodes');
+  const currentEpisode=episodeNav?.querySelector<HTMLElement>('[aria-current="page"]');
+  if (episodeNav&&currentEpisode) episodeNav.scrollLeft+=currentEpisode.getBoundingClientRect().left-episodeNav.getBoundingClientRect().left;
   let timer: ReturnType<typeof setInterval> | undefined;
 
   function stop() {
@@ -110,6 +115,19 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
       : chapter.id==='rapport-pwg' ? t('Le rapport commun examine le levier et la gestion des contreparties après la recapitalisation.', 'The joint report examines leverage and counterparty management after the recapitalisation.')
       : chapter.id==='illusion-liquidite' ? t('Fisher décrit les tensions de plusieurs marchés. La branche des ventes reste le scénario de défaut invoqué dans les auditions.', 'Fisher discusses strains across markets. The sales branch remains the default scenario invoked in the hearings.')
       : t('Capital apporté par le consortium. Liaison pointillée : médiation de la Fed. Ventes forcées : scénario de défaut.', 'Capital supplied by the consortium. Dotted link: Fed facilitation. Forced sales: a default scenario.');
+    const network=networkMapState(episodeId,chapter.date,mode);
+    if (network) {
+      for (const link of network.links) {
+        root.querySelectorAll<SVGPathElement>(`[data-wire="${link.id}"]`).forEach(path=>{path.dataset.active=String(link.active);path.dataset.retrospective=String(link.retrospective);});
+        root.querySelectorAll<SVGTextElement>(`[data-network-label="${link.id}"]`).forEach(label=>label.dataset.active=String(link.active));
+      }
+      root.dataset.networkSuspended=String(network.suspended);
+      root.dataset.networkFloor=String(network.floor);
+      perspective.textContent=network.note[fr?'fr':'en']+(network.retrospective?t(' Les relations ambre s’appuient sur les sources ultérieures citées.',' Amber relationships draw on the cited later sources.'):'');
+      root.querySelectorAll<SVGTextElement>('[data-network-status]').forEach(label=>{
+        label.textContent=episodeId==='chf'?(network.floor?t('Plancher en vigueur','Minimum rate in force'):t('Plancher retiré','Minimum rate removed')):episodeId==='nickel'?(network.suspended?t('Échanges suspendus','Trading suspended'):t('Mécanisme historique','Historical mechanism')):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):t('Financement et garantie','Funding and guarantee');
+      });
+    }
     range.value = String(index);
     const date = new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${chapter.date}T12:00:00Z`));
     range.setAttribute('aria-valuetext', `${date} · ${chapter.short[fr ? 'fr' : 'en']}`);

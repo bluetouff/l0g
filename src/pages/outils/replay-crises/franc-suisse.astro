@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../config/crisis-gallery';
+---
+<BaseLayout title="Franc suisse : rejouer le retrait du cours plancher en 2015" description="Rejouez le retrait du cours plancher de la BNS : annonces, taux négatifs, change et expositions des courtiers. Six étapes documentées en français et en anglais." ogImage="/illustrations/crisis-replay/og/chf-fr.jpg" ogImageAlt={crisisGallery.chf.alt.fr} sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/franc-suisse/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/swiss-franc/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/franc-suisse/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="chf" />
+</BaseLayout>

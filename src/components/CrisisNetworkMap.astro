@@ -1,0 +1,32 @@
+---
+import { getReplayEpisode } from '../data/crisis-episodes';
+import { crisisNetworks, networkMapState, type NetworkEpisodeId } from '../data/crisis-networks';
+import type { ReplayLanguage } from '../data/crisis-replay';
+import CrisisActorIcon from './CrisisActorIcon.astro';
+interface Props { lang:ReplayLanguage; episodeId:NetworkEpisodeId; }
+const { lang,episodeId }=Astro.props;
+const episode=getReplayEpisode(episodeId);
+const network=crisisNetworks[episodeId];
+const state=networkMapState(episodeId,episode.chapters[episode.initialChapter].date,'announcements')!;
+const t=(fr:string,en:string)=>lang==='fr'?fr:en;
+const mobileX=(x:number)=>x*11/9-20;
+const status=episodeId==='chf'?t('Plancher retiré','Minimum rate removed'):episodeId==='nickel'?t('Échanges suspendus','Trading suspended'):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):t('Financement et garantie','Funding and guarantee');
+---
+<div class="replay-map network-map" data-replay-map data-network-map={episodeId}>
+  {(['desktop','mobile'] as const).map(layout=><svg class={`replay-wires replay-wires-${layout}`} viewBox={layout==='desktop'?'0 0 640 380':'0 0 400 500'} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
+    <defs><marker id={`network-arrow-${episodeId}-${lang}-${layout}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.1" /></marker></defs>
+    <g transform={layout==='mobile'?'translate(-20 10) scale(1.2222222222 1)':undefined} fill="none" stroke-width="1.3" marker-end={`url(#network-arrow-${episodeId}-${lang}-${layout})`}>
+      {network.links.map((link,index)=><path data-wire={link.id} data-from={link.from} data-to={link.to} data-kind={link.kind} data-active={String(state.links[index].active)} data-retrospective="false" vector-effect={layout==='mobile'?'non-scaling-stroke':undefined} d={layout==='desktop'?link.d:link.m} />)}
+    </g>
+    <g class="replay-wire-labels network-wire-labels" text-anchor="middle">
+      {network.links.map(link=><text data-network-label={link.id} x={layout==='desktop'?link.x:mobileX(link.mx)} y={layout==='desktop'?link.y:link.my+10}>{link.label[lang]}</text>)}
+      <text class="network-status" data-network-status x={layout==='desktop'?320:200} y={layout==='desktop'?367:491}>{status}</text>
+    </g>
+  </svg>)}
+  {network.nodes.map(node=>{
+    const actor=episode.actors.find(actor=>actor.id===node.id)!;
+    return <button type="button" class="replay-actor network-actor" data-replay-actor={actor.id} aria-pressed="false" aria-controls="replay-actor-detail" style={`--x:${node.x/640*100}%;--y:${node.y/380*100}%;--mx:${mobileX(node.mx)/400*100}%;--my:${(node.my+10)/500*100}%`} disabled>
+      <span class="replay-actor-symbol" aria-hidden="true"><CrisisActorIcon name={node.icon} /></span><span><small>{actor.role[lang]}</small><strong>{actor.label[lang]}</strong></span>
+    </button>;
+  })}
+</div>

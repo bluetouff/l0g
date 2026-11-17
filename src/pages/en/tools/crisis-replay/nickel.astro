@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title="Nickel at the LME: replay the 2022 crisis and suspension" description="Explore short positions, margin calls, suspension and cancellations at the LME. Six documented stages and the later reviews." ogImage="/illustrations/crisis-replay/og/nickel-en.jpg" ogImageAlt={crisisGallery.nickel.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/nickel/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/nickel/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/nickel/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="nickel" />
+</EnglishGuidesLayout>
