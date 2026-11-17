@@ -17,6 +17,7 @@ export interface AiFinancingSection {
 
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
+  'jupiter-hsbc-european-banks-ai-financing': 'jupiter-hsbc-banques-europeennes-financement-ia',
   'nvidia-trump-warning-at-the-top': 'nvidia-trump-alerte-sommet',
   'nvidia-trump-lutnick-national-security-influence': 'nvidia-trump-lutnick-securite-nationale-influence',
   'nvidia-huang-nda-board-ai-financing': 'nvidia-huang-nda-conseil-financement-ia',
@@ -227,6 +228,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
     },
     image: '/illustrations/news/ai-loan-insurance-risk-v1.jpg',
     readings: [
+      {
+        id: 'jupiter-hsbc-european-banks-ai-financing',
+        label: { fr: 'Jupiter, sur la piste des créanciers de l’IA', en: 'Jupiter: following AI’s creditors' },
+        note: {
+          fr: 'Une cession de créance conduit des permis électriques aux comptes des fonds. Ce premier volet suit les banques européennes et leurs liens avec les autres prêteurs.',
+          en: 'A loan sale leads from power permits to fund disclosures. This opening investigation follows European banks and their connections with other lenders.',
+        },
+      },
       {
         id: 'ai-loan-insurance-banks-reinsurers',
         label: { fr: 'L’assurance des prêts à l’IA', en: 'The insurance behind AI lending' },

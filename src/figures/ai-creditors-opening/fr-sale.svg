@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 285" role="img" aria-labelledby="ai-creditors-fr-sale-d-title ai-creditors-fr-sale-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-creditors-opening-svg">
+  <title id="ai-creditors-fr-sale-d-title">La créance change de mains, la dette reste due</title>
+  <desc id="ai-creditors-fr-sale-d-desc">Schéma explicatif. HSBC cède une créance à un acquéreur dont l’identité n’est pas publiée. L’acquéreur paie HSBC et acquiert les droits aux paiements contractuels futurs du ou des emprunteurs du projet. Selon Bloomberg le 16 novembre 2026, le nominal est d’environ 300 millions de dollars et le prix se situe au milieu des 80 pour 100. La cession ne rembourse pas la dette du projet. Les flèches n’indiquent pas des volumes proportionnels.</desc>
+  <g data-icon="bank" transform="translate(90 72) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-5 0-15 18-5M-16-2H16M-14 18H14M-18 22H18M-11 2V14M0 2V14M11 2V14" /></g>
+  <text x="90" y="126" font-size="19" font-weight="500" text-anchor="middle" fill="var(--color-paper)">HSBC</text>
+  <g data-icon="buyer" transform="translate(655 72) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-16" y="-17" width="27" height="32" rx="3" /><rect x="-10" y="-11" width="27" height="32" rx="3" fill="var(--color-ink)" /><path d="M-3-2H10M-3 5H10M-3 12H5" /></g>
+  <text x="655" y="126" font-size="19" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Acquéreur</text>
+  <text x="655" y="149" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Identité non publiée</text>
+  <g data-flow="claim" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M178 65H535" /><path d="m528 60 7 5-7 5" /></g>
+  <text x="356" y="46" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Créance cédée</text>
+  <text x="356" y="91" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Nominal : environ 300 M$</text>
+  <g data-flow="purchase-price" fill="none" stroke="var(--color-amber)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M535 116H178" /><path d="m185 111-7 5 7 5" /></g>
+  <text x="356" y="140" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Prix payé</text>
+  <text x="356" y="162" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Milieu des 80 pour 100</text>
+  <g data-icon="campus" transform="translate(70 221) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-20 18H20M-16 18V-16H7V18M7-8H17V18M-10-9H1M-10-2H1M-10 5H1M-10 12H1M11-2H13M11 5H13M11 12H13" /></g>
+  <text x="104" y="215" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-paper)">Emprunteur(s)</text>
+  <text x="104" y="238" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-paper)">du projet</text>
+  <g data-flow="contractual-payments" fill="none" stroke="var(--color-paper)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M250 222H655V165" /><path d="m650 172 5-7 5 7" /></g>
+  <text x="433" y="205" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Paiements contractuels futurs</text>
+  <text x="380" y="275" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">La dette du projet reste due.</text>
+</svg>

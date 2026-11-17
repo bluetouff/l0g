@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 390" role="img" aria-labelledby="ai-creditors-fr-scope-m-title ai-creditors-fr-scope-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-creditors-opening-svg">
+  <title id="ai-creditors-fr-scope-m-title">Le périmètre sectoriel des 62 milliards d’euros de la BCE</title>
+  <desc id="ai-creditors-fr-scope-m-desc">La BCE estime à environ 62 milliards d’euros les prêts des banques de la zone euro à des entreprises de secteurs associés à l’IA, sur données du deuxième trimestre 2026. Les secteurs retenus comprennent les centres de données, les semi-conducteurs et les logiciels. Les prêts indirects, dont ceux via des SPV, et certains centres de données classés dans l’immobilier sont exclus. Cet indicateur sectoriel n’est ni un total de l’exposition à l’IA ni un plancher. Les zones du schéma n’indiquent aucune proportion. Source : note BCE du 9 novembre 2026, note 8.</desc>
+  <text x="18" y="55" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-metric="sector-estimate-eur-bn" data-value="62">62 Md€</text>
+  <text x="223" y="30" font-size="13.5" font-weight="500" text-anchor="start" fill="var(--color-muted)">ESTIMATION BCE</text>
+  <text x="223" y="55" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-paper)">T2 2026</text>
+  <text x="18" y="76" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Banques de la zone euro</text>
+  <line x1="18" y1="88" x2="362" y2="88" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18" y="113" font-size="16.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Dans le périmètre</text>
+  <g data-icon="server" transform="translate(29 139) scale(0.82)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-11" width="20" height="9" rx="2" /><rect x="-10" y="2" width="20" height="9" rx="2" /><path d="M-5-6H2M-5 6H2" /><circle cx="6" cy="-6" r=".8" /><circle cx="6" cy="6" r=".8" /></g>
+  <text x="55" y="145" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Centres de données</text>
+  <g data-icon="chip" transform="translate(29 169) scale(0.82)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-8" y="-8" width="16" height="16" rx="2" /><rect x="-3" y="-3" width="6" height="6" rx="1" /><path d="M-4-12V-8M4-12V-8M-4 8V12M4 8V12M-12-4H-8M-12 4H-8M8-4H12M8 4H12" /></g>
+  <text x="55" y="175" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Semi-conducteurs</text>
+  <g data-icon="software" transform="translate(29 199) scale(0.82)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="m-5-7-7 7 7 7M5-7l7 7-7 7M2-10-2 10" /></g>
+  <text x="55" y="205" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Logiciels</text>
+  <line x1="18" y1="225" x2="362" y2="225" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18" y="252" font-size="16.5" font-weight="500" text-anchor="start" fill="var(--color-amber)">En dehors de la mesure</text>
+  <g data-icon="spv" transform="translate(29 274) scale(0.82)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="-8" cy="7" r="3" /><circle cx="0" cy="-8" r="3" /><circle cx="9" cy="7" r="3" /><path d="m-6.5 4.3 5-9.5M1.6-5.3l5.8 9.6M-5 7H6" /></g>
+  <text x="55" y="280" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Prêts indirects, dont via SPV</text>
+  <g data-icon="property" transform="translate(29 314) scale(0.82)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-12-1 0-11 12-1M-9-3V11H9V-3M-3 11V3H3V11" /></g>
+  <text x="55" y="311" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Certains centres de données</text>
+  <text x="55" y="331" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">classés dans l’immobilier</text>
+  <text x="18" y="362" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Indicateur sectoriel, pas un total IA</text>
+  <text x="18" y="382" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">ni un plancher.</text>
+</svg>

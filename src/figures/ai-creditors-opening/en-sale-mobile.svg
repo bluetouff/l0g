@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 380" role="img" aria-labelledby="ai-creditors-en-sale-m-title ai-creditors-en-sale-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-creditors-opening-svg">
+  <title id="ai-creditors-en-sale-m-title">The claim changes hands; the debt remains due</title>
+  <desc id="ai-creditors-en-sale-m-desc">Explanatory diagram. HSBC transfers a claim to an undisclosed buyer. The buyer pays HSBC for the rights to future contractual payments from the project borrower or borrowers. Bloomberg reported on 16 November 2026 a face value of about $300 million and a price in the mid-80s per $100 of face value. The sale does not repay the project debt. Arrow sizes do not represent proportional amounts.</desc>
+  <g data-icon="bank" transform="translate(63 50) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-5 0-15 18-5M-16-2H16M-14 18H14M-18 22H18M-11 2V14M0 2V14M11 2V14" /></g>
+  <text x="63" y="93" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">HSBC</text>
+  <text x="63" y="115" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Seller</text>
+  <g data-icon="buyer" transform="translate(310 50) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-16" y="-17" width="27" height="32" rx="3" /><rect x="-10" y="-11" width="27" height="32" rx="3" fill="var(--color-ink)" /><path d="M-3-2H10M-3 5H10M-3 12H5" /></g>
+  <text x="310" y="93" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Buyer</text>
+  <text x="310" y="115" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Identity</text>
+  <text x="310" y="134" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">not disclosed</text>
+  <g data-flow="claim" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M122 45H250" /><path d="m243 40 7 5-7 5" /></g>
+  <text x="186" y="27" font-size="14.5" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Claim</text>
+  <g data-flow="purchase-price" fill="none" stroke="var(--color-amber)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M250 83H122" /><path d="m129 78-7 5 7 5" /></g>
+  <text x="186" y="105" font-size="14.5" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Price paid</text>
+  <text x="190" y="167" font-size="15" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Face value: about $300m</text>
+  <text x="190" y="190" font-size="15" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Price: mid-80s per $100</text>
+  <g data-icon="campus" transform="translate(75 260) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-20 18H20M-16 18V-16H7V18M7-8H17V18M-10-9H1M-10-2H1M-10 5H1M-10 12H1M11-2H13M11 5H13M11 12H13" /></g>
+  <text x="75" y="302" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Project</text>
+  <text x="75" y="324" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">borrower(s)</text>
+  <g data-flow="contractual-payments" fill="none" stroke="var(--color-paper)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M136 267H310V154" /><path d="m305 161 5-7 5 7" /></g>
+  <text x="209" y="234" font-size="15" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Future contractual</text>
+  <text x="209" y="255" font-size="15" font-weight="400" text-anchor="middle" fill="var(--color-paper)">payments</text>
+  <text x="190" y="367" font-size="15" font-weight="400" text-anchor="middle" fill="var(--color-muted)">The project debt remains due.</text>
+</svg>

@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 280" role="img" aria-labelledby="ai-creditors-en-scope-d-title ai-creditors-en-scope-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-creditors-opening-svg">
+  <title id="ai-creditors-en-scope-d-title">The sector scope of the ECB’s €62 billion estimate</title>
+  <desc id="ai-creditors-en-scope-d-desc">The ECB estimates about €62 billion in euro area bank lending to firms in AI-related sectors, using second-quarter 2026 data. Included sectors cover data centres, semiconductors and software. Indirect lending, including through SPVs, and some data centres classified as real estate are excluded. This sector indicator is neither a total AI exposure nor a lower bound. Diagram areas represent no quantitative shares. Source: ECB overview of 9 November 2026, footnote 8.</desc>
+  <text x="20" y="48" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-muted)">ECB ESTIMATE</text>
+  <text x="20" y="104" font-size="22.8" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-metric="sector-estimate-eur-bn" data-value="62">€62bn</text>
+  <text x="20" y="137" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-paper)">Q2 2026</text>
+  <text x="20" y="169" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Euro area banks</text>
+  <line x1="247" y1="28" x2="247" y2="193" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="274" y="48" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-paper)">Included sectors</text>
+  <g data-icon="server" transform="translate(286 86) scale(0.88)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-11" width="20" height="9" rx="2" /><rect x="-10" y="2" width="20" height="9" rx="2" /><path d="M-5-6H2M-5 6H2" /><circle cx="6" cy="-6" r=".8" /><circle cx="6" cy="6" r=".8" /></g>
+  <text x="311" y="92" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Data centres</text>
+  <g data-icon="chip" transform="translate(286 130) scale(0.88)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-8" y="-8" width="16" height="16" rx="2" /><rect x="-3" y="-3" width="6" height="6" rx="1" /><path d="M-4-12V-8M4-12V-8M-4 8V12M4 8V12M-12-4H-8M-12 4H-8M8-4H12M8 4H12" /></g>
+  <text x="311" y="136" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Semiconductors</text>
+  <g data-icon="software" transform="translate(286 174) scale(0.88)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="m-5-7-7 7 7 7M5-7l7 7-7 7M2-10-2 10" /></g>
+  <text x="311" y="180" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Software</text>
+  <line x1="509" y1="28" x2="509" y2="193" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="533" y="48" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-amber)">Outside the measure</text>
+  <g data-icon="spv" transform="translate(545 89) scale(0.88)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><circle cx="-8" cy="7" r="3" /><circle cx="0" cy="-8" r="3" /><circle cx="9" cy="7" r="3" /><path d="m-6.5 4.3 5-9.5M1.6-5.3l5.8 9.6M-5 7H6" /></g>
+  <text x="570" y="87" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Indirect lending,</text>
+  <text x="570" y="108" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">including via SPVs</text>
+  <g data-icon="property" transform="translate(545 157) scale(0.88)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-12-1 0-11 12-1M-9-3V11H9V-3M-3 11V3H3V11" /></g>
+  <text x="570" y="153" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Some data centres</text>
+  <text x="570" y="174" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">classed as real estate</text>
+  <line x1="20" y1="218" x2="740" y2="218" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="20" y="253" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-muted)">A sector indicator, neither an AI total nor a lower bound.</text>
+</svg>

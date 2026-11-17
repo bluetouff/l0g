@@ -1,0 +1,104 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'sale' | 'scope';
+  sourceHref: string;
+  number?: number;
+  caption?: string;
+}
+
+const { lang, kind, sourceHref, number, caption } = Astro.props;
+const copy = {
+  fr: {
+    sale: {
+      caption: 'La vente transfère une créance, sans rembourser la dette du projet. Nominal rapporté : environ 300 M$ ; prix : milieu des 80 pour 100.',
+      source: 'Bloomberg, 16 novembre 2026 (information rapportée)',
+      credit: 'Schéma explicatif l0g. Les flèches ne sont pas proportionnelles aux montants.',
+    },
+    scope: {
+      caption: 'Pour les banques de la zone euro, l’estimation de la BCE retient des secteurs associés à l’IA. Elle exclut les prêts indirects, dont ceux via des SPV, et certains centres classés dans l’immobilier.',
+      source: 'BCE, note du 9 novembre 2026, p. 2, note 8 ; données T2 2026',
+      credit: 'Périmètre qualitatif : les zones ne représentent aucune part chiffrée. Schéma l0g.',
+    },
+  },
+  en: {
+    sale: {
+      caption: 'The buyer pays HSBC for the claim; the project debt remains due. Reported face value: about $300m; price: mid-80s per $100 of face value.',
+      source: 'Bloomberg, 16 November 2026 (reported information)',
+      credit: 'Explanatory diagram by l0g. Arrow sizes do not represent proportional amounts.',
+    },
+    scope: {
+      caption: 'The ECB estimate covers euro area bank lending to sectors associated with AI. It excludes indirect lending, including through SPVs, and some data centres classified as real estate.',
+      source: 'ECB, overview of 9 November 2026, p. 2, footnote 8; Q2 2026 data',
+      credit: 'Qualitative scope: diagram areas represent no quantitative shares. Diagram by l0g.',
+    },
+  },
+} as const;
+
+const item = copy[lang][kind];
+const figures = import.meta.glob('../figures/ai-creditors-opening/*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/ai-creditors-opening/${lang}-${kind}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing AI creditors opening figure.');
+}
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('AI creditors figure requires a source anchor or an HTTPS source URL.');
+}
+const figureId = number === undefined ? `ai-creditors-${lang}-${kind}` : `figure-${number}`;
+---
+
+<figure class="ai-creditors-opening" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktop} />
+  <div class="figure-narrow" set:html={mobile} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{item.source}</a>.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .ai-creditors-opening {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+  }
+  .ai-creditors-opening :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 380px; margin-inline: auto; }
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .35rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .ai-creditors-opening { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>
