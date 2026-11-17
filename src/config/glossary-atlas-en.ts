@@ -210,6 +210,20 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'inspection-publique', sigle: 'Public inspection', nom: 'Advance access to a Federal Register document',
+    def: 'The Office of the Federal Register makes a document available for inspection before publication in an official edition of the Federal Register. The announced publication schedule remains tentative. The effective date depends on the text’s provisions and the published official edition, including any calculated dates or placeholders that need to be checked.',
+    guide: '/en/analysis/nvidia-board-national-security-export-controls/',
+    ...usRegulationSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Nvidia: board pressure and export controls', href: '/en/analysis/nvidia-board-national-security-export-controls/', kind: 'article' }],
+      sources: [
+        { label: 'Federal Register, public inspection document 2026-23529', href: 'https://www.federalregister.gov/public-inspection/2026-23529/addressing-remote-access-to-advanced-semiconductors', detail: 'Marked unpublished, with publication scheduled for November 19, 2026. Accessed November 17, 2026 at 11:03 UTC, or 12:03 in Paris.', kind: 'source' },
+        { label: 'Office of the Federal Register, Understanding Public Inspection', href: 'https://www.federalregister.gov/reader-aids/using-federalregister-gov/understanding-public-inspection', detail: 'Advance access, tentative scheduling and calculated dates to check against the published official edition. Undated guide, accessed November 17, 2026.', kind: 'source' },
+      ],
+      related: ['controle-export'],
+    },
+  },
+  {
     slug: 'lda', sigle: 'LDA', nom: 'Lobbying Disclosure Act',
     def: 'US law requiring lobbying disclosures. LD-1 registers an engagement and lists disclosed lobbyists. LD-2 reports quarterly activity and rounded estimates of a firm’s income or an organisation’s expenses. The figures require attention to earned income and actual receipts. A firm’s reported income is separate from a personal payment to a public official.',
     guide: '/en/analysis/anthropic-washington-lobbying-export-controls/',

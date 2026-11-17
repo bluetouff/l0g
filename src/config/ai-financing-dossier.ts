@@ -34,6 +34,7 @@ export const aiFinancingSourceArticles: Record<string, string> = {
   'nvidia-lutnick-cantor-bitdeer-export-controls': 'nvidia-lutnick-cantor-exportations-bitdeer',
   'nvidia-taiwan-political-outreach-server-trial': 'nvidia-taiwan-demarches-politiques-proces-serveurs',
   'nvidia-bis-remote-access-cloud-controls': 'nvidia-bis-acces-distant-controles-cloud',
+  'nvidia-board-national-security-export-controls': 'nvidia-conseil-securite-nationale-controles-exportation',
   'anthropic-supplier-financing-ipo': 'anthropic-financement-fournisseurs-ipo',
   'broadcom-anthropic-blackstone-63-billion-risk': 'broadcom-anthropic-blackstone-risque-63-milliards',
   'ai-circular-financing': 'financement-circulaire-ia',
@@ -76,6 +77,7 @@ export const aiFinancingNvidiaIds = [
   'nvidia-lutnick-cantor-bitdeer-export-controls',
   'nvidia-taiwan-political-outreach-server-trial',
   'nvidia-bis-remote-access-cloud-controls',
+  'nvidia-board-national-security-export-controls',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [

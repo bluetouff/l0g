@@ -876,6 +876,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-topic-blue)',
     entries: [
       {
+        sigle: 'Inspection publique', nom: 'Mise à disposition avant publication au Federal Register',
+        def: 'Mise à disposition, par l’Office of the Federal Register, d’un document avant sa publication dans une édition officielle du Federal Register. Le calendrier annoncé reste provisoire. La date d’entrée en vigueur se détermine selon les dispositions du texte et l’édition officielle publiée, avec une vérification des dates calculées ou encore à compléter.',
+        guide: '/posts/nvidia-conseil-securite-nationale-controles-exportation/',
+      },
+      {
         sigle: 'LDA', nom: 'Lobbying Disclosure Act',
         def: 'Loi américaine de transparence du lobbying. Le formulaire LD-1 enregistre un mandat et les lobbyistes déclarés. Le LD-2 présente l’activité trimestrielle et des estimations arrondies des revenus d’un cabinet ou des dépenses d’une organisation. Ces montants demandent de distinguer revenus acquis et sommes encaissées. Un revenu du cabinet se distingue d’un paiement personnel à un responsable public.',
         guide: '/posts/anthropic-lobbying-washington-controles-exportation/',
@@ -1332,6 +1337,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'inspection-publique': {
+    articles: [{ label: 'Nvidia : le conseil sous pression et les contrôles export', href: '/posts/nvidia-conseil-securite-nationale-controles-exportation/', kind: 'article' }],
+    sources: [
+      { label: 'Federal Register, document 2026-23529 en inspection publique', href: 'https://www.federalregister.gov/public-inspection/2026-23529/addressing-remote-access-to-advanced-semiconductors', detail: 'Document indiqué comme non publié, avec publication programmée le 19 novembre 2026. Consulté le 17 novembre 2026 à 11:03 UTC, soit 12:03 à Paris.', kind: 'source' },
+      { label: 'Office of the Federal Register, Understanding Public Inspection', href: 'https://www.federalregister.gov/reader-aids/using-federalregister-gov/understanding-public-inspection', detail: 'Mise à disposition préalable, calendrier provisoire et dates calculées à vérifier dans l’édition officielle publiée. Guide non daté, consulté le 17 novembre 2026.', kind: 'source' },
+    ],
+    related: ['controle-export'],
+  },
   lda: {
     articles: [{ label: 'Anthropic et ses relais à Washington', href: '/posts/anthropic-lobbying-washington-controles-exportation/', kind: 'article' }],
     sources: [{ label: 'Chambre et Sénat américains, guide LDA du 28 février 2025', href: 'https://lobbyingdisclosure.house.gov/ldaguidance.pdf', detail: 'Pages 3 et 16 : enregistrement LD-1, rapports LD-2, estimations et revenus acquis. Consulté le 17 novembre 2026. Heures de publication et de consultation non précisées.', kind: 'source' }],
