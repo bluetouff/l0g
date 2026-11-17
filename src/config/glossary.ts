@@ -876,6 +876,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-topic-blue)',
     entries: [
       {
+        sigle: 'LDA', nom: 'Lobbying Disclosure Act',
+        def: 'Loi américaine de transparence du lobbying. Le formulaire LD-1 enregistre un mandat et les lobbyistes déclarés. Le LD-2 présente l’activité trimestrielle et des estimations arrondies des revenus d’un cabinet ou des dépenses d’une organisation. Ces montants demandent de distinguer revenus acquis et sommes encaissées. Un revenu du cabinet se distingue d’un paiement personnel à un responsable public.',
+        guide: '/posts/anthropic-lobbying-washington-controles-exportation/',
+      },
+      {
         sigle: 'EXIM', nom: 'Export-Import Bank of the United States',
         def: 'Agence publique américaine de crédit à l’exportation. Elle facilite les ventes à l’étranger par des prêts directs, des garanties et des assurances. Le financement d’un acheteur ou d’un projet reste soumis aux critères d’éligibilité, à l’analyse du risque de crédit et aux conditions de remboursement applicables à chaque opération.',
         guide: '/posts/nvidia-succession-washington-champions-ia/',
@@ -1084,7 +1089,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-16';
+export const glossaryUpdatedIso = '2026-11-17';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1327,6 +1332,11 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  lda: {
+    articles: [{ label: 'Anthropic et ses relais à Washington', href: '/posts/anthropic-lobbying-washington-controles-exportation/', kind: 'article' }],
+    sources: [{ label: 'Chambre et Sénat américains, guide LDA du 28 février 2025', href: 'https://lobbyingdisclosure.house.gov/ldaguidance.pdf', detail: 'Pages 3 et 16 : enregistrement LD-1, rapports LD-2, estimations et revenus acquis. Consulté le 17 novembre 2026. Heures de publication et de consultation non précisées.', kind: 'source' }],
+    related: ['controle-export'],
+  },
   "test-de-moindre-cout": {"articles": [{"label": "FDIC : les valorisations des faillites de 2023", "href": "/posts/fdic-valorisations-faillites-banques-2023/", "kind": "article"}], "sources": [{"label": "12 U.S.C. § 1823(c)(4), texte officiel", "href": "https://uscode.house.gov/us/usc/t12/s1823/", "kind": "source"}, {"label": "FDIC OIG, EVAL-27-02, novembre 2026", "href": "https://www.fdicoig.gov/sites/default/files/reports/2026-11/FDICs%20Valuation%20Process%20for%20Large%20Regional%20Bank%20Resolutions%20-%20Final%20Report%20-%20EVAL-27-02%20-%20REDACTED.pdf", "kind": "source"}], "related": ["van", "contrefactuel"]},
   "commissionnaire-de-transport": {"articles": [{"label": "CMA CGM : du navire à l’entrepôt", "href": "/posts/cma-cgm-maritime-logistique-marges/", "kind": "article"}], "sources": [{"label": "Code des transports, article L1411-1, I, 1°", "href": "https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000023085479", "kind": "source"}, {"label": "Kuehne+Nagel, compte de résultat consolidé 2025", "href": "https://2025-annual-report.kuehne-nagel.com/annual-report/consolidated-financial-statements-2025/income-statement", "kind": "source"}], "related": ["ebitda"]},
   'presomption-d-innocence': {
