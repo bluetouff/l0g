@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 420" role="img" aria-labelledby="ai-private-fr-holdings-m-title ai-private-fr-holdings-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-private-credit-svg">
+  <title id="ai-private-fr-holdings-m-title">Deux fonds détiennent la dette CoreWeave</title>
+  <desc id="ai-private-fr-holdings-m-desc">Au 30 septembre 2026, Apollo Debt Solutions BDC déclare 13,004 millions de dollars de principal financé détenu et 8,744 millions d’engagements non financés sur CoreWeave Financing DDTL V-V. Blue Owl Technology Finance déclare respectivement 8,969 et 6,031 millions. Les quatre barres partent de zéro et utilisent la même échelle. Les engagements non financés restent soumis aux conditions du prêt. Le principal détenu et les engagements sont représentés séparément ; les barres ne mesurent pas les justes valeurs.</desc>
+  <text x="18" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">CoreWeave · DDTL 5.5</text>
+  <text x="18" y="54" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">M$ · 30 septembre 2026</text>
+  <rect x="18" y="73" width="23" height="7" rx="0" fill="var(--color-signal)" stroke="none" stroke-width="1" />
+  <text x="49" y="81" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Financé</text>
+  <rect x="172" y="73" width="23" height="7" rx="0" fill="none" stroke="var(--color-amber)" stroke-width="1.25" />
+  <text x="203" y="81" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Non financé</text>
+  <text x="18" y="116" font-size="16.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Apollo Debt Solutions</text>
+  <rect x="18" y="136" width="268.0" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="ads-funded-usd-mn" data-value="13.004"/>
+  <text x="362" y="148" font-size="18" font-weight="400" text-anchor="end" fill="var(--color-paper)">13,004</text>
+  <rect x="18" y="166" width="180.20547524" height="10" rx="1" fill="none" stroke="var(--color-amber)" stroke-width="1.25" data-metric="ads-unfunded-usd-mn" data-value="8.744"/>
+  <text x="362" y="178" font-size="18" font-weight="400" text-anchor="end" fill="var(--color-paper)">8,744</text>
+  <text x="18" y="230" font-size="16.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Blue Owl Technology Finance</text>
+  <rect x="18" y="250" width="184.84251" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="otf-funded-usd-mn" data-value="8.969"/>
+  <text x="362" y="262" font-size="18" font-weight="400" text-anchor="end" fill="var(--color-paper)">8,969</text>
+  <rect x="18" y="280" width="124.29314057" height="10" rx="1" fill="none" stroke="var(--color-amber)" stroke-width="1.25" data-metric="otf-unfunded-usd-mn" data-value="6.031"/>
+  <text x="362" y="292" font-size="18" font-weight="400" text-anchor="end" fill="var(--color-paper)">6,031</text>
+  <line x1="18" y1="320" x2="286" y2="320" stroke="var(--color-line-strong)" stroke-width="1" />
+  <line x1="18.0" y1="320" x2="18.0" y2="325" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18.0" y="342" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="121.0452168563519" y1="320" x2="121.0452168563519" y2="325" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="121.0452168563519" y="342" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">5</text>
+  <line x1="224.0904337127038" y1="320" x2="224.0904337127038" y2="325" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="224.0904337127038" y="342" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">10</text>
+  <line x1="285.91756382651494" y1="320" x2="285.91756382651494" y2="325" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="285.91756382651494" y="342" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">13</text>
+  <text x="18" y="380" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Principal détenu et engagements</text>
+  <text x="18" y="402" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Non financé : tirages soumis aux conditions.</text>
+</svg>

@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 420" role="img" aria-labelledby="ai-private-fr-liquidity-m-title ai-private-fr-liquidity-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-private-credit-svg">
+  <title id="ai-private-fr-liquidity-m-title">La capacité de tirage dépend du collatéral</title>
+  <desc id="ai-private-fr-liquidity-m-desc">Au 30 septembre 2026, la facilité Athena III présente 175 millions de dollars nominaux non tirés et un montant disponible de 93,727 millions, qui tient compte des contraintes de borrowing base. Les barres utilisent la même échelle. La base d’emprunt dépend notamment des actifs éligibles, de leur valeur retenue et des limites de concentration. L’écart n’est pas une perte et ne prouve pas une dégradation récente. Source : 10-Q OTF, note 5, page 78 et note de tableau 1 ; contrat Athena III.</desc>
+  <text x="18" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Une disponibilité sous conditions</text>
+  <text x="18" y="54" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Athena III · 30 sept. 2026 · M$</text>
+  <text x="18" y="96" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Nominal non tiré</text>
+  <text x="362" y="101" font-size="18" font-weight="500" text-anchor="end" fill="var(--color-paper)">175</text>
+  <rect x="18" y="117" width="344" height="12" rx="1" fill="none" stroke="var(--color-muted)" stroke-width="1.25" data-metric="nominal-unused-usd-mn" data-value="175"/>
+  <text x="18" y="164" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Disponible sous</text>
+  <text x="18" y="184" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">borrowing base</text>
+  <text x="362" y="178" font-size="18" font-weight="500" text-anchor="end" fill="var(--color-signal)">93,727</text>
+  <rect x="18" y="197" width="184.24050286" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="borrowing-base-available-usd-mn" data-value="93.727"/>
+  <line x1="18" y1="235" x2="362" y2="235" stroke="var(--color-line-strong)" stroke-width="1" />
+  <line x1="18.0" y1="235" x2="18.0" y2="240" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18.0" y="257" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="116.28571428571429" y1="235" x2="116.28571428571429" y2="240" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="116.28571428571429" y="257" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">50</text>
+  <line x1="214.57142857142858" y1="235" x2="214.57142857142858" y2="240" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="214.57142857142858" y="257" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">100</text>
+  <line x1="312.85714285714283" y1="235" x2="312.85714285714283" y2="240" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="312.85714285714283" y="257" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">150</text>
+  <line x1="362.0" y1="235" x2="362.0" y2="240" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="362.0" y="257" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">175</text>
+  <line x1="18" y1="278" x2="362" y2="278" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="asset" transform="translate(58 306) scale(0.65)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="-12" y="-16" width="24" height="32" rx="2"/><path d="M-6-8H6M-6-2H6M-6 5H1"/><path d="m2 10 3 3 6-7"/></g>
+  <g data-icon="value" transform="translate(190 306) scale(0.7)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="-3" cy="-3" r="11"/><path d="m5 5 10 10M-8 1-4-4 3-1"/></g>
+  <g data-icon="concentration" transform="translate(322 306) scale(0.7)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="-10" cy="-9" r="4"/><circle cx="10" cy="-9" r="4"/><circle cx="-10" cy="10" r="4"/><circle cx="10" cy="10" r="4"/><path d="M-3-9H3M-3 10H3M-10-2V3M10-2V3"/></g>
+  <text x="58" y="335" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Actifs</text>
+  <text x="58" y="352" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">éligibles</text>
+  <text x="190" y="335" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Valeur</text>
+  <text x="190" y="352" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">retenue</text>
+  <text x="322" y="335" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Limites</text>
+  <text x="322" y="352" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">de concentration</text>
+  <path d="M58 365V372H322V365M190 372V388" fill="none" stroke="var(--color-line-strong)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M186 383 190 388 194 383" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="190" y="410" font-size="15" font-weight="500" text-anchor="middle" fill="var(--color-signal)">Base d’emprunt</text>
+</svg>

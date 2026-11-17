@@ -17,6 +17,7 @@ export interface AiFinancingSection {
 
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
+  'private-credit-ai-funds-bank-financing': 'credit-prive-ia-fonds-banques-financement',
   'european-banks-ai-loans-exposures': 'banques-europeennes-ia-contrats-expositions',
   'jupiter-hsbc-european-banks-ai-financing': 'jupiter-hsbc-banques-europeennes-financement-ia',
   'nvidia-trump-warning-at-the-top': 'nvidia-trump-alerte-sommet',
@@ -243,6 +244,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
         note: {
           fr: 'Des contrats CoreWeave aux lettres de crédit de Switch, les instruments et les publications bancaires précisent la mesure des expositions.',
           en: 'From CoreWeave agreements to Switch letters of credit, contracts and bank disclosures clarify how exposures are measured.',
+        },
+      },
+      {
+        id: 'private-credit-ai-funds-bank-financing',
+        label: { fr: 'Les banques derrière les prêteurs privés de l’IA', en: 'The bank loans behind AI’s private lenders' },
+        note: {
+          fr: 'Deux fonds détiennent une partie du prêt CoreWeave. Leurs comptes conduisent aux filiales emprunteuses et aux garanties qui déterminent l’argent disponible auprès des banques.',
+          en: 'Two funds hold part of a CoreWeave loan. Their accounts lead to borrowing subsidiaries and the collateral that governs how much bank financing is available.',
         },
       },
       {

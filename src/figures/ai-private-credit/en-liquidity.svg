@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" role="img" aria-labelledby="ai-private-en-liquidity-d-title ai-private-en-liquidity-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-private-credit-svg">
+  <title id="ai-private-en-liquidity-d-title">Drawing capacity depends on collateral</title>
+  <desc id="ai-private-en-liquidity-d-desc">At 30 September 2026, the Athena III facility reports $175 million nominally unused and $93.727 million available after borrowing-base limitations. Both bars use the same scale. The borrowing base depends on eligible assets, their assessed value and concentration limits, among other conditions. The gap is not a loss and does not establish recent deterioration. Sources: OTF 10-Q, note 5, page 78 and table footnote 1; Athena III agreement.</desc>
+  <text x="24" y="31" font-size="22" font-weight="500" text-anchor="start" fill="var(--color-paper)">Drawing capacity comes with conditions</text>
+  <text x="24" y="55" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Athena III · 30 September 2026 · US dollars, millions</text>
+  <text x="24" y="99" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Nominally unused amount</text>
+  <text x="474" y="104" font-size="22.8" font-weight="500" text-anchor="end" fill="var(--color-paper)">175</text>
+  <rect x="24" y="119" width="450" height="12" rx="1" fill="none" stroke="var(--color-muted)" stroke-width="1.25" data-metric="nominal-unused-usd-mn" data-value="175"/>
+  <text x="24" y="181" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Available after borrowing-base limits</text>
+  <text x="474" y="185" font-size="22.8" font-weight="500" text-anchor="end" fill="var(--color-signal)">93.727</text>
+  <rect x="24" y="200" width="241.01228571" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="borrowing-base-available-usd-mn" data-value="93.727"/>
+  <line x1="24" y1="248" x2="474" y2="248" stroke="var(--color-line-strong)" stroke-width="1" />
+  <line x1="24.0" y1="248" x2="24.0" y2="253" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="24.0" y="270" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="152.57142857142858" y1="248" x2="152.57142857142858" y2="253" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="152.57142857142858" y="270" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">50</text>
+  <line x1="281.14285714285717" y1="248" x2="281.14285714285717" y2="253" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="281.14285714285717" y="270" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">100</text>
+  <line x1="409.7142857142857" y1="248" x2="409.7142857142857" y2="253" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="409.7142857142857" y="270" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">150</text>
+  <line x1="474.0" y1="248" x2="474.0" y2="253" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="474.0" y="270" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">175</text>
+  <line x1="507" y1="80" x2="507" y2="280" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="532" y="96" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Collateral conditions</text>
+  <g data-icon="asset" transform="translate(546 132) scale(0.6)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="-12" y="-16" width="24" height="32" rx="2"/><path d="M-6-8H6M-6-2H6M-6 5H1"/><path d="m2 10 3 3 6-7"/></g>
+  <text x="572" y="137" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Eligible assets</text>
+  <g data-icon="value" transform="translate(546 175) scale(0.64)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="-3" cy="-3" r="11"/><path d="m5 5 10 10M-8 1-4-4 3-1"/></g>
+  <text x="572" y="180" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Assessed value</text>
+  <g data-icon="concentration" transform="translate(546 218) scale(0.64)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="-10" cy="-9" r="4"/><circle cx="10" cy="-9" r="4"/><circle cx="-10" cy="10" r="4"/><circle cx="10" cy="10" r="4"/><path d="M-3-9H3M-3 10H3M-10-2V3M10-2V3"/></g>
+  <text x="572" y="223" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Concentration</text>
+  <path d="M633 238V254" fill="none" stroke="var(--color-line-strong)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M629 249 633 254 637 249" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="633" y="278" font-size="15.2" font-weight="500" text-anchor="middle" fill="var(--color-signal)">Borrowing base</text>
+  <text x="24" y="309" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Availability depends on the collateral portfolio.</text>
+</svg>

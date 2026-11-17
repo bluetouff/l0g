@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 420" role="img" aria-labelledby="ai-private-fr-map-m-title ai-private-fr-map-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-private-credit-svg">
+  <title id="ai-private-fr-map-m-title">Le fonds, la créance et les banques</title>
+  <desc id="ai-private-fr-map-m-desc">OTF détient une créance financée de 8,969 millions de dollars sur CoreWeave et possède la filiale Athena Funding III. Le contrat de cette filiale amendé le 11 septembre 2026 identifie Deutsche Bank avec 150 millions de dollars d’engagement et First Citizens avec 100 millions. La facilité présente 75 millions de dollars d’encours total au 30 septembre 2026, sans ventilation des tirages par banque identifiée dans les pièces consultées. Les pièces consultées ne permettent pas d’affecter la créance CoreWeave à Athena III : aucune flèche ne les relie. Cette carte n’attribue donc pas aux banques une exposition chiffrée à CoreWeave.</desc>
+  <text x="18" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Le fonds et ses banques</text>
+  <text x="18" y="54" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">OTF · liens publiés, affectation inconnue</text>
+  <text x="100" y="91" font-size="14.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Deutsche Bank</text>
+  <text x="282" y="91" font-size="14.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">First Citizens</text>
+  <text x="100" y="121" font-size="18" font-weight="400" text-anchor="middle" fill="var(--color-paper)">150 M$</text>
+  <text x="282" y="121" font-size="18" font-weight="400" text-anchor="middle" fill="var(--color-paper)">100 M$</text>
+  <path d="M100 135V153H278M282 135V153H278V246" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M274 241 278 246 282 241" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="18" y="177" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Engagements contractuels</text>
+  <rect x="18" y="195" width="344" height="203" rx="5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="folder" transform="translate(39 217) scale(0.45)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-17-10H-3l5 5H17V15H-17Z"/><path d="M-17 0H17"/></g>
+  <text x="58" y="222" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">OTF · périmètre consolidé</text>
+  <line x1="190" y1="248" x2="190" y2="327" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="3 5"/>
+  <text x="101" y="267" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Créance CoreWeave</text>
+  <text x="101" y="299" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-signal)">8,969 M$</text>
+  <text x="101" y="321" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">portefeuille publié</text>
+  <text x="278" y="267" font-size="16.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Athena III</text>
+  <text x="278" y="299" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-paper)">75 M$</text>
+  <text x="278" y="321" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">tirés au total</text>
+  <text x="190" y="358" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Affectation de la créance</text>
+  <text x="190" y="379" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-amber)">à Athena III inconnue</text>
+</svg>

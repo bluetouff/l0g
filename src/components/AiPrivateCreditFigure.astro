@@ -1,0 +1,118 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'holdings' | 'map' | 'liquidity';
+  sourceHref: string;
+  number?: number;
+  caption?: string;
+}
+
+const { lang, kind, sourceHref, number, caption } = Astro.props;
+const copy = {
+  fr: {
+    holdings: {
+      caption: 'Au 30 septembre 2026, les deux fonds déclarent le principal CoreWeave financé qu’ils détiennent et leurs engagements non financés. Ces derniers dépendent des conditions du prêt. Le graphique décrit leurs positions dans ce financement.',
+      source: 'Apollo Debt Solutions BDC et Blue Owl Technology Finance, 10-Q au 30 septembre 2026',
+      credit: 'Millions de dollars, échelle commune aux quatre barres. Graphique l0g.',
+    },
+    map: {
+      caption: 'OTF publie une créance CoreWeave et détient Athena III, dont le contrat précise les engagements bancaires. Les 75 M$ tirés couvrent tout le syndicat. La répartition bancaire et l’affectation de cette créance au collatéral restent inconnues.',
+      source: 'OTF, 10-Q au 30 septembre 2026, et contrat Athena III amendé le 11 septembre 2026, annexe B',
+      credit: 'Engagements au 11 septembre, encours au 30 septembre 2026. Dollars américains, flèches sans échelle monétaire. Schéma l0g.',
+    },
+    liquidity: {
+      caption: 'Les 175 M$ nominaux non tirés et les 93,727 M$ disponibles concernent Athena III au 30 septembre 2026. La base d’emprunt dépend notamment des actifs éligibles, de leur valeur et des limites de concentration.',
+      source: 'OTF, 10-Q au 30 septembre 2026, note 5, p. 78 et note de tableau 1 ; contrat Athena III',
+      credit: 'Comparaison de capacités à une date donnée, en millions de dollars et à échelle commune. Graphique l0g.',
+    },
+  },
+  en: {
+    holdings: {
+      caption: 'At 30 September 2026, both funds report CoreWeave principal held and unfunded commitments. Those commitments remain subject to the loan’s conditions. The four bars compare positions in the same financing.',
+      source: 'Apollo Debt Solutions BDC and Blue Owl Technology Finance, 10-Qs for 30 September 2026',
+      credit: 'US dollars, millions. Common scale across all four bars. Chart by l0g.',
+    },
+    map: {
+      caption: 'OTF reports a CoreWeave loan and owns Athena III, whose agreement sets out bank commitments. The $75m drawn covers the whole syndicate. The lender split and inclusion of that loan in the collateral remain unidentified.',
+      source: 'OTF, 30 September 2026 10-Q, and Athena III agreement amended on 11 September 2026, Annex B',
+      credit: 'Commitments at 11 September and debt at 30 September 2026. US dollars. Arrows have no monetary scale. Diagram by l0g.',
+    },
+    liquidity: {
+      caption: 'Athena III’s $175m nominally unused and $93.727m available refer to 30 September 2026. The borrowing base depends on eligible collateral, its assessed value and concentration limits, among other contractual conditions.',
+      source: 'OTF, 30 September 2026 10-Q, note 5, p. 78 and table footnote 1; Athena III agreement',
+      credit: 'US dollars, millions. Capacity comparison at a single date, with a common scale. Chart by l0g.',
+    },
+  },
+} as const;
+
+const item = copy[lang][kind];
+const figures = import.meta.glob('../figures/ai-private-credit/*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/ai-private-credit/${lang}-${kind}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing AI private credit figure.');
+}
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('AI private credit figure requires a source anchor or an HTTPS source URL.');
+}
+const figureId = number === undefined ? `ai-private-credit-${lang}-${kind}` : `figure-${number}`;
+const originalIdPrefix = `ai-private-${lang}-${kind}-`;
+const instanceIdPrefix = `${figureId}-${lang}-${kind}-`;
+const desktopInstance = desktop.replaceAll(originalIdPrefix, instanceIdPrefix);
+const mobileInstance = mobile.replaceAll(originalIdPrefix, instanceIdPrefix);
+---
+
+<figure class="ai-private-credit" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktopInstance} />
+  <div class="figure-narrow" set:html={mobileInstance} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}<a href={sourceHref}>{item.source}</a>.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .ai-private-credit {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+  }
+  .ai-private-credit :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 380px; margin-inline: auto; }
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .35rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .ai-private-credit { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>

@@ -5504,7 +5504,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     robots: 'noindex,follow',
     atlas: {
-      articles: [{ label: 'Private credit’s test of patience', href: '/en/analysis/private-credit-test-of-patience/', detail: 'Fund financing capacity and collateral behind bank facilities.', kind: 'article' }],
+      articles: [{ label: 'The bank loans behind AI’s private lenders', href: '/en/analysis/private-credit-ai-funds-bank-financing/', kind: 'article' }, { label: 'Private credit’s test of patience', href: '/en/analysis/private-credit-test-of-patience/', detail: 'Fund financing capacity and collateral behind bank facilities.', kind: 'article' }],
       sources: [
         { label: 'Ares Capital, June 30, 2026 financial results', href: 'https://arcc.ares.com/news/ares-capital-corporation-announces-june-30-2026-financial-results-and-declares-third-quarter-2026-dividend/f7760e0a-2af5-471a-9ee0-ff7ead3d6875', detail: 'Facility availability remains subject to borrowing-base and other restrictions.', kind: 'source' },
         { label: 'Ares Capital, June 30, 2026 Form 10-Q', href: 'https://arcc.ares.com/media/document/1cbc95d3-9338-4c60-ae48-079474d44300/assets/arcc2026q2.pdf', detail: 'Note 5, pages 186–190: advance rates, asset categories and facility restrictions.', kind: 'source' },
@@ -5556,7 +5556,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       intuition: 'A listed BDC gives its portfolio a market price. A non-traded BDC may offer capped periodic repurchases; investors face different exit conditions.',
       formula: 'Listed BDC premium or discount = market price / NAV per share - 1',
       whyNow: 'Software exposure requires separating recorded loan values, share prices and investors’ ability to exit.',
-      articles: [{ label: 'Private credit’s test of patience', href: '/en/analysis/private-credit-test-of-patience/', detail: 'Non-accrual loans, accounting bases and bank funding of credit vehicles.', kind: 'article' }, { label: 'Private credit: software debt faces the AI test', href: '/en/analysis/private-credit-software-ai-cash-flows-debt/', detail: 'BIS exposures, OTF accounts and educational scenarios.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
+      articles: [{ label: 'The bank loans behind AI’s private lenders', href: '/en/analysis/private-credit-ai-funds-bank-financing/', kind: 'article' }, { label: 'Private credit’s test of patience', href: '/en/analysis/private-credit-test-of-patience/', detail: 'Non-accrual loans, accounting bases and bank funding of credit vehicles.', kind: 'article' }, { label: 'Private credit: software debt faces the AI test', href: '/en/analysis/private-credit-software-ai-cash-flows-debt/', detail: 'BIS exposures, OTF accounts and educational scenarios.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
       guides: privateCreditGuides,
       ...privateCreditShared,
       sources: [{ label: 'SEC: publicly traded BDCs', href: 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/closed-end-funds/publicly-traded-business-development-companies-bdcs', detail: 'Vehicle structure and differences between BDCs.', kind: 'source' }, ...privateCreditSources],

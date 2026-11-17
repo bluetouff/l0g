@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 320" role="img" aria-labelledby="ai-private-fr-map-d-title ai-private-fr-map-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-private-credit-svg">
+  <title id="ai-private-fr-map-d-title">Le fonds, la créance et les banques</title>
+  <desc id="ai-private-fr-map-d-desc">OTF détient une créance financée de 8,969 millions de dollars sur CoreWeave et possède la filiale Athena Funding III. Le contrat de cette filiale amendé le 11 septembre 2026 identifie Deutsche Bank avec 150 millions de dollars d’engagement et First Citizens avec 100 millions. La facilité présente 75 millions de dollars d’encours total au 30 septembre 2026, sans ventilation des tirages par banque identifiée dans les pièces consultées. Les pièces consultées ne permettent pas d’affecter la créance CoreWeave à Athena III : aucune flèche ne les relie. Cette carte n’attribue donc pas aux banques une exposition chiffrée à CoreWeave.</desc>
+  <text x="24" y="31" font-size="22" font-weight="500" text-anchor="start" fill="var(--color-paper)">Le fonds et ses banques</text>
+  <text x="24" y="55" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">OTF · portefeuille et financement d’une filiale</text>
+  <rect x="24" y="88" width="452" height="192" rx="5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="folder" transform="translate(48 110) scale(0.5)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-17-10H-3l5 5H17V15H-17Z"/><path d="M-17 0H17"/></g>
+  <text x="70" y="115" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">OTF · périmètre consolidé</text>
+  <line x1="246" y1="136" x2="246" y2="232" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="3 5"/>
+  <text x="44" y="157" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Créance CoreWeave</text>
+  <text x="44" y="191" font-size="22.8" font-weight="500" text-anchor="start" fill="var(--color-signal)">8,969 M$</text>
+  <text x="44" y="216" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">portefeuille publié</text>
+  <text x="273" y="157" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-paper)">Athena III</text>
+  <text x="273" y="191" font-size="22.8" font-weight="500" text-anchor="start" fill="var(--color-paper)">75 M$</text>
+  <text x="273" y="216" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">tirés au total</text>
+  <text x="250" y="261" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Affectation de la créance au SPV inconnue</text>
+  <text x="537" y="96" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Engagements de crédit</text>
+  <g data-icon="bank" transform="translate(553 135) scale(0.62)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-17-7 0-15 17-7M-17-4H17M-14 13H14M-18 17H18M-11-1V10M-4-1V10M4-1V10M11-1V10"/></g>
+  <text x="583" y="132" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Deutsche Bank</text>
+  <text x="583" y="159" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">150 M$</text>
+  <g data-icon="bank" transform="translate(553 221) scale(0.62)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-17-7 0-15 17-7M-17-4H17M-14 13H14M-18 17H18M-11-1V10M-4-1V10M4-1V10M11-1V10"/></g>
+  <text x="583" y="218" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">First Citizens</text>
+  <text x="583" y="245" font-size="22" font-weight="400" text-anchor="start" fill="var(--color-paper)">100 M$</text>
+  <path d="M528 147H508V188H458M528 233H508V188" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M463 184 458 188 463 192" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="24" y="309" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">75 M$ : encours du syndicat, répartition par banque non identifiée.</text>
+</svg>

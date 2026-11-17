@@ -2563,7 +2563,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['van', 'part-du-travail'],
   },
   'borrowing-base': {
-    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Capacité de financement du fonds et garanties de ses lignes bancaires.', kind: 'article' }],
+    articles: [{ label: 'Les banques derrière les prêteurs privés de l’IA', href: '/posts/credit-prive-ia-fonds-banques-financement/', kind: 'article' }, { label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Capacité de financement du fonds et garanties de ses lignes bancaires.', kind: 'article' }],
     sources: [
       { label: 'Ares Capital, résultats au 30 juin 2026', href: 'https://arcc.ares.com/news/ares-capital-corporation-announces-june-30-2026-financial-results-and-declares-third-quarter-2026-dividend/f7760e0a-2af5-471a-9ee0-ff7ead3d6875', detail: 'Disponibilités soumises à la borrowing base et aux autres restrictions des lignes.', kind: 'source' },
       { label: 'Ares Capital, formulaire 10-Q au 30 juin 2026', href: 'https://arcc.ares.com/media/document/1cbc95d3-9338-4c60-ae48-079474d44300/assets/arcc2026q2.pdf', detail: 'Note 5, pages 186–190 : taux d’avance, catégories d’actifs et restrictions des facilités.', kind: 'source' },
@@ -4720,7 +4720,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Une BDC cotée donne un prix de marché à son portefeuille. Une BDC non cotée peut offrir des rachats périodiques plafonnés ; les deux formes exposent l’investisseur à des conditions de sortie différentes.",
     formula: 'BDC cotée : prime ou décote = prix de marché / NAV par action - 1',
     whyNow: "Pour lire une exposition au logiciel, il faut distinguer valeur comptable des prêts, prix de l’action et possibilités de retrait.",
-    articles: [{ label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Prêts en non-accrual, bases comptables et financement bancaire des véhicules.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
+    articles: [{ label: 'Les banques derrière les prêteurs privés de l’IA', href: '/posts/credit-prive-ia-fonds-banques-financement/', kind: 'article' }, { label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Prêts en non-accrual, bases comptables et financement bancaire des véhicules.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
     guides: privateCreditGuides,
     datasets: privateCreditDatasets,
     signals: privateCreditSignals,
