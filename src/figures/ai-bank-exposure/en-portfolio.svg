@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="ai-bank-en-portfolio-d-title ai-bank-en-portfolio-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-en-portfolio-d-title">Société Générale: a sector portfolio of about €12 billion in EAD</title>
+  <desc id="ai-bank-en-portfolio-d-desc">At end-Q3 2026, Société Générale reports about €12 billion in exposure at default, or EAD, in a portfolio comprising 60% data centres, 21% IT consulting, 10% application software publishing and 9% computer programming. The bar shows these shares. The approximate €7.2 billion data-centre amount is calculated by l0g as 12 times 60%, using rounded inputs. The measure includes on- and off-balance-sheet exposures. Its sector scope extends beyond AI. Sources: Q3 2026 results, page 41, and debt investor presentation, page 46.</desc>
+  <text x="24" y="29" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Société Générale</text>
+  <text x="24" y="76" font-size="22.8" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-metric="sector-ead-eur-bn" data-value="12">~ €12bn</text>
+  <text x="239" y="70" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-muted)">EAD · end-Q3 2026</text>
+  <rect x="24" y="110" width="427.2" height="17" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" fill-opacity="0.7" data-metric="sector-share-percent" data-value="60" />
+  <text x="237.6" y="102" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">60%</text>
+  <rect x="451.2" y="110" width="149.52" height="17" rx="1" fill="var(--color-topic-blue)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="21" />
+  <text x="525.96" y="102" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">21%</text>
+  <rect x="600.72" y="110" width="71.2" height="17" rx="1" fill="var(--color-amber)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="10" />
+  <text x="636.32" y="102" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">10%</text>
+  <rect x="671.9200000000001" y="110" width="64.08" height="17" rx="1" fill="var(--color-muted)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="9" />
+  <text x="703.96" y="102" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">9%</text>
+  <line x1="24" y1="154" x2="37" y2="154" stroke="var(--color-signal)" stroke-width="2" />
+  <text x="45" y="160" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Data centres</text>
+  <line x1="222" y1="154" x2="235" y2="154" stroke="var(--color-topic-blue)" stroke-width="2" />
+  <text x="243" y="160" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">IT consulting</text>
+  <line x1="420" y1="154" x2="433" y2="154" stroke="var(--color-amber)" stroke-width="2" />
+  <text x="441" y="160" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Software publishing</text>
+  <line x1="603" y1="154" x2="616" y2="154" stroke="var(--color-muted)" stroke-width="2" />
+  <text x="624" y="160" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Programming</text>
+  <line x1="24" y1="187" x2="736" y2="187" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="24" y="235" font-size="22.8" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-metric="derived-data-centre-ead-eur-bn" data-value="7.2">~ €7.2bn</text>
+  <text x="246" y="220" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-paper)">Data centres · calculation: 12 × 60%</text>
+  <text x="246" y="245" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Calculated from rounded inputs</text>
+  <text x="24" y="270" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">On- and off-balance-sheet exposures</text>
+  <text x="24" y="290" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">A sector scope extending beyond AI</text>
+</svg>

@@ -17,6 +17,7 @@ export interface AiFinancingSection {
 
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
+  'european-banks-ai-loans-exposures': 'banques-europeennes-ia-contrats-expositions',
   'jupiter-hsbc-european-banks-ai-financing': 'jupiter-hsbc-banques-europeennes-financement-ia',
   'nvidia-trump-warning-at-the-top': 'nvidia-trump-alerte-sommet',
   'nvidia-trump-lutnick-national-security-influence': 'nvidia-trump-lutnick-securite-nationale-influence',
@@ -234,6 +235,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
         note: {
           fr: 'Une cession de créance conduit des permis électriques aux comptes des fonds. Ce premier volet suit les banques européennes et leurs liens avec les autres prêteurs.',
           en: 'A loan sale leads from power permits to fund disclosures. This opening investigation follows European banks and their connections with other lenders.',
+        },
+      },
+      {
+        id: 'european-banks-ai-loans-exposures',
+        label: { fr: 'Les banques européennes derrière la dette de l’IA', en: 'European banks and the debt behind AI' },
+        note: {
+          fr: 'Des contrats CoreWeave aux lettres de crédit de Switch, les instruments et les publications bancaires précisent la mesure des expositions.',
+          en: 'From CoreWeave agreements to Switch letters of credit, contracts and bank disclosures clarify how exposures are measured.',
         },
       },
       {

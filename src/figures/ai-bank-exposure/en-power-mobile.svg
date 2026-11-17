@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 390" role="img" aria-labelledby="ai-bank-en-power-m-title ai-bank-en-power-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-en-power-m-title">Switch: an uncommitted letter-of-credit framework</title>
+  <desc id="ai-bank-en-power-m-desc">General letter-of-credit mechanism. On 10 June 2026, Switch announced a $3.5 billion uncommitted performance letter-of-credit facility, following $2.6 billion announced in April. This framework is distinct from letters actually issued and demands paid, whose amounts are not stated in the reviewed releases. A bank’s obligation follows an issued letter and its terms, including the conditions for a complying demand. Credit backing for power commitments and the physical supply of electricity to campuses are distinct mechanisms. Arrows have no monetary scale. Sources: Switch and BBVA CIB, 10 June 2026.</desc>
+  <text x="18" y="29" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-metric="announced-facility-usd-bn" data-value="3.5">Switch · $3.5bn</text>
+  <text x="18" y="53" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">10 June 2026 · uncommitted framework</text>
+  <g data-icon="bank" transform="translate(61 106) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-5 0-15 18-5M-16-2H16M-14 18H14M-18 22H18M-11 2V14M0 2V14M11 2V14" /></g>
+  <g data-icon="letter" transform="translate(282 108) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-14-20H7L16-11V20H-14ZM7-20V-11H16M-7-3H8M-7 4H8M-7 11H1" /><path d="m3 12 3 3 6-7" stroke="var(--color-signal)" /></g>
+  <g data-flow="credit-backing"><path d="M105 108H243" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5" /><path d="M237 104 243 108 237 112" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="173" y="90" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Credit backing</text>
+  <text x="61" y="151" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Banks</text>
+  <text x="282" y="151" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">If LC issued</text>
+  <text x="282" y="178" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Payment on a</text>
+  <text x="282" y="197" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">complying demand</text>
+  <g data-flow="credit-backing"><path d="M282 210V227" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4" /><path d="M278 221 282 227 286 221" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="190" y="251" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Switch’s power commitments</text>
+  <line x1="300" y1="265" x2="300" y2="288" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="grid" transform="translate(70 321) scale(0.85)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-13 21 0-22 13 21M-16-7H16M-19 4H19M-7 12H7M-13 21H13M-7-7 7 4M7-7-7 4M-10 4 7 14M10 4-7 14M-16-7V-2M16-7V-2M-19 4V9M19 4V9" /></g>
+  <g data-icon="campus" transform="translate(300 320) scale(0.85)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 20H23M-18 20V-16H6V20M6-8H19V20M-11-9H-1M-11-2H-1M-11 5H-1M-11 12H-1M11-1H14M11 6H14M11 13H14" /></g>
+  <g data-flow="physical-power"><path d="M112 319H257" fill="none" stroke="var(--color-amber)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><path d="M251 315 257 319 251 323" fill="none" stroke="var(--color-amber)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="185" y="304" font-size="14.5" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Electricity</text>
+  <text x="70" y="357" font-size="14.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Generation</text>
+  <text x="70" y="376" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">and transmission</text>
+  <text x="300" y="357" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Campuses</text>
+</svg>

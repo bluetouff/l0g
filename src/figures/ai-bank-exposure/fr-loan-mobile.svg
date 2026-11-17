@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 390" role="img" aria-labelledby="ai-bank-fr-loan-m-title ai-bank-fr-loan-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-fr-loan-m-title">CoreWeave : capacité, encours et part bancaire</title>
+  <desc id="ai-bank-fr-loan-m-desc">La facilité DDTL 5.5 de CoreWeave a une capacité contractuelle de 2,6 milliards de dollars au 7 août 2026. Son encours brut atteint 1,555 milliard de dollars au 30 septembre 2026. Les deux barres partent de zéro et partagent la même échelle. La répartition actuelle par banque n’est pas publiée. La différence entre les deux montants ne mesure pas une capacité immédiatement disponible. Sources : 8-K du 10 août et 10-Q du 12 novembre 2026, note 10.</desc>
+  <text x="18" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">CoreWeave · DDTL 5.5</text>
+  <text x="18" y="54" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Milliards de dollars</text>
+  <text x="18" y="87" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Capacité contractuelle</text>
+  <text x="18" y="106" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">7 août 2026</text>
+  <text x="362" y="99" font-size="18" font-weight="500" text-anchor="end" fill="var(--color-paper)">2,6</text>
+  <rect x="18" y="117" width="344" height="12" rx="1" fill="none" stroke="var(--color-muted)" stroke-width="1.25" data-metric="facility-capacity-usd-bn" data-value="2.6" />
+  <text x="18" y="165" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Encours brut</text>
+  <text x="18" y="184" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">30 sept. 2026</text>
+  <text x="362" y="177" font-size="18" font-weight="500" text-anchor="end" fill="var(--color-signal)">1,555</text>
+  <rect x="18" y="195" width="205.7384615384615" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="gross-outstanding-usd-bn" data-value="1.555" />
+  <line x1="18" y1="237" x2="362" y2="237" stroke="var(--color-line-strong)" stroke-width="1" />
+  <line x1="18.0" y1="237" x2="18.0" y2="242" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18.0" y="260" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="150.3076923076923" y1="237" x2="150.3076923076923" y2="242" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="150.3076923076923" y="260" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1</text>
+  <line x1="282.6153846153846" y1="237" x2="282.6153846153846" y2="242" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="282.6153846153846" y="260" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2</text>
+  <line x1="362.0" y1="237" x2="362.0" y2="242" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="362.0" y="260" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2,6</text>
+  <line x1="18" y1="279" x2="362" y2="279" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="ledger" transform="translate(43 322) scale(0.8)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-20" y="-24" width="40" height="48" rx="3" /><path d="M-13-15H13M-13-6H-3M-13 3H-3M-13 12H-3M2-10V17" /><path d="M8-4c0-4 7-4 7 0 0 3-4 3-4 6M11 8V9" stroke="var(--color-amber)" /></g>
+  <text x="83" y="312" font-size="17" font-weight="500" text-anchor="start" fill="var(--color-paper)">Par banque</text>
+  <text x="83" y="337" font-size="14.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Montant actuel non publié</text>
+  <text x="18" y="376" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Même échelle · dates distinctes</text>
+</svg>

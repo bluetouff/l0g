@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="ai-bank-fr-power-d-title ai-bank-fr-power-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-fr-power-d-title">Switch : un cadre de lettres de crédit non engagé</title>
+  <desc id="ai-bank-fr-power-d-desc">Schéma général de lettre de crédit. Switch annonce le 10 juin 2026 une facilité non engagée de lettres de crédit de performance de 3,5 milliards de dollars, après 2,6 milliards annoncés en avril. Ce cadre se distingue des LC effectivement émises et des appels payés, dont les montants ne sont pas indiqués dans les communiqués examinés. L’obligation bancaire porte sur une LC émise selon ses termes, notamment les conditions d’un appel conforme. Le soutien de crédit aux obligations électriques et l’acheminement physique de l’électricité vers les campus suivent des mécanismes distincts. Flèches sans échelle monétaire. Sources : Switch et BBVA CIB, 10 juin 2026.</desc>
+  <text x="24" y="31" font-size="22.8" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-metric="announced-facility-usd-bn" data-value="3.5">Switch · 3,5 Md$</text>
+  <text x="736" y="31" font-size="15.2" font-weight="400" text-anchor="end" fill="var(--color-muted)">10 juin 2026 · cadre non engagé</text>
+  <g data-icon="bank" transform="translate(75 103) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-18-5 0-15 18-5M-16-2H16M-14 18H14M-18 22H18M-11 2V14M0 2V14M11 2V14" /></g>
+  <g data-icon="letter" transform="translate(303 105) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-14-20H7L16-11V20H-14ZM7-20V-11H16M-7-3H8M-7 4H8M-7 11H1" /><path d="m3 12 3 3 6-7" stroke="var(--color-signal)" /></g>
+  <g data-flow="credit-backing"><path d="M121 105H255" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5" /><path d="M249 101 255 105 249 109" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <g data-flow="credit-backing"><path d="M351 105H516" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5" /><path d="M510 101 516 105 510 109" fill="none" stroke="var(--color-signal)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="434" y="86" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Soutien de crédit</text>
+  <text x="75" y="152" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Banques</text>
+  <text x="75" y="173" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">du syndicat</text>
+  <text x="303" y="151" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Si lettre de crédit émise</text>
+  <text x="303" y="174" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Paiement selon appel conforme</text>
+  <text x="629" y="101" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Obligations</text>
+  <text x="629" y="125" font-size="15.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">électriques de Switch</text>
+  <line x1="629" y1="145" x2="629" y2="196" stroke="var(--color-line-strong)" stroke-width="1" />
+  <g data-icon="grid" transform="translate(246 230) scale(0.9)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-13 21 0-22 13 21M-16-7H16M-19 4H19M-7 12H7M-13 21H13M-7-7 7 4M7-7-7 4M-10 4 7 14M10 4-7 14M-16-7V-2M16-7V-2M-19 4V9M19 4V9" /></g>
+  <g data-icon="campus" transform="translate(629 229) scale(0.9)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M-23 20H23M-18 20V-16H6V20M6-8H19V20M-11-9H-1M-11-2H-1M-11 5H-1M-11 12H-1M11-1H14M11 6H14M11 13H14" /></g>
+  <g data-flow="physical-power"><path d="M292 229H577" fill="none" stroke="var(--color-amber)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /><path d="M571 225 577 229 571 233" fill="none" stroke="var(--color-amber)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="435" y="214" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Électricité</text>
+  <text x="246" y="274" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Production et transport</text>
+  <text x="629" y="274" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Campus</text>
+</svg>

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 300" role="img" aria-labelledby="ai-bank-en-loan-d-title ai-bank-en-loan-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-en-loan-d-title">CoreWeave: facility size, debt outstanding and bank holdings</title>
+  <desc id="ai-bank-en-loan-d-desc">CoreWeave’s DDTL 5.5 facility has a contractual capacity of $2.6 billion on 7 August 2026. Gross debt outstanding is $1.555 billion on 30 September 2026. Both bars start at zero and use the same scale. Current holdings by individual banks are not disclosed. The difference between the amounts does not measure immediately available capacity. Sources: 10 August 8-K and 12 November 2026 10-Q, note 10.</desc>
+  <text x="24" y="31" font-size="22" font-weight="500" text-anchor="start" fill="var(--color-paper)">CoreWeave · DDTL 5.5</text>
+  <text x="24" y="55" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">US dollars, billions · same scale, different dates</text>
+  <text x="24" y="93" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Contractual capacity · 7 August 2026</text>
+  <text x="474" y="93" font-size="22.8" font-weight="500" text-anchor="end" fill="var(--color-paper)">$2.6bn</text>
+  <rect x="24" y="110" width="450" height="12" rx="1" fill="none" stroke="var(--color-muted)" stroke-width="1.25" data-metric="facility-capacity-usd-bn" data-value="2.6" />
+  <text x="24" y="172" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Gross debt · 30 September 2026</text>
+  <text x="474" y="172" font-size="22.8" font-weight="500" text-anchor="end" fill="var(--color-signal)">$1.555bn</text>
+  <rect x="24" y="189" width="269.13461538461536" height="12" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" data-metric="gross-outstanding-usd-bn" data-value="1.555" />
+  <line x1="24" y1="233" x2="474" y2="233" stroke="var(--color-line-strong)" stroke-width="1" />
+  <line x1="24.0" y1="233" x2="24.0" y2="239" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="24.0" y="258" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="197.07692307692307" y1="233" x2="197.07692307692307" y2="239" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="197.07692307692307" y="258" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1</text>
+  <line x1="370.15384615384613" y1="233" x2="370.15384615384613" y2="239" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="370.15384615384613" y="258" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2</text>
+  <line x1="474.0" y1="233" x2="474.0" y2="239" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="474.0" y="258" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2.6</text>
+  <line x1="514" y1="76" x2="514" y2="262" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="635" y="93" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">By individual bank</text>
+  <g data-icon="ledger" transform="translate(635 151) scale(1.4)" fill="none" stroke="var(--color-muted)" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="-20" y="-24" width="40" height="48" rx="3" /><path d="M-13-15H13M-13-6H-3M-13 3H-3M-13 12H-3M2-10V17" /><path d="M8-4c0-4 7-4 7 0 0 3-4 3-4 6M11 8V9" stroke="var(--color-amber)" /></g>
+  <text x="635" y="219" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Current holdings</text>
+  <text x="635" y="242" font-size="16" font-weight="400" text-anchor="middle" fill="var(--color-amber)">not disclosed</text>
+  <text x="24" y="291" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Each bank’s retained share remains unknown.</text>
+</svg>

@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 390" role="img" aria-labelledby="ai-bank-en-portfolio-m-title ai-bank-en-portfolio-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-bank-exposure-svg">
+  <title id="ai-bank-en-portfolio-m-title">Société Générale: a sector portfolio of about €12 billion in EAD</title>
+  <desc id="ai-bank-en-portfolio-m-desc">At end-Q3 2026, Société Générale reports about €12 billion in exposure at default, or EAD, in a portfolio comprising 60% data centres, 21% IT consulting, 10% application software publishing and 9% computer programming. The bar shows these shares. The approximate €7.2 billion data-centre amount is calculated by l0g as 12 times 60%, using rounded inputs. The measure includes on- and off-balance-sheet exposures. Its sector scope extends beyond AI. Sources: Q3 2026 results, page 41, and debt investor presentation, page 46.</desc>
+  <text x="18" y="28" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Société Générale</text>
+  <text x="18" y="74" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-paper)" data-metric="sector-ead-eur-bn" data-value="12">~ €12bn</text>
+  <text x="237" y="52" font-size="17" font-weight="400" text-anchor="start" fill="var(--color-paper)">EAD</text>
+  <text x="237" y="74" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">End-Q3 2026</text>
+  <rect x="18" y="105" width="206.4" height="14" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1.25" fill-opacity="0.7" data-metric="sector-share-percent" data-value="60" />
+  <text x="121.2" y="98" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">60%</text>
+  <rect x="224.4" y="105" width="72.24" height="14" rx="1" fill="var(--color-topic-blue)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="21" />
+  <text x="260.52" y="98" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">21%</text>
+  <rect x="296.64" y="105" width="34.4" height="14" rx="1" fill="var(--color-amber)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="10" />
+  <text x="313.84" y="98" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">10%</text>
+  <rect x="331.03999999999996" y="105" width="30.96" height="14" rx="1" fill="var(--color-muted)" stroke="none" stroke-width="1.25" fill-opacity="0.4" data-metric="sector-share-percent" data-value="9" />
+  <text x="346.52" y="98" font-size="13.5" font-weight="400" text-anchor="middle" fill="var(--color-muted)">9%</text>
+  <line x1="18" y1="149" x2="31" y2="149" stroke="var(--color-signal)" stroke-width="2" />
+  <text x="44" y="154" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Data centres</text>
+  <text x="362" y="154" font-size="15" font-weight="500" text-anchor="end" fill="var(--color-paper)">60%</text>
+  <line x1="18" y1="178" x2="31" y2="178" stroke="var(--color-topic-blue)" stroke-width="2" />
+  <text x="44" y="183" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">IT consulting</text>
+  <text x="362" y="183" font-size="15" font-weight="500" text-anchor="end" fill="var(--color-paper)">21%</text>
+  <line x1="18" y1="207" x2="31" y2="207" stroke="var(--color-amber)" stroke-width="2" />
+  <text x="44" y="212" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Software publishing</text>
+  <text x="362" y="212" font-size="15" font-weight="500" text-anchor="end" fill="var(--color-paper)">10%</text>
+  <line x1="18" y1="236" x2="31" y2="236" stroke="var(--color-muted)" stroke-width="2" />
+  <text x="44" y="241" font-size="15" font-weight="400" text-anchor="start" fill="var(--color-paper)">Programming</text>
+  <text x="362" y="241" font-size="15" font-weight="500" text-anchor="end" fill="var(--color-paper)">9%</text>
+  <line x1="18" y1="265" x2="362" y2="265" stroke="var(--color-line-strong)" stroke-width="1" />
+  <text x="18" y="307" font-size="18" font-weight="400" text-anchor="start" fill="var(--color-signal)" data-metric="derived-data-centre-ead-eur-bn" data-value="7.2">~ €7.2bn</text>
+  <text x="208" y="291" font-size="14.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Data centres</text>
+  <text x="208" y="314" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">Calculation: 12 × 60%</text>
+  <text x="18" y="352" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">On- and off-balance-sheet exposures</text>
+  <text x="18" y="375" font-size="13.5" font-weight="400" text-anchor="start" fill="var(--color-muted)">A sector scope extending beyond AI</text>
+</svg>

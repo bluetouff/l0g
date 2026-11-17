@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    {"sigle": "EAD", "nom": "Exposure at default, exposition en cas de défaut", "guide": "/posts/banques-europeennes-ia-contrats-expositions/", "def": "Mesure prudentielle de l’exposition au risque de crédit en cas de défaut. Selon la méthode utilisée, elle inclut des positions au bilan et hors bilan, avec des facteurs de conversion et la prise en compte des protections. La date, le périmètre et les ajustements publiés permettent de rapprocher deux montants. L’EAD se distingue d’un encours de prêts tirés et d’une perte attendue."},
     {"sigle": "Test de moindre coût", "nom": "Comparaison des coûts de résolution pour le fonds de garantie américain", "def": "Dans le cadre ordinaire américain, comparaison des solutions de résolution d’une banque assurée visant à retenir la moins coûteuse pour le Deposit Insurance Fund. Le calcul tient compte des engagements futurs et conditionnels, avec actualisation des flux, justification des hypothèses et conservation des pièces. L’exception légale de risque systémique permet de déroger à cette exigence selon une procédure définie.", "guide": "/posts/fdic-valorisations-faillites-banques-2023/"},
     {"sigle": "Refinancement ciblé", "nom": "Ressource bancaire affectée à des prêts éligibles", "def": "Financement fourni par une banque centrale à des établissements pour soutenir des catégories de prêts définies. Le dispositif fixe les bénéficiaires, les usages et les modalités de refinancement. Dans le programme chinois de rachat d’actions, les banques prêtent aux clients puis sollicitent le refinancement des prêts éligibles. Elles conservent le risque de crédit sur leurs emprunteurs.", "guide": "/posts/chine-credit-1-pourcent-rachats-actions/"},
     {"sigle": "CRS", "nom": "Common Reporting Standard, échange fiscal de renseignements de comptes", "def": "Norme d’échange automatique de renseignements sur des comptes financiers à des fins fiscales. Les établissements déclarants identifient les comptes concernés selon la résidence fiscale et la classification des titulaires, ainsi que les personnes détenant le contrôle de certaines entités. Les informations passent par les autorités compétentes selon les relations d’échange applicables. Les mouvements d’argent suivent leur propre circuit de paiement. L’identification d’une fraude dépend des diligences, de la qualité des données et de leur exploitation.", "guide": "/posts/dubai-papers-intermediaires-opacite/"},
@@ -1337,6 +1338,7 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "ead": {"articles": [{"label": "Les banques européennes derrière la dette de l’IA", "href": "/posts/banques-europeennes-ia-contrats-expositions/", "kind": "article"}], "sources": [{"label": "Société Générale, Pilier 3 au 31 décembre 2025", "href": "https://www.societegenerale.com/sites/default/files/documents/2026-03/pillar-3-31122025-en.pdf", "detail": "Section 6.6, page imprimée 130 : définition de l’EaD et traitements prudentiels. Utilisé pour la définition, pas pour une formule particulière du portefeuille T3 2026.", "kind": "source"}, {"label": "Comité de Bâle, cadre de publication DIS40", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/dis/40/inforce/2023-01-01/published/2020-03-27", "detail": "Définition des expositions au risque de crédit, facteurs de conversion et techniques de réduction du risque.", "kind": "source"}], "related": ["ddtl", "lc"]},
   'inspection-publique': {
     articles: [{ label: 'Nvidia : le conseil sous pression et les contrôles export', href: '/posts/nvidia-conseil-securite-nationale-controles-exportation/', kind: 'article' }],
     sources: [
@@ -3296,6 +3298,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     "intuition": "L’autorisation de tirer des fonds organise le financement ; elle n’établit pas le montant déjà dû ni le cash futur pour le rembourser.",
     "whyNow": "La DDTL 5.5 de CoreWeave, documentée en août 2026, finance des serveurs et infrastructures sous conditions. Elle illustre comment contrats clients, période de tirage et échéances de dette peuvent suivre des calendriers distincts.",
     "articles": [
+      {"label": "Les banques européennes derrière la dette de l’IA", "href": "/posts/banques-europeennes-ia-contrats-expositions/", "kind": "article"},
       {
         "label": "Le collatéral qui ne peut pas sortir du bâtiment",
         "href": "/posts/gpu-collateral-ce-que-le-preteur-recupere/",
@@ -5023,7 +5026,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   lc: {
     intuition: 'La banque promet un paiement sous conditions ; l’émission de la garantie et son appel sont deux étapes distinctes.',
-    articles: [{ label: 'Réserves pétrolières : les garanties de l’acheteur', href: '/posts/reserves-petrolieres-ventes-echanges-attribution/', detail: 'Clause de vente historique de 2019, distincte des échanges de 2026.', kind: 'article' }, { label: 'Financer une cargaison de pétrole', href: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/', kind: 'article' }],
+    articles: [{"label": "Les banques européennes derrière la dette de l’IA", "href": "/posts/banques-europeennes-ia-contrats-expositions/", "kind": "article"}, { label: 'Réserves pétrolières : les garanties de l’acheteur', href: '/posts/reserves-petrolieres-ventes-echanges-attribution/', detail: 'Clause de vente historique de 2019, distincte des échanges de 2026.', kind: 'article' }, { label: 'Financer une cargaison de pétrole', href: '/posts/les-banquiers-du-baril-1-financement-cargaison-petrole/', kind: 'article' }],
     sources: [{ label: 'DOE, clauses de vente en vigueur au 1er mars 2019, C.21', href: 'https://www.energy.gov/sites/default/files/2025-06/Appendix%20A%20to%20Part%20625_%20Title%2010%20%28in%20effect%20on%203-01-2019%29.pdf', detail: 'Lettre de crédit standby initiale de 100 % de la valeur du contrat. Ne fixe pas les conditions des échanges de 2026.', kind: 'source' }],
     related: ['spr'],
   },
