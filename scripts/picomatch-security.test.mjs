@@ -1,7 +1,9 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
+import fs from 'node:fs';
 import { chmodSync, copyFileSync, existsSync, linkSync, lstatSync, mkdirSync, mkdtempSync, readFileSync, realpathSync, renameSync, rmSync, symlinkSync, writeFileSync } from 'node:fs';
+import { syncBuiltinESMExports } from 'node:module';
 import { tmpdir } from 'node:os';
 import { dirname, join } from 'node:path';
 import test from 'node:test';
@@ -59,6 +61,42 @@ function fixture(t) {
 
 function originalParsersRemain(root) {
   for (const [index, version] of versions.entries()) assert.equal(hash(readFileSync(join(root, paths[index], 'lib/parse.js'))), PINNED_PACKAGES[version].original);
+}
+
+function mockFs(t, name, implementation) {
+  const mocked = t.mock.method(fs, name, implementation);
+  syncBuiltinESMExports();
+  t.after(() => { mocked.mock.restore(); syncBuiltinESMExports(); });
+}
+
+function trackFileReads(t, file, beforeOpen = () => {}) {
+  const original = { open: fs.openSync, read: fs.readSync, readFile: fs.readFileSync, close: fs.closeSync };
+  const state = { fd: undefined, bytes: 0, closed: 0 };
+  let readingFile = false;
+  mockFs(t, 'openSync', (path, ...args) => {
+    if (path === file) beforeOpen();
+    const fd = original.open(path, ...args);
+    if (path === file) state.fd = fd;
+    return fd;
+  });
+  mockFs(t, 'readSync', (...args) => {
+    const count = original.read(...args);
+    if (args[0] === state.fd && !readingFile) state.bytes += count;
+    return count;
+  });
+  mockFs(t, 'readFileSync', (...args) => {
+    readingFile = true;
+    try {
+      const bytes = original.readFile(...args);
+      if (args[0] === state.fd) state.bytes += bytes.length;
+      return bytes;
+    } finally { readingFile = false; }
+  });
+  mockFs(t, 'closeSync', fd => {
+    if (fd === state.fd) { state.closed++; state.fd = undefined; }
+    return original.close(fd);
+  });
+  return state;
 }
 
 test('unpatched copies fail closed without executing or changing dependencies', t => {
@@ -216,6 +254,62 @@ test('hard-linked parser and symlinked project roots are refused', t => {
   const alias = join(f.base, 'project-link'); symlinkSync(f.root, alias);
   assert.throws(() => applyPatch({ projectRoot: alias }), /real directory/);
   originalParsersRemain(f.root);
+});
+
+for (const change of ['hardlink', 'growth', 'directory']) {
+  test(`a ${change} introduced immediately before open is rejected before reading`, t => {
+    const f = fixture(t);
+    const file = join(f.root, paths[0], 'lib/parse.js');
+    const moved = join(f.base, 'original-parser');
+    const reads = trackFileReads(t, file, () => {
+      if (change === 'hardlink') linkSync(file, moved);
+      else if (change === 'growth') fs.appendFileSync(file, ' '.repeat(256 * 1024));
+      else { renameSync(file, moved); mkdirSync(file); }
+    });
+    assert.throws(() => applyPatch({ projectRoot: f.root }), /unlinked regular file|oversized file/);
+    assert.equal(reads.bytes, 0);
+    assert.equal(reads.closed, 1);
+  });
+}
+
+test('growth after descriptor validation stays within the read budget and closes the file', t => {
+  const f = fixture(t);
+  const file = join(f.root, paths[0], 'lib/parse.js');
+  const initialSize = lstatSync(file).size;
+  const reads = trackFileReads(t, file);
+  const originalStat = fs.fstatSync;
+  let changed = false;
+  mockFs(t, 'fstatSync', fd => {
+    const stat = originalStat(fd);
+    if (fd === reads.fd && !changed) {
+      changed = true;
+      fs.appendFileSync(file, ' '.repeat(512 * 1024));
+    }
+    return stat;
+  });
+  assert.throws(() => applyPatch({ projectRoot: f.root }), /changed while reading/);
+  assert(reads.bytes <= initialSize + 1, `read ${reads.bytes} bytes beyond the validated file budget`);
+  assert.equal(reads.closed, 1);
+});
+
+test('a path replaced after open cannot substitute another file for validation', t => {
+  const f = fixture(t);
+  const file = join(f.root, paths[0], 'lib/parse.js');
+  const reads = trackFileReads(t, file);
+  const originalStat = fs.fstatSync;
+  let changed = false;
+  mockFs(t, 'fstatSync', fd => {
+    const stat = originalStat(fd);
+    if (fd === reads.fd && !changed) {
+      changed = true;
+      renameSync(file, join(f.base, 'opened-parser'));
+      writeFileSync(file, 'replacement must not be read');
+    }
+    return stat;
+  });
+  assert.throws(() => applyPatch({ projectRoot: f.root }), /file changed while opening/);
+  assert.equal(reads.bytes, 0);
+  assert.equal(reads.closed, 1);
 });
 
 test('a failed atomic rename leaves original bytes and no temporary package file', t => {

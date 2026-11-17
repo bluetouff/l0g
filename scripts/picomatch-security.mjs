@@ -2,7 +2,7 @@
 import assert from 'node:assert/strict';
 import { spawnSync } from 'node:child_process';
 import { createHash, randomUUID } from 'node:crypto';
-import { closeSync, constants, fchmodSync, fstatSync, fsyncSync, lstatSync, openSync, opendirSync, readFileSync, realpathSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';
+import { closeSync, constants, fchmodSync, fstatSync, fsyncSync, lstatSync, openSync, opendirSync, readSync, realpathSync, renameSync, unlinkSync, writeFileSync } from 'node:fs';
 import { basename, dirname, join, relative, resolve, sep } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -75,10 +75,15 @@ function canonicalRoot(projectRoot) {
   return realpathSync(root);
 }
 
-function safePath(root, name, directory = false) {
+function relativeParts(name) {
   assert.equal(typeof name, 'string');
   const parts = name.split('/');
   assert(parts.length && parts.every(p => p && p !== '.' && p !== '..' && !/[\\\s\u0000-\u001f\u007f]/u.test(p)), 'picomatch: unsafe relative path');
+  return parts;
+}
+
+function safePath(root, name, directory = false) {
+  const parts = relativeParts(name);
   let current = root;
   for (const [index, part] of parts.entries()) {
     current = join(current, part);
@@ -92,17 +97,36 @@ function safePath(root, name, directory = false) {
 }
 
 function readRegular(root, name, limit = MAX_FILE_BYTES) {
-  const file = safePath(root, name);
-  const before = lstatSync(file);
-  assert(before.isFile() && before.nlink === 1, `picomatch: expected an unlinked regular file: ${name}`);
-  assert(before.size <= limit, `picomatch: oversized file: ${name}`);
-  const fd = openSync(file, constants.O_RDONLY | (constants.O_NOFOLLOW ?? 0));
+  const parts = relativeParts(name);
+  const leaf = parts.pop();
+  const parent = parts.length ? safePath(root, parts.join('/'), true) : root;
+  const file = join(parent, leaf);
+  assert(Number.isInteger(constants.O_NOFOLLOW) && Number.isInteger(constants.O_NONBLOCK), 'picomatch: secure file-opening flags unavailable');
+  let fd;
+  try { fd = openSync(file, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK); }
+  catch (error) {
+    if (error.code === 'ELOOP') fail(`symbolic link refused: ${name}`);
+    throw error;
+  }
   try {
     const stat = fstatSync(fd);
-    assert(stat.isFile() && stat.dev === before.dev && stat.ino === before.ino, 'picomatch: file changed while opening');
-    const bytes = readFileSync(fd);
-    assert(bytes.length <= limit && bytes.length === stat.size, 'picomatch: file size changed while reading');
-    return bytes;
+    assert(stat.isFile() && stat.nlink === 1, `picomatch: expected an unlinked regular file: ${name}`);
+    assert(stat.size <= limit, `picomatch: oversized file: ${name}`);
+    // Check the opened file, then revalidate its path without reopening it.
+    const current = lstatSync(safePath(root, name));
+    assert(current.isFile() && current.nlink === 1 && current.dev === stat.dev && current.ino === stat.ino, 'picomatch: file changed while opening');
+    // One extra byte detects growth without allowing an unbounded read.
+    const bytes = Buffer.alloc(stat.size + 1);
+    let length = 0;
+    while (length < bytes.length) {
+      const count = readSync(fd, bytes, length, bytes.length - length, null);
+      if (count === 0) break;
+      length += count;
+    }
+    const after = fstatSync(fd);
+    assert(length === stat.size && after.size === stat.size && after.nlink === 1
+      && after.mtimeMs === stat.mtimeMs && after.ctimeMs === stat.ctimeMs, 'picomatch: file changed while reading');
+    return bytes.subarray(0, length);
   } finally { closeSync(fd); }
 }
 
