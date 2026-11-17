@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+---
+<BaseLayout ogImage="/illustrations/crisis-replay/og/aig-fr.jpg" ogImageAlt="Illustration de la crise financière, collection Replay des crises l0g." title="AIG : rejouer la crise de liquidité de 2008" description="Deux circuits de cash sous pression : garanties CDS et prêt de titres. Explorez le sauvetage d’AIG, Maiden Lane II et III, les annonces de la Fed et l’audit du SIGTARP." sidebar={false} alternateLinks={[
+  { hreflang:'fr', href:new URL('/outils/replay-crises/aig/',Astro.site).toString() },
+  { hreflang:'en', href:new URL('/en/tools/crisis-replay/aig/',Astro.site).toString() },
+  { hreflang:'x-default', href:new URL('/outils/replay-crises/aig/',Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="aig" />
+</BaseLayout>

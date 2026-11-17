@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+---
+<BaseLayout ogImage="/illustrations/crisis-replay/og/gilts-fr.jpg" ogImageAlt="Illustration de la crise financière, collection Replay des crises l0g." title="Replay des crises : la spirale des gilts en 2022" description="Rejouez la crise des gilts et des fonds LDI de 2022. Carte interactive, neuf moments clés et documents d’époque pour suivre les appels de marge et l’intervention de la Banque d’Angleterre." sidebar={false} alternateLinks={[
+  { hreflang: 'fr', href: new URL('/outils/replay-crises/gilts/', Astro.site).toString() },
+  { hreflang: 'en', href: new URL('/en/tools/crisis-replay/gilts/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/outils/replay-crises/gilts/', Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" />
+</BaseLayout>

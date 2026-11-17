@@ -1,0 +1,12 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+---
+<EnglishGuidesLayout ogImage="/illustrations/crisis-replay/og/gilts-en.jpg" ogImageAlt="Financial crisis illustration for the l0g Crisis replay collection." title="Crisis replay: the 2022 gilt spiral" description="Replay the 2022 gilt and LDI crisis. Explore an interactive mechanism map, nine turning points and contemporary documents tracing margin calls and the Bank of England intervention." alternateLinks={[
+  { hreflang: 'fr', href: new URL('/outils/replay-crises/gilts/', Astro.site).toString() },
+  { hreflang: 'en', href: new URL('/en/tools/crisis-replay/gilts/', Astro.site).toString() },
+  { hreflang: 'x-default', href: new URL('/outils/replay-crises/gilts/', Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" />
+</EnglishGuidesLayout>

@@ -1,0 +1,52 @@
+---
+import { getCrisisGallery } from '../config/crisis-gallery';
+import { replayEpisodes } from '../data/crisis-episodes';
+import type { ReplayLanguage } from '../data/crisis-replay';
+import '../styles/crisis-gallery.css';
+interface Props { lang?: ReplayLanguage; }
+const { lang='fr' }=Astro.props;
+const fr=lang==='fr';
+const t=(f:string,e:string)=>fr?f:e;
+const episodes=getCrisisGallery(lang);
+const moments=episodes.reduce((sum,episode)=>sum+episode.chapters,0);
+const documents=new Set(Object.values(replayEpisodes).flatMap(episode=>episode.sources.map(source=>source.url))).size;
+---
+<div class="crisis-gallery" data-crisis-gallery data-language={lang}>
+  <div class="cg-breadcrumb"><a href={fr?'/outils/':'/en/tools/'}>{t('Le laboratoire l0g','The l0g laboratory')}</a><span aria-hidden="true">/</span><span>{t('Replay des crises','Crisis replay')}</span></div>
+  <header class="cg-hero">
+    <div class="cg-hero-copy">
+      <p class="cg-eyebrow"><span />{t('UNE COLLECTION INTERACTIVE','AN INTERACTIVE COLLECTION')}</p>
+      <h1>{t('Replay','Crisis')}<br /><em>{t('des crises.','replay.')}</em></h1>
+      <p class="cg-deck">{t('La finance, au point de rupture. Remontez les annonces et suivez les mécanismes qui propagent le choc.','Finance at the breaking point. Trace the announcements and follow the mechanisms that carry the shock.')}</p>
+      <a class="cg-primary" href="#replay-library">{t('Choisir une crise','Choose a crisis')} <span aria-hidden="true">↘</span></a>
+      <div class="cg-counts"><span><strong>{String(episodes.length).padStart(2,'0')}</strong>{t('épisodes','episodes')}</span><span><strong>{moments}</strong>{t('moments clés','turning points')}</span><span><strong>{documents}</strong>{t('documents','documents')}</span></div>
+    </div>
+    <div class="cg-contact-wrap">
+      <div class="cg-contact" aria-label={t('Accès direct aux épisodes','Open an episode')}>
+        {episodes.map(episode=><a href={episode.href} aria-label={episode.name[lang]}><img src={`/illustrations/crisis-replay/${episode.art}-640.webp`} width="640" height="360" alt="" loading="lazy" decoding="async" /><span class="cg-contact-number">{episode.number}</span><span class="cg-contact-name">{episode.name[lang]}</span><span class="cg-contact-arrow" aria-hidden="true">↗</span></a>)}
+      </div>
+      <p class="cg-contact-caption"><span aria-hidden="true">↺</span>{t('Reprendre le fil, document par document.','Pick up the thread, document by document.')}</p>
+    </div>
+  </header>
+  <section id="replay-library" class="cg-library" aria-labelledby="cg-library-title">
+    <div class="cg-section-head"><div><p class="cg-eyebrow">{t('LES ÉPISODES','THE EPISODES')}</p><h2 id="cg-library-title">{t('Choisir un point de rupture.','Choose a breaking point.')}</h2></div><p>{t('Chaque crise ouvre un lecteur complet.','Each crisis opens a complete replay.')}</p></div>
+    <div class="cg-grid">
+      {episodes.map(episode=><article class={`cg-card cg-card-${episode.id}`}>
+        <a href={episode.href} aria-labelledby={`cg-title-${episode.id}`} aria-describedby={`cg-summary-${episode.id}`}>
+          <div class="cg-card-art"><img src={`/illustrations/crisis-replay/${episode.art}-640.webp`} srcset={`/illustrations/crisis-replay/${episode.art}-640.webp 640w, /illustrations/crisis-replay/${episode.art}-960.webp 960w, /illustrations/crisis-replay/${episode.art}-1200.webp 1200w`} sizes="(max-width: 760px) calc(100vw - 40px), 540px" width="1200" height="675" alt={episode.alt[lang]} loading="lazy" decoding="async" /><span class="cg-edition">{t('ÉPISODE','EPISODE')} {episode.number}</span><span class="cg-enter" aria-hidden="true">↗</span></div>
+          <div class="cg-card-copy"><p class="cg-period">{episode.period}</p><h3 id={`cg-title-${episode.id}`}>{episode.name[lang]}</h3><p class="cg-mechanism">{episode.mechanism[lang]}</p><p class="cg-summary" id={`cg-summary-${episode.id}`}>{episode.summary[lang]}</p><div class="cg-card-bottom"><span>{episode.chapters} {t('moments','moments')}<i aria-hidden="true">·</i>{episode.documents} {t('documents','documents')}</span><strong>{t('Rejouer la crise','Open the replay')} <span aria-hidden="true">→</span></strong></div></div>
+        </a>
+      </article>)}
+    </div>
+  </section>
+  <section class="cg-method" aria-labelledby="cg-method-title"><div><p class="cg-eyebrow">{t('LE PRINCIPE DU REPLAY','HOW THE REPLAY WORKS')}</p><h2 id="cg-method-title">{t('Les annonces d’abord.\nLes pièces à portée de main.','Start with the announcements.\nKeep the evidence close.')}</h2></div><div><p>{t('Avancez dans la frise, explorez les acteurs sur la carte et ouvrez le document associé à chaque étape. La lecture automatique vous laisse la main pour faire une pause et examiner un moment précis.','Move through the timeline, explore actors on the map and open the document behind each step. Automatic playback lets you pause to examine any moment in detail.')}</p><p>{t('La perspective « Avec le recul » ajoute des analyses ultérieures, avec leur date. Les cartes sont qualitatives : les flèches montrent des relations documentées, sans mesurer les montants ou le niveau de stress.','“With hindsight” adds later analysis with its date. The maps are qualitative: arrows show documented relationships without measuring amounts or stress levels.')}</p><small>{t('Illustrations conceptuelles originales. Les faits et les chiffres figurent dans les replays et leurs références.','Original conceptual illustrations. Facts and figures appear in the replays and their source records.')}</small></div></section>
+</div>
+<script>
+  // Preserve the moment links shared while the first replay occupied this entry page.
+  if (/^#(?:etape=|chapter-)/.test(location.hash)) {
+    const english=document.querySelector('[data-crisis-gallery]')?.getAttribute('data-language')==='en';
+    const target=new URL(english?'/en/tools/crisis-replay/gilts/':'/outils/replay-crises/gilts/',location.origin);
+    target.hash=location.hash;
+    location.replace(target.href);
+  }
+</script>

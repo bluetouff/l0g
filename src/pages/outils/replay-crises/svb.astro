@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+---
+<BaseLayout ogImage="/illustrations/crisis-replay/og/svb-fr.jpg" ogImageAlt="Illustration de la crise financière, collection Replay des crises l0g." title="SVB : rejouer la fuite des dépôts de mars 2023" description="Suivez la faillite de Silicon Valley Bank : vente des titres, fermeture, protection des déposants et soutien de liquidité au système bancaire. Sept moments clés et sources primaires." sidebar={false} alternateLinks={[
+  { hreflang:'fr', href:new URL('/outils/replay-crises/svb/',Astro.site).toString() },
+  { hreflang:'en', href:new URL('/en/tools/crisis-replay/svb/',Astro.site).toString() },
+  { hreflang:'x-default', href:new URL('/outils/replay-crises/svb/',Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="svb" />
+</BaseLayout>

@@ -1,0 +1,12 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+---
+<EnglishGuidesLayout ogImage="/illustrations/crisis-replay/og/aig-en.jpg" ogImageAlt="Financial crisis illustration for the l0g Crisis replay collection." title="AIG: replay the 2008 liquidity crisis" description="Explore the two cash channels behind AIG’s rescue: CDS collateral and securities lending. Follow Maiden Lane II and III, Fed announcements and SIGTARP’s critical audit." alternateLinks={[
+  { hreflang:'fr', href:new URL('/outils/replay-crises/aig/',Astro.site).toString() },
+  { hreflang:'en', href:new URL('/en/tools/crisis-replay/aig/',Astro.site).toString() },
+  { hreflang:'x-default', href:new URL('/outils/replay-crises/aig/',Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="aig" />
+</EnglishGuidesLayout>

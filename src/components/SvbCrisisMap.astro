@@ -1,0 +1,42 @@
+---
+import { svbActors } from '../data/crisis-svb';
+import type { ReplayLanguage } from '../data/crisis-replay';
+interface Props { lang: ReplayLanguage; }
+const { lang } = Astro.props;
+const t = (fr: string, en: string) => lang === 'fr' ? fr : en;
+const positions = [[15.625,30.73,25,18.6],[50,30.73,75,18.6],[84.375,30.73,75,51.16],[15.625,73.17,25,51.16],[50,73.17,25,83.72],[84.375,73.17,75,83.72]];
+---
+<div class="replay-map svb-map" data-replay-map>
+  <svg class="replay-wires replay-wires-desktop" viewBox="0 0 640 410" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
+    <defs><marker id={`svb-arrow-${lang}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.1" /></marker></defs>
+    <g class="svb-balance-lines" fill="none" stroke-width="1"><path d="M24 65H616M222 65V178M420 65V178" /></g>
+    <g class="replay-wire-labels" text-anchor="middle"><text x="100" y="53">{t('ACTIFS', 'ASSETS')}</text><text x="320" y="53">{t('INTERMÉDIATION', 'INTERMEDIATION')}</text><text x="540" y="53">{t('DÉPÔTS', 'DEPOSITS')}</text></g>
+    <g fill="none" stroke-width="1.3" marker-end={`url(#svb-arrow-${lang})`}>
+      <path data-wire="securities" d="M176 126H240" />
+      <path data-wire="withdrawals" d="M400 126H464" />
+      <path data-wire="resolution" d="M118 263C150 221 250 222 297 164" />
+      <path data-wire="protection" d="M178 289C275 197 441 197 520 164" />
+      <path data-wire="funding" data-from="fed" data-to="eligible" d="M400 300H464" />
+    </g>
+    <g class="replay-wire-labels" text-anchor="middle"><text x="208" y="111">{t('vente', 'sale')}</text><text x="432" y="111">{t('retraits', 'withdrawals')}</text><text x="188" y="222">{t('résolution', 'resolution')}</text><text x="426" y="218">{t('protection des dépôts', 'deposit protection')}</text><text x="432" y="286">BTFP</text><text x="320" y="380">{t('Deux réponses publiques, des destinataires distincts', 'Public responses with distinct recipients')}</text></g>
+  </svg>
+  <svg class="replay-wires replay-wires-mobile" viewBox="0 0 360 430" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
+    <defs><marker id={`svb-mobile-arrow-${lang}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto"><path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.1" /></marker></defs>
+    <g fill="none" stroke-width="1.3" marker-end={`url(#svb-mobile-arrow-${lang})`}>
+      <path data-wire="securities" d="M164 80H196" />
+      <path data-wire="withdrawals" d="M270 116V180" />
+      <path data-wire="resolution" d="M90 182C90 145 169 147 226 116" />
+      <path data-wire="protection" d="M164 220H196" />
+      <path data-wire="funding" data-from="fed" data-to="eligible" d="M164 360H196" />
+    </g>
+    <g class="replay-wire-labels" text-anchor="middle"><text x="180" y="68">{t('vente', 'sale')}</text><text x="300" y="151">{t('retraits', 'outflows')}</text><text x="125" y="143">{t('résolution', 'resolution')}</text><text x="180" y="208">{t('dépôts', 'deposits')}</text><text x="180" y="347">BTFP</text><text x="180" y="416">{t('BTFP : prêt aux banques éligibles', 'BTFP: loans to eligible banks')}</text></g>
+  </svg>
+  {svbActors.map((actor,index) => <button type="button" class={`replay-actor svb-actor svb-actor-${actor.id}`} data-replay-actor={actor.id} aria-pressed="false" aria-controls="replay-actor-detail" style={`--x:${positions[index][0]}%;--y:${positions[index][1]}%;--mx:${positions[index][2]}%;--my:${positions[index][3]}%`} disabled>
+    <span class="replay-actor-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:auto">
+      {actor.id === 'securities' && <><path d="M6 3h10l3 3v15H6zM15 3v4h4M9 11h7M9 14h7M9 17h4" /></>}
+      {(actor.id === 'bank' || actor.id === 'fed' || actor.id === 'eligible') && <><path d="M3 8l9-5 9 5zM3 21h18M5 18h14M6 10v6M10 10v6M14 10v6M18 10v6" />{actor.id === 'eligible' && <path d="M19 3h3v11" />}</>}
+      {actor.id === 'depositors' && <><circle cx="9" cy="7" r="3" /><path d="M3 20v-3c0-3 2-5 6-5s6 2 6 5v3M17 5a3 3 0 0 1 0 6M18 13c2 .6 3 2 3 4v3" /></>}
+      {actor.id === 'receiver' && <><path d="M12 2l8 3v6c0 5-4 8-8 11-4-3-8-6-8-11V5zM8 12l3 3 5-6" /></>}
+    </svg></span><span><small>{actor.role[lang]}</small><strong>{actor.label[lang]}</strong></span>
+  </button>)}
+</div>

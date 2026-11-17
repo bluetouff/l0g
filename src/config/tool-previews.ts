@@ -1,6 +1,7 @@
 /** Short orientation labels for existing controls and outputs. No scenario values. */
 export interface ToolPreview { fr: [string, string, string]; en: [string, string, string]; }
 export const toolPreviews: Record<string, ToolPreview> = {
+  'crisis-replay': {fr:['Moment de la crise','Perspective de lecture','Transmission du choc'],en:['Moment in the crisis','Reading perspective','Shock transmission']},
   'airfare-bots-article': {fr:['Recherches du bot','Reconnaissance du voyageur','Offres et prix du billet'],en:['Bot searches','Traveller recognition','Offers and ticket price']},
   'asmlproductivity-article': {fr:['Cadence de production','Durée de l’arrêt','Volume et rattrapage'],en:['Production throughput','Downtime','Output and catch-up']},
   'oraclecash-article': {fr:['Avances clients','Investissements','Solde de trésorerie'],en:['Customer advances','Capital expenditure','Cash-flow balance']},

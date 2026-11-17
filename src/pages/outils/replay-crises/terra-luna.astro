@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+---
+<BaseLayout ogImage="/illustrations/crisis-replay/og/terra-fr.jpg" ogImageAlt="Illustration de la crise financière, collection Replay des crises l0g." title="Terra / Luna : rejouer la spirale UST de mai 2022" description="Explorez la rupture de parité de TerraUSD : retraits d’Anchor, conversion UST/LUNA, dilution et réserves LFG. Sept moments clés, carte interactive et documents d’époque." sidebar={false} alternateLinks={[
+  { hreflang:'fr', href:new URL('/outils/replay-crises/terra-luna/',Astro.site).toString() },
+  { hreflang:'en', href:new URL('/en/tools/crisis-replay/terra-luna/',Astro.site).toString() },
+  { hreflang:'x-default', href:new URL('/outils/replay-crises/terra-luna/',Astro.site).toString() },
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="terra" />
+</BaseLayout>

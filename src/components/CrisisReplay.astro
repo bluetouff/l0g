@@ -1,0 +1,140 @@
+---
+import { retrospectiveSource } from '../data/crisis-replay';
+import { getReplayEpisode, replayEpisodes, type ReplayEpisodeId } from '../data/crisis-episodes';
+import SvbCrisisMap from './SvbCrisisMap.astro';
+import TerraCrisisMap from './TerraCrisisMap.astro';
+import AigCrisisMap from './AigCrisisMap.astro';
+import type { ReplayLanguage, ReplayChapter } from '../data/crisis-replay';
+import '../styles/crisis-replay.css';
+interface Props { lang?: ReplayLanguage; episodeId?: ReplayEpisodeId; }
+const { lang = 'fr', episodeId = 'gilts' } = Astro.props;
+const episode = getReplayEpisode(episodeId);
+const replayActors = episode.actors;
+const replayChapters = episode.chapters;
+const replaySources = episode.sources;
+const initialChapter = episode.initialChapter;
+const svb = episodeId === 'svb';
+const terra = episodeId === 'terra';
+const aig = episodeId === 'aig';
+const fr = lang === 'fr';
+const t = (f: string, e: string) => fr ? f : e;
+const date = (value: string, short = false) => new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { day: 'numeric', month: short ? 'short' : 'long', ...(short && !aig ? {} : { year: 'numeric' }), timeZone: 'UTC' }).format(new Date(`${value}T12:00:00Z`));
+const first = replayChapters[initialChapter];
+const isLater = (chapter: ReplayChapter) => replaySources.find(source => source.id === retrospectiveSource(chapter))!.published > chapter.date;
+const positions = [[19.531,44.02,22.5,42.16],[80.469,44.02,77.5,42.16],[80.469,82.3,77.5,81.08],[19.531,82.3,22.5,81.08],[50,12.44,50,9.46]];
+---
+
+<div class="crisis-replay" data-crisis-replay data-language={lang} data-episode={episodeId}>
+  <header class="replay-hero">
+    <div class="replay-breadcrumb"><a href={fr ? '/outils/' : '/en/tools/'}>{t('Le laboratoire l0g', 'The l0g laboratory')}</a><span aria-hidden="true">/</span><a href={fr ? '/outils/replay-crises/' : '/en/tools/crisis-replay/'}>{t('Replay des crises', 'Crisis replay')}</a></div>
+    <div class="replay-hero-grid">
+      <div>
+        <p class="replay-eyebrow"><span class="replay-live-dot" />{t('ARCHIVES EN MOUVEMENT', 'ARCHIVES IN MOTION')}<span class="replay-edition">{episode.number} / {episode.country[lang]}</span></p>
+        <h1>{episode.title[lang]}<br /><span>{episode.subtitle[lang]}</span></h1>
+        <p class="replay-deck">{episode.deck[lang]}</p>
+      </div>
+      <div class="replay-cover-note"><span class="replay-cover-number" aria-hidden="true">↺</span><p>{episode.place[lang]}<br /><span>{episode.period[lang]}</span></p><a href="#replay-method">{replayChapters.length} {t('moments clés · sources primaires', 'turning points · primary sources')} <span aria-hidden="true">↙</span></a></div>
+    </div>
+  </header>
+
+  <nav class="replay-episodes" aria-label={t('Choisir une crise', 'Choose a crisis')}>
+    {Object.values(replayEpisodes).map(item => <a href={fr ? item.frHref : item.enHref} aria-current={item.id === episodeId ? 'page' : undefined}><span>{item.number}</span><strong>{item.label[lang]}</strong><small>{item.period[lang]}</small><span aria-hidden="true">↗</span></a>)}
+  </nav>
+  <section class="replay-console" aria-label={episode.label[lang]}>
+    <div class="replay-console-bar">
+      <div class="replay-episode"><span>{episode.number}</span><div><strong>{episode.label[lang]}</strong><small>{episode.themes[lang]}</small></div></div>
+      <div class="replay-mode" data-replay-controls hidden role="group" aria-label={t('Perspective de lecture', 'Reading perspective')}>
+        <button type="button" data-replay-mode="announcements" aria-pressed="true">{t('Annonces de l’époque', 'Contemporary releases')}</button>
+        <button type="button" data-replay-mode="hindsight" aria-pressed="false">{t('Avec le recul', 'With hindsight')} <span aria-hidden="true">↗</span></button>
+      </div>
+    </div>
+
+    <div class="replay-workspace">
+      <div class="replay-visual">
+        <div class="replay-map-head"><h2>{t('La transmission du choc', 'How the shock travels')}</h2><span>{t('CARTE DE MÉCANISME', 'MECHANISM MAP')}</span></div>
+        <p class="replay-map-perspective" data-map-perspective>{aig ? t('Deux véhicules sont annoncés : RMBS vers Maiden Lane II, CDO vers Maiden Lane III.', 'Two vehicles are announced: RMBS to Maiden Lane II, CDOs to Maiden Lane III.') : terra ? t('Boucle décrite dans la proposition du 11 mai. Le soutien LFG est annoncé séparément.', 'Loop described in the 11 May proposal. LFG support is announced separately.') : svb ? t('La FDIC prend en charge la résolution de la banque fermée.', 'The FDIC takes charge of the closed bank’s resolution.') : t('Achats annoncés. La carte LDI est accessible dans la lecture rétrospective.', 'Purchases announced. The LDI map is available in the hindsight view.')}</p>
+        {aig ? <AigCrisisMap lang={lang} /> : terra ? <TerraCrisisMap lang={lang} /> : svb ? <SvbCrisisMap lang={lang} /> : <div class="replay-map" data-replay-map>
+          <svg class="replay-wires replay-wires-desktop" viewBox="0 0 640 418" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
+            <defs><marker id={`replay-arrow-${lang}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.1" /></marker></defs>
+            <g fill="none" stroke-width="1.3" marker-end={`url(#replay-arrow-${lang})`}>
+              <path data-wire="loop" d="M211 184H429" /><path data-wire="loop" d="M515 219V308" />
+              <path data-wire="loop" d="M429 344H211" /><path data-wire="loop" d="M125 308V219" />
+              <path data-wire="purchases" d="M276 83C238 100 181 108 154 147" />
+              <path data-wire="repo" d="M364 83C402 100 459 108 486 147" />
+            </g>
+            <g class="replay-wire-labels" text-anchor="middle">
+              <text x="320" y="173" data-loop-label>{t('baisse des prix', 'falling prices')}</text>
+              <text x="320" y="334" data-loop-label>{t('besoin de cash', 'cash needed')}</text>
+              <text x="190" y="102" data-purchase-label>{t('achats', 'purchases')}</text>
+              <text x="462" y="102" data-repo-label>{t('repo via les banques', 'repo via banks')}</text>
+            </g>
+            <g class="replay-orbit" transform="translate(320 259)"><circle r="34" /><path d="M-18 5A19 19 0 1 1 17 9M17 9L18-2M17 9L7 6" /></g>
+          </svg>
+          <svg class="replay-wires replay-wires-mobile" viewBox="0 0 360 370" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
+            <defs><marker id={`replay-arrow-mobile-${lang}`} viewBox="0 0 8 8" refX="7" refY="4" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M1 1L7 4L1 7" fill="none" stroke="context-stroke" stroke-width="1.1" /></marker></defs>
+            <g fill="none" stroke-width="1.3" marker-end={`url(#replay-arrow-mobile-${lang})`}>
+              <path data-wire="loop" d="M154 156H205" /><path data-wire="loop" d="M279 191V262" />
+              <path data-wire="loop" d="M205 300H154" /><path data-wire="loop" d="M81 264V192" />
+              <path data-wire="purchases" d="M143 67C118 85 88 92 81 122" />
+              <path data-wire="repo" d="M217 67C242 85 272 92 279 122" />
+            </g>
+            <g class="replay-wire-labels" text-anchor="middle"><text x="180" y="146" data-loop-label>{t('prix', 'prices')}</text><text x="180" y="290" data-loop-label>cash</text><text x="90" y="92" data-purchase-label>{t('achats', 'purchases')}</text><text x="274" y="92" data-repo-label>repo</text></g>
+            <g class="replay-orbit" transform="translate(180 228)"><circle r="25" /><path d="M-12 3A13 13 0 1 1 12 5M12 5L12-3M12 5L4 3" /></g>
+          </svg>
+          {replayActors.map((actor, index) => <button type="button" data-replay-actor={actor.id} data-selected="false" aria-pressed="false" aria-controls="replay-actor-detail" class={`replay-actor replay-actor-${actor.id}`} style={`--x:${positions[index][0]}%;--y:${positions[index][1]}%;--mx:${positions[index][2]}%;--my:${positions[index][3]}%`} disabled>
+            <span class="replay-actor-symbol" aria-hidden="true"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" style="display:block;width:100%;height:auto">
+              {actor.id === 'market' && <><path d="M7 3h10l3 3v13H7zM17 3v4h3M4 6v15h13" /><path d="M10 10h7M10 13h7M10 16h4" /></>}
+              {actor.id === 'ldi' && <><path d="M12 2.5l8 3v6c0 4.5-4 7.8-8 10-4-2.2-8-5.5-8-10v-6z" /><path d="M8 12h8M12 8v8" /></>}
+              {actor.id === 'margin' && <><path d="M4 7h7M7.5 3.5v7M14 17h7M3 16v5h5M21 8V3h-5M4 20l5-5M20 4l-5 5" /></>}
+              {actor.id === 'sales' && <><path d="M13 4h7v7M20 4l-8 8" /><ellipse cx="7" cy="13" rx="4" ry="2" /><path d="M3 13v5c0 1.1 1.8 2 4 2s4-.9 4-2v-5M3 16c0 1.1 1.8 2 4 2s4-.9 4-2" /></>}
+              {actor.id === 'boe' && <><path d="M3 8l9-5 9 5zM3 21h18M5 18h14M6 10v6M10 10v6M14 10v6M18 10v6" /></>}
+            </svg></span><span><small>{actor.role[lang]}</small><strong>{actor.label[lang]}</strong></span>
+          </button>)}
+        </div>}
+        <div class="replay-legend">{aig ? <><span><i class="legend-securities" />{t('Cash du prêt de titres', 'Securities-lending cash')}</span><span><i class="legend-public" />{t('Garanties CDS', 'CDS collateral')}</span></> : <span><i class="legend-public" />{svb || terra ? t('Transmission documentée', 'Documented transmission') : t('Boucle documentée', 'Documented loop')}</span>}<span><i class="legend-intervention" />{terra || aig ? t('Soutien annoncé', 'Announced support') : t('Intervention active', 'Active intervention')}</span><span><i class="legend-reconstruction" />{t('Éclairage ultérieur', 'Later analysis')}</span><span><i class="legend-context" />{t('Repère de lecture', 'Structural context')}</span></div>
+        <div class="replay-actor-detail" id="replay-actor-detail" aria-live="polite">
+          <p data-actor-hint>{t('Explorez les acteurs et les contraintes en cliquant sur la carte.', 'Select an actor or constraint to explore the mechanism.')}</p>
+          {replayActors.map(actor => {
+            const sourceId = 'source' in actor ? String(actor.source) : episode.actorSource;
+            const source = replaySources.find(item => item.id === sourceId)!;
+            return <div data-actor-description={actor.id} hidden><p><strong>{actor.label[lang]}</strong> {actor.description[lang]}</p><a href={`#source-${sourceId}`}>{terra || aig ? `${t('Repère documentaire', 'Documentary context')} · ${source.issuer} · ${date(source.published)}` : episode.actorSourceLabel[lang]} ↗</a></div>;
+          })}
+        </div>
+      </div>
+
+      <div class="replay-narrative" aria-label={t('Journal des annonces', 'Release journal')}>
+        {replayChapters.map((chapter, index) => <article id={`chapter-${chapter.id}`} data-replay-chapter={chapter.id} data-phase={chapter.phase}>
+          <div class="replay-chapter-meta"><span>{String(index + 1).padStart(2, '0')} / {String(replayChapters.length).padStart(2, '0')}</span><time datetime={chapter.date}>{date(chapter.date)}</time></div>
+          <p class="replay-chapter-type">{chapter.short[lang]}</p>
+          <h2>{chapter.title[lang]}</h2>
+          <p class="replay-chapter-copy">{chapter.text[lang]} <a class="replay-cite" href={`#source-${chapter.source}`}>[{chapter.source}]</a></p>
+          <div class="replay-fact"><span>{chapter.fact.value[lang]}</span><p>{chapter.fact.label[lang]}</p></div>
+          <a class="replay-document" href={replaySources.find(source => source.id === chapter.source)!.url} target="_blank" rel="noopener noreferrer"><span>{t('Ouvrir le document d’époque', 'Open the contemporary document')}</span><span aria-hidden="true">↗</span></a>
+          <aside class="replay-hindsight" data-replay-hindsight hidden><p class="replay-eyebrow">{isLater(chapter) ? t('ÉCLAIRAGE ULTÉRIEUR', 'LATER ANALYSIS') : t('ÉCLAIRAGE DOCUMENTAIRE', 'DOCUMENTARY CONTEXT')} · {date(replaySources.find(s => s.id === retrospectiveSource(chapter))!.published, true)}</p><p>{chapter.retrospective[lang]} <a class="replay-cite" href={`#source-${retrospectiveSource(chapter)}`}>[{retrospectiveSource(chapter)}]</a></p></aside>
+        </article>)}
+      </div>
+    </div>
+
+    <div class="replay-transport" data-replay-controls hidden>
+      <div class="replay-transport-buttons"><button type="button" data-replay-play aria-label={t('Lancer la lecture automatique', 'Start automatic playback')}><span data-play-icon aria-hidden="true">▶</span><span data-play-label>{t('Lire', 'Play')}</span></button><button type="button" data-replay-prev aria-label={t('Moment précédent', 'Previous moment')}>←</button><button type="button" data-replay-next aria-label={t('Moment suivant', 'Next moment')}>→</button></div>
+      <label class="replay-scrubber"><span class="sr-only">{t('Choisir un moment de la crise', 'Choose a moment in the crisis')}</span><input type="range" min="0" max={replayChapters.length - 1} value={initialChapter} step="1" data-replay-range aria-valuetext={date(first.date)} /><span><span>{episode.rangeStart[lang]}</span><span>{episode.rangeEnd[lang]}</span></span></label>
+      <button type="button" data-replay-restart class="replay-restart">↺ <span>{t('Au début', 'Restart')}</span></button>
+    </div>
+    <nav class="replay-timeline" aria-label={t('Les moments du replay', 'Replay moments')} style={`--replay-steps:${replayChapters.length}`} >
+      {replayChapters.map((chapter, index) => <a href={`#chapter-${chapter.id}`} data-replay-step={index} aria-current={index === initialChapter ? 'step' : undefined}><span class="replay-timeline-dot" /><time datetime={chapter.date}>{date(chapter.date, true)}</time><span>{chapter.short[lang]}</span></a>)}
+    </nav>
+    <div class="replay-bottom-bar"><p>{t('Frise à intervalles éditoriaux. La distance entre deux étapes ne représente pas une durée.', 'Editorially spaced timeline. Distances between steps do not represent elapsed time.')}</p><div class="replay-share"><button type="button" data-replay-share data-replay-controls hidden>{t('Copier ce moment', 'Copy this moment')} ↗</button><span data-replay-share-status role="status" /></div><span class="sr-only" data-replay-status role="status" /></div>
+  </section>
+
+  <section class="replay-method" id="replay-method" aria-labelledby="replay-method-title">
+    <div><p class="replay-eyebrow">{t('LA FABRIQUE DU REPLAY', 'BEHIND THE REPLAY')}</p><h2 id="replay-method-title">{t('Remonter les annonces, ouvrir les pièces.', 'Trace the releases. Open the evidence.')}</h2></div>
+    <div><p>{t('Chaque étape suit la date de publication du document retenu. Le mode « Annonces de l’époque » présente ce corpus disponible à la date choisie. Le mode « Avec le recul » ajoute des éclairages ultérieurs datés. Le corpus est une sélection éditoriale, pas un relevé exhaustif de toutes les informations alors accessibles.', 'Each step follows the publication date of its selected document. “Contemporary releases” presents this corpus as available by the chosen date. “With hindsight” adds dated later analysis. This is an editorial selection rather than an exhaustive record of everything available at the time.')}</p><p>{t('La carte est une reconstruction qualitative. Les couleurs signalent le statut documentaire des relations. Position, épaisseur et animation des flèches n’encodent aucun montant, niveau de stress ou probabilité. La chronologie couvre une sélection d’annonces et de documents, avec des périodes intermédiaires omises.', 'The map is a qualitative reconstruction. Colours indicate the documentary status of relationships. Position, line width and animation encode no amount, stress level or probability. The chronology covers selected announcements and documents, omitting intervening periods.')}</p>{svb && <p>{t('Les deux annonces du 12 mars sont présentées séparément pour distinguer leurs destinataires. Leur ordre dans le lecteur est thématique. Le replay ne reconstitue pas les mouvements intrajournaliers du 9 mars.', 'The two 12 March announcements are presented separately to distinguish their recipients. Their order in the player is thematic. The replay does not reconstruct intraday movements on 9 March.')}</p>}{terra && <p>{t('La flèche verte représente le soutien annoncé par LFG le 9 mai. Le bilan des opérations est daté du 16 mai. Les deux étapes du 16 mai sont classées par thème, sans ordre intrajournalier. Le second plan ayant été amendé, seule son orientation initiale est reprise. Les fiches des acteurs sont des repères documentaires datés. Les publications X sont accompagnées de reproductions consultables. Le circuit reste une explication historique lorsque la chaîne est interrompue ou qu’un projet de relance est présenté.', 'The green arrow represents LFG’s support announcement on 9 May. The operations account is dated 16 May. The two 16 May steps are ordered by theme, without intraday sequencing. As the second plan was amended, only its initial direction is used. Actor descriptions provide dated documentary context. X posts include accessible reproductions. The circuit remains a historical explanation when the chain is halted or a revival plan is presented.')}</p>}{aig && <p>{t('Les dates suivent les jours de publication à New York. Le communiqué du 16 septembre indique 21 h EDT, soit le 17 septembre à 01 h UTC. Les montants sont en dollars US nominaux de l’époque. Les plafonds de crédit, les tirages et le capital du Trésor sont présentés séparément. La carte représente les prêts de la Fed et les deux circuits historiques de cash ; l’apport en capital du Trésor est présenté dans le journal. Les termes publiés en décembre rapportent des opérations antérieures. Les fiches des acteurs donnent un contexte documentaire daté.', 'Dates follow publication days in New York. The 16 September release states 9 p.m. EDT, or 01:00 UTC on 17 September. Amounts are in nominal US dollars of the period. Credit limits, drawings and Treasury equity are presented separately. The map depicts Fed loans and the two historical cash channels; Treasury’s capital contribution appears in the journal. December’s terms report earlier transactions. Actor descriptions provide dated documentary context.')}</p>}<p class="replay-reviewed">{t('Sources vérifiées le ', 'Sources checked on ')}{date(episode.checkedAt)}{t('. Lecture automatique : 12 secondes par étape, pause à tout moment.', '. Automatic playback: 12 seconds per step, with pause available throughout.')}</p></div>
+  </section>
+  <section class="replay-sources" aria-labelledby="replay-sources-title"><div class="replay-section-heading"><h2 id="replay-sources-title">{t('Les pièces du dossier', 'The documentary record')}</h2><span>{replaySources.length} {t('sources primaires', 'primary sources')}</span></div>
+    <div class="prose"><ol class="sources-list" role="list">{replaySources.map(source => <li id={`source-${source.id}`}><span class="source-meta">{source.id} · {source.issuer} · {t('Publication', 'Published')}: {source.published} · {t('Consulté le', 'Accessed')}: {episode.checkedAt}</span><a href={source.url} target="_blank" rel="noopener noreferrer">{source.title} ↗</a><details><summary>{t('Passages et périmètre', 'Passages and scope')}</summary><p>{source.scope[lang]}</p>{source.reproduction && <a href={source.reproduction} target="_blank" rel="noopener noreferrer">{t('Consulter la reproduction vérifiée', 'Read the checked reproduction')} ↗</a>}</details></li>)}</ol></div>
+  </section>
+  <footer class="replay-reading"><span>{t('POURSUIVRE L’EXPLORATION', 'CONTINUE EXPLORING')}</span>{aig ? <><a href={fr ? '/outils/replay-crises/svb/' : '/en/tools/crisis-replay/svb/'}>{t('Rejouer la faillite de SVB', 'Replay the SVB failure')} ↗</a><a href={fr ? '/glossaire/pret-de-titres/' : '/en/glossary/pret-de-titres/'}>{t('Comprendre le prêt de titres', 'Understanding securities lending')} ↗</a><a href={fr ? '/posts/collateral-rehypothecation-cle-de-voute/' : '/en/analysis/collateral-and-rehypothecation/'}>{t('Collatéral et réhypothécation', 'Collateral and rehypothecation')} ↗</a></> : terra ? <><a href={fr ? '/outils/replay-crises/svb/' : '/en/tools/crisis-replay/svb/'}>{t('Rejouer la faillite de SVB', 'Replay the SVB failure')} ↗</a><a href={fr ? '/glossaire/stablecoin/' : '/en/glossary/stablecoin/'}>{t('Comprendre les stablecoins', 'Understanding stablecoins')} ↗</a><a href={fr ? '/posts/stablecoin-reserves-delai-remboursement-dollar/' : '/en/analysis/stablecoin-reserves-redemption-dollar/'}>{t('Des jetons aux dollars disponibles', 'From tokens to available dollars')} ↗</a></> : <><a href={svb ? (fr ? '/outils/replay-crises/gilts/' : '/en/tools/crisis-replay/gilts/') : (fr ? '/posts/gilts-repo-levier-banque-angleterre/' : '/en/analysis/gilts-repo-leverage-bank-of-england/')}>{svb ? t('Rejouer la crise des gilts', 'Replay the gilt crisis') : t('Gilts, repo et levier', 'Gilts, repo and leverage')} ↗</a><a href={fr ? '/atlas/credit-prive/' : '/en/atlas/private-credit/'}>{t('L’atlas du crédit privé', 'The private credit atlas')} ↗</a><a href={svb ? (fr ? '/glossaire/duration/' : '/en/glossary/duration/') : (fr ? '/glossaire/ldi/' : '/en/glossary/ldi/')}>{svb ? t('Comprendre la duration', 'Understanding duration') : t('Comprendre le LDI', 'Understanding LDI')} ↗</a></>}</footer>
+</div>
+<script>
+  import '../scripts/crisis-replay';
+</script>

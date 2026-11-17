@@ -1,0 +1,18 @@
+---
+import EnglishGuidesLayout from '../../../layouts/EnglishGuidesLayout.astro';
+import CrisisGallery from '../../../components/CrisisGallery.astro';
+import { crisisCollection, getCrisisGallery } from '../../../config/crisis-gallery';
+import { serializeInlineScriptData } from '../../../lib/security';
+const lang='en';
+const meta=crisisCollection[lang];
+const canonical=new URL(Astro.url.pathname,Astro.site).toString();
+const collection={'@context':'https://schema.org','@type':'CollectionPage',name:meta.title,description:meta.description,url:canonical,mainEntity:{'@type':'ItemList',itemListElement:getCrisisGallery(lang).map((episode,index)=>({'@type':'ListItem',position:index+1,item:{'@type':'WebPage',name:episode.name[lang],url:new URL(episode.href,Astro.site).toString(),image:new URL(`/illustrations/crisis-replay/og/${episode.id}-${lang}.jpg`,Astro.site).toString()}}))}};
+---
+<EnglishGuidesLayout title={meta.title} description={meta.description} ogImage="/illustrations/crisis-replay/og/collection-en.jpg" ogImageAlt="Four illustrations of the gilt, SVB, Terra / Luna and AIG crises."  alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/',Astro.site).toString()},
+]}>
+  <script type="application/ld+json" set:html={serializeInlineScriptData(collection)} />
+  <CrisisGallery lang={lang} />
+</EnglishGuidesLayout>
