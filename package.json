@@ -5,7 +5,7 @@
   "private": true,
   "license": "SEE LICENSE IN LICENSE",
   "scripts": {
-    "postinstall": "node scripts/http-cache-security.mjs --apply",
+    "postinstall": "node scripts/http-cache-security.mjs --apply && node scripts/picomatch-security.mjs --apply",
     "dev": "astro dev",
     "og": "node scripts/derived-assets.mjs og",
     "post": "node scripts/new-post.mjs",
@@ -50,7 +50,7 @@
     "test:signal-chart": "node --experimental-strip-types --test scripts/signal-chart.test.mjs",
     "test:security": "node --experimental-strip-types --test scripts/font-license-assertions.test.mjs scripts/modsecurity-response-guards.test.mjs scripts/html-utils.test.mjs scripts/audit-indexation-cohort.test.mjs scripts/verify-seo-live.test.mjs scripts/dependency-security.test.mjs scripts/http-cache-security.test.mjs scripts/dependency-audit.test.mjs mcp-server/hono-security.test.mjs && node --experimental-strip-types scripts/audit-security.mjs",
     "test:secrets": "node scripts/audit-secrets.mjs",
-    "test:dependencies": "node scripts/generate-toolset-manifest.mjs --check && node scripts/http-cache-security.mjs --check && node --test scripts/http-cache-security.test.mjs scripts/dependency-audit.test.mjs && node scripts/test-dependencies.mjs",
+    "test:dependencies": "node scripts/generate-toolset-manifest.mjs --check && node scripts/http-cache-security.mjs --check && node scripts/picomatch-security.mjs --check && node --test scripts/http-cache-security.test.mjs scripts/picomatch-security.test.mjs scripts/dependency-audit.test.mjs && node scripts/test-dependencies.mjs",
     "test:mcp-cache": "node --test mcp-server/release-cache.test.mjs mcp-server/evidence-graph-index.test.mjs",
     "test:mcp-usage": "node --test mcp-server/usage-telemetry.test.mjs mcp-server/reliability.test.mjs",
     "test:human-traffic": "node --test scripts/human-traffic-report.test.mjs",

@@ -1,6 +1,7 @@
 #!/usr/bin/env node
 import { readFileSync } from 'node:fs';
 import { gunzipSync } from 'node:zlib';
+import { ADVISORY_URL as PICOMATCH_ADVISORY_URL, assertSecureInstallations } from './picomatch-security.mjs';
 
 const AUDIT_ENDPOINT = 'https://registry.npmjs.org/-/npm/v1/security/advisories/bulk';
 const AUDIT_TIMEOUT_MS = 60_000;
@@ -104,7 +105,7 @@ function validateAuditReport(report) {
         throw new Error(`registry returned an unknown advisory severity for ${packageName}`);
       }
       if ((severityRank.get(severity) || 0) >= severityRank.get('moderate')) {
-        findings.push({ packageName, severity, title: advisory.title || 'untitled advisory', url: advisory.url || '' });
+        findings.push({ packageName, severity, title: advisory.title || 'untitled advisory', url: advisory.url || '', id: advisory.id, vulnerableVersions: advisory.vulnerable_versions });
       }
     }
   }
@@ -112,12 +113,36 @@ function validateAuditReport(report) {
 }
 
 function isLikelyTransient(error) {
+  // A local verification deadline is a failed security check, not an
+  // unavailable registry. Do not continue to the second audit in that case.
+  if (String(error?.message || '').startsWith('picomatch:')) return false;
   const details = `${error?.name || ''} ${error?.message || ''} ${error?.cause || ''}`.toLowerCase();
   return infraSignatures.some((entry) => details.includes(entry));
 }
 
+function verifyLocalRemediation(finding, { label, payload }) {
+  // This is a capability restriction in both installed parsers, not a claim
+  // that the published versions are fixed. Any changed/other advisory blocks.
+  if (label !== 'main' || finding.packageName !== 'picomatch' ||
+      finding.id !== 1247710 || finding.url !== PICOMATCH_ADVISORY_URL ||
+      finding.severity !== 'high' || finding.vulnerableVersions !== '<=4.0.7' ||
+      finding.title !== 'picomatch vulnerable to ReDoS through single-branch repeated extglobs') return false;
+  const reportedVersions = payload.picomatch;
+  if (!Array.isArray(reportedVersions) || reportedVersions.length === 0) return false;
+  const evidence = assertSecureInstallations();
+  const verifiedVersions = [...new Set(evidence.installations.map(item => item.version))].sort();
+  if (JSON.stringify(verifiedVersions) !== JSON.stringify([...reportedVersions].sort())) {
+    throw new Error('picomatch: audited versions differ from the verified installed parsers');
+  }
+  console.log(`🔒 [test-dependencies] ${label}: ${finding.url} locally mitigated; repeated +(...) and *(...) extglobs rejected in all ${evidence.installations.length} verified installations`);
+  return true;
+}
+
 async function runAudit({ label, lockfile, omitDev }) {
   const payload = buildAuditPayload(lockfile, omitDev);
+  // An empty or temporarily changed registry report must not make a missing
+  // capability restriction acceptable. Recheck again when qualifying the GHSA.
+  if (label === 'main') assertSecureInstallations();
   const response = await fetch(AUDIT_ENDPOINT, {
     method: 'POST',
     headers: {
@@ -133,7 +158,8 @@ async function runAudit({ label, lockfile, omitDev }) {
     throw new Error(`audit registry returned HTTP ${response.status}: ${raw.toString('utf8').slice(0, 500)}`);
   }
 
-  const findings = validateAuditReport(decodeAuditResponse(raw));
+  const findings = validateAuditReport(decodeAuditResponse(raw))
+    .filter(finding => !verifyLocalRemediation(finding, { label, payload }));
   if (findings.length > 0) {
     console.error(`❌ [test-dependencies] ${label}: ${findings.length} vulnerabilities at moderate+ level`);
     for (const finding of findings) {
