@@ -15,6 +15,7 @@ type NavItem = {
   href: string;
   label: string;
   description?: string;
+  isNew?: boolean;
   matches?: string[];
   exact?: boolean;
   glyph?: NavigationIconName;
@@ -48,6 +49,7 @@ const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[]
       { href: '/demarrer/', label: 'Démarrer', description: 'Le mode d’emploi humain' },
       { href: '/guides/', label: 'Guides', description: 'Apprendre à lire une donnée' },
       { href: '/outils/', label: 'Outils d’analyse', description: 'Manipuler des hypothèses et comparer des scénarios' },
+      { href: '/outils/replay-crises/', label: 'Replay des crises', description: 'Rejouer les chocs et suivre leur transmission', isNew: true },
       { href: '/glossaire/', label: 'Glossaire', description: 'Décoder les termes techniques' },
       { href: '/manifeste/', label: 'Manifeste', description: 'La ligne éditoriale de l0g' },
     ],
@@ -106,6 +108,9 @@ function isActive(item: NavItem): boolean {
     return currentPath === normalizedBase || currentPath.startsWith(`${normalizedBase}/`);
   });
 }
+function isGroupItemActive(item: NavItem, items: NavItem[]): boolean {
+  return isActive(item) && !items.some(other => other !== item && norm(other.href).length > norm(item.href).length && isActive(other));
+}
 ---
 
 <div class="site-navigation">
@@ -138,8 +143,8 @@ function isActive(item: NavItem): boolean {
             <section>
               <h2><NavigationIcon name={group.glyph} compact /><span>{group.label}</span></h2>
               {group.items.map((item) => (
-                <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
-                  <NavigationItemText label={item.label} description={item.description} />
+                <a href={item.href} aria-current={isGroupItemActive(item,group.items) ? 'page' : undefined}>
+                  <NavigationItemText label={item.label} description={item.description} isNew={item.isNew} />
                 </a>
               ))}
             </section>
@@ -184,8 +189,8 @@ function isActive(item: NavItem): boolean {
             <h2><NavigationIcon name={group.glyph} compact /><span>{group.label}</span></h2>
             <div>
               {group.items.map((item) => (
-                <a href={item.href} aria-current={isActive(item) ? 'page' : undefined}>
-                  <NavigationItemText label={item.label} description={item.description} />
+                <a href={item.href} aria-current={isGroupItemActive(item,group.items) ? 'page' : undefined}>
+                  <NavigationItemText label={item.label} description={item.description} isNew={item.isNew} />
                 </a>
               ))}
             </div>

@@ -1,11 +1,13 @@
 ---
+import NavigationBadge from './NavigationBadge.astro';
 interface Props {
   label: string;
   description?: string;
+  isNew?: boolean;
 }
 
-const { label, description } = Astro.props;
+const { label, description, isNew=false } = Astro.props;
 ---
 
-<strong>{label}</strong>
+<strong>{label}{isNew && <NavigationBadge />}</strong>
 {description && <span>{description}</span>}

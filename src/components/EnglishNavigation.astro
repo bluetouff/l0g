@@ -1,4 +1,5 @@
 ---
+import NavigationBadge from './NavigationBadge.astro';
 interface Props {
   path: string;
   compact?: boolean;
@@ -19,7 +20,8 @@ const primary = [
   { href: '/en/tools/', label: 'Tools' },
   { href: '/en/publications/', label: 'Publications' },
 ];
-const groups = [
+type MenuItem = { href:string; label:string; description:string; isNew?:boolean };
+const groups: Array<{title:string;items:MenuItem[]}> = [
   {
     title: 'Read & follow',
     items: [
@@ -35,6 +37,7 @@ const groups = [
       { href: '/en/atlas/', label: 'Financial atlases', description: 'Map the institutions and the money' },
       { href: '/en/guides/', label: 'Reference guides', description: 'Read the data behind the story' },
       { href: '/en/tools/', label: 'Analysis tools', description: 'Test assumptions and scenarios' },
+      { href: '/en/tools/crisis-replay/', label: 'Crisis replay', description: 'Replay the shocks and trace their transmission', isNew: true },
       { href: '/en/glossary/', label: 'Glossary', description: 'Financial terms, explained' },
       { href: '/en/search/', label: 'Search', description: 'Find an analysis, guide or definition' },
     ],
@@ -49,6 +52,7 @@ const groups = [
     ],
   },
 ];
+const isGroupItemActive = (item:MenuItem, items:MenuItem[]) => isActive(item.href) && !items.some(other => other !== item && normalize(other.href).length > normalize(item.href).length && isActive(other.href));
 const resources = [
   { href: '/en/about/', label: 'About' },
   { href: '/en/press-resources/', label: 'Press' },
@@ -98,7 +102,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
               <section aria-label={group.title}>
                 <p class="en-group-label"><span aria-hidden="true">0{index + 1}</span>{group.title}</p>
                 <ul role="list">
-                  {group.items.map((item) => <li><a href={item.href} aria-current={isActive(item.href) ? 'page' : undefined}><span class="en-menu-item-title">{item.label}<span aria-hidden="true">↗</span></span><span class="en-menu-description">{item.description}</span></a></li>)}
+                  {group.items.map((item) => <li><a href={item.href} aria-current={isGroupItemActive(item,group.items) ? 'page' : undefined}><span class="en-menu-item-title"><strong>{item.label}{item.isNew && <NavigationBadge />}</strong><span aria-hidden="true">↗</span></span><span class="en-menu-description">{item.description}</span></a></li>)}
                 </ul>
               </section>
             ))}
@@ -204,6 +208,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
   .en-menu-groups a { display: block; padding: .5rem .65rem; margin: 0 -.65rem; border-radius: 3px; }
   .en-menu-groups a:hover, .en-menu-groups a[aria-current] { background: var(--surface-inset); }
   .en-menu-item-title { display: flex; align-items: center; justify-content: space-between; gap: .5rem; color: var(--color-paper); font-size: .8rem; }
+  .en-menu-item-title > strong { font:inherit; color:inherit; }
   .en-menu-item-title > span { color: var(--color-signal); opacity: 0; }
   .en-menu-groups a:is(:hover, :focus-visible, [aria-current]) .en-menu-item-title { color: var(--color-signal); }
   .en-menu-groups a:is(:hover, :focus-visible, [aria-current]) .en-menu-item-title > span { opacity: 1; }
