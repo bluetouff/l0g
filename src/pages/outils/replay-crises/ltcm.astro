@@ -1,0 +1,12 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+---
+<BaseLayout title="LTCM : rejouer la crise de 1998 et le piège de la convergence" description="Explorez la crise de LTCM : écarts de taux, levier, contreparties et recapitalisation privée. Huit moments documentés, du choc russe aux rapports de 1999." ogImage="/illustrations/crisis-replay/og/ltcm-fr.jpg" ogImageAlt="Illustration conceptuelle de rails de cuivre divergents autour d’une structure de verre sous tension." sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/ltcm/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/ltcm/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/ltcm/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="ltcm" />
+</BaseLayout>

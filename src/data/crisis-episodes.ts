@@ -2,7 +2,8 @@ import { replayActors, replayChapters, replaySources } from './crisis-replay.ts'
 import { svbActors, svbChapters, svbSources } from './crisis-svb.ts';
 import { terraActors, terraChapters, terraSources } from './crisis-terra.ts';
 import { aigActors, aigChapters, aigSources } from './crisis-aig.ts';
-export type ReplayEpisodeId = 'gilts' | 'svb' | 'terra' | 'aig';
+import { ltcmActors, ltcmChapters, ltcmSources } from './crisis-ltcm.ts';
+export type ReplayEpisodeId = 'gilts' | 'svb' | 'terra' | 'aig' | 'ltcm';
 export const replayEpisodes = {
   gilts: {
     id:'gilts',number:'01',frHref:'/outils/replay-crises/gilts/',enHref:'/en/tools/crisis-replay/gilts/',initialChapter:3,checkedAt:'2026-11-16',
@@ -43,6 +44,16 @@ export const replayEpisodes = {
     label:{fr:'AIG, la crise de liquidité de 2008',en:'AIG’s 2008 liquidity crisis'},themes:{fr:'CDS · prêt de titres · soutien public',en:'CDS · securities lending · public support'},
     rangeStart:{fr:'SEPT. 2008',en:'SEP 2008'},rangeEnd:{fr:'MAI 2010',en:'MAY 2010'},
     actorSource:'A07',actorSourceLabel:{fr:'Témoignage rétrospectif · Fed, 26 mai 2010',en:'Retrospective testimony · Fed, 26 May 2010'},
+  },
+  ltcm:{
+    id:'ltcm',number:'05',frHref:'/outils/replay-crises/ltcm/',enHref:'/en/tools/crisis-replay/ltcm/',initialChapter:2,checkedAt:'2026-11-17',
+    chapters:ltcmChapters,sources:ltcmSources,actors:ltcmActors,
+    country:{fr:'ÉTATS-UNIS / MARCHÉS MONDIAUX',en:'UNITED STATES / GLOBAL MARKETS'},place:{fr:'Greenwich / New York',en:'Greenwich / New York'},period:{fr:'Août 1998 → novembre 1999',en:'August 1998 → November 1999'},
+    title:{fr:'LTCM. Le piège de la convergence.',en:'LTCM. The convergence trap.'},subtitle:{fr:'Rejouer la crise de 1998.',en:'Replay the 1998 crisis.'},
+    deck:{fr:'Des écarts de taux censés se rapprocher. Un fonds qui amplifie ses paris par l’endettement. Suivez les pertes de LTCM, ses contreparties et la recapitalisation privée facilitée par la Fed de New York.',en:'Interest-rate spreads expected to narrow. A fund magnifying its bets through borrowing. Follow LTCM’s losses, its counterparties and the private recapitalisation facilitated by the New York Fed.'},
+    label:{fr:'LTCM, la crise de 1998',en:'LTCM, the 1998 crisis'},themes:{fr:'Convergence · levier · contreparties',en:'Convergence · leverage · counterparties'},
+    rangeStart:{fr:'AOÛT 1998',en:'AUG 1998'},rangeEnd:{fr:'NOV. 1999',en:'NOV 1999'},
+    actorSource:'L03',actorSourceLabel:{fr:'Contexte documentaire · auditions du 1er octobre 1998',en:'Documentary context · 1 October 1998 hearings'},
   },
 } as const;
 export function getReplayEpisode(id: ReplayEpisodeId = 'gilts') { return replayEpisodes[id]; }

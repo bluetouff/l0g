@@ -193,3 +193,36 @@ test('every gallery entry has a dedicated replay, responsive artwork and bilingu
     assert.deepEqual([collection.width,collection.height,collection.format],[1200,630,'jpeg']);
   }
 });
+
+test('LTCM separates dated reconstruction, private equity, Fed facilitation and a conditional default scenario', () => {
+  const start=replayMapState(0,'announcements','ltcm');
+  assert.equal(start.ltcmModel,false);
+  assert.equal(start.ltcmFunding,false);
+  assert.equal(start.ltcmCapital,false);
+  assert.equal(start.ltcmCoordination,false);
+  const hindsight=replayMapState(0,'hindsight','ltcm');
+  assert.equal(hindsight.ltcmModel,true);
+  assert.equal(hindsight.ltcmRisk,true);
+  assert.equal(hindsight.retrospective,true);
+  assert.equal(hindsight.ltcmCapital,false);
+  assert.equal(hindsight.ltcmCoordination,false);
+  const policy=replayMapState(1,'announcements','ltcm');
+  assert.equal(policy.ltcmCapital,false);
+  assert.equal(policy.funding,false);
+  const hearing=replayMapState(2,'announcements','ltcm');
+  assert.equal(hearing.ltcmCapital,true);
+  assert.equal(hearing.ltcmCoordination,true);
+  assert.equal(hearing.ltcmRisk,true);
+  assert.equal(hearing.retrospective,false);
+  assert.equal(hearing.purchases,false);
+  assert.equal(hearing.repo,false);
+  const episode=replayEpisodes.ltcm;
+  assert.equal(episode.sources.find(source=>source.id==='L08').published,'1999-11-19');
+  assert.equal(episode.chapters.find(chapter=>chapter.id==='rapport-gao').date,'1999-11-19');
+  assert.match(episode.sources.find(source=>source.id==='L08').scope.fr,/29 octobre/);
+  assert.equal(episode.chapters.filter(chapter=>chapter.date==='1998-10-01').length,3);
+  for(const actor of episode.actors) assert.ok(episode.sources.some(source=>source.id===actor.source));
+  for(const index of [-1,8,NaN,Infinity,1.5]) assert.throws(()=>replayHash(index,'announcements','ltcm'),RangeError);
+  for(const id of ['gilts','svb','terra','aig']) assert.equal(parseReplayHash('#etape=rapport-gao',id).index,replayEpisodes[id].initialChapter);
+  assert.equal(parseReplayHash('#etape=maiden-lane-iii','ltcm').index,episode.initialChapter);
+});

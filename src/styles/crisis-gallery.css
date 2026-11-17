@@ -63,3 +63,10 @@
 }
 @media(max-width:380px) { .cg-contact-name { font-size:.58rem; }.cg-contact-number { top:.45rem; left:.45rem; }.cg-contact-name { left:.45rem; bottom:.45rem; }.cg-contact-arrow { bottom:.45rem; }.cg-counts { gap:1.1rem; }.cg-card-copy { padding:1rem; }.cg-card h3 { font-size:1.35rem; } }
 @media(prefers-reduced-motion:reduce) { .crisis-gallery * { transition:none!important; scroll-behavior:auto!important; } }
+
+.cg-contact a:last-child:nth-child(odd) { grid-column:1/-1; aspect-ratio:3.6; }
+@media(min-width:761px) {
+ .cg-grid>.cg-card:last-child:nth-child(odd) { grid-column:1/-1; }
+ .cg-grid>.cg-card:last-child:nth-child(odd)>a { display:grid; grid-template-columns:1.1fr 1fr; }
+ .cg-grid>.cg-card:last-child:nth-child(odd) .cg-card-art { height:100%; min-height:290px; border-bottom:0; border-right:1px solid var(--color-line); }
+}

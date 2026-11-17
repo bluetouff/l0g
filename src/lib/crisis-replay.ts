@@ -18,8 +18,16 @@ export function replayHash(index: number, mode: ReplayMode, episodeId: ReplayEpi
 export function replayMapState(index: number, mode: ReplayMode, episodeId: ReplayEpisodeId = 'gilts') {
   const chapter = getReplayEpisode(episodeId).chapters[index];
   if (!chapter) throw new RangeError('Unknown replay chapter');
-  const aig = { aigCredit:false, aigLending:false, aigCds:false, aigMl2:false, aigMl3:false, aigLendingRetro:false, aigCdsRetro:false };
+  const ltcm = { ltcmModel:false, ltcmCapital:false, ltcmCoordination:false, ltcmFunding:false, ltcmRisk:false };
+  const aig = { ...ltcm, aigCredit:false, aigLending:false, aigCds:false, aigMl2:false, aigMl3:false, aigLendingRetro:false, aigCdsRetro:false };
   const terra = { conversion:false, support:false, halt:false, ...aig };
+  if (episodeId === 'ltcm') {
+    const available=mode==='hindsight'||chapter.date>='1998-10-01';
+    return { ...terra, loop:available, purchases:false, repo:false, retrospective:available&&chapter.date<'1998-10-01', exit:false,
+      securities:false, resolution:false, protection:false, funding:false,
+      ltcmModel:available,ltcmFunding:available,ltcmRisk:available,
+      ltcmCapital:chapter.date>='1998-10-01',ltcmCoordination:chapter.date>='1998-10-01' };
+  }
   if (episodeId === 'aig') {
     const aigLendingRetro = mode === 'hindsight' && chapter.date < '2008-10-08';
     const aigCdsRetro = mode === 'hindsight' && chapter.date < '2008-11-10';

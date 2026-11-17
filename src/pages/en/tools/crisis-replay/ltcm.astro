@@ -1,0 +1,12 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+---
+<EnglishGuidesLayout title="LTCM: replay the 1998 crisis and the convergence trap" description="Explore LTCM’s crisis: yield spreads, leverage, counterparties and private recapitalisation. Eight documented moments from the Russian shock to the 1999 reports." ogImage="/illustrations/crisis-replay/og/ltcm-en.jpg" ogImageAlt="Conceptual illustration of diverging copper rails around a glass structure under strain." alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/ltcm/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/ltcm/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/ltcm/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="ltcm" />
+</EnglishGuidesLayout>

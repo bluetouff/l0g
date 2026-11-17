@@ -26,6 +26,13 @@ export const crisisGallery: Record<ReplayEpisodeId, {
     alt:{fr:'Illustration conceptuelle : deux anneaux imbriqués se désassemblent en une spirale de fragments de céramique et de cuivre.',en:'Conceptual illustration: two interlocking rings unravel into a spiral of ceramic and copper fragments.'},
     ogTitle:{fr:['Terra / Luna.','La spirale.'],en:['Terra / Luna.','The spiral.']},
   },
+  ltcm: {
+    art:'ltcm', name:{fr:'LTCM. Le piège de la convergence',en:'LTCM. The convergence trap'},
+    mechanism:{fr:'Convergence · levier · contreparties',en:'Convergence · leverage · counterparties'},
+    summary:{fr:'Les écarts de taux se creusent et les pertes se cumulent. Un réseau de contreparties entoure le fonds, jusqu’à la recapitalisation par un consortium privé.',en:'Spreads widen and losses accumulate. A network of counterparties surrounds the fund, leading to recapitalisation by a private consortium.'},
+    alt:{fr:'Illustration conceptuelle : deux rails de cuivre divergent et mettent sous tension une structure de verre reliée à plusieurs contrepoids.',en:'Conceptual illustration: two copper rails diverge, straining a glass structure connected to several counterweights.'},
+    ogTitle:{fr:['LTCM.','Le piège de','la convergence.'],en:['LTCM.','The convergence','trap.']},
+  },
   aig: {
     art:'aig', name:{fr:'AIG. Le cash manque',en:'AIG. Cash runs short'},
     mechanism:{fr:'CDS · prêt de titres · soutien public',en:'CDS · securities lending · public support'},
@@ -44,6 +51,6 @@ export function getCrisisGallery(lang: ReplayLanguage) {
 }
 
 export const crisisCollection = {
-  fr:{title:'Replay des crises',description:'Explorez les crises des gilts, de SVB, de Terra / Luna et d’AIG. Des replays interactifs, des annonces datées et des documents primaires pour suivre les mécanismes de transmission.',ogTitle:['Replay','des crises.']},
-  en:{title:'Crisis replay',description:'Explore the gilt, SVB, Terra / Luna and AIG crises through interactive replays, dated announcements and primary documents tracing the mechanisms of financial stress.',ogTitle:['Crisis','replay.']},
+  fr:{title:'Replay des crises',description:'Explorez les crises des gilts, de SVB, de Terra / Luna, d’AIG et de LTCM. Des replays interactifs, des annonces datées et des documents primaires pour suivre les mécanismes de transmission.',ogTitle:['Replay','des crises.']},
+  en:{title:'Crisis replay',description:'Explore the gilt, SVB, Terra / Luna, AIG and LTCM crises through interactive replays, dated announcements and primary documents tracing the mechanisms of financial stress.',ogTitle:['Crisis','replay.']},
 };

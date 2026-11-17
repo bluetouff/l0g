@@ -3,7 +3,7 @@ import { parseReplayHash, replayHash, replayMapState } from '../lib/crisis-repla
 
 for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]')) {
   const fr = root.dataset.language !== 'en';
-  const episodeId: ReplayEpisodeId = root.dataset.episode === 'aig' ? 'aig' : root.dataset.episode === 'terra' ? 'terra' : root.dataset.episode === 'svb' ? 'svb' : 'gilts';
+  const episodeId: ReplayEpisodeId = root.dataset.episode === 'ltcm' ? 'ltcm' : root.dataset.episode === 'aig' ? 'aig' : root.dataset.episode === 'terra' ? 'terra' : root.dataset.episode === 'svb' ? 'svb' : 'gilts';
   const replayChapters = getReplayEpisode(episodeId).chapters;
   const t = (f: string, e: string) => fr ? f : e;
   const find = <T extends HTMLElement>(selector: string) => {
@@ -34,6 +34,9 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
     find('[data-replay-share-status]').textContent = '';
     const chapter = replayChapters[index];
     const state = replayMapState(index, mode, episodeId);
+    root.dataset.ltcmModel=String(state.ltcmModel);
+    root.dataset.ltcmCapital=String(state.ltcmCapital);
+    root.dataset.ltcmCoordination=String(state.ltcmCoordination);
     root.dataset.loop = String(state.loop);
     root.dataset.purchases = String(state.purchases);
     root.dataset.repo = String(state.repo);
@@ -60,6 +63,7 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
     const wires: Record<string, boolean> = { loop:state.loop, withdrawals:state.loop, purchases:state.purchases, repo:state.repo,
       securities:state.securities, resolution:state.resolution, protection:state.protection, funding:state.funding,
       anchor:state.loop, support:state.support, conversion:state.conversion, issuance:state.loop, sales:state.loop, feedback:state.loop,
+      'ltcm-model':state.ltcmModel,'ltcm-funding':state.ltcmFunding,'ltcm-risk':state.ltcmRisk,'ltcm-capital':state.ltcmCapital,'ltcm-coordination':state.ltcmCoordination,
       'aig-credit':state.aigCredit, 'aig-lending':state.aigLending, 'aig-cds':state.aigCds,
       'aig-ml2-funding':state.aigMl2, 'aig-ml3-funding':state.aigMl3, 'aig-ml2-purchase':state.aigMl2, 'aig-ml3-purchase':state.aigMl3 };
     root.querySelectorAll<SVGPathElement>('[data-wire]').forEach(path => { path.dataset.active = String(wires[path.dataset.wire ?? ''] ?? false); });
@@ -98,6 +102,14 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
       : state.aigMl2 ? t('Deux véhicules sont annoncés : RMBS vers Maiden Lane II, CDO vers Maiden Lane III.', 'Two vehicles are announced: RMBS to Maiden Lane II, CDOs to Maiden Lane III.')
       : state.aigLending ? t('Le communiqué du 8 octobre décrit le remboursement du cash du prêt de titres.', 'The 8 October release describes cash settlements under securities lending.')
       : t('Crédit d’urgence annoncé. Les deux circuits sont détaillés dans les documents suivants.', 'Emergency credit announced. The two channels are detailed in subsequent documents.');
+    if (episodeId === 'ltcm') perspective.textContent=state.retrospective
+      ? t('Mécanisme éclairé par les auditions du 1er octobre. Le capital du consortium apparaît à leur date dans ce corpus.', 'Mechanism informed by the 1 October hearings. Consortium capital appears at their date in this corpus.')
+      : chapter.id==='choc-russe' ? t('Mesures russes annoncées le 17 août. Les liens avec LTCM sont documentés dans les auditions ultérieures.', 'Russian measures announced on 17 August. Links to LTCM are documented in later hearings.')
+      : chapter.id==='conditions-financieres' ? t('Politique monétaire générale. Le financement du consortium est présenté dans le récit du 1er octobre.', 'Economy-wide monetary policy. Consortium funding is presented in the 1 October account.')
+      : chapter.id==='rapport-gao' ? t('Rapport daté du 29 octobre 1999, rendu public le 19 novembre. Les circuits restent des repères historiques.', 'Report dated 29 October 1999, publicly released on 19 November. The channels remain historical context.')
+      : chapter.id==='rapport-pwg' ? t('Le rapport commun examine le levier et la gestion des contreparties après la recapitalisation.', 'The joint report examines leverage and counterparty management after the recapitalisation.')
+      : chapter.id==='illusion-liquidite' ? t('Fisher décrit les tensions de plusieurs marchés. La branche des ventes reste le scénario de défaut invoqué dans les auditions.', 'Fisher discusses strains across markets. The sales branch remains the default scenario invoked in the hearings.')
+      : t('Capital apporté par le consortium. Liaison pointillée : médiation de la Fed. Ventes forcées : scénario de défaut.', 'Capital supplied by the consortium. Dotted link: Fed facilitation. Forced sales: a default scenario.');
     range.value = String(index);
     const date = new Intl.DateTimeFormat(fr ? 'fr-FR' : 'en-GB', { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(`${chapter.date}T12:00:00Z`));
     range.setAttribute('aria-valuetext', `${date} · ${chapter.short[fr ? 'fr' : 'en']}`);
