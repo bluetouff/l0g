@@ -1,0 +1,125 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'lookthrough' | 'portfolio' | 'guarantee';
+  sourceHref: string;
+  number?: number;
+  id?: string;
+  caption?: string;
+}
+
+const { lang, kind, sourceHref, number, id, caption } = Astro.props;
+const copy = {
+  fr: {
+    lookthrough: {
+      caption: 'Deux SPV peuvent dépendre d’un même locataire, tandis que plusieurs polices couvrent un site commun. Le rapprochement porte sur les clients, les sponsors, les sites et les autres couvertures.',
+      source: 'Willis Re, octobre 2026, p. 4 et 6',
+      credit: 'Schéma illustratif, sans portefeuille mesuré ni échelle monétaire. Bail et garantie créent des obligations distinctes.',
+    },
+    portfolio: {
+      caption: 'Athene déclare 12,9 Md$ d’investissements numériques financés au 30 septembre 2026. Les quatre barres partagent une échelle en milliards de dollars. Le périmètre dépasse l’IA seule.',
+      source: 'Athene, 30 octobre 2026, p. 19–20',
+      credit: 'Mesure brute de gestion, minoritaires ACRA inclus. Le classement des prêts immobiliers commerciaux repose sur le locataire, distinct d’une garantie à Athene.',
+    },
+    guarantee: {
+      caption: 'AHL garantit 15 % de l’obligation d’achat restante de WHCO en cas de défaut sur cette obligation. Un tiers non nommé rembourserait 35 % des paiements effectivement réalisés par AHL.',
+      source: 'Athene, 10-Q au 30 septembre 2026, note 12, p. 62',
+      credit: 'Garantie de la holding. Les pourcentages ont des bases différentes ; les flèches n’ont pas d’échelle monétaire.',
+    },
+  },
+  en: {
+    lookthrough: {
+      caption: 'Two SPVs can depend on the same tenant while several policies cover one site. Matching customers, sponsors, sites and other cover helps identify those shared dependencies.',
+      source: 'Willis Re, October 2026, pp. 4 and 6',
+      credit: 'Illustrative relationships, with no observed portfolio or monetary scale. A lease and a guarantee create distinct obligations.',
+    },
+    portfolio: {
+      caption: 'Athene reports $12.9bn of funded digital infrastructure investments at 30 September 2026. The four bars share a scale in billions of US dollars. The category extends beyond AI.',
+      source: 'Athene, 30 October 2026, pp. 19–20',
+      credit: 'Gross management measure, including ACRA noncontrolling interests. Commercial mortgage loans are classified using the tenant’s credit quality, distinct from a guarantee to Athene.',
+    },
+    guarantee: {
+      caption: 'If WHCO defaults on its purchase obligation, AHL guarantees 15% of the outstanding amount. An unnamed third party would reimburse 35% of the amounts AHL actually pays under its guarantee.',
+      source: 'Athene, 30 September 2026 10-Q, note 12, p. 62',
+      credit: 'Holding-company guarantee. The percentages use different bases; arrows have no monetary scale.',
+    },
+  },
+} as const;
+
+const item = copy[lang][kind];
+const figures = import.meta.glob('../figures/ai-insurance/*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/ai-insurance/${lang}-${kind}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing AI insurance figure.');
+}
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('AI insurance figure requires a source anchor or an HTTPS source URL.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) {
+  throw new TypeError('AI insurance figure number must be a positive integer.');
+}
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) {
+  throw new TypeError('AI insurance figure id must be a valid local anchor.');
+}
+const figureId = id ?? (number === undefined ? `ai-insurance-${lang}-${kind}` : `figure-${number}`);
+const originalIdPrefix = `ai-insurance-${lang}-${kind}-`;
+const instanceIdPrefix = `${figureId}-${lang}-${kind}-`;
+const desktopInstance = desktop.replaceAll(originalIdPrefix, instanceIdPrefix);
+const mobileInstance = mobile.replaceAll(originalIdPrefix, instanceIdPrefix);
+---
+
+<figure class="ai-insurance" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktopInstance} />
+  <div class="figure-narrow" set:html={mobileInstance} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{item.source}</a>.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .ai-insurance {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+  }
+  .ai-insurance :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 380px; margin-inline: auto; }
+  figcaption {
+    margin-top: .8rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .35rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .ai-insurance { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>

@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 459" role="img" aria-labelledby="ai-insurance-fr-guarantee-m-title ai-insurance-fr-guarantee-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-insurance-svg">
+  <title id="ai-insurance-fr-guarantee-m-title">Deux engagements, deux bases de calcul</title>
+  <desc id="ai-insurance-fr-guarantee-m-desc">Dans la note 12 de son 10-Q au 30 septembre 2026, Athene décrit une garantie d’AHL, sa holding, couvrant 15 % de l’obligation d’achat restante de WHCO si ce fonds fait défaut sur cette obligation. Un tiers non nommé doit séparément rembourser à AHL 35 % des montants qu’AHL paierait effectivement au titre de sa garantie. Le premier pourcentage porte sur l’obligation d’achat restante ; le second porte sur les paiements d’AHL. La source ne qualifie pas le tiers d’assureur ou de réassureur. Le paiement est jugé non probable et aucun passif n’est comptabilisé ; la garantie demeure un engagement conditionnel. Aucun montant en dollars n’est inféré.</desc>
+  <text x="20" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Deux engagements,</text>
+  <text x="20" y="55" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">deux bases de calcul</text>
+  <text x="20" y="78" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Garantie AHL · 30 septembre 2026</text>
+  <g data-icon="party" transform="translate(35 109) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-5" r="4"/><path d="M-8 10V6a8 8 0 0 1 16 0v4M-5 10H5"/></g>
+  <text x="59" y="114" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Tiers non nommé</text>
+  <line x1="35" y1="130" x2="35" y2="210" stroke="var(--color-accent)" stroke-width="1.4"/><path d="M31 204 35 210 39 204" fill="none" stroke="var(--color-accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="153" font-size="16" font-weight="500" text-anchor="start" fill="var(--color-accent)">35 % des montants</text>
+  <text x="60" y="176" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">effectivement payés par AHL</text>
+  <text x="60" y="197" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">remboursés à AHL</text>
+  <g data-icon="holdco" transform="translate(35 234) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H9V9H-9ZM-4-5H-2M2-5H4M-4-1H-2M2-1H4M-4 3H-2M2 3H4M-2 9V6H2V9"/></g>
+  <text x="59" y="239" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">AHL · holding d’Athene</text>
+  <line x1="35" y1="253" x2="35" y2="337" stroke="var(--color-signal)" stroke-width="1.4"/><path d="M31 331 35 337 39 331" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="276" font-size="16" font-weight="500" text-anchor="start" fill="var(--color-signal)">15 % de l’obligation</text>
+  <text x="60" y="298" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">d’achat restante de WHCO</text>
+  <text x="60" y="320" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">si WHCO fait défaut</text>
+  <g data-icon="purchase" transform="translate(35 361) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H4l5 5V10H-9ZM4-9v5h5M-5 0H4M-5 4H1"/><path d="m2 7 2 2 4-4"/></g>
+  <text x="59" y="366" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Obligation d’achat de WHCO</text>
+  <text x="59" y="386" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Fonds géré par Apollo</text>
+  <line x1="20" y1="405" x2="360" y2="405" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="20" y="426" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Paiement jugé non probable :</text>
+  <text x="20" y="446" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">aucun passif comptabilisé.</text>
+</svg>

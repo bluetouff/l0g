@@ -17,6 +17,7 @@ export interface AiFinancingSection {
 
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
+  'ai-insurers-guarantees-off-balance-sheet-risk': 'ia-assureurs-garanties-risque-hors-bilan',
   'private-credit-ai-funds-bank-financing': 'credit-prive-ia-fonds-banques-financement',
   'european-banks-ai-loans-exposures': 'banques-europeennes-ia-contrats-expositions',
   'jupiter-hsbc-european-banks-ai-financing': 'jupiter-hsbc-banques-europeennes-financement-ia',
@@ -252,6 +253,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
         note: {
           fr: 'Deux fonds détiennent une partie du prêt CoreWeave. Leurs comptes conduisent aux filiales emprunteuses et aux garanties qui déterminent l’argent disponible auprès des banques.',
           en: 'Two funds hold part of a CoreWeave loan. Their accounts lead to borrowing subsidiaries and the collateral that governs how much bank financing is available.',
+        },
+      },
+      {
+        id: 'ai-insurers-guarantees-off-balance-sheet-risk',
+        label: { fr: 'Assureurs et garanties dans la dette de l’IA', en: 'Insurers and guarantees behind AI debt' },
+        note: {
+          fr: 'Des limites d’assurance sur Miner aux engagements d’Athene, ce volet suit les placements, les garanties d’achat et les remboursements conditionnels entre institutions.',
+          en: 'From insurance limits on Miner to Athene’s commitments, this instalment follows investments, purchase guarantees and conditional reimbursements between institutions.',
         },
       },
       {

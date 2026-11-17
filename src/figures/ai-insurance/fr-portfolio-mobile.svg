@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 448" role="img" aria-labelledby="ai-insurance-fr-portfolio-m-title ai-insurance-fr-portfolio-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-insurance-svg">
+  <title id="ai-insurance-fr-portfolio-m-title">Les placements numériques d’Athene</title>
+  <desc id="ai-insurance-fr-portfolio-m-desc">Athene publie 12,9 milliards de dollars d’investissements financés en infrastructures numériques au 30 septembre 2026 : puces, 3,6 ; dette sécurisée, dont immobilier, 3,6 ; énergie, 0,7 ; autres, surtout obligations des hyperscalers, 5,0. Les quatre barres sont à la même échelle. Mesure brute non-GAAP incluant les intérêts minoritaires ACRA. Le périmètre est plus large que l’IA. Les garanties conditionnelles ne sont pas ajoutées à ce total. Pour les prêts immobiliers CML, le classement investment grade repose sur le locataire ; cela ne vaut pas garantie à Athene.</desc>
+  <text x="20" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Athene : 12,9 Md$ investis</text>
+  <text x="20" y="55" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Infrastructures numériques · 30 sept. 2026</text>
+  <text x="20" y="79" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Milliards de dollars · même échelle</text>
+  <g data-icon="chip" transform="translate(32 109) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="-7" y="-7" width="14" height="14" rx="1"/><rect x="-3" y="-3" width="6" height="6" rx=".5"/><path d="M-4-11v4M0-11v4M4-11v4M-4 7v4M0 7v4M4 7v4M-11-4h4M-11 0h4M-11 4h4M7-4h4M7 0h4M7 4h4"/></g>
+  <text x="51" y="114" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Puces</text>
+  <rect x="24" y="129" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="129" width="205.92000000000002" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="140" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">3,6</text>
+  <g data-icon="building" transform="translate(32 173) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 10V-8H8V10M-11 10H11M-4-4H-2M2-4H4M-4 0H-2M2 0H4M-4 4H-2M2 4H4M-2 10V7H2V10"/></g>
+  <text x="51" y="178" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Dette sécurisée,</text>
+  <text x="51" y="199" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">dont immobilier</text>
+  <rect x="24" y="212" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="212" width="205.92000000000002" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="223" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">3,6</text>
+  <g data-icon="power" transform="translate(32 249) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M2-11-7 2H0L-2 11 8-3H1Z"/></g>
+  <text x="51" y="254" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Énergie</text>
+  <rect x="24" y="269" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="269" width="40.04" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="280" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">0,7</text>
+  <g data-icon="bonds" transform="translate(32 313) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-8-8H5V9H-8ZM-5-11H8V6M-4-3H1M-4 1H1M-4 5H1"/></g>
+  <text x="51" y="318" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Autres, surtout obligations</text>
+  <text x="51" y="339" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">des hyperscalers</text>
+  <rect x="24" y="352" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="352" width="286.0" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="363" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">5,0</text>
+  <line x1="24" y1="385" x2="310" y2="385" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <line x1="24.0" y1="382" x2="24.0" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="24.0" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="81.2" y1="382" x2="81.2" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="81.2" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1</text>
+  <line x1="138.4" y1="382" x2="138.4" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="138.4" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2</text>
+  <line x1="195.6" y1="382" x2="195.6" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="195.6" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">3</text>
+  <line x1="252.8" y1="382" x2="252.8" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="252.8" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">4</text>
+  <line x1="310.0" y1="382" x2="310.0" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="310.0" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">5</text>
+  <text x="20" y="431" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Brut non-GAAP · minoritaires ACRA inclus</text>
+</svg>

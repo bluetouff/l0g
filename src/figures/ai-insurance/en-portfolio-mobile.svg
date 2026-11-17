@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 448" role="img" aria-labelledby="ai-insurance-en-portfolio-m-title ai-insurance-en-portfolio-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-insurance-svg">
+  <title id="ai-insurance-en-portfolio-m-title">Athene’s digital infrastructure investments</title>
+  <desc id="ai-insurance-en-portfolio-m-desc">Athene reports $12.9 billion of funded digital infrastructure investments at 30 September 2026: chips, 3.6; secured debt, including property loans, 3.6; energy, 0.7; other, mostly hyperscaler bonds, 5.0. All four bars share one scale. Gross non-GAAP measure, including ACRA noncontrolling interests. The scope extends beyond AI. Conditional guarantees are not added to this total. CML investment-grade classification looks through to the tenant; it is not a guarantee to Athene.</desc>
+  <text x="20" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Athene: $12.9bn invested</text>
+  <text x="20" y="55" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Digital infrastructure · 30 Sept 2026</text>
+  <text x="20" y="79" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">US dollars, billions · one shared scale</text>
+  <g data-icon="chip" transform="translate(32 109) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><rect x="-7" y="-7" width="14" height="14" rx="1"/><rect x="-3" y="-3" width="6" height="6" rx=".5"/><path d="M-4-11v4M0-11v4M4-11v4M-4 7v4M0 7v4M4 7v4M-11-4h4M-11 0h4M-11 4h4M7-4h4M7 0h4M7 4h4"/></g>
+  <text x="51" y="114" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Chips</text>
+  <rect x="24" y="129" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="129" width="205.92000000000002" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="140" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">3.6</text>
+  <g data-icon="building" transform="translate(32 173) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-8 10V-8H8V10M-11 10H11M-4-4H-2M2-4H4M-4 0H-2M2 0H4M-4 4H-2M2 4H4M-2 10V7H2V10"/></g>
+  <text x="51" y="178" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Secured debt,</text>
+  <text x="51" y="199" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">including property loans</text>
+  <rect x="24" y="212" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="212" width="205.92000000000002" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="223" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">3.6</text>
+  <g data-icon="power" transform="translate(32 249) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M2-11-7 2H0L-2 11 8-3H1Z"/></g>
+  <text x="51" y="254" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Energy</text>
+  <rect x="24" y="269" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="269" width="40.04" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="280" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">0.7</text>
+  <g data-icon="bonds" transform="translate(32 313) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-8-8H5V9H-8ZM-5-11H8V6M-4-3H1M-4 1H1M-4 5H1"/></g>
+  <text x="51" y="318" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">Other, mostly</text>
+  <text x="51" y="339" font-size="15.5" font-weight="400" text-anchor="start" fill="var(--color-paper)">hyperscaler bonds</text>
+  <rect x="24" y="352" width="286" height="11" rx="2" fill="var(--color-line)" stroke="none" stroke-width="1"/>
+  <rect x="24" y="352" width="286.0" height="11" rx="2" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+  <text x="340" y="363" font-size="16.5" font-weight="400" text-anchor="middle" fill="var(--color-paper)">5.0</text>
+  <line x1="24" y1="385" x2="310" y2="385" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <line x1="24.0" y1="382" x2="24.0" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="24.0" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">0</text>
+  <line x1="81.2" y1="382" x2="81.2" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="81.2" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">1</text>
+  <line x1="138.4" y1="382" x2="138.4" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="138.4" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">2</text>
+  <line x1="195.6" y1="382" x2="195.6" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="195.6" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">3</text>
+  <line x1="252.8" y1="382" x2="252.8" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="252.8" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">4</text>
+  <line x1="310.0" y1="382" x2="310.0" y2="389" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="310.0" y="406" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">5</text>
+  <text x="20" y="431" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Gross non-GAAP · ACRA minorities included</text>
+</svg>

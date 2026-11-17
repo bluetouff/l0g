@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 348" role="img" aria-labelledby="ai-insurance-en-guarantee-d-title ai-insurance-en-guarantee-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-insurance-svg">
+  <title id="ai-insurance-en-guarantee-d-title">Two commitments, two different bases</title>
+  <desc id="ai-insurance-en-guarantee-d-desc">Note 12 of Athene’s 30 September 2026 10-Q describes a guarantee by its holding company, AHL, covering 15% of WHCO’s outstanding purchase obligation if WHCO defaults on that obligation. Separately, an unnamed third party would reimburse AHL for 35% of amounts AHL actually paid under its guarantee. The first percentage applies to the outstanding purchase obligation; the second applies to AHL’s payments. The filing does not identify the third party as an insurer or reinsurer. Payment is assessed as not probable and no liability is recognised; the guarantee remains a conditional commitment. No dollar amount is inferred.</desc>
+  <text x="24" y="31" font-size="22" font-weight="500" text-anchor="start" fill="var(--color-paper)">Two commitments, two different bases</text>
+  <text x="24" y="56" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">AHL guarantee · position at 30 September 2026</text>
+  <g data-icon="purchase" transform="translate(126 96) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H4l5 5V10H-9ZM4-9v5h5M-5 0H4M-5 4H1"/><path d="m2 7 2 2 4-4"/></g>
+  <text x="126" y="126" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">WHCO’s purchase</text>
+  <text x="126" y="147" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">obligation</text>
+  <g data-icon="holdco" transform="translate(380 96) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H9V9H-9ZM-4-5H-2M2-5H4M-4-1H-2M2-1H4M-4 3H-2M2 3H4M-2 9V6H2V9"/></g>
+  <text x="380" y="126" font-size="17" font-weight="500" text-anchor="middle" fill="var(--color-paper)">AHL</text>
+  <text x="380" y="147" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Athene holding company</text>
+  <g data-icon="party" transform="translate(634 96) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-5" r="4"/><path d="M-8 10V6a8 8 0 0 1 16 0v4M-5 10H5"/></g>
+  <text x="634" y="126" font-size="16" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Third party</text>
+  <text x="634" y="147" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Identity undisclosed</text>
+  <line x1="380" y1="187" x2="126" y2="187" stroke="var(--color-signal)" stroke-width="1.4"/><path d="M132 183 126 187 132 191" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <line x1="634" y1="187" x2="380" y2="187" stroke="var(--color-accent)" stroke-width="1.4"/><path d="M386 183 380 187 386 191" fill="none" stroke="var(--color-accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="253" y="179" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-signal)">15%</text>
+  <text x="507" y="179" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-accent)">35%</text>
+  <text x="253" y="215" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">of the outstanding</text>
+  <text x="253" y="236" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">purchase obligation</text>
+  <text x="253" y="259" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">if WHCO defaults</text>
+  <text x="507" y="215" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">of amounts AHL pays</text>
+  <text x="507" y="236" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">under its guarantee</text>
+  <text x="507" y="259" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">reimbursed to AHL</text>
+  <line x1="24" y1="283" x2="736" y2="283" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="24" y="307" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Trigger: WHCO defaults on its purchase obligation.</text>
+  <text x="24" y="332" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Payment assessed as not probable: no liability recognised.</text>
+</svg>

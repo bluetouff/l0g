@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 459" role="img" aria-labelledby="ai-insurance-en-guarantee-m-title ai-insurance-en-guarantee-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto" class="ai-insurance-svg">
+  <title id="ai-insurance-en-guarantee-m-title">Two commitments, two different bases</title>
+  <desc id="ai-insurance-en-guarantee-m-desc">Note 12 of Athene’s 30 September 2026 10-Q describes a guarantee by its holding company, AHL, covering 15% of WHCO’s outstanding purchase obligation if WHCO defaults on that obligation. Separately, an unnamed third party would reimburse AHL for 35% of amounts AHL actually paid under its guarantee. The first percentage applies to the outstanding purchase obligation; the second applies to AHL’s payments. The filing does not identify the third party as an insurer or reinsurer. Payment is assessed as not probable and no liability is recognised; the guarantee remains a conditional commitment. No dollar amount is inferred.</desc>
+  <text x="20" y="30" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Two commitments,</text>
+  <text x="20" y="55" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">two different bases</text>
+  <text x="20" y="78" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">AHL guarantee · 30 September 2026</text>
+  <g data-icon="party" transform="translate(35 109) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><circle cx="0" cy="-5" r="4"/><path d="M-8 10V6a8 8 0 0 1 16 0v4M-5 10H5"/></g>
+  <text x="59" y="114" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Unnamed third party</text>
+  <line x1="35" y1="130" x2="35" y2="210" stroke="var(--color-accent)" stroke-width="1.4"/><path d="M31 204 35 210 39 204" fill="none" stroke="var(--color-accent)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="153" font-size="16" font-weight="500" text-anchor="start" fill="var(--color-accent)">35% of amounts</text>
+  <text x="60" y="176" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">AHL actually pays</text>
+  <text x="60" y="197" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">reimbursed to AHL</text>
+  <g data-icon="holdco" transform="translate(35 234) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H9V9H-9ZM-4-5H-2M2-5H4M-4-1H-2M2-1H4M-4 3H-2M2 3H4M-2 9V6H2V9"/></g>
+  <text x="59" y="239" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">AHL · Athene holding company</text>
+  <line x1="35" y1="253" x2="35" y2="337" stroke="var(--color-signal)" stroke-width="1.4"/><path d="M31 331 35 337 39 331" fill="none" stroke="var(--color-signal)" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="60" y="276" font-size="16" font-weight="500" text-anchor="start" fill="var(--color-signal)">15% of WHCO’s</text>
+  <text x="60" y="298" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">outstanding purchase obligation</text>
+  <text x="60" y="320" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">if WHCO defaults</text>
+  <g data-icon="purchase" transform="translate(35 361) scale(0.95)" fill="none" stroke="var(--color-muted)" stroke-width="1.25" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-9H4l5 5V10H-9ZM4-9v5h5M-5 0H4M-5 4H1"/><path d="m2 7 2 2 4-4"/></g>
+  <text x="59" y="366" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">WHCO’s purchase obligation</text>
+  <text x="59" y="386" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Apollo-managed fund</text>
+  <line x1="20" y1="405" x2="360" y2="405" stroke="var(--color-line-strong)" stroke-width="1"/>
+  <text x="20" y="426" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Payment assessed as not probable:</text>
+  <text x="20" y="446" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">no liability recognised.</text>
+</svg>
