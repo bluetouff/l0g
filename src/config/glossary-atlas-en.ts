@@ -1872,7 +1872,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "MSCI and Indonesia: the cost of opaque ownership",
           "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
           "kind": "article"
-        }
+        },
+        {"label": "SpaceX: an index fund’s purchase cost", "href": "/en/analysis/spacex-anthropic-ipo-index-fund-purchase-price/", "kind": "article"}
       ],
       "sources": [
         {
@@ -1911,7 +1912,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "MSCI and Indonesia: the cost of opaque ownership",
           "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
           "kind": "article"
-        }
+        },
+        {"label": "SpaceX: an index fund’s purchase cost", "href": "/en/analysis/spacex-anthropic-ipo-index-fund-purchase-price/", "kind": "article"}
       ],
       "sources": [
         {
@@ -1995,7 +1997,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
           "label": "MSCI and Indonesia: the cost of opaque ownership",
           "href": "/en/analysis/msci-indonesia-free-float-index-risk/",
           "kind": "article"
-        }
+        },
+        {"label": "SpaceX: an index fund’s purchase cost", "href": "/en/analysis/spacex-anthropic-ipo-index-fund-purchase-price/", "kind": "article"}
       ],
       "sources": [
         {

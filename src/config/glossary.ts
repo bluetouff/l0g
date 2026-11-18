@@ -2461,7 +2461,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
         "href": "/posts/msci-indonesie-flottant-risque-indices/",
         "kind": "article"
-      }
+      },
+      {"label": "SpaceX : les achats d’un fonds du Nasdaq", "href": "/posts/spacex-anthropic-ipo-etf-prix-entree/", "kind": "article"}
     ],
     "sources": [
       {
@@ -2490,7 +2491,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
         "href": "/posts/msci-indonesie-flottant-risque-indices/",
         "kind": "article"
-      }
+      },
+      {"label": "SpaceX : les achats d’un fonds du Nasdaq", "href": "/posts/spacex-anthropic-ipo-etf-prix-entree/", "kind": "article"}
     ],
     "sources": [
       {
@@ -2554,7 +2556,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
         "label": "MSCI et l’Indonésie : le prix d’un flottant opaque",
         "href": "/posts/msci-indonesie-flottant-risque-indices/",
         "kind": "article"
-      }
+      },
+      {"label": "SpaceX : les achats d’un fonds du Nasdaq", "href": "/posts/spacex-anthropic-ipo-etf-prix-entree/", "kind": "article"}
     ],
     "sources": [
       {
