@@ -30,6 +30,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
   titre: 'Banques & gestion du bilan',
   accent: 'var(--color-topic-blue)',
   entries: [
+    { sigle: 'Syndication', nom: 'Organisation d’un prêt entre plusieurs prêteurs', def: 'Organisation d’un crédit accordé par plusieurs établissements à un même emprunteur. L’arrangeur prépare l’opération et rassemble les prêteurs. Le teneur de livre, ou bookrunner, coordonne les invitations et la diffusion d’informations aux participants. Chaque prêteur détient sa propre créance dans le cadre du contrat commun. Les engagements et les tirages suivent les conditions convenues.', guide: '/posts/nvidia-financement-garanties-pret-aolani/' },
     {"sigle": "EAD", "nom": "Exposure at default, exposition en cas de défaut", "guide": "/posts/banques-europeennes-ia-contrats-expositions/", "def": "Mesure prudentielle de l’exposition au risque de crédit en cas de défaut. Selon la méthode utilisée, elle inclut des positions au bilan et hors bilan, avec des facteurs de conversion et la prise en compte des protections. La date, le périmètre et les ajustements publiés permettent de rapprocher deux montants. L’EAD se distingue d’un encours de prêts tirés et d’une perte attendue."},
     {"sigle": "Test de moindre coût", "nom": "Comparaison des coûts de résolution pour le fonds de garantie américain", "def": "Dans le cadre ordinaire américain, comparaison des solutions de résolution d’une banque assurée visant à retenir la moins coûteuse pour le Deposit Insurance Fund. Le calcul tient compte des engagements futurs et conditionnels, avec actualisation des flux, justification des hypothèses et conservation des pièces. L’exception légale de risque systémique permet de déroger à cette exigence selon une procédure définie.", "guide": "/posts/fdic-valorisations-faillites-banques-2023/"},
     {"sigle": "Refinancement ciblé", "nom": "Ressource bancaire affectée à des prêts éligibles", "def": "Financement fourni par une banque centrale à des établissements pour soutenir des catégories de prêts définies. Le dispositif fixe les bénéficiaires, les usages et les modalités de refinancement. Dans le programme chinois de rachat d’actions, les banques prêtent aux clients puis sollicitent le refinancement des prêts éligibles. Elles conservent le risque de crédit sur leurs emprunteurs.", "guide": "/posts/chine-credit-1-pourcent-rachats-actions/"},
@@ -1339,6 +1340,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  syndication: {
+    articles: [{ label: 'Nvidia : les conditions du financement et le prêt Aolani', href: '/posts/nvidia-financement-garanties-pret-aolani/', kind: 'article' }],
+    sources: [
+      { label: 'BRI, Blaise Gadanecz, The syndicated loan market, décembre 2004', href: 'https://www.bis.org/publications/syndicated-loan-market-structure-development-and-implications_1.pdf', detail: 'Pages imprimées 78–79 : contrat commun, créances individuelles, rôle des arrangeurs et du teneur de livre. Consulté le 18 novembre 2026.', kind: 'source' },
+      { label: 'BRI, Non-bank lenders in the syndicated loan market', href: 'https://www.bis.org/publications/non-bank-lenders-syndicated-loan-market', detail: 'Section The syndicated loan market and non-bank lenders : groupe de prêteurs, arrangeur et participants. Consulté le 18 novembre 2026.', kind: 'source' },
+    ],
+    related: ['offtake', 'garantie-de-pret'],
+  },
   'cash-trap': {
     intuition: 'Les recettes peuvent rester dans la structure pour protéger les créanciers avant d’être distribuées.',
     articles: [{ label: 'Dette de l’IA : la trésorerie sous conditions', href: '/posts/dette-ia-tresorerie-clauses-contrats/', kind: 'article' }],
@@ -1409,6 +1418,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       { label: 'Nvidia, Trump, Lutnick : la sécurité nationale sous influence', href: '/posts/nvidia-trump-lutnick-securite-nationale-influence/', detail: 'Contrôles H200, accès distant et indépendance des enquêtes.', kind: 'article' },
       { label: 'Nvidia, Trump : une alerte au sommet', href: '/posts/nvidia-trump-alerte-sommet/', detail: 'Licences, utilisation à distance et contrôle des destinataires.', kind: 'article' },
       { label: 'L’IA chinoise à l’épreuve de l’usine', href: '/posts/ia-ralentissement-4-chine-puces-memoire-usines/', kind: 'article' },
+      { label: 'Nvidia : les conditions du financement et le prêt Aolani', href: '/posts/nvidia-financement-garanties-pret-aolani/', kind: 'article' },
     ],
     sources: [
       { label: 'BIS, EAR 730 : périmètre des contrôles', href: 'https://www.bis.gov/regulations/ear/730', detail: 'Biens, logiciels, technologies et exigences liées aux destinations, utilisateurs et usages.', kind: 'source' },
@@ -2103,7 +2113,8 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       "label": "Le financement public après la cyberattaque de JLR",
       "href": "/posts/apres-cyberattaque-07-etat-financement-crise/",
       "kind": "article"
-    }
+    },
+    { "label": "Nvidia : les conditions du financement et le prêt Aolani", "href": "/posts/nvidia-financement-garanties-pret-aolani/", "kind": "article" }
   ],
   "sources": [
     {
@@ -3910,7 +3921,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       "label": "Google et McKinsey : le carbone des pâturages",
       "href": "/posts/google-mckinsey-carbone-paturages/",
       "kind": "article"
-    }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
+    }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}, { label: "Nvidia : les conditions du financement et le prêt Aolani", href: "/posts/nvidia-financement-garanties-pret-aolani/", kind: 'article' }],
   "sources": [
     {
       "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",

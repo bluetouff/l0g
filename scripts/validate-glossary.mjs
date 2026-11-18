@@ -19,6 +19,33 @@ import { glossarySearchText, textContainsGlossaryToken } from '../src/lib/glossa
 
 const mentions = (text, token) => textContainsGlossaryToken(glossarySearchText(text), token);
 
+// Syndication separates arranging the credit from lenders' individual claims.
+const nvidiaFinancingFr = '/posts/nvidia-financement-garanties-pret-aolani/';
+const nvidiaFinancingEn = '/en/analysis/nvidia-financing-guarantees-aolani-loan/';
+const syndicationFr = glossaryEntries.filter(entry => entry.slug === 'syndication');
+const syndicationEn = glossaryAtlasEn.filter(entry => entry.slug === 'syndication');
+assert.equal(syndicationFr.length, 1); assert.equal(syndicationEn.length, 1);
+assert.equal(syndicationFr[0].referenceCandidate, false);
+assert.equal(syndicationFr[0].reference, undefined);
+assert.equal(glossaryReferenceBySlug.syndication, undefined);
+assert.equal(englishGlossaryRobots(syndicationEn[0]), 'noindex,follow');
+for (const [entry, article] of [[syndicationFr[0], nvidiaFinancingFr], [syndicationEn[0], nvidiaFinancingEn]]) {
+  assert.equal(entry.guide, article);
+  assert.equal(entry.atlas.articles.filter(link => link.href === article && link.kind === 'article').length, 1);
+  assert.deepEqual(entry.atlas.sources.map(link => link.href), [
+    'https://www.bis.org/publications/syndicated-loan-market-structure-development-and-implications_1.pdf',
+    'https://www.bis.org/publications/non-bank-lenders-syndicated-loan-market',
+  ]);
+  assert(entry.atlas.sources.every(link => link.kind === 'source'));
+  assert.deepEqual(entry.atlas.related, ['offtake', 'garantie-de-pret']);
+}
+assert.notEqual(syndicationFr[0].def, syndicationEn[0].def);
+for (const slug of ['offtake', 'garantie-de-pret', 'controle-export']) {
+  for (const [entry, article] of [[glossaryEntries.find(item => item.slug === slug), nvidiaFinancingFr], [glossaryAtlasEnBySlug.get(slug), nvidiaFinancingEn]]) {
+    assert.equal(entry.atlas.articles.filter(link => link.href === article && link.kind === 'article').length, 1);
+  }
+}
+
 // Contractual cash controls gain sourced atlas entries without promoting indexation.
 const aiCashFr = '/posts/dette-ia-tresorerie-clauses-contrats/';
 const aiCashEn = '/en/analysis/ai-debt-cash-contract-conditions/';
@@ -1123,7 +1150,9 @@ for (const [slug, sources, related] of [
     assert.equal(entry.accent, 'var(--color-topic-blue)');
     assert(entry.def.length >= 150 && entry.def.length <= 650, `${slug}: concise definition`);
     assert.doesNotMatch(entry.def, /[0-9%£€$—]/u, `${slug}: no invented amounts or rates`);
-    assert.deepEqual(entry.atlas.articles.map(link => [link.href, link.kind]), [[entry.guide, 'article']]);
+    const expectedArticles = [[entry.guide, 'article']];
+    if (slug === 'garantie-de-pret') expectedArticles.push([entry === fr ? nvidiaFinancingFr : nvidiaFinancingEn, 'article']);
+    assert.deepEqual(entry.atlas.articles.map(link => [link.href, link.kind]), expectedArticles);
     assert.deepEqual(entry.atlas.sources.map(link => link.href), sources);
     assert.equal(new Set(entry.atlas.sources.map(link => link.href)).size, sources.length);
     for (const source of entry.atlas.sources) {
@@ -1487,7 +1516,7 @@ for (const [entry, href] of [
   assert.deepEqual(entry.atlas.related, ['wafer']);
 }
 assert.equal(englishGlossaryRobots(glossaryAtlasEnBySlug.get('qualification-industrielle')), 'noindex,follow');
-assert.equal(glossaryAtlasEnBySlug.size, 457, 'Le corpus bilingue inclut les deux mécanismes contractuels de trésorerie');
+assert.equal(glossaryAtlasEnBySlug.size, 458, 'Le corpus bilingue conserve les mécanismes de trésorerie et ajoute la syndication');
 for (const [entry, article] of [
   [glossaryEntries.find(item => item.slug === 'assurance-d-o'), '/posts/nvidia-apres-huang-contrats-garanties-cout-crise/'],
   [glossaryAtlasEnBySlug.get('assurance-d-o'), '/en/analysis/nvidia-after-huang-contracts-guarantees-crisis-costs/'],
@@ -1728,8 +1757,8 @@ for (const slug of ['defi', 'facteur-de-sante', 'timelock']) {
 
 const sigles = glossaryEntries.map((entry) => entry.sigle.trim().toLocaleLowerCase('fr'));
 assert.equal(new Set(sigles).size, sigles.length, 'Le glossaire contient encore un sigle dupliqué');
-assert.equal(glossaryEntries.length, 835, 'Le corpus conserve ses notions et ajoute la mise en réserve contractuelle des recettes');
-assert.equal(glossaryAtlasEntries.length, 447, 'Les nouvelles notions disposent de définitions courtes sourcées');
+assert.equal(glossaryEntries.length, 836, 'Le corpus conserve ses notions et ajoute la syndication');
+assert.equal(glossaryAtlasEntries.length, 448, 'Les nouvelles notions disposent de définitions courtes sourcées');
 for (const [slug, sources, related] of [
   ['risque-de-base', ['https://www.cftc.gov/LearnAndProtect/AdvisoriesAndArticles/CFTCGlossary/index.htm', 'https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202211_01~173476301a.en.html'], ['brent', 'future', 'couverture-de-change', 'distillats']],
   ['couverture-de-change', ['https://www.bis.org/publications/qr-201709/fx-swaps-and-forwards-missing-global-debt'], ['risque-de-base', 'future', 'compte-courant']],
@@ -2156,7 +2185,7 @@ assert.equal(decrement?.atlas?.sources?.[0]?.href, 'https://acpr.banque-france.f
 const decrementEn = glossaryAtlasEnBySlug.get('indice-a-decrement');
 assert.equal(decrementEn?.guide, '/en/analysis/structured-products-decrement-indices-savings-risk/');
 assert.deepEqual(decrementEn?.atlas?.sources?.map(source => source.href), decrement?.atlas?.sources?.map(source => source.href));
-assert.equal(glossaryAtlasEdgeCount, 1118, 'Les nouvelles notions conservent leurs relations explicatives');
+assert.equal(glossaryAtlasEdgeCount, 1120, 'Les nouvelles notions conservent leurs relations explicatives');
 for (const [entry, href] of [
   [glossaryEntries.find(item => item.slug === 'spr'), '/posts/petrole-reserves-strategiques-prets-temps/'],
   [glossaryAtlasEnBySlug.get('spr'), '/en/analysis/strategic-oil-reserves-borrowing-time/'],

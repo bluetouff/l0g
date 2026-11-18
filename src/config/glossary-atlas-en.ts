@@ -210,6 +210,20 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'syndication', sigle: 'Loan syndication', nom: 'Arranging a loan across several lenders',
+    def: 'A loan provided by a group of financial institutions to one borrower. The arranger structures the transaction and assembles the lenders. The bookrunner coordinates invitations and information for participants. Each lender holds its own claim under a common loan agreement. Commitments and borrowing are governed by the agreed terms.',
+    guide: '/en/analysis/nvidia-financing-guarantees-aolani-loan/',
+    sectionTitle: 'Banking & balance-sheet management', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Nvidia: financing conditions and the Aolani loan', href: '/en/analysis/nvidia-financing-guarantees-aolani-loan/', kind: 'article' }],
+      sources: [
+        { label: 'BIS, Blaise Gadanecz, The syndicated loan market, December 2004', href: 'https://www.bis.org/publications/syndicated-loan-market-structure-development-and-implications_1.pdf', detail: 'Printed pages 78–79: common agreement, separate claims, arrangers and bookrunner roles. Consulted 18 November 2026.', kind: 'source' },
+        { label: 'BIS, Non-bank lenders in the syndicated loan market', href: 'https://www.bis.org/publications/non-bank-lenders-syndicated-loan-market', detail: 'The syndicated loan market and non-bank lenders: lending group, arranger and participants. Consulted 18 November 2026.', kind: 'source' },
+      ],
+      related: ['offtake', 'garantie-de-pret'],
+    },
+  },
+  {
     slug: 'cash-trap', sigle: 'Cash trap', nom: 'Contractual retention of receipts',
     def: 'A mechanism directing receipts to a dedicated account when a financing agreement’s specified trigger occurs. The payment waterfall determines prior expenses and the money retained. Release conditions, borrowing restrictions and any subsequent early repayment depend on the agreement. The agreement and its implementation records establish the terms and whether the mechanism has been activated.',
     guide: '/en/analysis/ai-debt-cash-contract-conditions/',
@@ -333,6 +347,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         { label: 'Nvidia, Trump and Lutnick: national security under influence', href: '/en/analysis/nvidia-trump-lutnick-national-security-influence/', kind: 'article' },
         { label: 'Nvidia, Trump: a warning at the top', href: '/en/analysis/nvidia-trump-warning-at-the-top/', detail: 'Licenses, remote use and scrutiny of recipients.', kind: 'article' },
         { label: 'Chinese AI faces the factory test', href: '/en/analysis/ai-slowdown-4-china-chips-memory-factories/', kind: 'article' },
+        { label: 'Nvidia: financing conditions and the Aolani loan', href: '/en/analysis/nvidia-financing-guarantees-aolani-loan/', kind: 'article' },
       ],
       sources: [
         { label: 'BIS, EAR 730: scope of export controls', href: 'https://www.bis.gov/regulations/ear/730', detail: 'Goods, software, technology and requirements tied to destinations, users and uses.', kind: 'source' },
@@ -1327,7 +1342,8 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "Public financing after the JLR cyberattack",
         "href": "/en/analysis/after-cyberattack-07-public-crisis-financing/",
         "kind": "article"
-      }
+      },
+      { "label": "Nvidia: financing conditions and the Aolani loan", "href": "/en/analysis/nvidia-financing-guarantees-aolani-loan/", "kind": "article" }
     ],
     "sources": [
       {
@@ -4031,7 +4047,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         "label": "Google and McKinsey: pasture carbon and timber",
         "href": "/en/analysis/google-mckinsey-pasture-carbon-timber/",
         "kind": "article"
-      }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}],
+      }, {"label": "GM, VAC and financing the Sumter magnet factory", "href": "/en/analysis/us-rare-earth-magnets-gm-vac-offtake-risk/", "kind": "article"}, { label: "Nvidia: financing conditions and the Aolani loan", href: "/en/analysis/nvidia-financing-guarantees-aolani-loan/", kind: 'article' }],
     "sources": [
       {
         "label": "Symbiosis / CrossBoundary, Carbon Offtake Guide",
