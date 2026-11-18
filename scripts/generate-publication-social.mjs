@@ -5,11 +5,13 @@ import { Resvg } from '@resvg/resvg-js';
 import sharp from 'sharp';
 import { h, fonts, OG } from './og-kit.mjs';
 import { publicationSocialCards } from '../src/config/publication-social.mjs';
+import { renderAiCreditorsPublicationSocial } from './generate-ai-creditors-artwork.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 
 /** Build a native typeset card around a purpose-made, text-free illustration. */
-export async function renderPublicationSocial(card, art) {
+export async function renderPublicationSocial(card, art, options = {}) {
+  if (card.key === 'ai-creditors') return renderAiCreditorsPublicationSocial(card, art, options);
   const meta = await sharp(art).metadata();
   if (meta.width !== 1200 || meta.height !== 630) throw new Error(`Incorrect social artwork dimensions: ${card.art}`);
   const illustration = { type: 'img', props: { src: `data:image/jpeg;base64,${art.toString('base64')}`, style: { position: 'absolute', left: 0, top: 0, width: 1200, height: 630 } } };

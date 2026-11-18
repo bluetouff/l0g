@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['ai-creditors', 'fr', 'les-creanciers-de-l-ia', ['Les créanciers', 'de l’IA'], ['Banques, fonds, assureurs', 'et dette des data centers'], 'Illustration conceptuelle des centres de données et des circuits de crédit reliant banques, fonds et assureurs'],
+  ['ai-creditors', 'en', 'ai-creditors', ['AI’s', 'creditors'], ['Banks, funds, insurers', 'and data-centre debt'], 'Conceptual artwork of data centres and the credit pathways linking banks, funds and insurers'],
   ['nvidia', 'fr', 'le-systeme-nvidia', ['Le système', 'Nvidia'], ['Puces, crédit', 'et pouvoir'], 'Illustration conceptuelle d’une puce centrale et des circuits de financement de l’IA'],
   ['nvidia', 'en', 'the-nvidia-system', ['The Nvidia', 'System'], ['Chips, credit', 'and power'], 'Conceptual artwork of a central chip and the financing circuits of AI'],
   ['encryption-backdoor', 'fr', 'le-cout-d-une-porte-derobee', ['Le coût d’une', 'porte dérobée'], ['Messages privés, enquêtes', 'et pouvoir d’État'], 'Illustration conceptuelle d’un message protégé, d’un accès latéral et des risques pour d’autres utilisateurs'],

@@ -138,7 +138,7 @@ test('the production catalogue accounts for every raw generator and every source
  const pkg=JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'),'utf8'));
  const raw=[...pkg.scripts['build:epub:generate'].matchAll(/node (scripts\/[^ &]+\.mjs)/gu)].map(match=>match[1]).filter(file=>file!=='scripts/build-epub.mjs');
  assert.deepEqual(groups.flatMap(group=>group.generators).sort(),raw.sort());
- assert.equal(groups.length,21);
+ assert.equal(groups.length,22);
  assert.ok(groups.every(group=>group.snapshot&&group.books.length&&group.outputs.length));
  assert.ok(groups.every(group=>!group.inputs.includes('src/content')));
  assert.ok(groups.every(group=>!['scripts','src/components','src/lib','src/config','src/figures'].some(directory=>group.inputs.includes(directory))));
@@ -156,6 +156,15 @@ test('the production catalogue accounts for every raw generator and every source
   for(const file of group.inputs.filter(file=>file.startsWith('src/content/')))assert.ok(fs.statSync(path.join(ROOT,file)).isFile());
   for(const file of group.outputs)assert.ok(fs.existsSync(path.join(ROOT,file)),file);
  }
+ const creditors=groups.find(group=>group.name==='epub-ai-creditors');
+ assert.ok(creditors);
+ assert.deepEqual(creditors.books,['les-creanciers-de-l-ia','ai-creditors']);
+ assert.equal(creditors.inputs.filter(file=>file.startsWith('src/content/')).length,12);
+ assert.ok(creditors.inputs.includes('src/publication-text/ai-creditors-book.mjs'));
+ assert.equal(creditors.inputs.filter(file=>/^src\/components\/Ai[^/]*Figure\.astro$/u.test(file)).length,6);
+ assert.ok(creditors.inputs.includes('src/figures/ai-credit-map'));
+ assert.ok(creditors.inputs.includes('public/publications/les-creanciers-de-l-ia-cover.jpg'));
+ assert.ok(!creditors.outputs.includes('public/publications/les-creanciers-de-l-ia-cover.jpg'));
  const nvidia=groups.find(group=>group.name==='epub-nvidia');
  assert.ok(nvidia);
  assert.deepEqual(nvidia.books,['le-systeme-nvidia','the-nvidia-system']);

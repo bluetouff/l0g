@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { aiCreditorsEditions } from '../config/ai-creditors-publication.mjs';
 import { aiFinancingSections, aiFinancingGuides, aiFinancingNvidiaIds } from '../config/ai-financing-dossier';
 import frenchAtlas from '../data/engagement-atlas.json';
 import englishAtlas from '../data/engagement-atlas.en.json';
@@ -13,6 +14,7 @@ import { serializeInlineScriptData } from '../lib/security';
 interface Props { language: 'fr' | 'en' }
 const { language } = Astro.props;
 const fr = language === 'fr';
+const creditorsBook = aiCreditorsEditions[language];
 const Layout = fr ? BaseLayout : EnglishGuidesLayout;
 const ui = fr ? {
   title: 'Financer la course à l’IA',
@@ -172,7 +174,7 @@ const jsonLd = {
     </section>
 
     <section id="guides" class="ai-section" aria-labelledby="guides-title"><div class="ai-section-heading"><p class="ai-eyebrow">04 / {fr ? 'Les repères' : 'Reference'}</p><h2 id="guides-title">{ui.guides}</h2><p>{ui.guidesNote}</p></div><ul class="ai-guides">{guides.map(item => <li><h3><a href={item.href}>{item.title}<span aria-hidden="true">↗</span></a></h3><p>{item.note}</p></li>)}</ul></section>
-    <footer class="ai-scope"><h2>{ui.scope}</h2><p>{ui.scopeNote}</p><a href={ui.relatedHref}>{ui.related} <span aria-hidden="true">→</span></a></footer>
+    <footer class="ai-scope"><h2>{ui.scope}</h2><p>{ui.scopeNote}</p><p>{fr ? 'Pour une lecture hors ligne, ' : 'For offline reading, '}<a href={creditorsBook.path}>{creditorsBook.title}</a>{fr ? ' réunit six analyses intégrales sur les banques, les fonds, les assureurs et les clauses de trésorerie, avec leurs figures, leurs sources et un glossaire.' : ' brings together six complete analyses of banks, funds, insurers and cash-flow clauses, with their figures, sources and a glossary.'}</p><a href={ui.relatedHref}>{ui.related} <span aria-hidden="true">→</span></a></footer>
   </article>
 </Layout>
 
@@ -262,6 +264,7 @@ const jsonLd = {
   .ai-scope { border-top:1px solid var(--color-line); margin-top:2.5rem; padding-top:1.5rem; }
   .ai-scope h2 { font:450 .9rem/1.5 var(--font-read); color:var(--color-bright); }
   .ai-scope p { max-width:95ch; margin:.7rem 0 1rem; font:400 .78rem/1.8 var(--font-read); color:var(--color-muted); }
+  .ai-scope p a { color:var(--color-signal); text-decoration:underline; text-underline-offset:3px; }
   .ai-scope>a { display:inline-flex; align-items:center; gap:1rem; min-height:44px; font:450 .8rem/1.6 var(--font-read); color:var(--color-signal); }
   @media(min-width:1100px) { .ai-nvidia .ai-section-heading { position:sticky; top:2rem; align-self:start; } }
   @media(max-width:760px) {

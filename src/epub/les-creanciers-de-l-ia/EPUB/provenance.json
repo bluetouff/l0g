@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:00de9eb8-61e7-4fd1-996a-29b105817c61",
+  "lang": "fr",
+  "date": "2026-11-18",
+  "modified": "2026-11-18T12:03:29Z",
+  "sourceArticles": [
+    {
+      "lang": "fr",
+      "chapter": 1,
+      "file": "src/content/posts/jupiter-hsbc-banques-europeennes-financement-ia.mdx",
+      "canonical": "https://l0g.fr/posts/jupiter-hsbc-banques-europeennes-financement-ia/",
+      "sha256": "bf1dd51927ae1400b3fa40c0e5fcdf0690e979519ef68671138f0211a84a3be0",
+      "published": "2026-11-17T16:02:03+01:00",
+      "updated": "2026-11-17T16:02:03+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 2,
+      "file": "src/content/posts/banques-europeennes-ia-contrats-expositions.mdx",
+      "canonical": "https://l0g.fr/posts/banques-europeennes-ia-contrats-expositions/",
+      "sha256": "91dff90656203ca64677d36795b5c02a001a2be174b8382f95a65c199cad0aa9",
+      "published": "2026-11-17T17:10:08+01:00",
+      "updated": "2026-11-17T17:10:08+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 3,
+      "file": "src/content/posts/credit-prive-ia-fonds-banques-financement.mdx",
+      "canonical": "https://l0g.fr/posts/credit-prive-ia-fonds-banques-financement/",
+      "sha256": "83cb3ec10b4771174d8880b4afeb06e37e5013bca2c01f1e06c035e0328ede9f",
+      "published": "2026-11-17T18:42:48+01:00",
+      "updated": "2026-11-17T18:42:48+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 4,
+      "file": "src/content/posts/ia-assureurs-garanties-risque-hors-bilan.mdx",
+      "canonical": "https://l0g.fr/posts/ia-assureurs-garanties-risque-hors-bilan/",
+      "sha256": "c215c651f2aa6a94c77e8e225d88f9eedc3f61e32d2b3ea486e44282bc7f80ed",
+      "published": "2026-11-17T21:40:40+01:00",
+      "updated": "2026-11-17T21:40:40+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 5,
+      "file": "src/content/posts/dette-ia-tresorerie-clauses-contrats.mdx",
+      "canonical": "https://l0g.fr/posts/dette-ia-tresorerie-clauses-contrats/",
+      "sha256": "82405b69097de8ae270a787f3ed8e8ff4a9b0a38f432f918fc3eaf6c17f9af4e",
+      "published": "2026-11-18T09:13:19+01:00",
+      "updated": "2026-11-18T09:13:19+01:00"
+    },
+    {
+      "lang": "fr",
+      "chapter": 6,
+      "file": "src/content/posts/dette-ia-cartographie-banques-fonds-assureurs.mdx",
+      "canonical": "https://l0g.fr/posts/dette-ia-cartographie-banques-fonds-assureurs/",
+      "sha256": "d4478926908f14f2d57e84a1af5ba0d0569d1b331ed754dee46675fc4af9e5b6",
+      "published": "2026-11-18T11:01:46+01:00",
+      "updated": "2026-11-18T11:01:46+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 1,
+      "file": "src/content/posts-en/jupiter-hsbc-european-banks-ai-financing.mdx",
+      "canonical": "https://l0g.fr/en/analysis/jupiter-hsbc-european-banks-ai-financing/",
+      "sha256": "40a317e73c5cf7640f33b6a4b5c9b2d25ba0e432f9cd8c08e57129cac70d945f",
+      "published": "2026-11-17T16:02:03+01:00",
+      "updated": "2026-11-17T16:02:03+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 2,
+      "file": "src/content/posts-en/european-banks-ai-loans-exposures.mdx",
+      "canonical": "https://l0g.fr/en/analysis/european-banks-ai-loans-exposures/",
+      "sha256": "a2fe15df1216ae22a5baf732517b88eec2db59013e7e078e1d69d9c65cc2e4fa",
+      "published": "2026-11-17T17:10:08+01:00",
+      "updated": "2026-11-17T17:10:08+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 3,
+      "file": "src/content/posts-en/private-credit-ai-funds-bank-financing.mdx",
+      "canonical": "https://l0g.fr/en/analysis/private-credit-ai-funds-bank-financing/",
+      "sha256": "3c36f34ea1c8d25f3ac4f36382e0343dca378da417f58c6271bc652d8f7ca942",
+      "published": "2026-11-17T18:42:48+01:00",
+      "updated": "2026-11-17T18:42:48+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 4,
+      "file": "src/content/posts-en/ai-insurers-guarantees-off-balance-sheet-risk.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ai-insurers-guarantees-off-balance-sheet-risk/",
+      "sha256": "65ab6431c0adef714ee36ad259b3df80b9855ceac0e094180dbaa8be3deb6d89",
+      "published": "2026-11-17T21:40:40+01:00",
+      "updated": "2026-11-17T21:40:40+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 5,
+      "file": "src/content/posts-en/ai-debt-cash-contract-conditions.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ai-debt-cash-contract-conditions/",
+      "sha256": "7abd782c8bd763550918c0ba449a21ffdb52c13d13dd0aae61d24735c1b72051",
+      "published": "2026-11-18T09:13:19+01:00",
+      "updated": "2026-11-18T09:13:19+01:00"
+    },
+    {
+      "lang": "en",
+      "chapter": 6,
+      "file": "src/content/posts-en/ai-debt-map-banks-funds-insurers.mdx",
+      "canonical": "https://l0g.fr/en/analysis/ai-debt-map-banks-funds-insurers/",
+      "sha256": "22a16db7c5a9eefda6d7d4b74f40dcd518dc053d7a26bbe64108bbfc457d2c73",
+      "published": "2026-11-18T11:01:46+01:00",
+      "updated": "2026-11-18T11:01:46+01:00"
+    }
+  ],
+  "figures": [
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "sale",
+      "mobile": false,
+      "sourceSha256": "75e382c0b339e6fcc6232496da2c1583ca5b63828fb0544a8d6443632b63011f",
+      "epubFile": "EPUB/media/file0.svg",
+      "epubSha256": "9aad7c3325d6e1c171383087dfa47de0bce9030ea7ed5524d499955abb6b0fae"
+    },
+    {
+      "chapter": 1,
+      "figure": 1,
+      "kind": "sale",
+      "mobile": true,
+      "sourceSha256": "cbb178640be222d75dbb77867f17ebb45723acc608b8407decfefc387e16861a",
+      "epubFile": "EPUB/media/file1.svg",
+      "epubSha256": "8ac6c5801047e4d22d085445aad4d35a0b56208cb68dcfecc72760df0eb275cc"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "scope",
+      "mobile": false,
+      "sourceSha256": "bcc20fd54a3b594a4604bf432549e34551a30ff694e7fb90aa55c6512f343913",
+      "epubFile": "EPUB/media/file2.svg",
+      "epubSha256": "3f59c65813ce93a0ce113085daa8fbfcecce10338a92e2748c2b24d789ed4625"
+    },
+    {
+      "chapter": 1,
+      "figure": 2,
+      "kind": "scope",
+      "mobile": true,
+      "sourceSha256": "9d288a3c97c8d7a50218f6e9113be8e43cab01e5daf2c610e0ba4f389c84ba43",
+      "epubFile": "EPUB/media/file3.svg",
+      "epubSha256": "853090a3249cfe180afcb19bfad6fdc44168a19a663d29d6ab20024656d4e94e"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "loan",
+      "mobile": false,
+      "sourceSha256": "d2868e028d2dbb88f6cdedd3aea41f2927689e84bccbd76ca9fff146aef08ced",
+      "epubFile": "EPUB/media/file4.svg",
+      "epubSha256": "9c8f364b521220addb028194d435d57c6280bf08559d26df449a176c1fcf946c"
+    },
+    {
+      "chapter": 2,
+      "figure": 1,
+      "kind": "loan",
+      "mobile": true,
+      "sourceSha256": "71d4220179103b0a825920f02e58d8843729ba9fb6466da1420c6031a43b98b1",
+      "epubFile": "EPUB/media/file5.svg",
+      "epubSha256": "e14c4c352804ab9feeaf3283ca388fc2ecef868952e0c88341667567b34432ad"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "portfolio",
+      "mobile": false,
+      "sourceSha256": "7c54838e9a88932ddfb0c9f7a85c1cfee1317925250a96d28afe020fe059753b",
+      "epubFile": "EPUB/media/file6.svg",
+      "epubSha256": "45c2c33d50157e69332991ace6cf685ca34384236b41e46ce4c1344a37b09c32"
+    },
+    {
+      "chapter": 2,
+      "figure": 2,
+      "kind": "portfolio",
+      "mobile": true,
+      "sourceSha256": "1d5e2f5d37da356fddb1184199574f3d9f0e428945c2715c81c94e8b2dd7ba50",
+      "epubFile": "EPUB/media/file7.svg",
+      "epubSha256": "f5929db0bfdbc54b0505db4b604913210e50dbf7061519a3b89f6e5d06011aff"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "power",
+      "mobile": false,
+      "sourceSha256": "968724835b05ad0ffeda41a47d6b65cd9770043069a6e9289145f6f4f32f1a91",
+      "epubFile": "EPUB/media/file8.svg",
+      "epubSha256": "d0f3e87c6e9100afee562d6adeb48a109c0d30a6d3b06c249bec7b171caaace3"
+    },
+    {
+      "chapter": 2,
+      "figure": 3,
+      "kind": "power",
+      "mobile": true,
+      "sourceSha256": "08b33888ff6c899a9e175db6ae6ecae820163e2c540e0d9c90051b76ee265313",
+      "epubFile": "EPUB/media/file9.svg",
+      "epubSha256": "5b24f719ce955252b91fc06260fb9ccdbfac35413d85f89b72f4327ab90f1c37"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "holdings",
+      "mobile": false,
+      "sourceSha256": "0c76d720e964934bea7526eae8f1e3bc582d5eb3d7899e216ab1dfdcd3ebbe54",
+      "epubFile": "EPUB/media/file10.svg",
+      "epubSha256": "e491cd26d51d186e403a2f1e268e1055541b97cf033df560b8055485e9fb6405"
+    },
+    {
+      "chapter": 3,
+      "figure": 1,
+      "kind": "holdings",
+      "mobile": true,
+      "sourceSha256": "9354a67dc51ebd2c147e7048a2bdb9a30d922cd4101b50175329761c9bd4f67d",
+      "epubFile": "EPUB/media/file11.svg",
+      "epubSha256": "bd8edab8f078849cf41a271fd3f2bb3af43671e86634d592f9eb22fce56f131e"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "map",
+      "mobile": false,
+      "sourceSha256": "67e40e7c19fb8232f6d1cce611fd3812c128517f1b33d2499d4c84659327b879",
+      "epubFile": "EPUB/media/file12.svg",
+      "epubSha256": "df781c8cdc04e0368b7659d6d01bc75826de3f06c7da57f46d83766d22db11a7"
+    },
+    {
+      "chapter": 3,
+      "figure": 2,
+      "kind": "map",
+      "mobile": true,
+      "sourceSha256": "49c41580ed323601d916b6c68ad1a83c0a24d3196e78749e54e2e61a9a37b4a1",
+      "epubFile": "EPUB/media/file13.svg",
+      "epubSha256": "89bd2de181db1ccc62905082585148333ac56ffa402ba93a94303409c37792ad"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "liquidity",
+      "mobile": false,
+      "sourceSha256": "f6302764caf96ab4b75ce92e35a535855eb05deab00b9d44da47ba7e74bdf1f0",
+      "epubFile": "EPUB/media/file14.svg",
+      "epubSha256": "b2036f01678c2a43183930a6b41a006513343bcc4d2a3240341063c7773fa3bc"
+    },
+    {
+      "chapter": 3,
+      "figure": 3,
+      "kind": "liquidity",
+      "mobile": true,
+      "sourceSha256": "7075d5dbcac985d670b5bec230d2989c0aeb3a8136f839355b35a25458c0025e",
+      "epubFile": "EPUB/media/file15.svg",
+      "epubSha256": "736dc58fad4b92ab9dd9ecdd1240b01f3c084c7fdd81abeda53d26b431abebd9"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "lookthrough",
+      "mobile": false,
+      "sourceSha256": "1e2950017d6741267586a429e5de050aaa56fa5f7a8db6cf56510e68773a89ea",
+      "epubFile": "EPUB/media/file16.svg",
+      "epubSha256": "9b1695ae92c6f71af3eba66bbd8a122b35fba0a8b7c90af2cd5b4155fe9ffb1d"
+    },
+    {
+      "chapter": 4,
+      "figure": 1,
+      "kind": "lookthrough",
+      "mobile": true,
+      "sourceSha256": "ac2bb6d4dbd1de597330dbb96c4c95d71b25df0c92d644400fb5b7c2ded08b1e",
+      "epubFile": "EPUB/media/file17.svg",
+      "epubSha256": "a608f0fbd6b8fb3d0a64515ebb89035366d25f5753c68bb24d9b26c19b074827"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "portfolio",
+      "mobile": false,
+      "sourceSha256": "4befd3c96c942225b1721b130e84fe6395d300cb2f7a8fcfb74788a135870b20",
+      "epubFile": "EPUB/media/file18.svg",
+      "epubSha256": "8909cc72dbf545c8308c2916be97860b424e571bd1658f6b7753b090dcc1857e"
+    },
+    {
+      "chapter": 4,
+      "figure": 2,
+      "kind": "portfolio",
+      "mobile": true,
+      "sourceSha256": "93a54f0814d6601a7b7387020619243f9e69fdb2bbc158b0de1747a13a617fcf",
+      "epubFile": "EPUB/media/file19.svg",
+      "epubSha256": "eb3db0699e7a790af5233446c905e85f8ab623166f5632d36a7f237a29fd49fc"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "guarantee",
+      "mobile": false,
+      "sourceSha256": "02d5ebe6f035a5fa3f89ca9ae7fe25cf329c45f5def7331c402893053380cae8",
+      "epubFile": "EPUB/media/file20.svg",
+      "epubSha256": "afe30d656535082cbe60f4361f5851797c30f71fcc0b6f7a401e19b0f694acf6"
+    },
+    {
+      "chapter": 4,
+      "figure": 3,
+      "kind": "guarantee",
+      "mobile": true,
+      "sourceSha256": "addd11d3e4568c3556a5494741e294ea3b5af0e7c14a475d9fe9cb02a3689e6d",
+      "epubFile": "EPUB/media/file21.svg",
+      "epubSha256": "e5558d7426bdfc3e151cfc3217e944f10d9e23682875850cdd84b357c18160fc"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "surety",
+      "mobile": false,
+      "sourceSha256": "1d6907ad986aa9c524c28a9f05874c3c142d12265c1c8fd77fd6d63d05a1e558",
+      "epubFile": "EPUB/media/file22.svg",
+      "epubSha256": "296a07c5cb70548e17b5b6962f670654ad08dc42ae77bc5f245f29e847ff7184"
+    },
+    {
+      "chapter": 5,
+      "figure": 1,
+      "kind": "surety",
+      "mobile": true,
+      "sourceSha256": "546972234259d26674e8f23d64e1ae9c9881a4de09e019a9919f0abf77b04b62",
+      "epubFile": "EPUB/media/file23.svg",
+      "epubSha256": "5dd020562f9c245607d16bd4eb2f82e105226d4a226b8483ec3115a9f06dac61"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "trap",
+      "mobile": false,
+      "sourceSha256": "b69a2944ae00479e6d06988513a53abb8475de4651b947a3dd8200ce022c4af7",
+      "epubFile": "EPUB/media/file24.svg",
+      "epubSha256": "918f6cc11d396a6f78a97bffe623582fc2cf9aa6b36390f9ffae7ca509ff1d69"
+    },
+    {
+      "chapter": 5,
+      "figure": 2,
+      "kind": "trap",
+      "mobile": true,
+      "sourceSha256": "ba01f7223ef07c67bdc80e0ef01e8868de25b2792fb9866642387b0d74d5ab80",
+      "epubFile": "EPUB/media/file25.svg",
+      "epubSha256": "c492a16b6d35937367703888d4002c73868ff03e2b5dce7a8ecaaea59356297a"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "reserves",
+      "mobile": false,
+      "sourceSha256": "ae9f4f91e6868f90563fe43a420f86ea00ef5bdffff6d610fd313b2dafa9b2b9",
+      "epubFile": "EPUB/media/file26.svg",
+      "epubSha256": "3389e9b86c6d974405e3b8b461538aabacd9e5f58667d4bd3c4e96422b626496"
+    },
+    {
+      "chapter": 5,
+      "figure": 3,
+      "kind": "reserves",
+      "mobile": true,
+      "sourceSha256": "5d5a77df3f96f81cd3496075d01e13d8233d7a630c06b554e5108f4dc59e6f44",
+      "epubFile": "EPUB/media/file27.svg",
+      "epubSha256": "b84587bc7f1f4c1cca97846f16575da149f5019ff1cc72abe195f9f707da6c97"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "holdings",
+      "mobile": false,
+      "sourceSha256": "494158e17d2384d0e58074140fff12742793c8208337f1c100a40b4700e85454",
+      "epubFile": "EPUB/media/file28.svg",
+      "epubSha256": "16cddc2dd8cc270b5af24f1416868a6f62522075a159dc0ed000c69d05418e43"
+    },
+    {
+      "chapter": 6,
+      "figure": 1,
+      "kind": "holdings",
+      "mobile": true,
+      "sourceSha256": "184451b5e3409bcc838e3763d3dc829d1dacb4ace932623ff8c981d0ee9b1e28",
+      "epubFile": "EPUB/media/file29.svg",
+      "epubSha256": "a23071fbee6ba01076a36eb3d0232e8bb737419c06bc0a1ce4ae4c4c22a1b602"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "bridge",
+      "mobile": false,
+      "sourceSha256": "92c398c3dabfccdd6c4e1ec345577fe39d6d18081670dca3d9c91c31688aa2a8",
+      "epubFile": "EPUB/media/file30.svg",
+      "epubSha256": "9e5f08801a973f5c4ff05a2d1e290c22a0d9d0464caaff2cfe8f8000c24221f6"
+    },
+    {
+      "chapter": 6,
+      "figure": 2,
+      "kind": "bridge",
+      "mobile": true,
+      "sourceSha256": "e24381151620c8d1504850c04190d96b333d56bb460ea014cb72eef7fc75c278",
+      "epubFile": "EPUB/media/file31.svg",
+      "epubSha256": "e5798507fca1d4435bc8f533efd7775491ba92714671a5b82397b50df9166602"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "market",
+      "mobile": false,
+      "sourceSha256": "ed927bb93c10ba80ab13078414077e031ca0dcf2255d58405096f3d7a818a17b",
+      "epubFile": "EPUB/media/file32.svg",
+      "epubSha256": "b3650f1bd763289c07d26bee7a05e85e2287359d3ac2c680887369b970581e1e"
+    },
+    {
+      "chapter": 6,
+      "figure": 3,
+      "kind": "market",
+      "mobile": true,
+      "sourceSha256": "d6ec01891ed60edece91be198dadbe7a9795faecd4e3b52bc52b16730b4307fa",
+      "epubFile": "EPUB/media/file33.svg",
+      "epubSha256": "41a7456b9ef5e7f09e40be1a271659aa68155438cb20a83e078267c17ff72acc"
+    }
+  ],
+  "fonts": [
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/jetbrains-mono/files/jetbrains-mono-latin-wght-normal.woff2",
+      "sha256": "18be452724bfdc236c074ca94a249a7f41a86752c7d04ab258ce9ed5651f6a7e"
+    },
+    {
+      "file": "node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+      "sha256": "3100e775e8616cd2611beecfa23a4263d7037586789b43f035236a2e6fbd4c62"
+    }
+  ],
+  "cover": {
+    "file": "public/publications/les-creanciers-de-l-ia-cover.jpg",
+    "sha256": "c1e3f536a5c4dbcd3589b84d538732f016a427da488baf23d926d1dfab682a58"
+  },
+  "transformation": "Complete six-article source corpus and all 87 reference notices. Passive offline text. Original 17 figure compositions in 34 desktop/mobile SVG scenes. CSS paints resolved, dark paper supplied for standalone figures, licensed local fonts embedded, and original SVG descriptions provided as reflowable text in the figure index. Original source date precision preserved. No JavaScript, active forms or external media resources."
+}

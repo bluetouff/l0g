@@ -17,6 +17,7 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
 const unique = values => [...new Set(values)].sort();
@@ -172,6 +173,7 @@ export function epubDerivedTasks(root) {
   modern('insurance','scripts/generate-insurance-epub.mjs',insurancePromiseEditions);
   modern('cumcum','scripts/generate-cumcum-epub.mjs',cumcumEditions,{coverInput:true});
   modern('machines','scripts/generate-ordinary-machines-epub.mjs',ordinaryMachinesEditions,{coverInput:true});
+  modern('ai-creditors','scripts/generate-ai-creditors-epub.mjs',aiCreditorsEditions,{coverInput:true});
   modern('nvidia','scripts/generate-nvidia-epub.mjs',nvidiaEditions,{coverInput:true});
   modern('encryption-backdoor','scripts/generate-encryption-backdoor-epub.mjs',encryptionBackdoorEditions,{coverInput:true});
   const owners = new Set();

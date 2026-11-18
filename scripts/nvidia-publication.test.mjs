@@ -183,13 +183,14 @@ test('publication presentation preserves theme tokens, responsive images and key
 
 
 
-test('both catalogues present the Nvidia edition first while retaining their older editions', () => {
+test('both catalogues retain the Nvidia edition after AI creditors and before their older editions', () => {
   for (const book of Object.values(nvidiaEditions)) {
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 20 : 17);
-    assert(hasClass(cards[0], 'publication-spotlight--nvidia'));
-    assert(hasClass(cards[1], 'publication-spotlight--encryption-backdoor'));
-    const first = nodes(cards[0]);
+    assert.equal(cards.length, book.lang === 'fr' ? 21 : 18);
+    assert(hasClass(cards[0], 'publication-spotlight--ai-creditors'));
+    assert(hasClass(cards[1], 'publication-spotlight--nvidia'));
+    assert(hasClass(cards[2], 'publication-spotlight--encryption-backdoor'));
+    const first = nodes(cards[1]);
     assert.equal(plain(sole(first, node => node.tagName === 'h2', 'catalogue title')), book.title);
     assert.equal(attr(sole(first, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'catalogue download'), 'href'), book.epub);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
