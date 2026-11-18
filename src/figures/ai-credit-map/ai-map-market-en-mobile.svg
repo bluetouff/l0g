@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 410" role="img" aria-labelledby="ai-map-en-market-m-title ai-map-en-market-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-map-svg" style="width:100%;height:auto">
+<title id="ai-map-en-market-m-title">AI enters the long end of credit</title>
+<desc id="ai-map-en-market-m-desc">In its box published on 17 November 2026, the ECB puts US hyperscalers at close to 8% of euro investment-grade corporate bonds with more than ten years of residual maturity. This is a market-value share at 30 June 2026 of that long-end segment of the ICE BofA Euro Corporate Index, not of the entire index. The second part illustrates a conditional mechanism: disappointing revenue may lead to a higher risk premium and lower bond prices. Insurers’ and pension funds’ portfolios may be affected. The ECB observes a still-modest overweight. Arrows do not quantify losses or forecast a shock.</desc>
+<text x="20" y="27" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">AI in long-dated credit</text>
+<text x="20" y="49" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Euro bonds · investment grade</text>
+<text x="20" y="67" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">More than 10 years to maturity</text>
+<text x="20" y="103" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-signal)">Nearly 8%</text>
+<text x="150" y="94" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">issued by US</text>
+<text x="150" y="111" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">hyperscalers</text>
+<rect x="20" y="125" width="340" height="11" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="20" y="125" width="27.2" height="11" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+<text x="20" y="155" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Market value · 30 June 2026</text>
+<line x1="20" y1="173" x2="360" y2="173" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+<text x="20" y="195" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">If revenue disappoints…</text>
+<g data-icon="revenue" transform="translate(32 222) scale(0.9)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-10 9H10M-8 5V0M-2 5v-9M4 5v-6M10 5v-10M-8-6l6-3 6 4 6-2"/></g>
+<text x="59" y="226" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-paper)">Revenue falls short of expectations</text>
+<line x1="32" y1="238" x2="32" y2="254" stroke="var(--color-muted)" stroke-width="1.1"/>
+<path d="M28.5 249 32 254 35.5 249" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="59" y="250" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">possible reassessment</text>
+<g data-icon="risk" transform="translate(32 273) scale(0.9)" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-9 7H9M-7 3l5-4 4 2 6-9M4-8h4v4"/></g>
+<text x="59" y="277" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-accent)">Risk premium rises</text>
+<line x1="32" y1="288" x2="32" y2="304" stroke="var(--color-muted)" stroke-width="1.1"/>
+<path d="M28.5 299 32 304 35.5 299" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="59" y="300" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">higher required yield</text>
+<g data-icon="price" transform="translate(32 323) scale(0.9)" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-9-7h18v15H-9ZM-5-3l4 3 3-1 4 5M2 4h4V0"/></g>
+<text x="59" y="327" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-accent)">Bond prices fall</text>
+<path d="M32 339V351H48" fill="none" stroke="var(--color-muted)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M43 347.5 48 351 43 354.5" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="59" y="355" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Insurers and pension funds</text>
+<text x="20" y="386" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Conditional mechanism · losses not quantified</text>
+<text x="20" y="403" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">ECB · box published 17 November 2026</text>
+</svg>

@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 334" role="img" aria-labelledby="ai-map-fr-holdings-d-title ai-map-fr-holdings-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-map-svg" style="width:100%;height:auto">
+<title id="ai-map-fr-holdings-d-title">Six portefeuilles sur un même prêt</title>
+<desc id="ai-map-fr-holdings-d-desc">Au 30 septembre 2026, le principal tiré de DDTL 5.5 de CoreWeave est de 1 555 millions de dollars. Six portefeuilles publiés identifient ensemble 57,778 millions financés, soit environ 3,7 %. Ares Core Infrastructure Fund : 23,960 ; Apollo Debt Solutions BDC (ADS) : 13,004 ; Blue Owl Technology Finance Corp. (OTF) et Blue Owl Capital Corporation (OBDC) : 8,969 chacun ; HPS Corporate Lending Fund : 2,212 et HPS Corporate Capital Solutions Fund : 0,664 millions, reconstitués à partir des déclarations. La barre générale est proportionnelle au principal total. Le zoom a sa propre échelle, de 0 à 24 millions. Les 38,850 millions d’engagements non tirés sont présentés séparément. Cet échantillon est non exhaustif. Sources : SEC, CoreWeave et déclarations de portefeuille au 30 septembre 2026.</desc>
+<text x="20" y="28" font-size="20.4" font-weight="500" text-anchor="start" fill="var(--color-paper)">Six portefeuilles sur un même prêt</text>
+<text x="20" y="49" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-muted)">DDTL 5.5 · principal au 30 septembre 2026 · millions de dollars</text>
+<text x="20" y="74" font-size="13.6" font-weight="500" text-anchor="start" fill="var(--color-paper)">1 555 M$ d’encours</text>
+<text x="660" y="74" font-size="13.6" font-weight="400" text-anchor="end" fill="var(--color-signal)">57,778 M$ repérés · env. 3,7 %</text>
+<rect x="20" y="85" width="640" height="11" rx="2" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="20" y="85" width="23.78" height="11" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1"/>
+<path d="M32 99V110H46" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<g data-icon="zoom" transform="translate(54 118) scale(0.7)" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><circle cx="-2" cy="-2" r="6"/><path d="m3 3 6 6M-5-2H1M-2-5V1"/></g>
+<text x="69" y="122" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-muted)">Zoom sur les six portefeuilles</text>
+<text x="660" y="122" font-size="13.6" font-weight="400" text-anchor="end" fill="var(--color-muted)">Échelle propre : 0–24 M$</text>
+<line x1="189" y1="136" x2="189" y2="260" stroke="var(--color-line-strong)" stroke-width="0.7"/>
+<line x1="581" y1="136" x2="581" y2="260" stroke="var(--color-line-strong)" stroke-width="0.7"/>
+<text x="20" y="147" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">Ares Core Infra.</text>
+<line x1="189" y1="143" x2="581" y2="143" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="139" width="391.347" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.95"/>
+<text x="660" y="147" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">23,960</text>
+<text x="20" y="168" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">ADS</text>
+<line x1="189" y1="164" x2="581" y2="164" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="160" width="212.399" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.95"/>
+<text x="660" y="168" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">13,004</text>
+<text x="20" y="189" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">OTF</text>
+<line x1="189" y1="185" x2="581" y2="185" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="181" width="146.494" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.95"/>
+<text x="660" y="189" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">8,969</text>
+<text x="20" y="210" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">OBDC</text>
+<line x1="189" y1="206" x2="581" y2="206" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="202" width="146.494" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.95"/>
+<text x="660" y="210" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">8,969</text>
+<text x="20" y="231" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">HPS Lending*</text>
+<line x1="189" y1="227" x2="581" y2="227" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="223" width="36.1293" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.65"/>
+<text x="660" y="231" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">2,212</text>
+<text x="20" y="252" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-paper)">HPS Capital Solutions*</text>
+<line x1="189" y1="248" x2="581" y2="248" stroke="var(--color-line-strong)" stroke-width="0.6"/>
+<rect x="189" y="244" width="10.8453" height="8" rx="1" fill="var(--color-signal)" stroke="none" stroke-width="1" opacity="0.65"/>
+<text x="660" y="252" font-size="13.6" font-weight="500" text-anchor="end" fill="var(--color-signal)">0,664</text>
+<line x1="20" y1="272" x2="660" y2="272" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+<g data-icon="undrawn" transform="translate(30 290) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-7" width="20" height="14" rx="2"/><path d="M-6 0H6M0-4v8"/></g>
+<text x="49" y="294" font-size="13.6" font-weight="500" text-anchor="start" fill="var(--color-paper)">38,850 M$ non tirés</text>
+<text x="220" y="294" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-muted)">présentés hors du principal financé</text>
+<text x="20" y="319" font-size="13.6" font-weight="400" text-anchor="start" fill="var(--color-muted)">SEC · HPS* : principal reconstitué · échantillon non exhaustif</text>
+</svg>

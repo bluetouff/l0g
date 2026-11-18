@@ -5049,7 +5049,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ...privateCreditSection,
     atlas: {
       intuition: 'Consolidation is a binary accounting boundary. Economic influence can continue outside it through capital, contracts, mandates and governance.',
-      articles: [{ label: 'The insurer’s money, the group’s business', href: '/en/analysis/insurers-affiliated-investments-apollo-brookfield-kkr/', kind: 'article' }, { label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
+      articles: [{ label: 'AI debt: mapping the banks, funds and insurers', href: '/en/analysis/ai-debt-map-banks-funds-insurers/', kind: 'article' }, { label: 'The insurer’s money, the group’s business', href: '/en/analysis/insurers-affiliated-investments-apollo-brookfield-kkr/', kind: 'article' }, { label: 'The balance sheet Apollo does not consolidate', href: '/en/analysis/the-balance-sheet-apollo-does-not-consolidate/', detail: 'Deconsolidation, asset mandates, governance and insurance contracts.', kind: 'article' }],
       guides: [{ label: 'Reading life-insurer health', href: '/en/guides/read-life-insurer-health/', detail: 'Capital, asset quality, liabilities and reinsurance.', kind: 'guide' }],
       sources: [
         { label: 'US Securities and Exchange Commission', href: 'https://www.sec.gov/edgar', detail: 'Corporate filings and consolidation disclosures.', kind: 'source' },

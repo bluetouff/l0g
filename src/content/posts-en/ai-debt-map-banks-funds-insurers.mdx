@@ -1,0 +1,237 @@
+---
+title: "AI debt: mapping the banks, funds and insurers"
+seoTitle: "AI debt: mapping banks, private credit and insurers | l0g"
+ogTitle: "Mapping AI’s creditors"
+description: "Six funds hold positions in one CoreWeave loan, while banks lend upstream. Mapping AI debt through private credit, insurers and euro bonds."
+pubDate: 2026-11-18T11:01:46+01:00
+sourceArticle: "dette-ia-cartographie-banques-fonds-assureurs"
+sourceUpdatedDate: 2026-11-18T11:01:46+01:00
+tags: ["AI financing", "AI", "Banks", "Private credit", "Insurance", "CoreWeave"]
+draft: false
+ogImage: "/illustrations/news/ai-credit-map-v2.jpg"
+ogLayout: "immersive"
+---
+
+import AiCreditMapFigure from '../../components/AiCreditMapFigure.astro';
+
+*AI’s creditors · 6/6. [Previous instalment: the conditions attached to the cash](/en/analysis/ai-debt-cash-contract-conditions/). Explore the investigation in our [AI financing dossier](/en/topics/ai-financing/). Documents reviewed and information current to 18 November 2026.*
+
+The name occupies a single line: **CoreWeave Financing DDTL V-V, LLC**. It appears in six funds’ investment schedules, among hundreds of other holdings. Each line leads back to the same delayed-draw term loan, DDTL 5.5. CoreWeave reported **$1.555 billion of gross debt outstanding at 30 September**. By matching the funds’ disclosures, we identified **$57.778 million of funded principal**, or roughly **3.7%** of that balance. [S01](#source-S01) [S03](#source-S03) [S04](#source-S04) [S05](#source-S05) [S06](#source-S06) [S07](#source-S07) [S08](#source-S08)
+
+That small slice opens a window onto a much larger network. Some funds holding these loans borrow from banks themselves. Insurers buy securities or take on conditional payment obligations. Banks can therefore encounter AI financing at several points on their balance sheets, while the same debt moves between holders or acquires new protection.
+
+Starting with [the Jupiter loan](/en/analysis/jupiter-hsbc-european-banks-ai-financing/), this series has followed banks, funds, insurers and the contractual conditions governing cash. The final instalment brings those findings together. Public documents support precise holdings and identifiable connections. They also explain why adding “banks, private credit and off-balance-sheet exposure” would produce a distorted picture of the risk.
+
+## Six portfolios behind one facility
+
+[The third instalment](/en/analysis/private-credit-ai-funds-bank-financing/) identified two holders: Apollo Debt Solutions BDC and Blue Owl Technology Finance. Our wider search adds Blue Owl Capital Corporation, Ares Core Infrastructure Fund and two HPS funds. All six publish investment schedules dated **30 September 2026**. The borrower’s name, the instrument and the loan’s terms allow the entries to be matched. [S03](#source-S03) [S04](#source-S04) [S05](#source-S05) [S06](#source-S06) [S07](#source-S07) [S08](#source-S08)
+
+The entries first need to be put on the same funded-principal basis. Both HPS funds include undrawn commitments in reported par, so we subtract those amounts. The Blue Owl funds report identical allocations in separate portfolios, whose consolidation boundaries we checked: each holding counts once. Calculations and page references appear in the source notes. [S05](#source-S05) [S07](#source-S07) [S08](#source-S08)
+
+<AiCreditMapFigure lang="en" kind="holdings" number={1} sourceHref="#source-S03" />
+
+Together, the six funds also disclose **$38.850 million of unfunded commitments**. Those promises are tracked separately. Future funding remains subject to contractual conditions, so they stay outside the 3.7% calculation. Funded principal, the price paid for a holding and its reported fair value also answer different questions. [S03](#source-S03) [S04](#source-S04) [S05](#source-S05) [S06](#source-S06) [S07](#source-S07) [S08](#source-S08)
+
+Roughly **96.3% of the outstanding loan sits outside these six identified holdings**. Its allocation among other funds, banks and investors remains unknown. Moving from portfolio holdings to each lender’s identity would require the loan register, alongside records of any participation interests and purchased credit protection. [S02](#source-S02)
+
+The bank names on the agreement’s cover tell a different part of the story. Crédit Agricole CIB, Deutsche Bank New York and Société Générale appear among the bookrunners arranging the loan’s placement. The public filing omits the allocation schedule. It establishes their arranging role, while each bank’s retained principal remains unknown. [S02](#source-S02)
+
+## The lender has a lender
+
+Consider one of the six funds, Blue Owl Technology Finance, or OTF. Its portfolio contains **$8.969 million** of funded principal in DDTL 5.5. Its accounts also lead to Athena Funding III, a consolidated subsidiary with a bank financing facility of its own. This is a [special purpose vehicle](/en/glossary/spv/), or SPV, used here to borrow against a pool of assets. [S04](#source-S04)
+
+The agreement amended on 11 September assigns **$150 million of commitments to Deutsche Bank New York** and **$100 million to First-Citizens**. At 30 September, **$75 million was drawn across the facility**. The reviewed accounts do not allocate that drawn balance between the two banks. [S09](#source-S09) [S04](#source-S04)
+
+<AiCreditMapFigure lang="en" kind="bridge" number={2} sourceHref="#source-S09" />
+
+These records establish the banks’ connection to the fund. Extending the path to CoreWeave would require the actual portfolio pledged under Athena III’s facility. OTF describes a general pledge of its assets without assigning this holding to that particular facility. The diagram leaves the final link open. [S04](#source-S04) [S09](#source-S09)
+
+The distinction explains how to read the two layers. A bank has a claim on a fund financing subsidiary. The fund holds a position in CoreWeave’s debt. Where a bank loan refinances a fund’s underlying claim, adding both as separate contributions to the project counts part of the financing twice. The map of creditor relationships preserves both layers: each lender has its own rights, security and place in the repayment order.
+
+Bank lenders generally benefit from the equity beneath their debt and restrictions on eligible collateral. In Athena III’s agreement, the usable facility amount depends on a borrowing base calculated from the assets securing it. A deterioration in that pool could therefore reduce available credit before a bank recognises a loss. The outcome would depend on the affected assets and the applicable terms. [S09](#source-S09)
+
+Deutsche Bank itself acknowledged, in its 29 July presentation, that a small part of its data-centre exposure also appeared in its private-credit portfolio. It gave no amount. That disclosed overlap reinforces the point: categories used in investor presentations can cover some of the same exposures. [S14](#source-S14)
+
+## European banks report different exposure measures
+
+The ECB’s *Financial Stability Review*, published on **18 November**, distinguishes two ways of measuring AI-related bank lending. A sector-based approach covers data centres, semiconductors and software development. It reaches **approximately €75 billion**, equivalent to **1.1% of euro area banks’ total committed corporate exposures**. These sectors include businesses extending beyond AI. [S23](#source-S23)
+
+A company-based selection follows **165 important firms in the AI supply chain and their subsidiaries**. In data compiled up to **June 2026**, commitments to this group totalled **€24.3 billion, including €11 billion undrawn**. The ECB notes incomplete coverage of some financing booked outside the euro area. The two selections overlap only partly. Reconciling them requires identifying the companies, their subsidiaries and the relevant loans. [S23](#source-S23)
+
+Each approach gives the investigation a different boundary. The named-company selection covers infrastructure, frontier AI models and chips. The sector approach follows entire business categories. Adding the figures would count some claims more than once while retaining gaps in coverage. [S23](#source-S23)
+
+Individual banks illuminate other parts of the picture. Société Générale reports around **€12 billion of exposure at default**, 60% of it in data centres at the end of September. Multiplication gives **approximately €7.2 billion** for that activity. [Exposure at default](/en/glossary/ead/), or EaD, is a risk measure incorporating the relevant treatment of commitments, rather than simply cash already advanced. Both inputs are rounded, and data centres also serve uses beyond AI. [S11](#source-S11)
+
+On **10 November**, Barclays reported **£4.5 billion of data-centre commitments**, expressly distinguishing commitments from drawings. On **28 October**, Deutsche Bank described **less than €10 billion** of AI and data-centre exposure, with less detail on the measurement convention. The answers in question do not expressly give an observation date for those balances. Reconciling the figures requires aligned dates, instruments and reporting boundaries, as discussed in [the instalment on European banks](/en/analysis/european-banks-ai-loans-exposures/). [S12](#source-S12) [S13](#source-S13)
+
+Geography introduces another boundary. The euro area, European banking groups and their US subsidiaries are different populations. Debt contracted in New York can expose a European group. A European sector statistic can miss the legal vehicle that borrowed the money.
+
+## Beyond banks, several useful measures
+
+[Private credit](/en/glossary/credit-prive/) has benchmarks of its own. In a bulletin published on **7 January 2026**, BIS researchers estimated **more than $200 billion** of outstanding direct loans to AI-related sectors, using data extending through **2025**. Their PitchBook selection combined “Artificial Intelligence”, “Big Data” and “Cloud Tech”. This historical benchmark covers a private-credit segment extending beyond data centres. Its geographic breakdown remains unspecified. [S15](#source-S15)
+
+At the level of an individual insurer, Athene reported **$12.9 billion of funded digital-infrastructure investments at 30 September 2026**. The measure includes ACRA minority interests on a gross basis and encompasses chip-related financing. It describes an investment portfolio with its own conventions. Reconciling it with credit-fund data would require matching the underlying assets. [S16](#source-S16)
+
+An insurer can also provide a promise to pay. In the Big Sky arrangement examined in [the fourth instalment](/en/analysis/ai-insurers-guarantees-off-balance-sheet-risk/), Athene’s holding company, AHL, guarantees a share of WHCO’s remaining purchase obligation in the event of default. A third party must reimburse part of what AHL actually pays. The exposure therefore depends on a trigger, an outstanding obligation and a right of recovery. Such a guarantee belongs in a different part of the map from a security already purchased. [S17](#source-S17)
+
+Loan insurance opens another route. A bank can retain its loan while transferring part of the risk to an insurer or investor. In its study of synthetic risk transfers, the Basel Committee also describes banks financing protection sellers. Some risk can consequently return to the banking sector. In funded structures, the seller delivers cash or collateral covering the protection at the outset, reducing the bank’s counterparty risk. The study describes the general synthetic risk-transfer market. It supplies a mechanism to investigate in AI financing without establishing a link to this inquiry’s loans. [S22](#source-S22)
+
+Bond markets widen the picture further. The Federal Reserve estimated **more than $1.1 trillion of outstanding public-market debt related to advanced computing in October 2026**. It also identifies mutual funds, pension funds and insurers as the main holders of hyperscaler and graphics processing unit (GPU) firms’ on-balance-sheet debt. That sector-level observation applies to those issuers. A detailed allocation of the broader debt stock, including its European holders, remains to be established. [S21](#source-S21)
+
+These are measures of private loans, insurer investments and outstanding securities. They refer to different dates and populations, with possible overlaps. Estimating Europe’s ultimate exposure requires identifying the holders and the institutions financing them. Currency conversion alone leaves that work undone.
+
+## Euro bonds extend the network
+
+An ECB analysis **published online on 17 November** adds a European perspective. Its authors report that large US cloud providers, or hyperscalers, account for **close to 8% of the market value of euro-denominated investment-grade corporate bonds with more than ten years remaining to maturity**. The chart’s latest observation is **30 June 2026**. The share refers to the index’s long-maturity segment and is concentrated in a few issuers. [S18](#source-S18)
+
+<AiCreditMapFigure lang="en" kind="market" number={3} sourceHref="#source-S18" />
+
+Euro area insurers and pension funds show a modest overweight in those bonds relative to their benchmark. The ECB describes the allocation changes as marginal so far. It highlights a concentration that can persist because of the debt’s maturities, alongside the links between US markets and European portfolios. [S18](#source-S18)
+
+The mechanism can operate before a default. If expected revenues disappoint and investors demand higher compensation for credit risk, existing bond prices can fall. A portfolio holding both shares and bonds of the same companies can experience both declines. Diversification across instruments can still leave substantial exposure to the same borrowers.
+
+Observations on government financing offer a counterpoint. In a letter dated **6 November**, Christine Lagarde described smooth absorption of new issuance by euro area investors, whose sovereign bond holdings had also risen. Effects on comparable corporate issuance were small and temporary. The ECB reported no significant observed impact on government bond yields. That assessment reflects the evidence available when the letter was written. [S20](#source-S20)
+
+## Following the rights of recourse
+
+An effective map preserves two views. The first measures **financing received by the ultimate borrowers**, counting each loan or security once and keeping future commitments separate. The second follows **claims between financial institutions**: who finances a fund, who holds a junior tranche, and who guarantees payment on which terms. That second network explains how a shock might travel.
+
+“Off balance sheet” cuts across both views. It describes how an obligation is treated by a particular entity. A credit fund carries loans as assets; a bank may retain undrawn commitments; an SPV may be consolidated in its parent’s accounts. The [consolidation perimeter](/en/glossary/perimetre-de-consolidation/) therefore needs checking before a claim is classified. Assets managed for clients must also be distinguished from proprietary investments.
+
+The bank connection can be measured beyond our individual examples. An ECB study published in May identified **€62.5 billion of drawn exposures to private-credit funds**, across a sample of **twelve euro area banks**, using **2024 data**. This covers all sectors. It measures financing of the intermediaries themselves, a different layer from lending to companies in the AI supply chain. [S19](#source-S19)
+
+The protections that slow transmission deserve equal attention. Equity absorbs the first losses, while lenders can benefit from collateral and priority in repayment. Long-term funding also reduces the risk of forced sales. The ECB’s private-credit exercise found that bank losses were broadly absorbable in the scenarios examined, subject to sample and methodological limitations. The supervisor described banks’ capital and liquidity as robust on 9 November, and the 18 November report still identifies liquidity and capital buffers as supporting their ability to absorb shocks. [S19](#source-S19) [S10](#source-S10) [S23](#source-S23)
+
+A shared deterioration across several layers would be the vulnerable point. Weaker revenues could depress loan values, reduce eligible collateral and tighten funds’ financing. Contractual clauses could then retain cash or call on a guarantor. The agreements examined in this series describe potential transmission paths. Their impact would depend on revenues, collateral values and the clauses actually triggered.
+
+The decisive records for future monitoring will be updated lender allocations, the actual pledged portfolios and the conditions attached to credit protection. CoreWeave provides a measure of the progress made: six dated portfolio positions can now be linked to one facility, and one holder leads to identifiable bank financing. The next question is the precise recourse available to each creditor when expected revenues meet payment deadlines.
+
+## Sources
+
+<ol className="sources-list" role="list">
+<li id="source-S01">
+<span className="source-meta">S01 · CoreWeave / SEC · Filed: 12 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000465/crwv-20260930.htm" target="_blank" rel="noopener noreferrer">CoreWeave Form 10-Q: debt and facilities</a>
+<details><summary>Passages and scope</summary><p>Note 10, pp. 30 and 33–34: DDTL 5.5 gross debt outstanding and contractual capacity. Accounts are in millions of US dollars. Gross debt precedes issuance-cost and discount deductions. Borrower disclosure.</p></details>
+</li>
+<li id="source-S02">
+<span className="source-meta">S02 · CoreWeave / SEC · Agreement dated 7 August 2026 · Filed: 10 August 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm" target="_blank" rel="noopener noreferrer">DDTL 5.5 credit agreement</a>
+<details><summary>Passages and scope</summary><p>Cover: arranging banks; section 9.04(b): lender and participation registers. Allocation Schedule 2.01 is omitted from the public filing. A bookrunner role does not disclose a bank’s retained principal.</p></details>
+</li>
+<li id="source-S03">
+<span className="source-meta">S03 · Apollo Debt Solutions / SEC · Filed: 5 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1837532/000119312526449955/ck0001837532-20260930.htm" target="_blank" rel="noopener noreferrer">Apollo Debt Solutions BDC: investments and commitments</a>
+<details><summary>Passages and scope</summary><p>P. 39: DDTL V-V holding; p. 61, footnote (3): funded par; p. 64, footnote (34): unfunded commitment. Amounts are in thousands of US dollars. Fund investment schedule; any participation interests and purchased protection require further records.</p></details>
+</li>
+<li id="source-S04">
+<span className="source-meta">S04 · Blue Owl Technology Finance / SEC · Filed: 4 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1747777/000174777726000036/ortf-20260930.htm" target="_blank" rel="noopener noreferrer">OTF: portfolio and Athena III financing</a>
+<details><summary>Passages and scope</summary><p>Pp. 15 and 26: the CoreWeave holding, counted once; Note 2, p. 63: consolidation; p. 74: unconsolidated Credit SLF; Note 5, pp. 78 and 80–82: subsidiary facilities, including Athena III. The general collateral rule does not assign this holding to a particular facility.</p></details>
+</li>
+<li id="source-S05">
+<span className="source-meta">S05 · Blue Owl Capital Corporation / SEC · Filed: 4 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1655888/000165588826000069/obdc-20260930.htm" target="_blank" rel="noopener noreferrer">OBDC: a holding in a separate fund</a>
+<details><summary>Passages and scope</summary><p>P. 16: holding; p. 31: funded and unfunded commitments; Note 2, p. 77: consolidation; p. 88: unconsolidated Credit SLF. This fund is a separate registrant from OTF, CIK 1655888. The matching allocation is a second portfolio position. Amounts are in thousands of US dollars.</p></details>
+</li>
+<li id="source-S06">
+<span className="source-meta">S06 · Ares Core Infrastructure / SEC · Filed: 6 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2031750/000162828026071617/aci-20260930.htm" target="_blank" rel="noopener noreferrer">Ares Core Infrastructure Fund: funded principal</a>
+<details><summary>Passages and scope</summary><p>P. 7: principal, cost and fair value; footnote (6), p. 10: funded principal; Note 7, p. 40: total and unfunded commitments. Reconciliation in thousands of US dollars: 40,071 − 16,111 = 23,960 funded principal. Future funding remains conditional.</p></details>
+</li>
+<li id="source-S07">
+<span className="source-meta">S07 · HPS Corporate Lending / SEC · Filed: 13 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1838126/000162828026073736/hps-20260930.htm" target="_blank" rel="noopener noreferrer">HPS Corporate Lending Fund: normalising par</a>
+<details><summary>Passages and scope</summary><p>P. 21: par and valuation; p. 31, footnote (6), and p. 32: unfunded portion. Calculated funded principal in thousands of US dollars: 3,699 − 1,487 = 2,212. The gap between total par and fair value is insufficient to measure a loss.</p></details>
+</li>
+<li id="source-S08">
+<span className="source-meta">S08 · HPS Corporate Capital Solutions / SEC · Filed: 13 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1989817/000162828026073742/hps-20260930.htm" target="_blank" rel="noopener noreferrer">HPS Corporate Capital Solutions Fund: a second holding</a>
+<details><summary>Passages and scope</summary><p>P. 16: holding; p. 22, footnote (6) and table: unfunded commitment. Separate registrant, CIK 1989817. Calculated funded principal in thousands of US dollars: 1,110 − 446 = 664. Reported par includes the unfunded commitment.</p></details>
+</li>
+<li id="source-S09">
+<span className="source-meta">S09 · Athena III / SEC · Agreement dated 11 September 2026 · Filed: 15 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1747777/000119312526391950/d74167dex101.htm" target="_blank" rel="noopener noreferrer">Athena III: lender commitments and collateral</a>
+<details><summary>Passages and scope</summary><p>Annex B: USD 150 million committed by Deutsche Bank New York and USD 100 million by First-Citizens. Article I: borrowing base; section 17.12: limited recourse. These limits disclose neither each bank’s drawings nor a CoreWeave collateral allocation.</p></details>
+</li>
+<li id="source-S10">
+<span className="source-meta">S10 · ECB Banking Supervision · Published: 9 November 2026 · Data: Q2 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.bankingsupervision.europa.eu/ecb/pub/pdf/ssm.written_overview261109.en.pdf" target="_blank" rel="noopener noreferrer">Claudia Buch: the scope of AI-related commitments</a>
+<details><summary>Passages and scope</summary><p>P. 2 and footnote 8: approximately EUR 62 billion in sector-based commitments, or 1.2% of corporate commitments. The proxy includes activities beyond AI and excludes some property-classified data centres and indirect lending. It is not a bound on total exposure.</p></details>
+</li>
+<li id="source-S11">
+<span className="source-meta">S11 · Société Générale · Published: 29 October 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.societegenerale.com/sites/default/files/resultats-publication/en/2026-10/q3-2026-financial-results-presentation.pdf" target="_blank" rel="noopener noreferrer">Q3 2026 results: sector exposure</a>
+<details><summary>Passages and scope</summary><p>P. 41, footnotes 1, 3 and 5: approximately EUR 12 billion in EaD, with data centres accounting for 60%. EUR 7.2 billion is calculated from rounded inputs. The scope includes IT consulting and software; the bank’s own disclosure.</p></details>
+</li>
+<li id="source-S12">
+<span className="source-meta">S12 · Barclays · Meeting held 10 November 2026 · Portfolio date unspecified · Published: separate date unspecified · Accessed: 18 November 2026</span>
+<a href="https://home.barclays/content/dam/home-barclays/documents/investor-relations/ResultAnnouncements/Q32026Results/Q326-Sellside-Analyst-Meeting-Transcript.pdf" target="_blank" rel="noopener noreferrer">Sell-side analyst meeting transcript</a>
+<details><summary>Passages and scope</summary><p>P. 3, Anna Cross’s answer to Chris Hallam: GBP 4.5 billion in commitments, distinguished from drawn loans. The stock’s exact date is not given. The scope combines corporate lending and structured financing within Markets.</p></details>
+</li>
+<li id="source-S13">
+<span className="source-meta">S13 · Deutsche Bank · Call held 28 October 2026 · Portfolio date unspecified · Published: separate date unspecified · Accessed: 18 November 2026</span>
+<a href="https://investor-relations.db.com/files/documents/quarterly-results/2026/Transcript-Q3-2026-Analyst-Call.pdf" target="_blank" rel="noopener noreferrer">Q3 2026 analyst conference call</a>
+<details><summary>Passages and scope</summary><p>Pp. 22 and 40, Raja Akram: AI and data-centre exposure below EUR 10 billion. The measurement basis and exact portfolio date are not detailed sufficiently to combine this figure with commitments or EaD.</p></details>
+</li>
+<li id="source-S14">
+<span className="source-meta">S14 · Deutsche Bank · Call held 29 July 2026 · Published: separate date unspecified · Accessed: 18 November 2026</span>
+<a href="https://investor-relations.db.com/files/documents/quarterly-results/2026/Q2-2026-Analyst-Call-Transcript-For-Upload.pdf" target="_blank" rel="noopener noreferrer">Q2 call: overlap with private credit</a>
+<details><summary>Passages and scope</summary><p>P. 31, answer to Stefan Stalmann: a small data-centre exposure also sits within the private-credit portfolio. Its size is not disclosed. This is the bank’s own statement.</p></details>
+</li>
+<li id="source-S15">
+<span className="source-meta">S15 · BIS · Published: 7 January 2026 · Series through 2025 · Accessed: 18 November 2026</span>
+<a href="https://www.bis.org/publications/bulletin-120-financing-ai-boom-cash-flows-debt.pdf" target="_blank" rel="noopener noreferrer">Financing the AI boom: from cash flows to debt</a>
+<details><summary>Passages and scope</summary><p>Pp. 4–5, Graph 3: over USD 200 billion in direct loans to PitchBook’s Artificial Intelligence, Big Data and Cloud Tech categories. The final quarter and the subset’s geography are not specified. A historical benchmark with a broad perimeter.</p></details>
+</li>
+<li id="source-S16">
+<span className="source-meta">S16 · Athene · Published: 30 October 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://d1io3yog0oux5.cloudfront.net/_56d14d048fca1ee9d91620378386460d/athene/db/2271/22574/pdf/Athene%27s_Role_in_Financing_AI-Related_Infrastructure_FINAL.pdf" target="_blank" rel="noopener noreferrer">Athene: digital-infrastructure investments</a>
+<details><summary>Passages and scope</summary><p>Pp. 19, 22 and 28: USD 12.9 billion funded, gross of ACRA minority interests. The total includes chip financing, including Anthropic/Broadcom. A company-defined invested-asset measure, broader than private AI loans alone.</p></details>
+</li>
+<li id="source-S17">
+<span className="source-meta">S17 · Athene / SEC · Filed: 5 November 2026 · As of 30 September 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1527469/000152746926000085/ahl-20260930.htm" target="_blank" rel="noopener noreferrer">Big Sky: holdings, commitments and AHL’s guarantee</a>
+<details><summary>Passages and scope</summary><p>Notes 11–12, pp. 60 and 62: Big Sky holdings; a guarantee covering 15% of WHCO’s remaining purchase obligation; third-party reimbursement of 35% of AHL’s payments. The remaining base and third party’s identity are undisclosed. No net dollar exposure can be derived.</p></details>
+</li>
+<li id="source-S18">
+<span className="source-meta">S18 · ECB · Published: 17 November 2026 (online) · Chart A: 30 June 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.ecb.europa.eu/press/financial-stability-publications/fsr/focus/2026/html/ecb.fsrbox202611_04~f35a6e3544.en.html" target="_blank" rel="noopener noreferrer">Big tech’s growing presence in the euro-denominated bond market</a>
+<details><summary>Passages and scope</summary><p>Main text and Chart A’s yellow series, “Hyperscalers as a share of 10y+”: close to 8% of the ICE BofA Euro Corporate Index’s segment with more than ten years remaining maturity, including financial issuers. Market-value share at 30 June 2026, distinct from the whole-index series. Chart B: allocation changes through Q2 2026. The reported overweights and allocation changes are modest.</p></details>
+</li>
+<li id="source-S19">
+<span className="source-meta">S19 · ECB · Published: 26 May 2026 · Bank sample: 2024 · Accessed: 18 November 2026</span>
+<a href="https://www.ecb.europa.eu/press/financial-stability-publications/fsr/special/html/ecb.fsrart202605_04~3f2135af91.en.html" target="_blank" rel="noopener noreferrer">Private credit: exposures and scenarios for the euro area</a>
+<details><summary>Passages and scope</summary><p>Sections 3–4, Chart D.4 and footnotes 10, 13 and 15: EUR 62.5 billion drawn across twelve banks, covering all sectors. Scenario results depend on seniority and assumptions; they are not a November AI-infrastructure stress test.</p></details>
+</li>
+<li id="source-S20">
+<span className="source-meta">S20 · ECB / Christine Lagarde · Letter dated 6 November 2026 · Published: separate date unspecified · Accessed: 18 November 2026</span>
+<a href="https://www.ecb.europa.eu/pub/pdf/other/ecb.mepletter261106_Heinaluoma_Fernandez~6e406be51f.en.pdf" target="_blank" rel="noopener noreferrer">AI financing: response to Members of the European Parliament</a>
+<details><summary>Passages and scope</summary><p>Pp. 1 and 3: observed bond-market effects and European exposures. The letter describes limited spillovers at that date. 6 November is the document date; a separate online publication date has not been established.</p></details>
+</li>
+<li id="source-S21">
+<span className="source-meta">S21 · Federal Reserve · Published: 13 November 2026 · Debt outstanding: October 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.federalreserve.gov/publications/files/financial-stability-report-20261113.pdf" target="_blank" rel="noopener noreferrer">Financial Stability Report: financing advanced computing</a>
+<details><summary>Passages and scope</summary><p>Box 2.2, pp. 23–25: more than USD 1.1 trillion in outstanding advanced-computing public debt in October. P. 25 identifies mutual funds, pension funds and insurers as the main holders of hyperscaler and GPU firms’ on-balance-sheet debt. This observation applies to those issuers rather than a complete register of the wider stock’s holders. Total private financing remains difficult to measure.</p></details>
+</li>
+<li id="source-S22">
+<span className="source-meta">S22 · Basel Committee / BIS · Published: 17 February 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.bis.org/publications/synthetic-risk-transfers.pdf" target="_blank" rel="noopener noreferrer">Synthetic risk transfers: the bank retains the loan</a>
+<details><summary>Passages and scope</summary><p>Executive summary p. 1; sections 1.1–1.4, pp. 3–5; section 2.3, pp. 7–8; section 5.2, p. 22. Retained assets, protection providers, upfront funding, collateral and bank financing of risk holders. General study without an AI breakdown or attribution to a holding in this investigation.</p></details>
+</li>
+<li id="source-S23">
+<span className="source-meta">S23 · ECB · Published: 18 November 2026 · Company-based data compiled up to June 2026 · Accessed: 18 November 2026</span>
+<a href="https://www.ecb.europa.eu/press/financial-stability-publications/fsr/html/ecb.fsr202611~e03b919d36.en.html" target="_blank" rel="noopener noreferrer">Financial Stability Review, November 2026: bank credit and the AI supply chain</a>
+<details><summary>Passages and scope</summary><p>Section 3.3, printed p. 67 of the <a href="https://www.ecb.europa.eu/press/financial-stability-publications/fsr/pdf/ecb.fsr202611~e03b919d36.en.pdf" target="_blank" rel="noopener noreferrer">PDF report</a>, footnotes 51–53 (HTML footnotes 28–30). Sector measure: approximately EUR 75 billion, or 1.1% of committed corporate exposures, without a drawn/undrawn breakdown or a separately specified stock date in this passage. Selection of 165 firms and their subsidiaries: EUR 24.3 billion committed, including EUR 11 billion undrawn, in data compiled up to June. The selections overlap without being nested. Some financing booked outside the euro area is absent from the company-based measure. The earlier 9 November proxy in S10 has a different scope, without a published reconciliation. Foreword: shock absorption, liquidity and capital.</p></details>
+</li>
+</ol>
+
+## Limits
+
+This documentary investigation draws on public records rechecked on 18 November 2026. The six funds form an identified subset. The 3.7% measures this collection’s coverage of a particular loan. The matching exercise relies on issuer and fund disclosures, without interviews or private counterparty confirmation.
+
+Fund positions are dated 30 September, while bank disclosures and institutional statistics use the periods specified in the article. Guarantees, indirect participations and risk transfers remain partly documented. Those reporting boundaries prevent a consolidated estimate of European bank and non-bank exposure, or expected losses, from being derived from these records.
+
+The cover is a conceptual AI-generated illustration. Its buildings and connections evoke financing channels. The three SVG figures separately present verified numbers and relationships.
+
+*Text, data and editorial figures: CC BY 4.0.*

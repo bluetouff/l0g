@@ -1,0 +1,129 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'holdings' | 'bridge' | 'market';
+  sourceHref: string;
+  sourceLabel?: string;
+  number?: number;
+  id?: string;
+  caption?: string;
+  credit?: string;
+}
+
+const { lang, kind, sourceHref, sourceLabel, number, id, caption, credit } = Astro.props;
+const copy = {
+  fr: {
+    holdings: {
+      caption: 'Au 30 septembre 2026, six portefeuilles identifient 57,778 millions de dollars de principal financé, près de 3,7 % des 1,555 milliard tirés de DDTL 5.5. Les 38,850 millions non tirés sont présentés séparément.',
+      source: 'SEC, CoreWeave et six inventaires au 30 septembre 2026',
+      credit: 'Échantillon non exhaustif. Principal distinct de la juste valeur, reconstitué aux milliers publiés pour HPS. Zoom sur une échelle propre de 0 à 24 M$.',
+    },
+    bridge: {
+      caption: 'Le contrat du 11 septembre 2026 engage Deutsche Bank New York à hauteur de 150 millions de dollars et First Citizens de 100 millions envers Athena III, filiale consolidée d’OTF. Au 30 septembre, 75 millions sont tirés au total.',
+      source: 'SEC, contrat Athena III et 10-Q d’OTF',
+      credit: 'Le rattachement des 8,969 M$ de CoreWeave au pool Athena III reste inconnu, comme les tirages par banque. Flèches sans échelle monétaire.',
+    },
+    market: {
+      caption: 'Au 30 juin 2026, les hyperscalers américains représentent près de 8 % du segment des obligations d’entreprise en euros investment grade à plus de dix ans. Le schéma décrit une transmission possible vers les portefeuilles institutionnels.',
+      source: 'BCE, 17 novembre 2026, graphiques A et B',
+      credit: 'Valeur de marché, indice ICE BofA Euro Corporate, financières incluses, maturité résiduelle supérieure à dix ans. Transmission conditionnelle, pertes non chiffrées.',
+    },
+  },
+  en: {
+    holdings: {
+      caption: 'At 30 September 2026, six disclosed portfolios identify $57.778 million of funded principal, about 3.7% of DDTL 5.5’s $1.555 billion drawn balance. A further $38.850 million of undrawn commitments is shown separately.',
+      source: 'SEC, CoreWeave and six portfolios at 30 September 2026',
+      credit: 'Non-exhaustive sample. Principal differs from fair value and is reconstructed at the published thousand-dollar precision for HPS. The zoom uses its own $0–24 million scale.',
+    },
+    bridge: {
+      caption: 'The 11 September 2026 agreement commits Deutsche Bank New York and First Citizens to $150 million and $100 million respectively for Athena III, OTF’s consolidated subsidiary. Total drawings stood at $75 million on 30 September.',
+      source: 'SEC, Athena III agreement and OTF 10-Q',
+      credit: 'The specific link between OTF’s $8.969 million CoreWeave holding and Athena III’s collateral pool remains unknown, as do drawings by bank. Arrows have no monetary scale.',
+    },
+    market: {
+      caption: 'At 30 June 2026, US hyperscalers accounted for close to 8% of the euro investment-grade corporate bond segment with more than ten years left to maturity. The diagram shows a possible transmission to institutional portfolios.',
+      source: 'ECB, 17 November 2026, charts A and B',
+      credit: 'Market value, ICE BofA Euro Corporate Index, including financial issuers, with over ten years remaining maturity. The price chain is conditional, without estimated losses.',
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown AI credit-map figure language or kind.');
+const figures = import.meta.glob('../figures/ai-credit-map/ai-map-*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/ai-credit-map/ai-map-${kind}-${lang}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing AI credit-map figure.');
+}
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('AI credit-map figure requires a source anchor or an HTTPS source URL.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) {
+  throw new TypeError('AI credit-map figure number must be a positive integer.');
+}
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) {
+  throw new TypeError('AI credit-map figure id must be a valid local anchor.');
+}
+const figureId = id ?? (number === undefined ? `ai-map-${lang}-${kind}` : `figure-${number}`);
+const originalIdPrefix = `ai-map-${lang}-${kind}-`;
+const instanceIdPrefix = `${figureId}-${lang}-${kind}-`;
+// Only repository SVG literals are injected; user-facing props remain escaped by Astro.
+const desktopInstance = desktop.replaceAll(originalIdPrefix, instanceIdPrefix);
+const mobileInstance = mobile.replaceAll(originalIdPrefix, instanceIdPrefix);
+---
+
+<figure class="ai-credit-map" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktopInstance} />
+  <div class="figure-narrow" set:html={mobileInstance} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{sourceLabel ?? item.source}</a>.{kind === 'holdings' && <> {['S01', 'S03', 'S04', 'S05', 'S06', 'S07', 'S08'].map((source, index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{source}</a></>)}</>}</span>
+    <span class="figure-credit">{credit ?? item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .ai-credit-map {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+  }
+  .ai-credit-map :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 380px; margin-inline: auto; }
+  figcaption {
+    margin-top: .75rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .35rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .ai-credit-map { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>

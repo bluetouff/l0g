@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 420" role="img" aria-labelledby="ai-map-fr-bridge-m-title ai-map-fr-bridge-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-map-svg" style="width:100%;height:auto">
+<title id="ai-map-fr-bridge-m-title">Le lien bancaire du crédit privé</title>
+<desc id="ai-map-fr-bridge-m-desc">Deux relations sont établies séparément. Le contrat du 11 septembre 2026 engage Deutsche Bank New York à hauteur de 150 millions de dollars et First Citizens à hauteur de 100 millions envers la facilité d’Athena III. Au 30 septembre, 75 millions sont tirés au total ; les tirages individuels ne sont pas publiés ici. Athena III est une filiale détenue à 100 % et consolidée d’OTF. Le portefeuille consolidé d’OTF détient séparément 8,969 millions de principal financé CoreWeave DDTL 5.5 au 30 septembre. Les actifs d’Athena III forment un pool de sûretés spécifique. Le rattachement de la position CoreWeave à ce pool n’est pas établi ; le trait pointillé matérialise cette lacune. Les flèches décrivent les relations identifiées, sans échelle de flux ni attribution des fonds bancaires à CoreWeave. Source : SEC, contrat Athena III et 10-Q OTF.</desc>
+<text x="20" y="27" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">La banque derrière le fonds</text>
+<text x="20" y="48" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">Contrat : 11 sept. · positions : 30 sept. 2026</text>
+<g data-icon="bank" transform="translate(30 78) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-10-4 0-10 10-4ZM-8 8H8M-10 11H10M-6-1V5M0-1V5M6-1V5"/></g>
+<text x="48" y="77" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">Deutsche Bank NY</text>
+<text x="48" y="96" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-signal)">150 M$ engagés</text>
+<g data-icon="bank" transform="translate(225 78) scale(0.75)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-10-4 0-10 10-4ZM-8 8H8M-10 11H10M-6-1V5M0-1V5M6-1V5"/></g>
+<text x="243" y="77" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">First Citizens</text>
+<text x="243" y="96" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-signal)">100 M$ engagés</text>
+<path d="M105 106V116H190V131" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M293 106V116H190" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M186.5 126 190 131 193.5 126" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="20" y="126" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">financement</text>
+<rect x="99" y="132" width="182" height="54" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="190" y="154" font-size="14.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Athena III</text>
+<text x="190" y="174" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-signal)">75 M$ tirés au total</text>
+<path d="M94 216V200H140V187" fill="none" stroke="var(--color-muted)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M136.5 192 140 187 143.5 192" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="39" y="201" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">filiale</text>
+<path d="M286 216V200H240V187" fill="none" stroke="var(--color-muted)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M236.5 192 240 187 243.5 192" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="300" y="204" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">sûretés</text>
+<rect x="20" y="216" width="148" height="60" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="portfolio" transform="translate(38 237) scale(0.7)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-6" width="20" height="15" rx="2"/><path d="M-4-6v-3h8v3M-10 0H10M-2-1v3h4v-3"/></g>
+<text x="57" y="241" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">OTF</text>
+<text x="35" y="262" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">fonds consolidé</text>
+<rect x="212" y="216" width="148" height="60" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="pool" transform="translate(230 237) scale(0.7)" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><path d="M-10-5 0-10 10-5 0 0ZM-10 0 0 5 10 0M-10 5 0 10 10 5"/></g>
+<text x="248" y="241" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">Sûretés</text>
+<text x="225" y="262" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">pool d’Athena III</text>
+<path d="M94 277V348H193" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M188 344.5 193 348 188 351.5" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="23" y="297" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">actifs</text>
+<text x="23" y="315" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">du fonds</text>
+<text x="134" y="340" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">détient</text>
+<path d="M286 278V318" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<text x="192" y="295" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-accent)">lien spécifique</text>
+<text x="192" y="313" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-accent)">non établi</text>
+<rect x="194" y="319" width="166" height="62" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="server" transform="translate(211 337) scale(0.65)" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"><rect x="-8" y="-10" width="16" height="20" rx="2"/><path d="M-8-3H8M-8 4H8M-4-6h1M-4 1h1M-4 8h1M1-6h4M1 1h4M1 8h4"/></g>
+<text x="226" y="341" font-size="14" font-weight="500" text-anchor="start" fill="var(--color-paper)">CoreWeave</text>
+<text x="207" y="358" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-signal)">DDTL 5.5 · 8,969 M$</text>
+<text x="207" y="376" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">principal financé</text>
+<text x="20" y="401" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">SEC · relations distinctes, sans échelle de flux</text>
+</svg>

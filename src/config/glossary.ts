@@ -1736,6 +1736,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   'perimetre-de-consolidation': {
     intuition: 'Les comptes de groupe éliminent des soldes internes ; les créances et les obligations restent à examiner dans les comptes des sociétés qui les portent.',
     articles: [
+      { label: 'Dette de l’IA : la carte des banques, fonds et assureurs', href: '/posts/dette-ia-cartographie-banques-fonds-assureurs/', kind: 'article' },
       { label: 'L’argent de l’assureur, les affaires du groupe', href: '/posts/assureurs-placements-apparentes-apollo-brookfield-kkr/', kind: 'article' },
       { label: 'Le bilan qu’Apollo ne consolide pas', href: '/posts/bilan-apollo-non-consolide/', kind: 'article' },
     ],

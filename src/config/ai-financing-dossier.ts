@@ -18,6 +18,7 @@ export interface AiFinancingSection {
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
   'ai-debt-cash-contract-conditions': 'dette-ia-tresorerie-clauses-contrats',
+  'ai-debt-map-banks-funds-insurers': 'dette-ia-cartographie-banques-fonds-assureurs',
   'ai-insurers-guarantees-off-balance-sheet-risk': 'ia-assureurs-garanties-risque-hors-bilan',
   'private-credit-ai-funds-bank-financing': 'credit-prive-ia-fonds-banques-financement',
   'european-banks-ai-loans-exposures': 'banques-europeennes-ia-contrats-expositions',
@@ -270,6 +271,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
         note: {
           fr: 'CoreWeave et Applied Digital affectent une partie des ressources aux créanciers. Les contrats relient l’électricité, les recettes clients et les conditions de tirage.',
           en: 'CoreWeave and Applied Digital set aside resources for creditors. Their agreements connect power supply, customer receipts and conditions for borrowing.',
+        },
+      },
+      {
+        id: 'ai-debt-map-banks-funds-insurers',
+        label: { fr: 'Dette de l’IA : la carte des banques, fonds et assureurs', en: 'AI debt: mapping the banks, funds and insurers' },
+        note: {
+          fr: 'Six fonds détiennent une partie du même prêt CoreWeave. La carte distingue leurs positions, les financements bancaires en amont et les placements des assureurs.',
+          en: 'Six funds hold part of the same CoreWeave loan. The map separates disclosed holdings, upstream bank financing and insurers’ investments.',
         },
       },
       {
