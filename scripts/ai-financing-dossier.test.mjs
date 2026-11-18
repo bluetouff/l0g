@@ -8,7 +8,7 @@ import { aiFinancingGuides, aiFinancingNvidiaIds, aiFinancingSections, aiFinanci
 import { postMatchesTopic, topics } from '../src/config/topics.ts';
 
 const ROOT = fileURLToPath(new URL('../', import.meta.url));
-const EDITION_CUTOFF = Date.parse('2026-11-17T23:59:59.999+01:00');
+const EDITION_CUTOFF = Date.parse('2026-11-18T23:59:59.999+01:00');
 const analyses = aiFinancingSections.flatMap(section => section.readings);
 
 function publishedEntry(collection, id) {
@@ -21,7 +21,7 @@ function publishedEntry(collection, id) {
   assert.notEqual(data.draft, true, `draft linked by dossier: ${collection}/${id}`);
   const publicationDate = new Date(data.pubDate).getTime();
   assert.ok(Number.isFinite(publicationDate), `invalid publication date: ${collection}/${id}`);
-  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 17 November edition: ${collection}/${id}`);
+  assert.ok(publicationDate <= EDITION_CUTOFF, `future destination in the 18 November edition: ${collection}/${id}`);
   return data;
 }
 
@@ -36,7 +36,7 @@ function bilingualPair(id, kind = 'analysis') {
 }
 
 test('the curated AI dossier leads to distinct published article pairs in both languages', () => {
-  assert.equal(analyses.length, 26, 'preserve the selected breadth of the dossier');
+  assert.equal(analyses.length, 27, 'preserve the selected breadth of the dossier');
   assert.equal(new Set(analyses.map(item => item.id)).size, analyses.length, 'duplicate English analysis');
   const frenchIds = analyses.map(item => bilingualPair(item.id).frenchId);
   assert.equal(new Set(frenchIds).size, analyses.length, 'multiple readings resolve to the same French article');

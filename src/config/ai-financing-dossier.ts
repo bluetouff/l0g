@@ -17,6 +17,7 @@ export interface AiFinancingSection {
 
 /** Liens sourceArticle vérifiés des analyses retenues dans ce dossier bilingue. */
 export const aiFinancingSourceArticles: Record<string, string> = {
+  'ai-debt-cash-contract-conditions': 'dette-ia-tresorerie-clauses-contrats',
   'ai-insurers-guarantees-off-balance-sheet-risk': 'ia-assureurs-garanties-risque-hors-bilan',
   'private-credit-ai-funds-bank-financing': 'credit-prive-ia-fonds-banques-financement',
   'european-banks-ai-loans-exposures': 'banques-europeennes-ia-contrats-expositions',
@@ -261,6 +262,14 @@ export const aiFinancingSections: AiFinancingSection[] = [
         note: {
           fr: 'Des limites d’assurance sur Miner aux engagements d’Athene, ce volet suit les placements, les garanties d’achat et les remboursements conditionnels entre institutions.',
           en: 'From insurance limits on Miner to Athene’s commitments, this instalment follows investments, purchase guarantees and conditional reimbursements between institutions.',
+        },
+      },
+      {
+        id: 'ai-debt-cash-contract-conditions',
+        label: { fr: 'Dette de l’IA : la trésorerie sous conditions', en: 'AI debt and the conditions attached to cash' },
+        note: {
+          fr: 'CoreWeave et Applied Digital affectent une partie des ressources aux créanciers. Les contrats relient l’électricité, les recettes clients et les conditions de tirage.',
+          en: 'CoreWeave and Applied Digital set aside resources for creditors. Their agreements connect power supply, customer receipts and conditions for borrowing.',
         },
       },
       {

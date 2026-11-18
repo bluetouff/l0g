@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 352" role="img" aria-labelledby="ai-cash-en-surety-d-title ai-cash-en-surety-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-cash-svg" style="width:100%;height:auto">
+<title id="ai-cash-en-surety-d-title">A surety bond ties up cash</title>
+<desc id="ai-cash-en-surety-d-desc">In August 2026, CoreWeave purchased $275 million in surety bonds securing obligations to an electricity provider over four years. It deposited $154 million in a trust for the sureties, classified as non-current restricted cash. The sureties may request further collateral; their consent is required to return trust assets. Their identities are not disclosed. The deposit is included in the $877 million non-current restricted-cash balance at 30 September. The note does not link this arrangement to a bank letter of credit. Lines are not proportional to amounts and do not represent losses.</desc>
+<text x="24" y="30" font-size="21" font-weight="500" text-anchor="start" fill="var(--color-paper)">A surety bond ties up cash</text>
+<text x="24" y="53" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">CoreWeave · August 2026 · position at 30 September</text>
+<g data-icon="server" transform="translate(86 98) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-9" y="-10" width="18" height="20" rx="2"/><path d="M-9-3H9M-9 4H9M-5-6h1M-5 1h1M-5 8h1M0-6h5M0 1h5M0 8h5"/></g>
+<g data-icon="vault" transform="translate(290 98) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-9" width="20" height="18" rx="2"/><circle cx="0" cy="0" r="5"/><path d="M0-5V5M-5 0H5M-6 9v2M6 9v2"/></g>
+<g data-icon="shield" transform="translate(470 98) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M0-11 9-7V0c0 5-4 8-9 11-5-3-9-6-9-11V-7Z"/><path d="m-4 0 3 3 5-6"/></g>
+<g data-icon="power" transform="translate(674 98) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m2-11-9 13h7l-2 9L8-3H1Z"/></g>
+<text x="86" y="128" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">CoreWeave</text>
+<text x="290" y="128" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Trust</text>
+<text x="290" y="147" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">restricted deposit</text>
+<text x="470" y="128" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Sureties</text>
+<text x="470" y="147" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">not named</text>
+<text x="674" y="128" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Electricity</text>
+<text x="674" y="147" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-paper)">provider</text>
+<line x1="86" y1="188" x2="290" y2="188" stroke="var(--color-signal)" stroke-width="1.3"/>
+<path d="M284 184 290 188 284 192" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="188" y="178" font-size="22.8" font-weight="500" text-anchor="middle" fill="var(--color-signal)">$154m</text>
+<text x="188" y="209" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">cash deposited</text>
+<line x1="310" y1="188" x2="450" y2="188" stroke="var(--color-muted)" stroke-width="1.2"/>
+<text x="380" y="177" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">held for</text>
+<circle cx="450" cy="188" r="2.5" fill="var(--color-muted)"/>
+<line x1="490" y1="188" x2="674" y2="188" stroke="var(--color-accent)" stroke-width="1.3"/>
+<path d="M668 184 674 188 668 192" fill="none" stroke="var(--color-accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="582" y="178" font-size="22.8" font-weight="500" text-anchor="middle" fill="var(--color-accent)">$275m</text>
+<text x="582" y="209" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">protection · 4 years</text>
+<line x1="290" y1="239" x2="86" y2="239" stroke="var(--color-muted)" stroke-width="1.3"/>
+<path d="M92 235 86 239 92 243" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="188" y="259" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-muted)">return requires consent</text>
+<path d="M470 160V284H86V160" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M82 166 86 160 90 166" fill="none" stroke="var(--color-accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="295" y="303" font-size="15.2" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Further collateral may be requested</text>
+<line x1="24" y1="317" x2="736" y2="317" stroke="var(--color-line-strong)" stroke-width="1.2"/>
+<text x="24" y="334" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">S01 · CoreWeave 10-Q · 30 Sep 2026 · US$ m; amounts have different roles</text>
+</svg>

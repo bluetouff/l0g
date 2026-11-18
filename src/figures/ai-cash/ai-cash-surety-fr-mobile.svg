@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 536" role="img" aria-labelledby="ai-cash-fr-surety-m-title ai-cash-fr-surety-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-cash-svg" style="width:100%;height:auto">
+<title id="ai-cash-fr-surety-m-title">Une caution immobilise déjà du cash</title>
+<desc id="ai-cash-fr-surety-m-desc">CoreWeave a acheté en août 2026 des cautionnements de 275 millions de dollars couvrant ses obligations envers un fournisseur d’électricité sur quatre ans. Au bénéfice des garants, 154 millions ont été déposés dans un trust et classés en trésorerie restreinte non courante. Les garants peuvent demander un complément de sûreté ; leur accord est nécessaire à une restitution. Leurs noms ne sont pas publiés. Le dépôt est inclus dans les 877 millions de trésorerie restreinte non courante au 30 septembre. La note ne relie pas ce dispositif à une lettre de crédit bancaire. Les traits ne sont pas proportionnels aux montants et ne représentent aucune perte.</desc>
+<text x="20" y="29" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">Une caution immobilise</text>
+<text x="20" y="54" font-size="18" font-weight="500" text-anchor="start" fill="var(--color-paper)">déjà du cash</text>
+<text x="20" y="78" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">CoreWeave · 30 septembre 2026</text>
+<g data-icon="server" transform="translate(88 113) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-9" y="-10" width="18" height="20" rx="2"/><path d="M-9-3H9M-9 4H9M-5-6h1M-5 1h1M-5 8h1M0-6h5M0 1h5M0 8h5"/></g>
+<g data-icon="vault" transform="translate(280 113) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-9" width="20" height="18" rx="2"/><circle cx="0" cy="0" r="5"/><path d="M0-5V5M-5 0H5M-6 9v2M6 9v2"/></g>
+<text x="88" y="143" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">CoreWeave</text>
+<text x="280" y="143" font-size="15.5" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Trust</text>
+<text x="280" y="163" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">dépôt affecté</text>
+<line x1="88" y1="195" x2="280" y2="195" stroke="var(--color-signal)" stroke-width="1.3"/>
+<path d="M274 191 280 195 274 199" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="184" y="183" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-signal)">154 M$</text>
+<text x="184" y="214" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">cash déposé</text>
+<line x1="280" y1="240" x2="88" y2="240" stroke="var(--color-muted)" stroke-width="1.3"/>
+<path d="M94 236 88 240 94 244" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="184" y="259" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">restitution sous accord</text>
+<line x1="280" y1="270" x2="280" y2="284" stroke="var(--color-muted)" stroke-width="1.2"/>
+<circle cx="280" cy="284" r="2.5" fill="var(--color-muted)"/>
+<g data-icon="power" transform="translate(88 306) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="m2-11-9 13h7l-2 9L8-3H1Z"/></g>
+<g data-icon="shield" transform="translate(280 306) scale(1)" fill="none" stroke="var(--color-muted)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M0-11 9-7V0c0 5-4 8-9 11-5-3-9-6-9-11V-7Z"/><path d="m-4 0 3 3 5-6"/></g>
+<text x="88" y="335" font-size="15" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Fournisseur</text>
+<text x="88" y="355" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-paper)">d’électricité</text>
+<text x="280" y="335" font-size="15" font-weight="500" text-anchor="middle" fill="var(--color-paper)">Garants</text>
+<text x="280" y="355" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">bénéficiaires du trust</text>
+<line x1="280" y1="392" x2="88" y2="392" stroke="var(--color-accent)" stroke-width="1.3"/>
+<path d="M94 388 88 392 94 396" fill="none" stroke="var(--color-accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="184" y="380" font-size="18" font-weight="500" text-anchor="middle" fill="var(--color-accent)">275 M$</text>
+<text x="184" y="412" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-muted)">protection · 4 ans</text>
+<path d="M301 306H360V444H24V113H66" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 5"/>
+<path d="M60 109 66 113 60 117" fill="none" stroke="var(--color-accent)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="190" y="464" font-size="14" font-weight="400" text-anchor="middle" fill="var(--color-accent)">Demande de complément possible</text>
+<line x1="20" y1="484" x2="360" y2="484" stroke="var(--color-line-strong)" stroke-width="1.2"/>
+<text x="20" y="501" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">S01 · CoreWeave, 10-Q · 30/09/2026</text>
+<text x="20" y="518" font-size="14" font-weight="400" text-anchor="start" fill="var(--color-muted)">M$ · dépôt et protection, pas des pertes</text>
+</svg>

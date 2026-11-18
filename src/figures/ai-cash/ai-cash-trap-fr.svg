@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 382" role="img" aria-labelledby="ai-cash-fr-trap-d-title ai-cash-fr-trap-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-cash-svg" style="width:100%;height:auto">
+<title id="ai-cash-fr-trap-d-title">Le contrat peut retenir les recettes</title>
+<desc id="ai-cash-fr-trap-d-desc">Dans DDTL 5.5, un manquement substantiel au contrat client non levé par écrit et permettant sa résiliation, ou un ratio de valeur contractuelle projetée inférieur à 2,40, déclenche un Cash Trap Event. Les flux résiduels sont retenus au rang six, après les dépenses éligibles, intérêts, principal et réserve de liquidité ; l’absence de cet événement conditionne également les nouveaux tirages. Sa persistance sur trois échéances mensuelles consécutives entraîne un remboursement anticipé sous cinq jours ouvrés à partir du cash des comptes de sûreté, pour atteindre un ratio supérieur à 2,40, dans la limite de l’argent présent. La formule détaillée du numérateur du ratio est masquée. Mécanisme contractuel : aucun déclenchement n’est établi par l’enquête. Les clauses prévoient des possibilités de levée des conditions par les prêteurs habilités.</desc>
+<text x="24" y="30" font-size="21" font-weight="500" text-anchor="start" fill="var(--color-paper)">Le contrat peut retenir les recettes</text>
+<text x="24" y="53" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">DDTL 5.5 · contrat du 7 août 2026 · mécanisme conditionnel</text>
+<rect x="24" y="77" width="280" height="151" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="alert" transform="translate(45 101) scale(0.85)" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M0-11 11 9H-11ZM0-4v6M0 5v1"/></g>
+<text x="64" y="106" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Déclencheur contractuel</text>
+<text x="40" y="135" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Manquement substantiel non levé</text>
+<text x="40" y="154" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">au contrat client, ouvrant droit</text>
+<text x="40" y="173" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">à résiliation</text>
+<text x="40" y="208" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-accent)">OU ratio de valeur projetée &lt; 2,40</text>
+<path d="M304 153H350V115H400" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M394 111 400 115 394 119" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 153V199H400" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M394 195 400 199 394 203" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="153" r="2.5" fill="var(--color-signal)"/>
+<rect x="400" y="77" width="336" height="77" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="lock" transform="translate(421 100) scale(0.85)" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-9" y="-1" width="18" height="12" rx="2"/><path d="M-5-1v-5a5 5 0 0 1 10 0v5M0 3v4"/></g>
+<text x="442" y="102" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Cash résiduel retenu</text>
+<text x="442" y="124" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Rang 6, après charges éligibles,</text>
+<text x="442" y="145" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">intérêts, principal et réserve</text>
+<rect x="400" y="170" width="336" height="58" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="gate" transform="translate(421 193) scale(0.85)" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M-10-9V10M10-9V10M-10-5H10M-5-5V7M0-5V7M5-5V7"/><path d="M-12 10H-7M7 10H12"/></g>
+<text x="442" y="198" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Nouveaux tirages bloqués</text>
+<text x="442" y="217" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Conditions d’accès non remplies</text>
+<line x1="164" y1="228" x2="164" y2="251" stroke="var(--color-muted)" stroke-width="1.3"/>
+<path d="M160 245 164 251 168 245" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="251" width="712" height="79" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="calendar" transform="translate(45 275) scale(0.9)" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-8" width="20" height="18" rx="2"/><path d="M-5-11v6M5-11v6M-10-2H10M-5 3h2M3 3h2M-5 7h2"/></g>
+<text x="67" y="276" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Persistance durant 3 échéances mensuelles consécutives</text>
+<text x="40" y="300" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-signal)">Sous 5 jours ouvrés : cash des comptes de sûreté vers le remboursement anticipé</text>
+<text x="40" y="320" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Objectif : ratio &gt; 2,40 · dans la limite du cash présent</text>
+<text x="24" y="347" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">S04 · DDTL 5.5, §1.01, 2.09, 2.20 et 4.02 · 07/08/2026</text>
+<text x="24" y="369" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Ratios sans unité · aucun déclenchement établi ; formule détaillée du ratio masquée</text>
+</svg>

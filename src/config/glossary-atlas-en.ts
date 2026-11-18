@@ -209,6 +209,30 @@ const uraniumArticle: GlossaryGraphLink = { label: 'Uranium: deficit and hidden 
 const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', href: '/en/guides/read-uranium-market/', detail: 'From ore to reactor: contracts, conversion and enrichment.', kind: 'guide' };
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
+  {
+    slug: 'cash-trap', sigle: 'Cash trap', nom: 'Contractual retention of receipts',
+    def: 'A mechanism directing receipts to a dedicated account when a financing agreement’s specified trigger occurs. The payment waterfall determines prior expenses and the money retained. Release conditions, borrowing restrictions and any subsequent early repayment depend on the agreement. The agreement and its implementation records establish the terms and whether the mechanism has been activated.',
+    guide: '/en/analysis/ai-debt-cash-contract-conditions/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Receipts may remain within a structure to protect creditors before distributions are permitted.',
+      articles: [{ label: 'AI debt: the conditions attached to the cash', href: '/en/analysis/ai-debt-cash-contract-conditions/', kind: 'article' }],
+      sources: [{ label: 'CoreWeave / SEC, DDTL 5.5 agreement of 7 August 2026', href: 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm', detail: '§1.01: triggers; §2.20: waterfall and retention account; §4.02(i): condition for further borrowing. No actual trigger established.', kind: 'source' }],
+      related: ['cash-sweep', 'ddtl', 'covenant', 'collateral'],
+    },
+  },
+  {
+    slug: 'cash-sweep', sigle: 'Cash sweep', nom: 'Cash applied to early debt repayment',
+    def: 'A contractual requirement directing some or all of a defined cash surplus or set of receipts to early debt repayment. The agreement determines the trigger, accounts, thresholds and percentage applied. A sweep can follow a period of cash retention or operate under a separate scheduled surplus-payment rule.',
+    guide: '/en/analysis/ai-debt-cash-contract-conditions/',
+    ...privateCreditSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'Contractually specified cash repays principal ahead of the ordinary repayment schedule.',
+      articles: [{ label: 'AI debt: the conditions attached to the cash', href: '/en/analysis/ai-debt-cash-contract-conditions/', kind: 'article' }],
+      sources: [{ label: 'CoreWeave / SEC, DDTL 5.5 agreement of 7 August 2026', href: 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm', detail: '§2.09(b)(i)(A): sweep after a persistent trigger; §2.09(b)(i)(B): separate excess-cash mechanism after the availability period.', kind: 'source' }],
+      related: ['cash-trap', 'ddtl', 'covenant'],
+    },
+  },
   {"slug": "ead", "sigle": "EAD", "nom": "Exposure at default", "guide": "/en/analysis/european-banks-ai-loans-exposures/", "sectionTitle": "Banking & balance-sheet management", "accent": "var(--color-topic-blue)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "European banks and the debt behind AI", "href": "/en/analysis/european-banks-ai-loans-exposures/", "kind": "article"}], "sources": [{"label": "Société Générale, Pillar 3 at 31 December 2025", "href": "https://www.societegenerale.com/sites/default/files/documents/2026-03/pillar-3-31122025-en.pdf", "detail": "Section 6.6, printed page 130: EAD definition and prudential adjustments. Not a formula specific to the Q3 2026 portfolio.", "kind": "source"}, {"label": "Basel Committee, disclosure framework DIS40", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/dis/40/inforce/2023-01-01/published/2020-03-27", "detail": "Definitions of credit exposures, credit conversion factors and credit risk mitigation.", "kind": "source"}], "related": ["ddtl", "lc"]}, "def": "A prudential measure of credit exposure in the event of default. Depending on the method, it includes on- and off-balance-sheet positions, conversion factors and recognition of credit protection. Compare published dates, scopes and adjustments before combining amounts. EAD differs from drawn lending and expected loss."},
   {
     slug: 'inspection-publique', sigle: 'Public inspection', nom: 'Advance access to a Federal Register document',

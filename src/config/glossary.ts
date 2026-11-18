@@ -645,6 +645,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'PCDR', nom: 'Private Credit Default Rate', def: "Mesure Fitch des défauts d’émetteurs américains et canadiens de son univers de CLO middle market hors prêts largement syndiqués et de prêts directs suivis en privé. Sur douze mois glissants, les émetteurs uniques classés RD ou D sont divisés par la moyenne des effectifs en début et fin de période, sans pondération par la dette. Un émetteur ayant plusieurs défauts compte une seule fois dans cette fenêtre. Les événements comprennent les défauts de paiement et échanges en détresse répondant aux critères Fitch. L’exercice d’une option PIK prévue dès l’origine ne constitue pas un défaut." },
       { sigle: 'PMR', nom: 'Privately Monitored Rating', def: "Composante de l'univers Fitch portant sur les plus gros emprunteurs sous LBO notés en privé. Son taux de défaut est structurellement plus élevé que l'indice large PCDR." },
       { sigle: 'LME', nom: 'Liability Management Exercise', def: "Gestion de passif hors tribunal (échange de dette, extension de maturité, rachat sous le pair) qui permet d'éviter ou de repousser un défaut formel. Devenue le mode dominant de traitement de la détresse : en 2025-2026, ces restructurations forment l'essentiel de l'activité de défaut, masquant un stress que le taux de défaut classique sous-estime.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
+      { sigle: 'Cash trap', nom: 'Mise en réserve contractuelle des recettes', def: 'Mécanisme qui affecte des recettes à un compte dédié lorsqu’un événement défini par un financement survient. La cascade de paiements détermine les dépenses prioritaires, puis les sommes retenues. Les conditions de libération, les restrictions de tirage et le passage éventuel à un remboursement anticipé dépendent du contrat. Les modalités du mécanisme et son application effective s’examinent dans l’accord et ses documents d’exécution.', guide: '/posts/dette-ia-tresorerie-clauses-contrats/' },
       { sigle: 'Cash sweep', nom: 'Affectation accélérée de trésorerie', def: "Clause contractuelle qui dirige tout ou partie d'un excédent de trésorerie ou de recettes défini vers un remboursement anticipé de la dette. Elle réduit plus vite l'encours lorsque les conditions prévues sont réunies, sans signifier que toutes les recettes reviennent au créancier : le périmètre, les seuils et le taux d'affectation dépendent du contrat.", guide: '/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/' },
       { sigle: 'LBO', nom: 'Leveraged Buyout', def: "Rachat d'entreprise financé majoritairement par de la dette, remboursée par les flux de trésorerie de la cible." },
       { sigle: 'CLO', nom: 'Collateralized Loan Obligation', def: "Véhicule de titrisation adossé à un portefeuille de prêts aux entreprises. Il finance ces prêts en émettant des titres de rangs différents. Les flux sont affectés selon une cascade contractuelle : les tranches seniors sont servies avant les tranches subordonnées, tandis que les pertes touchent d’abord la tranche résiduelle. La protection d’un titre dépend du rang, du portefeuille et des clauses, au-delà de sa note.", guide: '/guides/lire-les-clo-et-prets-a-effet-de-levier/' },
@@ -1095,7 +1096,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-17';
+export const glossaryUpdatedIso = '2026-11-18';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -1338,6 +1339,18 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'cash-trap': {
+    intuition: 'Les recettes peuvent rester dans la structure pour protéger les créanciers avant d’être distribuées.',
+    articles: [{ label: 'Dette de l’IA : la trésorerie sous conditions', href: '/posts/dette-ia-tresorerie-clauses-contrats/', kind: 'article' }],
+    sources: [{ label: 'CoreWeave / SEC, contrat DDTL 5.5 du 7 août 2026', href: 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm', detail: '§1.01 : déclencheurs ; §2.20 : cascade et compte de réserve ; §4.02(i) : condition des nouveaux tirages. Déclenchement réel non établi.', kind: 'source' }],
+    related: ['cash-sweep', 'ddtl', 'covenant', 'collateral'],
+  },
+  'cash-sweep': {
+    intuition: 'Une somme définie par le contrat sert à rembourser le principal avant son échéancier ordinaire.',
+    articles: [{ label: 'Dette de l’IA : la trésorerie sous conditions', href: '/posts/dette-ia-tresorerie-clauses-contrats/', kind: 'article' }, { label: 'Les banquiers du baril : le Tchad et Glencore', href: '/posts/les-banquiers-du-baril-3-tchad-glencore-dette-petrole/', kind: 'article' }],
+    sources: [{ label: 'CoreWeave / SEC, contrat DDTL 5.5 du 7 août 2026', href: 'https://www.sec.gov/Archives/edgar/data/1769628/000176962826000357/ex101creditagreement.htm', detail: '§2.09(b)(i)(A) : sweep après persistance du déclencheur ; §2.09(b)(i)(B) : autre mécanisme d’excédent après la période de tirage. Les deux ont des conditions distinctes.', kind: 'source' }],
+    related: ['cash-trap', 'ddtl', 'covenant'],
+  },
   "ead": {"articles": [{"label": "Les banques européennes derrière la dette de l’IA", "href": "/posts/banques-europeennes-ia-contrats-expositions/", "kind": "article"}], "sources": [{"label": "Société Générale, Pilier 3 au 31 décembre 2025", "href": "https://www.societegenerale.com/sites/default/files/documents/2026-03/pillar-3-31122025-en.pdf", "detail": "Section 6.6, page imprimée 130 : définition de l’EaD et traitements prudentiels. Utilisé pour la définition, pas pour une formule particulière du portefeuille T3 2026.", "kind": "source"}, {"label": "Comité de Bâle, cadre de publication DIS40", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/dis/40/inforce/2023-01-01/published/2020-03-27", "detail": "Définition des expositions au risque de crédit, facteurs de conversion et techniques de réduction du risque.", "kind": "source"}], "related": ["ddtl", "lc"]},
   'inspection-publique': {
     articles: [{ label: 'Nvidia : le conseil sous pression et les contrôles export', href: '/posts/nvidia-conseil-securite-nationale-controles-exportation/', kind: 'article' }],

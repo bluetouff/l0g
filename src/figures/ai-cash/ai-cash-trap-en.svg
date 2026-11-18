@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 382" role="img" aria-labelledby="ai-cash-en-trap-d-title ai-cash-en-trap-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" class="ai-cash-svg" style="width:100%;height:auto">
+<title id="ai-cash-en-trap-d-title">The contract can hold back cash</title>
+<desc id="ai-cash-en-trap-d-desc">Under DDTL 5.5, a continuing material customer-contract breach that has not been waived in writing and permits termination, or a projected contract-value ratio below 2.40, creates a Cash Trap Event. Residual cash is retained at the sixth waterfall step, after eligible expenses, interest, principal and the liquidity reserve. New advances also require the absence of such an event. If it persists for three consecutive monthly payment dates, the contract provides for prepayment within five business days using cash in collateral accounts, to bring the ratio above 2.40, limited to cash held there. The detailed numerator formula is redacted. This is a contractual mechanism; the investigation establishes no activation. Conditions may be waived by authorised lenders.</desc>
+<text x="24" y="30" font-size="21" font-weight="500" text-anchor="start" fill="var(--color-paper)">The contract can hold back cash</text>
+<text x="24" y="53" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">DDTL 5.5 · 7 August 2026 agreement · conditional mechanism</text>
+<rect x="24" y="77" width="280" height="151" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="alert" transform="translate(45 101) scale(0.85)" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M0-11 11 9H-11ZM0-4v6M0 5v1"/></g>
+<text x="64" y="106" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Contractual trigger</text>
+<text x="40" y="135" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">Unwaived material breach</text>
+<text x="40" y="154" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">giving the customer a right</text>
+<text x="40" y="173" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-paper)">to terminate its contract</text>
+<text x="40" y="208" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-accent)">OR projected-value ratio &lt; 2.40</text>
+<path d="M304 153H350V115H400" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M394 111 400 115 394 119" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M350 153V199H400" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M394 195 400 199 394 203" fill="none" stroke="var(--color-signal)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="350" cy="153" r="2.5" fill="var(--color-signal)"/>
+<rect x="400" y="77" width="336" height="77" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="lock" transform="translate(421 100) scale(0.85)" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-9" y="-1" width="18" height="12" rx="2"/><path d="M-5-1v-5a5 5 0 0 1 10 0v5M0 3v4"/></g>
+<text x="442" y="102" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">Residual cash retained</text>
+<text x="442" y="124" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Step 6: after eligible expenses,</text>
+<text x="442" y="145" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">interest, principal and reserve</text>
+<rect x="400" y="170" width="336" height="58" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="gate" transform="translate(421 193) scale(0.85)" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><path d="M-10-9V10M10-9V10M-10-5H10M-5-5V7M0-5V7M5-5V7"/><path d="M-12 10H-7M7 10H12"/></g>
+<text x="442" y="198" font-size="15.5" font-weight="500" text-anchor="start" fill="var(--color-paper)">New advances blocked</text>
+<text x="442" y="217" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Funding condition not satisfied</text>
+<line x1="164" y1="228" x2="164" y2="251" stroke="var(--color-muted)" stroke-width="1.3"/>
+<path d="M160 245 164 251 168 245" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="251" width="712" height="79" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g data-icon="calendar" transform="translate(45 275) scale(0.9)" fill="none" stroke="var(--color-accent)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"><rect x="-10" y="-8" width="20" height="18" rx="2"/><path d="M-5-11v6M5-11v6M-10-2H10M-5 3h2M3 3h2M-5 7h2"/></g>
+<text x="67" y="276" font-size="15.2" font-weight="500" text-anchor="start" fill="var(--color-paper)">Persistence across 3 consecutive monthly payment dates</text>
+<text x="40" y="300" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-signal)">Within 5 business days: cash in collateral accounts goes to loan prepayment</text>
+<text x="40" y="320" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Target: ratio &gt; 2.40 · limited to the cash held in those accounts</text>
+<text x="24" y="347" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">S04 · DDTL 5.5, §§1.01, 2.09, 2.20 and 4.02 · 7 Aug 2026</text>
+<text x="24" y="369" font-size="15.2" font-weight="400" text-anchor="start" fill="var(--color-muted)">Unitless ratios · no activation established; detailed ratio formula is redacted</text>
+</svg>

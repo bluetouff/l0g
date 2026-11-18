@@ -1,0 +1,126 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'surety' | 'trap' | 'reserves';
+  sourceHref: string;
+  number?: number;
+  id?: string;
+  caption?: string;
+}
+
+const { lang, kind, sourceHref, number, id, caption } = Astro.props;
+const copy = {
+  fr: {
+    surety: {
+      caption: 'Au 30 septembre 2026, CoreWeave a déposé 154 M$ dans un trust lié à 275 M$ de cautions électriques. Les garants peuvent demander un complément et doivent approuver la restitution.',
+      source: 'CoreWeave, 10-Q au 30 septembre 2026, note 9, p. 29',
+      credit: 'Dépôt inclus dans la trésorerie restreinte non courante. Flèches sans échelle monétaire.',
+    },
+    trap: {
+      caption: 'Un événement contractuel peut retenir le cash résiduel au sixième rang de la cascade et bloquer les nouveaux tirages. S’il persiste trois échéances mensuelles consécutives, DDTL 5.5 prévoit un remboursement sous cinq jours ouvrés.',
+      source: 'CoreWeave DDTL 5.5, 7 août 2026, §1.01, 2.09, 2.20 et 4.02',
+      credit: 'Ratios sans unité, remboursement limité aux comptes concernés. Conditions susceptibles de levée selon l’accord.',
+    },
+    reserves: {
+      caption: 'APLD ComputeCo 2 prévoit initialement 121 M$ pour les intérêts du chantier et 148 M$ de réserve, mobilisable après épuisement du premier compte. La condition électrique est déclarée satisfaite le 18 juin 2026.',
+      source: 'Applied Digital, Indenture du 10 mars 2026 et 10-Q au 31 août 2026, note 9',
+      credit: 'Affectations initiales en millions de dollars, soldes actuels inconnus. Reconstitution sous quinze jours ouvrés, avec exception contractuelle liée au remplacement d’un bail résilié.',
+    },
+  },
+  en: {
+    surety: {
+      caption: 'At 30 September 2026, CoreWeave had $154m deposited in a trust supporting $275m of electricity surety bonds. The sureties may request more collateral and must approve its return.',
+      source: 'CoreWeave, 30 September 2026 10-Q, note 9, p. 29',
+      credit: 'Deposit included in non-current restricted cash. Arrows show relationships without a monetary scale.',
+    },
+    trap: {
+      caption: 'A contractual trigger can retain residual cash at waterfall step six and block new advances. If it persists across three consecutive monthly payment dates, DDTL 5.5 requires prepayment within five business days.',
+      source: 'CoreWeave DDTL 5.5, 7 August 2026, §§1.01, 2.09, 2.20 and 4.02',
+      credit: 'Contractual scenario with unitless ratios. Prepayment uses the specified accounts’ cash, subject to contractual waivers.',
+    },
+    reserves: {
+      caption: 'APLD ComputeCo 2 initially allocates $121m for construction-period interest and $148m to a reserve, available once the first account is depleted. The electricity condition was reported satisfied on 18 June 2026.',
+      source: 'Applied Digital, 10 March 2026 Indenture and 31 August 2026 10-Q, note 9',
+      credit: 'US dollars, millions: initial allocations, current balances unknown. Replenish within fifteen business days, with a contractual exception while a terminated lease is replaced.',
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown AI cash-flow figure language or kind.');
+const figures = import.meta.glob('../figures/ai-cash/ai-cash-*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/ai-cash/ai-cash-${kind}-${lang}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing AI cash-flow figure.');
+}
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('AI cash-flow figure requires a source anchor or an HTTPS source URL.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) {
+  throw new TypeError('AI cash-flow figure number must be a positive integer.');
+}
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) {
+  throw new TypeError('AI cash-flow figure id must be a valid local anchor.');
+}
+const figureId = id ?? (number === undefined ? `ai-cash-${lang}-${kind}` : `figure-${number}`);
+const originalIdPrefix = `ai-cash-${lang}-${kind}-`;
+const instanceIdPrefix = `${figureId}-${lang}-${kind}-`;
+const desktopInstance = desktop.replaceAll(originalIdPrefix, instanceIdPrefix);
+const mobileInstance = mobile.replaceAll(originalIdPrefix, instanceIdPrefix);
+---
+
+<figure class="ai-cash-flow" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktopInstance} />
+  <div class="figure-narrow" set:html={mobileInstance} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{item.source}</a>.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .ai-cash-flow {
+    width: 100%;
+    max-width: 600px;
+    margin: 2rem auto;
+    padding-bottom: 1rem;
+    container-type: inline-size;
+  }
+  .ai-cash-flow :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    letter-spacing: normal;
+    overflow: visible;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 380px; margin-inline: auto; }
+  figcaption {
+    margin-top: .8rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .35rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .ai-cash-flow { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>
