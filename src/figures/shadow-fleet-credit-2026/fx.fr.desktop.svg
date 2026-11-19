@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfc-fx-fr-d-0" viewBox="0 0 1200 708" role="img" aria-labelledby="sfc-fx-fr-d-1 sfc-fx-fr-d-3" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="sfc-fx-fr-d-1">Dollar de référence, rouble de paiement</title>
+  <desc id="sfc-fx-fr-d-3">Le coupon est calculé en dollars, puis converti en roubles. Les taux de 80 et 100 RUB par USD servent uniquement à illustrer cette conversion. Le paiement réel du 2 novembre 2026 est rapporté par l’émetteur.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "fr", "chart": "dollar-rouble", "unit": "USD coupon and RUB settlement; annual percent; 30-day period", "period": "S2 contractual terms 2026; reported payment 2026-11-02", "limits": "80 and 100 RUB per USD are illustrative exchange rates, not observations or forecasts. 13.5% is the annual coupon rate, not a realised investor return. The actual coupon payment is an issuer statement.", "sources": [{"id": "S07", "url": "https://www.e-disclosure.ru/portal/FileLoad.ashx?Fileid=1940537"}, {"id": "S08", "url": "https://www.e-disclosure.ru/portal/FileLoad.ashx?Fileid=1939674"}, {"id": "S11", "url": "https://e-disclosure.azipi.ru/messages/4603437/"}]}</metadata>
+  <rect x="0" y="0" width="1200" height="708" rx="0" fill="var(--color-ink)" />
+  <text x="42" y="105" font-family="Inter Variable, Inter, sans-serif" font-size="35" font-weight="400" fill="var(--color-paper)" text-anchor="start">Dollar de référence, rouble de paiement</text>
+  <text x="42" y="140" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">Lid Capital · série 001P-02 · mécanisme contractuel</text>
+  <path d="M42,166 L1158,166" stroke="var(--color-line-strong)" stroke-width="2" fill="none" />
+  <rect x="42" y="196" width="362" height="266" rx="18" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="434" y="196" width="352" height="266" rx="18" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="816" y="196" width="342" height="266" rx="18" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <text x="64" y="235" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-signal)" text-anchor="start">01 / CALCUL DU COUPON</text>
+  <text x="64" y="282" font-family="Inter Variable, Inter, sans-serif" font-size="29" font-weight="400" fill="var(--color-paper)" text-anchor="start">100 USD de nominal</text>
+  <text x="64" y="316" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">13,5 % / an · 30 jours</text>
+  <text x="64" y="356" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">100 × 13,5 % × 30 / 365</text>
+  <text x="64" y="407" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" fill="var(--color-signal)" text-anchor="start">1,11 USD</text>
+  <text x="64" y="440" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">après arrondi au cent</text>
+  <path d="M406,332 L428,332" stroke="var(--color-signal)" stroke-width="3" fill="none" />
+  <path d="M420,325 L428,332 L420,339" stroke="var(--color-signal)" stroke-width="3" fill="none" />
+  <text x="456" y="235" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">02 / FIXER LE CHANGE</text>
+  <circle cx="475" cy="279" r="18" fill="none" stroke="var(--color-topic-blue)" stroke-width="2" />
+  <path d="M475,267 L475,279" stroke="var(--color-topic-blue)" stroke-width="2" fill="none" />
+  <path d="M475,279 L485,285" stroke="var(--color-topic-blue)" stroke-width="2" fill="none" />
+  <text x="456" y="340" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">J−2 ouvrés</text>
+  <text x="456" y="380" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">Banque de Russie</text>
+  <text x="456" y="415" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">avant le paiement</text>
+  <path d="M788,332 L810,332" stroke="var(--color-signal)" stroke-width="3" fill="none" />
+  <path d="M802,325 L810,332 L802,339" stroke="var(--color-signal)" stroke-width="3" fill="none" />
+  <text x="838" y="235" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-accent)" text-anchor="start">03 / RÈGLEMENT</text>
+  <text x="838" y="290" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" fill="var(--color-paper)" text-anchor="start">1,11 × cours</text>
+  <text x="838" y="334" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" fill="var(--color-accent)" text-anchor="start">= coupon en RUB</text>
+  <text x="838" y="394" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">Lid → NSD → dépositaires</text>
+  <text x="838" y="430" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">→ porteur en RUB</text>
+  <text x="42" y="511" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" fill="var(--color-paper)" text-anchor="start">Deux cours illustratifs</text>
+  <text x="42" y="542" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">Exemples de taux hypothétiques</text>
+  <text x="42" y="599" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">80 RUB/USD</text>
+  <rect x="239" y="579" width="280" height="27" rx="4" fill="var(--color-surface-2)" />
+  <rect x="239" y="579" width="224" height="27" rx="4" fill="var(--color-topic-blue)" />
+  <text x="539" y="601" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">88,80 RUB</text>
+  <text x="42" y="660" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">100 RUB/USD</text>
+  <rect x="239" y="640" width="280" height="27" rx="4" fill="var(--color-surface-2)" />
+  <rect x="239" y="640" width="280" height="27" rx="4" fill="var(--color-signal)" />
+  <text x="539" y="662" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">111,00 RUB</text>
+  <rect x="758" y="490" width="400" height="205" rx="18" fill="var(--color-surface-2)" />
+  <text x="780" y="525" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-accent)" text-anchor="start">LE PAIEMENT DÉCLARÉ</text>
+  <text x="780" y="572" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" fill="var(--color-paper)" text-anchor="start">89,76 RUB</text>
+  <text x="780" y="608" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">par titre · 2 nov. 2026</text>
+  <text x="780" y="640" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-paper)" text-anchor="start">10 504 164 RUB au total</text>
+  <text x="780" y="672" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" fill="var(--color-muted)" text-anchor="start">117 025 titres · coupon 3</text>
+</svg>

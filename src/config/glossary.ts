@@ -2392,6 +2392,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       {"label": "Minerai de fer : le prix de l’attente", "href": "/posts/minerai-fer-prix-attente-fortescue-cmrg/", "detail": "Financement du minerai porté en stock entre extraction, vente et encaissement.", "kind": "article"},
       { label: 'JPMorgan et le prix de la puissance industrielle', href: '/posts/jpmorgan-capital-strategique/', detail: 'Financer les dépenses de production avant les encaissements et absorber un retard de livraison.', kind: 'article' },
       { label: 'JLR : le jour où l’usine s’arrête', href: '/posts/apres-cyberattaque-1-jlr-usines-tresorerie/', detail: 'Stocks, dettes fournisseurs et besoins de financement pendant la reprise.', kind: 'article' },
+      { label: 'Flotte fantôme russe : le crédit de Moscou à Dubaï', href: '/posts/flotte-fantome-financement-roubles-lid-capital-lidoil/', detail: 'Créances clients et trésorerie d’exploitation de Lidoil en 2025.', kind: 'article' },
       { label: 'Cacao au Ghana : qui finance l’attente des planteurs ?', href: '/posts/cacao-ghana-financement-tresorerie/', detail: 'Achats de récolte, stocks et calendrier des encaissements.', kind: 'article' },
     ],
     sources: [{ label: 'Bpifrance Création, besoin en fonds de roulement', href: 'https://bpifrance-creation.fr/encyclopedie/previsions-financieres-business-plan/previsions-financieres/besoin-fonds-roulement-bfr', detail: 'Stocks, créances, dettes fournisseurs et décalages de trésorerie du cycle d’exploitation.', kind: 'source' }],

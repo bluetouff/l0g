@@ -1730,6 +1730,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
         {"label": "Iron ore: the price of waiting", "href": "/en/analysis/iron-ore-price-of-waiting-fortescue-cmrg/", "detail": "Funding ore held in inventory between extraction, sale and customer receipts.", "kind": "article"},
         { label: 'JPMorgan and the cost of industrial power', href: '/en/analysis/jpmorgan-industrial-power-investment/', detail: 'Funding production before receipts and carrying delayed deliveries.', kind: 'article' },
         { label: 'JLR: when the factory stops', href: '/en/analysis/after-cyberattack-1-jlr-factories-cash-flow/', detail: 'Inventory, trade payables and funding needs during the recovery.', kind: 'article' },
+        { label: 'Russia’s shadow fleet: Moscow bonds and a Dubai borrower', href: '/en/analysis/shadow-fleet-rouble-finance-lid-capital-lidoil/', detail: 'Trade receivables and operating cash flow at Lidoil in 2025.', kind: 'article' },
         { label: 'Ghana’s cocoa crisis: who finances the wait?', href: '/en/analysis/ghana-cocoa-financing-cash-crisis/', detail: 'Crop purchases, inventory and the timing of receipts.', kind: 'article' },
       ],
       sources: [{ label: 'Bpifrance Création, operating working capital requirement', href: 'https://bpifrance-creation.fr/encyclopedie/previsions-financieres-business-plan/previsions-financieres/besoin-fonds-roulement-bfr', detail: 'Inventories, receivables, trade payables and operating cash timing. French source.', kind: 'source' }],

@@ -1,0 +1,69 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'fx' | 'cashflow';
+  number?: number;
+  id?: string;
+}
+const { lang, kind, number, id } = Astro.props;
+const copy = {
+  fr: {
+    fx: {
+      caption: 'La série 001P-02 calcule le coupon en dollars avant un règlement en roubles. Les taux de 80 et 100 RUB/USD servent uniquement aux exemples hypothétiques.',
+      credit: 'Le contrat retient 30 jours sur une base de 365 jours et arrondit d’abord au cent de dollar. Le coupon est converti au cours officiel de la Banque de Russie du deuxième jour ouvré avant le paiement. Pour le coupon 3, l’émetteur déclare 89,76 RUB par titre, soit 10 504 164 RUB pour 117 025 obligations, payés le 2 novembre 2026. À la souscription, le taux retenu est celui du jour de transaction.',
+      sources: [['S08', 'décision d’émission, §§ 5.4–5.5'], ['S11', 'paiement déclaré du 2 novembre 2026'], ['S07', 'conditions de souscription']],
+    },
+    cashflow: {
+      caption: 'Le bénéfice net de 120,4 millions d’AED aboutit à une sortie de trésorerie d’exploitation de 108,3 millions dans les comptes individuels 2025 de Lidoil DMCC.',
+      credit: 'Montants en millions d’AED, arrondis à une décimale. Les ajustements de 40,9 regroupent 38,8 d’amortissement et 2,1 d’intérêts courus. Les autres actifs et passifs apportent 56,1 : autres actifs courants 30,8 et dettes commerciales et autres dettes 25,3. La géométrie conserve les montants non arrondis du tableau de flux, page 10 du PDF.',
+      sources: [['S14', 'Lidoil, comptes individuels IFRS 2025']],
+    },
+  },
+  en: {
+    fx: {
+      caption: 'Series 001P-02 calculates the coupon in dollars before settling in roubles. Exchange rates of 80 and 100 RUB/USD are used solely as hypothetical examples.',
+      credit: 'The contract uses 30 days on a 365-day basis and rounds to the nearest US cent first. The coupon is converted at the official Bank of Russia rate on the second business day before payment. For coupon 3, the issuer reports RUB 89.76 per bond, RUB 10,504,164 across 117,025 bonds, paid on 2 November 2026. Subscription uses the transaction-date rate.',
+      sources: [['S08', 'bond decision, sections 5.4–5.5'], ['S11', 'payment reported on 2 November 2026'], ['S07', 'subscription terms']],
+    },
+    cashflow: {
+      caption: 'Net profit of AED 120.4 million leads to an operating cash outflow of AED 108.3 million in Lidoil DMCC’s individual 2025 accounts.',
+      credit: 'AED millions, rounded to one decimal place. Adjustments of 40.9 combine depreciation of 38.8 and accrued interest of 2.1. Other assets and liabilities contribute 56.1: other current assets of 30.8 and trade and other payables of 25.3. Geometry retains the unrounded cash-flow amounts on PDF page 10.',
+      sources: [['S14', 'Lidoil, individual IFRS 2025 financial statements']],
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown shadow fleet credit figure language or kind.');
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/shadow-fleet-credit-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/shadow-fleet-credit-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/shadow-fleet-credit-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing shadow fleet credit figure variant.');
+const figureId = id ?? (number === undefined ? `shadow-fleet-credit-${kind}-${lang}` : `figure-${number}`);
+const prefix = `sfc-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="shadow-fleet-credit-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}{item.sources.map(([source, label], index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{label}</a></>)}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .shadow-fleet-credit-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .shadow-fleet-credit-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .shadow-fleet-credit-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>
