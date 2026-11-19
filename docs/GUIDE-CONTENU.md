@@ -96,6 +96,13 @@ plutôt qu’une zone vide. Inspecter l’illustration seule, puis les cartes FR
 complètes, avant le push. Préserver la marge sous la description sans la
 transformer en bande vide dans l’image.
 
+**Rappel du 19 novembre 2026.** À la taille d’un aperçu social, la carte doit
+se lire comme une seule image. Le décor reste reconnaissable derrière le
+titre et la description, jusque dans le bas de la carte. Un dégradé qui
+efface cette partie du décor ou laisse apparaître une ligne de séparation
+crée une coupure visuelle et impose de reprendre la composition. Revoir le
+cadrage ou alléger le voile avant de régénérer les cartes FR/EN.
+
 ### 1.3 Écrire
 
 Sous le frontmatter, du markdown classique :
