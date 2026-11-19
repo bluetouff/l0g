@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" viewBox="0 0 600 330" role="img" aria-labelledby="my-controls-en-d-title my-controls-en-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="my-controls-en-d-title">Two reviews for the same equipment</title>
+<desc id="my-controls-en-d-desc">Partial map of the US rule published on 19 November 2026. Destination controls for five countries and controls on specific computing end-uses have separate tests. The US-headquarters exclusion, with monthly reporting, leaves the end-use review applicable.</desc>
+<text x="18" y="27" font-size="17.5" fill="var(--color-paper)" text-anchor="start">Two reviews for the same equipment</text>
+<text x="18" y="49" font-size="13" fill="var(--color-muted)" text-anchor="start">Items covered by the categories in the rule</text>
+<rect x="18" y="76" width="255" height="192" rx="5" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="33" y="102" font-size="16" fill="var(--color-amber)" text-anchor="start">1. Destination</text>
+<text x="33" y="126" font-size="13" fill="var(--color-paper)" text-anchor="start">Malaysia · Singapore · Indonesia</text>
+<text x="33" y="145" font-size="13" fill="var(--color-paper)" text-anchor="start">Thailand · Brazil</text>
+<path d="M145 158V168H83V182" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145 168H209V182" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="31" y="182" width="104" height="66" rx="5" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="83" y="205" font-size="14" fill="var(--color-paper)" text-anchor="middle">Licence</text>
+<text x="83" y="226" font-size="13" fill="var(--color-muted)" text-anchor="middle">case by case</text>
+<rect x="147" y="182" width="113" height="66" rx="5" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="203.5" y="205" font-size="14" fill="var(--color-signal)" text-anchor="middle">US HQ*</text>
+<text x="203.5" y="226" font-size="13" fill="var(--color-paper)" text-anchor="middle">Exclusion</text>
+<rect x="326" y="76" width="256" height="192" rx="5" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="341" y="102" font-size="16" fill="var(--color-accent)" text-anchor="start">2. Computing end-use</text>
+<text x="341" y="128" font-size="13" fill="var(--color-paper)" text-anchor="start">Company or ultimate parent HQ</text>
+<text x="341" y="148" font-size="13" fill="var(--color-paper)" text-anchor="start">in Macau or D:5</text>
+<rect x="343" y="175" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M348 178.5H357" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="343" y="184" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M348 187.5H357" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="343" y="193" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M348 196.5H357" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="382" y="175" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M387 178.5H396" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="382" y="184" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M387 187.5H396" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="382" y="193" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M387 196.5H396" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M366 187H382" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="421" y="187" font-size="15" fill="var(--color-paper)" text-anchor="start">Access &gt;12m</text>
+<text x="421" y="208" font-size="13" fill="var(--color-muted)" text-anchor="start">aggregate TPP</text>
+<text x="341" y="244" font-size="13" fill="var(--color-muted)" text-anchor="start">Specified items + knowledge</text>
+<path d="M273 190H326" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M321 187L326 190L321 193" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="18" y="294" font-size="13" fill="var(--color-muted)" text-anchor="start">* US headquarters of the ultimate consignee/end user or ultimate parent.</text>
+<text x="18" y="315" font-size="13" fill="var(--color-muted)" text-anchor="start">Monthly reports to BIS. The end-use review remains applicable.</text>
+</svg>

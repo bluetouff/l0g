@@ -1,0 +1,120 @@
+---
+title: "Malaisie : Washington suit les clients des puces IA"
+seoTitle: "Malaisie, puces IA et contrôle américain du cloud | l0g"
+description: "En Malaisie, vendre la puissance d’une puce IA à un client distant peut désormais exiger une licence américaine."
+tags: ["Malaisie", "Asie", "semi-conducteurs", "contrôles d’exportation", "data centers", "IA"]
+quickTake: {"fact": "La règle américaine en vigueur le 19 novembre 2026 vise certaines livraisons de puces en Malaisie et certains usages du calcul à distance.", "importance": "Un centre peut devoir obtenir une licence lorsque l’identité de ses clients ou les droits de calcul qu’il leur accorde changent.", "uncertainty": "Les engagements publics de YTL donnent une échelle industrielle. Son exposition dépend de ses équipements et de ses contrats clients, qui restent à documenter."}
+pubDate: "2026-11-19T12:45:15+01:00"
+updatedDate: "2026-11-19T12:45:15+01:00"
+ogTitle: "Malaisie : les licences suivent le calcul"
+ogImage: "/illustrations/news/malaisie-puces-ia-cloud-v1.jpg"
+ogLayout: "immersive"
+draft: false
+---
+
+import MalaysiaComputeFigure from "../../components/MalaysiaComputeFigure.astro";
+
+Une entreprise loue de la puissance de calcul en Malaisie. Elle envoie ses tâches à un serveur et récupère les résultats à des milliers de kilomètres. Dans la salle des machines, rien n’a bougé. Pour le Bureau of Industry and Security (BIS), l’autorité américaine chargée des contrôles à l’exportation, l’identité de cette entreprise peut désormais changer les conditions dans lesquelles le centre achète ou exploite certains équipements. [S01](#source-S01)
+
+À Shenzhen, le 18 novembre, le ministre malaisien de l’Investissement, du Commerce et de l’Industrie, Johari Abdul Ghani, a dit attendre des précisions de Washington sur les licences et les services fournis à des tiers. D’après ses propos rapportés par Bernama, Kuala Lumpur compte informer les **117 projets de centres de données approuvés**, dont une partie est encore en construction, quand les exigences lui auront été officiellement communiquées. [S03](#source-S03)
+
+Le BIS avait annoncé la mesure le 16 novembre. La règle finale intérimaire a été publiée au *Federal Register* le **19 novembre 2026**, date de son entrée en vigueur. Le texte comporte deux contrôles qui peuvent se cumuler. Le premier vise la destination du matériel. Le second suit l’entreprise qui dispose de sa puissance de calcul. [S01](#source-S01) · [S02](#source-S02)
+
+## Le serveur reste en place
+
+Dans un communiqué du 13 novembre, le ministère malaisien du Commerce (MITI) décrit Speedmatrix comme un locataire qui apporte ses propres serveurs et ses propres puces. Cette distinction éclaire le métier d’hébergeur. Il peut fournir la salle, le raccordement électrique et le refroidissement tandis qu’une autre entreprise exploite les machines. Un troisième acteur, le client du calcul, peut se trouver dans un autre pays. [S04](#source-S04)
+
+<MalaysiaComputeFigure lang="fr" kind="circuit" number={1} sourceHref="#source-S04" secondarySourceHref="#source-S01" />
+
+Les *Export Administration Regulations* (EAR), les règles américaines de [contrôle des exportations](/glossaire/controle-export/), couvrent les articles américains et certaines fabrications étrangères. Elles qualifient déjà de transfert intérieur un changement d’utilisateur final ou d’usage final dans le même pays étranger. La règle de novembre applique cette logique au passage vers certains usages du calcul à distance. L’exploitant peut ainsi avoir besoin d’une licence au moment de réaffecter la puissance de serveurs livrés depuis longtemps. [S01](#source-S01) · [S05](#source-S05)
+
+## Deux contrôles pour une livraison
+
+Le contrôle de destination vise l’exportation, la réexportation ou le transfert intérieur de certains équipements de calcul avancé à destination de la Malaisie, de Singapour, de l’Indonésie, de la Thaïlande et du Brésil. Le BIS examine les demandes au cas par cas. La qualité des contrôles à l’exportation dans le pays destinataire et sa coopération avec l’administration américaine figurent parmi les critères. [S01](#source-S01)
+
+Une exclusion vise le destinataire ultime ou l’[utilisateur final](/glossaire/utilisateur-final/) dont le siège, ou celui de sa société mère ultime, est aux États-Unis. Elle impose à l’exportateur, au réexportateur ou à l’auteur du transfert un rapport mensuel. Le contrôle d’usage conserve sa portée propre. [S01](#source-S01)
+
+<MalaysiaComputeFigure lang="fr" kind="controls" number={2} sourceHref="#source-S01" />
+
+Ce deuxième contrôle s’applique aux équipements visés lorsque le fournisseur a connaissance de leur destination vers un centre qui fournit ou doit fournir, directement ou indirectement, un accès à **plus de 12 millions de TPP agrégé** pour le compte d’une entreprise dont le siège ou celui de sa société mère ultime est situé à Macao ou dans un pays du groupe américain D:5, qui comprend la Chine. Les demandes sont examinées au cas par cas. [S01](#source-S01)
+
+Le [TPP agrégé](/glossaire/tpp-agrege/), pour *total processing performance*, additionne la capacité de calcul théorique des circuits couverts selon une méthode réglementaire qui tient compte du débit des opérations et de leur précision en bits. Le seuil vaut pour un centre ou pour plusieurs sites physiquement ou virtuellement reliés de manière à partager leurs ressources. Il se lit donc à l’échelle de la capacité accessible au client, distincte des mégawatts électriques du bâtiment. [S01](#source-S01)
+
+Les autres dispositions des EAR restent applicables, notamment celles du § 744.23 lorsque l’entreprise visée est l’utilisateur distant principal. Le § 744.24 prévoit sa propre exception pour les systèmes exclusivement conçus et utilisés pour la recommandation commerciale, sous réserve de communiquer au BIS les informations exigées. Les exploitants qui fournissaient déjà le service visé avant la publication disposent, au titre de la disposition transitoire, de **90 jours** à compter de l’entrée en vigueur pour obtenir la licence nécessaire à sa poursuite. Pour le détail de la mesure et ses liens avec les règles antérieures, voir [notre analyse du texte annoncé par le BIS](/posts/nvidia-bis-acces-distant-controles-cloud/). [S01](#source-S01)
+
+## Le fournisseur doit regarder au-delà de son acheteur
+
+Le vendeur de puces connaît l’entreprise qui lui passe commande. Le nouveau contrôle lui demande aussi de s’appuyer sur les vérifications du centre auprès de sa clientèle, notamment sur la détention et le contrôle des sociétés concernées. Le refus ou l’incapacité de fournir les informations requises constitue un signal d’alerte. Tant qu’il reste sans réponse, le texte présume que le fournisseur a connaissance de l’usage visé. Le terme américain *knowledge* englobe aussi la conscience d’une forte probabilité. [S01](#source-S01) · [S06](#source-S06)
+
+## Kuala Lumpur surveille les mouvements de puces
+
+Les formalités malaisiennes suivent une autre logique. Selon le MITI, l’entrée des puces IA dans le pays ne demandait pas de permis malaisien au 13 novembre. Les puces américaines avancées qui sortent du territoire, y sont transbordées ou y transitent relèvent depuis juillet 2025 d’un régime de permis. Le ministère dit vérifier, selon le droit malaisien, si des équipements importés par Speedmatrix ont ensuite quitté le pays. [S04](#source-S04) · [S07](#source-S07)
+
+À Singapour, le ministère de l’Intérieur a indiqué le 12 novembre que son enquête sur Megaspeed porte notamment sur des serveurs expédiés vers la Malaisie et sur leur éventuel acheminement ultérieur. Le Commerce américain enquête de son côté depuis 2024 sur de possibles violations des contrôles à l’exportation, selon une déclaration commune avec la Justice. Le ministère de la Justice indique avoir ensuite pris la direction de l’enquête pénale américaine. [S08](#source-S08) · [S10](#source-S10)
+
+## À Kulai, les contrats comptent autant que les racks
+
+Dans son rapport trimestriel daté du 19 novembre, YTL Power décrit son parc de Kulai à **600 MW**, avec une extension prévue à **1 200 MW**. Le groupe indique **298 MW sous contrat** et **13,5 milliards de ringgits investis** dans son activité de centres de données. Il s’agit de quatre mesures différentes. Les mégawatts contractualisés renseignent sur les engagements de capacité. Pour évaluer l’exposition à la règle américaine, il faut en plus connaître les équipements et les clients qui disposent de leur puissance. [S09](#source-S09)
+
+Si une livraison soumise à licence prend du retard, le coût dépendra du contrat. À quelle date le client commence-t-il à payer ? Peut-il reporter l’installation ou résilier ? La capacité libérée peut-elle être louée à un autre client ? Les réponses importent autant que le budget de construction. La demande réelle, la mise en service et le raccordement électrique suivent chacun leur calendrier, comme le montre [notre analyse du lien entre puces, centres de données et réseau électrique](/posts/tsmc-puces-data-centers-risque-electrique/).
+
+Pour suivre le risque en Malaisie, les prochains jalons sont les décisions de licence, les calendriers de mise en service et les précisions de Kuala Lumpur sur la clientèle servie depuis le pays. Le changement est déjà tangible dans la règle : le même équipement, au même endroit, peut changer de statut selon l’entreprise qui s’en sert. [S01](#source-S01) · [S03](#source-S03)
+
+## Périmètre de l’analyse
+
+Les textes et communiqués publics éclairent les règles et les enquêtes. Les inventaires de puces, les contrats clients et les revenus de YTL exposés à la mesure restent inconnus. Les chiffres de Kulai sont les déclarations de YTL pour le trimestre clos le 30 septembre 2026. [S04](#source-S04) · [S08](#source-S08) · [S09](#source-S09)
+
+## Sources
+
+<ol className="sources-list" role="list">
+  <li id="source-S01">
+    <span className="source-meta">S01 · Federal Register · Publication : 2026-11-19 · Consultation : 2026-11-19</span>
+    <a href="https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors" target="_blank" rel="noopener noreferrer">Règle finale intérimaire, 91 FR 74970–74999</a>
+    <details><summary>Passages et périmètre</summary><p>La rubrique DATES donne le 19 novembre comme date d’effet. Le § 742.6 couvre le contrôle de destination et son exclusion liée au siège américain. Le § 744.24 précise le contrôle d’usage et le régime transitoire. Le préambule (III.B) décrit le contrôle distinct du § 744.23. Le § 772.1 définit le TPP agrégé et les centres reliés. L’annexe à la partie 774 donne les notes techniques de calcul.</p></details>
+  </li>
+  <li id="source-S02">
+    <span className="source-meta">S02 · Bureau of Industry and Security · Publication : 2026-11-16 · Consultation : 2026-11-19</span>
+    <a href="https://www.bis.gov/press-release/bis-issues-rule-addressing-remote-access-american-super-intelligence-technology" target="_blank" rel="noopener noreferrer">Annonce de la règle sur l’accès distant</a>
+    <details><summary>Passages et périmètre</summary><p>Présentation de l’objectif du BIS et du texte annoncé avant publication réglementaire.</p></details>
+  </li>
+  <li id="source-S03">
+    <span className="source-meta">S03 · Bernama · Publication : 2026-11-18 · Consultation : 2026-11-19</span>
+    <a href="https://web27.bernama.com/johor/news-en.php?id=2636201" target="_blank" rel="noopener noreferrer">Déclarations de Johari Abdul Ghani à Shenzhen</a>
+    <details><summary>Passages et périmètre</summary><p>Le ministre cite 117 projets approuvés et dit attendre des précisions sur les licences et les services fournis à des tiers. Le chiffre décrit le portefeuille de projets approuvés.</p></details>
+  </li>
+  <li id="source-S04">
+    <span className="source-meta">S04 · MITI · Publication : 2026-11-13 · Consultation : 2026-11-19</span>
+    <a href="https://www.miti.gov.my/miti/resources/Speech/MEDIA_STATEMENT_13112026.pdf" target="_blank" rel="noopener noreferrer">Communiqué sur Speedmatrix et les permis malaisiens</a>
+    <details><summary>Passages et périmètre</summary><p>Pages 1 et 2. Le ministère décrit le statut de locataire de Speedmatrix, distingue importation et sortie ou transit, et fait état de vérifications en cours.</p></details>
+  </li>
+  <li id="source-S05">
+    <span className="source-meta">S05 · eCFR · Date de publication non indiquée · Consultation : 2026-11-19</span>
+    <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-734" target="_blank" rel="noopener noreferrer">Champ des EAR et définition du transfert intérieur</a>
+    <details><summary>Passages et périmètre</summary><p>Les § 734.3 et 734.16 définissent le champ des articles soumis aux EAR et le changement d’usage ou d’utilisateur à l’intérieur d’un même pays étranger.</p></details>
+  </li>
+  <li id="source-S06">
+    <span className="source-meta">S06 · eCFR · Date de publication non indiquée · Consultation : 2026-11-19</span>
+    <a href="https://www.ecfr.gov/current/title-15/subtitle-B/chapter-VII/subchapter-C/part-772/section-772.1" target="_blank" rel="noopener noreferrer">Définition de la connaissance dans les EAR</a>
+    <details><summary>Passages et périmètre</summary><p>L’entrée Knowledge comprend la conscience d’une forte probabilité et le fait d’écarter délibérément les éléments portés à sa connaissance.</p></details>
+  </li>
+  <li id="source-S07">
+    <span className="source-meta">S07 · MITI · Publication : 2025-07-14 · Consultation : 2026-11-19</span>
+    <a href="https://www.miti.gov.my/miti/resources/STA%20Folder/PDF%20file/%5BFINAL%5D_updated_8_Dec_2025_Directive_Unlisted_Category_AI_Chips_as_of_14_July_2025.pdf" target="_blank" rel="noopener noreferrer">Directive 1/2025 sur les puces avancées</a>
+    <details><summary>Passages et périmètre</summary><p>Sections 3 à 5 et annexe, fichier révisé en décembre 2025. La directive détaille la classification et les formalités selon le mouvement et l’usage.</p></details>
+  </li>
+  <li id="source-S08">
+    <span className="source-meta">S08 · Singapore Ministry of Home Affairs · Publication : 2026-11-12 · Consultation : 2026-11-19</span>
+    <a href="https://www.mha.gov.sg/media-room/newsroom/singapore-investigations-into-alice-huang-huang-le-and-megaspeed-international-pte-ltd/" target="_blank" rel="noopener noreferrer">Enquête singapourienne sur Megaspeed</a>
+    <details><summary>Passages et périmètre</summary><p>Paragraphes 5 à 9. Enquête sur des serveurs expédiés vers la Malaisie et sur un possible acheminement ultérieur.</p></details>
+  </li>
+  <li id="source-S09">
+    <span className="source-meta">S09 · YTL Power International · Publication : 2026-11-19 · Consultation : 2026-11-19</span>
+    <a href="https://www.ytlpowerinternational.com/wp-content/uploads/ytles/sites/2/files/quarterly-report/YTLPIQ1FY2027.pdf" target="_blank" rel="noopener noreferrer">Rapport pour le trimestre clos le 30 septembre 2026</a>
+    <details><summary>Passages et périmètre</summary><p>Page 17 imprimée. YTL distingue la capacité annoncée du parc, son extension prévue, les mégawatts sous contrat et les investissements réalisés dans son activité de data centers.</p></details>
+  </li>
+  <li id="source-S10">
+    <span className="source-meta">S10 · US Department of Justice · Publication : 2026-11-17 · Mise à jour : 2026-11-18 · Consultation : 2026-11-19</span>
+    <a href="https://www.justice.gov/opa/pr/joint-statement-department-commerce-and-department-justice-megaspeed-investigation" target="_blank" rel="noopener noreferrer">Point d’étape du Commerce et de la Justice sur Megaspeed</a>
+    <details><summary>Passages et périmètre</summary><p>Les deux ministères américains indiquent que le Commerce a ouvert une enquête en 2024 sur de possibles violations des contrôles d’exportation.</p></details>
+  </li>
+</ol>

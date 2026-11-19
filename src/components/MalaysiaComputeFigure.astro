@@ -1,0 +1,76 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'circuit' | 'controls';
+  sourceHref: string;
+  secondarySourceHref?: string;
+  number?: number;
+  id?: string;
+}
+const { lang, kind, sourceHref, secondarySourceHref, number, id } = Astro.props;
+const copy = {
+  fr: {
+    circuit: {
+      caption: 'Un locataire peut apporter ses serveurs dans un centre malaisien, puis fournir du calcul à distance. Le matériel reste sur place tandis que le travail informatique et ses résultats circulent entre l’opérateur et son client.',
+      source: 'MITI, 13 novembre 2026',
+      credit: 'Schéma de principe. L’hébergeur fournit les locaux, l’énergie et le refroidissement. Le trait rose suit les justificatifs sur le client et l’usage, transmis au fournisseur.',
+    },
+    controls: {
+      caption: 'Règle américaine en vigueur le 19 novembre 2026 : les contrôles de destination et d’usage du calcul peuvent se cumuler. La dispense liée au siège américain concerne le premier examen.',
+      source: 'Federal Register, 19 novembre 2026',
+      credit: 'Carte partielle des §§ 742.6, 743.10 et 744.24. Le siège américain concerne le destinataire final, l’utilisateur final ou sa société mère ultime, avec rapport mensuel. Le contrôle d’usage combine les matériels visés, la connaissance et un accès supérieur à 12 millions de TPP agrégé fourni à une entreprise concernée ou à son bénéfice. Le texte précise les sites reliés, les exceptions et les autres contrôles.',
+    },
+  },
+  en: {
+    circuit: {
+      caption: 'A tenant can bring its own servers into a Malaysian data centre and sell remote compute. The hardware stays on site while workloads and results move between the operator and its customer.',
+      source: 'MITI, 13 November 2026',
+      credit: 'General mechanism. The host provides premises, power and cooling. The pink line follows supporting information on the customer and end-use back to the supplier.',
+    },
+    controls: {
+      caption: 'US rule effective on 19 November 2026: destination and computing end-use controls can apply to the same shipment. The US-headquarters exclusion concerns the first review.',
+      source: 'Federal Register, 19 November 2026',
+      credit: 'Partial map of sections 742.6, 743.10 and 744.24. US headquarters refers to the ultimate consignee, end user or ultimate parent, with monthly reporting. The end-use control combines specified items, knowledge and access exceeding 12 million aggregate TPP provided to or for a covered company. The text defines linked sites, exclusions and other controls.',
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown Malaysia figure language or kind.');
+const expectedSource = kind === 'circuit' ? '#source-S04' : '#source-S01';
+if (sourceHref !== expectedSource) throw new TypeError('Invalid Malaysia figure source link.');
+if (secondarySourceHref !== undefined && (kind !== 'circuit' || secondarySourceHref !== '#source-S01')) {
+  throw new TypeError('Invalid secondary Malaysia figure source link.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/malaysia-compute-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/malaysia-compute-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/malaysia-compute-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing Malaysia figure variant.');
+const figureId = id ?? (number === undefined ? `malaysia-${kind}-${lang}` : `figure-${number}`);
+const prefix = `my-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="malaysia-compute-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{item.source}</a>{secondarySourceHref && <> · <a href={secondarySourceHref}>BIS, {lang === 'fr' ? '19 novembre 2026' : '19 November 2026'}</a></>}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .malaysia-compute-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .malaysia-compute-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .malaysia-compute-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

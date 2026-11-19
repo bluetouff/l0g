@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" viewBox="0 0 600 310" role="img" aria-labelledby="my-circuit-en-d-title my-circuit-en-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="my-circuit-en-d-title">Hardware stays, compute moves</title>
+<desc id="my-circuit-en-d-desc">A supplier delivers equipment to a tenant at a Malaysian data centre. The host provides premises, power and cooling. A remote customer sends a workload and receives results. Supporting information flows back to the supplier.</desc>
+<text x="18" y="27" font-size="17.5" fill="var(--color-paper)" text-anchor="start">Hardware stays, compute moves</text>
+<text x="18" y="49" font-size="13" fill="var(--color-muted)" text-anchor="start">Delivery, hosting and compute service</text>
+<rect x="18" y="102" width="123" height="90" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="68" y="116" width="20" height="20" rx="2" fill="var(--color-surface)" stroke="var(--color-muted)" stroke-width="1"/>
+<path d="M65 120H68" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M88 120H91" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M72 113L72 116" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M72 136L72 139" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 126H68" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M88 126H91" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78 113L78 116" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M78 136L78 139" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M65 132H68" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M88 132H91" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M84 113L84 116" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M84 136L84 139" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="79.5" y="164" font-size="14" fill="var(--color-paper)" text-anchor="middle">Supplier</text>
+<text x="79.5" y="183" font-size="13" fill="var(--color-muted)" text-anchor="middle">Chips, servers</text>
+<rect x="214" y="77" width="190" height="166" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="309" y="101" font-size="14" fill="var(--color-paper)" text-anchor="middle">Malaysian site</text>
+<rect x="228" y="116" width="162" height="77" rx="5" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<rect x="242" y="127" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<path d="M247 130.5H256" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="242" y="136" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<path d="M247 139.5H256" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="242" y="145" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<path d="M247 148.5H256" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="279" y="143" font-size="14" fill="var(--color-paper)" text-anchor="start">Tenant</text>
+<text x="242" y="177" font-size="13" fill="var(--color-muted)" text-anchor="start">Its own equipment</text>
+<text x="309" y="216" font-size="13" fill="var(--color-muted)" text-anchor="middle">Host: premises,</text>
+<text x="309" y="234" font-size="13" fill="var(--color-muted)" text-anchor="middle">power and cooling</text>
+<rect x="472" y="102" width="110" height="90" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="515" y="116" width="23" height="16" rx="2" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1"/>
+<path d="M526.5 132L526.5 138" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M520 138H533" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="527" y="164" font-size="14" fill="var(--color-paper)" text-anchor="middle">Customer</text>
+<text x="527" y="183" font-size="13" fill="var(--color-muted)" text-anchor="middle">remote</text>
+<path d="M141 137H214" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M209 134L214 137L209 140" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="177" y="125" font-size="13" fill="var(--color-signal)" text-anchor="middle">Hardware</text>
+<path d="M472 124H404" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M409 121L404 124L409 127" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="438" y="112" font-size="13" fill="var(--color-amber)" text-anchor="middle">Workload</text>
+<path d="M404 169H472" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M467 166L472 169L467 172" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="438" y="190" font-size="13" fill="var(--color-signal)" text-anchor="middle">Results</text>
+<path d="M309 243V271H79V201" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+<path d="M76 206L79 201L82 206" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="309" y="295" font-size="13" fill="var(--color-accent)" text-anchor="middle">Supporting information on customer and use</text>
+</svg>

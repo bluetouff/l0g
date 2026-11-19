@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" viewBox="0 0 320 448" role="img" aria-labelledby="my-controls-en-m-title my-controls-en-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="my-controls-en-m-title">Two reviews for the same equipment</title>
+<desc id="my-controls-en-m-desc">Partial map of the US rule published on 19 November 2026. Destination controls for five countries and controls on specific computing end-uses have separate tests. The US-headquarters exclusion, with monthly reporting, leaves the end-use review applicable.</desc>
+<text x="14" y="25" font-size="17" fill="var(--color-paper)" text-anchor="start">Destination and end-use</text>
+<text x="14" y="47" font-size="14" fill="var(--color-muted)" text-anchor="start">Two separate reviews</text>
+<rect x="14" y="65" width="292" height="162" rx="5" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="28" y="91" font-size="16" fill="var(--color-amber)" text-anchor="start">1. Destination</text>
+<text x="28" y="114" font-size="14" fill="var(--color-paper)" text-anchor="start">Malaysia · Singapore · Indonesia</text>
+<text x="28" y="135" font-size="14" fill="var(--color-paper)" text-anchor="start">Thailand · Brazil</text>
+<path d="M160 144V153H84V164" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 153H234V164" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="28" y="164" width="118" height="49" rx="5" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="87" y="185" font-size="15" fill="var(--color-paper)" text-anchor="middle">Licence</text>
+<text x="87" y="204" font-size="14" fill="var(--color-muted)" text-anchor="middle">case by case</text>
+<rect x="158" y="164" width="134" height="49" rx="5" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="225" y="185" font-size="15" fill="var(--color-signal)" text-anchor="middle">US HQ*</text>
+<text x="225" y="204" font-size="14" fill="var(--color-paper)" text-anchor="middle">Exclusion</text>
+<path d="M160 227V255" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M157 250L160 255L163 250" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="14" y="255" width="292" height="153" rx="5" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="28" y="281" font-size="16" fill="var(--color-accent)" text-anchor="start">2. Computing end-use</text>
+<text x="28" y="306" font-size="14" fill="var(--color-paper)" text-anchor="start">Company or ultimate parent HQ</text>
+<text x="28" y="327" font-size="14" fill="var(--color-paper)" text-anchor="start">in Macau or D:5</text>
+<rect x="29" y="349" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 352.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="29" y="358" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 361.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="29" y="367" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 370.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="349" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 352.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="358" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 361.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="367" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 370.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52 361H65" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="103" y="360" font-size="15" fill="var(--color-paper)" text-anchor="start">Access &gt;12m TPP</text>
+<text x="103" y="383" font-size="14" fill="var(--color-muted)" text-anchor="start">aggregate</text>
+<text x="14" y="434" font-size="14" fill="var(--color-muted)" text-anchor="start">* US HQ and monthly reports to BIS</text>
+</svg>

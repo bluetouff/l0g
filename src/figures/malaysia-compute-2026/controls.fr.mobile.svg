@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="fr" viewBox="0 0 320 448" role="img" aria-labelledby="my-controls-fr-m-title my-controls-fr-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="my-controls-fr-m-title">Deux examens sur le même équipement</title>
+<desc id="my-controls-fr-m-desc">Carte partielle de la règle américaine publiée le 19 novembre 2026. Le contrôle de destination vers cinq pays et le contrôle de certains usages du calcul ont des critères distincts. La dispense liée au siège américain, soumise à un rapport mensuel, ne dispense pas d’examiner l’usage final.</desc>
+<text x="14" y="25" font-size="17" fill="var(--color-paper)" text-anchor="start">Destination et usage</text>
+<text x="14" y="47" font-size="14" fill="var(--color-muted)" text-anchor="start">Deux examens distincts</text>
+<rect x="14" y="65" width="292" height="162" rx="5" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="28" y="91" font-size="16" fill="var(--color-amber)" text-anchor="start">1. Destination</text>
+<text x="28" y="114" font-size="14" fill="var(--color-paper)" text-anchor="start">Malaisie · Singapour · Indonésie</text>
+<text x="28" y="135" font-size="14" fill="var(--color-paper)" text-anchor="start">Thaïlande · Brésil</text>
+<path d="M160 144V153H84V164" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M160 153H234V164" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="28" y="164" width="118" height="49" rx="5" fill="var(--color-surface-2)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="87" y="185" font-size="15" fill="var(--color-paper)" text-anchor="middle">Licence</text>
+<text x="87" y="204" font-size="14" fill="var(--color-muted)" text-anchor="middle">au cas par cas</text>
+<rect x="158" y="164" width="134" height="49" rx="5" fill="var(--color-surface-2)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="225" y="185" font-size="15" fill="var(--color-signal)" text-anchor="middle">Siège US*</text>
+<text x="225" y="204" font-size="14" fill="var(--color-paper)" text-anchor="middle">Dispense</text>
+<path d="M160 227V255" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M157 250L160 255L163 250" fill="none" stroke="var(--color-muted)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="14" y="255" width="292" height="153" rx="5" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="28" y="281" font-size="16" fill="var(--color-accent)" text-anchor="start">2. Usage du calcul</text>
+<text x="28" y="306" font-size="14" fill="var(--color-paper)" text-anchor="start">Siège ou mère ultime de l’entreprise</text>
+<text x="28" y="327" font-size="14" fill="var(--color-paper)" text-anchor="start">à Macao ou dans D:5</text>
+<rect x="29" y="349" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 352.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="29" y="358" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 361.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="29" y="367" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M34 370.5H43" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="349" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 352.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="358" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 361.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="65" y="367" width="23" height="7" rx="1" fill="var(--color-surface-2)" stroke="var(--color-accent)" stroke-width="1"/>
+<path d="M70 370.5H79" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M52 361H65" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="103" y="360" font-size="15" fill="var(--color-paper)" text-anchor="start">Accès &gt;12 M TPP</text>
+<text x="103" y="383" font-size="14" fill="var(--color-muted)" text-anchor="start">agrégé</text>
+<text x="14" y="434" font-size="14" fill="var(--color-muted)" text-anchor="start">* Siège US et rapport mensuel au BIS</text>
+</svg>
