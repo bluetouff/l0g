@@ -1,0 +1,77 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'withdrawal' | 'scenarios';
+  sourceHref: string;
+  secondarySourceHref?: string;
+  number?: number;
+  id?: string;
+}
+const { lang, kind, sourceHref, secondarySourceHref, number, id } = Astro.props;
+const copy = {
+  fr: {
+    withdrawal: {
+      caption: 'Dans de nombreux stockages, la baisse de pression réduit la capacité de soutirage. Le volume encore présent et le débit quotidien disponible répondent à des contraintes différentes.',
+      source: 'AIE, Global Gas Security Review, 3 novembre 2026',
+      secondary: 'ENTSOG, § 3.7, p. 38',
+      credit: 'Schéma qualitatif, sans échelle de débit. L’AIE signale un ralentissement du soutirage sous 30 % de capacité utile. La relation dépend de la géologie et des équipements de chaque site.',
+    },
+    scenarios: {
+      caption: 'Un hiver froid avec du GNL tendu laisserait 11 % en stock et exigerait une réponse de demande de 12 % dans cette sélection des scénarios ENTSOG.',
+      source: 'ENTSOG, Winter Supply Outlook, 8 octobre 2026, tableau 1, p. 5',
+      secondary: 'hypothèses du modèle',
+      credit: 'Stocks de l’UE au 31 mars 2027, en pourcentage de capacité utile. La réponse porte sur la demande du périmètre Europe d’ENTSOG : réduction nécessaire ou besoin potentiellement non couvert. Le modèle préserve les réserves stratégiques correspondant au reliquat de 11 %. Gaz russe par gazoduc minimisé dans les cinq cas. Simulation d’octobre, sans recalibrage sur les stocks observés en novembre.',
+    },
+  },
+  en: {
+    withdrawal: {
+      caption: 'In many storage facilities, lower pressure reduces withdrawal capacity. Remaining inventory and available daily flow face different constraints.',
+      source: 'IEA, Global Gas Security Review, 3 November 2026',
+      secondary: 'ENTSOG, section 3.7, p. 38',
+      credit: 'Qualitative diagram with no numerical flow scale. The IEA flags slower withdrawals below 30% of working capacity. The relationship depends on each site’s geology and equipment.',
+    },
+    scenarios: {
+      caption: 'A cold winter with tight LNG would leave storage at 11% and require a 12% demand response in this selection of ENTSOG scenarios.',
+      source: 'ENTSOG, Winter Supply Outlook, 8 October 2026, Table 1, p. 5',
+      secondary: 'model assumptions',
+      credit: 'EU storage at 31 March 2027, as a share of working capacity. Response concerns demand in ENTSOG’s Europe model area: required reductions or potentially unmet demand. The model preserves strategic reserves corresponding to the 11% remainder. Russian pipeline supplies are minimised in all five cases. The October model uses its own initial assumptions, without recalibration to observed November inventory.',
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown gas winter outlook figure language or kind.');
+const expected = kind === 'withdrawal' ? ['#source-S01', '#source-S02'] : ['#source-S02'];
+if (sourceHref !== expected[0] || (secondarySourceHref !== undefined && secondarySourceHref !== expected[1])) throw new TypeError('Invalid gas winter outlook source anchor.');
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/gas-winter-outlook-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/gas-winter-outlook-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/gas-winter-outlook-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing gas winter outlook figure variant.');
+const figureId = id ?? (number === undefined ? `gas-winter-outlook-${kind}-${lang}` : `figure-${number}`);
+const prefix = `gaswo-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="gas-winter-outlook-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}<a href={sourceHref}>{item.source}</a>{secondarySourceHref && <> · <a href={secondarySourceHref}>{item.secondary}</a></>}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .gas-winter-outlook-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .gas-winter-outlook-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .gas-winter-outlook-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

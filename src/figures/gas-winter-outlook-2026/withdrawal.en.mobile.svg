@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" viewBox="0 0 320 330" role="img" aria-labelledby="gaswo-withdrawal-en-m-title gaswo-withdrawal-en-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="gaswo-withdrawal-en-m-title">Inventory and withdrawal capacity</title>
+<desc id="gaswo-withdrawal-en-m-desc">Qualitative comparison of higher and lower storage inventory. In many facilities, lower pressure reduces available withdrawal capacity. The arrows represent no measured flow or ratio. The IEA highlights slower withdrawal below 30% of working capacity. The relationship depends on the facility.</desc>
+<metadata>{&quot;metric&quot;: &quot;Qualitative withdrawal capability, not measured flow&quot;, &quot;unit&quot;: &quot;No numeric flow scale&quot;, &quot;publication_date&quot;: &quot;2026-11-03&quot;, &quot;source&quot;: &quot;https://www.iea.org/reports/global-gas-security-review-2026/executive-summary&quot;, &quot;secondary_source&quot;: &quot;https://www.entsog.eu/sites/default/files/2026-10/SO0072-26_Winter%20Supply%20Outlook%202026-27.pdf&quot;, &quot;secondary_locator&quot;: &quot;Section 3.7, page 38&quot;, &quot;method&quot;: &quot;Adapted from supplied gas-03-debit composition; no physical curve or numerical flow ratio implied.&quot;}</metadata>
+<text x="12" y="25" font-size="16" fill="var(--color-paper)" text-anchor="start">Inventory and withdrawal capacity</text>
+<text x="12" y="47" font-size="14" fill="var(--color-muted)" text-anchor="start">Qualitative diagram · facility-dependent</text>
+<rect x="8" y="73" width="148" height="194" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="82.0" y="96" font-size="14" fill="var(--color-signal)" text-anchor="middle">Higher stock</text>
+<path d="M16 123 Q52.4 118 89.4 123 T148 123" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 146 Q52.4 141 89.4 146 T148 146" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 169 Q52.4 164 89.4 169 T148 169" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 192 Q52.4 187 89.4 192 T148 192" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M16 215 Q52.4 210 89.4 215 T148 215" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="26" y="119" width="56" height="111" rx="16" fill="var(--color-ink)" stroke="var(--color-muted)" stroke-width="1"/>
+<rect x="31" y="153" width="46" height="72" rx="7" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" opacity="0.78"/>
+<path d="M54.0 103V119" fill="none" stroke="var(--color-signal)" stroke-width="1.3" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="54.0" cy="103" r="4.8" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1.2"/>
+<path d="M82 165H145" fill="none" stroke="var(--color-signal)" stroke-width="3.0" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M138 160L145 165L138 170" fill="none" stroke="var(--color-signal)" stroke-width="1.25" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="113.5" y="150" font-size="14" fill="var(--color-muted)" text-anchor="middle">Flow</text>
+<text x="82.0" y="251" font-size="14" fill="var(--color-paper)" text-anchor="middle">Higher capability</text>
+<rect x="164" y="73" width="148" height="194" rx="10" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="238.0" y="96" font-size="14" fill="var(--color-amber)" text-anchor="middle">Lower stock</text>
+<path d="M172 123 Q208.4 118 245.4 123 T304 123" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 146 Q208.4 141 245.4 146 T304 146" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 169 Q208.4 164 245.4 169 T304 169" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 192 Q208.4 187 245.4 192 T304 192" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M172 215 Q208.4 210 245.4 215 T304 215" fill="none" stroke="var(--color-line-strong)" stroke-width="0.65" opacity="0.5" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="182" y="119" width="56" height="111" rx="16" fill="var(--color-ink)" stroke="var(--color-muted)" stroke-width="1"/>
+<rect x="187" y="205" width="46" height="20" rx="7" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1" opacity="0.78"/>
+<path d="M210.0 103V119" fill="none" stroke="var(--color-amber)" stroke-width="1.3" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="210.0" cy="103" r="4.8" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="1.2"/>
+<path d="M238 165H301" fill="none" stroke="var(--color-amber)" stroke-width="1.25" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M294 160L301 165L294 170" fill="none" stroke="var(--color-amber)" stroke-width="1.25" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="269.5" y="150" font-size="14" fill="var(--color-muted)" text-anchor="middle">Flow</text>
+<text x="238.0" y="251" font-size="14" fill="var(--color-paper)" text-anchor="middle">Lower capability</text>
+<text x="160" y="294" font-size="14" fill="var(--color-amber)" text-anchor="middle">Below 30%: increased caution</text>
+<text x="160" y="316" font-size="14" fill="var(--color-muted)" text-anchor="middle">IEA reference, varies by facility</text>
+</svg>

@@ -1436,9 +1436,13 @@ for (const [slug, source, related] of [
   assert.equal(en.robots, 'noindex,follow');
   assert.equal(fr.sectionTitle, 'Énergie & géopolitique');
   assert.equal(en.sectionTitle, 'Energy & geopolitics');
-  for (const entry of [fr, en]) {
+  for (const [entry, winterAnalysis] of [
+    [fr, '/posts/gaz-europe-hiver-2026-2027/'],
+    [en, '/en/analysis/europe-gas-winter-2026-2027/'],
+  ]) {
+    const articles = slug === 'gaz-coussin' ? [entry.guide] : [entry.guide, winterAnalysis];
     assert.deepEqual(entry.atlas.sources.map(item => item.href), [source]);
-    assert.deepEqual(entry.atlas.articles.map(item => item.href), [entry.guide]);
+    assert.deepEqual(entry.atlas.articles.map(item => item.href), articles);
     assert.deepEqual(entry.atlas.related, related);
     for (const neighbor of related) {
       assert(glossaryEntries.some(candidate => candidate.slug === neighbor));

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="fr" viewBox="0 0 320 386" role="img" aria-labelledby="gaswo-scenarios-fr-m-title gaswo-scenarios-fr-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="gaswo-scenarios-fr-m-title">Les scénarios ENTSOG pour fin mars</title>
+<desc id="gaswo-scenarios-fr-m-desc">Cinq scénarios publiés le 8 octobre 2026, avec gaz russe par gazoduc minimisé. Stock au 31 mars 2027 et réponse de demande en pourcentage : hiver de référence, GNL optimal 29 et 0, GNL tendu 13 et 0. Hiver froid, GNL abondant 20 et 0, GNL optimal 11 et 7, GNL tendu 11 et 12. La réponse représente une réduction de demande nécessaire ou un besoin potentiellement non couvert dans le modèle.</desc>
+<metadata>{&quot;metric&quot;: [&quot;End-March 2027 EU working gas storage, share of capacity&quot;, &quot;Required demand response or potentially unmet demand in modelled Europe&quot;], &quot;stock_scope&quot;: &quot;EU&quot;, &quot;response_scope&quot;: &quot;EU plus UK, Switzerland, North Macedonia, Serbia, Bosnia and Herzegovina, Ukraine and Moldova&quot;, &quot;unit&quot;: &quot;Percent, separate 0–40 and 0–15 axes&quot;, &quot;publication_date&quot;: &quot;2026-10-08&quot;, &quot;stock_date&quot;: &quot;2027-03-31&quot;, &quot;source&quot;: &quot;https://www.entsog.eu/sites/default/files/2026-10/SO0072-26_Winter%20Supply%20Outlook%202026-27.pdf&quot;, &quot;locator&quot;: &quot;Table 1, page 5; geographical scope in section 2.2, page 13&quot;, &quot;russian_pipeline_supply&quot;: &quot;Minimised&quot;, &quot;rows&quot;: [[&quot;Reference&quot;, &quot;Optimal&quot;, 29, 0], [&quot;Reference&quot;, &quot;Tight&quot;, 13, 0], [&quot;Cold&quot;, &quot;High&quot;, 20, 0], [&quot;Cold&quot;, &quot;Optimal&quot;, 11, 7], [&quot;Cold&quot;, &quot;Tight&quot;, 11, 12]], &quot;method&quot;: &quot;Five selected scenarios from Table 1; October model, not recalibrated to observed November storage.&quot;}</metadata>
+<text x="12" y="25" font-size="16" fill="var(--color-paper)" text-anchor="start">Scénarios ENTSOG · mars 2027</text>
+<text x="12" y="47" font-size="14" fill="var(--color-muted)" text-anchor="start">Gaz russe par gazoduc minimisé</text>
+<text x="12" y="80" font-size="14" fill="var(--color-muted)" text-anchor="start">Hiver / GNL</text>
+<text x="112" y="80" font-size="14" fill="var(--color-muted)" text-anchor="start">Stock UE %</text>
+<text x="227" y="80" font-size="14" fill="var(--color-muted)" text-anchor="start">Rép. Eur. %</text>
+<text x="112" y="101" font-size="14" fill="var(--color-muted)" text-anchor="start">0</text>
+<text x="180" y="101" font-size="14" fill="var(--color-muted)" text-anchor="end">40</text>
+<text x="235" y="101" font-size="14" fill="var(--color-muted)" text-anchor="start">0</text>
+<text x="270" y="101" font-size="14" fill="var(--color-muted)" text-anchor="end">15</text>
+<rect x="8" y="110" width="304" height="50" rx="5" fill="var(--color-surface)" stroke="var(--color-surface)" stroke-width="1"/>
+<text x="12" y="129" font-size="14" fill="var(--color-paper)" text-anchor="start">Référence</text>
+<text x="12" y="149" font-size="14" fill="var(--color-muted)" text-anchor="start">optimal</text>
+<rect x="112" y="124" width="68" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="112" y="124" width="49.3" height="12" rx="3" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="218" y="136" font-size="14" fill="var(--color-signal)" text-anchor="end">29 %</text>
+<rect x="235" y="124" width="35" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<text x="309" y="136" font-size="14" fill="var(--color-muted)" text-anchor="end">0 %</text>
+<rect x="8" y="166" width="304" height="50" rx="5" fill="var(--color-surface)" stroke="var(--color-surface)" stroke-width="1"/>
+<text x="12" y="185" font-size="14" fill="var(--color-paper)" text-anchor="start">Référence</text>
+<text x="12" y="205" font-size="14" fill="var(--color-muted)" text-anchor="start">tendu</text>
+<rect x="112" y="180" width="68" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="112" y="180" width="22.1" height="12" rx="3" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="218" y="192" font-size="14" fill="var(--color-amber)" text-anchor="end">13 %</text>
+<rect x="235" y="180" width="35" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<text x="309" y="192" font-size="14" fill="var(--color-muted)" text-anchor="end">0 %</text>
+<rect x="8" y="222" width="304" height="50" rx="5" fill="var(--color-surface)" stroke="var(--color-surface)" stroke-width="1"/>
+<text x="12" y="241" font-size="14" fill="var(--color-paper)" text-anchor="start">Froid</text>
+<text x="12" y="261" font-size="14" fill="var(--color-muted)" text-anchor="start">abondant</text>
+<rect x="112" y="236" width="68" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="112" y="236" width="34.0" height="12" rx="3" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="218" y="248" font-size="14" fill="var(--color-signal)" text-anchor="end">20 %</text>
+<rect x="235" y="236" width="35" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<text x="309" y="248" font-size="14" fill="var(--color-muted)" text-anchor="end">0 %</text>
+<rect x="8" y="278" width="304" height="50" rx="5" fill="var(--color-surface)" stroke="var(--color-surface)" stroke-width="1"/>
+<text x="12" y="297" font-size="14" fill="var(--color-paper)" text-anchor="start">Froid</text>
+<text x="12" y="317" font-size="14" fill="var(--color-muted)" text-anchor="start">optimal</text>
+<rect x="112" y="292" width="68" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="112" y="292" width="18.7" height="12" rx="3" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="218" y="304" font-size="14" fill="var(--color-amber)" text-anchor="end">11 %</text>
+<rect x="235" y="292" width="35" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="235" y="292" width="16.3333" height="12" rx="3" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="309" y="304" font-size="14" fill="var(--color-accent)" text-anchor="end">7 %</text>
+<rect x="8" y="334" width="304" height="50" rx="5" fill="var(--color-surface)" stroke="var(--color-surface)" stroke-width="1"/>
+<text x="12" y="353" font-size="14" fill="var(--color-paper)" text-anchor="start">Froid</text>
+<text x="12" y="373" font-size="14" fill="var(--color-muted)" text-anchor="start">tendu</text>
+<rect x="112" y="348" width="68" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="112" y="348" width="18.7" height="12" rx="3" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1"/>
+<text x="218" y="360" font-size="14" fill="var(--color-amber)" text-anchor="end">11 %</text>
+<rect x="235" y="348" width="35" height="12" rx="3" fill="var(--color-surface-2)" stroke="var(--color-surface-2)" stroke-width="1"/>
+<rect x="235" y="348" width="28.0" height="12" rx="3" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="309" y="360" font-size="14" fill="var(--color-accent)" text-anchor="end">12 %</text>
+</svg>
