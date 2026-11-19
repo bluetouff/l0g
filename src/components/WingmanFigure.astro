@@ -1,0 +1,126 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'correspondance' | 'transition' | 'signalement';
+  sourceHref: string;
+  number?: number;
+  id?: string;
+  caption?: string;
+}
+
+const { lang, kind, sourceHref, number, id, caption } = Astro.props;
+const copy = {
+  fr: {
+    correspondance: {
+      caption: 'MKB connaît le client final. Deutsche Bank tient le compte de son partenaire et contrôle les messages qu’elle traite. Les demandes de justificatifs et les réponses circulent entre les deux banques.',
+      source: 'BRI / FSI : correspondance bancaire',
+      credit: 'Schéma de principe, sans reconstitution d’un paiement particulier. Les flèches montrent le paiement et les échanges d’information, sans échelle monétaire.',
+    },
+    transition: {
+      caption: 'Du 16 avril au 6 octobre 2020, 173 jours calendaires séparent la décision interne de sortie et le retrait de l’accès à la compensation. Le 5 juin, Deutsche Bank invoque un risque de liquidité chez MKB.',
+      source: 'Direkt36, 18 novembre 2026',
+      credit: 'Axe proportionnel calculé à partir des dates publiées. Le total des flux suspects de cet intervalle et le détail des restrictions restent inconnus.',
+    },
+    signalement: {
+      caption: 'Allemagne, droit consulté le 19 novembre 2026 : le §46 encadre l’attente après déclaration à la FIU. Un accord de l’autorité compétente ou l’écoulement du troisième jour ouvré après l’envoi, sans interdiction, permet l’exécution sous réserve des autres obligations. Le samedi est exclu du décompte.',
+      source: 'GwG §§43 et 46 ; vigilance : §10',
+      credit: 'Le §46(2) prévoit des exceptions à l’attente, avec déclaration sans délai après exécution. La vigilance sur la relation se poursuit séparément ; le §10(9) encadre sa fin lorsque les obligations visées ne peuvent être remplies.',
+    },
+  },
+  en: {
+    correspondance: {
+      caption: 'MKB knows the end customer. Deutsche Bank holds its bank client’s account and monitors the payment messages it handles. Requests for supporting information and replies pass between the two institutions.',
+      source: 'BIS / FSI: correspondent banking',
+      credit: 'General mechanism, without reconstructing an individual payment. Arrows show payment and information flows, without a monetary scale.',
+    },
+    transition: {
+      caption: 'From 16 April to 6 October 2020, 173 calendar days separate the internal exit decision from withdrawal of clearing access. On 5 June, Deutsche Bank cites a risk to MKB’s liquidity.',
+      source: 'Direkt36, 18 November 2026',
+      credit: 'Proportional axis calculated from published dates. The interval’s total suspect flow and detailed payment restrictions remain unknown.',
+    },
+    signalement: {
+      caption: 'German law checked on 19 November 2026: section 46 governs the hold after an FIU report. Competent-authority consent, or expiry of the third working day after filing without prohibition, permits execution subject to other duties. Saturday is excluded from the count.',
+      source: 'GwG sections 43 and 46; due diligence: section 10',
+      credit: 'Section46(2) provides exceptions to the hold, followed by reporting without delay. Relationship due diligence continues separately; section 10(9) addresses termination when the specified obligations cannot be met.',
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown Wingman figure language or kind.');
+if (!sourceHref || !/^(?:#[A-Za-z0-9_-]+|https:\/\/[^\s]+)$/u.test(sourceHref)) {
+  throw new TypeError('Wingman figure requires a source anchor or HTTPS URL.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) {
+  throw new TypeError('Wingman figure number must be a positive integer.');
+}
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) {
+  throw new TypeError('Wingman figure id must be a valid local anchor.');
+}
+const figures = import.meta.glob('../figures/wingman/wingman-*.svg', {
+  query: '?raw', import: 'default', eager: true,
+});
+const prefix = `../figures/wingman/wingman-${kind}-${lang}`;
+const desktop = figures[`${prefix}.svg`];
+const mobile = figures[`${prefix}-mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing Wingman figure variant.');
+}
+const figureId = id ?? (number === undefined ? `wingman-${lang}-${kind}` : `figure-${number}`);
+const originalIdPrefix = `wingman-${kind}-${lang}-`;
+const instanceIdPrefix = `${figureId}-${lang}-${kind}-`;
+const desktopInstance = desktop.replaceAll(originalIdPrefix, instanceIdPrefix);
+const mobileInstance = mobile.replaceAll(originalIdPrefix, instanceIdPrefix);
+---
+
+<figure class="wingman-figure" id={figureId} data-kind={kind}>
+  <div class="figure-wide" set:html={desktopInstance} />
+  <div class="figure-narrow" set:html={mobileInstance} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {caption ?? item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Source : ' : 'Source: '}<a href={sourceHref}>{item.source}</a>{kind === 'correspondance' && <> · <a href="#source-S08">{lang === 'fr' ? 'GAFI, guide 2016' : 'FATF, 2016 guidance'}</a></>}{kind === 'transition' && <> · <a href="#source-S01">{lang === 'fr' ? 'Follow the Money, retrait de l’accès à la compensation' : 'Follow the Money, withdrawal of clearing access'}</a></>}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .wingman-figure {
+    width: 100%;
+    max-width: 600px;
+    margin: 1.8rem auto;
+    padding-bottom: .85rem;
+    container-type: inline-size;
+  }
+  .wingman-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .figure-wide { display: block; }
+  .figure-narrow { display: none; max-width: 340px; margin-inline: auto; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) {
+    .figure-wide { display: none; }
+    .figure-narrow { display: block; }
+  }
+  @media print {
+    .wingman-figure { break-inside: avoid; }
+    .figure-wide { display: block; }
+    .figure-narrow { display: none; }
+  }
+</style>
