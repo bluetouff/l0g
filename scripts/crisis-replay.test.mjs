@@ -309,3 +309,19 @@ test('map notes follow the selected date without announcing future instruments o
   assert.doesNotMatch(networkMapState('lehman','2008-09-16','announcements').note.en,/Treasury|guarantee/);
   assert.match(networkMapState('lehman','2008-09-19','announcements').note.en,/Treasury/);
 });
+
+test('documented exposures and policy commitments respect their different publication dates', () => {
+  const wire = (episode, date, mode, id) => networkMapState(episode, date, mode).links.find(link => link.id === id);
+  const diversion = 'F05-ftx-alameda';
+  assert.equal(wire('ftx', '2022-11-02', 'announcements', diversion).active, false);
+  assert.equal(wire('ftx', '2022-11-02', 'hindsight', diversion).retrospective, true);
+  assert.equal(wire('ftx', '2024-03-28', 'announcements', diversion).active, true);
+  assert.equal(wire('euro', '2012-07-26', 'hindsight', 'Z04-ecb-market').active, false);
+  assert.equal(wire('euro', '2012-09-06', 'announcements', 'Z01-ecb-market').active, false);
+  assert.equal(wire('euro', '2012-09-06', 'announcements', 'Z04-ecb-market').active, true);
+  assert.equal(wire('cash2020', '2020-03-23', 'hindsight', 'D04-official-fed').active, false);
+  assert.equal(wire('cash2020', '2020-03-31', 'announcements', 'D04-official-fed').active, true);
+  assert.equal(wire('argentina', '2001-12-03', 'hindsight', 'R05-state-holders').active, false);
+  assert.equal(wire('archegos', '2021-03-29', 'hindsight', 'H03-family-brokers').retrospective, true);
+  assert.equal(wire('wti', '2020-04-15', 'hindsight', 'W03-buyers-tanks').active, false);
+});

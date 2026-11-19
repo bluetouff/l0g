@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title={crisisGallery.cash2020.name.en} description={crisisGallery.cash2020.summary.en} ogImage="/illustrations/crisis-replay/og/cash2020-en.jpg" ogImageAlt={crisisGallery.cash2020.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/ruee-vers-le-cash/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/dash-for-cash/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/ruee-vers-le-cash/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="cash2020" />
+</EnglishGuidesLayout>

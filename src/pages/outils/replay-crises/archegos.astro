@@ -1,0 +1,13 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import CrisisReplay from '../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../config/crisis-gallery';
+---
+<BaseLayout title={crisisGallery.archegos.name.fr} description={crisisGallery.archegos.summary.fr} ogImage="/illustrations/crisis-replay/og/archegos-fr.jpg" ogImageAlt={crisisGallery.archegos.alt.fr} sidebar={false} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/archegos/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/archegos/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/archegos/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="fr" episodeId="archegos" />
+</BaseLayout>

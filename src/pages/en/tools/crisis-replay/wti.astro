@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title={crisisGallery.wti.name.en} description={crisisGallery.wti.summary.en} ogImage="/illustrations/crisis-replay/og/wti-en.jpg" ogImageAlt={crisisGallery.wti.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/wti/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/wti/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/wti/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="wti" />
+</EnglishGuidesLayout>

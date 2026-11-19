@@ -125,7 +125,7 @@ for (const root of document.querySelectorAll<HTMLElement>('[data-crisis-replay]'
       root.dataset.networkFloor=String(network.floor);
       perspective.textContent=network.note[fr?'fr':'en']+(network.retrospective?t(' Les relations ambre s’appuient sur les sources ultérieures citées.',' Amber relationships draw on the cited later sources.'):'');
       root.querySelectorAll<SVGTextElement>('[data-network-status]').forEach(label=>{
-        label.textContent=episodeId==='chf'?(network.floor?t('Plancher en vigueur','Minimum rate in force'):t('Plancher retiré','Minimum rate removed')):episodeId==='nickel'?(network.suspended?t('Échanges suspendus','Trading suspended'):t('Mécanisme historique','Historical mechanism')):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):t('Financement et garantie','Funding and guarantee');
+        label.textContent=episodeId==='chf'?(network.floor?t('Plancher en vigueur','Minimum rate in force'):t('Plancher retiré','Minimum rate removed')):episodeId==='nickel'?(network.suspended?t('Échanges suspendus','Trading suspended'):t('Mécanisme historique','Historical mechanism')):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):episodeId==='lehman'?t('Financement et garantie','Funding and guarantee'):'';
       });
     }
     range.value = String(index);

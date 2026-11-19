@@ -10,7 +10,7 @@ const network=crisisNetworks[episodeId];
 const state=networkMapState(episodeId,episode.chapters[episode.initialChapter].date,'announcements')!;
 const t=(fr:string,en:string)=>lang==='fr'?fr:en;
 const mobileX=(x:number)=>x*11/9-20;
-const status=episodeId==='chf'?t('Plancher retiré','Minimum rate removed'):episodeId==='nickel'?t('Échanges suspendus','Trading suspended'):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):t('Financement et garantie','Funding and guarantee');
+const status=episodeId==='chf'?t('Plancher retiré','Minimum rate removed'):episodeId==='nickel'?t('Échanges suspendus','Trading suspended'):episodeId==='asia'?t('Trois parcours nationaux','Three country paths'):episodeId==='lehman'?t('Financement et garantie','Funding and guarantee'):'';
 ---
 <div class="replay-map network-map" data-replay-map data-network-map={episodeId}>
   {(['desktop','mobile'] as const).map(layout=><svg class={`replay-wires replay-wires-${layout}`} viewBox={layout==='desktop'?'0 0 640 380':'0 0 400 500'} xmlns="http://www.w3.org/2000/svg" aria-hidden="true" style="display:block;width:100%;height:auto">
@@ -19,7 +19,7 @@ const status=episodeId==='chf'?t('Plancher retiré','Minimum rate removed'):epis
       {network.links.map((link,index)=><path data-wire={link.id} data-from={link.from} data-to={link.to} data-kind={link.kind} data-active={String(state.links[index].active)} data-retrospective="false" vector-effect={layout==='mobile'?'non-scaling-stroke':undefined} d={layout==='desktop'?link.d:link.m} />)}
     </g>
     <g class="replay-wire-labels network-wire-labels" text-anchor="middle">
-      {network.links.map(link=><text data-network-label={link.id} x={layout==='desktop'?link.x:mobileX(link.mx)} y={layout==='desktop'?link.y:link.my+10}>{link.label[lang]}</text>)}
+      {network.links.map((link,index)=><text data-active={String(state.links[index].active)} data-network-label={link.id} x={layout==='desktop'?link.x:mobileX(link.mx)} y={layout==='desktop'?link.y:link.my+10}>{link.label[lang]}</text>)}
       <text class="network-status" data-network-status x={layout==='desktop'?320:200} y={layout==='desktop'?367:491}>{status}</text>
     </g>
   </svg>)}

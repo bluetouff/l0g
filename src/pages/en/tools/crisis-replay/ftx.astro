@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title={crisisGallery.ftx.name.en} description={crisisGallery.ftx.summary.en} ogImage="/illustrations/crisis-replay/og/ftx-en.jpg" ogImageAlt={crisisGallery.ftx.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/ftx/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/ftx/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/ftx/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="ftx" />
+</EnglishGuidesLayout>

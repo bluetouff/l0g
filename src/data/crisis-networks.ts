@@ -1,16 +1,17 @@
+import { documentaryNetworks } from './crisis-documentary-networks.ts';
 import { getReplayEpisode, type ReplayEpisodeId } from './crisis-episodes.ts';
 import type { ReplayLanguage } from './crisis-replay';
 
-export type NetworkEpisodeId = 'lehman' | 'asia' | 'nickel' | 'chf';
+export type NetworkEpisodeId = 'lehman' | 'asia' | 'nickel' | 'chf' | "wti" | "archegos" | "euro" | "ftx" | "argentina" | "cash2020";
 type Copy = Record<ReplayLanguage,string>;
 type Icon = 'tower'|'fund'|'people'|'paper'|'bank'|'shield'|'globe'|'factory'|'chain'|'gate'|'rates'|'arrows';
-interface Node { id:string; x:number; y:number; mx:number; my:number; icon:Icon; }
+export interface NetworkNode { id:string; x:number; y:number; mx:number; my:number; icon:Icon; }
 export interface NetworkLink {
   id:string; from:string; to:string; source:string; since:string; until?:string;
   kind:'pressure'|'exposure'|'response'|'commitment';
   d:string; m:string; label:Copy; x:number; y:number; mx:number; my:number;
 }
-interface Network { nodes:Node[]; links:NetworkLink[]; note:Copy; method:Copy; related:{frHref:string;enHref:string;label:Copy}; }
+export interface Network { nodes:NetworkNode[]; links:NetworkLink[]; note:Copy; method:Copy; related:{frHref:string;enHref:string;label:Copy}; }
 const copy=(fr:string,en:string):Copy=>({fr,en});
 
 export const crisisNetworks: Record<NetworkEpisodeId,Network> = {
@@ -98,6 +99,7 @@ export const crisisNetworks: Record<NetworkEpisodeId,Network> = {
     note:copy('Le trait du plancher s’éteint le 15 janvier. Les interventions de change restent possibles. Les taux négatifs sont annoncés en décembre pour une application en janvier.','The minimum-rate link switches off on 15 January. FX interventions remain possible. Negative interest is announced in December for implementation in January.'),
     method:copy('La frise ouvre sur l’installation du plancher en 2011, puis se concentre sur décembre 2014 et le retrait de janvier 2015. Une annonce de taux et sa date d’application sont distinguées : le prélèvement des intérêts négatifs est prévu à partir du 22 janvier. Le retrait du plancher n’éteint pas la possibilité d’intervenir sur le change. Les pertes et contraintes des courtiers apparaissent en ambre avec l’étude de la BRI publiée le 11 décembre 2016. Les arguments sur le coût de la défense du plancher sont attribués à la BNS. Aucun cours ni rendement de portefeuille n’est simulé.','The timeline opens with introduction of the minimum rate in 2011, then focuses on December 2014 and withdrawal in January 2015. Rate announcements and effective dates are distinguished: negative interest is scheduled to be charged from 22 January. Ending the minimum rate does not remove the option of FX intervention. Broker losses and constraints appear in amber using the BIS study published on 11 December 2016. Arguments about the cost of defending the minimum rate are attributed to the SNB. No exchange rate or portfolio return is simulated.'),
   },
+  ...documentaryNetworks,
 };
 
 export function isNetworkEpisode(id:string): id is NetworkEpisodeId {
@@ -108,7 +110,8 @@ export function isNetworkEpisode(id:string): id is NetworkEpisodeId {
 export function networkMapState(id:ReplayEpisodeId,date:string,mode:'announcements'|'hindsight') {
   if (!isNetworkEpisode(id)) return null;
   const network=crisisNetworks[id];
-  const sources=getReplayEpisode(id).sources;
+  const episode=getReplayEpisode(id);
+  const sources=episode.sources;
   const links=network.links.map(link=>{
     const source=sources.find(source=>source.id===link.source);
     if (!source) throw new Error(`Missing network source: ${link.source}`);
@@ -117,7 +120,8 @@ export function networkMapState(id:ReplayEpisodeId,date:string,mode:'announcemen
     const active=occurred&&(available||mode==='hindsight');
     return {id:link.id,active,retrospective:active&&!available};
   });
-  let note=network.note;
+  const chapter=episode.chapters.findLast(chapter=>chapter.date<=date);
+  let note=chapter?.mapNote ?? network.note;
   if (id==='lehman'&&date<'2008-09-19') note=date<'2008-09-16'
     ? copy('La faillite de la holding constitue le point d’entrée. Les liens grisés servent de repères de lecture.','The holding company’s bankruptcy is the starting point. Grey links provide structural context.')
     : copy('Le Reserve annonce une perte et un délai de versement des rachats. Les circuits de soutien grisés sont documentés aux étapes suivantes.','Reserve announces a loss and delayed redemption payments. Grey support channels are documented in subsequent stages.');

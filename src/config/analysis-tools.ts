@@ -26,15 +26,15 @@ export interface AnalysisTool {
 export const analysisTools: AnalysisTool[] = [
   {
     id: 'crisis-replay',
-    version: '1.2.0',
+    version: '1.3.0',
     status: 'active',
     category: 'markets',
-    updatedAt: '2026-11-17',
+    updatedAt: '2026-11-19',
     fr: {
       title: 'Replay des crises',
       eyebrow: 'histoire financière interactive',
       question: 'Comment une fragilité financière se transforme-t-elle en crise de liquidité ?',
-      description: 'Explorez neuf crises financières, dont Lehman, l’Asie, le nickel et le franc suisse, avec des cartes évolutives, les annonces d’époque et des éclairages ultérieurs datés.',
+      description: 'Explorez quinze crises financières, dont le WTI, Archegos, FTX et la dette de la zone euro, avec des cartes évolutives, les annonces d’époque et des éclairages ultérieurs datés.',
       href: '/outils/replay-crises/',
       articleHref: '/posts/gilts-repo-levier-banque-angleterre/',
       articleLabel: 'Lire l’analyse sur les gilts et le levier',
@@ -43,7 +43,7 @@ export const analysisTools: AnalysisTool[] = [
       title: 'Crisis replay',
       eyebrow: 'interactive financial history',
       question: 'How does a financial vulnerability become a liquidity crisis?',
-      description: 'Explore nine financial crises, including Lehman, Asia, nickel and the Swiss franc, through evolving maps, contemporary releases and dated later analysis.',
+      description: 'Explore fifteen financial crises, including WTI, Archegos, FTX and the euro area, through evolving maps, contemporary releases and dated later analysis.',
       href: '/en/tools/crisis-replay/',
       articleHref: '/en/analysis/gilts-repo-leverage-bank-of-england/',
       articleLabel: 'Read the analysis of gilts and leverage',

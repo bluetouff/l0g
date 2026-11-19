@@ -8,6 +8,7 @@ export interface ReplayChapter {
   fact: { value: Copy; label: Copy };
   retrospective: Copy;
   retrospectiveSource?: string;
+  mapNote?: Copy;
 }
 export const replaySources: ReplaySource[] = [
   { id: 'S01', issuer: 'Bank of England', published: '2022-09-22',

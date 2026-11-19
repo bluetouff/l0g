@@ -1,5 +1,43 @@
 # Crisis replay artwork
 
+## Six additions, 19 November 2026
+
+### wti
+
+Master: `wti-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. Cushing oil terminal in miniature, cylindrical oil storage tanks with curved copper pipelines and a single closed delivery valve in focus.
+
+### archegos
+
+Master: `archegos-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. Several separate frosted-glass banking screens around one precarious column of identical ivory stock certificates. Delicate copper tension wires all connect to this same bundle; one wire has snapped.
+
+### euro
+
+Master: `euro-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. A European classical treasury portico and a modern glass bank face each other on a charcoal plinth. Two curved copper conduits run between the foundations in a closed loop over a widening crack.
+
+### ftx
+
+Master: `ftx-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. A translucent customer-deposit vault in the foreground, amber and turquoise glass counters inside. In section one sees a hidden copper conduit to a second smaller trading vault below the plinth.
+
+### argentina
+
+Master: `argentina-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. A miniature Buenos Aires bank with two elegant parallel brass turnstiles on the street. One gate is shuttered, the second currency-conversion rail has separated. Subtly evoke Argentine architecture.
+
+### cash2020
+
+Master: `cash2020-art.jpg`.
+
+Wide landscape 16:9. Original l0g financial editorial illustration, a lifelike miniature architectural diorama, shot on dark charcoal stone, fine brushed copper, frosted glass, etched ivory and slim turquoise reflections. Dramatic but quiet raking light. Compose main mechanism center-right; negative space left. No letters, numbers, logos, charts, people or flags. A fan of short ivory treasury certificates converges from several glass channels through a narrow copper dealer gate. Beyond the gate a calm turquoise cash reservoir, a second wider channel alongside.
+
 ## Four additions, 17 November 2026
 
 Created with the built-in imagegen tool. These are conceptual illustrations, not documentary photographs. Masters are saved under `public/illustrations/crisis-replay/`. Generate derivatives with `node --experimental-strip-types scripts/generate-crisis-replay-artwork.mjs collection lehman asia nickel chf`.

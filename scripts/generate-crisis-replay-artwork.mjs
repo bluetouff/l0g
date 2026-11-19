@@ -31,20 +31,20 @@ for(const lang of ['fr','en']) for(const id of ['collection',...Object.keys(repl
   const episode=collection?null:replayEpisodes[id];
   const lines=collection?crisisCollection[lang].ogTitle:card.ogTitle[lang];
   const scene=collection?entries.map(([key,item],index)=>{
-    const columns=entries.length>6?3:2;
-    const compact=entries.length>4;
-    const wide=columns===2&&compact&&entries.length%2===1&&index===entries.length-1;
-    const width=columns===3?146:wide?470:226;
-    const height=columns===3?116:compact?(wide?112:118):184;
-    const left=670+(index%columns)*(columns===3?162:244);
-    const top=122+Math.floor(index/columns)*(compact?134:204);
-    const photoWidth=columns===3?206:wide?470:326;
+    const columns=3;
+    const rows=Math.ceil(entries.length/columns);
+    const width=146;
+    const gap=10;
+    const height=Math.floor((440-(rows-1)*gap)/rows);
+    const left=670+(index%columns)*(width+16);
+    const top=96+Math.floor(index/columns)*(height+gap);
+    const photoWidth=Math.max(width,height*16/9);
     const photoHeight=photoWidth*9/16;
-    return h('div',{position:'absolute',left:wide?670:left,top,width,height,display:'flex',overflow:'hidden',border:'1px solid #5eead442',borderRadius:8},
-      image(artwork[key],{left:columns===3?-40:wide?0:-58,top:(height-photoHeight)/2,width:photoWidth,height:photoHeight}),
+    return h('div',{position:'absolute',left,top,width,height,display:'flex',overflow:'hidden',border:'1px solid #5eead442',borderRadius:8},
+      image(artwork[key],{left:(width-photoWidth)/2,top:(height-photoHeight)/2,width:photoWidth,height:photoHeight}),
       h('div',{position:'absolute',left:0,bottom:0,width,height:80,backgroundImage:'linear-gradient(0deg,rgba(12,13,16,.98),rgba(12,13,16,0))'}),
-      h('div',{position:'absolute',left:10,right:7,bottom:10,color:OG.bright,fontSize:columns===3?13:17},item.shortName?.[lang]??item.name[lang]),
-      h('div',{position:'absolute',left:10,top:9,color:OG.teal,fontSize:columns===3?12:15},replayEpisodes[key].number));
+      h('div',{position:'absolute',left:10,right:7,bottom:10,color:OG.bright,fontSize:13},item.shortName?.[lang]??item.name[lang]),
+      h('div',{position:'absolute',left:10,top:9,color:OG.teal,fontSize:12},replayEpisodes[key].number));
   }):[
     image(artwork[id],{left:0,top:-22,width:1200,height:675}),
     h('div',{position:'absolute',inset:0,backgroundImage:'linear-gradient(90deg,rgba(12,13,16,1) 0%,rgba(12,13,16,.95) 32%,rgba(12,13,16,.54) 57%,rgba(12,13,16,.05) 100%)'}),

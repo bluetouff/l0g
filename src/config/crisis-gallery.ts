@@ -68,6 +68,60 @@ export const crisisGallery: Record<ReplayEpisodeId, {
     alt:{fr:'Illustration conceptuelle : le retrait d’un seuil d’ivoire libère un contrepoids de verre et tend un réseau de fils turquoise.',en:'Conceptual illustration: removing an ivory threshold releases a glass counterweight and strains a network of turquoise threads.'},
     ogTitle:{fr:['Franc suisse.','Le plancher','disparaît.'],en:['Swiss franc.','The floor','disappears.']},
   },
+  wti: {
+    art: "wti",
+    shortName: { fr: "Pétrole WTI", en: "WTI crude" },
+    name: { fr: "WTI. Un baril sous zéro", en: "WTI. A barrel below zero" },
+    mechanism: { fr: "Contrat à terme · stockage · livraison", en: "Futures · storage · delivery" },
+    summary: { fr: "À la veille de l’échéance, un acheteur du contrat de mai doit trouver un autre acheteur ou se préparer à recevoir du brut. À Cushing, même une cuve encore vide peut être déjà réservée.", en: "On the eve of expiry, a holder of the May contract must find another buyer or prepare to take delivery. In Cushing, even an empty tank can already be booked." },
+    alt: { fr: "Des réservoirs de brut reliés par des tuyaux de cuivre convergent vers une vanne fermée.", en: "Copper pipes from a cluster of oil tanks converge on a closed valve." },
+    ogTitle: { fr: ["WTI.", "Un baril", "sous zéro."], en: ["WTI.", "A barrel", "below zero."] },
+  },
+  archegos: {
+    art: "archegos",
+    shortName: { fr: "Archegos", en: "Archegos" },
+    name: { fr: "Archegos. Le levier invisible", en: "Archegos. Hidden leverage" },
+    mechanism: { fr: "Swaps · concentration · marges", en: "Swaps · concentration · margin" },
+    summary: { fr: "Plusieurs banques promettent à Archegos le rendement de mêmes actions. Chacune connaît ses contrats. Quand les cours baissent, il leur faut des garanties et les mêmes titres se retrouvent à vendre.", en: "Several banks promise Archegos the returns on the same stocks. Each sees its own contracts. When prices fall, banks seek more collateral and find themselves selling the same shares." },
+    alt: { fr: "Des façades de banques translucides sont reliées par des câbles à une seule pile de titres.", en: "Cables connect translucent bank façades to a single stack of securities." },
+    ogTitle: { fr: ["Archegos.", "Le levier", "invisible."], en: ["Archegos.", "Hidden", "leverage."] },
+  },
+  euro: {
+    art: "euro",
+    shortName: { fr: "Zone euro", en: "Euro area" },
+    name: { fr: "Zone euro. La dette et les banques", en: "Euro area. Banks and sovereign debt" },
+    mechanism: { fr: "Dette publique · banques · politique monétaire", en: "Sovereign debt · banks · monetary policy" },
+    summary: { fr: "Une banque détient la dette de son propre État. Cet État peut aussi devoir secourir ses banques. Suivez cette dépendance dans les deux sens, puis les décisions prises à Francfort pour que la politique monétaire atteigne toute la zone euro.", en: "Banks hold their own government’s bonds. That government may in turn have to rescue its banks. Follow both sides of the relationship and the ECB’s attempts to reach borrowers across the currency union." },
+    alt: { fr: "Un édifice bancaire et un édifice public sont reliés par deux circuits de cuivre.", en: "Two copper circuits connect a bank and a government building." },
+    ogTitle: { fr: ["Zone euro.", "La dette et", "les banques."], en: ["Euro area.", "Banks and", "sovereign debt."] },
+  },
+  ftx: {
+    art: "ftx",
+    shortName: { fr: "FTX / Alameda", en: "FTX / Alameda" },
+    name: { fr: "FTX. Les dépôts détournés", en: "FTX. The missing deposits" },
+    mechanism: { fr: "Dépôts · jeton FTT · faillite", en: "Customer funds · FTT · bankruptcy" },
+    summary: { fr: "Un document sur les avoirs d’Alameda attire l’attention sur le jeton FTT. Neuf jours plus tard, FTX Trading dépose son bilan. Les pièces du procès permettront de suivre un autre lien entre les deux sociétés, celui des fonds de la clientèle.", en: "A document about Alameda’s holdings draws scrutiny to the FTT token. Nine days later, FTX Trading files for bankruptcy. Evidence at trial will trace a separate link between the firms through customer funds." },
+    alt: { fr: "Deux chambres de verre sont reliées par un canal qui détourne des jetons.", en: "A concealed channel diverts tokens between two glass chambers." },
+    ogTitle: { fr: ["FTX.", "Les dépôts", "détournés."], en: ["FTX.", "The missing", "deposits."] },
+  },
+  argentina: {
+    art: "argentina",
+    shortName: { fr: "Argentine", en: "Argentina" },
+    name: { fr: "Argentine. Le piège du peso", en: "Argentina. The peso trap" },
+    mechanism: { fr: "Retraits · dette publique · conversion", en: "Withdrawals · public debt · conversion" },
+    summary: { fr: "À Buenos Aires, un déposant peut encore faire un virement alors que ses retraits de billets sont plafonnés. En quelques semaines, les règles changent aussi pour les créanciers de l’État et pour les ménages endettés en dollars.", en: "In Buenos Aires a depositor can still make a transfer while cash withdrawals are capped. Within weeks the rules also change for government creditors and households with dollar loans." },
+    alt: { fr: "Devant l’entrée d’une banque, deux tourniquets de laiton encadrent le passage.", en: "Two brass turnstiles control access to the entrance of a bank." },
+    ogTitle: { fr: ["Argentine.", "Le piège", "du peso."], en: ["Argentina.", "The peso", "trap."] },
+  },
+  cash2020: {
+    art: "cash2020",
+    shortName: { fr: "Ruée vers le cash", en: "Dash for cash" },
+    name: { fr: "Mars 2020. La ruée vers le cash", en: "March 2020. The dash for cash" },
+    mechanism: { fr: "Treasuries · dollars · pensions livrées", en: "Treasuries · dollars · repo" },
+    summary: { fr: "En pleine panique sanitaire, des investisseurs vendent des titres du Trésor américain pour obtenir des dollars. La Fed agit sur trois circuits différents, le marché obligataire, le financement des banques centrales et les réserves officielles étrangères.", en: "As the pandemic shock hits, investors sell US Treasuries to raise dollars. The Fed responds through three distinct channels involving the bond market, central bank funding and foreign official reserves." },
+    alt: { fr: "Des liasses de titres convergent vers une vanne qui alimente un canal turquoise.", en: "Bundles of securities converge on a valve feeding a turquoise channel." },
+    ogTitle: { fr: ["Mars 2020.", "La ruée vers", "le cash."], en: ["March 2020.", "The dash", "for cash."] },
+  },
 };
 
 export function getCrisisGallery(lang: ReplayLanguage) {
@@ -79,6 +133,6 @@ export function getCrisisGallery(lang: ReplayLanguage) {
 }
 
 export const crisisCollection = {
-  fr:{title:'Replay des crises',description:'Neuf crises à explorer, des gilts à Lehman, de l’Asie au nickel et au franc suisse. Cartes interactives, annonces datées et sources primaires pour suivre la transmission des chocs.',ogTitle:['Replay','des crises.']},
-  en:{title:'Crisis replay',description:'Explore nine crises, from gilts to Lehman, Asia, nickel and the Swiss franc. Interactive maps, dated releases and primary sources trace how financial shocks travel.',ogTitle:['Crisis','replay.']},
+  fr:{title:'Replay des crises',description:'Quinze crises à explorer, de la dette argentine à FTX en passant par le pétrole WTI et la zone euro. Cartes interactives, annonces datées et sources primaires pour suivre la transmission des chocs.',ogTitle:['Replay','des crises.']},
+  en:{title:'Crisis replay',description:'Explore fifteen crises, from Argentina’s debt and the euro area to WTI crude and FTX. Interactive maps, dated releases and primary sources trace how financial shocks travel.',ogTitle:['Crisis','replay.']},
 };

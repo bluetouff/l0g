@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title={crisisGallery.argentina.name.en} description={crisisGallery.argentina.summary.en} ogImage="/illustrations/crisis-replay/og/argentina-en.jpg" ogImageAlt={crisisGallery.argentina.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/argentine/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/argentina/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/argentine/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="argentina" />
+</EnglishGuidesLayout>

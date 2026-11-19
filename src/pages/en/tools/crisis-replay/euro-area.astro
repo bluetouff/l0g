@@ -1,0 +1,13 @@
+---
+import EnglishGuidesLayout from '../../../../layouts/EnglishGuidesLayout.astro';
+import CrisisReplay from '../../../../components/CrisisReplay.astro';
+import { crisisGallery } from '../../../../config/crisis-gallery';
+---
+<EnglishGuidesLayout title={crisisGallery.euro.name.en} description={crisisGallery.euro.summary.en} ogImage="/illustrations/crisis-replay/og/euro-en.jpg" ogImageAlt={crisisGallery.euro.alt.en} alternateLinks={[
+  {hreflang:'fr',href:new URL('/outils/replay-crises/zone-euro/',Astro.site).toString()},
+  {hreflang:'en',href:new URL('/en/tools/crisis-replay/euro-area/',Astro.site).toString()},
+  {hreflang:'x-default',href:new URL('/outils/replay-crises/zone-euro/',Astro.site).toString()},
+]}>
+  <link rel="stylesheet" href="/styles/article-sources-v1.css" />
+  <CrisisReplay lang="en" episodeId="euro" />
+</EnglishGuidesLayout>
