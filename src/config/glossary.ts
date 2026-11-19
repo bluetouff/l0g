@@ -2700,12 +2700,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ]
   },
   'capacite-de-soutirage': {
-    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }, { label: 'Gaz européen : le risque d’un printemps sans marge', href: '/posts/gaz-europe-hiver-2026-2027/', kind: 'article' }],
+    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }, { label: 'Gaz européen : le risque de stocks très bas au printemps', href: '/posts/gaz-europe-hiver-2026-2027/', kind: 'article' }],
     sources: [{ label: 'EIA, The Basics of Underground Natural Gas Storage', href: 'https://www.eia.gov/naturalgas/storage/basics/', detail: 'Storage Measures : débit quotidien, pression, compression et variations avec le stock. Définitions physiques, sans transposition de données américaines.', kind: 'source' }],
     related: ['gaz-utile', 'gaz-coussin'],
   },
   'gaz-utile': {
-    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }, { label: 'Gaz européen : le risque d’un printemps sans marge', href: '/posts/gaz-europe-hiver-2026-2027/', kind: 'article' }],
+    articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }, { label: 'Gaz européen : le risque de stocks très bas au printemps', href: '/posts/gaz-europe-hiver-2026-2027/', kind: 'article' }],
     sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11 : distinction entre working gas, capacité utile et gaz coussin. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
     related: ['gaz-coussin', 'capacite-de-soutirage'],
   },
