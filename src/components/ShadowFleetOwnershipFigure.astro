@@ -1,0 +1,69 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'network' | 'transfer';
+  number?: number;
+  id?: string;
+}
+const { lang, kind, number, id } = Astro.props;
+const copy = {
+  fr: {
+    transfer: {
+      caption: 'Une vente du navire change la société propriétaire inscrite dans le cas illustré. La cession des actions de cette société peut conserver le même propriétaire inscrit tout en changeant son contrôle.',
+      credit: 'Schéma théorique, indépendant des transactions concernant Arrow. Le numéro IMO reste attaché à la coque. Pour établir le contrôle ultime, l’enquête doit suivre les actionnaires et les droits de contrôle.',
+      sources: [['S02', 'OMI, numéro permanent'], ['S12', 'Equasis, rôles des sociétés'], ['S16', 'Hong Kong, contrôle significatif']],
+    },
+    network: {
+      caption: 'Le Conseil de l’UE publie les trois relations de capital le 16 novembre 2026. Les fiches IRCLASS consultées le 19 novembre rattachent Arrow, Amulet et Bobcat à Citrine dans le champ « Owner Address ».',
+      credit: 'Les traits pleins représentent le capital publié par le Conseil, les pointillés le rattachement aux fiches de classification. Le libellé « actionnaire unique » est traduit par 100 %. Le Conseil qualifie Prospect de principal actionnaire de Citrine, sans publier sa part. Le registre de Hong Kong date sa constitution du 6 mars 2024.',
+      sources: [['S08', 'Conseil de l’UE'], ['S01', 'IRCLASS, Arrow'], ['S06', 'Amulet'], ['S07', 'Bobcat'], ['S09', 'registre de Hong Kong']],
+    },
+  },
+  en: {
+    transfer: {
+      caption: 'A vessel sale changes the registered owning company in the example shown. Selling shares in that company can retain the same registered owner while changing control.',
+      credit: 'A theoretical diagram, separate from any transactions involving Arrow. The IMO number stays with the hull. Establishing ultimate control requires tracing shareholders and control rights.',
+      sources: [['S02', 'IMO, permanent number'], ['S12', 'Equasis, company roles'], ['S16', 'Hong Kong, significant control']],
+    },
+    network: {
+      caption: 'The EU Council published the three equity relationships on 16 November 2026. IRCLASS records accessed on 19 November connect Arrow, Amulet and Bobcat to Citrine through the “Owner Address” field.',
+      credit: 'Solid lines show equity relationships stated by the Council. Dashed lines link the classification records. “Sole shareholder” is expressed as 100%. The Council describes Prospect as Citrine’s main shareholder without publishing its stake. Hong Kong’s registry records incorporation on 6 March 2024.',
+      sources: [['S08', 'EU Council'], ['S01', 'IRCLASS, Arrow'], ['S06', 'Amulet'], ['S07', 'Bobcat'], ['S09', 'Hong Kong registry']],
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown shadow fleet ownership figure language or kind.');
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/shadow-fleet-ownership-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/shadow-fleet-ownership-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/shadow-fleet-ownership-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing shadow fleet ownership figure variant.');
+const figureId = id ?? (number === undefined ? `shadow-fleet-ownership-${kind}-${lang}` : `figure-${number}`);
+const prefix = `sfo-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="shadow-fleet-ownership-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}{item.sources.map(([source, label], index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{label}</a></>)}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .shadow-fleet-ownership-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .shadow-fleet-ownership-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .shadow-fleet-ownership-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

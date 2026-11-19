@@ -2230,6 +2230,15 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'numero-omi', sigle: 'IMO number', nom: 'Permanent ship identifier',
+    def: 'A unique ship identifier under the International Maritime Organization scheme. The number stays with the vessel for its lifetime through changes of name, flag and ownership. It allows records for the same ship to be matched.',
+    guide: '/en/analysis/shadow-fleet-arrow-tanker-ownership/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Russia’s shadow fleet: tracing ownership of the tanker Arrow', href: '/en/analysis/shadow-fleet-arrow-tanker-ownership/', kind: 'article' }],
+      sources: [{ label: 'IMO, Ship Identification Number Scheme', href: 'https://www.imo.org/en/ourwork/iiis/pages/imo-identification-number-schemes.aspx', detail: 'The ship number remains the same through changes of name, flag and ownership.', kind: 'source' }],
+    },
+  },
+  {
     "slug": "option-exterieure",
     "sigle": "Outside option",
     "nom": "Fallback alternative in a negotiation",
