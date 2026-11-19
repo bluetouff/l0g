@@ -1429,7 +1429,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     ],
     related: ['reserves-obligatoires'],
   },
-  'tpp-agrege': {"articles": [{"label": "Nvidia : Washington vise les usages du calcul à distance", "href": "/posts/nvidia-bis-acces-distant-controles-cloud/", "kind": "article"}, {"label": "Malaisie : Washington suit les clients des puces IA", "href": "/posts/malaisie-puces-ia-client-calcul-controles-americains/", "kind": "article"}], "sources": [{"label": "Federal Register, Addressing Remote Access to Advanced Semiconductors, 91 FR 74970", "href": "https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors", "detail": "§ 772.1 et annexe à la partie 774 : agrégation et notes techniques. Publié et entré en vigueur le 19 novembre 2026, consulté le même jour.", "kind": "source"}], "related": ["gpu", "utilisateur-final"]},
+  'tpp-agrege': {"articles": [{"label": "Les licences Nvidia et AMD pour la Chine", "href": "/posts/nvidia-h200-licences-chine-bis/", "kind": "article"}, {"label": "Nvidia : Washington vise les usages du calcul à distance", "href": "/posts/nvidia-bis-acces-distant-controles-cloud/", "kind": "article"}, {"label": "Malaisie : Washington suit les clients des puces IA", "href": "/posts/malaisie-puces-ia-client-calcul-controles-americains/", "kind": "article"}], "sources": [{"label": "Federal Register, Addressing Remote Access to Advanced Semiconductors, 91 FR 74970", "href": "https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors", "detail": "§ 772.1 et annexe à la partie 774 : agrégation et notes techniques. Publié et entré en vigueur le 19 novembre 2026, consulté le même jour.", "kind": "source"}], "related": ["gpu", "utilisateur-final"]},
   'controle-export': {
     articles: [
       { label: 'Nvidia, Trump, Lutnick : la sécurité nationale sous influence', href: '/posts/nvidia-trump-lutnick-securite-nationale-influence/', detail: 'Contrôles H200, accès distant et indépendance des enquêtes.', kind: 'article' },
@@ -1726,7 +1726,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   },
   covenant: {
     intuition: 'Le respect d’une clause financière se mesure avec les définitions et les seuils du contrat.',
-    articles: [{ label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Covenant de liquidité publié sans seuil chiffré dans le résumé d’octobre.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
+    articles: [{"label": "Les licences Nvidia et AMD pour la Chine", "href": "/posts/nvidia-h200-licences-chine-bis/", "kind": "article"}, { label: 'Nebius : un crédit de 364 jours dans la course aux GPU', href: '/posts/nebius-citi-credit-364-jours-gpu/', detail: 'Covenant de liquidité publié sans seuil chiffré dans le résumé d’octobre.', kind: 'article' }, {"label": "GM, VAC et le financement de l’usine de Sumter", "href": "/posts/aimants-terres-rares-gm-vac-usine-contrat/", "kind": "article"}],
     sources: [{ label: 'Nebius / SEC, 6-K du 22 octobre 2026', href: 'https://www.sec.gov/Archives/edgar/data/1513845/000110465926117978/tm2628078d1_6k.htm', detail: 'Covenant de liquidité minimale, autres engagements et événements de défaut soumis à exceptions et délais.', kind: 'source' }],
     related: ['collateral', 'dscr', "forbearance"],
   },

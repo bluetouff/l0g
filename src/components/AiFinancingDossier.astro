@@ -21,7 +21,7 @@ const ui = fr ? {
   description: 'Nvidia, Anthropic, OpenAI : enquêtes sur les fournisseurs devenus financeurs, la dette des centres de données et le partage du risque. Explorez le dossier et son atlas.',
   eyebrow: 'Le grand dossier · Financement de l’IA',
   lede: 'Les puces se vendent. Les centres de données s’endettent. Entre les deux, des contrats, des garanties et des promesses de revenus engagent toute une chaîne financière. l0g suit l’argent, les actifs et ceux qui prennent le risque.',
-  updated: 'Édition du 19 novembre 2026', alternate: 'Read in English',
+  updated: 'Édition du 20 novembre 2026', alternate: 'Read in English',
   analyses: 'analyses dans ce dossier', series: 'volets sur l’affaire Nvidia', relations: 'relations dans l’atlas',
   latest: 'À la une · Nvidia',
   read: 'Lire l’enquête', explore: 'Explorer les parcours', atlas: 'Ouvrir l’atlas',
@@ -48,7 +48,7 @@ const ui = fr ? {
   description: 'Nvidia, Anthropic and OpenAI: investigations into suppliers funding customers, data-centre debt and the distribution of risk. Explore the dossier and its evidence atlas.',
   eyebrow: 'The dossier · AI financing',
   lede: 'Chips are sold. Data centres borrow. Contracts, guarantees and future revenue connect them to a much wider financial system. l0g follows the money, the assets and the people taking the risk.',
-  updated: '19 November 2026 edition', alternate: 'Version française',
+  updated: '20 November 2026 edition', alternate: 'Version française',
   analyses: 'analyses in this dossier', series: 'Nvidia investigations', relations: 'atlas relationships',
   latest: 'In focus · Nvidia',
   read: 'Read the investigation', explore: 'Choose a reading path', atlas: 'Open the atlas',
@@ -106,7 +106,7 @@ const resources = [{ title: fr ? 'Atlas du financement de l’IA' : 'AI financin
 const jsonLd = {
   '@context': 'https://schema.org', '@type': 'CollectionPage',
   '@id': `https://l0g.fr${canonicalPath}#collection`, url: `https://l0g.fr${canonicalPath}`,
-  name: ui.title, description: ui.description, inLanguage: language, dateModified: '2026-11-19',
+  name: ui.title, description: ui.description, inLanguage: language, dateModified: '2026-11-20',
   isPartOf: { '@id': 'https://l0g.fr/#website' },
   mainEntity: { '@type': 'ItemList', numberOfItems: resources.length, itemListElement: resources.map((item, index) => ({ '@type': 'ListItem', position: index + 1, name: item.title, url: `https://l0g.fr${item.href}` })) },
 };
@@ -122,7 +122,7 @@ const jsonLd = {
     <header class="ai-hero">
       <div class="ai-context"><p class="ai-eyebrow">{ui.eyebrow}</p><a href={alternateHref} hreflang={fr ? 'en' : 'fr'} lang={fr ? 'en' : 'fr'}>{ui.alternate} ↗</a></div>
       <div class="ai-intro"><h1>{ui.title}</h1><p>{ui.lede}</p></div>
-      <div class="ai-edition"><time datetime="2026-11-19">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
+      <div class="ai-edition"><time datetime="2026-11-20">{ui.updated}</time><span aria-hidden="true">/</span><a href="#nvidia">Nvidia</a><a href="#parcours">{ui.explore} ↓</a><a href={atlasHref}>{ui.atlas} ↗</a></div>
       <div class="ai-cover">
         <a class="ai-cover-image" href={lead.href} aria-label={lead.title}><img src={dossierImage} width="1200" height="630" alt="" loading="lazy" decoding="async" /></a>
         <div class="ai-cover-copy"><p class="ai-eyebrow">{ui.latest}</p><h2><a href={lead.href}>{lead.title}</a></h2><p>{lead.description}</p><a class="ai-read" href={lead.href}>{ui.read} <span aria-hidden="true">↗</span></a></div>
@@ -132,7 +132,7 @@ const jsonLd = {
 
     <section id="nvidia" class="ai-section ai-nvidia" aria-labelledby="nvidia-title">
       <div class="ai-section-heading"><p class="ai-eyebrow">01 / Nvidia</p><h2 id="nvidia-title">{ui.nvidiaTitle}</h2><p>{ui.nvidiaNote}</p></div>
-      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
+      <ol class="ai-timeline">{nvidia.map((item, index) => <li class:list={{ 'ai-current': index === nvidia.length - 1 }}><span class="ai-serial" aria-hidden="true">{['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII', 'XIII', 'XIV', 'XV', 'XVI', 'XVII', 'XVIII', 'XIX', 'XX', 'XXI'][index]}</span><div><time datetime={item.date.toISOString()}>{dateLabel(item.date)}</time><h3><a href={item.href}>{item.title}</a></h3></div><span class="ai-timeline-arrow" aria-hidden="true">↗</span></li>)}</ol>
     </section>
 
     <section id="parcours" class="ai-section" aria-labelledby="paths-title">
