@@ -1,0 +1,187 @@
+---
+title: "Russia’s shadow fleet: oil proceeds and the A7 payment network"
+seoTitle: "Russian oil payments: the A7 network and A7A5 stablecoin | l0g"
+ogTitle: "Russian oil and the A7 payment network"
+description: "Britain links A7 to Russian oil proceeds. FinCEN separately counts transactions in the A7A5 token."
+tags: ["shadow fleet", "Russia", "oil", "sanctions", "stablecoins", "payments"]
+quickTake: {"fact": "Britain says A7 handles proceeds from Russian oil sales. FinCEN separately measures transactions in the A7A5 token.", "importance": "The 179.1 billion dollars in A7A5 transactions identified by FinCEN measure token movements within the agency’s scope.", "uncertainty": "The share of oil receipts and links between those payments and individual cargoes remain unverified."}
+pubDate: "2026-11-19T22:54:25+01:00"
+updatedDate: "2026-11-19T22:54:25+01:00"
+draft: false
+ogImage: "/illustrations/news/flotte-fantome-a7-paiements-petrole-2026-11-19.jpg"
+ogLayout: "immersive"
+sourceArticle: "flotte-fantome-paiements-a7-a7a5-petrole"
+sourceUpdatedDate: "2026-11-19T22:54:25+01:00"
+---
+
+import ShadowFleetPaymentFigure from "../../components/ShadowFleetPaymentFigure.astro";
+
+In May 2026, Britain accused the Russian payment network **A7** of handling proceeds from oil sales. In a separate filing, US financial intelligence agency FinCEN identifies **at least 179.1 billion dollars in A7A5 transactions** between February 2025 and June 2026. That total adds up token transactions whose commercial purpose has yet to be established individually. Once oil is sold, the cargo and its payment leave different records. [S04](#source-S04) · [S10](#source-S10)
+
+We first traced [ownership of the tanker Arrow](/en/analysis/shadow-fleet-arrow-tanker-ownership/), then [a loan raised in Moscow for Lidoil in Dubai](/en/analysis/shadow-fleet-rouble-finance-lid-capital-lidoil/). This instalment follows a separate case. An oil sale abroad generates proceeds in foreign currency. The seller still needs money where its own bills fall due. A7 markets payment services to both importers and exporters. [S03](#source-S03) · [S04](#source-S04) · [S25](#source-S25)
+
+## Liquidity on both sides of the border
+
+Britain’s **National Crime Agency** describes offshore pools of money and payment intermediaries in its August 2026 alert. The economics come from matching different needs. An exporter wants roubles after receiving money abroad. An importer has roubles and needs to pay a foreign supplier. An intermediary can bring these demands together using money already available on either side. The service depends on how much cash it can mobilise when payments fall due. The NCA presents this as a typology based on a limited level of review. [S03](#source-S03) · [S04](#source-S04)
+
+<ShadowFleetPaymentFigure lang="en" kind="clearing" number={1} />
+
+A7 also describes the use of a *veksel*, a promissory note that records an obligation to pay. The FAQ describes a payment note denominated in roubles. The terms of the separate interest-bearing note with foreign-currency face value also specify repayment in roubles. For the customer, the note’s value depends on the issuer’s ability to honour that obligation. Tracing one of those notes to a paid invoice would require records from the issuer and the customer. [S01](#source-S01) · [S02](#source-S02)
+
+## Oil proceeds in the public record
+
+**The Big Shor**, published in June by the Open Source Centre with TRM Labs, documents offshore pools using internal records. Its authors treat funding from energy proceeds as a lead supported by partial evidence. The NCA and FinCEN cite that report, so part of their account draws on the same material. A separate investigation by the Centre for Information Resilience describes intermediaries in the network. FinCEN says it also drew on information outside the public record. [S03](#source-S03) · [S04](#source-S04) · [S05](#source-S05) · [S08](#source-S08) · [S21](#source-S21)
+
+Attributing a payment to a specific cargo would require the invoice, proof of payment and shipping documents. FinCEN’s October alert says trade documents can disguise the real customer and that financial institutions can handle transactions without knowing the underlying arrangement. A bank’s role in a transfer establishes one stage of processing. Establishing what the bank knew would require other evidence. [S05](#source-S05)
+
+## Token volume and the value of invoices
+
+The **A7A5** project says that its [stablecoin](/en/glossary/stablecoin/) aims to track the rouble and is backed by bank deposits. In its proposal published on **5 October 2026**, FinCEN identifies **more than 17 billion dollars** in dollar-denominated transactions processed by the network’s sub-agents from January 2025 to June 2026. The minimum of **179.1 billion dollars** covers A7A5 transactions over a different period. Each figure measures its own category of activity and time window. [S04](#source-S04) · [S11](#source-S11)
+
+The same tokens can enter a transaction total several times. If **100 tokens** change hands **three times**, the recorded volume is **300 tokens**. Supply remains **100** in the absence of issuance or destruction. Transfers may represent payments, movements between accounts or treasury operations. Sorting them requires the economic context. [S04](#source-S04) · [S12](#source-S12)
+
+TRM Labs estimated that about **34% of the A7A5 trading volume** studied for its annual report was likely artificial. This applies to the trading activity TRM covered. FinCEN counted a different set of transactions over a different period. Applying TRM’s percentage to FinCEN’s total would combine incompatible measures. [S04](#source-S04) · [S12](#source-S12)
+
+## The issuer’s powers
+
+A7A5’s public source code provides for a pause in transfers and a blocklist. It also allows tokens held at a blocked address to be destroyed, subject to administrative roles. For the **Ethereum** address named by the project, the repository file and the source published by Blockscout match byte for byte. Blockscout marks the contract as partially verified. The current holders of the administrative keys and deployments on other networks fall outside this check. [S15](#source-S15) · [S16](#source-S16) · [S23](#source-S23)
+
+**Decurity**’s January 2025 code audit excludes centralisation risks at the client’s request. The project’s documentation also lists custody, liquidity and redemption risks. The public address for an earlier reserve report now returns an application page. Verifying current reserve balances would require further records. [S14](#source-S14) · [S17](#source-S17) · [S20](#source-S20)
+
+## The token’s decline and A7’s reported activity
+
+**Elliptic** estimates that A7A5 transfers averaged **24.3 million dollars a day** in June 2026, a **96%** fall from the July 2025 peak. Its analysis, published on 29 July, cites possible drivers including sanctions and access to exchanges. [S13](#source-S13)
+
+<ShadowFleetPaymentFigure lang="en" kind="volume" number={2} />
+
+On **18 November**, an A7 executive told Reuters that activity across the network had risen and that customers were mostly in agriculture and metals. His description covers the company’s wider services over a different period from Elliptic’s study. A comparison of the network over time would require a consistently defined measure of payments actually completed. [S13](#source-S13) · [S19](#source-S19)
+
+## US sanctions and the proposed rule
+
+The US Treasury announced the network’s designation by [OFAC](/en/glossary/ofac/) on **1 October 2026**. The [Financial Crimes Enforcement Network](/en/glossary/fincen/), or FinCEN, separately proposed a measure for certain transfers involving the network’s sub-agents by covered institutions. On **19 November**, FinCEN’s official index still lists the measure as a proposal. A case involving **nearly 140 million dollars** in the US documents concerns entities FinCEN links to the evasion of **Iranian** sanctions. A7 disputed any links to Iran, Reuters reported. [S04](#source-S04) · [S06](#source-S06) · [S07](#source-S07) · [S24](#source-S24)
+
+In its annual results published in March 2026, **Rosneft**’s management said barriers to international payments had pushed up the cost of settlement and currency conversion. It listed several factors affecting its results. The statement gives a commercial stake to the investigation. Every additional delay widens the gap between a sale and the cash the company can spend. Measuring that cost or delay would require records for individual transactions. [S18](#source-S18)
+
+## Scope of the investigation
+
+The investigation covers documents available on **19 November 2026**. We attribute official allegations, commercial estimates and company statements to their authors. The records describe a payment network and its reported links to oil proceeds. The evidence stops short of bank statements, matched cargoes or a payment attributable to Arrow, Citrine or Lidoil. Company responses are drawn from the cited publications. The cover image is an AI-generated illustration.
+
+## Sources
+
+<ol className="sources-list" role="list">
+  <li id="source-S01">
+    <span className="source-meta">S01 · A7 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://www.a7.ru/faq/" target="_blank" rel="noopener noreferrer">A7: questions on foreign-trade settlement</a>
+    <details><summary>Passages and scope</summary><p>Payment FAQ. A7 describes the service and the role of its promissory notes in its own commercial materials.</p></details>
+  </li>
+  <li id="source-S02">
+    <span className="source-meta">S02 · A7-Agent · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://app.a7-agent.ru/docs/vexel-sale-terms" target="_blank" rel="noopener noreferrer">A7-Agent: bill-of-exchange product terms</a>
+    <details><summary>Passages and scope</summary><p>Definitions and sections 3.1, 3.6.1 and 3.6.2. The issuer describes the relevant notes and payment in roubles.</p></details>
+  </li>
+  <li id="source-S03">
+    <span className="source-meta">S03 · National Crime Agency / NECC · Published: 2026-08-31 · Accessed: 2026-11-19</span>
+    <a href="https://www.nationalcrimeagency.gov.uk/who-we-are/publications/826-necc-a7-sanctions-evasion-mechanism/file" target="_blank" rel="noopener noreferrer">NCA: A7 Sanctions Evasion Mechanism, Flash Alert 0808-NECC</a>
+    <details><summary>Passages and scope</summary><p>PDF p. 1: scope; pp. 4–5: external treasuries and sub-agents; notes 2–10. Typology alert with expressly limited analytical status. Partly relies on OSC and CIR; matching a typology does not establish illegality.</p></details>
+  </li>
+  <li id="source-S04">
+    <span className="source-meta">S04 · Financial Crimes Enforcement Network · Published: 2026-10-05 · Accessed: 2026-11-19</span>
+    <a href="https://www.govinfo.gov/content/pkg/FR-2026-10-05/pdf/2026-20371.pdf" target="_blank" rel="noopener noreferrer">FinCEN: proposed special measure concerning A7 sub-agents</a>
+    <details><summary>Passages and scope</summary><p>Federal Register pp. 63208–63226; PDF 1–19. Mechanism 63212–63214; amounts and Iran cases 63214–63215; proposed text 63225–63226. Administrative findings based on public sources, BSA and non-public information. Proposal distinct from a final rule. USD 17bn and USD 179.1bn have different perimeters.</p></details>
+  </li>
+  <li id="source-S05">
+    <span className="source-meta">S05 · Financial Crimes Enforcement Network · Published: 2026-10-01 · Accessed: 2026-11-19</span>
+    <a href="https://www.fincen.gov/system/files/2026-10/FinCEN-Alert-A7-Network.pdf" target="_blank" rel="noopener noreferrer">FinCEN Alert on the A7 Network, FIN-2026-Alert007</a>
+    <details><summary>Passages and scope</summary><p>PDF p. 1: provenance; p. 2: documents and payments; pp. 5–6: token and limits of red flags. Same institutional family as S04 and S06. Some banks may be unaware of underlying clients. No single indicator determines whether a transaction is suspicious.</p></details>
+  </li>
+  <li id="source-S06">
+    <span className="source-meta">S06 · US Department of the Treasury · Published: 2026-10-01 · Accessed: 2026-11-19</span>
+    <a href="https://home.treasury.gov/news/press-releases/sb0644" target="_blank" rel="noopener noreferrer">Treasury: OFAC sanctions and proposed measures concerning A7</a>
+    <details><summary>Passages and scope</summary><p>A7 designated / Sanctions implications sections. Effective OFAC designation, distinct from the FinCEN proposal. Reasons attributed to Treasury within US jurisdiction; no inference of a uniform worldwide prohibition.</p></details>
+  </li>
+  <li id="source-S07">
+    <span className="source-meta">S07 · Financial Crimes Enforcement Network · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://www.fincen.gov/resources/statutes-and-regulations/special-measures" target="_blank" rel="noopener noreferrer">FinCEN: official Special Measures index</a>
+    <details><summary>Passages and scope</summary><p>A7 Network Sub-Agents entry. Proposal dated 1 October and a blank final-rule column on the access date.</p></details>
+  </li>
+  <li id="source-S08">
+    <span className="source-meta">S08 · Open Source Centre, avec / with TRM Labs · Published: 2026-06-12 · Accessed: 2026-11-19</span>
+    <a href="https://static.opensourcecentre.org/assets/osc_a7_big_shor.pdf" target="_blank" rel="noopener noreferrer">The Big Shor: A7 and the illusion of Russian financial innovation</a>
+    <details><summary>Passages and scope</summary><p>PDF pp. 7–9: method; pp. 30–31: bills; pp. 41–44: documents; pp. 46–50: external treasuries and hypotheses. Original investigation of leaked records. l0g read the report but did not obtain or authenticate the underlying corpus. Energy funding of external treasuries is a hypothesis in this section. Institutional reuse is source-dependent.</p></details>
+  </li>
+  <li id="source-S10">
+    <span className="source-meta">S10 · UK Foreign, Commonwealth &amp; Development Office · Published: 2026-05-26 · Accessed: 2026-11-19</span>
+    <a href="https://www.gov.uk/government/news/uk-cracks-down-on-backdoor-russian-sanctions-evasion-with-tough-new-measures" target="_blank" rel="noopener noreferrer">FCDO: A7 and the processing of oil proceeds</a>
+    <details><summary>Passages and scope</summary><p>Paragraph beginning “The A7 network is a Kremlin-backed system”. UK government claim linking the network to oil proceeds. This release provides no named bank transaction records.</p></details>
+  </li>
+  <li id="source-S11">
+    <span className="source-meta">S11 · A7A5 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://docs-en.a7a5.tech/" target="_blank" rel="noopener noreferrer">A7A5: project documentation</a>
+    <details><summary>Passages and scope</summary><p>Introduction: peg, deposits and stated mechanism. Project claims rouble backing and bank deposits. No contemporary bank statement obtained; a peg claim is distinct from assured liquidity. Web retrieval; no original file attached for this reference.</p></details>
+  </li>
+  <li id="source-S12">
+    <span className="source-meta">S12 · TRM Labs · Published: 2026-01-28 · Accessed: 2026-11-19</span>
+    <a href="https://www.trmlabs.com/reports-and-whitepapers/2026-crypto-crime-report" target="_blank" rel="noopener noreferrer">TRM Labs: 2026 Crypto Crime Report</a>
+    <details><summary>Passages and scope</summary><p>Russia section, paragraph on approximately 34% of A7A5 trading volume. Commercial estimate of likely artificial trading. Applies to TRM’s trading sample; cannot automatically adjust FinCEN transfer data.</p></details>
+  </li>
+  <li id="source-S13">
+    <span className="source-meta">S13 · Elliptic · Published: 2026-07-29 · Accessed: 2026-11-19</span>
+    <a href="https://www.elliptic.co/insights/the-fall-of-a7a5-how-sanctions-strangled-the-ruble-stablecoin/" target="_blank" rel="noopener noreferrer">The fall of A7A5: how sanctions strangled the ruble stablecoin</a>
+    <details><summary>Passages and scope</summary><p>The collapse, in numbers; Figure 1; proposed contributing factors. USD 24.3m daily average in June; reported 96% decline. Derived approximate index 100 → 4. Commercial estimate not replicated by l0g; multiple causes, no causal decomposition.</p></details>
+  </li>
+  <li id="source-S14">
+    <span className="source-meta">S14 · A7A5 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://docs-en.a7a5.tech/additional/information-on-the-risks" target="_blank" rel="noopener noreferrer">A7A5: Information on the Risks</a>
+    <details><summary>Passages and scope</summary><p>Custodial Risks; Liquidity Risks; Smart Contract Vulnerabilities. Project acknowledges custody, liquidity, redemption and code risks. These documents establish no universal right to USD redemption.</p></details>
+  </li>
+  <li id="source-S15">
+    <span className="source-meta">S15 · a7a5-defi / A7A5 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://raw.githubusercontent.com/a7a5-defi/a7a5/main/contracts/A7A5.sol" target="_blank" rel="noopener noreferrer">Published A7A5.sol source code</a>
+    <details><summary>Passages and scope</summary><p>Ethereum source published by the project. Administrative roles allow pausing, blocking and destroying tokens held at affected addresses.</p></details>
+  </li>
+  <li id="source-S16">
+    <span className="source-meta">S16 · Blockscout · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://eth.blockscout.com/address/0x6fA0BE17e4beA2fCfA22ef89BF8ac9aab0AB0fc9?tab=contract" target="_blank" rel="noopener noreferrer">Blockscout: published source for A7A5’s Ethereum contract</a>
+    <details><summary>Passages and scope</summary><p>Source for the Ethereum contract listed by the project. The published file matches the repository byte for byte. Blockscout reports partial verification.</p></details>
+  </li>
+  <li id="source-S17">
+    <span className="source-meta">S17 · Decurity · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://raw.githubusercontent.com/a7a5-defi/a7a5/main/A7A5%20Token%20Audit%20Report.pdf" target="_blank" rel="noopener noreferrer">Decurity: A7A5 Token Smart Contract Security Audit Report</a>
+    <details><summary>Passages and scope</summary><p>P. 3, sections 2.1 to 2.3. January 2025 code review. The scope excludes centralisation risks at the client’s request.</p></details>
+  </li>
+  <li id="source-S18">
+    <span className="source-meta">S18 · Rosneft · Published: 2026-03-31 · Accessed: 2026-11-19</span>
+    <a href="https://www.rosneft.com/press/releases/item/223842/" target="_blank" rel="noopener noreferrer">Rosneft: 2025 IFRS results and commentary on payments</a>
+    <details><summary>Passages and scope</summary><p>Management commentary: cross-border settlement, conversion costs and EBITDA factors. Interested management statement on higher costs. No isolated causal effect or l0g cargo-level cost estimate.</p></details>
+  </li>
+  <li id="source-S19">
+    <span className="source-meta">S19 · Reuters · Published: 2026-11-18 · Accessed: 2026-11-19</span>
+    <a href="https://www.reuters.com/world/africa/russias-a7-payment-network-plans-further-expansion-africa-executive-says-2026-11-18/" target="_blank" rel="noopener noreferrer">Russia’s A7 payment network plans further expansion in Africa, executive says</a>
+    <details><summary>Passages and scope</summary><p>Stanislav Lazarev’s statements on clients and activity. A7 claims mainly agricultural and metallurgical clients and growing activity. Unaudited company claims; distinct from June A7A5 volume.</p></details>
+  </li>
+  <li id="source-S20">
+    <span className="source-meta">S20 · A7A5 / Old Vector · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://www.a7a5.io/audit.pdf" target="_blank" rel="noopener noreferrer">A7A5: reserve-report URL, original unavailable</a>
+    <details><summary>Passages and scope</summary><p>Former report URL. The response is an application page. No reserve figures are taken from that response.</p></details>
+  </li>
+  <li id="source-S21">
+    <span className="source-meta">S21 · Centre for Information Resilience · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://www.info-res.org/app/uploads/2025/10/A7-Abroad-FINAL-Copy.pdf" target="_blank" rel="noopener noreferrer">A7 Abroad: How A7 Sells International Sanctions Evasion as a Service</a>
+    <details><summary>Passages and scope</summary><p>Original reporting on intermediaries. The report describes the records reviewed and the limits of links drawn from public traces.</p></details>
+  </li>
+  <li id="source-S23">
+    <span className="source-meta">S23 · A7A5 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://www.a7a5.io/" target="_blank" rel="noopener noreferrer">A7A5: official site and contract links</a>
+    <details><summary>Passages and scope</summary><p>Public configuration: documentation, GitHub repository and explorers. Provenance of the Ethereum address examined. Static files downloaded without executing code or probing private services.</p></details>
+  </li>
+  <li id="source-S24">
+    <span className="source-meta">S24 · Reuters · Published: 2026-10-02 · Accessed: 2026-11-19</span>
+    <a href="https://www.reuters.com/world/russias-a7-payment-platform-denies-links-iran-after-us-sanctions-2026-10-02/" target="_blank" rel="noopener noreferrer">Russia’s A7 payment platform denies links to Iran after US sanctions</a>
+    <details><summary>Passages and scope</summary><p>A7 response concerning Iran-related activities. Denial reported by Reuters. Public response distinct from independent evidence that no operations occurred.</p></details>
+  </li>
+  <li id="source-S25">
+    <span className="source-meta">S25 · A7 · Published: not stated · Accessed: 2026-11-19</span>
+    <a href="https://a7.international/fr" target="_blank" rel="noopener noreferrer">A7: French-language international-services presentation</a>
+    <details><summary>Passages and scope</summary><p>A7’s own presentation of its services for importers and exporters.</p></details>
+  </li>
+</ol>

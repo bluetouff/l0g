@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfp-clearing-en-d-0" width="100%" height="auto" viewBox="0 0 1200 650" role="img" aria-labelledby="sfp-clearing-en-d-1 sfp-clearing-en-d-3" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="sfp-clearing-en-d-1">Two pools, one settlement</title>
+  <desc id="sfp-clearing-en-d-3">Illustrative offsetting mechanism; no amounts or quantities are represented. An export sale links a Russian exporter with a foreign buyer. The buyer supplies foreign currency to an overseas liquidity pool; the exporter receives roubles from a pool in Russia. An import links a Russian importer with a foreign supplier: the importer provides roubles and the supplier receives foreign currency. The A7 ledger reconciles payment obligations between the two pools. Dashed arrows represent bookkeeping, not a cross-border transfer. Orders are pooled rather than matched one for one. Each pool requires liquidity and rebalancing. Oil is one possible source of foreign currency among other exports. Sources S01: A7 FAQ consulted 19 November 2026; S03: NCA August 2026 pp. 4–5; S04: FinCEN 5 October 2026 p. 63213. No particular vessel, bank account or customer is represented.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart": "compensation", "unit": "Qualitative payment and goods flows; no quantitative arrow weights", "period": "Public descriptions through 2026-11-19", "limits": "Illustrative mechanism, not a reconstructed individual transaction. Oil is one possible source of foreign currency. Arrows distinguish roubles, foreign currency, goods and bookkeeping.", "sources": [{"id": "S01", "url": "https://www.a7.ru/faq/"}, {"id": "S03", "url": "https://www.nationalcrimeagency.gov.uk/who-we-are/publications/826-necc-a7-sanctions-evasion-mechanism/file"}, {"id": "S04", "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-05/pdf/2026-20371.pdf"}]}</metadata>
+  <defs>
+    <marker id="sfp-clearing-en-d-6" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--color-signal)" />
+    </marker>
+    <marker id="sfp-clearing-en-d-8" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--color-accent)" />
+    </marker>
+    <marker id="sfp-clearing-en-d-10" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--color-amber)" />
+    </marker>
+    <marker id="sfp-clearing-en-d-12" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="var(--color-topic-blue)" />
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="1200" height="650" rx="0" fill="var(--color-ink)" opacity="1" />
+  <text x="48" y="70" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="35" font-weight="400" text-anchor="start">A7’s matching model</text>
+  <text x="48" y="108" fill="var(--color-muted)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">Offsetting reconciles rouble (RUB) and foreign-currency (FX) payments.</text>
+  <rect x="32" y="123" width="480" height="504" rx="18" fill="var(--color-signal)" opacity="0.025" />
+  <rect x="688" y="123" width="480" height="504" rx="18" fill="var(--color-accent)" opacity="0.025" />
+  <path d="M600 140.74 L600 278.5" fill="none" stroke="var(--color-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.4" stroke-dasharray="3 8" />
+  <path d="M600 503.18 L600 624.54" fill="none" stroke="var(--color-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.4" stroke-dasharray="3 8" />
+  <text x="270" y="162.88" fill="var(--color-signal)" font-family="Inter Variable, Inter, sans-serif" font-size="29" font-weight="400" text-anchor="middle">Russia</text>
+  <text x="930" y="162.88" fill="var(--color-accent)" font-family="Inter Variable, Inter, sans-serif" font-size="29" font-weight="400" text-anchor="middle">Abroad</text>
+  <text x="270" y="207.16" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">Russian</text>
+  <text x="270" y="235.04" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">exporter</text>
+  <text x="930" y="207.16" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">Foreign</text>
+  <text x="930" y="235.04" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">buyer</text>
+  <text x="600" y="196.5" fill="var(--color-topic-blue)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Export</text>
+  <path d="M451 218.64 H749" fill="none" stroke="var(--color-topic-blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-12)" />
+  <text x="600" y="247.34" fill="var(--color-topic-blue)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Goods</text>
+  <text x="270" y="577.8" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">Russian</text>
+  <text x="270" y="605.68" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">importer</text>
+  <text x="930" y="577.8" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">Foreign</text>
+  <text x="930" y="605.68" fill="var(--color-paper)" font-family="Inter Variable, Inter, sans-serif" font-size="27" font-weight="400" text-anchor="middle">supplier</text>
+  <text x="600" y="562.22" fill="var(--color-topic-blue)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Import</text>
+  <path d="M749 584.36 H451" fill="none" stroke="var(--color-topic-blue)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-12)" />
+  <text x="600" y="613.88" fill="var(--color-topic-blue)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Goods</text>
+  <path d="M270 335.9 L270 264.56" fill="none" stroke="var(--color-signal)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-6)" />
+  <rect x="218.0" y="285.06" width="104" height="32.8" rx="9" fill="var(--color-ink)" opacity="1" />
+  <text x="270" y="307.2" fill="var(--color-signal)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">RUB</text>
+  <path d="M930 264.56 L930 335.9" fill="none" stroke="var(--color-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-8)" />
+  <rect x="865.0" y="285.06" width="130" height="32.8" rx="9" fill="var(--color-ink)" opacity="1" />
+  <text x="930" y="307.2" fill="var(--color-accent)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">FX</text>
+  <path d="M270 543.36 L270 472.84" fill="none" stroke="var(--color-signal)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-6)" />
+  <rect x="218.0" y="493.34" width="104" height="32.8" rx="9" fill="var(--color-ink)" opacity="1" />
+  <text x="270" y="515.48" fill="var(--color-signal)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">RUB</text>
+  <path d="M930 472.84 L930 543.36" fill="none" stroke="var(--color-accent)" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-en-d-8)" />
+  <rect x="865.0" y="493.34" width="130" height="32.8" rx="9" fill="var(--color-ink)" opacity="1" />
+  <text x="930" y="515.48" fill="var(--color-accent)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">FX</text>
+  <path d="M105 353.12 V453.98 C105 476.94 435 476.94 435 453.98 V353.12 Z" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1" />
+  <ellipse cx="270" cy="353.12" rx="165.0" ry="17.22" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="2" />
+  <text x="270" y="387.56" fill="var(--color-muted)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Liquidity pool</text>
+  <text x="270" y="423.64" fill="var(--color-signal)" font-family="Inter Variable, Inter, sans-serif" font-size="36" font-weight="400" text-anchor="middle">RUB</text>
+  <text x="270" y="453.98" fill="var(--color-muted)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Accounts in Russia</text>
+  <path d="M765 353.12 V453.98 C765 476.94 1095 476.94 1095 453.98 V353.12 Z" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1" />
+  <ellipse cx="930" cy="353.12" rx="165.0" ry="17.22" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="2" />
+  <text x="930" y="387.56" fill="var(--color-muted)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Liquidity pool</text>
+  <text x="930" y="423.64" fill="var(--color-accent)" font-family="Inter Variable, Inter, sans-serif" font-size="36" font-weight="400" text-anchor="middle">FX</text>
+  <text x="930" y="453.98" fill="var(--color-muted)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Sub-agents</text>
+  <path d="M442 409.7 H502" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 7" marker-end="url(#sfp-clearing-en-d-10)" />
+  <path d="M758 409.7 H698" fill="none" stroke="var(--color-amber)" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 7" marker-end="url(#sfp-clearing-en-d-10)" />
+  <text x="600" y="340.82" fill="var(--color-amber)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">A7 ledger</text>
+  <path d="M510 378.54 Q555 364.6 600 378.54 Q645 364.6 690 378.54 V438.4 Q645 424.46 600 438.4 Q555 424.46 510 438.4 Z" fill="var(--color-surface)" stroke="var(--color-amber)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1" />
+  <path d="M600 378.54 L600 438.4" fill="none" stroke="var(--color-amber)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1" />
+  <path d="M525 394.94 Q555 389.2 587 394.94" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <path d="M613 394.94 Q645 389.2 675 394.94" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <path d="M525 408.06 Q555 402.32 587 408.06" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <path d="M613 408.06 Q645 402.32 675 408.06" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <path d="M525 421.18 Q555 415.44 587 421.18" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <path d="M613 421.18 Q645 415.44 675 421.18" fill="none" stroke="var(--color-amber)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65" />
+  <text x="600" y="475.3" fill="var(--color-amber)" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Orders reconciled</text>
+</svg>

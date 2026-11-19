@@ -1,0 +1,69 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'clearing' | 'volume';
+  number?: number;
+  id?: string;
+}
+const { lang, kind, number, id } = Astro.props;
+const copy = {
+  fr: {
+    clearing: {
+      caption: 'Le modèle décrit par les sources rapproche des besoins de paiement à l’importation et à l’exportation autour de réserves de liquidité en roubles et en devises.',
+      credit: 'Schéma de principe à acteurs génériques, d’après la NCA, FinCEN et la présentation commerciale d’A7. Le registre représente la comptabilité des ordres. Le pétrole peut contribuer aux devises avec d’autres exportations. Les sources décrivent un fonctionnement mutualisé, sans appariement systématique de chaque ordre ni rattachement à une cargaison déterminée.',
+      sources: [['S03', 'NCA, analyse du mécanisme A7'], ['S04', 'FinCEN, proposition du 5 octobre 2026'], ['S01', 'A7, présentation commerciale']],
+    },
+    volume: {
+      caption: 'Selon Elliptic, le volume quotidien moyen des transactions A7A5 atteint 24,3 millions de dollars en juin 2026, en baisse de 96 % par rapport au pic de juillet 2025.',
+      credit: 'Deux observations. L’indice de juin, proche de 4 en base 100, est calculé à partir du recul publié arrondi. Le périmètre est le jeton A7A5. Cette estimation commerciale, publiée le 29 juillet 2026, mesure des transactions de jetons et demande une lecture distincte des recettes pétrolières ou de l’activité totale du réseau A7.',
+      sources: [['S13', 'Elliptic, 29 juillet 2026']],
+    },
+  },
+  en: {
+    clearing: {
+      caption: 'The model described by the sources matches import and export payment needs around pools of rouble and foreign-currency liquidity.',
+      credit: 'A conceptual diagram with generic actors, based on the NCA, FinCEN and A7’s commercial description. The register represents order accounting. Oil can contribute foreign currency alongside other exports. The sources describe pooled activity, without establishing one-to-one matching for every order or a link to a particular cargo.',
+      sources: [['S03', 'NCA, analysis of the A7 mechanism'], ['S04', 'FinCEN, 5 October 2026 proposal'], ['S01', 'A7, commercial description']],
+    },
+    volume: {
+      caption: 'Elliptic reports average daily A7A5 transaction volume of $24.3 million in June 2026, down 96% from the July 2025 peak.',
+      credit: 'Two observations. June’s index of about 4, with July set to 100, is calculated from the rounded published decline. The scope is the A7A5 token. Published on 29 July 2026, this commercial estimate measures token transactions, a different metric from oil receipts or the A7 network’s total activity.',
+      sources: [['S13', 'Elliptic, 29 July 2026']],
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown shadow fleet payment figure language or kind.');
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/shadow-fleet-payment-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/shadow-fleet-payment-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/shadow-fleet-payment-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing shadow fleet payment figure variant.');
+const figureId = id ?? (number === undefined ? `shadow-fleet-payment-${kind}-${lang}` : `figure-${number}`);
+const prefix = `sfp-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="shadow-fleet-payment-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}{item.sources.map(([source, label], index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{label}</a></>)}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .shadow-fleet-payment-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .shadow-fleet-payment-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .shadow-fleet-payment-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

@@ -5740,6 +5740,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
       formula: 'durable parity = liquid assets + redemption right + supervision + operational trust',
       whyNow: 'Stablecoins are becoming a parallel dollar plumbing: T-bill reserves, cross-border payments, sanctions, DeFi and US regulation all intersect.',
       articles: [{"label": "Stablecoins: sharing reserve income", "href": "/en/analysis/stablecoins-yield-reserves-occ-circle-coinbase/", "detail": "Circle, Coinbase, holder rights and reward conditions.", "kind": "article"},
+        { label: 'Russia’s shadow fleet: oil proceeds and the A7 payment network', href: '/en/analysis/shadow-fleet-oil-payments-a7-a7a5/', detail: 'A7A5 transaction volumes, reserves and contract controls.', kind: 'article' },
         { label: 'France’s stablecoin tax plan: gains and timing', href: '/en/analysis/france-stablecoin-tax-capital-gains/', detail: 'France’s proposed reform, tax basis and annual use of losses.', kind: 'article' },
         { label: 'USD1: who receives the reserve interest?', href: '/en/analysis/usd1-trump-interest-rates-reserves-beneficiaries/', detail: 'Holder rights, BitGo revenue and the Trump family’s disclosed economic interests.', kind: 'article' },
         { label: 'Stablecoins: from tokens to available dollars', href: '/en/analysis/stablecoin-reserves-redemption-dollar/', detail: 'Reserves, fees, redemption delays and rights by issuer channel.', kind: 'article' },
