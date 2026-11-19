@@ -343,6 +343,13 @@ Ouvre http://localhost:4321. La page se recharge à chaque sauvegarde.
 
 ### 5.2 Publier
 
+Avant chaque push de publication, relis les titres sur les accueils FR et EN
+générés pour la version à pousser (`dist/index.html` et `dist/en/index.html`).
+Les titres d’article repris sur l’accueil sont soumis à son audit éditorial.
+`npm run build` lance déjà cet audit. Si tu génères le site autrement, lance
+`npm run test:editorial-headings` sur le `dist` à jour. En cas d’erreur, corrige
+le titre, régénère l’accueil et relance le contrôle avant de pousser.
+
 ```bash
 git status --short
 git diff --check
