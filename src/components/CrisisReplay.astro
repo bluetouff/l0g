@@ -40,7 +40,7 @@ const positions = [[19.531,44.02,22.5,42.16],[80.469,44.02,77.5,42.16],[80.469,8
         <h1>{episode.title[lang]}<br /><span>{episode.subtitle[lang]}</span></h1>
         <p class="replay-deck">{episode.deck[lang]}</p>
       </div>
-      <div class="replay-cover-note"><img class="replay-cover-art" src={`/illustrations/crisis-replay/${crisisGallery[episodeId].art}-640.webp`} alt={crisisGallery[episodeId].alt[lang]} width="640" height="360" decoding="async" /><p>{episode.place[lang]}<br /><span>{episode.period[lang]}</span></p><a href="#replay-method">{replayChapters.length} {t('moments clés · sources', 'turning points · sources')} <span aria-hidden="true">↙</span></a></div>
+      <div class="replay-cover-note"><img class="replay-cover-art" src={`/illustrations/crisis-replay/${crisisGallery[episodeId].art}-640.webp`} alt={crisisGallery[episodeId].alt[lang]} width="640" height="360" loading="lazy" decoding="async" /><p>{episode.place[lang]}<br /><span>{episode.period[lang]}</span></p><a href="#replay-method">{replayChapters.length} {t('moments clés · sources', 'turning points · sources')} <span aria-hidden="true">↙</span></a></div>
     </div>
   </header>
 
