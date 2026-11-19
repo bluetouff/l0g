@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="en" viewBox="0 0 320 326" role="img" aria-labelledby="ecbr-sensitivity-en-m-title ecbr-sensitivity-en-m-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="ecbr-sensitivity-en-m-title">The deposit rate changes the interest shift</title>
+<desc id="ecbr-sensitivity-en-m-desc">Arithmetic sensitivity using simple annualisation of about 177.6 billion euros reclassified to 0%. Rates of 1,2,3 and 4 percent are hypothetical. The only rate in force on 19 November 2026 is 2.50 percent, effective since 16 September and maintained on 29 October. The base and balances are fixed.</desc>
+<metadata>{&quot;stock_date&quot;: &quot;2026-11-18&quot;, &quot;base_period&quot;: &quot;2026-09&quot;, &quot;maintenance_period&quot;: &quot;2026-11-04/2026-12-22&quot;, &quot;base_observation_comment&quot;: &quot;MP202607&quot;, &quot;required_reserves_status&quot;: &quot;provisional&quot;, &quot;current_ratio_percent&quot;: 1, &quot;scenario_ratio_percent&quot;: 2, &quot;rate_effective_date&quot;: &quot;2026-09-16&quot;, &quot;rate_confirmation_date&quot;: &quot;2026-10-29&quot;, &quot;base_eur_billion&quot;: &quot;17762.06925346491&quot;, &quot;extra_before_institution_threshold_effects_eur_billion&quot;: &quot;177.6206925346491&quot;, &quot;total_current_accounts_plus_deposit_facility_eur_billion&quot;: &quot;2264.080&quot;, &quot;sources&quot;: {&quot;liquidity&quot;: &quot;https://www.ecb.europa.eu/mopo/liq/html/index.en.html&quot;, &quot;daily_csv&quot;: &quot;https://www.ecb.europa.eu/stats/pdf/monetary/lm/liq_daily_2026.zip&quot;, &quot;deposits&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L2B.L.1.A1.3000.Z01.E&quot;, &quot;debt&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L40.L.1.A1.3000.Z01.E&quot;, &quot;rate&quot;: &quot;https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html&quot;}, &quot;assumptions&quot;: &quot;Fixed eligible base, fixed total bank balances, and additional requirement funded from eligible remunerated balances. Institution-level allowance threshold effects not modelled. Simple annualisation = principal times annual rate, equivalent to360days under actual/360. No rate forecast or adopted2percent ratio asserted.&quot;}</metadata>
+<text x="14" y="25" font-size="16.5" fill="var(--color-paper)" text-anchor="start">Interest shift by deposit rate</text>
+<text x="14" y="47" font-size="14" fill="var(--color-muted)" text-anchor="start">≈177.6 €bn reclassified to 0%</text>
+<path d="M48 248.0000H294" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="38" y="252.0" font-size="14" fill="var(--color-muted)" text-anchor="end">0</text>
+<path d="M48 209.0000H294" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="38" y="213.0" font-size="14" fill="var(--color-muted)" text-anchor="end">2</text>
+<path d="M48 170.0000H294" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="38" y="174.0" font-size="14" fill="var(--color-muted)" text-anchor="end">4</text>
+<path d="M48 131.0000H294" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="38" y="135.0" font-size="14" fill="var(--color-muted)" text-anchor="end">6</text>
+<path d="M48 92.0000H294" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="38" y="96.0" font-size="14" fill="var(--color-muted)" text-anchor="end">8</text>
+<text x="14" y="65" font-size="14" fill="var(--color-muted)" text-anchor="start">€bn/year</text>
+<path d="M48.0000 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="48.0" y="271" font-size="14" fill="var(--color-muted)" text-anchor="middle">0</text>
+<path d="M109.5000 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="109.5" y="271" font-size="14" fill="var(--color-muted)" text-anchor="middle">1</text>
+<path d="M171.0000 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="171.0" y="271" font-size="14" fill="var(--color-muted)" text-anchor="middle">2</text>
+<path d="M201.7500 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="201.75" y="271" font-size="14" fill="var(--color-amber)" text-anchor="middle">2.5</text>
+<path d="M232.5000 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="232.5" y="271" font-size="14" fill="var(--color-muted)" text-anchor="middle">3</text>
+<path d="M294.0000 248v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="294.0" y="271" font-size="14" fill="var(--color-muted)" text-anchor="middle">4</text>
+<path d="M48 248L294.0000 109.4559" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="109.5000" cy="213.3640" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="1" data-value="1.776206925346491"/>
+<text x="101.5" y="201.36396495574343" font-size="14" fill="var(--color-paper)" text-anchor="end">1.78</text>
+<circle cx="171.0000" cy="178.7279" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="2" data-value="3.552413850692982"/>
+<text x="163.0" y="166.72792991148685" font-size="14" fill="var(--color-paper)" text-anchor="end">3.55</text>
+<circle cx="201.7500" cy="161.4099" r="4.5" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.3" data-rate="2.5" data-value="4.4405173133662275"/>
+<circle cx="232.5000" cy="144.0919" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="3" data-value="5.328620776039473"/>
+<text x="229.5" y="132.09189486723028" font-size="14" fill="var(--color-paper)" text-anchor="middle">5.33</text>
+<circle cx="294.0000" cy="109.4559" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="4" data-value="7.104827701385964"/>
+<text x="291.0" y="97.45585982297371" font-size="14" fill="var(--color-paper)" text-anchor="end">7.10</text>
+<rect x="67.0000" y="61" width="153.0000" height="57" rx="0" fill="var(--color-ink)" stroke="var(--color-ink)" stroke-width="1"/>
+<text x="72" y="81" font-size="14" fill="var(--color-amber)" text-anchor="start">2.50% in force</text>
+<text x="72" y="104" font-size="17" fill="var(--color-amber)" text-anchor="start">4.44 €bn/year</text>
+<path d="M201.7500 154.4099V125H202" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+<text x="160" y="298" font-size="14" fill="var(--color-muted)" text-anchor="middle">Deposit rate, % per year</text>
+</svg>

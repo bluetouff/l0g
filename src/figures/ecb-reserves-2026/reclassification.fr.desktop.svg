@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="fr" viewBox="0 0 600 310" role="img" aria-labelledby="ecbr-reclassification-fr-d-title ecbr-reclassification-fr-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="ecbr-reclassification-fr-d-title">Une tranche changerait de rémunération</title>
+<desc id="ecbr-reclassification-fr-d-desc">À stock constant de 2 264,080 milliards d’euros, le scénario de coefficient à 2 % fait passer les réserves requises de 177,314 à 354,935 milliards. Environ 177,6 milliards passeraient à une rémunération nulle. Les soldes au-delà du minimum sont des montants bruts, distincts de l’excès officiel net du prêt marginal.</desc>
+<metadata>{&quot;stock_date&quot;: &quot;2026-11-18&quot;, &quot;base_period&quot;: &quot;2026-09&quot;, &quot;maintenance_period&quot;: &quot;2026-11-04/2026-12-22&quot;, &quot;base_observation_comment&quot;: &quot;MP202607&quot;, &quot;required_reserves_status&quot;: &quot;provisional&quot;, &quot;current_ratio_percent&quot;: 1, &quot;scenario_ratio_percent&quot;: 2, &quot;rate_effective_date&quot;: &quot;2026-09-16&quot;, &quot;rate_confirmation_date&quot;: &quot;2026-10-29&quot;, &quot;base_eur_billion&quot;: &quot;17762.06925346491&quot;, &quot;extra_before_institution_threshold_effects_eur_billion&quot;: &quot;177.6206925346491&quot;, &quot;total_current_accounts_plus_deposit_facility_eur_billion&quot;: &quot;2264.080&quot;, &quot;sources&quot;: {&quot;liquidity&quot;: &quot;https://www.ecb.europa.eu/mopo/liq/html/index.en.html&quot;, &quot;daily_csv&quot;: &quot;https://www.ecb.europa.eu/stats/pdf/monetary/lm/liq_daily_2026.zip&quot;, &quot;deposits&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L2B.L.1.A1.3000.Z01.E&quot;, &quot;debt&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L40.L.1.A1.3000.Z01.E&quot;, &quot;rate&quot;: &quot;https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html&quot;}, &quot;assumptions&quot;: &quot;Fixed eligible base, fixed total bank balances, and additional requirement funded from eligible remunerated balances. Institution-level allowance threshold effects not modelled. Simple annualisation = principal times annual rate, equivalent to360days under actual/360. No rate forecast or adopted2percent ratio asserted.&quot;}</metadata>
+<text x="18" y="27" font-size="17.5" fill="var(--color-paper)" text-anchor="start">Une tranche changerait de rémunération</text>
+<text x="18" y="49" font-size="13" fill="var(--color-muted)" text-anchor="start">Zone euro · 18 novembre 2026 · Md€</text>
+<text x="18" y="105" font-size="14" fill="var(--color-paper)" text-anchor="start">Coefficient 1 %</text>
+<text x="18" y="125" font-size="13" fill="var(--color-muted)" text-anchor="start">en vigueur</text>
+<rect x="153.0000" y="94" width="429.0000" height="28" rx="2" fill="var(--color-signal)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="153.0000" y="94" width="33.5976" height="28" rx="2" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="153" y="146" font-size="13" fill="var(--color-accent)" text-anchor="start">177,3 requis</text>
+<text x="582" y="146" font-size="13" fill="var(--color-signal)" text-anchor="end">2 086,8 au-delà</text>
+<path d="M188 166H220" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M215 163L220 166L215 169" fill="none" stroke="var(--color-accent)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="245" y="171" font-size="14" fill="var(--color-accent)" text-anchor="start">≈177,6 Md€ passeraient à 0 %</text>
+<text x="18" y="216" font-size="14" fill="var(--color-paper)" text-anchor="start">Coefficient 2 %</text>
+<text x="18" y="236" font-size="13" fill="var(--color-muted)" text-anchor="start">scénario</text>
+<rect x="153.0000" y="205" width="429.0000" height="28" rx="2" fill="var(--color-signal)" stroke="var(--color-line-strong)" stroke-width="1"/>
+<rect x="153.0000" y="205" width="67.2534" height="28" rx="2" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="153" y="257" font-size="13" fill="var(--color-accent)" text-anchor="start">≈354,9 requis</text>
+<text x="582" y="257" font-size="13" fill="var(--color-signal)" text-anchor="end">≈1 909,1 au-delà</text>
+<text x="18" y="293" font-size="14" fill="var(--color-paper)" text-anchor="start">Stock inchangé : 2 264,1 Md€</text>
+</svg>

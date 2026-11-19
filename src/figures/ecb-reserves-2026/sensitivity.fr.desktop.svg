@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" xml:lang="fr" viewBox="0 0 600 310" role="img" aria-labelledby="ecbr-sensitivity-fr-d-title ecbr-sensitivity-fr-d-desc" font-family="Inter Variable, Inter, sans-serif" font-weight="400" style="width:100%;height:auto">
+<title id="ecbr-sensitivity-fr-d-title">Le taux change le transfert d’intérêts</title>
+<desc id="ecbr-sensitivity-fr-d-desc">Sensibilité arithmétique en annualisation simple d’environ 177,6 milliards d’euros reclassés à 0 %. Les taux 1,2,3 et 4 % sont hypothétiques. Le seul taux en vigueur au 19 novembre 2026 est 2,50 %, appliqué depuis le 16 septembre et maintenu le 29 octobre. L’assiette et le stock sont constants.</desc>
+<metadata>{&quot;stock_date&quot;: &quot;2026-11-18&quot;, &quot;base_period&quot;: &quot;2026-09&quot;, &quot;maintenance_period&quot;: &quot;2026-11-04/2026-12-22&quot;, &quot;base_observation_comment&quot;: &quot;MP202607&quot;, &quot;required_reserves_status&quot;: &quot;provisional&quot;, &quot;current_ratio_percent&quot;: 1, &quot;scenario_ratio_percent&quot;: 2, &quot;rate_effective_date&quot;: &quot;2026-09-16&quot;, &quot;rate_confirmation_date&quot;: &quot;2026-10-29&quot;, &quot;base_eur_billion&quot;: &quot;17762.06925346491&quot;, &quot;extra_before_institution_threshold_effects_eur_billion&quot;: &quot;177.6206925346491&quot;, &quot;total_current_accounts_plus_deposit_facility_eur_billion&quot;: &quot;2264.080&quot;, &quot;sources&quot;: {&quot;liquidity&quot;: &quot;https://www.ecb.europa.eu/mopo/liq/html/index.en.html&quot;, &quot;daily_csv&quot;: &quot;https://www.ecb.europa.eu/stats/pdf/monetary/lm/liq_daily_2026.zip&quot;, &quot;deposits&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L2B.L.1.A1.3000.Z01.E&quot;, &quot;debt&quot;: &quot;https://data.ecb.europa.eu/data/datasets/BSI/BSI.M.U2.N.R.L40.L.1.A1.3000.Z01.E&quot;, &quot;rate&quot;: &quot;https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.mp261029~9a493adf17.en.html&quot;}, &quot;assumptions&quot;: &quot;Fixed eligible base, fixed total bank balances, and additional requirement funded from eligible remunerated balances. Institution-level allowance threshold effects not modelled. Simple annualisation = principal times annual rate, equivalent to360days under actual/360. No rate forecast or adopted2percent ratio asserted.&quot;}</metadata>
+<text x="18" y="27" font-size="17.5" fill="var(--color-paper)" text-anchor="start">Le taux change le transfert d’intérêts</text>
+<text x="18" y="49" font-size="13" fill="var(--color-muted)" text-anchor="start">≈177,6 Md€ reclassés à 0 %</text>
+<path d="M64 245.0000H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="249.0" font-size="13" fill="var(--color-muted)" text-anchor="end">0</text>
+<path d="M64 204.0000H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="208.0" font-size="13" fill="var(--color-muted)" text-anchor="end">2</text>
+<path d="M64 163.0000H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="167.0" font-size="13" fill="var(--color-muted)" text-anchor="end">4</text>
+<path d="M64 122.0000H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="126.0" font-size="13" fill="var(--color-muted)" text-anchor="end">6</text>
+<path d="M64 81.0000H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="54" y="85.0" font-size="13" fill="var(--color-muted)" text-anchor="end">8</text>
+<text x="566" y="65" font-size="13" fill="var(--color-muted)" text-anchor="end">Md€/an</text>
+<path d="M64.0000 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="64.0" y="268" font-size="13" fill="var(--color-muted)" text-anchor="middle">0</text>
+<path d="M189.5000 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="189.5" y="268" font-size="13" fill="var(--color-muted)" text-anchor="middle">1</text>
+<path d="M315.0000 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="315.0" y="268" font-size="13" fill="var(--color-muted)" text-anchor="middle">2</text>
+<path d="M377.7500 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="377.75" y="268" font-size="13" fill="var(--color-amber)" text-anchor="middle">2,5</text>
+<path d="M440.5000 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="440.5" y="268" font-size="13" fill="var(--color-muted)" text-anchor="middle">3</text>
+<path d="M566.0000 245v5" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="566.0" y="268" font-size="13" fill="var(--color-muted)" text-anchor="middle">4</text>
+<path d="M64 245L566.0000 99.3510" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="189.5000" cy="208.5878" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="1" data-value="1.776206925346491"/>
+<text x="181.5" y="196.58775803039694" font-size="13" fill="var(--color-paper)" text-anchor="end">1,78</text>
+<circle cx="315.0000" cy="172.1755" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="2" data-value="3.552413850692982"/>
+<text x="307.0" y="160.17551606079388" font-size="13" fill="var(--color-paper)" text-anchor="end">3,55</text>
+<circle cx="377.7500" cy="153.9694" r="4.5" fill="var(--color-amber)" stroke="var(--color-amber)" stroke-width="1.3" data-rate="2.5" data-value="4.4405173133662275"/>
+<circle cx="440.5000" cy="135.7633" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="3" data-value="5.328620776039473"/>
+<text x="437.5" y="123.7632740911908" font-size="13" fill="var(--color-paper)" text-anchor="middle">5,33</text>
+<circle cx="566.0000" cy="99.3510" r="3.3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.3" data-rate="4" data-value="7.104827701385964"/>
+<text x="563.0" y="87.35103212158774" font-size="13" fill="var(--color-paper)" text-anchor="end">7,10</text>
+<rect x="189.0000" y="72" width="177.0000" height="57" rx="0" fill="var(--color-ink)" stroke="var(--color-ink)" stroke-width="1"/>
+<text x="194" y="92" font-size="13" fill="var(--color-amber)" text-anchor="start">2,50 % en vigueur</text>
+<text x="194" y="115" font-size="17" fill="var(--color-amber)" text-anchor="start">4,44 Md€/an</text>
+<path d="M377.7500 146.9694V136H348" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+<text x="315" y="292" font-size="13" fill="var(--color-muted)" text-anchor="middle">Taux de dépôt, % par an</text>
+</svg>

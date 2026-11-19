@@ -210,6 +210,31 @@ const uraniumGuide: GlossaryGraphLink = { label: 'Reading the uranium market', h
 
 export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   {
+    slug: 'reserves-obligatoires', sigle: 'Minimum reserves', nom: 'ECB minimum reserve requirements',
+    def: 'The minimum average balance a covered euro area credit institution must hold at its national central bank during a maintenance period. The positive ratio on qualifying deposits and debt securities was 1% as of 19 November 2026. A €100,000 allowance applies to the requirement. Required reserves have earned 0% since 20 September 2023.',
+    guide: '/en/guides/read-ecb-balance-sheet-target2/',
+    ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'The ECB’s €4.4 billion reserve question', href: '/en/analysis/ecb-minimum-reserves-banks-customers-income-shift/', kind: 'article' }],
+      sources: [{ label: 'ECB Regulation (EU) 2021/378, consolidated text', href: 'https://eur-lex.europa.eu/eli/reg/2021/378/2023-09-20/eng', detail: 'Articles 3, 5, 6 and 9 cover average holdings, the base, ratio, allowance and remuneration.', kind: 'source' }],
+      related: ['liquidite-excedentaire'],
+    },
+  },
+  {
+    slug: 'liquidite-excedentaire', sigle: 'Excess liquidity', nom: 'The ECB’s daily excess liquidity measure',
+    def: 'Banks’ Eurosystem current-account balances and use of the deposit facility, minus minimum reserve requirements and use of the marginal lending facility. With total holdings unchanged, increasing the minimum reduces the published measure.',
+    guide: '/en/guides/read-ecb-balance-sheet-target2/',
+    ...macroSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'The ECB’s €4.4 billion reserve question', href: '/en/analysis/ecb-minimum-reserves-banks-customers-income-shift/', kind: 'article' }],
+      sources: [
+        { label: 'ECB daily liquidity analysis', href: 'https://www.ecb.europa.eu/mopo/liq/html/index.en.html', kind: 'source' },
+        { label: 'ECB definition of excess liquidity', href: 'https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202606_07~68d5d49c60.en.html', kind: 'source' },
+      ],
+      related: ['reserves-obligatoires'],
+    },
+  },
+  {
     slug: 'syndication', sigle: 'Loan syndication', nom: 'Arranging a loan across several lenders',
     def: 'A loan provided by a group of financial institutions to one borrower. The arranger structures the transaction and assembles the lenders. The bookrunner coordinates invitations and information for participants. Each lender holds its own claim under a common loan agreement. Commitments and borrowing are governed by the agreed terms.',
     guide: '/en/analysis/nvidia-financing-guarantees-aolani-loan/',

@@ -1,0 +1,80 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'reclassification' | 'sensitivity';
+  sourceHref: string;
+  secondarySourceHref?: string;
+  number?: number;
+  id?: string;
+}
+const { lang, kind, sourceHref, secondarySourceHref, number, id } = Astro.props;
+const copy = {
+  fr: {
+    reclassification: {
+      caption: 'Dans le scénario à 2 %, environ 177,6 milliards d’euros passeraient à une rémunération nulle, à stock d’avoirs constant. Le coefficient en vigueur reste de 1 %.',
+      source: 'BCE, liquidité du 18 novembre 2026',
+      secondary: 'assiette publiée de la période',
+      credit: 'Les barres additionnent comptes courants et facilité de dépôt. Les réserves requises sont provisoires pour le 4 novembre au 22 décembre 2026. Le solde au-delà des requis est brut du prêt marginal. Le scénario fige l’assiette et suppose un prélèvement sur les avoirs rémunérés éligibles, avant effets des seuils individuels liés à l’abattement de 100 000 euros.',
+    },
+    sensitivity: {
+      caption: 'Le scénario conserve environ 177,6 milliards d’euros supplémentaires non rémunérés et fait varier le taux auquel les banques renonceraient. Le seul taux en vigueur représenté est 2,50 %.',
+      source: 'BCE, assiette de référence septembre 2026',
+      secondary: 'décision du 29 octobre 2026',
+      credit: 'Calcul l0g : encours × taux annuel, soit une annualisation simple équivalente à 360 jours selon actual/360. Le taux de 2,50 % s’applique depuis le 16 septembre 2026. Les autres taux illustrent une sensibilité. Assiette et stock sont constants, avant effets des seuils individuels.',
+    },
+  },
+  en: {
+    reclassification: {
+      caption: 'Under the 2% ratio scenario, about €177.6 billion would become unremunerated while total bank balances stay fixed. The ratio in force remains 1%.',
+      source: 'ECB, liquidity on 18 November 2026',
+      secondary: 'published reserve base for the period',
+      credit: 'The bars combine current accounts and the deposit facility. Required reserves are provisional for 4 November to 22 December 2026. Balances above the requirement are gross of marginal lending. The scenario holds the base fixed and assumes the additional requirement comes from eligible remunerated balances, before institution-level allowance threshold effects.',
+    },
+    sensitivity: {
+      caption: 'The scenario holds about €177.6 billion of additional unremunerated reserves fixed and varies the rate banks would forgo. The only current policy rate shown is 2.50%.',
+      source: 'ECB, reserve base referenced to September 2026',
+      secondary: '29 October 2026 decision',
+      credit: 'l0g calculation: principal × annual rate, a simple annualisation equivalent to 360 days under actual/360. The 2.50% rate has applied since 16 September 2026. Other rates show a sensitivity. The base and balances are fixed, before institution-level allowance threshold effects.',
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown ECB reserves figure language or kind.');
+const expected = kind === 'reclassification' ? ['#source-S07', '#source-S08'] : ['#source-S08', '#source-S06'];
+if (sourceHref !== expected[0] || (secondarySourceHref !== undefined && secondarySourceHref !== expected[1])) {
+  throw new TypeError('Invalid ECB reserves figure source anchor.');
+}
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/ecb-reserves-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/ecb-reserves-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/ecb-reserves-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing ECB reserves figure variant.');
+const figureId = id ?? (number === undefined ? `ecb-reserves-${kind}-${lang}` : `figure-${number}`);
+const prefix = `ecbr-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+const dataHref = kind === 'reclassification' ? '/data/ecb-reserves-reclassification-2026-11-18.csv' : '/data/ecb-reserves-sensitivity-2026-11-19.csv';
+---
+<figure class="ecb-reserves-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}<a href={sourceHref}>{item.source}</a>{secondarySourceHref && <> · <a href={secondarySourceHref}>{item.secondary}</a></>} · <a href={dataHref}>{lang === 'fr' ? 'Données et calculs CSV' : 'CSV data and calculations'}</a>.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .ecb-reserves-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .ecb-reserves-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .ecb-reserves-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>
