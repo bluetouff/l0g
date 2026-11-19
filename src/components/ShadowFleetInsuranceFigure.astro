@@ -1,0 +1,69 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'certificate' | 'limits';
+  number?: number;
+  id?: string;
+}
+const { lang, kind, number, id } = Astro.props;
+const copy = {
+  fr: {
+    certificate: {
+      caption: 'La Blue Card matérialise l’engagement de l’assureur ou du garant, à partir duquel l’État compétent délivre le certificat CLC. Après un dommage, la convention ouvre une action directe contre l’assureur ou le garant, avec des moyens de défense encadrés.',
+      credit: 'Cadre général de la CLC de 1992, article VII. Le contrôle du certificat et l’examen d’une demande d’indemnisation répondent à des procédures distinctes. Le schéma présente des rôles génériques.',
+      sources: [['S08', 'CLC de 1992, article VII'], ['S13', 'Danish Maritime Authority, délivrance des certificats']],
+    },
+    limits: {
+      caption: 'Les montants sont cumulés par événement : 203 millions de DTS comprennent les paiements CLC, puis 750 millions comprennent aussi ceux du Fonds de 1992. Le maximum du barème CLC atteint 89,77 millions de DTS.',
+      credit: 'Cadre général, sous conditions conventionnelles d’admissibilité, de causalité et de territoire. Le plafond CLC d’un navire dépend de sa jauge brute. Les exemples Oman et France concernent le territoire du dommage recevable, avec les extensions maritimes prévues par les conventions. Le pavillon du navire ne détermine pas à lui seul l’accès aux Fonds.',
+      sources: [['S08', 'textes des conventions'], ['S09', 'barème CLC'], ['S25', 'plafonds des Fonds'], ['S11', 'États parties']],
+    },
+  },
+  en: {
+    certificate: {
+      caption: 'The Blue Card records the insurer’s or guarantor’s undertaking, on which the competent State bases its CLC certificate. After damage occurs, the convention provides for direct action against the insurer or guarantor, with defined defences.',
+      credit: 'The general framework of the 1992 CLC, Article VII. Checking a certificate and assessing a compensation claim involve distinct procedures. The diagram shows generic roles.',
+      sources: [['S08', '1992 CLC, Article VII'], ['S13', 'Danish Maritime Authority, issuing certificates']],
+    },
+    limits: {
+      caption: 'These are inclusive totals per incident: SDR 203 million includes CLC payments, while SDR 750 million also includes the 1992 Fund. The maximum on the CLC tonnage schedule is SDR 89.77 million.',
+      credit: 'The general framework is subject to the conventions’ eligibility, causation and territorial requirements. A vessel’s CLC limit depends on gross tonnage. The Oman and France examples concern where admissible damage occurs, including the maritime extensions provided by the conventions. A vessel’s flag alone does not establish access to the Funds.',
+      sources: [['S08', 'convention texts'], ['S09', 'CLC schedule'], ['S25', 'Fund ceilings'], ['S11', 'States parties']],
+    },
+  },
+} as const;
+const item = copy[lang]?.[kind];
+if (!item) throw new TypeError('Unknown shadow fleet insurance figure language or kind.');
+if (number !== undefined && (!Number.isInteger(number) || number < 1)) throw new TypeError('Invalid figure number.');
+if (id !== undefined && !/^[A-Za-z][A-Za-z0-9_-]*$/u.test(id)) throw new TypeError('Invalid figure identifier.');
+const figures = import.meta.glob('../figures/shadow-fleet-insurance-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/shadow-fleet-insurance-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/shadow-fleet-insurance-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing shadow fleet insurance figure variant.');
+const figureId = id ?? (number === undefined ? `shadow-fleet-insurance-${kind}-${lang}` : `figure-${number}`);
+const prefix = `sfi-${kind}-${lang}-`;
+const instance = `${figureId}-${lang}-${kind}-`;
+---
+<figure class="shadow-fleet-insurance-figure" id={figureId} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, instance)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, instance)} />
+  <figcaption>
+    {number !== undefined && <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>}
+    {item.caption}
+    <span class="figure-source">{lang === 'fr' ? 'Sources : ' : 'Sources: '}{item.sources.map(([source, label], index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{label}</a></>)}.</span>
+    <span class="figure-credit">{item.credit}</span>
+  </figcaption>
+</figure>
+<style>
+  .shadow-fleet-insurance-figure { width: 100%; max-width: 600px; margin: 1.8rem auto; padding-bottom: .85rem; container-type: inline-size; }
+  .shadow-fleet-insurance-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption { margin-top: .65rem; color: var(--color-muted); font-family: var(--font-read); font-size: .75rem; font-weight: 400; line-height: 1.5; }
+  .figure-number { margin-right: .6rem; font-variant-numeric: tabular-nums; }
+  .figure-source, .figure-credit { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 568px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .shadow-fleet-insurance-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

@@ -854,6 +854,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'MMBtu', nom: 'Million British thermal units', def: "Unité d'énergie de référence du marché gazier mondial, égale à un million de BTU, soit environ 293 kWh ou 0,293 MWh. Henry Hub et JKM se cotent en dollars par MMBtu, le TTF en euros par MWh, d'où la nécessité de convertir pour comparer les trois indices." },
       { sigle: 'VLSFO', nom: 'Very Low Sulphur Fuel Oil', def: "Fioul marin à très basse teneur en soufre (moins de 0,5 %) imposé aux navires depuis la norme OMI 2020. Son prix, indexé sur le pétrole, pèse directement sur le coût des soutes, donc du fret maritime." },
       { sigle: 'VLCC', nom: 'Very Large Crude Carrier', def: "Supertanker d'environ 2 millions de barils de capacité, cheval de trait des routes Golfe-Asie. Une coque récente vaut de l'ordre de 100 à 150 millions de dollars ; s'y ajoute la cargaison, souvent plus chère que le navire. Le taux de fret des VLCC entre golfe Persique et Chine (route TD3C) sert de baromètre du transport de brut.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Certificat CLC', nom: 'Certificat d’assurance ou de garantie financière de la convention de 1992', def: 'Document délivré ou visé par un État compétent pour attester qu’une assurance ou une autre garantie financière répond à la convention de 1992 sur la responsabilité civile pour les dommages de pollution par hydrocarbures. Il identifie le garant et la période de validité. L’attestation de l’assureur, souvent appelée blue card, sert de pièce au dossier de demande.', guide: '/posts/flotte-fantome-assurance-petrolier-echoue-facture/' },
       { sigle: 'Numéro OMI', nom: 'Identifiant permanent d’un navire', def: 'Identifiant unique du système de l’Organisation maritime internationale. Attribué à un navire, il reste le même toute sa vie lors d’un changement de nom, de pavillon ou de propriétaire. Il permet de relier les documents relatifs au même navire.', guide: '/posts/flotte-fantome-arrow-propriete-petrolier/' },
       { sigle: 'Surestaries', nom: 'Demurrage', def: "Indemnité journalière due à l'armateur quand le navire est retenu au-delà du temps de chargement ou de déchargement convenu au contrat d'affrètement (la charte-partie). En crise, elle transforme chaque jour d'attente en facture : plus de 100 000 dollars par jour et par VLCC pendant le blocage d'Ormuz de 2026. Qui la paie dépend des clauses du contrat, dont l'exonération pour fait du prince (restraint of princes)." },
       { sigle: 'War risk', nom: 'Assurance risque de guerre', def: "Surprime d'assurance maritime exigée pour traverser une zone de conflit, cotée par traversée en pourcentage de la valeur de la coque et recotée à chaque incident. Quasi symbolique en temps calme (0,15 à 0,25 % pour le Golfe avant 2026), elle a culminé vers 10 % au pic de la crise d'Ormuz avant de s'installer autour de 5 %. Elle agit comme un péage de marché : elle ne ferme pas un détroit, elle lui donne un prix." },
@@ -1099,7 +1100,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-19';
+export const glossaryUpdatedIso = '2026-11-20';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -2715,6 +2716,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
     sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11–12 : fonction du cushion gas dans le maintien de la pression et du débit. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
     related: ['gaz-utile', 'capacite-de-soutirage'],
+  },
+  'certificat-clc': {
+    articles: [{ label: 'Flotte fantôme russe : qui paie après l’échouement d’un pétrolier ?', href: '/posts/flotte-fantome-assurance-petrolier-echoue-facture/', kind: 'article' }],
+    sources: [
+      { label: 'Convention CLC de 1992, article VII', href: 'https://iopcfunds.org/wp-content/uploads/2018/06/Text-of-Conventions_e.pdf', detail: 'Obligation de garantie, État compétent, contenu du certificat et action directe.', kind: 'source' },
+      { label: 'Autorité maritime danoise, certificats d’assurance', href: 'https://www.dma.dk/ship-survey-and-registration/apply-for-a-certificate', detail: 'Attestation Blue Card et justificatifs pour les assureurs hors International Group.', kind: 'source' },
+    ],
   },
   'numero-omi': {
     articles: [{ label: 'Flotte fantôme russe : le pétrolier Arrow et ses propriétaires', href: '/posts/flotte-fantome-arrow-propriete-petrolier/', kind: 'article' }],

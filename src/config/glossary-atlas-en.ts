@@ -2231,6 +2231,20 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'certificat-clc',
+    sigle: 'CLC certificate',
+    nom: 'Certificate of insurance or financial security under the 1992 Civil Liability Convention',
+    def: 'A document issued or certified by a competent state attesting that insurance or other financial security is in force under the 1992 Civil Liability Convention for oil pollution damage. It identifies the guarantor and the certificate’s validity period. The insurer’s evidence of cover, commonly called a blue card, supports the application.',
+    guide: '/en/analysis/shadow-fleet-tanker-insurance-compensation/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Russia’s shadow fleet: who pays when a tanker runs aground?', href: '/en/analysis/shadow-fleet-tanker-insurance-compensation/', kind: 'article' }],
+      sources: [
+        { label: '1992 Civil Liability Convention, Article VII', href: 'https://iopcfunds.org/wp-content/uploads/2018/06/Text-of-Conventions_e.pdf', detail: 'Financial security, issuing state, certificate particulars and direct action.', kind: 'source' },
+        { label: 'Danish Maritime Authority, insurance certificates', href: 'https://www.dma.dk/ship-survey-and-registration/apply-for-a-certificate', detail: 'Blue Card and supporting documents for insurers outside the International Group.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'numero-omi', sigle: 'IMO number', nom: 'Permanent ship identifier',
     def: 'A unique ship identifier under the International Maritime Organization scheme. The number stays with the vessel for its lifetime through changes of name, flag and ownership. It allows records for the same ship to be matched.',
     guide: '/en/analysis/shadow-fleet-arrow-tanker-ownership/', ...energySection, robots: 'noindex,follow',
