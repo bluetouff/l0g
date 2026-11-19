@@ -752,9 +752,9 @@ for (const slug of ['agence-de-notation', 'perspective-de-notation']) {
   assert.equal(englishGlossaryRobots(en[0]), 'noindex,follow');
   assert.deepEqual(fr[0].atlas.sources.map(link => link.href), en[0].atlas.sources.map(link => link.href));
   assert.deepEqual(fr[0].atlas.related, en[0].atlas.related);
-  for (const [entry, article, terms] of [[fr[0], ratingsArticleFr, glossaryEntries], [en[0], ratingsArticleEn, glossaryAtlasEn]]) {
+  for (const [entry, article, nvidiaArticle, terms] of [[fr[0], ratingsArticleFr, '/posts/nvidia-credit-moodys-wall-street-anthropic/', glossaryEntries], [en[0], ratingsArticleEn, '/en/analysis/nvidia-credit-outlook-wall-street-anthropic/', glossaryAtlasEn]]) {
     assert.equal(entry.guide, article);
-    assert.deepEqual(entry.atlas.articles.map(link => link.href), [article]);
+    assert.deepEqual(entry.atlas.articles.map(link => link.href), [nvidiaArticle, article]);
     for (const peer of entry.atlas.related) assert(terms.find(term => term.slug === peer).atlas.related.includes(slug));
     assert(!entry.def.includes('—'));
   }

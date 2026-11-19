@@ -42,6 +42,7 @@ export const aiFinancingSourceArticles: Record<string, string> = {
   'nvidia-bis-remote-access-cloud-controls': 'nvidia-bis-acces-distant-controles-cloud',
   'nvidia-board-national-security-export-controls': 'nvidia-conseil-securite-nationale-controles-exportation',
   'nvidia-financing-guarantees-aolani-loan': 'nvidia-financement-garanties-pret-aolani',
+  'nvidia-credit-outlook-wall-street-anthropic': 'nvidia-credit-moodys-wall-street-anthropic',
   'anthropic-supplier-financing-ipo': 'anthropic-financement-fournisseurs-ipo',
   'broadcom-anthropic-blackstone-63-billion-risk': 'broadcom-anthropic-blackstone-risque-63-milliards',
   'ai-circular-financing': 'financement-circulaire-ia',
@@ -86,6 +87,7 @@ export const aiFinancingNvidiaIds = [
   'nvidia-bis-remote-access-cloud-controls',
   'nvidia-board-national-security-export-controls',
   'nvidia-financing-guarantees-aolani-loan',
+  'nvidia-credit-outlook-wall-street-anthropic',
 ];
 
 export const aiFinancingSections: AiFinancingSection[] = [
