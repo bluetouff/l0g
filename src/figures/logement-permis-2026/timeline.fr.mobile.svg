@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 275" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="fr" aria-labelledby="hpf-timeline-fr-mobile-title hpf-timeline-fr-mobile-desc">
+<title id="hpf-timeline-fr-mobile-title">Délais pour un bâtiment neuf</title>
+<desc id="hpf-timeline-fr-mobile-desc">Médianes distinctes déclarées par les demandeurs : 13,03 semaines pour l’instruction et 43,45 semaines pour le parcours complet. Le parcours complet comprend les formalités après décision, parfois pendant le chantier.</desc>
+<rect x="0" y="0" width="320" height="275" rx="13" fill="var(--color-surface)"/>
+<rect x="0.5" y="0.5" width="319" height="274" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="17" y="32" fill="var(--color-paper)" font-size="16" font-weight="400" text-anchor="start">Délais pour un bâtiment neuf</text>
+<text x="17" y="53" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">Enquête demandeurs · mars à mai 2026</text>
+<line x1="17" y1="64" x2="303" y2="64" stroke="var(--color-line)" stroke-width="1"/>
+<text x="17" y="85" fill="var(--color-muted)" font-size="12" font-weight="400" text-anchor="start">Médianes en semaines</text>
+<text x="17" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="start">0</text>
+<line x1="17" y1="109" x2="17" y2="218" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="0"/>
+<text x="74.2" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">10</text>
+<line x1="74.2" y1="109" x2="74.2" y2="218" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="131.4" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">20</text>
+<line x1="131.4" y1="109" x2="131.4" y2="218" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="188.6" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">30</text>
+<line x1="188.6" y1="109" x2="188.6" y2="218" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="245.8" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">40</text>
+<line x1="245.8" y1="109" x2="245.8" y2="218" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="303" y="103" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">50</text>
+<line x1="303" y1="109" x2="303" y2="218" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="17" y="134" fill="var(--color-paper)" font-size="13.6" font-weight="400" text-anchor="start">Instruction</text>
+<rect x="17" y="143" width="286" height="11" rx="2" fill="var(--color-surface-2)"/>
+<rect x="17" y="143" width="74.532" height="11" rx="2" fill="var(--color-topic-blue)" opacity=".85"/>
+<text x="300" y="134" fill="var(--color-topic-blue)" font-size="15" font-weight="400" text-anchor="end">13,03</text>
+<text x="17" y="189" fill="var(--color-paper)" font-size="13.6" font-weight="400" text-anchor="start">Parcours complet</text>
+<rect x="17" y="198" width="286" height="11" rx="2" fill="var(--color-surface-2)"/>
+<rect x="17" y="198" width="248.534" height="11" rx="2" fill="var(--color-signal)" opacity=".85"/>
+<text x="300" y="189" fill="var(--color-signal)" font-size="15" font-weight="400" text-anchor="end">43,45</text>
+<line x1="17" y1="228" x2="17" y2="260" stroke="var(--color-signal)" stroke-width="1.4"/>
+<text x="26" y="241" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">Le parcours complet inclut</text>
+<text x="26" y="258" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">les formalités après décision.</text>
+</svg>

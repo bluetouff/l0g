@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 276" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="fr" aria-labelledby="hpf-carrying-fr-desktop-title hpf-carrying-fr-desktop-desc">
+<title id="hpf-carrying-fr-desktop-title">Intérêts sur 1 M€ emprunté</title>
+<desc id="hpf-carrying-fr-desktop-desc">Simulation à intérêt simple sur un million d’euros de dette mobilisée, maintenue à encours constant. À un taux annuel hypothétique de 5 %, six mois coûtent 25 000 euros et douze mois 50 000 euros. Les deux autres taux hypothétiques sont 3 % et 7 %.</desc>
+<rect x="0" y="0" width="600" height="276" rx="13" fill="var(--color-surface)"/>
+<rect x="0.5" y="0.5" width="599" height="275" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="25" y="32" fill="var(--color-paper)" font-size="18" font-weight="400" text-anchor="start">Intérêts sur 1 M€ emprunté</text>
+<text x="25" y="53" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">Simulation · intérêts en milliers d’euros</text>
+<line x1="25" y1="64" x2="575" y2="64" stroke="var(--color-line)" stroke-width="1"/>
+<text x="54" y="210" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">0</text>
+<line x1="62" y1="206" x2="521" y2="206" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="54" y="168.667" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">50</text>
+<line x1="62" y1="164.667" x2="521" y2="164.667" stroke="var(--color-line)" stroke-width="1"/>
+<text x="54" y="127.333" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">100</text>
+<line x1="62" y1="123.333" x2="521" y2="123.333" stroke="var(--color-line)" stroke-width="1"/>
+<text x="54" y="86" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">150</text>
+<line x1="62" y1="82" x2="521" y2="82" stroke="var(--color-line)" stroke-width="1"/>
+<line x1="62" y1="82" x2="62" y2="206" stroke="var(--color-line)" stroke-width="1"/>
+<text x="62" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">0</text>
+<line x1="176.75" y1="82" x2="176.75" y2="206" stroke="var(--color-line)" stroke-width="1"/>
+<text x="176.75" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">6</text>
+<line x1="291.5" y1="82" x2="291.5" y2="206" stroke="var(--color-line)" stroke-width="1"/>
+<text x="291.5" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">12</text>
+<line x1="406.25" y1="82" x2="406.25" y2="206" stroke="var(--color-line)" stroke-width="1"/>
+<text x="406.25" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">18</text>
+<line x1="521" y1="82" x2="521" y2="206" stroke="var(--color-line)" stroke-width="1"/>
+<text x="521" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">24</text>
+<text x="575" y="224" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">Mois</text>
+<path d="M62 206 L521 156.4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="6 4"/>
+<text x="530" y="160.4" fill="var(--color-topic-blue)" font-size="12.4" font-weight="400" text-anchor="start">3 %</text>
+<path d="M62 206 L521 90.267" fill="none" stroke="var(--color-amber)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4"/>
+<text x="530" y="94.267" fill="var(--color-amber)" font-size="12.4" font-weight="400" text-anchor="start">7 %</text>
+<path d="M62 206 L521 123.333" fill="none" stroke="var(--color-signal)" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="530" y="127.333" fill="var(--color-signal)" font-size="12.4" font-weight="400" text-anchor="start">5 %</text>
+<circle cx="176.75" cy="185.333" r="3.1" fill="var(--color-signal)" stroke="var(--color-surface)" stroke-width="1"/>
+<circle cx="291.5" cy="164.667" r="3.1" fill="var(--color-signal)" stroke="var(--color-surface)" stroke-width="1"/>
+<line x1="25" y1="237" x2="575" y2="237" stroke="var(--color-line)" stroke-width="1"/>
+<text x="25" y="258" fill="var(--color-signal)" font-size="12" font-weight="400" text-anchor="start">À 5 %</text>
+<text x="130" y="258" fill="var(--color-paper)" font-size="12" font-weight="400" text-anchor="start">6 mois · 25 000 €</text>
+<text x="575" y="258" fill="var(--color-paper)" font-size="12" font-weight="400" text-anchor="end">12 mois · 50 000 €</text>
+</svg>

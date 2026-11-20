@@ -4810,11 +4810,11 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     slug: 'cout-de-portage',
     sigle: 'Carrying cost',
     nom: 'Cost of holding an asset over time',
-    def: 'The cost of holding an asset for a given period. For metal inventory, this may include funding, storage and insurance. Calculations depend on quantity, duration, units and contractual terms. The opportunity cost of equity funding differs from interest actually charged; physical withdrawal fees depend on the metal being removed.',
+    def: 'The cost of holding an asset for a given period. For metal inventory, this may include funding, storage and insurance. Calculations depend on quantity, duration, units and contractual terms. In property development, interest accrues on debt already drawn to fund land or studies. The opportunity cost of equity differs from interest actually charged.',
     guide: '/en/analysis/copper-us-stockpile-carrying-cost-tariff-uncertainty/',
     ...clearingSection,
     atlas: {
-      articles: [{ label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }],
+      articles: [{ label: 'Tariffs: funding the cash cycle', href: '/en/analysis/tariffs-cash-flow-section-301-litigation/', detail: 'Duty deposits, customer receipts and the conditional scope of refunds.', kind: 'article' }, { label: 'Housing in Europe: the cost of waiting for a building permit', href: '/en/analysis/housing-permits-cost-of-waiting-europe-2026/', detail: 'Land carrying costs and financing before construction begins.', kind: 'article' }],
       intuition: 'Capital remains committed and storage charges accumulate while an inventory position is held.',
       sources: [{ label: 'CME, Glendale warehouse, September 2026', href: 'https://www.cmegroup.com/notices/market-regulation/2026/09/mkr09-03-26.html', detail: 'Copper storage and withdrawal charges; financing terms depend on the holder.', kind: 'source' }],
       related: ['warrant-d-entrepot'],

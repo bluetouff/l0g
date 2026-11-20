@@ -1,0 +1,103 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'timeline' | 'carrying' | 'france';
+  number: number;
+}
+
+const { lang, kind, number } = Astro.props;
+const copy = {
+  fr: {
+    timeline: {
+      caption: 'Médianes déclarées lors d’une enquête auprès de 204 demandeurs. Elles résument deux périmètres distincts. Le nombre de réponses valides par médiane reste inconnu.',
+      sources: [['S01', 'Commission, tableau 3-8']],
+    },
+    carrying: {
+      caption: 'Calcul l0g à intérêt simple, sur un encours de dette constant et entièrement mobilisé. Les taux sont des hypothèses. Le calcul exclut les frais, les impôts et la capitalisation des intérêts.',
+      sources: [],
+    },
+    france: {
+      caption: 'Estimations en date réelle, corrigées des variations saisonnières et des jours ouvrables. Chaque point cumule douze mois. Les permis et les mises en chantier portent sur des cohortes différentes. Publication du 28 octobre 2026.',
+      sources: [['S04', 'SDES, résultats de septembre'], ['S05', 'Statinfo 864']],
+    },
+  },
+  en: {
+    timeline: {
+      caption: 'Reported medians from a survey of 204 applicants. The figures cover two separate scopes. The number of valid responses for each median is unavailable.',
+      sources: [['S01', 'Commission, Table 3-8']],
+    },
+    carrying: {
+      caption: 'l0g simple interest calculation, assuming a constant balance on fully drawn debt. The rates are illustrative. The calculation excludes fees, taxes and interest compounding.',
+      sources: [],
+    },
+    france: {
+      caption: 'Estimates dated to the actual event and adjusted for seasonal and working-day effects. Each point covers twelve months. Permits and housing starts refer to different cohorts. Release of 28 October 2026.',
+      sources: [['S04', 'SDES, September results'], ['S05', 'Statinfo 864']],
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item || !Number.isInteger(number) || number < 1) {
+  throw new TypeError('Invalid housing figure properties.');
+}
+
+const figures = import.meta.glob('../figures/logement-permis-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/logement-permis-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/logement-permis-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing housing figure artwork.');
+}
+
+const id = `figure-${number}`;
+const prefix = `hpf-${kind}-${lang}-`;
+---
+<figure class="housing-permits-figure" id={id} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {item.caption}
+    {item.sources.length > 0 && (
+      <span class="figure-source">
+        Sources
+        {item.sources.map(([source, label]) => (
+          <> · <a href={`#source-${source}`}>{label}</a></>
+        ))}
+      </span>
+    )}
+  </figcaption>
+</figure>
+<style>
+  .housing-permits-figure {
+    width: 100%;
+    max-width: 600px;
+    margin: 1.75rem auto;
+    padding-bottom: .7rem;
+    container-type: inline-size;
+  }
+  .housing-permits-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: normal;
+  }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .55rem; font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 548px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .housing-permits-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

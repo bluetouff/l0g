@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 260" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="en" aria-labelledby="hpf-timeline-en-desktop-title hpf-timeline-en-desktop-desc">
+<title id="hpf-timeline-en-desktop-title">Timelines for a new building</title>
+<desc id="hpf-timeline-en-desktop-desc">Separate medians as reported by permit applicants: 13.03 weeks for formal review and 43.45 weeks for the full process. The full process includes post-decision steps, some of which can take place during construction.</desc>
+<rect x="0" y="0" width="600" height="260" rx="13" fill="var(--color-surface)"/>
+<rect x="0.5" y="0.5" width="599" height="259" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="25" y="32" fill="var(--color-paper)" font-size="18" font-weight="400" text-anchor="start">Timelines for a new building</text>
+<text x="25" y="53" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">Applicant survey · March to May 2026</text>
+<line x1="25" y1="64" x2="575" y2="64" stroke="var(--color-line)" stroke-width="1"/>
+<text x="25" y="85" fill="var(--color-muted)" font-size="12" font-weight="400" text-anchor="start">Median weeks</text>
+<text x="166" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="start">0</text>
+<line x1="166" y1="110" x2="166" y2="206" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="0"/>
+<text x="247.8" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">10</text>
+<line x1="247.8" y1="110" x2="247.8" y2="206" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="329.6" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">20</text>
+<line x1="329.6" y1="110" x2="329.6" y2="206" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="411.4" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">30</text>
+<line x1="411.4" y1="110" x2="411.4" y2="206" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="493.2" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="middle">40</text>
+<line x1="493.2" y1="110" x2="493.2" y2="206" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="575" y="104" fill="var(--color-muted)" font-size="12.1" font-weight="400" text-anchor="end">50</text>
+<line x1="575" y1="110" x2="575" y2="206" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="25" y="146" fill="var(--color-paper)" font-size="13.6" font-weight="400" text-anchor="start">Formal review</text>
+<rect x="166" y="135" width="409" height="13" rx="2" fill="var(--color-surface-2)"/>
+<rect x="166" y="135" width="106.585" height="13" rx="2" fill="var(--color-topic-blue)" opacity=".85"/>
+<text x="280.585" y="146" fill="var(--color-topic-blue)" font-size="15" font-weight="400" text-anchor="start">13.03</text>
+<text x="25" y="197" fill="var(--color-paper)" font-size="13.6" font-weight="400" text-anchor="start">Full process</text>
+<rect x="166" y="186" width="409" height="13" rx="2" fill="var(--color-surface-2)"/>
+<rect x="166" y="186" width="355.421" height="13" rx="2" fill="var(--color-signal)" opacity=".85"/>
+<text x="572" y="197" fill="var(--color-signal)" font-size="15" font-weight="400" text-anchor="end">43.45</text>
+<line x1="25" y1="231" x2="25" y2="245" stroke="var(--color-signal)" stroke-width="1.4"/>
+<text x="34" y="244" fill="var(--color-muted)" font-size="12.2" font-weight="400" text-anchor="start">The full process includes post-decision steps.</text>
+</svg>
