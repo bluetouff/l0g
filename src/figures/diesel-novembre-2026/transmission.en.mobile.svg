@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 328" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="en" aria-labelledby="dnf-transmission-en-mobile-title dnf-transmission-en-mobile-desc">
+<title id="dnf-transmission-en-mobile-title">From crude to pump</title>
+<desc id="dnf-transmission-en-mobile-desc">On the same percentage scale, Brent in euros falls 24.0%, wholesale diesel 10.3% and diesel at French pumps 10.4% between the observations dated 30 October and 13 November 2026.</desc>
+<rect x="0" y="0" width="320" height="328" rx="13" fill="var(--color-surface)"/>
+<rect x=".5" y=".5" width="319" height="327" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="24" y="33" fill="var(--color-paper)" font-size="18" font-weight="400" text-anchor="start">From crude to pump</text>
+<text x="24" y="56" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="start">30 Oct to 13 Nov 2026</text>
+<text x="296" y="56" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="end">Decline (%)</text>
+<line x1="24" y1="68" x2="296" y2="68" stroke="var(--color-line)" stroke-width="1"/>
+<text x="24.0" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">0</text>
+<line x1="24.0" y1="91" x2="24.0" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="78.4" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">5</text>
+<line x1="78.4" y1="91" x2="78.4" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="132.8" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">10</text>
+<line x1="132.8" y1="91" x2="132.8" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="187.2" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">15</text>
+<line x1="187.2" y1="91" x2="187.2" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="241.6" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">20</text>
+<line x1="241.6" y1="91" x2="241.6" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="296.0" y="86" fill="var(--color-muted)" font-size="13.6" font-weight="400" text-anchor="middle">25</text>
+<line x1="296.0" y1="91" x2="296.0" y2="96" stroke="var(--color-line-strong)" stroke-width="1"/>
+<g transform="translate(24 105)"><path d="M4 4c0-3 12-3 12 0v12c0 3-12 3-12 0Zm0 0c0 3 12 3 12 0M4 9c0 3 12 3 12 0" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="50" y="119" fill="var(--color-paper)" font-size="14.5" font-weight="400" text-anchor="start">Brent</text>
+<text x="296" y="119" fill="var(--color-topic-blue)" font-size="16" font-weight="400" text-anchor="end">−24.0%</text>
+<text x="50" y="138" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="start">110.04 → 83.65 €/barrel</text>
+<rect x="24" y="148" width="272" height="10" rx="2" fill="var(--color-line-strong)" opacity=".45"/>
+<rect x="24" y="148" width="260.926" height="10" rx="2" fill="var(--color-topic-blue)"/>
+<g transform="translate(24 176)"><path d="M3 14V7h14v7Zm-1 3h16M10 4v3m-3-3h6M7 14v3m6-3v3" fill="none" stroke="var(--color-signal)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="50" y="190" fill="var(--color-paper)" font-size="14.5" font-weight="400" text-anchor="start">Wholesale diesel</text>
+<text x="296" y="190" fill="var(--color-signal)" font-size="16" font-weight="400" text-anchor="end">−10.3%</text>
+<text x="50" y="209" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="start">112.6 → 101.0 c€/L</text>
+<rect x="24" y="219" width="272" height="10" rx="2" fill="var(--color-line-strong)" opacity=".45"/>
+<rect x="24" y="219" width="112.085" height="10" rx="2" fill="var(--color-signal)"/>
+<g transform="translate(24 247)"><path d="M4 17V4h9v13M2 17h13M6 7h5v4H6Zm7 2h1a2 2 0 0 1 2 2v3a1 1 0 0 0 2 0V8l-2-2" fill="none" stroke="var(--color-amber)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="50" y="261" fill="var(--color-paper)" font-size="14.5" font-weight="400" text-anchor="start">Diesel at the pump</text>
+<text x="296" y="261" fill="var(--color-amber)" font-size="16" font-weight="400" text-anchor="end">−10.4%</text>
+<text x="50" y="280" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="start">237.06 → 212.29 c€/L</text>
+<rect x="24" y="290" width="272" height="10" rx="2" fill="var(--color-line-strong)" opacity=".45"/>
+<rect x="24" y="290" width="113.683" height="10" rx="2" fill="var(--color-amber)"/>
+</svg>

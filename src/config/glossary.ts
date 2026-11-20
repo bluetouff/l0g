@@ -840,6 +840,7 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Énergie de tête', nom: 'Énergie du premier ouvrage de la cascade', def: "Électricité que peut produire la seule centrale directement rattachée à un réservoir selon son remplissage. Ce périmètre exclut l’énergie qui pourrait être produite ensuite par les centrales situées plus bas dans la cascade.", guide: '/posts/barrage-choisit-ne-pas-produire/' },
       { sigle: 'WTI', nom: 'West Texas Intermediate', def: "Pétrole brut de référence américain, coté à New York. Avec le Brent, l'un des deux prix de référence mondiaux.", guide: '/guides/lire-le-marche-petrolier/' },
       { sigle: 'Brent', nom: 'Brent Crude', def: "Pétrole brut de référence mondial, issu de la mer du Nord et coté à Londres. Avec le WTI, l'un des deux prix de référence du marché pétrolier.", guide: '/guides/lire-le-marche-petrolier/' },
+      { sigle: 'Crack spread', nom: 'Écart entre le prix d’un produit raffiné et celui du brut', def: 'Différence entre le prix d’un produit raffiné, comme le gazole, et celui d’un pétrole brut de référence, calculée dans une même unité. L’écart donne une indication de la valeur de transformation sur le marché. Le bénéfice effectif d’une raffinerie dépend aussi de ses coûts, de ses rendements et des autres produits qu’elle vend.', guide: '/posts/gazole-baisse-petrole-raffinage-novembre-2026/' },
       { sigle: 'HSFO', nom: 'High-sulphur fuel oil', def: "Fioul lourd à haute teneur en soufre. Le sigle désigne une famille de produits dont la qualité, le lieu de livraison et la période doivent être précisés : l'USGC HSFO étudié par la CFTC en 2017 était une référence de la côte américaine du golfe du Mexique.", guide: '/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/' },
       { sigle: 'MOC', nom: 'Market on Close', def: "Processus d'évaluation de prix de Platts fondé sur des informations de marché publiées et testables, notamment des propositions fermes, des offres et des transactions, jusqu'à une heure de clôture définie. L'évaluation vise une valeur négociable à la clôture ; elle n'est pas une moyenne automatique de toutes les transactions.", guide: '/posts/les-banquiers-du-baril-4-trafigura-platts-prix-fioul/' },
       { sigle: 'Cushing', nom: 'Cushing (Oklahoma)', def: "Terminal de stockage et de raccordement de pipelines du centre des États-Unis, avec une capacité d'environ 76 millions de barils. C'est le point de livraison physique du contrat à terme WTI : le prix du WTI est, littéralement, le prix du brut à Cushing. Ses stocks hebdomadaires, publiés par l'EIA, servent de baromètre de tension du marché américain. Le niveau plancher d'exploitation, sous lequel pipelines et transferts entre cuves deviennent difficiles, est estimé autour de 20 millions de barils.", guide: '/guides/lire-le-marche-petrolier/' },
@@ -1343,6 +1344,11 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  'crack-spread': {
+    articles: [{ label: 'Gazole en France : pourquoi le prix baisse moins vite que le pétrole', href: '/posts/gazole-baisse-petrole-raffinage-novembre-2026/', kind: 'article' }],
+    sources: [{ label: 'BCE, coûts et marges du raffinage', href: 'https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202607_05~d82730508f.en.html', detail: 'Note 1 et graphique B : écart entre le produit raffiné et le prix du brut.', kind: 'source' }],
+    related: ['brent', 'distillats'],
+  },
   syndication: {
     articles: [{ label: 'Nvidia : les conditions du financement et le prêt Aolani', href: '/posts/nvidia-financement-garanties-pret-aolani/', kind: 'article' }],
     sources: [

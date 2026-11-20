@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 312" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="en" aria-labelledby="dnf-litre-en-mobile-title dnf-litre-en-mobile-desc">
+<title id="dnf-litre-en-mobile-title">Inside a litre of diesel</title>
+<desc id="dnf-litre-en-mobile-desc">The 13 November French pump price is 212.29 euro cents per litre, comprising 116.16 before tax, 60.75 in excise and 35.38 in VAT. The pre-tax price is about 15.2 euro cents above the wholesale quote of 101.0.</desc>
+<rect x="0" y="0" width="320" height="312" rx="13" fill="var(--color-surface)"/>
+<rect x=".5" y=".5" width="319" height="311" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="24" y="33" fill="var(--color-paper)" font-size="18" font-weight="400" text-anchor="start">Inside a litre of diesel</text>
+<text x="24" y="57" fill="var(--color-muted)" font-size="13.7" font-weight="400" text-anchor="start">France, 13 Nov 2026</text>
+<text x="296" y="57" fill="var(--color-amber)" font-size="16" font-weight="400" text-anchor="end">212.29 c€/L</text>
+<line x1="24" y1="71" x2="296" y2="71" stroke="var(--color-line)" stroke-width="1"/>
+<text x="98.416" y="102" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">Pre-tax</text>
+<rect x="24.0" y="112" width="148.832" height="33" rx="0" fill="var(--color-signal)" opacity=".14"/>
+<line x1="24.25" y1="112" x2="172.582" y2="112" stroke="var(--color-signal)" stroke-width="2"/>
+<text x="98.416" y="135" fill="var(--color-signal)" font-size="13.8" font-weight="500" text-anchor="middle">116.16</text>
+<text x="211.75" y="102" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">Excise</text>
+<rect x="172.832" y="112" width="77.837" height="33" rx="0" fill="var(--color-topic-blue)" opacity=".14"/>
+<line x1="173.082" y1="112" x2="250.419" y2="112" stroke="var(--color-topic-blue)" stroke-width="2"/>
+<text x="211.75" y="135" fill="var(--color-topic-blue)" font-size="13.8" font-weight="500" text-anchor="middle">60.75</text>
+<text x="273.334" y="102" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">VAT</text>
+<rect x="250.669" y="112" width="45.331" height="33" rx="0" fill="var(--color-amber)" opacity=".14"/>
+<line x1="250.919" y1="112" x2="295.75" y2="112" stroke="var(--color-amber)" stroke-width="2"/>
+<text x="273.334" y="135" fill="var(--color-amber)" font-size="13.8" font-weight="500" text-anchor="middle">35.38</text>
+<line x1="24" y1="167" x2="296" y2="167" stroke="var(--color-line)" stroke-width="1"/>
+<text x="24" y="186" fill="var(--color-paper)" font-size="14.5" font-weight="400" text-anchor="start">A closer look at the pre-tax price</text>
+<rect x="24" y="211" width="129.408" height="12" rx="0" fill="var(--color-signal)" opacity=".75"/>
+<rect x="153.408" y="211" width="19.424" height="12" rx="0" fill="var(--color-amber)" opacity=".72"/>
+<line x1="172.832" y1="192" x2="172.832" y2="223" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="172.832" y1="148" x2="172.832" y2="164" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="163.11999999999998" y1="224" x2="163.11999999999998" y2="235" stroke="var(--color-amber)" stroke-width="1"/>
+<line x1="163.11999999999998" y1="235" x2="178" y2="235" stroke="var(--color-amber)" stroke-width="1"/>
+<g transform="translate(24 245)"><path d="M3 14V7h14v7Zm-1 3h16M10 4v3m-3-3h6M7 14v3m6-3v3" fill="none" stroke="var(--color-signal)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="50" y="257" fill="var(--color-paper)" font-size="13.4" font-weight="400" text-anchor="start">Wholesale quote</text>
+<text x="50" y="276" fill="var(--color-signal)" font-size="13.3" font-weight="400" text-anchor="start">101.0 c€/L</text>
+<g transform="translate(170 245)"><path d="M10 3c2.5 3.3 5 5.7 5 9a5 5 0 0 1-10 0c0-3.3 2.5-5.7 5-9Zm-3 9a3 3 0 0 0 3 3" fill="none" stroke="var(--color-amber)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="196" y="257" fill="var(--color-paper)" font-size="13.4" font-weight="400" text-anchor="start">Indicative gap</text>
+<text x="196" y="276" fill="var(--color-amber)" font-size="13.3" font-weight="400" text-anchor="start">≈ 15.2 c€/L</text>
+</svg>

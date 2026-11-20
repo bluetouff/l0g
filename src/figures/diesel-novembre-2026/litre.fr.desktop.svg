@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 280" width="100%" height="auto" style="width:100%;height:auto" role="img" xml:lang="fr" aria-labelledby="dnf-litre-fr-desktop-title dnf-litre-fr-desktop-desc">
+<title id="dnf-litre-fr-desktop-title">Dans un litre de gazole</title>
+<desc id="dnf-litre-fr-desktop-desc">Le prix français TTC du 13 novembre est de 212,29 c€/L, dont 116,16 hors taxes, 60,75 d’accise et 35,38 de TVA. Le prix hors taxes dépasse d’environ 15,2 c€/L la cotation de gros de 101,0 c€/L.</desc>
+<rect x="0" y="0" width="600" height="280" rx="13" fill="var(--color-surface)"/>
+<rect x=".5" y=".5" width="599" height="279" rx="13" fill="none" stroke="var(--color-line)"/>
+<text x="24" y="33" fill="var(--color-paper)" font-size="18" font-weight="400" text-anchor="start">Dans un litre de gazole</text>
+<text x="24" y="57" fill="var(--color-muted)" font-size="12.5" font-weight="400" text-anchor="start">France, 13 nov. 2026</text>
+<text x="576" y="57" fill="var(--color-amber)" font-size="16" font-weight="400" text-anchor="end">212,29 c€/L</text>
+<line x1="24" y1="71" x2="576" y2="71" stroke="var(--color-line)" stroke-width="1"/>
+<text x="175.02" y="95" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">Hors taxes</text>
+<rect x="24.0" y="105" width="302.041" height="33" rx="0" fill="var(--color-signal)" opacity=".14"/>
+<line x1="24.25" y1="105" x2="325.791" y2="105" stroke="var(--color-signal)" stroke-width="2"/>
+<text x="175.02" y="128" fill="var(--color-signal)" font-size="15.2" font-weight="500" text-anchor="middle">116,16</text>
+<text x="405.023" y="95" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">Accise</text>
+<rect x="326.041" y="105" width="157.963" height="33" rx="0" fill="var(--color-topic-blue)" opacity=".14"/>
+<line x1="326.291" y1="105" x2="483.754" y2="105" stroke="var(--color-topic-blue)" stroke-width="2"/>
+<text x="405.023" y="128" fill="var(--color-topic-blue)" font-size="15.2" font-weight="500" text-anchor="middle">60,75</text>
+<text x="530.002" y="95" fill="var(--color-muted)" font-size="12.8" font-weight="400" text-anchor="middle">TVA</text>
+<rect x="484.004" y="105" width="91.996" height="33" rx="0" fill="var(--color-amber)" opacity=".14"/>
+<line x1="484.254" y1="105" x2="575.75" y2="105" stroke="var(--color-amber)" stroke-width="2"/>
+<text x="530.002" y="128" fill="var(--color-amber)" font-size="15.2" font-weight="500" text-anchor="middle">35,38</text>
+<line x1="24" y1="161" x2="576" y2="161" stroke="var(--color-line)" stroke-width="1"/>
+<text x="24" y="180" fill="var(--color-paper)" font-size="14.5" font-weight="400" text-anchor="start">Le prix hors taxes vu de près</text>
+<rect x="24" y="203" width="262.622" height="12" rx="0" fill="var(--color-signal)" opacity=".75"/>
+<rect x="286.622" y="203" width="39.419" height="12" rx="0" fill="var(--color-amber)" opacity=".72"/>
+<line x1="326.041" y1="186" x2="326.041" y2="215" stroke="var(--color-line-strong)" stroke-width="1" stroke-dasharray="3 4"/>
+<line x1="326.041" y1="141" x2="326.041" y2="158" stroke="var(--color-line-strong)" stroke-width="1"/>
+<line x1="306.331" y1="216" x2="306.331" y2="227" stroke="var(--color-amber)" stroke-width="1"/>
+<line x1="306.331" y1="227" x2="335" y2="227" stroke="var(--color-amber)" stroke-width="1"/>
+<g transform="translate(24 237)"><path d="M3 14V7h14v7Zm-1 3h16M10 4v3m-3-3h6M7 14v3m6-3v3" fill="none" stroke="var(--color-signal)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="50" y="249" fill="var(--color-paper)" font-size="12.6" font-weight="400" text-anchor="start">Cotation de gros</text>
+<text x="50" y="268" fill="var(--color-signal)" font-size="13.3" font-weight="400" text-anchor="start">101,0 c€/L</text>
+<g transform="translate(327 237)"><path d="M10 3c2.5 3.3 5 5.7 5 9a5 5 0 0 1-10 0c0-3.3 2.5-5.7 5-9Zm-3 9a3 3 0 0 0 3 3" fill="none" stroke="var(--color-amber)" stroke-width="1.05" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="353" y="249" fill="var(--color-paper)" font-size="12.6" font-weight="400" text-anchor="start">Écart indicatif</text>
+<text x="353" y="268" fill="var(--color-amber)" font-size="13.3" font-weight="400" text-anchor="start">≈ 15,2 c€/L</text>
+</svg>

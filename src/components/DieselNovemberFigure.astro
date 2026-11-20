@@ -1,0 +1,93 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'transmission' | 'litre';
+  number: number;
+}
+
+const { lang, kind, number } = Astro.props;
+const copy = {
+  fr: {
+    transmission: {
+      caption: 'Variation entre les repères du 30 octobre et du 13 novembre 2026. Le Brent en euros et le gazole coté sont des moyennes du vendredi au jeudi. Le prix à la pompe est le relevé français TTC du vendredi, pondéré par les volumes.',
+      sources: [['S03', 'DGEC, 30 octobre'], ['S01', 'DGEC, 13 novembre']],
+    },
+    litre: {
+      caption: 'France continentale, au 13 novembre 2026. La TVA de 20 % s’applique au prix hors taxes augmenté de l’accise. Dans le détail du hors taxes, l’écart calculé avec la cotation de gros arrondie donne un ordre de grandeur.',
+      sources: [['S01', 'DGEC, 13 novembre'], ['S07', 'Douanes, tarif d’accise'], ['S16', 'guide fiscal 2026']],
+    },
+  },
+  en: {
+    transmission: {
+      caption: 'Change between the observations dated 30 October and 13 November 2026. Brent in euros and wholesale diesel are Friday-to-Thursday averages. The tax-inclusive French pump price is the volume-weighted Friday reading.',
+      sources: [['S03', 'DGEC, 30 October'], ['S01', 'DGEC, 13 November']],
+    },
+    litre: {
+      caption: 'Mainland France, 13 November 2026. VAT at 20% applies to the pre-tax price plus excise. The pre-tax breakdown uses a rounded wholesale quote, so the gap is approximate.',
+      sources: [['S01', 'DGEC, 13 November'], ['S07', 'French customs, excise tariff'], ['S16', '2026 tax guide']],
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item || !Number.isInteger(number) || number < 1) {
+  throw new TypeError('Invalid diesel figure properties.');
+}
+
+const figures = import.meta.glob('../figures/diesel-novembre-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/diesel-novembre-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/diesel-novembre-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing diesel figure artwork.');
+}
+
+const id = `figure-${number}`;
+const prefix = `dnf-${kind}-${lang}-`;
+---
+<figure class="diesel-november-figure" id={id} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {item.caption}
+    <span class="figure-source">
+      Sources
+      {item.sources.map(([source, label]) => (
+        <> · <a href={`#source-${source}`}>{label}</a></>
+      ))}
+    </span>
+  </figcaption>
+</figure>
+<style>
+  .diesel-november-figure {
+    width: 100%;
+    max-width: 600px;
+    margin: 1.75rem auto;
+    padding-bottom: .7rem;
+    container-type: inline-size;
+  }
+  .diesel-november-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: normal;
+  }
+  .scene-narrow { display: none; width: 100%; max-width: 320px; margin-inline: auto; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .55rem; font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 548px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .diesel-november-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

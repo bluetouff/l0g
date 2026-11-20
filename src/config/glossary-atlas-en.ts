@@ -2359,6 +2359,16 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     }
   },
   {
+    slug: 'crack-spread', sigle: 'Crack spread', nom: 'Difference between refined product and crude oil prices',
+    def: 'The difference between the price of a refined product, such as diesel, and a benchmark crude price in the same units. It indicates the market value of processing crude. A refinery’s realised profit also depends on its costs, yields and product mix.',
+    guide: '/en/analysis/diesel-crude-prices-refining-november-2026/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Why diesel prices in France fell more slowly than crude oil', href: '/en/analysis/diesel-crude-prices-refining-november-2026/', kind: 'article' }],
+      sources: [{ label: 'ECB: refining costs and margins', href: 'https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202607_05~d82730508f.en.html', detail: 'Footnote 1 and Chart B: the gap between refined product and crude oil prices.', kind: 'source' }],
+      related: ['brent', 'distillats'],
+    },
+  },
+  {
     slug: 'distillats', sigle: 'Distillate fuel oil', nom: 'Diesel and fuel oils in EIA statistics',
     def: 'A category of petroleum products from distillation that includes diesel fuels and fuel oils, including heating oil, in EIA statistics. Its scope extends beyond road diesel. Comparisons of inventories need to retain the same product category.',
     guide: '/en/analysis/oil-flows-diesel-stocks-liquidity/', ...energySection, robots: 'noindex,follow',
