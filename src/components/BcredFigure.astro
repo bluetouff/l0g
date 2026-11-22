@@ -1,0 +1,93 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'liquidity' | 'price';
+  number: number;
+}
+
+const { lang, kind, number } = Astro.props;
+const copy = {
+  fr: {
+    liquidity: {
+      caption: 'Les demandes en dollars sont des estimations. Les paiements déclarés ont été effectués vers le 29 juillet et le 28 octobre. Le plafond appliqué aux deux offres porte sur 5 % des parts en circulation à leurs dates de référence respectives.',
+      sources: [['S03', 'BCRED, lettre de septembre'], ['S10', 'Offre T2, résultats'], ['S06', 'Offre T3, résultats']],
+    },
+    price: {
+      caption: 'Cox Capital a proposé ce prix dans une offre non sollicitée visant initialement 20 millions USD. Le conseil de BCRED a recommandé son rejet. Le prix proposé vaut pour cette offre.',
+      sources: [['S05', 'BCRED, dépôt du 30 septembre']],
+    },
+  },
+  en: {
+    liquidity: {
+      caption: 'The dollar amounts requested are estimates. Reported payouts took place around 29 July and 28 October. The cap in both offers refers to 5% of outstanding shares on their respective reference dates.',
+      sources: [['S03', 'BCRED, September letter'], ['S10', 'Q2 offer results'], ['S06', 'Q3 offer results']],
+    },
+    price: {
+      caption: 'Cox Capital quoted this price in an unsolicited offer initially targeting $20 million. The BCRED board recommended rejecting the offer. The bid price applies to that offer.',
+      sources: [['S05', 'BCRED, 30 September filing']],
+    },
+  },
+} as const;
+
+const item = copy[lang]?.[kind];
+if (!item || !Number.isInteger(number) || number < 1) {
+  throw new TypeError('Invalid BCRED figure properties.');
+}
+
+const figures = import.meta.glob('../figures/bcred-2026/*.svg', { query: '?raw', import: 'default', eager: true });
+const desktop = figures[`../figures/bcred-2026/${kind}.${lang}.desktop.svg`];
+const mobile = figures[`../figures/bcred-2026/${kind}.${lang}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') {
+  throw new TypeError('Missing BCRED figure artwork.');
+}
+
+const id = `figure-${number}`;
+const prefix = `bcred-${kind}-${lang}-`;
+---
+<figure class="bcred-figure" id={id} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <div class="scene-narrow" set:html={mobile.replaceAll(prefix, `${id}-${kind}-${lang}-`)} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {item.caption}
+    <span class="figure-source">
+      Sources
+      {item.sources.map(([source, label]) => (
+        <> · <a href={`#source-${source}`}>{label}</a></>
+      ))}
+    </span>
+  </figcaption>
+</figure>
+<style>
+  .bcred-figure {
+    width: 100%;
+    max-width: 600px;
+    margin: 1.75rem auto;
+    padding-bottom: .7rem;
+    container-type: inline-size;
+  }
+  .bcred-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    font-variant-numeric: tabular-nums;
+    letter-spacing: normal;
+  }
+  .scene-narrow { display: none; width: 100%; max-width: 360px; margin-inline: auto; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+  }
+  .figure-number { margin-right: .55rem; font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .3rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 548px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .bcred-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

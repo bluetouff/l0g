@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 250" width="100%" height="auto" role="img" aria-labelledby="bcred-price-fr-d-title bcred-price-fr-d-desc">
+<title id="bcred-price-fr-d-title">Valeur liquidative et offre Cox</title>
+<desc id="bcred-price-fr-d-desc">Comparaison à partir de zéro. La valeur liquidative au 31 août 2026 est de 23,60 dollars par part de classe I. L’offre non sollicitée de Cox Capital propose 20,65 dollars, soit un écart de 12,5 %.</desc>
+<rect x="0" y="0" width="600" height="250" rx="13" fill="var(--color-surface)"/>
+<rect x="0.5" y="0.5" width="599" height="249" rx="13" fill="none" stroke="var(--color-line)"/>
+<line x1="24" y1="64" x2="576" y2="64" stroke="var(--color-line)" stroke-width="1"/>
+<path d="M27 24h8l6 6-7 7-7-7z" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="31" cy="28" r="1.05" fill="var(--color-signal)"/>
+<text x="53" y="34" fill="var(--color-paper)" font-size="19" text-anchor="start">Valeur liquidative et offre Cox</text>
+<text x="53" y="54" fill="var(--color-muted)" font-size="12.8" text-anchor="start">BCRED · classe I · sept. 2026</text>
+<text x="576" y="87" fill="var(--color-muted)" font-size="12.8" text-anchor="end">USD par part</text>
+<line x1="166" y1="105" x2="166" y2="184" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="166" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="start">0</text>
+<line x1="238.6" y1="105" x2="238.6" y2="184" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="238.6" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">5</text>
+<line x1="311.2" y1="105" x2="311.2" y2="184" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="311.2" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">10</text>
+<line x1="383.8" y1="105" x2="383.8" y2="184" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="383.8" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">15</text>
+<line x1="456.4" y1="105" x2="456.4" y2="184" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="456.4" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">20</text>
+<line x1="529" y1="105" x2="529" y2="184" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="529" y="200" fill="var(--color-muted)" font-size="12.7" text-anchor="end">25</text>
+<text x="24" y="125" fill="var(--color-paper)" font-size="13.8" text-anchor="start">Valeur au 31 août</text>
+<rect x="166" y="113" width="342.672" height="14" rx="2" fill="var(--color-signal)" fill-opacity="0.84"/>
+<text x="517.672" y="125" fill="var(--color-signal)" font-size="15" text-anchor="start">23,60</text>
+<text x="24" y="178" fill="var(--color-paper)" font-size="13.8" text-anchor="start">Offre Cox Capital</text>
+<rect x="166" y="166" width="299.838" height="14" rx="2" fill="var(--color-amber)" fill-opacity="0.84"/>
+<text x="474.838" y="178" fill="var(--color-amber)" font-size="15" text-anchor="start">20,65</text>
+<line x1="24" y1="216" x2="576" y2="216" stroke="var(--color-line)" stroke-width="1"/>
+<line x1="24" y1="232" x2="37" y2="232" stroke="var(--color-amber)" stroke-width="1"/>
+<path d="M27 229l-3 3 3 3m7-6 3 3-3 3" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="47" y="237" fill="var(--color-amber)" font-size="13.6" text-anchor="start">12,5 % sous la valeur publiée</text>
+</svg>

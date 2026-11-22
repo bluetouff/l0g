@@ -1101,7 +1101,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-20';
+export const glossaryUpdatedIso = '2026-11-22';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -4783,7 +4783,7 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     intuition: "Une BDC cotée donne un prix de marché à son portefeuille. Une BDC non cotée peut offrir des rachats périodiques plafonnés ; les deux formes exposent l’investisseur à des conditions de sortie différentes.",
     formula: 'BDC cotée : prime ou décote = prix de marché / NAV par action - 1',
     whyNow: "Pour lire une exposition au logiciel, il faut distinguer valeur comptable des prêts, prix de l’action et possibilités de retrait.",
-    articles: [{ label: 'Les banques derrière les prêteurs privés de l’IA', href: '/posts/credit-prive-ia-fonds-banques-financement/', kind: 'article' }, { label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Prêts en non-accrual, bases comptables et financement bancaire des véhicules.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
+    articles: [{ label: 'BCRED : combien de temps pour sortir du crédit privé de Blackstone ?', href: '/posts/bcred-credit-prive-rachat-parts-liquidite/', kind: 'article' }, { label: 'Les banques derrière les prêteurs privés de l’IA', href: '/posts/credit-prive-ia-fonds-banques-financement/', kind: 'article' }, { label: 'Crédit privé : le prix de l’argent à placer', href: '/posts/credit-prive-prix-argent-a-placer/', detail: 'Prêts en non-accrual, bases comptables et financement bancaire des véhicules.', kind: 'article' }, { label: 'Crédit privé : la dette du logiciel face à l’IA', href: '/posts/credit-prive-logiciels-ia-revenus-dette/', detail: 'Expositions BRI, comptes OTF et scénarios pédagogiques.', kind: 'article' }, privateCreditArticles[0], privateCreditArticles[1], privateCreditArticles[4]],
     guides: privateCreditGuides,
     datasets: privateCreditDatasets,
     signals: privateCreditSignals,

@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 336 294" width="100%" height="auto" role="img" aria-labelledby="bcred-liquidity-fr-m-title bcred-liquidity-fr-m-desc">
+<title id="bcred-liquidity-fr-m-title">Demandes de rachat</title>
+<desc id="bcred-liquidity-fr-m-desc">Les valeurs arrondies comparent les demandes de rachat et les montants payés au deuxième puis au troisième trimestre 2026, sur la même échelle en milliards de dollars.</desc>
+<rect x="0" y="0" width="336" height="294" rx="13" fill="var(--color-surface)"/>
+<rect x="0.5" y="0.5" width="335" height="293" rx="13" fill="none" stroke="var(--color-line)"/>
+<line x1="18" y1="64" x2="318" y2="64" stroke="var(--color-line)" stroke-width="1"/>
+<path d="M21 23h10v12h-10zM25 23v-4h10v12h-4" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<line x1="24" y1="27" x2="28" y2="27" stroke="var(--color-signal)" stroke-width="1"/>
+<line x1="24" y1="31" x2="28" y2="31" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="47" y="34" fill="var(--color-paper)" font-size="18" text-anchor="start">Demandes de rachat</text>
+<text x="47" y="54" fill="var(--color-muted)" font-size="12.8" text-anchor="start">BCRED · T2 et T3 2026</text>
+<rect x="18" y="79" width="11" height="8" rx="2" fill="var(--color-topic-blue)" fill-opacity="0.5"/>
+<text x="35" y="87" fill="var(--color-paper)" font-size="12.8" text-anchor="start">Demandés</text>
+<rect x="122" y="79" width="11" height="8" rx="2" fill="var(--color-signal)" fill-opacity="0.86"/>
+<text x="139" y="87" fill="var(--color-paper)" font-size="12.8" text-anchor="start">Payés</text>
+<text x="318" y="87" fill="var(--color-muted)" font-size="12.7" text-anchor="end">Milliards USD</text>
+<line x1="18" y1="123" x2="18" y2="224" stroke="var(--color-line-strong)" stroke-width="1"/>
+<text x="18" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="start">0</text>
+<line x1="78" y1="123" x2="78" y2="224" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="78" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">1</text>
+<line x1="138" y1="123" x2="138" y2="224" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="138" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">2</text>
+<line x1="198" y1="123" x2="198" y2="224" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="198" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">3</text>
+<line x1="258" y1="123" x2="258" y2="224" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="258" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="middle">4</text>
+<line x1="318" y1="123" x2="318" y2="224" stroke="var(--color-line)" stroke-width="1" stroke-dasharray="3 4"/>
+<text x="318" y="240" fill="var(--color-muted)" font-size="12.7" text-anchor="end">5</text>
+<text x="18" y="117" fill="var(--color-paper)" font-size="13.8" text-anchor="start">T2 2026</text>
+<rect x="18" y="128" width="270" height="16" rx="2" fill="var(--color-topic-blue)" fill-opacity="0.37"/>
+<rect x="18" y="128" width="132.086" height="16" rx="2" fill="var(--color-signal)" fill-opacity="0.85"/>
+<text x="253" y="117" fill="var(--color-signal)" font-size="14.6" text-anchor="end">≈ 2,20</text>
+<text x="318" y="117" fill="var(--color-topic-blue)" font-size="14.6" text-anchor="end">≈ 4,5</text>
+<text x="18" y="181" fill="var(--color-paper)" font-size="13.8" text-anchor="start">T3 2026</text>
+<rect x="18" y="192" width="258" height="16" rx="2" fill="var(--color-topic-blue)" fill-opacity="0.37"/>
+<rect x="18" y="192" width="127.8" height="16" rx="2" fill="var(--color-signal)" fill-opacity="0.85"/>
+<text x="253" y="181" fill="var(--color-signal)" font-size="14.6" text-anchor="end">≈ 2,13</text>
+<text x="318" y="181" fill="var(--color-topic-blue)" font-size="14.6" text-anchor="end">≈ 4,3</text>
+<line x1="18" y1="255" x2="318" y2="255" stroke="var(--color-line)" stroke-width="1"/>
+<path d="M31 271h-7a5 5 0 0 0 0 10h9m-3-3 3 3-3 3" fill="none" stroke="var(--color-amber)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="42" y="272" fill="var(--color-muted)" font-size="12.7" text-anchor="start">Une demande en suspens peut</text>
+<text x="42" y="287" fill="var(--color-muted)" font-size="12.7" text-anchor="start">être présentée de nouveau.</text>
+</svg>
