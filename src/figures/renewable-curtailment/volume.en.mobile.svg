@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 309" role="img" aria-labelledby="renewable-curtailment-volume-en-mobile-title renewable-curtailment-volume-en-mobile-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="renewable-curtailment-volume-en-mobile-title">Wind and solar output curtailed</title>
+  <desc id="renewable-curtailment-volume-en-mobile-description">RTE estimates that French wind and solar output fell by 0.5 TWh in 2023, 1.7 in 2024 and about 3 in 2025 during periods of negative prices. Separately, the IEA estimates about 200 TWh of technical curtailment across the markets it covers in 2025 and projects more than 800 in 2031. The metrics have different scopes.</desc>
+  <rect x="0" y="0" width="330" height="309" rx="9" fill="var(--color-ink)" />
+  <text x="17" y="31" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">Wind and solar output curtailed</text>
+  <text x="17" y="52" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">France · Output cut at negative prices</text>
+  <text x="309" y="72" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">TWh</text>
+  <path d="M17 185H313" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="18" y="181" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">0</text>
+  <path d="M17 152H313" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="18" y="148" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">1</text>
+  <path d="M17 119H313" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="18" y="115" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">2</text>
+  <path d="M17 86H313" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="18" y="82" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">3</text>
+  <rect x="53.5" y="168.5" width="33" height="16.5" rx="2" fill="var(--color-signal)" />
+  <text x="70" y="160.5" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">0.5</text>
+  <text x="70" y="205" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2023</text>
+  <rect x="148.5" y="128.9" width="33" height="56.1" rx="2" fill="var(--color-signal)" />
+  <text x="165" y="120.9" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">1.7</text>
+  <text x="165" y="205" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2024</text>
+  <rect x="243.5" y="86.0" width="33" height="99.0" rx="2" fill="var(--color-signal)" />
+  <text x="260" y="78.0" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">≈ 3</text>
+  <text x="260" y="205" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2025</text>
+  <rect x="17" y="217" width="296" height="82" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <text x="28" y="236" font-size="12.5" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">IEA · Technical curtailment</text>
+  <text x="28" y="260" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="start">≈ 200 TWh</text>
+  <text x="28" y="279" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">2025 · estimate</text>
+  <path d="M138.0 264H181.0m-5 -4l5 4l-5 4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="295" y="260" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="end">&gt; 800 TWh</text>
+  <text x="295" y="279" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="end">2031 · projection</text>
+</svg>

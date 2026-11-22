@@ -1,0 +1,115 @@
+---
+title: "Écrêtement des renouvelables : qui paie quand un parc s’arrête ?"
+seoTitle: "Écrêtement des renouvelables : prix, réseau et coûts | l0g"
+ogTitle: "Solaire et éolien : la facture des arrêts"
+description: "Prix négatifs ou ligne saturée, pourquoi les parcs coupent leur production et comment leurs contrats répartissent les coûts."
+tags: ["énergie", "électricité", "renouvelables", "réseaux électriques", "prix négatifs", "France"]
+quickTake: {"fact": "RTE estime à 2,5 TWh la baisse de production de l’éolien et du solaire pendant les prix négatifs au premier semestre 2026.", "importance": "Le prix et les contraintes du réseau peuvent tous deux entraîner un arrêt, avec des règles de paiement différentes.", "uncertainty": "La facture dépend des heures, des contrats, du lieu et des solutions disponibles pour absorber la production."}
+pubDate: "2026-11-22T19:50:41+01:00"
+updatedDate: "2026-11-22T19:50:41+01:00"
+draft: false
+ogImage: "/illustrations/news/ecretement-renouvelables-2026-11-22.jpg"
+ogLayout: "immersive"
+---
+
+import RenewableCurtailmentFigure from "../../components/RenewableCurtailmentFigure.astro";
+
+À midi, les panneaux d’un parc solaire reçoivent toute la lumière dont ils ont besoin. La production peut pourtant baisser. Si la ligne qui évacue l’électricité arrive à saturation, le gestionnaire de réseau peut limiter l’injection. Si le prix de gros passe sous zéro, le producteur peut décider que livrer un mégawattheure de plus lui coûterait de l’argent. Dans les deux cas, le compteur enregistre moins d’électricité que le parc aurait pu en fournir. Pour retrouver la facture, il faut d’abord savoir qui a demandé la baisse et en vertu de quel contrat. [S01](#source-S01) · [S02](#source-S02) · [S04](#source-S04)
+
+## Deux façons de réduire la production
+
+L’[écrêtement](/glossaire/ecretement-renouvelable/) est une réduction de la production par rapport au potentiel disponible. Dans la définition technique de l’Agence internationale de l’énergie (AIE), une instruction du gestionnaire répond à une contrainte du réseau ou du système. Une ligne peut être saturée dans une zone exportatrice alors que le prix de gros reste positif à l’échelle du pays. À l’inverse, un prix négatif incite certains parcs à réduire leur production même quand leur raccordement permet encore d’injecter. [S01](#source-S01) · [S02](#source-S02) · [S04](#source-S04)
+
+Dans les principaux marchés étudiés, l’AIE estime à **près de 200 TWh** l’écrêtement technique de l’éolien et du solaire en **2025**. Son scénario central dépasse **800 TWh en 2031**, soit près de **8 %** de la production renouvelable variable totale selon l’AIE. C’est une projection qui intègre des hypothèses sur le développement des renouvelables et la capacité du système à les absorber. [S01](#source-S01)
+
+En France métropolitaine, la série de RTE porte ici sur les baisses de production des parcs éoliens et solaires lors de périodes à **prix spot négatif**. Son baromètre estime **0,5 TWh en 2023**, **1,7 TWh en 2024** et **environ 3 TWh en 2025**. Le bilan annuel distingue environ **0,1 TWh** lié à des demandes d’ajustement à la baisse de RTE pour équilibrer le système en 2025. Cette seconde mesure a un périmètre propre. [S02](#source-S02) · [S03](#source-S03)
+
+<RenewableCurtailmentFigure lang="fr" kind="volume" number={1} sources={['S01', 'S03']} />
+
+## Les prix négatifs s’installent dans la journée
+
+Le prix spot français pour livraison le lendemain s’établit en moyenne à **61 €/MWh** en 2025. La même année, RTE dénombre **513 heures** à prix négatif, contre **352** en 2024. Depuis le passage au pas de quinze minutes en octobre 2025, les heures sont classées à partir de la moyenne de leurs quatre quarts d’heure. Pour un parc qui vend au prix de gros, c’est le prix du créneau de livraison qui compte. Dans son bilan, RTE relie le creux de milieu de journée à la consommation plus faible à ces heures et à la montée du solaire, en France comme dans les pays voisins. [S04](#source-S04)
+
+Ce mouvement se poursuit en 2026. RTE estime la modulation lors des périodes à prix négatif à **2,5 TWh au premier semestre**, contre **1,9 TWh au premier semestre 2025**. La Commission de régulation de l’énergie (CRE) compte **568 heures** à prix moyen négatif sur le marché journalier au **8 octobre 2026**, davantage que sur toute l’année 2025. Ce compteur décrit des heures de marché. Le volume modulé dépend aussi du vent, de l’ensoleillement et des contrats des parcs en service. [S05](#source-S05) · [S06](#source-S06)
+
+## Le contrat désigne le premier payeur
+
+Un producteur qui vend sur le marché de gros peut éviter une dépense en s’arrêtant lorsque le prix devient négatif. Un contrat d’achat de long terme change le calcul. La CRE relève que certaines clauses permettent à l’acheteur de demander l’arrêt du parc, d’indemniser le producteur et de se fournir moins cher sur le marché. Le prix signé dans le contrat et le paiement dû lors d’un arrêt sont deux clauses à lire séparément. [S04](#source-S04) · [S07](#source-S07)
+
+Dans certains contrats français de complément de rémunération, l’arrêt aux prix négatifs peut ouvrir droit à une prime au-delà d’une franchise et selon les conditions du dispositif. Les charges de soutien reconnues relèvent du budget de l’État. En parallèle, le droit européen prévoit que le gestionnaire qui demande une modification de production hors marché verse une compensation, avec une exception pour une installation qui a accepté un raccordement sans garantie d’injection ferme. Chaque paiement répond à un déclencheur propre et relève d’un débiteur différent. [S04](#source-S04) · [S08](#source-S08) · [S09](#source-S09)
+
+<RenewableCurtailmentFigure lang="fr" kind="mechanism" number={2} sources={['S04', 'S07', 'S09']} />
+
+## Le prix d’une batterie face au coût d’une ligne
+
+Une batterie charge quand l’électricité est abondante et la restitue plus tard, avec des pertes et dans la limite de sa puissance, de sa capacité et de son état de charge. Son emplacement détermine le service rendu. Placée du côté où le courant s’accumule, elle peut réduire temporairement le flux sur une ligne saturée. Une consommation flexible peut aussi absorber une partie du surplus à cet endroit. Un renforcement du réseau peut répondre à un besoin plus durable. Pour les comparer, il faut regarder quelles heures chaque solution couvre et le coût total sur la durée. [S01](#source-S01) · [S03](#source-S03) · [S10](#source-S10) · [S11](#source-S11)
+
+La CRE encadre déjà un arbitrage de ce type pour RTE. Une réduction ponctuelle de la production, avec compensation selon les règles applicables, peut décaler ou éviter certains renforcements du réseau. L’économie dépend de la fréquence et de la durée des contraintes, de la valeur de l’énergie non injectée et du coût du chantier. La comparaison tient compte du service fourni à chaque heure. Le [tarif Tempo](/posts/tempo-jours-rouges-algorithme-facture/) illustre, côté consommation, comment un prix variable peut encourager un déplacement des usages. [S03](#source-S03) · [S10](#source-S10)
+
+<RenewableCurtailmentFigure lang="fr" kind="tradeoff" number={3} sources={['S01', 'S03', 'S10']} />
+
+## Limites de l’estimation financière
+
+Pour chiffrer le coût d’un arrêt, il faut relever l’heure, le prix de vente applicable, la production disponible et la clause de compensation. Pour une contrainte de réseau, il faut aussi connaître le lieu et le coût d’un autre moyen de lever cette contrainte. Multiplier les TWh par les **61 €/MWh** du bilan annuel mélange les heures et passe à côté des contrats. Le coût public, le revenu auquel renonce le producteur et la dépense de réseau évitée relèvent de calculs distincts. La comparaison utile se fait parc par parc et ligne par ligne, avec les règles en vigueur au moment de l’arrêt. [S04](#source-S04) · [S07](#source-S07) · [S10](#source-S10)
+
+Pour prolonger l’enquête sur les contraintes physiques de production, voir [Le mégawatt humide](/posts/megawatt-humide-europe-eau-electricite/). L’image d’ouverture est une illustration de synthèse.
+
+## Sources
+
+<ol class="sources-list" role="list">
+  <li id="source-S01">
+    <span className="source-meta">S01 · AIE · Publication : 2026-11-06 · Consultation : 2026-11-22</span>
+    <a href="https://www.iea.org/reports/renewables-2026/executive-summary" target="_blank" rel="noopener noreferrer">Renewables 2026, intégration au réseau</a>
+    <details><summary>Passages et périmètre</summary><p>Résumé, passage sur l’écrêtement technique et les besoins de flexibilité. Le rapport complet, p. 67–68, détaille le périmètre et les hypothèses. Estimation pour 2025, scénario central pour 2031.</p></details>
+  </li>
+  <li id="source-S02">
+    <span className="source-meta">S02 · RTE · Publication : 2026-03-03 · Consultation : 2026-11-22</span>
+    <a href="https://analysesetdonnees.rte-france.com/bilan-electrique-2025/production" target="_blank" rel="noopener noreferrer">Bilan électrique 2025, production</a>
+    <details><summary>Passages et périmètre</summary><p>Section sur la modulation des productions éoliennes et solaires. Estimation lors de prix spot négatifs et mesure distincte des ajustements demandés par RTE. Date du bilan complet.</p></details>
+  </li>
+  <li id="source-S03">
+    <span className="source-meta">S03 · RTE · Publication : 2026-04-16 · Consultation : 2026-11-22</span>
+    <a href="https://assets.rte-france.com/prod/public/2026-04/2026-04-16-barometre-flexibilite-consommation.pdf" target="_blank" rel="noopener noreferrer">Baromètre des flexibilités de consommation</a>
+    <details><summary>Passages et périmètre</summary><p>Tableau p. 10 et analyse p. 33, estimations annuelles de modulation pendant les prix négatifs. Les autres sections documentent les usages flexibles.</p></details>
+  </li>
+  <li id="source-S04">
+    <span className="source-meta">S04 · RTE · Publication : 2026-03-03 · Consultation : 2026-11-22</span>
+    <a href="https://analysesetdonnees.rte-france.com/bilan-electrique-2025/prix" target="_blank" rel="noopener noreferrer">Bilan électrique 2025, prix de gros</a>
+    <details><summary>Passages et périmètre</summary><p>Sections sur les prix spot, la courbe horaire et les prix négatifs. Moyenne française, heures négatives, convention au quart d’heure et règles d’arrêt dans certains contrats. Date du bilan complet.</p></details>
+  </li>
+  <li id="source-S05">
+    <span className="source-meta">S05 · RTE · Publication : 2026-07-16 · Consultation : 2026-11-22</span>
+    <a href="https://assets.rte-france.com/analyse-et-donnees/2026-07/Bilan%20premier%20semestre%202026%20-%20Rapport%20complet.pdf" target="_blank" rel="noopener noreferrer">Bilan du premier semestre 2026</a>
+    <details><summary>Passages et périmètre</summary><p>Pages 5 et 49, §7.2. Modulation lors des périodes à prix spot négatif au premier semestre, avec comparaison à la même période en 2025.</p></details>
+  </li>
+  <li id="source-S06">
+    <span className="source-meta">S06 · CRE · Publication : 2026-10-21 · Consultation : 2026-11-22</span>
+    <a href="https://www.cre.fr/documents/rapports-et-etudes/eclairage-sur-les-marches-de-gros-de-lelectricite-numero-2-les-prix-negatifs-signal-des-besoins-croissants-de-flexibilite.html" target="_blank" rel="noopener noreferrer">Les prix négatifs sur le marché de gros</a>
+    <details><summary>Passages et périmètre</summary><p>Note et §1 du rapport associé. Décompte au 8 octobre 2026, sur la base d’un prix journalier moyen négatif à l’échelle de l’heure. Le compteur ne mesure pas un volume modulé.</p></details>
+  </li>
+  <li id="source-S07">
+    <span className="source-meta">S07 · CRE · Publication : 2025-04-10 · Consultation : 2026-11-22</span>
+    <a href="https://www.cre.fr/fileadmin/Documents/Rapports_et_etudes/2025/250327_Rapport_PPA.pdf" target="_blank" rel="noopener noreferrer">Observatoire des contrats d’achat de long terme</a>
+    <details><summary>Passages et périmètre</summary><p>§3.2.3, p. 40 du PDF. Réponses à l’enquête sur les clauses d’arrêt et de compensation pendant les prix négatifs. Les clauses varient selon le contrat.</p></details>
+  </li>
+  <li id="source-S08">
+    <span className="source-meta">S08 · CRE · Publication : date non précisée · Consultation : 2026-11-22</span>
+    <a href="https://www.cre.fr/electricite/soutien-a-la-production/charges-de-services-public-de-lenergie.html" target="_blank" rel="noopener noreferrer">Financement des charges de service public de l’énergie</a>
+    <details><summary>Passages et périmètre</summary><p>Cadre de prise en charge par le budget de l’État. La page explique le financement du soutien public, sans ventiler une facture nationale de l’écrêtement.</p></details>
+  </li>
+  <li id="source-S09">
+    <span className="source-meta">S09 · Union européenne · Publication : 2019-06-14 · Consultation : 2026-11-22</span>
+    <a href="https://eur-lex.europa.eu/eli/reg/2019/943/oj" target="_blank" rel="noopener noreferrer">Règlement (UE) 2019/943, article 13</a>
+    <details><summary>Passages et périmètre</summary><p>Article 13, paragraphe 7, compensation du redispatching hors marché et exception liée aux raccordements sans garantie d’injection ferme. Date du Journal officiel.</p></details>
+  </li>
+  <li id="source-S10">
+    <span className="source-meta">S10 · CRE · Publication : 2025-03-20 · Consultation : 2026-11-22</span>
+    <a href="https://www.cre.fr/fileadmin/Documents/Deliberations/2025/250313_2025-77_Post-CSE_TURPE_7_HTB.pdf" target="_blank" rel="noopener noreferrer">TURPE 7 HTB, dimensionnement optimal du réseau</a>
+    <details><summary>Passages et périmètre</summary><p>Pages 42–43 et §2.7.3.1–4. Cadre français des flexibilités locales et du dimensionnement optimal du réseau de transport. Les coûts dépendent du projet et de sa zone.</p></details>
+  </li>
+  <li id="source-S11">
+    <span className="source-meta">S11 · RTE · Publication : 2025-02-27 · Consultation : 2026-11-22</span>
+    <a href="https://assets.rte-france.com/prod/public/2025-02/2025-02-27-sddr-fiche-8-raccordement-batteries-stationnaires.pdf" target="_blank" rel="noopener noreferrer">Raccordement des batteries stationnaires</a>
+    <details><summary>Passages et périmètre</summary><p>Schéma de développement du réseau, fiche 8. Le sens des flux et l’emplacement déterminent si une batterie soulage ou accentue la contrainte locale.</p></details>
+  </li>
+</ol>

@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 303" role="img" aria-labelledby="renewable-curtailment-volume-fr-desktop-title renewable-curtailment-volume-fr-desktop-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="renewable-curtailment-volume-fr-desktop-title">Éolien et solaire mis en retrait</title>
+  <desc id="renewable-curtailment-volume-fr-desktop-description">En France, RTE estime la production éolienne et solaire modulée lors des prix négatifs à 0,5 TWh en 2023, 1,7 en 2024 et environ 3 en 2025. L’AIE estime séparément environ 200 TWh d’écrêtement technique en 2025 et en projette plus de 800 en 2031. Les périmètres diffèrent.</desc>
+  <rect x="0" y="0" width="600" height="303" rx="9" fill="var(--color-ink)" />
+  <text x="24" y="31" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">Éolien et solaire mis en retrait</text>
+  <text x="24" y="52" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">France · Modulation lors des prix négatifs</text>
+  <text x="572" y="72" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">TWh</text>
+  <path d="M24 192H576" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="25" y="188" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">0</text>
+  <path d="M24 159H576" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="25" y="155" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">1</text>
+  <path d="M24 126H576" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="25" y="122" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">2</text>
+  <path d="M24 93H576" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" opacity="0.6" />
+  <text x="25" y="89" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">3</text>
+  <rect x="102.0" y="175.5" width="42" height="16.5" rx="2" fill="var(--color-signal)" />
+  <text x="123" y="167.5" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">0,5</text>
+  <text x="123" y="212" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2023</text>
+  <rect x="279.0" y="135.9" width="42" height="56.1" rx="2" fill="var(--color-signal)" />
+  <text x="300" y="127.9" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">1,7</text>
+  <text x="300" y="212" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2024</text>
+  <rect x="456.0" y="93.0" width="42" height="99.0" rx="2" fill="var(--color-signal)" />
+  <text x="477" y="85.0" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="middle">≈ 3</text>
+  <text x="477" y="212" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">2025</text>
+  <rect x="24" y="224" width="552" height="69" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <text x="35" y="243" font-size="12.5" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">AIE · Écrêtement technique</text>
+  <text x="35" y="267" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="start">≈ 200 TWh</text>
+  <text x="35" y="286" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">2025 · estimation</text>
+  <path d="M273.0 271H316.0m-5 -4l5 4l-5 4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+  <text x="552" y="267" font-size="15" font-weight="400" fill="var(--color-paper)" text-anchor="end">&gt; 800 TWh</text>
+  <text x="552" y="286" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="end">2031 · projection</text>
+</svg>

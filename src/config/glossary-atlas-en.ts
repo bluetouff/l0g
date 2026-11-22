@@ -2231,6 +2231,20 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'ecretement-renouvelable',
+    sigle: 'Renewable curtailment',
+    nom: 'Reduction in wind or solar output',
+    def: 'A reduction in wind or solar output below what a plant could have generated at the time. A grid constraint or a balancing instruction can require a cut. Prices and contract terms can also make reducing output worthwhile. The estimated volume depends on how potential generation is calculated.',
+    guide: '/en/analysis/renewable-curtailment/', ...energySection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'The economics of renewable curtailment', href: '/en/analysis/renewable-curtailment/', kind: 'article' }],
+      sources: [
+        { label: 'RTE, 2025 electricity review, generation', href: 'https://analysesetdonnees.rte-france.com/bilan-electrique-2025/production', detail: 'The review reports reductions during negative prices separately from downward adjustments requested by RTE.', kind: 'source' },
+        { label: 'IEA, definition of technical curtailment', href: 'https://www.iea.org/data-and-statistics/charts/annual-vre-shares-in-generation-and-technical-curtailment-for-selected-countries-and-regions', detail: 'Technical curtailment covers grid and system constraints and excludes reductions driven by market conditions.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'certificat-clc',
     sigle: 'CLC certificate',
     nom: 'Certificate of insurance or financial security under the 1992 Civil Liability Convention',

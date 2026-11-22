@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 330 315" role="img" aria-labelledby="renewable-curtailment-mechanism-en-mobile-title renewable-curtailment-mechanism-en-mobile-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="renewable-curtailment-mechanism-en-mobile-title">Available power, reduced output</title>
+  <desc id="renewable-curtailment-mechanism-en-mobile-description">A wind or solar plant can reduce its output at the grid operator’s request if the system faces a physical constraint, or shut down in response to an unfavourable price. Contract terms allocate the risk. Grid upgrades, storage and flexible demand can ease some constraints.</desc>
+  <rect x="0" y="0" width="330" height="315" rx="9" fill="var(--color-ink)" />
+  <text x="17" y="31" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">Reduced output</text>
+  <text x="17" y="51" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Two triggers</text>
+  <path d="M165 115V126H87V137m-4 -5l4 5l4 -5M165 126H243V137m-4 -5l4 5l4 -5" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M87 208V220H165V232m-4 -5l4 5l4 -5M243 208V220H165" fill="none" stroke="var(--color-muted)" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="17" y="67" width="296" height="48" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <g transform="translate(29 79)" aria-hidden="true"><circle cx="8" cy="8" r="3.3" fill="none" stroke="var(--color-signal)" /><path d="M8 1V2.5M8 13.5V15M1 8H2.5M13.5 8H15M3 3L4 4M12 12L13 13M3 13L4 12M12 4L13 3M2 19H17C21 19 21 15 18 15M2 23H21" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="68" y="87" font-size="14.5" font-weight="400" fill="var(--color-paper)" text-anchor="start">Sun and wind</text>
+  <text x="68" y="105" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Available output</text>
+  <rect x="17" y="137" width="140" height="71" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <g transform="translate(26 145)" aria-hidden="true"><path d="M3 22L9 3H15L21 22M6 13H18M5 10L12 6L19 10M2 10H5M19 10H22M3 22L19 13M21 22L5 13" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="26" y="184" font-size="13.5" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">Physical constraint</text>
+  <text x="26" y="201" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Grid or balancing</text>
+  <rect x="173" y="137" width="140" height="71" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <g transform="translate(182 145)" aria-hidden="true"><path d="M2 3V22H23M5 6L10 10L13 8L20 16M16 16H20V12M4 13H9M11 13H14" fill="none" stroke="var(--color-amber)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="182" y="184" font-size="13.5" font-weight="400" fill="var(--color-amber)" text-anchor="start">Market signal</text>
+  <text x="182" y="201" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Unfavourable price</text>
+  <rect x="17" y="232" width="296" height="48" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <g transform="translate(29 244)" aria-hidden="true"><path d="M9 2L3 13H10L8 22L20 9H13L16 2Z" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /><path d="M15 21H23M19 17V21" fill="none" stroke="var(--color-signal)" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="68" y="252" font-size="14.5" font-weight="400" fill="var(--color-paper)" text-anchor="start">Output reduced</text>
+  <text x="68" y="271" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Contracts allocate the risk</text>
+  <text x="17" y="302" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="start">Grid upgrades, storage or flexible demand</text>
+</svg>

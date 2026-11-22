@@ -1,0 +1,58 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'volume' | 'mechanism' | 'tradeoff';
+  number: number;
+  sources?: string[];
+}
+
+const { lang, kind, number, sources = [] } = Astro.props;
+const captions = {
+  fr: {
+    volume: 'RTE estime la modulation française pendant les prix négatifs. L’AIE estime séparément les volumes d’écrêtement technique dans les marchés qu’elle étudie. La valeur de 2031 est une projection.',
+    mechanism: 'Le gestionnaire peut réduire une injection pour tenir une contrainte physique. Le producteur peut aussi lever le pied lorsque le prix devient défavorable. Les clauses contractuelles déterminent qui supporte le coût.',
+    tradeoff: 'Pour chaque option, comparer les coûts et les bénéfices au même endroit et sur la même durée. Ce schéma décrit un principe de décision sans montant hypothétique.',
+  },
+  en: {
+    volume: 'RTE estimates French output reductions during negative prices. The IEA separately estimates technical curtailment in its report. The 2031 figure is a projection.',
+    mechanism: 'The operator can restrict injections to manage a physical constraint. A generator may also turn down when the price makes it uneconomic to run. Contract terms determine who bears the cost.',
+    tradeoff: 'Compare costs and benefits for each option at the same location and over the same period. The diagram shows the decision rule without assigning monetary values.',
+  },
+} as const;
+const caption = captions[lang]?.[kind];
+if (!caption || !Number.isInteger(number) || number < 1) throw new TypeError('Invalid renewable curtailment figure.');
+if (!Array.isArray(sources) || sources.some(source => !/^S\d{2}$/u.test(source))) throw new TypeError('Invalid renewable curtailment reference.');
+
+const assets = import.meta.glob('../figures/renewable-curtailment/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/renewable-curtailment/${kind}.${lang}`;
+const desktop = assets[`${base}.desktop.svg`];
+const mobile = assets[`${base}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing renewable curtailment figure layout.');
+---
+<figure class="renewable-curtailment-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop} />
+  <div class="scene-narrow" set:html={mobile} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {caption}
+    {sources.length > 0 && (
+      <span class="figure-source">
+        Sources {sources.map((source, index) => <>{index > 0 && ' · '}<a href={`#source-${source}`}>{source}</a></>)}
+      </span>
+    )}
+  </figcaption>
+</figure>
+
+<style>
+  .renewable-curtailment-figure { width: 100%; max-width: 600px; margin: 1.6rem auto 1.8rem; padding-bottom: .75rem; container-type: inline-size; }
+  .renewable-curtailment-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 330px; margin-inline: auto; }
+  figcaption { margin-top: .6rem; color: var(--color-muted); font-family: var(--font-read); font-size: .79rem; font-weight: 400; line-height: 1.55; }
+  .figure-number { display: inline-block; margin-right: .45rem; color: var(--color-signal); font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .2rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 530px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .renewable-curtailment-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>
