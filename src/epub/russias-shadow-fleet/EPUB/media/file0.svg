@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfo-transfer-en-d-0" viewBox="0 0 1200 626" width="1200" height="626" role="img" aria-labelledby="sfo-transfer-en-d-1 sfo-transfer-en-d-3" xml:lang="en" font-family="Inter Variable, Inter, sans-serif" font-weight="400">
+  <title id="sfo-transfer-en-d-1">One hull, two transfers</title>
+  <desc id="sfo-transfer-en-d-3">Two theoretical scenarios, without reference to a real vessel. On the left, a vessel sale from company A to company B leads to a change in the registered owner in the example shown. On the right, a sale of a controlling shareholding in company S changes its shareholder while S can remain the registered owner. The vessel’s IMO number stays the same in both cases. Identifying ultimate control requires tracing the ownership chain and control rights; this diagram does not attribute control to any person.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart_type": "mecanisme-propriete", "sources": [{"id": "S02", "url": "https://www.imo.org/en/ourwork/iiis/pages/imo-identification-number-schemes.aspx"}, {"id": "S12", "url": "https://www.equasis.org/EquasisWeb/Static/MOA/Help/ShipInfo_Management.html"}, {"id": "S15", "url": "https://www.cr.gov.hk/en/electronic/e-servicesportal/faq/e-search.htm"}, {"id": "S16", "url": "https://www.cr.gov.hk/en/legislation/scr/faq.htm"}], "units": "generic legal ownership example; not an observed transaction", "limitations": "Sources and dates have distinct evidential roles. No ultimate beneficial owner or payment flow is asserted."}</metadata>
+  <rect x="0" y="0" width="1200" height="626" rx="0" fill="#0c0d10"></rect>
+  <text x="40" y="82" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="35" font-weight="400" text-anchor="start">One hull, two transfers</text>
+  <text x="40" y="119" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">Selling a vessel and selling shares in its owning company leave different records.</text>
+  <g id="sfo-transfer-en-d-10">
+    <rect x="40" y="148" width="548" height="410" rx="18" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+    <rect x="64" y="170" width="43" height="36" rx="7" fill="#171a20"></rect>
+    <text x="85.5" y="196" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">01</text>
+    <text x="122" y="198" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="start">Selling the vessel</text>
+    <text x="64" y="235" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">The vessel moves from company A to B.</text>
+    <text x="170" y="275" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">BEFORE</text>
+    <text x="458" y="275" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">AFTER</text>
+    <path d="M284 267 L342 267" fill="none" stroke="#ff4d87" stroke-width="2.4"></path>
+    <path d="M335 261 L342 267 L335 273" fill="none" stroke="#ff4d87" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <rect x="64" y="303" width="212" height="64" rx="10" fill="#171a20" stroke="#8b909b" stroke-width="1.5"></rect>
+    <text x="170.0" y="344.52" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="middle">Company A</text>
+    <rect x="352" y="303" width="212" height="64" rx="10" fill="#171a20" stroke="#ff4d87" stroke-width="1.5"></rect>
+    <text x="458.0" y="344.52" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="middle">Company B</text>
+    <path d="M170 367 L170 405" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <circle cx="170" cy="405" r="3" fill="#5eead4"></circle>
+    <path d="M458 367 L458 405" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <circle cx="458" cy="405" r="3" fill="#5eead4"></circle>
+    <g transform="translate(88.0 414) scale(0.9111111111111111)" aria-hidden="true">
+      <path d="M6 29 H165 L178 35 L153 54 H27 L12 42 Z" fill="#171a20" stroke="#5eead4" stroke-width="1.8" stroke-linejoin="round"></path>
+      <path d="M17 28 V15 H48 V28 M23 15 V7 H40 V15 M30 7 V1" fill="#171a20" stroke="#8b909b" stroke-width="1.6"></path>
+      <path d="M22 20 H28 M33 20 H39 M44 20 H48" fill="none" stroke="#7aa2f7" stroke-width="2.2"></path>
+      <path d="M56 27 V20 H153 V27 M62 20 V16 H75 V20 M90 20 V16 H103 V20 M118 20 V16 H131 V20" fill="none" stroke="#8b909b" stroke-width="1.5" stroke-linejoin="round"></path>
+      <path d="M18 36 H158 M26 43 H150" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+      <path d="M34 62 H65 M74 62 H116 M125 62 H149" fill="none" stroke="#7aa2f7" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <text x="170" y="494" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Same IMO</text>
+    <g transform="translate(376.0 414) scale(0.9111111111111111)" aria-hidden="true">
+      <path d="M6 29 H165 L178 35 L153 54 H27 L12 42 Z" fill="#171a20" stroke="#5eead4" stroke-width="1.8" stroke-linejoin="round"></path>
+      <path d="M17 28 V15 H48 V28 M23 15 V7 H40 V15 M30 7 V1" fill="#171a20" stroke="#8b909b" stroke-width="1.6"></path>
+      <path d="M22 20 H28 M33 20 H39 M44 20 H48" fill="none" stroke="#7aa2f7" stroke-width="2.2"></path>
+      <path d="M56 27 V20 H153 V27 M62 20 V16 H75 V20 M90 20 V16 H103 V20 M118 20 V16 H131 V20" fill="none" stroke="#8b909b" stroke-width="1.5" stroke-linejoin="round"></path>
+      <path d="M18 36 H158 M26 43 H150" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+      <path d="M34 62 H65 M74 62 H116 M125 62 H149" fill="none" stroke="#7aa2f7" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <text x="458" y="494" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Same IMO</text>
+    <path d="M64 510 L564 510" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+    <circle cx="72" cy="537" r="4" fill="#ff4d87"></circle>
+    <text x="88" y="545" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">Registered owner: A becomes B</text>
+  </g>
+  <g id="sfo-transfer-en-d-47">
+    <rect x="612" y="148" width="548" height="410" rx="18" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+    <rect x="636" y="170" width="43" height="36" rx="7" fill="#171a20"></rect>
+    <text x="657.5" y="196" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">02</text>
+    <text x="694" y="198" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="start">Selling the shares</text>
+    <text x="636" y="235" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">A controlling shareholding is sold.</text>
+    <text x="742" y="275" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">BEFORE</text>
+    <text x="1030" y="275" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">AFTER</text>
+    <path d="M856 267 L914 267" fill="none" stroke="#ff4d87" stroke-width="2.4"></path>
+    <path d="M907 261 L914 267 L907 273" fill="none" stroke="#ff4d87" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"></path>
+    <rect x="636" y="295" width="212" height="46" rx="10" fill="#171a20" stroke="#8b909b" stroke-width="1.5"></rect>
+    <text x="742.0" y="326.16" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Shareholder A</text>
+    <rect x="924" y="295" width="212" height="46" rx="10" fill="#171a20" stroke="#ff4d87" stroke-width="1.5"></rect>
+    <text x="1030.0" y="326.16" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Shareholder B</text>
+    <path d="M742 341 L742 359" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <rect x="636" y="359" width="212" height="46" rx="10" fill="#171a20" stroke="#5eead4" stroke-width="1.5"></rect>
+    <text x="742.0" y="390.84" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Company S</text>
+    <path d="M742 405 L742 412" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <path d="M1030 341 L1030 359" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <rect x="924" y="359" width="212" height="46" rx="10" fill="#171a20" stroke="#5eead4" stroke-width="1.5"></rect>
+    <text x="1030.0" y="390.84" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Company S</text>
+    <path d="M1030 405 L1030 412" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="2"></path>
+    <g transform="translate(660.0 414) scale(0.9111111111111111)" aria-hidden="true">
+      <path d="M6 29 H165 L178 35 L153 54 H27 L12 42 Z" fill="#171a20" stroke="#5eead4" stroke-width="1.8" stroke-linejoin="round"></path>
+      <path d="M17 28 V15 H48 V28 M23 15 V7 H40 V15 M30 7 V1" fill="#171a20" stroke="#8b909b" stroke-width="1.6"></path>
+      <path d="M22 20 H28 M33 20 H39 M44 20 H48" fill="none" stroke="#7aa2f7" stroke-width="2.2"></path>
+      <path d="M56 27 V20 H153 V27 M62 20 V16 H75 V20 M90 20 V16 H103 V20 M118 20 V16 H131 V20" fill="none" stroke="#8b909b" stroke-width="1.5" stroke-linejoin="round"></path>
+      <path d="M18 36 H158 M26 43 H150" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+      <path d="M34 62 H65 M74 62 H116 M125 62 H149" fill="none" stroke="#7aa2f7" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <text x="742" y="494" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Same IMO</text>
+    <g transform="translate(948.0 414) scale(0.9111111111111111)" aria-hidden="true">
+      <path d="M6 29 H165 L178 35 L153 54 H27 L12 42 Z" fill="#171a20" stroke="#5eead4" stroke-width="1.8" stroke-linejoin="round"></path>
+      <path d="M17 28 V15 H48 V28 M23 15 V7 H40 V15 M30 7 V1" fill="#171a20" stroke="#8b909b" stroke-width="1.6"></path>
+      <path d="M22 20 H28 M33 20 H39 M44 20 H48" fill="none" stroke="#7aa2f7" stroke-width="2.2"></path>
+      <path d="M56 27 V20 H153 V27 M62 20 V16 H75 V20 M90 20 V16 H103 V20 M118 20 V16 H131 V20" fill="none" stroke="#8b909b" stroke-width="1.5" stroke-linejoin="round"></path>
+      <path d="M18 36 H158 M26 43 H150" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+      <path d="M34 62 H65 M74 62 H116 M125 62 H149" fill="none" stroke="#7aa2f7" stroke-opacity="0.35" stroke-width="1.6" stroke-linecap="round"></path>
+    </g>
+    <text x="1030" y="494" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Same IMO</text>
+    <path d="M636 510 L1136 510" fill="none" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></path>
+    <circle cx="644" cy="537" r="4" fill="#5eead4"></circle>
+    <text x="660" y="545" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">Registered owner: S remains S</text>
+  </g>
+  <g id="sfo-transfer-en-d-88">
+    <rect x="40" y="578" width="1120" height="40" rx="8" fill="#171a20"></rect>
+    <path d="M40 584 L40 612" fill="none" stroke="#f5b13d" stroke-width="3"></path>
+    <text x="60" y="606" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">To identify ultimate control, trace the shareholder registers and control rights.</text>
+  </g>
+</svg>

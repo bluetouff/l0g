@@ -6,6 +6,8 @@ import sharp from 'sharp';
 import { h, fonts, OG } from './og-kit.mjs';
 import { publicationSocialCards } from '../src/config/publication-social.mjs';
 import { renderAiCreditorsPublicationSocial } from './generate-ai-creditors-artwork.mjs';
+import { renderArticleSocialSvg } from './article-social-card.mjs';
+import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 
@@ -14,6 +16,20 @@ export async function renderPublicationSocial(card, art, options = {}) {
   if (card.key === 'ai-creditors') return renderAiCreditorsPublicationSocial(card, art, options);
   const meta = await sharp(art).metadata();
   if (meta.width !== 1200 || meta.height !== 630) throw new Error(`Incorrect social artwork dimensions: ${card.art}`);
+  if (card.key === 'shadow-fleet') {
+    const book = shadowFleetEditions[card.lang];
+    const dateLabel = new Intl.DateTimeFormat(book.locale, {
+      day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Paris',
+    }).format(new Date(book.date)).toLocaleUpperCase(book.locale);
+    const svg = await renderArticleSocialSvg({
+      layout: 'immersive', lang: card.lang, image: card.image,
+      title: book.title, description: book.subtitle,
+      label: card.lang === 'fr' ? 'ÉDITIONS L0G · EPUB GRATUIT' : 'L0G PUBLICATIONS · FREE EPUB',
+      dateLabel,
+    }, options);
+    const overlay = new Resvg(svg).render().asPng();
+    return { svg, image: await sharp(art).composite([{ input: overlay }]).jpeg({ quality: 88, mozjpeg: true }).toBuffer() };
+  }
   const illustration = { type: 'img', props: { src: `data:image/jpeg;base64,${art.toString('base64')}`, style: { position: 'absolute', left: 0, top: 0, width: 1200, height: 630 } } };
   const gradient = h('div', { position: 'absolute', left: 0, top: 0, width: 1200, height: 630,
     backgroundImage: 'linear-gradient(90deg, #0b0d10 0%, rgba(11,13,16,0.98) 25%, rgba(11,13,16,0.85) 43%, rgba(11,13,16,0.18) 65%, rgba(11,13,16,0) 80%)' });

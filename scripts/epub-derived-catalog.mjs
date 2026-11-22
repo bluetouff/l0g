@@ -17,6 +17,7 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
@@ -176,6 +177,7 @@ export function epubDerivedTasks(root) {
   modern('ai-creditors','scripts/generate-ai-creditors-epub.mjs',aiCreditorsEditions,{coverInput:true});
   modern('nvidia','scripts/generate-nvidia-epub.mjs',nvidiaEditions,{coverInput:true});
   modern('encryption-backdoor','scripts/generate-encryption-backdoor-epub.mjs',encryptionBackdoorEditions,{coverInput:true});
+  modern('shadow-fleet','scripts/generate-shadow-fleet-epub.mjs',shadowFleetEditions,{coverInput:true});
   const owners = new Set();
   for (const group of groups) for (const output of group.outputs) {
     if (owners.has(output)) throw new Error(`EPUB output has multiple owners: ${output}`);

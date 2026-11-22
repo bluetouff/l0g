@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/flotte-fantome-russe/index.html', 'flotte-fantome-russe'],
+  ['en/publications/russias-shadow-fleet/index.html', 'russias-shadow-fleet'],
   ['publications/le-systeme-nvidia/index.html', 'le-systeme-nvidia'],
   ['en/publications/the-nvidia-system/index.html', 'the-nvidia-system'],
   ['publications/le-cout-d-une-porte-derobee/index.html', 'le-cout-d-une-porte-derobee'],

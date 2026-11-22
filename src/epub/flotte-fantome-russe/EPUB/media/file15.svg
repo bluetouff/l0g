@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfi-limits-fr-m-0" width="600" height="790" viewBox="0 0 600 790" role="img" aria-labelledby="sfi-limits-fr-m-1 sfi-limits-fr-m-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="sfi-limits-fr-m-1">Les plafonds d’indemnisation</title>
+  <desc id="sfi-limits-fr-m-3">Trois barres de même origine et de même échelle montrent le maximum du barème CLC, 89,77 millions de DTS, le total CLC et Fonds 1992, 203 millions, puis le total avec le Fonds complémentaire, 750 millions. Le plafond CLC varie avec la jauge brute du navire. La recevabilité du dommage et les exclusions, notamment guerre ou hostilités, sont examinées avant les plafonds. Pour un dommage recevable dans leur territoire, Oman participe au Fonds 1992 et la France aussi au Fonds complémentaire. Les valeurs ne chiffrent ni les dommages ni les paiements du Caroline Bezengi.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "fr", "chart": "plafonds", "unit": "Million Special Drawing Rights (SDR); cumulative statutory compensation limits per incident", "period": "Current limits and country status checked2026-11-19", "limits": "CLC89.77 is the maximum of a gross-tonnage-based scale, not every ship limit.203 includes CLC payments;750 includes CLC and1992Fund. Common zero and linear scale. Territory and admissibility apply. No valuation or available compensation for CarolineBezengi.", "sources": [{"id": "S05", "url": "https://documentservices.iopcfunds.org/download/85381/en/IOPC-OCT26-11-2_en.pdf"}, {"id": "S08", "url": "https://iopcfunds.org/wp-content/uploads/2018/06/Text-of-Conventions_e.pdf"}, {"id": "S10", "url": "https://iopcfunds.org/wp-content/uploads/2021/11/ITOPF-IG-IOPC-Compensation-booklet_e.pdf"}, {"id": "S11", "url": "https://documentservices.iopcfunds.org/wp-content/uploads/sites/2/2026/01/2026-1_ratifications_e.pdf"}, {"id": "S25", "url": "https://iopcfunds.org/about-us/legal-framework/1992-fund-convention-supplementary-fund-protocol/"}]}</metadata>
+  <defs>
+    <linearGradient id="sfi-limits-fr-m-7" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#5eead4"></stop>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0.77"></stop>
+    </linearGradient>
+    <linearGradient id="sfi-limits-fr-m-10" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7aa2f7"></stop>
+      <stop offset="1" stop-color="#7aa2f7" stop-opacity="0.77"></stop>
+    </linearGradient>
+    <linearGradient id="sfi-limits-fr-m-13" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5b13d"></stop>
+      <stop offset="1" stop-color="#f5b13d" stop-opacity="0.77"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="600" height="790" rx="0" fill="#0c0d10"></rect>
+  <line x1="28" y1="56" x2="572" y2="56" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1"></line>
+  <text x="28" y="91" font-size="32" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Plafonds d’indemnisation</text>
+  <text x="28" y="126" font-size="26.5" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Plafonds par événement · millions de DTS</text>
+  <rect x="28" y="175" width="544" height="153" rx="9" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="28" y="175" width="4" height="153" rx="2" fill="#ff4d87"></rect>
+  <text x="45" y="213" font-size="26.5" fill="#ff4d87" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Admissibilité du dommage</text>
+  <text x="45" y="244" font-size="26.5" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Le dommage, le territoire et la cause</text>
+  <text x="45" y="274" font-size="26.5" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">déterminent l’accès au régime.</text>
+  <text x="45" y="306" font-size="26.5" fill="#ff4d87" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Exclusions de guerre / hostilités</text>
+  <line x1="36.0" y1="373" x2="36.0" y2="610" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></line>
+  <text x="36.0" y="360" font-size="26.5" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">0</text>
+  <line x1="192.66666666666669" y1="373" x2="192.66666666666669" y2="610" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="192.66666666666669" y="360" font-size="26.5" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">250</text>
+  <line x1="349.33333333333337" y1="373" x2="349.33333333333337" y2="610" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="349.33333333333337" y="360" font-size="26.5" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">500</text>
+  <line x1="506.00000000000006" y1="373" x2="506.00000000000006" y2="610" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="506.00000000000006" y="360" font-size="26.5" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">750</text>
+  <rect x="28" y="366" width="544" height="30" rx="0" fill="#0c0d10"></rect>
+  <text x="36" y="391" font-size="26.5" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">CLC</text>
+  <text x="572" y="391" font-size="26.5" fill="#8b909b" text-anchor="end" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Maximum du barème</text>
+  <rect x="36" y="405" width="470" height="29" rx="4" fill="#171a20"></rect>
+  <rect x="36" y="405" width="56.25586666666667" height="29" rx="4" fill="url(#sfi-limits-fr-m-7)"></rect>
+  <line x1="92.25586666666666" y1="402" x2="92.25586666666666" y2="437" stroke="#5eead4" stroke-width="1.5"></line>
+  <text x="104.25586666666666" y="429" font-size="26.5" fill="#5eead4" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">89,77</text>
+  <rect x="28" y="452" width="544" height="30" rx="0" fill="#0c0d10"></rect>
+  <text x="36" y="477" font-size="26.5" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Fonds 1992</text>
+  <text x="572" y="477" font-size="26.5" fill="#8b909b" text-anchor="end" font-weight="400" font-family="Inter Variable, Inter, sans-serif">CLC comprise</text>
+  <rect x="36" y="491" width="470" height="29" rx="4" fill="#171a20"></rect>
+  <rect x="36" y="491" width="127.21333333333334" height="29" rx="4" fill="url(#sfi-limits-fr-m-10)"></rect>
+  <line x1="163.21333333333334" y1="488" x2="163.21333333333334" y2="523" stroke="#7aa2f7" stroke-width="1.5"></line>
+  <text x="175.21333333333334" y="515" font-size="26.5" fill="#7aa2f7" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">203</text>
+  <rect x="28" y="538" width="544" height="30" rx="0" fill="#0c0d10"></rect>
+  <text x="36" y="563" font-size="26.5" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">F. complémentaire</text>
+  <text x="572" y="563" font-size="26.5" fill="#8b909b" text-anchor="end" font-weight="400" font-family="Inter Variable, Inter, sans-serif">CLC + Fonds 1992</text>
+  <rect x="36" y="577" width="470" height="29" rx="4" fill="#171a20"></rect>
+  <rect x="36" y="577" width="470.00000000000006" height="29" rx="4" fill="url(#sfi-limits-fr-m-13)"></rect>
+  <line x1="506.00000000000006" y1="574" x2="506.00000000000006" y2="609" stroke="#f5b13d" stroke-width="1.5"></line>
+  <text x="518.0" y="601" font-size="26.5" fill="#f5b13d" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">750</text>
+  <rect x="28" y="641" width="264" height="103" rx="9" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="28" y="641" width="3" height="103" rx="1.5" fill="#7aa2f7"></rect>
+  <text x="45" y="679" font-size="26.5" fill="#7aa2f7" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">OMAN</text>
+  <text x="45" y="717" font-size="27" fill="#e7e9ee" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">203 M DTS</text>
+  <rect x="308" y="641" width="264" height="103" rx="9" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="308" y="641" width="3" height="103" rx="1.5" fill="#f5b13d"></rect>
+  <text x="325" y="679" font-size="26.5" fill="#f5b13d" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">FRANCE</text>
+  <text x="325" y="717" font-size="27" fill="#e7e9ee" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">750 M DTS</text>
+  <text x="28" y="769" font-size="26.5" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Territoire concerné · dommage recevable</text>
+  <line x1="28" y1="785" x2="572" y2="785" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1"></line>
+</svg>

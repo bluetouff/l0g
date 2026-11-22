@@ -9,12 +9,18 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(shadowFleetEditions).map(book => ({
+    source: join(ROOT, 'src/epub', book.directory),
+    output: join(ROOT, 'public', book.epub),
+    fixedTime: new Date(book.modified),
+  })),
   ...Object.values(aiCreditorsEditions).map(book => ({
     source: join(ROOT, 'src/epub', book.directory),
     output: join(ROOT, 'public', book.epub),

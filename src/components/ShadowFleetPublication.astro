@@ -1,0 +1,203 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import sharp from 'sharp';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { shadowFleetEditions } from '../config/shadow-fleet-publication.mjs';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const Layout = isEn ? EnglishGuidesLayout : BaseLayout;
+const shellProps = isEn ? {} : { lang: 'fr' as const, ogLocale: 'fr_FR' as const, sidebar: false };
+const tr = (fr: string, en: string) => isEn ? en : fr;
+const book = shadowFleetEditions[lang];
+const alternate = shadowFleetEditions[isEn ? 'fr' : 'en'];
+const library = tr('/publications/', '/en/publications/');
+const glossary = tr('/glossaire/', '/en/glossary/');
+const license = 'https://creativecommons.org/licenses/by/4.0/';
+const excerpt = tr(
+  'Un pétrolier change de nom, de pavillon, parfois de propriétaire. Son numéro OMI reste le même. Celui d’Arrow permet de remonter jusqu’à la flotte de Sovcomflot, tandis que le Conseil de l’Union européenne relie son propriétaire déclaré à une société de Hong Kong.',
+  'A tanker can change its name, flag and owner, while its IMO number stays with it for life. Arrow’s number traces the ship back to Sovcomflot’s fleet. The Council of the European Union links its registered owner to a company in Hong Kong.',
+);
+const followMoney = tr(
+  'À Moscou, les comptes d’un prêteur permettent de suivre un prêt jusqu’à Dubaï. Dans un autre dossier, Londres accuse le réseau A7 de traiter des recettes pétrolières russes. Au large d’Oman, le sauvetage du Caroline Bezengi pose la question de la facture. Ensemble, les quatre chapitres éclairent le rôle des entreprises qui font circuler le pétrole et les recours possibles en cas de dommages.',
+  'In Moscow, a lender’s accounts trace a loan to Dubai. In a separate case, Britain links the A7 payment network to Russian oil proceeds. Off Oman, the salvage of the Caroline Bezengi raises the question of who picks up the bill. The book brings the four investigations together to explain how this trade is financed, how sellers get paid and how marine losses are covered.',
+);
+const archive = readFileSync(join(process.cwd(), 'public', book.epub));
+if (archive.byteLength === 0) throw new Error('The shadow fleet EPUB is empty');
+const sha256 = createHash('sha256').update(archive).digest('hex');
+const size = `${new Intl.NumberFormat(book.locale, { maximumFractionDigits: 1 }).format(archive.length / 1024 / 1024)} ${tr('Mo', 'MB')}`;
+const preview = tr(
+  'Illustration éditoriale d’un pétrolier en mer, dans un paysage marin sombre.',
+  'Editorial illustration of an oil tanker at sea in a dark seascape.',
+);
+const date = new Intl.DateTimeFormat(book.locale, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(book.date));
+const imageVariants = (path: string, widths: number[]) =>
+  widths.map(width => `${path.replace('.jpg', `-${width}.webp`)} ${width}w`).join(', ');
+const chapters = await Promise.all(book.chapters.map(async chapter => {
+  const { width, height } = await sharp(join(process.cwd(), 'public', chapter.image)).metadata();
+  if (!width || !height) throw new Error(`Missing chapter image dimensions: ${chapter.image}`);
+  const title = chapter.title.replace(isEn ? /^Russia’s shadow fleet: /u : /^Flotte fantôme russe : /u, '');
+  return { ...chapter, width, height, pageTitle: title.charAt(0).toLocaleUpperCase(book.locale) + title.slice(1) };
+}));
+const pageUrl = `${SITE_URL}${book.path}`;
+const otherBook = { '@type': 'Book', '@id': `${SITE_URL}${alternate.path}#book`, inLanguage: alternate.lang };
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${pageUrl}#book`,
+  name: book.title, alternativeHeadline: book.subtitle, description: book.description, inLanguage: lang,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified,
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url: pageUrl, image: `${SITE_URL}${book.cover}`, license,
+  ...(isEn ? { translationOfWork: otherBook } : { workTranslation: otherBook }),
+  hasPart: chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: {
+    '@type': 'MediaObject', name: `${book.title} · EPUB`, contentUrl: `${SITE_URL}${book.epub}`,
+    encodingFormat: 'application/epub+zip', contentSize: `${archive.length} bytes`, sha256,
+  },
+};
+---
+
+<Layout
+  {...shellProps}
+  title={book.title}
+  seoTitle={`${book.title} · ${tr('EPUB gratuit', 'Free EPUB')} | l0g`}
+  ogTitle={book.title}
+  description={book.description}
+  searchDate={book.date}
+  searchTags={isEn ? ['shadow fleet', 'Russia', 'oil', 'sanctions', 'marine insurance'] : ['flotte fantôme', 'Russie', 'pétrole', 'sanctions', 'assurance maritime']}
+  ogImage={book.social}
+  ogImageAlt={preview}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}${shadowFleetEditions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${shadowFleetEditions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${shadowFleetEditions.fr.path}` },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="fleet-book rise" data-pagefind-body>
+    <header class="book-hero">
+      <div class="hero-copy">
+        <a class="catalog-link" href={library}>← {tr('Publications l0g', 'l0g publications')}</a>
+        <h1>{tr('La flotte', 'Russia’s')} <span>{tr('fantôme russe', 'Shadow Fleet')}</span></h1>
+        <p class="subtitle">{book.subtitle}</p>
+        <p class="hero-lede">{excerpt}</p>
+        <div class="hero-actions">
+          <a class="download-action" id="telecharger" href={book.epub} download>
+            {tr('Télécharger le livre', 'Download the book')}
+            <small>EPUB 3 · {size} · {tr('gratuit', 'free')}</small>
+          </a>
+          <a class="light-link" href="#sommaire">{tr('Voir le sommaire', 'See the contents')} <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="edition-language">
+          <time datetime={book.date}>{date}</time>
+          <a class="light-link" href={alternate.path} lang={alternate.lang} hreflang={alternate.lang}>{tr('Read in English', 'Lire en français')} <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+      <figure class="cover-stage">
+        <img src={book.cover} srcset={imageVariants(book.cover, [320, 640, 960])} sizes="(max-width: 720px) 245px, 322px"
+          width={book.coverWidth} height={book.coverHeight} alt={book.coverAlt} loading="eager" fetchpriority="high" decoding="async" />
+      </figure>
+    </header>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={imageVariants(book.panorama, [640, 960, 1600])} sizes="(max-width: 1120px) 100vw, 1120px"
+        width="1600" height="840" alt={preview} loading="lazy" decoding="async" />
+      <figcaption>{tr('Illustration éditoriale de la navigation pétrolière.', 'Editorial illustration of a tanker at sea.')}</figcaption>
+    </figure>
+
+    <section class="contents" id="sommaire" aria-labelledby="contents-heading">
+      <h2 id="contents-heading">{tr('Du registre du navire à la facture du sauvetage', 'From ship registry to salvage bill')}</h2>
+      <p class="prose-copy">{followMoney}</p>
+      <ol class="chapter-grid" role="list">
+        {chapters.map(chapter => (
+          <li>
+            <a href={chapter.route}>
+              <img src={chapter.image} width={chapter.width} height={chapter.height} alt="" loading="lazy" decoding="async" />
+              <div class="chapter-copy">
+                <span class="chapter-number" aria-hidden="true">{String(chapter.number).padStart(2, '0')}</span>
+                <div><h3>{chapter.pageTitle}</h3><p>{chapter.summary}</p></div>
+                <span class="chapter-arrow" aria-hidden="true">↗</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="edition" aria-labelledby="edition-heading">
+      <h2 id="edition-heading">{tr('Lire hors ligne, retrouver les sources', 'Read offline, follow the sources')}</h2>
+      <div>
+        <p class="prose-copy">{tr(
+          'Le livre réunit les quatre enquêtes intégrales, huit infographies, une introduction et une conclusion inédites, ainsi qu’un glossaire. Les références restent attachées à chaque chapitre et les liens renvoient aux articles en ligne.',
+          'The book brings together all four investigations, eight infographics, a new introduction and conclusion, and a glossary. References stay with their chapters, with links back to the original articles.',
+        )}</p>
+        <ul class="further-reading">
+          <li><a href={`${glossary}numero-omi/`}>{tr('Le numéro OMI', 'The IMO ship identifier')}</a></li>
+          <li><a href={`${glossary}certificat-clc/`}>{tr('Le certificat CLC', 'The CLC insurance certificate')}</a></li>
+          <li><a href={tr('/atlas/petrole/', '/en/atlas/oil-financing/')}>{tr('L’atlas du financement du pétrole', 'The oil financing atlas')}</a></li>
+        </ul>
+        <p class="edition-note"><a href={license}>Creative Commons Attribution 4.0 International</a></p>
+        <details class="integrity">
+          <summary>{tr('Vérifier l’intégrité du fichier', 'Check file integrity')}</summary>
+          <p>SHA-256 <code>{sha256}</code></p>
+        </details>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .fleet-book { max-width: 1120px; margin: 1.5rem auto 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); padding: 1rem 0 clamp(2.5rem, 5vw, 4rem); }
+  .catalog-link, .light-link { color: var(--color-signal); font-family: var(--font-mono); font-size: .78rem; text-underline-offset: .25rem; }
+  .hero-copy h1 { color: var(--color-bright); font-family: var(--font-display); font-size: clamp(2.35rem, 5vw, 4.35rem); line-height: 1.03; letter-spacing: -.045em; margin: 1rem 0; }
+  .hero-copy h1 span { display: block; text-wrap: balance; color: var(--color-signal); }
+  .subtitle { color: var(--color-bright); font-family: var(--font-read); font-size: clamp(1.08rem, 2.4vw, 1.35rem); margin: 1.25rem 0 .85rem; }
+  .hero-lede, .prose-copy { color: var(--color-prose); font-family: var(--font-read); font-size: 1.05rem; line-height: 1.8; max-width: 66ch; }
+  .hero-actions { display: flex; flex-wrap: wrap; gap: 1rem 1.4rem; align-items: center; margin: 1.55rem 0; }
+  .download-action { display: inline-flex; flex-direction: column; gap: .35rem; color: var(--color-bright); background: color-mix(in srgb, var(--color-signal) 11%, var(--color-surface)); border: 1px solid var(--color-signal); border-radius: 6px; text-decoration: none; padding: .9rem 1.1rem; font-family: var(--font-mono); font-size: .9rem; }
+  .download-action:hover { background: color-mix(in srgb, var(--color-signal) 19%, var(--color-surface)); }
+  .download-action small, .edition-language, .edition-note { color: var(--color-muted); font-family: var(--font-mono); font-size: .75rem; line-height: 1.5; }
+  .edition-language { display: flex; flex-wrap: wrap; align-items: baseline; column-gap: 1.4rem; row-gap: .45rem; }
+  .cover-stage { margin: 0 auto; width: min(85%, 322px); line-height: 0; }
+  .cover-stage img { width: 100%; height: auto; border-radius: 2px 8px 8px 2px; border-left: 3px solid color-mix(in srgb, var(--color-signal) 38%, var(--color-line)); box-shadow: 1.05rem 1.3rem 2.3rem rgba(7, 12, 17, .36); }
+
+  .panorama { margin: 0 0 clamp(2.25rem, 5vw, 4rem); }
+  .panorama img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--color-line); }
+  figcaption { color: var(--color-muted); font-family: var(--font-read); font-size: .8rem; margin: .65rem 0 0; }
+  h2 { color: var(--color-bright); font-family: var(--font-display); font-size: var(--section-title-size); line-height: 1.2; letter-spacing: -.03em; margin: 0 0 .8rem; }
+  .prose-copy { margin: 0 0 1rem; }
+  .contents { scroll-margin-top: 2rem; }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.65rem 0 0; }
+  .chapter-grid a { display: block; height: 100%; overflow: hidden; text-decoration: none; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); }
+  .chapter-grid a:hover { border-color: var(--color-signal); }
+  .chapter-grid img { display: block; width: 100%; aspect-ratio: 2.3; height: auto; object-fit: cover; }
+  .chapter-copy { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .8rem; padding: 1rem 1.05rem 1.2rem; }
+  .chapter-number, .chapter-arrow { font-family: var(--font-mono); color: var(--color-signal); font-size: .8rem; padding-top: .18rem; }
+  .chapter-copy h3 { font: 650 1.125rem/1.4 var(--font-read); color: var(--color-bright); margin: 0 0 .5rem; }
+  .chapter-copy p { font: .9rem/1.6 var(--font-read); color: var(--color-muted); margin: 0; }
+  .edition { border-top: 1px solid var(--color-line); padding-top: 2rem; margin: 2.75rem 0 3rem; display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: .6rem 2rem; }
+  .further-reading { font: .95rem/1.8 var(--font-read); padding-left: 1.15rem; margin: 1rem 0; }
+  .further-reading a, .edition-note a, .integrity summary { color: var(--color-signal); text-underline-offset: .2rem; }
+  .integrity { font-family: var(--font-mono); font-size: .76rem; border: 1px solid var(--color-line); border-radius: 6px; padding: .85rem 1rem; }
+  .integrity summary { cursor: pointer; }
+  .integrity p { color: var(--color-muted); margin: .7rem 0 0; overflow-wrap: anywhere; line-height: 1.6; }
+  .integrity code { display: block; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+
+  @media (max-width: 720px) {
+    .fleet-book { margin-top: .5rem; }
+    .book-hero, .edition { grid-template-columns: 1fr; }
+    .cover-stage { width: min(74%, 245px); }
+  }
+  @media (max-width: 560px) {
+    .chapter-grid { grid-template-columns: 1fr; }
+  }
+</style>

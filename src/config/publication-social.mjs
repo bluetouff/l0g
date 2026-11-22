@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['shadow-fleet', 'fr', 'flotte-fantome-russe', ['La flotte', 'fantôme russe'], ['Propriétaires,', 'paiements et risques'], 'Illustration d’un pétrolier traversant une mer sombre'],
+  ['shadow-fleet', 'en', 'russias-shadow-fleet', ['Russia’s', 'Shadow Fleet'], ['Ownership, payments', 'and risks'], 'Illustration of an oil tanker crossing dark water'],
   ['ai-creditors', 'fr', 'les-creanciers-de-l-ia', ['Les créanciers', 'de l’IA'], ['Banques, fonds, assureurs', 'et dette des data centers'], 'Illustration conceptuelle des centres de données et des circuits de crédit reliant banques, fonds et assureurs'],
   ['ai-creditors', 'en', 'ai-creditors', ['AI’s', 'creditors'], ['Banks, funds, insurers', 'and data-centre debt'], 'Conceptual artwork of data centres and the credit pathways linking banks, funds and insurers'],
   ['nvidia', 'fr', 'le-systeme-nvidia', ['Le système', 'Nvidia'], ['Puces, crédit', 'et pouvoir'], 'Illustration conceptuelle d’une puce centrale et des circuits de financement de l’IA'],

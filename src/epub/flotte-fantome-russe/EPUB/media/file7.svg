@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfc-cashflow-fr-m-0" width="600" height="820" viewBox="0 0 600 820" role="img" aria-labelledby="sfc-cashflow-fr-m-1 sfc-cashflow-fr-m-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="sfc-cashflow-fr-m-1">Du bénéfice à la trésorerie</title>
+  <desc id="sfc-cashflow-fr-m-3">Lidoil, exercice 2025, millions de dirhams des Émirats arabes unis. Bénéfice net 120,4 ; amortissements et intérêts courus +40,9 ; hausse des créances clients −325,7 ; autres actifs et passifs +56,1 ; flux net d’exploitation −108,3. Source : comptes individuels IFRS 2025, PDF page 10. Montants exacts et formules dans donnees/credit-data.json.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "fr", "chart": "benefice-tresorerie", "unit": "AED millions; chart geometry from exact AED values", "period": "Year ended 2025-12-31", "limits": "Individual Lidoil financial statements; not group consolidation. Other assets and liabilities include a shareholder loan in other current assets. Accounting reconciliation does not identify a defaulting customer or explain causally the 2026 issue.", "sources": [{"id": "S14", "url": "https://www.e-disclosure.ru/portal/FileLoad.ashx?Fileid=1935707"}]}</metadata>
+  <rect x="0.00" y="0.00" width="600.00" height="820" rx="0" fill="#0c0d10" opacity="1"></rect>
+  <text x="30.00" y="44.00" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">LIDOIL · 2025 · M AED</text>
+  <text x="30.00" y="96.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="start">Du bénéfice</text>
+  <text x="30.00" y="140.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="start">à la trésorerie</text>
+  <rect x="20.00" y="173.00" width="560.00" height="632.00" rx="12" fill="#121419" opacity="1"></rect>
+  <line x1="310.00" y1="194.00" x2="310.00" y2="781.00" stroke="#8b909b" stroke-width="1.5" stroke-dasharray="3 6"></line>
+  <text x="310.00" y="204.00" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">0</text>
+  <text x="38.00" y="233.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Bénéfice net</text>
+  <text x="558.00" y="233.00" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="end">120,4</text>
+  <rect x="310.00" y="263.00" width="150.49" height="25.00" rx="4" fill="#5eead4" opacity="0.9"></rect>
+  <line x1="460.49" y1="290.00" x2="460.49" y2="312.00" stroke="#8b909b" stroke-width="2" stroke-dasharray="4 5"></line>
+  <text x="38.00" y="345.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Ajustements comptables</text>
+  <text x="558.00" y="345.00" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="end">+40,9</text>
+  <rect x="460.49" y="375.00" width="51.18" height="25.00" rx="4" fill="#7aa2f7" opacity="0.9"></rect>
+  <line x1="511.67" y1="402.00" x2="511.67" y2="424.00" stroke="#8b909b" stroke-width="2" stroke-dasharray="4 5"></line>
+  <text x="38.00" y="457.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Hausse des créances clients</text>
+  <text x="558.00" y="457.00" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="end">−325,7</text>
+  <rect x="104.56" y="487.00" width="407.11" height="25.00" rx="4" fill="#ff4d87" opacity="0.9"></rect>
+  <line x1="104.56" y1="514.00" x2="104.56" y2="536.00" stroke="#8b909b" stroke-width="2" stroke-dasharray="4 5"></line>
+  <text x="38.00" y="569.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Autres actifs et passifs</text>
+  <text x="558.00" y="569.00" fill="#f5b13d" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="end">+56,1</text>
+  <rect x="104.56" y="599.00" width="70.12" height="25.00" rx="4" fill="#f5b13d" opacity="0.9"></rect>
+  <line x1="174.68" y1="626.00" x2="174.68" y2="674.00" stroke="#8b909b" stroke-width="2" stroke-dasharray="4 5"></line>
+  <text x="38.00" y="707.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Trésorerie d’exploitation</text>
+  <text x="558.00" y="707.00" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="28" font-weight="400" text-anchor="end">−108,3</text>
+  <rect x="174.68" y="737.00" width="135.32" height="25.00" rx="4" fill="#ff4d87" opacity="0.22"></rect>
+  <rect x="174.68" y="737" width="135.32" height="25" rx="4" fill="none" stroke="#ff4d87" stroke-width="2"></rect>
+</svg>

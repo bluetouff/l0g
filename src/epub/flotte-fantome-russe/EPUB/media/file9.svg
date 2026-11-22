@@ -1,0 +1,72 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfp-clearing-fr-m-0" width="600" height="875" viewBox="0 0 600 875" role="img" aria-labelledby="sfp-clearing-fr-m-1 sfp-clearing-fr-m-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="sfp-clearing-fr-m-1">Deux réserves, un règlement</title>
+  <desc id="sfp-clearing-fr-m-3">Schéma de principe de compensation, sans montant ni proportion. Une vente extérieure relie un exportateur russe à un acheteur étranger. L’acheteur verse des devises à une réserve étrangère ; l’exportateur reçoit des roubles depuis la réserve en Russie. Une importation relie un importateur russe à un fournisseur étranger : l’importateur apporte des roubles et le fournisseur reçoit des devises. Le registre A7 rapproche les obligations de paiement entre les deux réserves. Les flèches pointillées représentent la tenue des comptes, et non un virement transfrontalier. Les ordres sont mutualisés ; ils ne sont pas appariés un pour un. Chaque réserve nécessite de la liquidité et des rééquilibrages. Le pétrole est une origine possible de devises parmi d’autres exportations. Sources S01 : FAQ A7 consultée le 19 novembre 2026 ; S03 : NCA août 2026 pp. 4–5 ; S04 : FinCEN 5 octobre 2026 p. 63213. Aucun navire, compte bancaire ou client particulier n’est représenté.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "fr", "chart": "compensation", "unit": "Qualitative payment and goods flows; no quantitative arrow weights", "period": "Public descriptions through 2026-11-19", "limits": "Illustrative mechanism, not a reconstructed individual transaction. Oil is one possible source of foreign currency. Arrows distinguish roubles, foreign currency, goods and bookkeeping.", "sources": [{"id": "S01", "url": "https://www.a7.ru/faq/"}, {"id": "S03", "url": "https://www.nationalcrimeagency.gov.uk/who-we-are/publications/826-necc-a7-sanctions-evasion-mechanism/file"}, {"id": "S04", "url": "https://www.govinfo.gov/content/pkg/FR-2026-10-05/pdf/2026-20371.pdf"}]}</metadata>
+  <defs>
+    <marker id="sfp-clearing-fr-m-6" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#5eead4"></path>
+    </marker>
+    <marker id="sfp-clearing-fr-m-8" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#ff4d87"></path>
+    </marker>
+    <marker id="sfp-clearing-fr-m-10" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#f5b13d"></path>
+    </marker>
+    <marker id="sfp-clearing-fr-m-12" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#7aa2f7"></path>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="600" height="875" rx="0" fill="#0c0d10" opacity="1"></rect>
+  <text x="28" y="102" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="start">Le rapprochement A7</text>
+  <text x="28" y="150" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Réserves de liquidité et registre</text>
+  <rect x="20" y="166" width="250" height="688.5" rx="16" fill="#5eead4" opacity="0.025"></rect>
+  <rect x="330" y="166" width="250" height="688.5" rx="16" fill="#ff4d87" opacity="0.025"></rect>
+  <text x="150" y="205.75" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="middle">Russie</text>
+  <text x="450" y="205.75" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="middle">Étranger</text>
+  <text x="300" y="236.5" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Exportation</text>
+  <text x="150" y="268.75" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Exportateur</text>
+  <text x="150" y="298.75" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">russe</text>
+  <text x="450" y="268.75" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Acheteur</text>
+  <text x="450" y="298.75" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">étranger</text>
+  <path d="M250 276.25 H350" fill="none" stroke="#7aa2f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-12)"></path>
+  <text x="300" y="307.75" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Biens</text>
+  <path d="M150 394 L150 316.75" fill="none" stroke="#5eead4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-6)"></path>
+  <rect x="103.0" y="343" width="94" height="30" rx="9" fill="#0c0d10" opacity="1"></rect>
+  <text x="150" y="363.25" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">RUB</text>
+  <path d="M450 316.75 L450 394" fill="none" stroke="#ff4d87" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-8)"></path>
+  <rect x="390.0" y="343" width="120" height="30" rx="9" fill="#0c0d10" opacity="1"></rect>
+  <text x="450" y="363.25" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Devises</text>
+  <path d="M150 750.25 L150 505.75" fill="none" stroke="#5eead4" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-6)"></path>
+  <rect x="103.0" y="703.75" width="94" height="30" rx="9" fill="#0c0d10" opacity="1"></rect>
+  <text x="150" y="724" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">RUB</text>
+  <path d="M450 505.75 L450 750.25" fill="none" stroke="#ff4d87" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-8)"></path>
+  <rect x="390.0" y="703.75" width="120" height="30" rx="9" fill="#0c0d10" opacity="1"></rect>
+  <text x="450" y="724" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Devises</text>
+  <path d="M45 409 V490.75 C45 507.75 255 507.75 255 490.75 V409 Z" fill="#121419" stroke="#5eead4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"></path>
+  <ellipse cx="150" cy="409" rx="105.0" ry="12.75" fill="#121419" stroke="#5eead4" stroke-width="2"></ellipse>
+  <text x="150" y="441.25" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Réserve</text>
+  <text x="150" y="476.75" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="middle">RUB</text>
+  <path d="M345 409 V490.75 C345 507.75 555 507.75 555 490.75 V409 Z" fill="#121419" stroke="#ff4d87" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"></path>
+  <ellipse cx="450" cy="409" rx="105.0" ry="12.75" fill="#121419" stroke="#ff4d87" stroke-width="2"></ellipse>
+  <text x="450" y="441.25" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Réserve</text>
+  <text x="450" y="476.75" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="30" font-weight="400" text-anchor="middle">devises</text>
+  <path d="M254 463.75 H278 Q286 463.75 286 472.75 V529 Q286 541.75 270 549.25 L231 569.5" fill="none" stroke="#f5b13d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 7" marker-end="url(#sfp-clearing-fr-m-10)"></path>
+  <path d="M346 463.75 H322 Q314 463.75 314 472.75 V529 Q314 541.75 330 549.25 L369 569.5" fill="none" stroke="#f5b13d" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" stroke-dasharray="5 7" marker-end="url(#sfp-clearing-fr-m-10)"></path>
+  <path d="M210 579.25 Q255 566.5 300 579.25 Q345 566.5 390 579.25 V634 Q345 621.25 300 634 Q255 621.25 210 634 Z" fill="#121419" stroke="#f5b13d" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="1"></path>
+  <path d="M300 579.25 L300 634" fill="none" stroke="#f5b13d" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="1"></path>
+  <path d="M225 594.25 Q255 589 287 594.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <path d="M313 594.25 Q345 589 375 594.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <path d="M225 606.25 Q255 601 287 606.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <path d="M313 606.25 Q345 601 375 606.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <path d="M225 618.25 Q255 613 287 618.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <path d="M313 618.25 Q345 613 375 618.25" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.65"></path>
+  <text x="300" y="667" fill="#f5b13d" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Registre A7</text>
+  <text x="300" y="694" fill="#f5b13d" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Ordres rapprochés</text>
+  <text x="300" y="769" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Importation</text>
+  <text x="150" y="800.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Importateur</text>
+  <text x="150" y="830.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">russe</text>
+  <text x="450" y="800.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Fournisseur</text>
+  <text x="450" y="830.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">étranger</text>
+  <path d="M350 807.25 H250" fill="none" stroke="#7aa2f7" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" opacity="1" marker-end="url(#sfp-clearing-fr-m-12)"></path>
+  <text x="300" y="839.5" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Biens</text>
+</svg>

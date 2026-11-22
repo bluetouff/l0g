@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfi-limits-en-d-0" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="sfi-limits-en-d-1 sfi-limits-en-d-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="sfi-limits-en-d-1">How far compensation can reach</title>
+  <desc id="sfi-limits-en-d-3">Three bars with a common zero origin and scale show the maximum CLC liability schedule, SDR 89.77 million, CLC plus the 1992 Fund, SDR 203 million, and the combined total including the Supplementary Fund, SDR 750 million. The CLC limit depends on gross tonnage. Admissibility and exclusions, including war and hostilities, are considered before these ceilings. For admissible damage within their territories, Oman is a 1992 Fund member and France is also a Supplementary Fund member. These values are neither assessed losses nor payments for Caroline Bezengi.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart": "plafonds", "unit": "Million Special Drawing Rights (SDR); cumulative statutory compensation limits per incident", "period": "Current limits and country status checked2026-11-19", "limits": "CLC89.77 is the maximum of a gross-tonnage-based scale, not every ship limit.203 includes CLC payments;750 includes CLC and1992Fund. Common zero and linear scale. Territory and admissibility apply. No valuation or available compensation for CarolineBezengi.", "sources": [{"id": "S05", "url": "https://documentservices.iopcfunds.org/download/85381/en/IOPC-OCT26-11-2_en.pdf"}, {"id": "S08", "url": "https://iopcfunds.org/wp-content/uploads/2018/06/Text-of-Conventions_e.pdf"}, {"id": "S10", "url": "https://iopcfunds.org/wp-content/uploads/2021/11/ITOPF-IG-IOPC-Compensation-booklet_e.pdf"}, {"id": "S11", "url": "https://documentservices.iopcfunds.org/wp-content/uploads/sites/2/2026/01/2026-1_ratifications_e.pdf"}, {"id": "S25", "url": "https://iopcfunds.org/about-us/legal-framework/1992-fund-convention-supplementary-fund-protocol/"}]}</metadata>
+  <defs>
+    <linearGradient id="sfi-limits-en-d-7" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#5eead4"></stop>
+      <stop offset="1" stop-color="#5eead4" stop-opacity="0.77"></stop>
+    </linearGradient>
+    <linearGradient id="sfi-limits-en-d-10" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#7aa2f7"></stop>
+      <stop offset="1" stop-color="#7aa2f7" stop-opacity="0.77"></stop>
+    </linearGradient>
+    <linearGradient id="sfi-limits-en-d-13" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0" stop-color="#f5b13d"></stop>
+      <stop offset="1" stop-color="#f5b13d" stop-opacity="0.77"></stop>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="1200" height="690" rx="0" fill="#0c0d10"></rect>
+  <line x1="48" y1="65" x2="1152" y2="65" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1"></line>
+  <text x="48" y="107" font-size="35" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Compensation ceilings</text>
+  <text x="48" y="136" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Per-incident ceilings · million SDR</text>
+  <rect x="48" y="157" width="1104" height="97" rx="10" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="48" y="157" width="4" height="97" rx="2" fill="#ff4d87"></rect>
+  <text x="70" y="194" font-size="26" fill="#ff4d87" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Eligibility of damage</text>
+  <text x="1130" y="194" font-size="26" fill="#ff4d87" text-anchor="end" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">War / hostilities exclusions</text>
+  <text x="70" y="232" font-size="26" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">The damage, location and cause determine access to the compensation regime.</text>
+  <line x1="320.0" y1="316" x2="320.0" y2="518" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.2"></line>
+  <text x="320.0" y="304" font-size="26" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">0</text>
+  <line x1="570.0" y1="316" x2="570.0" y2="518" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="570.0" y="304" font-size="26" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">250</text>
+  <line x1="820.0" y1="316" x2="820.0" y2="518" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="820.0" y="304" font-size="26" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">500</text>
+  <line x1="1070.0" y1="316" x2="1070.0" y2="518" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1" stroke-dasharray="3 5"></line>
+  <text x="1070.0" y="304" font-size="26" fill="#8b909b" text-anchor="middle" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">750</text>
+  <text x="48" y="344" font-size="26" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">CLC</text>
+  <text x="48" y="370" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Schedule maximum</text>
+  <rect x="320" y="324" width="750" height="32" rx="4" fill="#171a20"></rect>
+  <rect x="320" y="324" width="89.77" height="32" rx="4" fill="url(#sfi-limits-en-d-7)"></rect>
+  <line x1="409.77" y1="320" x2="409.77" y2="360" stroke="#5eead4" stroke-width="1.5"></line>
+  <text x="425.77" y="350" font-size="26" fill="#5eead4" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">89.77</text>
+  <text x="48" y="418" font-size="26" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">1992 Fund</text>
+  <text x="48" y="444" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Including CLC</text>
+  <rect x="320" y="398" width="750" height="32" rx="4" fill="#171a20"></rect>
+  <rect x="320" y="398" width="203.0" height="32" rx="4" fill="url(#sfi-limits-en-d-10)"></rect>
+  <line x1="523.0" y1="394" x2="523.0" y2="434" stroke="#7aa2f7" stroke-width="1.5"></line>
+  <text x="539.0" y="424" font-size="26" fill="#7aa2f7" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">203</text>
+  <text x="48" y="492" font-size="26" fill="#e7e9ee" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Supplementary Fund</text>
+  <text x="48" y="518" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">CLC + 1992 Fund</text>
+  <rect x="320" y="472" width="750" height="32" rx="4" fill="#171a20"></rect>
+  <rect x="320" y="472" width="750.0" height="32" rx="4" fill="url(#sfi-limits-en-d-13)"></rect>
+  <line x1="1070.0" y1="468" x2="1070.0" y2="508" stroke="#f5b13d" stroke-width="1.5"></line>
+  <text x="1086.0" y="498" font-size="26" fill="#f5b13d" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">750</text>
+  <text x="48" y="565" font-size="26" fill="#8b909b" class="mono" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Territorial examples, subject to eligibility</text>
+  <rect x="48" y="582" width="540" height="91" rx="9" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="48" y="582" width="3" height="91" rx="1.5" fill="#7aa2f7"></rect>
+  <text x="70" y="620" font-size="26" fill="#7aa2f7" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">OMAN</text>
+  <text x="70" y="650" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">1992 Fund</text>
+  <text x="566" y="650" font-size="28" fill="#e7e9ee" font-weight="400" text-anchor="end" class="mono" font-family="Inter Variable, Inter, sans-serif">SDR 203M</text>
+  <rect x="612" y="582" width="540" height="91" rx="9" fill="#121419" stroke="rgba(255, 255, 255, 0.20)"></rect>
+  <rect x="612" y="582" width="3" height="91" rx="1.5" fill="#f5b13d"></rect>
+  <text x="634" y="620" font-size="26" fill="#f5b13d" font-weight="400" class="mono" font-family="Inter Variable, Inter, sans-serif">FRANCE</text>
+  <text x="634" y="650" font-size="26" fill="#8b909b" font-weight="400" font-family="Inter Variable, Inter, sans-serif">Supplementary Fund</text>
+  <text x="1130" y="650" font-size="28" fill="#e7e9ee" font-weight="400" text-anchor="end" class="mono" font-family="Inter Variable, Inter, sans-serif">SDR 750M</text>
+</svg>

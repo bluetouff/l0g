@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfo-network-en-m-0" width="600" height="810" viewBox="0 0 600 810" role="img" aria-labelledby="sfo-network-en-m-1 sfo-network-en-m-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="sfo-network-en-m-1">Three documented ownership chains — mobile</title>
+  <desc id="sfo-network-en-m-3">Three rows show Cariba owning White Agate, Nitara owning Serpentine, and Prospect as Citrine’s main shareholder. Equity links are attributed to the Council of the European Union. Only Citrine is linked to ARROW, AMULET and BOBCAT, based on IRCLASS’s Owner Address field accessed on 19 November 2026. Prospect’s incorporation on 6 March 2024 is verified in Hong Kong’s registry. Its percentage stake is not disclosed.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart_type": "reseau-propriete", "sources": [{"id": "S01", "url": "https://www.irclass.org/umbraco/Surface/Home/showShipSearchDetail/67537"}, {"id": "S06", "url": "https://www.irclass.org/umbraco/Surface/Home/showShipSearchDetail/67693"}, {"id": "S07", "url": "https://www.irclass.org/umbraco/Surface/Home/showShipSearchDetail/67327"}, {"id": "S08", "url": "https://eur-lex.europa.eu/eli/reg_impl/2026/2574/oj"}, {"id": "S09", "url": "https://www.cr.gov.hk/docs/wrpt/RNC063_2024.03.04-2024.03.10.pdf"}], "units": "equity percent where explicitly stated; otherwise relationships, not quantities", "limitations": "Sources and dates have distinct evidential roles. No ultimate beneficial owner or payment flow is asserted."}</metadata>
+  <defs>
+    <marker id="sfo-network-en-m-6" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L10 5L0 10Z" fill="#5eead4"></path>
+    </marker>
+    <marker id="sfo-network-en-m-8" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+      <path d="M0 0L10 5L0 10Z" fill="#7aa2f7"></path>
+    </marker>
+  </defs>
+  <rect width="600" height="810" fill="#0c0d10"></rect>
+  <text x="24" y="78" text-anchor="start" font-size="32" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Three documented chains</text>
+  <text x="24" y="114" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Holding companies and declared owners</text>
+  <rect x="24" y="146" width="228" height="112" rx="11" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <rect x="348" y="146" width="228" height="112" rx="11" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <text x="42" y="174" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">SEYCHELLES</text>
+  <text x="366" y="174" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">SHIPOWNER</text>
+  <text x="42" y="210" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Cariba Carriers</text>
+  <text x="42" y="241" text-anchor="start" font-size="26.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Ltd</text>
+  <text x="366" y="210" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">White Agate</text>
+  <text x="366" y="241" text-anchor="start" font-size="26.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Marine SPC</text>
+  <path d="M252 211H347" fill="none" stroke="#5eead4" stroke-width="2.5" marker-end="url(#sfo-network-en-m-6)"></path>
+  <text x="300" y="192" text-anchor="middle" font-size="26.5" font-weight="400" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif">100%</text>
+  <text x="300" y="242" text-anchor="middle" font-size="26.5" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-weight="400">EU</text>
+  <rect x="24" y="286" width="228" height="112" rx="11" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <rect x="348" y="286" width="228" height="112" rx="11" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <text x="42" y="314" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">SEYCHELLES</text>
+  <text x="366" y="314" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">SHIPOWNER</text>
+  <text x="42" y="350" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Nitara Carriers</text>
+  <text x="42" y="381" text-anchor="start" font-size="26.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Ltd</text>
+  <text x="366" y="350" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Serpentine</text>
+  <text x="366" y="381" text-anchor="start" font-size="26.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Marine SPC</text>
+  <path d="M252 351H347" fill="none" stroke="#5eead4" stroke-width="2.5" marker-end="url(#sfo-network-en-m-6)"></path>
+  <text x="300" y="332" text-anchor="middle" font-size="26.5" font-weight="400" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif">100%</text>
+  <text x="300" y="382" text-anchor="middle" font-size="26.5" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-weight="400">EU</text>
+  <rect x="24" y="426" width="228" height="160" rx="11" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <rect x="348" y="426" width="228" height="160" rx="11" fill="#171a20" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <text x="42" y="454" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">HONG KONG</text>
+  <text x="366" y="454" text-anchor="start" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">SHIPOWNER</text>
+  <text x="42" y="482" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Prospect</text>
+  <text x="42" y="510" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">International</text>
+  <text x="42" y="538" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Shipping Limited</text>
+  <circle cx="44" cy="563" r="4" fill="#5eead4"></circle>
+  <text x="56" y="571" text-anchor="start" font-size="26.5" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-weight="400">HK · 06 Mar 2024</text>
+  <text x="366" y="505" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">Citrine</text>
+  <text x="366" y="537" text-anchor="start" font-size="26.5" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Marine SPC</text>
+  <path d="M252 505H347" fill="none" stroke="#5eead4" stroke-width="2.5" marker-end="url(#sfo-network-en-m-6)"></path>
+  <text x="300" y="486" text-anchor="middle" font-size="26.5" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-weight="400">EU</text>
+  <text x="300" y="617" text-anchor="middle" font-size="26.5" fill="#f5b13d" font-family="Inter Variable, Inter, sans-serif" font-weight="400">Main shareholder · stake not disclosed</text>
+  <path d="M576 505H588V647H300V665" fill="none" stroke="#7aa2f7" stroke-width="2.5" stroke-dasharray="7 6" marker-end="url(#sfo-network-en-m-8)"></path>
+  <text x="24" y="651" text-anchor="start" font-size="26.5" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-weight="400">IRCLASS RECORD</text>
+  <rect x="24" y="666" width="552" height="120" rx="11" fill="#121419" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1.5"></rect>
+  <path d="M42 706H558M42 746H558" stroke="rgba(255, 255, 255, 0.20)" stroke-width="1"></path>
+  <text x="44" y="695" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">ARROW</text>
+  <text x="554" y="695" text-anchor="end" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">IMO 9413561</text>
+  <text x="44" y="735" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">AMULET</text>
+  <text x="554" y="735" text-anchor="end" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">IMO 9413547</text>
+  <text x="44" y="775" text-anchor="start" font-size="26.5" font-weight="400" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif">BOBCAT</text>
+  <text x="554" y="775" text-anchor="end" font-size="26.5" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-weight="400">IMO 9422457</text>
+</svg>

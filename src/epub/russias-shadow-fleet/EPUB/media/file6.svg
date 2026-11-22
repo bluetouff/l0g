@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfc-cashflow-en-d-0" width="1200" height="690" viewBox="0 0 1200 690" role="img" aria-labelledby="sfc-cashflow-en-d-1 sfc-cashflow-en-d-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="sfc-cashflow-en-d-1">From profit to cash flow</title>
+  <desc id="sfc-cashflow-en-d-3">Lidoil, year ended 2025, AED millions. Net profit 120.4; depreciation and accrued interest +40.9; increase in trade receivables −325.7; other assets and liabilities +56.1; net operating cash flow −108.3. Source: individual IFRS 2025 financial statements, PDF page 10. Exact values and formulas in donnees/credit-data.json.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart": "benefice-tresorerie", "unit": "AED millions; chart geometry from exact AED values", "period": "Year ended 2025-12-31", "limits": "Individual Lidoil financial statements; not group consolidation. Other assets and liabilities include a shareholder loan in other current assets. Accounting reconciliation does not identify a defaulting customer or explain causally the 2026 issue.", "sources": [{"id": "S14", "url": "https://www.e-disclosure.ru/portal/FileLoad.ashx?Fileid=1935707"}]}</metadata>
+  <rect x="0.00" y="0.00" width="1200.00" height="690" rx="0" fill="#0c0d10" opacity="1"></rect>
+  <text x="48.00" y="48.00" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">LIDOIL · 2025 · AED MILLIONS</text>
+  <text x="48.00" y="104.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="35" font-weight="400" text-anchor="start">From profit to cash flow</text>
+  <text x="48.00" y="146.00" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="start">Rising trade receivables absorb cash from operations.</text>
+  <rect x="32.00" y="181.00" width="1136.00" height="427.00" rx="12" fill="#121419" opacity="1"></rect>
+  <line x1="90.00" y1="536.00" x2="1135.00" y2="536.00" stroke="#30343d" stroke-width="1"></line>
+  <text x="80" y="544.00" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="end">−150</text>
+  <line x1="90.00" y1="392.00" x2="1135.00" y2="392.00" stroke="#30343d" stroke-width="2"></line>
+  <text x="71.00" y="400.00" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="end">0</text>
+  <line x1="90.00" y1="248.00" x2="1135.00" y2="248.00" stroke="#30343d" stroke-width="1"></line>
+  <text x="71.00" y="256.00" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="end">150</text>
+  <rect x="81.00" y="276.42" width="130.00" height="115.58" rx="4" fill="#5eead4" opacity="0.85"></rect>
+  <text x="146.00" y="261.42" fill="#5eead4" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">120.4</text>
+  <line x1="215.00" y1="276.42" x2="297.00" y2="276.42" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 6"></line>
+  <text x="146.00" y="640.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Net</text>
+  <text x="146.00" y="669.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">profit</text>
+  <rect x="301.00" y="237.12" width="130.00" height="39.31" rx="4" fill="#7aa2f7" opacity="0.85"></rect>
+  <text x="366.00" y="222.12" fill="#7aa2f7" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">+40.9</text>
+  <line x1="435.00" y1="237.12" x2="517.00" y2="237.12" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 6"></line>
+  <text x="366.00" y="640.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Accounting</text>
+  <text x="366.00" y="669.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">adjustments</text>
+  <rect x="521.00" y="237.12" width="130.00" height="312.66" rx="4" fill="#ff4d87" opacity="0.85"></rect>
+  <text x="586.00" y="338.00" fill="#0c0d10" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">−325.7</text>
+  <line x1="655.00" y1="549.78" x2="737.00" y2="549.78" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 6"></line>
+  <text x="586.00" y="640.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Trade</text>
+  <text x="586.00" y="669.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">receivables</text>
+  <rect x="741.00" y="495.92" width="130.00" height="53.85" rx="4" fill="#f5b13d" opacity="0.85"></rect>
+  <text x="806.00" y="480.92" fill="#f5b13d" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">+56.1</text>
+  <line x1="875.00" y1="495.92" x2="957.00" y2="495.92" stroke="#8b909b" stroke-width="2" stroke-dasharray="5 6"></line>
+  <text x="806.00" y="640.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Other assets</text>
+  <text x="806.00" y="669.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">and liabilities</text>
+  <rect x="961.00" y="392.00" width="130.00" height="103.92" rx="4" fill="#ff4d87" opacity="0.18"></rect>
+  <rect x="961.00" y="392.00" width="130" height="103.92" rx="4" fill="none" stroke="#ff4d87" stroke-width="3"></rect>
+  <text x="1026.00" y="537.92" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">−108.3</text>
+  <text x="1026.00" y="640.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">Operating</text>
+  <text x="1026.00" y="669.00" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26" font-weight="400" text-anchor="middle">cash flow</text>
+</svg>

@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" id="sfp-volume-en-m-0" width="600" height="790" viewBox="0 0 600 790" role="img" aria-labelledby="sfp-volume-en-m-1 sfp-volume-en-m-3" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+  <title id="sfp-volume-en-m-1">A7A5: transaction volume drops</title>
+  <desc id="sfp-volume-en-m-3">According to Elliptic, daily average A7A5 transaction volume was USD 24.3 million in June 2026, down 96% from July 2025. Two bars share a zero origin: July 2025 index 100; June 2026 approximate index 4. The reported decline is rounded. This token measure does not measure all A7 payments.</desc>
+  <metadata>{"publisher": "l0g", "license": "CC-BY-4.0", "cutoff": "2026-11-19", "language": "en", "chart": "volume-token", "unit": "Index of daily transaction volume; July2025=100; USD per day for June2026 mean", "period": "July2025 and June2026; published2026-07-29", "limits": "Approximate June index4 derived from a rounded96% decline. Only two observations, no monthly interpolation. Elliptic commercial estimate not independently replicated. Neither total A7 activity nor oil receipts.", "sources": [{"id": "S13", "url": "https://www.elliptic.co/insights/the-fall-of-a7a5-how-sanctions-strangled-the-ruble-stablecoin/"}]}</metadata>
+  <defs>
+    <marker id="sfp-volume-en-m-6" markerWidth="10" markerHeight="10" refX="8.2" refY="5" viewBox="0 0 10 10" orient="auto">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#5eead4" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"></path>
+    </marker>
+    <marker id="sfp-volume-en-m-8" markerWidth="10" markerHeight="10" refX="8.2" refY="5" viewBox="0 0 10 10" orient="auto">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#7aa2f7" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"></path>
+    </marker>
+    <marker id="sfp-volume-en-m-10" markerWidth="10" markerHeight="10" refX="8.2" refY="5" viewBox="0 0 10 10" orient="auto">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#f5b13d" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"></path>
+    </marker>
+    <marker id="sfp-volume-en-m-12" markerWidth="10" markerHeight="10" refX="8.2" refY="5" viewBox="0 0 10 10" orient="auto">
+      <path d="M1 1L8 5L1 9" fill="none" stroke="#8b909b" stroke-width="1.5" stroke-linejoin="round" stroke-linecap="round"></path>
+    </marker>
+  </defs>
+  <rect x="0" y="0" width="600" height="790" rx="0" fill="#0c0d10"></rect>
+  <text x="28" y="72" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="start">A7A5 transaction volume falls</text>
+  <text x="28" y="115" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Daily volume, indexed</text>
+  <rect x="24" y="137.96" width="552" height="448.24" rx="14" fill="#121419"></rect>
+  <line x1="112" y1="494.68" x2="548" y2="494.68" stroke="#30343d" stroke-width="2"></line>
+  <text x="95" y="501.72" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="end">0</text>
+  <line x1="112" y1="426.48" x2="548" y2="426.48" stroke="#30343d" stroke-width="1"></line>
+  <text x="95" y="433.52" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="end">25</text>
+  <line x1="112" y1="358.28" x2="548" y2="358.28" stroke="#30343d" stroke-width="1"></line>
+  <text x="95" y="365.32" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="end">50</text>
+  <line x1="112" y1="290.08" x2="548" y2="290.08" stroke="#30343d" stroke-width="1"></line>
+  <text x="95" y="297.12" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="end">75</text>
+  <line x1="112" y1="221.88" x2="548" y2="221.88" stroke="#30343d" stroke-width="1"></line>
+  <text x="95" y="228.92" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="end">100</text>
+  <rect x="158" y="221.88" width="96" height="272.8" rx="0" fill="#5eead4"></rect>
+  <rect x="374" y="483.768" width="96" height="10.912" rx="0" fill="#ff4d87"></rect>
+  <text x="206" y="259.72" fill="#0c0d10" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">100</text>
+  <text x="422" y="467.048" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="32" font-weight="400" text-anchor="middle">≈ 4</text>
+  <text x="314" y="176.12" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">Two dates compared</text>
+  <line x1="206" y1="194.6" x2="422" y2="194.6" stroke="#8b909b" stroke-width="2" stroke-dasharray="4 6"></line>
+  <line x1="206" y1="189.32" x2="206" y2="199.88" stroke="#8b909b" stroke-width="2"></line>
+  <line x1="422" y1="189.32" x2="422" y2="199.88" stroke="#8b909b" stroke-width="2"></line>
+  <text x="206" y="535.16" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">July</text>
+  <text x="206" y="563.32" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">2025</text>
+  <text x="422" y="535.16" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">June</text>
+  <text x="422" y="563.32" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="middle">2026</text>
+  <rect x="24" y="605.56" width="552" height="165.44" rx="14" fill="#121419"></rect>
+  <text x="48" y="643.4" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">Reported fall</text>
+  <text x="48" y="708.52" fill="#ff4d87" font-family="Inter Variable, Inter, sans-serif" font-size="34" font-weight="400" text-anchor="start">−96 %</text>
+  <line x1="286" y1="626.68" x2="286" y2="746.36" stroke="#30343d" stroke-width="1"></line>
+  <text x="314" y="675.08" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="34" font-weight="400" text-anchor="start">24.3</text>
+  <text x="314" y="711.16" fill="#e7e9ee" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">M USD / day</text>
+  <text x="314" y="744.6" fill="#8b909b" font-family="Inter Variable, Inter, sans-serif" font-size="26.5" font-weight="400" text-anchor="start">June 2026 mean</text>
+</svg>
