@@ -5855,5 +5855,506 @@
       "windowStart": "2026-11-08T08:30:00+01:00",
       "windowEnd": "2026-11-15T08:30:00+01:00"
     }
+  },
+  {
+    "issue": 17,
+    "slug": "2026-11-22",
+    "publishedAt": "2026-11-22T08:30:00+01:00",
+    "title": "L’Hebdo du 22 novembre. Logement en Europe : le coût des délais de permis de construire",
+    "description": "Édition automatisée du 22 novembre : 33 analyses publiées, avec un focus construit uniquement à partir de métadonnées éditoriales déjà publiées.",
+    "analysis": {
+      "title": "Logement en Europe : le coût des délais de permis de construire",
+      "href": "/posts/logement-permis-cout-attente-europe-2026/",
+      "update": "Le crédit court pendant l’instruction du permis. De Madrid aux chantiers français, l0g suit le coût de l’attente jusqu’au logement livré."
+    },
+    "lead": "L’étude commandée par la Commission détaille les étapes des permis de construire. Ses deux enquêtes sont concentrées dans quelques pays.",
+    "number": {
+      "value": "33",
+      "label": "analyses publiées du 15 novembre à 08 h 30 au 22 novembre à 08 h 30",
+      "context": "Décompte automatique des articles publics non brouillons. Il ne mesure ni l’importance des sujets ni leur audience."
+    },
+    "mechanism": "Quand un projet a engagé du capital, un délai plus court peut réduire les frais de portage et aider le chantier à démarrer.",
+    "test": "La baisse des coûts effectivement transmise aux ménages et les logements livrés plus tôt restent à mesurer.",
+    "limits": [
+      "Le focus est le dernier article de la fenêtre possédant une fiche structurée ; ce choix ne constitue pas un classement d’importance.",
+      "L’édition réutilise uniquement des métadonnées éditoriales déjà publiées et n’ajoute aucun chiffre économique.",
+      "Le graphique mesure une cadence de publication, pas la portée économique des sujets."
+    ],
+    "chart": {
+      "title": "33 analyses publiées en sept jours",
+      "subtitle": "du 15 novembre à 08 h 30 au 22 novembre à 08 h 30, heure de Paris.",
+      "note": "Le graphique compte les publications. Il ne classe ni les sujets ni leur importance.",
+      "observationDate": "2026-11-22",
+      "sourceLabel": "l0g.fr, métadonnées éditoriales publiques",
+      "sourceUrl": "https://l0g.fr/",
+      "csvValueColumn": "published_analyses",
+      "calloutLabel": "LA SEMAINE EN CHIFFRES",
+      "points": [
+        {
+          "label": "dim 15/11",
+          "shortLabel": "dim 15/11",
+          "value": 1,
+          "valueLabel": "1",
+          "nature": "analyse publiée",
+          "scope": "2026-11-15",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "lun 16/11",
+          "shortLabel": "lun 16/11",
+          "value": 8,
+          "valueLabel": "8",
+          "nature": "analyses publiées",
+          "scope": "2026-11-16",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "mar 17/11",
+          "shortLabel": "mar 17/11",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-11-17",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "mer 18/11",
+          "shortLabel": "mer 18/11",
+          "value": 6,
+          "valueLabel": "6",
+          "nature": "analyses publiées",
+          "scope": "2026-11-18",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "jeu 19/11",
+          "shortLabel": "jeu 19/11",
+          "value": 8,
+          "valueLabel": "8",
+          "nature": "analyses publiées",
+          "scope": "2026-11-19",
+          "tone": "accent",
+          "additive": true
+        },
+        {
+          "label": "ven 20/11",
+          "shortLabel": "ven 20/11",
+          "value": 4,
+          "valueLabel": "4",
+          "nature": "analyses publiées",
+          "scope": "2026-11-20",
+          "tone": "amber",
+          "additive": true
+        },
+        {
+          "label": "sam 21/11",
+          "shortLabel": "sam 21/11",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-11-21",
+          "tone": "signal",
+          "additive": true
+        },
+        {
+          "label": "dim 22/11",
+          "shortLabel": "dim 22/11",
+          "value": 0,
+          "valueLabel": "0",
+          "nature": "analyses publiées",
+          "scope": "2026-11-22",
+          "tone": "accent",
+          "additive": true
+        }
+      ]
+    },
+    "quote": "L’étude commandée par la Commission détaille les étapes des permis de construire. Ses deux enquêtes sont concentrées dans quelques pays.",
+    "linkedin": "33 analyses publiées sur l0g du 15 novembre à 08 h 30 au 22 novembre à 08 h 30.\n\nFocus structuré : Logement en Europe : le coût des délais de permis de construire.\n\nL’étude commandée par la Commission détaille les étapes des permis de construire. Ses deux enquêtes sont concentrées dans quelques pays.\n\nPourquoi le lire : Quand un projet a engagé du capital, un délai plus court peut réduire les frais de portage et aider le chantier à démarrer.\n\nLimite à garder : La baisse des coûts effectivement transmise aux ménages et les logements livrés plus tôt restent à mesurer.\n\nÉdition, graphique de cadence, CSV et archives : https://l0g.fr/hebdo/2026-11-22/",
+    "threadX": [
+      "1/5 L’Hebdo l0g du 22 novembre compte 33 analyses publiées. Focus : Logement en Europe : le coût des délais de permis de construire.",
+      "2/5 L’étude commandée par la Commission détaille les étapes des permis de construire. Ses deux enquêtes sont concentrées dans quelques pays.",
+      "3/5 Pourquoi le lire : Quand un projet a engagé du capital, un délai plus court peut réduire les frais de portage et aider le chantier à démarrer.",
+      "4/5 Limite : La baisse des coûts effectivement transmise aux ménages et les logements livrés plus tôt restent à mesurer.",
+      "5/5 Édition, graphique, CSV et analyses : https://l0g.fr/hebdo/2026-11-22/"
+    ],
+    "sources": [
+      {
+        "label": "Logement en Europe : le coût des délais de permis de construire",
+        "href": "/posts/logement-permis-cout-attente-europe-2026/",
+        "role": "Analyse publiée le 20 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Gazole en France : pourquoi le prix baisse moins vite que le pétrole",
+        "href": "/posts/gazole-baisse-petrole-raffinage-novembre-2026/",
+        "role": "Analyse publiée le 20 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les licences Nvidia et AMD pour la Chine au grand jour",
+        "href": "/posts/nvidia-h200-licences-chine-bis/",
+        "role": "Analyse publiée le 20 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Flotte fantôme russe : qui paie après l’échouement d’un pétrolier ?",
+        "href": "/posts/flotte-fantome-assurance-petrolier-echoue-facture/",
+        "role": "Analyse publiée le 20 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Flotte fantôme russe : les recettes du pétrole et le réseau A7",
+        "href": "/posts/flotte-fantome-paiements-a7-a7a5-petrole/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Flotte fantôme russe : le crédit de Moscou à Dubaï",
+        "href": "/posts/flotte-fantome-financement-roubles-lid-capital-lidoil/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Flotte fantôme russe : le pétrolier Arrow et ses propriétaires",
+        "href": "/posts/flotte-fantome-arrow-propriete-petrolier/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Gaz européen : le risque de stocks très bas au printemps",
+        "href": "/posts/gaz-europe-hiver-2026-2027/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Réserves bancaires : les 4,4 milliards en jeu à la BCE",
+        "href": "/posts/bce-reserves-obligatoires-milliards-banques-clients/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Malaisie : Washington suit les clients des puces IA",
+        "href": "/posts/malaisie-puces-ia-client-calcul-controles-americains/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Deutsche Bank et MKB, les 173 jours d’une rupture",
+        "href": "/posts/deutsche-bank-wingman-alertes-correspondance/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Le crédit Nvidia à l’épreuve de l’après-Huang",
+        "href": "/posts/nvidia-credit-moodys-wall-street-anthropic/",
+        "role": "Analyse publiée le 19 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SpaceX à 135 dollars. Combien un fonds du Nasdaq a-t-il payé ?",
+        "href": "/posts/spacex-anthropic-ipo-etf-prix-entree/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "L’autre emprunteur derrière une obligation française",
+        "href": "/posts/dette-francaise-hedge-funds-repo-mars-2026/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Deutsche Bank et Epstein : l’exception de conformité à l’épreuve des documents internes",
+        "href": "/posts/deutsche-bank-epstein-inside-exception-conformite/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia et Aolani : le crédit de l’IA face aux licences",
+        "href": "/posts/nvidia-financement-garanties-pret-aolani/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette de l’IA : la carte des banques, fonds et assureurs",
+        "href": "/posts/dette-ia-cartographie-banques-fonds-assureurs/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette de l’IA : la trésorerie sous conditions",
+        "href": "/posts/dette-ia-tresorerie-clauses-contrats/",
+        "role": "Analyse publiée le 18 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Dette de l’IA : les assureurs engagent aussi leur signature",
+        "href": "/posts/ia-assureurs-garanties-risque-hors-bilan/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les banques derrière les prêteurs privés de l’IA",
+        "href": "/posts/credit-prive-ia-fonds-banques-financement/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Les banques européennes derrière la dette de l’IA",
+        "href": "/posts/banques-europeennes-ia-contrats-expositions/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Jupiter, sur la piste des créanciers de l’IA",
+        "href": "/posts/jupiter-hsbc-banques-europeennes-financement-ia/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia installe la sécurité nationale au conseil",
+        "href": "/posts/nvidia-conseil-securite-nationale-controles-exportation/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Anthropic et ses relais à Washington",
+        "href": "/posts/anthropic-lobbying-washington-controles-exportation/",
+        "role": "Analyse publiée le 17 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : Washington vise les usages du calcul à distance",
+        "href": "/posts/nvidia-bis-acces-distant-controles-cloud/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia à Taïwan : les démarches politiques autour d’un salarié poursuivi",
+        "href": "/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Lutnick, Cantor et les intérêts financiers autour des puces Nvidia",
+        "href": "/posts/nvidia-lutnick-cantor-exportations-bitdeer/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia après Huang : l’avenir du financement des clients",
+        "href": "/posts/nvidia-apres-huang-financement-clients/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia : la succession sous pression de Washington",
+        "href": "/posts/nvidia-succession-washington-champions-ia/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "CMA CGM : suivre la marge, du navire à l’entrepôt",
+        "href": "/posts/cma-cgm-maritime-logistique-marges/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Faillites bancaires : le prix de l’urgence reste à justifier",
+        "href": "/posts/fdic-valorisations-faillites-banques-2023/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "SK hynix et le prix de la preuve industrielle",
+        "href": "/posts/sk-hynix-preuve-industrielle/",
+        "role": "Analyse publiée le 16 novembre 2026 ; sources, méthode et limites dans le dossier."
+      },
+      {
+        "label": "Nvidia après Huang : les engagements à l’épreuve de la crise",
+        "href": "/posts/nvidia-apres-huang-contrats-garanties-cout-crise/",
+        "role": "Analyse publiée le 15 novembre 2026 ; sources, méthode et limites dans le dossier."
+      }
+    ],
+    "sourcesEyebrow": "// analyses et leurs sources",
+    "includedAnalyses": [
+      {
+        "title": "Logement en Europe : le coût des délais de permis de construire",
+        "href": "/posts/logement-permis-cout-attente-europe-2026/",
+        "publishedAt": "2026-11-20T12:23:00.000Z"
+      },
+      {
+        "title": "Gazole en France : pourquoi le prix baisse moins vite que le pétrole",
+        "href": "/posts/gazole-baisse-petrole-raffinage-novembre-2026/",
+        "publishedAt": "2026-11-20T07:56:00.000Z"
+      },
+      {
+        "title": "Les licences Nvidia et AMD pour la Chine au grand jour",
+        "href": "/posts/nvidia-h200-licences-chine-bis/",
+        "publishedAt": "2026-11-19T23:42:10.000Z"
+      },
+      {
+        "title": "Flotte fantôme russe : qui paie après l’échouement d’un pétrolier ?",
+        "href": "/posts/flotte-fantome-assurance-petrolier-echoue-facture/",
+        "publishedAt": "2026-11-19T23:26:00.000Z"
+      },
+      {
+        "title": "Flotte fantôme russe : les recettes du pétrole et le réseau A7",
+        "href": "/posts/flotte-fantome-paiements-a7-a7a5-petrole/",
+        "publishedAt": "2026-11-19T21:54:25.000Z"
+      },
+      {
+        "title": "Flotte fantôme russe : le crédit de Moscou à Dubaï",
+        "href": "/posts/flotte-fantome-financement-roubles-lid-capital-lidoil/",
+        "publishedAt": "2026-11-19T21:03:24.000Z"
+      },
+      {
+        "title": "Flotte fantôme russe : le pétrolier Arrow et ses propriétaires",
+        "href": "/posts/flotte-fantome-arrow-propriete-petrolier/",
+        "publishedAt": "2026-11-19T20:15:26.000Z"
+      },
+      {
+        "title": "Gaz européen : le risque de stocks très bas au printemps",
+        "href": "/posts/gaz-europe-hiver-2026-2027/",
+        "publishedAt": "2026-11-19T15:06:47.000Z"
+      },
+      {
+        "title": "Réserves bancaires : les 4,4 milliards en jeu à la BCE",
+        "href": "/posts/bce-reserves-obligatoires-milliards-banques-clients/",
+        "publishedAt": "2026-11-19T13:01:04.000Z"
+      },
+      {
+        "title": "Malaisie : Washington suit les clients des puces IA",
+        "href": "/posts/malaisie-puces-ia-client-calcul-controles-americains/",
+        "publishedAt": "2026-11-19T11:45:15.000Z"
+      },
+      {
+        "title": "Deutsche Bank et MKB, les 173 jours d’une rupture",
+        "href": "/posts/deutsche-bank-wingman-alertes-correspondance/",
+        "publishedAt": "2026-11-19T09:25:35.000Z"
+      },
+      {
+        "title": "Le crédit Nvidia à l’épreuve de l’après-Huang",
+        "href": "/posts/nvidia-credit-moodys-wall-street-anthropic/",
+        "publishedAt": "2026-11-19T08:44:30.000Z"
+      },
+      {
+        "title": "SpaceX à 135 dollars. Combien un fonds du Nasdaq a-t-il payé ?",
+        "href": "/posts/spacex-anthropic-ipo-etf-prix-entree/",
+        "publishedAt": "2026-11-18T21:57:22.000Z"
+      },
+      {
+        "title": "L’autre emprunteur derrière une obligation française",
+        "href": "/posts/dette-francaise-hedge-funds-repo-mars-2026/",
+        "publishedAt": "2026-11-18T19:52:42.000Z"
+      },
+      {
+        "title": "Deutsche Bank et Epstein : l’exception de conformité à l’épreuve des documents internes",
+        "href": "/posts/deutsche-bank-epstein-inside-exception-conformite/",
+        "publishedAt": "2026-11-18T13:07:40.000Z"
+      },
+      {
+        "title": "Nvidia et Aolani : le crédit de l’IA face aux licences",
+        "href": "/posts/nvidia-financement-garanties-pret-aolani/",
+        "publishedAt": "2026-11-18T11:37:05.000Z"
+      },
+      {
+        "title": "Dette de l’IA : la carte des banques, fonds et assureurs",
+        "href": "/posts/dette-ia-cartographie-banques-fonds-assureurs/",
+        "publishedAt": "2026-11-18T10:01:46.000Z"
+      },
+      {
+        "title": "Dette de l’IA : la trésorerie sous conditions",
+        "href": "/posts/dette-ia-tresorerie-clauses-contrats/",
+        "publishedAt": "2026-11-18T08:13:19.000Z"
+      },
+      {
+        "title": "Dette de l’IA : les assureurs engagent aussi leur signature",
+        "href": "/posts/ia-assureurs-garanties-risque-hors-bilan/",
+        "publishedAt": "2026-11-17T20:40:40.000Z"
+      },
+      {
+        "title": "Les banques derrière les prêteurs privés de l’IA",
+        "href": "/posts/credit-prive-ia-fonds-banques-financement/",
+        "publishedAt": "2026-11-17T17:42:48.000Z"
+      },
+      {
+        "title": "Les banques européennes derrière la dette de l’IA",
+        "href": "/posts/banques-europeennes-ia-contrats-expositions/",
+        "publishedAt": "2026-11-17T16:10:08.000Z"
+      },
+      {
+        "title": "Jupiter, sur la piste des créanciers de l’IA",
+        "href": "/posts/jupiter-hsbc-banques-europeennes-financement-ia/",
+        "publishedAt": "2026-11-17T15:02:03.000Z"
+      },
+      {
+        "title": "Nvidia installe la sécurité nationale au conseil",
+        "href": "/posts/nvidia-conseil-securite-nationale-controles-exportation/",
+        "publishedAt": "2026-11-17T11:21:19.000Z"
+      },
+      {
+        "title": "Anthropic et ses relais à Washington",
+        "href": "/posts/anthropic-lobbying-washington-controles-exportation/",
+        "publishedAt": "2026-11-17T08:11:36.000Z"
+      },
+      {
+        "title": "Nvidia : Washington vise les usages du calcul à distance",
+        "href": "/posts/nvidia-bis-acces-distant-controles-cloud/",
+        "publishedAt": "2026-11-16T18:31:16.000Z"
+      },
+      {
+        "title": "Nvidia à Taïwan : les démarches politiques autour d’un salarié poursuivi",
+        "href": "/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/",
+        "publishedAt": "2026-11-16T15:56:13.000Z"
+      },
+      {
+        "title": "Lutnick, Cantor et les intérêts financiers autour des puces Nvidia",
+        "href": "/posts/nvidia-lutnick-cantor-exportations-bitdeer/",
+        "publishedAt": "2026-11-16T14:20:48.000Z"
+      },
+      {
+        "title": "Nvidia après Huang : l’avenir du financement des clients",
+        "href": "/posts/nvidia-apres-huang-financement-clients/",
+        "publishedAt": "2026-11-16T12:57:16.000Z"
+      },
+      {
+        "title": "Nvidia : la succession sous pression de Washington",
+        "href": "/posts/nvidia-succession-washington-champions-ia/",
+        "publishedAt": "2026-11-16T10:54:35.000Z"
+      },
+      {
+        "title": "CMA CGM : suivre la marge, du navire à l’entrepôt",
+        "href": "/posts/cma-cgm-maritime-logistique-marges/",
+        "publishedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "title": "Faillites bancaires : le prix de l’urgence reste à justifier",
+        "href": "/posts/fdic-valorisations-faillites-banques-2023/",
+        "publishedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "title": "SK hynix et le prix de la preuve industrielle",
+        "href": "/posts/sk-hynix-preuve-industrielle/",
+        "publishedAt": "2026-11-16T00:00:00.000Z"
+      },
+      {
+        "title": "Nvidia après Huang : les engagements à l’épreuve de la crise",
+        "href": "/posts/nvidia-apres-huang-contrats-garanties-cout-crise/",
+        "publishedAt": "2026-11-15T08:39:42.000Z"
+      }
+    ],
+    "briefs": [
+      {
+        "title": "Logement en Europe : le coût des délais de permis de construire",
+        "href": "/posts/logement-permis-cout-attente-europe-2026/",
+        "topic": "analyse",
+        "fact": "L’étude commandée par la Commission détaille les étapes des permis de construire. Ses deux enquêtes sont concentrées dans quelques pays.",
+        "importance": "Quand un projet a engagé du capital, un délai plus court peut réduire les frais de portage et aider le chantier à démarrer.",
+        "uncertainty": "La baisse des coûts effectivement transmise aux ménages et les logements livrés plus tôt restent à mesurer."
+      },
+      {
+        "title": "Gazole en France : pourquoi le prix baisse moins vite que le pétrole",
+        "href": "/posts/gazole-baisse-petrole-raffinage-novembre-2026/",
+        "topic": "géopolitique",
+        "fact": "Du 30 octobre au 13 novembre 2026, le Brent en euros recule de 24 % et le gazole TTC en France continentale de 10,4 %.",
+        "importance": "L’écart de rythme apparaît dès la cotation du gazole raffiné. L’accise fixe réduit ensuite la variation du prix TTC en pourcentage.",
+        "uncertainty": "La contribution effective de la vente de réserves stratégiques à la baisse du prix au détail reste à chiffrer."
+      },
+      {
+        "title": "Les licences Nvidia et AMD pour la Chine au grand jour",
+        "href": "/posts/nvidia-h200-licences-chine-bis/",
+        "topic": "financement IA",
+        "fact": "La Chambre a publié le 19 novembre un relevé du BIS qui recense 879 868 puces Nvidia et AMD autorisées pour des entreprises chinoises au 11 mai.",
+        "importance": "Les dossiers éclairent les volumes autorisés. La règle entrée en vigueur le même jour fait aussi dépendre certaines opérations de l’usage des puces à distance.",
+        "uncertainty": "Les expéditions ultérieures par licence et le devenir du contrat Nscale avec ByteDance restent à établir."
+      },
+      {
+        "title": "Réserves bancaires : les 4,4 milliards en jeu à la BCE",
+        "href": "/posts/bce-reserves-obligatoires-milliards-banques-clients/",
+        "topic": "macro",
+        "fact": "Le coefficient reste à 1 % au 19 novembre 2026. Reuters rapporte qu’un passage à 2 % doit être discuté le 25 novembre.",
+        "importance": "À assiette constante, environ 177,6 milliards d’euros passeraient de 2,50 % à zéro, soit 4,44 milliards d’intérêts en annualisation simple.",
+        "uncertainty": "La décision et son calendrier restent ouverts. Les effets sur les clients et les distributions aux États dépendraient des banques et des comptes publics."
+      }
+    ],
+    "automation": {
+      "strategy": "published-metadata-v1",
+      "generatedAt": "2026-11-22T10:36:00.473Z",
+      "windowStart": "2026-11-15T08:30:00+01:00",
+      "windowEnd": "2026-11-22T08:30:00+01:00"
+    }
   }
 ]
