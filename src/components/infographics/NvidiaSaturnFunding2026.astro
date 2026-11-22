@@ -1,0 +1,206 @@
+---
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const art = {
+  fr: {
+    desktop: `<svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox="0 0 600 256" role="img" aria-labelledby="nv22-saturn-fr-d-title nv22-saturn-fr-d-desc" xml:lang="fr" data-variant="desktop" data-status="planned-structure" data-pricing="2026-11-20">
+        <title id="nv22-saturn-fr-d-title">Les loyers du financement Saturn</title>
+        <desc id="nv22-saturn-fr-d-desc">Schéma du fonctionnement prévu du financement Saturn. Les investisseurs souscrivent les titres émis par Saturn Funding Trust, filiale indirecte de WHCO. WHCO, le bailleur, achète les GPU et équipements associés puis les loue à SpaceX. SpaceX doit verser à WHCO des loyers trimestriels pour chaque tranche à compter de sa livraison. Ces loyers doivent amortir la dette. Apollo et Goldman Sachs ont annoncé le 20 novembre 2026 la fixation des conditions de l’émission. Les livraisons sont attendues au premier semestre 2027. Les flèches pointillées représentent les flux prévus.</desc>
+        <rect x="0.6" y="0.6" width="598.8" height="254.8" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+        <text x="18" y="27" font-family="l0g Nvidia Saturn Funding" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-paper)">Les loyers du financement Saturn</text>
+        <text x="18" y="47" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Montage prévu · conditions de l’émission fixées le 20 novembre 2026</text>
+        <g transform="translate(54 80)" data-icon="investors">
+          <path d="M0 6L10 1L20 6Z M0 9H20 M0 23H20 M4 12V20 M10 12V20 M16 12V20" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="64" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Investisseurs</text>
+        <g transform="translate(212 80)" data-icon="notes">
+          <path d="M1 1H14L20 7V24H1Z M14 1V7H20 M5 12H15 M5 17H15 M5 21H11" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="222" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Saturn</text>
+        <text x="222" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Émet les titres</text>
+        <g transform="translate(372 80)" data-icon="lessor">
+          <rect x="0" y="1" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <rect x="0" y="15" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <path d="M4 5H6 M11 5H17 M4 19H6 M11 19H17" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="382" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">WHCO</text>
+        <text x="382" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Achète et loue</text>
+        <g transform="translate(530 80)" data-icon="lessee">
+          <rect x="0" y="1" width="22" height="23" rx="1" fill="none" stroke="var(--color-paper)" stroke-width="1.1"/>
+          <path d="M5 7H17 M5 12H17 M5 17H17 M10 24V21H13V24" fill="none" stroke="var(--color-paper)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="540" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">SpaceX</text>
+        <text x="540" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Locataire</text>
+        <path d="M94 92H190" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="investor-subscription"/>
+        <path d="M185 88L190 92L185 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="142" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Capitaux</text>
+        <path d="M254 92H350" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-financing"/>
+        <path d="M345 88L350 92L345 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="302" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Financement</text>
+        <path d="M414 92H508" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-lease"/>
+        <path d="M503 88L508 92L503 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="461" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">GPU loués</text>
+        <path d="M540 160V181H382V160" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="quarterly-rents"/>
+        <path d="M378 165L382 160L386 165" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="461" y="201" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Loyers trimestriels</text>
+        <text x="18" y="190" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="start" fill="var(--color-paper)">Loyers au service de la dette</text>
+        <path d="M18 216H582" fill="none" stroke="var(--color-line-strong)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="18" y="238" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Livraisons attendues : S1 2027 · loyers dès livraison</text>
+      </svg>`,
+    mobile: `<svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox="0 0 320 288" role="img" aria-labelledby="nv22-saturn-fr-m-title nv22-saturn-fr-m-desc" xml:lang="fr" data-variant="mobile" data-status="planned-structure" data-pricing="2026-11-20">
+        <title id="nv22-saturn-fr-m-title">Les loyers du financement Saturn</title>
+        <desc id="nv22-saturn-fr-m-desc">Schéma du fonctionnement prévu du financement Saturn. Les investisseurs souscrivent les titres émis par Saturn Funding Trust, filiale indirecte de WHCO. WHCO, le bailleur, achète les GPU et équipements associés puis les loue à SpaceX. SpaceX doit verser à WHCO des loyers trimestriels pour chaque tranche à compter de sa livraison. Ces loyers doivent amortir la dette. Apollo et Goldman Sachs ont annoncé le 20 novembre 2026 la fixation des conditions de l’émission. Les livraisons sont attendues au premier semestre 2027. Les flèches pointillées représentent les flux prévus.</desc>
+        <rect x="0.6" y="0.6" width="318.8" height="286.8" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+        <text x="18" y="25" font-family="l0g Nvidia Saturn Funding" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-paper)">Les loyers du financement Saturn</text>
+        <text x="18" y="46" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Montage prévu · conditions fixées le 20 nov. 2026</text>
+        <g transform="translate(58 76)" data-icon="investors">
+          <path d="M0 6L10 1L20 6Z M0 9H20 M0 23H20 M4 12V20 M10 12V20 M16 12V20" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(235 76)" data-icon="notes">
+          <path d="M1 1H14L20 7V24H1Z M14 1V7H20 M5 12H15 M5 17H15 M5 21H11" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(235 160)" data-icon="lessor">
+          <rect x="0" y="1" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <rect x="0" y="15" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <path d="M4 5H6 M11 5H17 M4 19H6 M11 19H17" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(58 160)" data-icon="lessee">
+          <rect x="0" y="1" width="22" height="23" rx="1" fill="none" stroke="var(--color-paper)" stroke-width="1.1"/>
+          <path d="M5 7H17 M5 12H17 M5 17H17 M10 24V21H13V24" fill="none" stroke="var(--color-paper)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="68" y="119" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Investisseurs</text>
+        <text x="245" y="119" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Saturn</text>
+        <text x="245" y="137" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Émet les titres</text>
+        <text x="245" y="201" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">WHCO</text>
+        <text x="245" y="219" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Achète et loue</text>
+        <text x="68" y="201" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">SpaceX</text>
+        <text x="68" y="219" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Locataire</text>
+        <path d="M103 88H215" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="investor-subscription"/>
+        <path d="M210 84L215 88L210 92" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="159" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Capitaux</text>
+        <path d="M266 88H294V172H266" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-financing"/>
+        <path d="M271 168L266 172L271 176" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="280" y="153" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="end" fill="var(--color-signal)">Finance</text>
+        <path d="M221 172H103" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-lease"/>
+        <path d="M108 168L103 172L108 176" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="162" y="160" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">GPU loués</text>
+        <path d="M103 237H221" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="quarterly-rents"/>
+        <path d="M216 233L221 237L216 241" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="162" y="254" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Loyers trimestriels</text>
+        <text x="18" y="275" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Livraisons attendues : S1 2027</text>
+      </svg>`,
+  },
+  en: {
+    desktop: `<svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox="0 0 600 256" role="img" aria-labelledby="nv22-saturn-en-d-title nv22-saturn-en-d-desc" xml:lang="en" data-variant="desktop" data-status="planned-structure" data-pricing="2026-11-20">
+        <title id="nv22-saturn-en-d-title">Rent in the Saturn financing</title>
+        <desc id="nv22-saturn-en-d-desc">Planned Saturn financing structure. Investors subscribe for notes issued by Saturn Funding Trust, an indirect subsidiary of WHCO. WHCO, the lessor, buys the GPUs and related equipment and leases them to SpaceX. SpaceX is to pay WHCO quarterly rents for each tranche starting on its delivery. Those rents are intended to amortize the debt. Apollo and Goldman Sachs announced pricing of the financing on November 20, 2026. Deliveries are expected in the first half of 2027. Dashed arrows show planned flows.</desc>
+        <rect x="0.6" y="0.6" width="598.8" height="254.8" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+        <text x="18" y="27" font-family="l0g Nvidia Saturn Funding" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-paper)">Rent in the Saturn financing</text>
+        <text x="18" y="47" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Planned structure · issue terms set November 20, 2026</text>
+        <g transform="translate(54 80)" data-icon="investors">
+          <path d="M0 6L10 1L20 6Z M0 9H20 M0 23H20 M4 12V20 M10 12V20 M16 12V20" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="64" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Investors</text>
+        <g transform="translate(212 80)" data-icon="notes">
+          <path d="M1 1H14L20 7V24H1Z M14 1V7H20 M5 12H15 M5 17H15 M5 21H11" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="222" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Saturn</text>
+        <text x="222" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Issues notes</text>
+        <g transform="translate(372 80)" data-icon="lessor">
+          <rect x="0" y="1" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <rect x="0" y="15" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <path d="M4 5H6 M11 5H17 M4 19H6 M11 19H17" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="382" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">WHCO</text>
+        <text x="382" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Buys and leases</text>
+        <g transform="translate(530 80)" data-icon="lessee">
+          <rect x="0" y="1" width="22" height="23" rx="1" fill="none" stroke="var(--color-paper)" stroke-width="1.1"/>
+          <path d="M5 7H17 M5 12H17 M5 17H17 M10 24V21H13V24" fill="none" stroke="var(--color-paper)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="540" y="126" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">SpaceX</text>
+        <text x="540" y="145" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Lessee</text>
+        <path d="M94 92H190" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="investor-subscription"/>
+        <path d="M185 88L190 92L185 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="142" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Capital</text>
+        <path d="M254 92H350" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-financing"/>
+        <path d="M345 88L350 92L345 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="302" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Financing</text>
+        <path d="M414 92H508" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-lease"/>
+        <path d="M503 88L508 92L503 96" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="461" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Leased GPUs</text>
+        <path d="M540 160V181H382V160" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="quarterly-rents"/>
+        <path d="M378 165L382 160L386 165" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="461" y="201" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Quarterly rents</text>
+        <text x="18" y="190" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="start" fill="var(--color-paper)">Rents service the debt</text>
+        <path d="M18 216H582" fill="none" stroke="var(--color-line-strong)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="18" y="238" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Deliveries expected: H1 2027 · rents begin on delivery</text>
+      </svg>`,
+    mobile: `<svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox="0 0 320 288" role="img" aria-labelledby="nv22-saturn-en-m-title nv22-saturn-en-m-desc" xml:lang="en" data-variant="mobile" data-status="planned-structure" data-pricing="2026-11-20">
+        <title id="nv22-saturn-en-m-title">Rent in the Saturn financing</title>
+        <desc id="nv22-saturn-en-m-desc">Planned Saturn financing structure. Investors subscribe for notes issued by Saturn Funding Trust, an indirect subsidiary of WHCO. WHCO, the lessor, buys the GPUs and related equipment and leases them to SpaceX. SpaceX is to pay WHCO quarterly rents for each tranche starting on its delivery. Those rents are intended to amortize the debt. Apollo and Goldman Sachs announced pricing of the financing on November 20, 2026. Deliveries are expected in the first half of 2027. Dashed arrows show planned flows.</desc>
+        <rect x="0.6" y="0.6" width="318.8" height="286.8" rx="3" fill="var(--color-surface)" stroke="var(--color-line-strong)" stroke-width="1.1"/>
+        <text x="18" y="25" font-family="l0g Nvidia Saturn Funding" font-size="16" font-weight="400" text-anchor="start" fill="var(--color-paper)">Rent in the Saturn financing</text>
+        <text x="18" y="46" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Planned structure · terms set Nov. 20, 2026</text>
+        <g transform="translate(58 76)" data-icon="investors">
+          <path d="M0 6L10 1L20 6Z M0 9H20 M0 23H20 M4 12V20 M10 12V20 M16 12V20" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(235 76)" data-icon="notes">
+          <path d="M1 1H14L20 7V24H1Z M14 1V7H20 M5 12H15 M5 17H15 M5 21H11" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(235 160)" data-icon="lessor">
+          <rect x="0" y="1" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <rect x="0" y="15" width="22" height="9" rx="1" fill="none" stroke="var(--color-signal)" stroke-width="1.1"/>
+          <path d="M4 5H6 M11 5H17 M4 19H6 M11 19H17" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <g transform="translate(58 160)" data-icon="lessee">
+          <rect x="0" y="1" width="22" height="23" rx="1" fill="none" stroke="var(--color-paper)" stroke-width="1.1"/>
+          <path d="M5 7H17 M5 12H17 M5 17H17 M10 24V21H13V24" fill="none" stroke="var(--color-paper)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        </g>
+        <text x="68" y="119" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Investors</text>
+        <text x="245" y="119" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">Saturn</text>
+        <text x="245" y="137" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Issues notes</text>
+        <text x="245" y="201" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">WHCO</text>
+        <text x="245" y="219" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Buys and leases</text>
+        <text x="68" y="201" font-family="l0g Nvidia Saturn Funding" font-size="13" font-weight="400" text-anchor="middle" fill="var(--color-paper)">SpaceX</text>
+        <text x="68" y="219" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-muted)">Lessee</text>
+        <path d="M103 88H215" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="investor-subscription"/>
+        <path d="M210 84L215 88L210 92" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="159" y="76" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Capital</text>
+        <path d="M266 88H294V172H266" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-financing"/>
+        <path d="M271 168L266 172L271 176" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="280" y="153" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="end" fill="var(--color-signal)">Funds</text>
+        <path d="M221 172H103" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="equipment-lease"/>
+        <path d="M108 168L103 172L108 176" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="162" y="160" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-signal)">Leased GPUs</text>
+        <path d="M103 237H221" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" data-relationship="quarterly-rents"/>
+        <path d="M216 233L221 237L216 241" fill="none" stroke="var(--color-amber)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="162" y="254" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="middle" fill="var(--color-amber)">Quarterly rents</text>
+        <text x="18" y="275" font-family="l0g Nvidia Saturn Funding" font-size="12" font-weight="400" text-anchor="start" fill="var(--color-muted)">Deliveries expected: H1 2027</text>
+      </svg>`,
+  },
+} as const;
+const captions = {
+  fr: 'Dans le montage prévu décrit par KBRA, Saturn Funding Trust, filiale indirecte de WHCO, émet les titres et WHCO achète les équipements puis les loue à SpaceX. Les loyers trimestriels de chaque tranche, exigibles dès sa livraison, doivent amortir la dette, avec des livraisons attendues au premier semestre 2027.',
+  en: 'In KBRA’s planned structure, Saturn Funding Trust, an indirect subsidiary of WHCO, issues the notes while WHCO buys and leases the equipment to SpaceX. Quarterly rents for each tranche begin on delivery and are intended to amortize the debt, with equipment deliveries expected in the first half of 2027.',
+} as const;
+if (!['fr', 'en'].includes(lang)) throw new Error('Unknown Nvidia Saturn funding language');
+const scene = art[lang];
+---
+<figure class="nvidia-saturn-funding" id={`nv22-saturn-${lang}`}>
+  <div class="scene desktop" set:html={scene.desktop}></div>
+  <div class="scene mobile" set:html={scene.mobile}></div>
+  <figcaption><span class="number">FIG. 01</span>{' '}{captions[lang]}{' '}<span class="sources"><a href="#source-S03" aria-label="Source S03">[S03]</a>{' '}<a href="#source-S04" aria-label="Source S04">[S04]</a>{' '}<a href="#source-S05" aria-label="Source S05">[S05]</a></span></figcaption>
+</figure>
+<style>
+  @font-face{font-family:'l0g Nvidia Saturn Funding';src:url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');font-style:normal;font-weight:400;font-display:swap}
+  .nvidia-saturn-funding{width:100%;max-width:37.5rem;margin:1.5rem auto 1.7rem;padding-bottom:1rem;container-type:inline-size}
+  .scene{width:100%;max-width:100%;line-height:0}
+  .mobile{display:none}
+  .nvidia-saturn-funding :global(svg){display:block;width:100%;height:auto;max-width:100%;letter-spacing:normal}
+  figcaption{margin-top:.65rem;color:var(--color-muted);font-family:var(--font-read);font-size:.75rem;line-height:1.5;font-weight:400}
+  .number{font-family:var(--font-mono);font-size:.6875rem;letter-spacing:.08em;color:var(--color-signal);margin-right:.4rem}
+  a{display:inline-block;text-underline-offset:.18em}
+  a:focus-visible{outline:2px solid var(--color-signal);outline-offset:3px}
+  @container(max-width:520px){.desktop{display:none}.mobile{display:block;max-width:20rem;margin-inline:auto}}
+  @media print{.desktop{display:block}.mobile{display:none}.nvidia-saturn-funding{break-inside:avoid}}
+</style>
