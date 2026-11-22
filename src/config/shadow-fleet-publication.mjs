@@ -82,6 +82,11 @@ const shared = {
   panorama: '/publications/shadow-fleet-publication-panorama.jpg',
 };
 
+/**
+ * @param {'fr' | 'en'} lang
+ * @param {string} directory
+ * @param {{ title: string, subtitle: string, description: string, coverAlt: string }} copy
+ */
 function edition(lang, directory, copy) {
   const english = lang === 'en';
   return {
