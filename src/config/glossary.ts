@@ -887,6 +887,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-topic-blue)',
     entries: [
       {
+        sigle: 'Chaîne de Ponzi',
+        nom: 'Fraude au placement alimentée par les nouvelles souscriptions',
+        def: 'Fraude dans laquelle l’argent des nouveaux investisseurs sert à payer les précédents sous couvert de gains issus d’un placement. Les paiements dépendent de la poursuite de la collecte. Dans une plainte, le terme désigne le mécanisme allégué par l’autorité. La culpabilité pénale relève du jugement.',
+        guide: '/posts/backward-hat-capital-rendements-ponzi/',
+      },
+      {
         sigle: 'Inspection publique', nom: 'Mise à disposition avant publication au Federal Register',
         def: 'Mise à disposition, par l’Office of the Federal Register, d’un document avant sa publication dans une édition officielle du Federal Register. Le calendrier annoncé reste provisoire. La date d’entrée en vigueur se détermine selon les dispositions du texte et l’édition officielle publiée, avec une vérification des dates calculées ou encore à compléter.',
         guide: '/posts/nvidia-conseil-securite-nationale-controles-exportation/',
@@ -1106,7 +1112,7 @@ export const slugifyGlossary = (s: string) =>
   s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')
     .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export const glossaryUpdatedIso = '2026-11-22';
+export const glossaryUpdatedIso = '2026-11-23';
 
 const seenSlugs = new Map<string, number>();
 const glossaryReferenceCandidateSet = new Set(glossaryReferenceCandidateSlugs);
@@ -2727,6 +2733,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
     sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11–12 : fonction du cushion gas dans le maintien de la pression et du débit. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
     related: ['gaz-utile', 'capacite-de-soutirage'],
+  },
+  'chaine-de-ponzi': {
+    articles: [{ label: 'L’affaire Backward Hat Capital', href: '/posts/backward-hat-capital-rendements-ponzi/', kind: 'article' }],
+    sources: [
+      { label: 'Investor.gov, la chaîne de Ponzi', href: 'https://www.investor.gov/protect-your-investments/fraud/types-fraud/ponzi-scheme', detail: 'La SEC explique comment l’argent des nouveaux investisseurs finance les paiements aux précédents.', kind: 'source' },
+      { label: 'Parquet fédéral, annonce des poursuites Backward Hat Capital', href: 'https://www.justice.gov/usao-sdny/pr/two-individuals-charged-600-million-ponzi-scheme', detail: 'Le communiqué présente les accusations et rappelle la présomption d’innocence.', kind: 'source' },
+    ],
   },
   'ecretement-renouvelable': {
     articles: [{ label: 'L’enquête sur l’écrêtement des renouvelables', href: '/posts/ecretement-renouvelables/', kind: 'article' }],

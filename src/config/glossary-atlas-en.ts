@@ -2231,6 +2231,20 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'chaine-de-ponzi',
+    sigle: 'Ponzi scheme',
+    nom: 'Investment fraud funded by new deposits',
+    def: 'An investment fraud in which money from new investors pays earlier investors under the guise of investment gains. Payments depend on a continuing flow of new money. In a complaint, the term describes the conduct the authorities allege. The court determines criminal guilt.',
+    guide: '/en/analysis/backward-hat-capital-ponzi-allegations/', ...usRegulationSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'The Backward Hat Capital allegations', href: '/en/analysis/backward-hat-capital-ponzi-allegations/', kind: 'article' }],
+      sources: [
+        { label: 'Investor.gov, Ponzi scheme', href: 'https://www.investor.gov/protect-your-investments/fraud/types-fraud/ponzi-scheme', detail: 'The SEC explains how deposits from new investors fund payouts to earlier investors.', kind: 'source' },
+        { label: 'U.S. Attorney’s Office, Backward Hat Capital charges', href: 'https://www.justice.gov/usao-sdny/pr/two-individuals-charged-600-million-ponzi-scheme', detail: 'The announcement sets out the charges and the presumption of innocence.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'ecretement-renouvelable',
     sigle: 'Renewable curtailment',
     nom: 'Reduction in wind or solar output',

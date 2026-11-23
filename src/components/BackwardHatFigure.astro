@@ -1,0 +1,59 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'flow' | 'september' | 'audit';
+  number: number;
+}
+
+const { lang, kind, number } = Astro.props;
+const captions = {
+  fr: {
+    flow: 'La CFTC décrit des versements à des participants et à des sociétés liées depuis trois comptes bancaires. Les transferts vers Coinbase peuvent recouper d’autres mouvements. Les montants ne s’additionnent pas pour établir un total.',
+    september: 'La CFTC qualifie les paiements aux participants de paiements de type Ponzi. Les deux totaux sont calculés à partir des montants arrondis de la plainte.',
+    audit: 'Deux rapports revendiquaient une vérification par relevés bancaires. La plainte de la SEC oppose à cette vérification les données du compte cité.',
+  },
+  en: {
+    flow: 'The CFTC describes payments to participants and related entities from three bank accounts. Transfers to Coinbase may overlap with other movements. The figures do not add up to a consolidated total.',
+    september: 'The CFTC characterizes the payments to participants as Ponzi payments. Both totals use the rounded amounts stated in the complaint.',
+    audit: 'Two reports claimed verification through bank statements. The SEC challenges that claim with data from the account it identifies.',
+  },
+} as const;
+const sources = {
+  flow: { id: 'S03', fr: 'Plainte CFTC, § 1 et 35–36', en: 'CFTC complaint, paras. 1 and 35–36' },
+  september: { id: 'S03', fr: 'Plainte CFTC, § 38', en: 'CFTC complaint, para. 38' },
+  audit: { id: 'S02', fr: 'Plainte SEC, § 88–93', en: 'SEC complaint, paras. 88–93' },
+} as const;
+
+const caption = captions[lang]?.[kind];
+const source = sources[kind];
+if (!caption || !source || !Number.isInteger(number) || number < 1) throw new TypeError('Invalid Backward Hat figure.');
+
+const assets = import.meta.glob('../figures/backward-hat/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/backward-hat/${kind}.${lang}`;
+const desktop = assets[`${base}.desktop.svg`];
+const mobile = assets[`${base}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing Backward Hat figure layout.');
+---
+<figure class="backward-hat-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop} />
+  <div class="scene-narrow" set:html={mobile} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {caption}
+    <span class="figure-source"><a href={`#source-${source.id}`}>{source[lang]}</a></span>
+  </figcaption>
+</figure>
+
+<style>
+  .backward-hat-figure { width: 100%; max-width: 600px; margin: 1.7rem auto 1.8rem; padding-bottom: .8rem; container-type: inline-size; }
+  .backward-hat-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 332px; margin-inline: auto; }
+  figcaption { margin-top: .6rem; color: var(--color-muted); font-family: var(--font-read); font-size: .79rem; font-weight: 400; line-height: 1.55; }
+  .figure-number { display: inline-block; margin-right: .45rem; color: var(--color-signal); font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .2rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 538px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .backward-hat-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

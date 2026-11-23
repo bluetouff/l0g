@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 290" role="img" aria-labelledby="backward-hat-flow-fr-desktop-title backward-hat-flow-fr-desktop-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+  <title id="backward-hat-flow-fr-desktop-title">Les virements décrits par la CFTC</title>
+  <desc id="backward-hat-flow-fr-desktop-description">La CFTC allègue une collecte supérieure à 556 millions de dollars et des transferts depuis trois comptes bancaires : au moins 303 millions aux participants, environ 92,9 millions à KMAP, 41,4 à Allen Johnson Group et 27,3 à Harvey Group. Les quelque 91 millions envoyés à Coinbase sont un flux distinct cité dans la plainte, susceptible de recouper d’autres mouvements.</desc>
+  <rect x="0" y="0" width="600" height="290" rx="8" fill="var(--color-ink)" />
+  <text x="22" y="30" font-size="17.5" font-weight="400" fill="var(--color-paper)" text-anchor="start">Les virements décrits par la CFTC</text>
+  <text x="22" y="50" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">2022–2026 · Allégations · Millions USD</text>
+  <path d="M22 61H578" fill="none" stroke="var(--color-line-strong)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M165 151H192m-5 -4l5 4l-5 4M327 151H348V94H365m-5 -4l5 4l-5 4M348 131H365m-5 -4l5 4l-5 4M348 168H365m-5 -4l5 4l-5 4M348 205H365m-5 -4l5 4l-5 4M348 151V205" fill="none" stroke="var(--color-muted)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+  <rect x="22" y="100" width="143" height="102" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="192" y="100" width="135" height="102" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <g transform="translate(36 110)" aria-hidden="true"><path d="M10 8a3 3 0 1 0 0-6 3 3 0 1 0 0 6Zm0 2c-4 0-7 2-7 6v2h14v-2c0-4-3-6-7-6ZM15 3c3 0 3 4 1 5m2 3c2 1 3 3 3 6" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <g transform="translate(205 110)" aria-hidden="true"><path d="m2 7 9-5 9 5v2H2Zm2 11h14m-16 3h18M5 9v9m4-9v9m4-9v9m4-9v9" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="36" y="155" font-size="19" font-weight="400" fill="var(--color-signal)" text-anchor="start">&gt; 556</text>
+  <text x="36" y="178" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Souscriptions</text>
+  <text x="205" y="155" font-size="17" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">3 comptes</text>
+  <text x="205" y="178" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Comptes bancaires</text>
+  <rect x="365" y="79" width="213" height="31" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="365" y="79" width="2.5" height="31" rx="1" fill="var(--color-accent)" />
+  <text x="376" y="99" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Vers les participants</text>
+  <text x="567" y="99" font-size="14" font-weight="400" fill="var(--color-accent)" text-anchor="end">≥ 303</text>
+  <rect x="365" y="116" width="213" height="31" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="365" y="116" width="2.5" height="31" rx="1" fill="var(--color-amber)" />
+  <text x="376" y="136" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">KMAP</text>
+  <text x="567" y="136" font-size="14" font-weight="400" fill="var(--color-amber)" text-anchor="end">≈ 92,9</text>
+  <rect x="365" y="153" width="213" height="31" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="365" y="153" width="2.5" height="31" rx="1" fill="var(--color-topic-blue)" />
+  <text x="376" y="173" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Johnson Group</text>
+  <text x="567" y="173" font-size="14" font-weight="400" fill="var(--color-topic-blue)" text-anchor="end">≈ 41,4</text>
+  <rect x="365" y="190" width="213" height="31" rx="5" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+  <rect x="365" y="190" width="2.5" height="31" rx="1" fill="var(--color-signal)" />
+  <text x="376" y="210" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Harvey Group</text>
+  <text x="567" y="210" font-size="14" font-weight="400" fill="var(--color-signal)" text-anchor="end">≈ 27,3</text>
+  <path d="M22 230H578" fill="none" stroke="var(--color-line-strong)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round" />
+  <g transform="translate(23 245)" aria-hidden="true"><path d="M3 7h17v12H3zm0 0 2-3h13l2 3m0 4h-6a2 2 0 0 0 0 4h6m-5-2h.1" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+  <text x="52" y="257" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Transferts vers Coinbase</text>
+  <text x="356" y="257" font-size="14" font-weight="400" fill="var(--color-signal)" text-anchor="end">≈ 91</text>
+  <text x="578" y="257" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="end">Flux pouvant se recouper</text>
+</svg>
