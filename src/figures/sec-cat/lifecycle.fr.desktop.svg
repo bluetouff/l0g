@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 289" role="img" aria-labelledby="sec-cat-lifecycle-fr-desktop-title sec-cat-lifecycle-fr-desktop-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+<title id="sec-cat-lifecycle-fr-desktop-title">Le trajet d’un ordre</title>
+<desc id="sec-cat-lifecycle-fr-desktop-description">Un ordre fictif de 300 actions est scindé entre deux destinations. Cent actions sont exécutées, deux cents annulées. Le CAT rapproche les événements déclarés par les intermédiaires et les plateformes à partir de leurs identifiants et horodatages.</desc>
+<rect x="0" y="0" width="600" height="289" rx="8" fill="var(--color-ink)" stroke="none" />
+<text x="20" y="29" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">Le trajet d’un ordre</text>
+<text x="20" y="50" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Exemple fictif sur le marché des actions</text>
+<path d="M20 61H580" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M159 123H192" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M188 119l4 4-4 4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M331 123H359V99H387M359 123V159H387" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M383 95l4 4-4 4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M383 155l4 4-4 4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<circle cx="359" cy="123" r="2.5" fill="var(--color-line-strong)" stroke="none" />
+<path d="M90 163V196H591V99H580M580 159H591M261 163V196M300 196V222" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" />
+<path d="M296 218l4 4 4-4" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="20" y="82" width="139" height="81" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(32 94)" aria-hidden="true"><path d="M4 2h10l4 4v15H4Zm10 0v5h4M7 10h8m-8 4h8m-8 4h5" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="33" y="133" font-size="14" font-weight="400" fill="var(--color-paper)" text-anchor="start">Ordre reçu</text>
+<text x="33" y="151" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">300 actions</text>
+<rect x="192" y="82" width="139" height="81" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(204 94)" aria-hidden="true"><path d="M3 11h6m0-7v14m0-14h11m-4-3 4 3-4 3m-7 11h11m-4-3 4 3-4 3" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="205" y="133" font-size="14" font-weight="400" fill="var(--color-paper)" text-anchor="start">Ordre scindé</text>
+<text x="205" y="151" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">100 + 200 actions</text>
+<rect x="387" y="77" width="193" height="45" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(398 88)" aria-hidden="true"><path d="M3 11l5 5L19 5" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="431" y="105" font-size="14" font-weight="400" fill="var(--color-paper)" text-anchor="start">100 exécutées</text>
+<rect x="387" y="137" width="193" height="45" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(398 148)" aria-hidden="true"><path d="m5 5 12 12m0-12L5 17" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="431" y="165" font-size="14" font-weight="400" fill="var(--color-paper)" text-anchor="start">200 annulées</text>
+<text x="20" y="211" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Événements déclarés</text>
+<rect x="20" y="222" width="560" height="48" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(33 235)" aria-hidden="true"><path d="M3 6a8 3 0 1 0 16 0A8 3 0 1 0 3 6Zm0 0v10a8 3 0 0 0 16 0V6M3 11a8 3 0 0 0 16 0" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="66" y="252" font-size="16" font-weight="400" fill="var(--color-signal)" text-anchor="start">CAT</text>
+<text x="119" y="252" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Identifiants et horodatages</text>
+<text x="565" y="252" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">Cycle de vie reconstitué</text>
+</svg>

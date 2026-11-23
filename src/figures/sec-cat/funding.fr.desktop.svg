@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 276" role="img" aria-labelledby="sec-cat-funding-fr-desktop-title sec-cat-funding-fr-desktop-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="fr">
+<title id="sec-cat-funding-fr-desktop-title">Deux circuits de financement</title>
+<desc id="sec-cat-funding-fr-desktop-description">Le budget prévisionnel de CAT LLC du 31 mars 2026 totalise 147,0 millions de dollars, dont 131,9 millions couverts par la réserve de liquidité et 15,1 millions par les produits projetés, selon les montants arrondis. La SEC envisage d’utiliser des crédits votés par le Congrès pour couvrir les coûts du CAT. Les prélèvements sur les transactions de la section 31 compensent la dotation générale de la SEC.</desc>
+<rect x="0" y="0" width="600" height="276" rx="8" fill="var(--color-ink)" stroke="none" />
+<text x="20" y="29" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">Deux circuits de financement</text>
+<text x="20" y="50" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Budget CAT LLC et scénario proposé par la SEC</text>
+<path d="M20 61H580" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="20" y="78" width="259" height="178" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(32 88)" aria-hidden="true"><path d="M3 7h16v12H3Zm3 0V4h10v3m-2 6h5m-12 0h3" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="60" y="104" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Prévisions CAT LLC · 2026</text>
+<text x="34" y="136" font-size="19" font-weight="400" fill="var(--color-signal)" text-anchor="start">147,0 M$ US</text>
+<text x="34" y="154" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Dépenses prévues</text>
+<rect x="34" y="167" width="231" height="7" rx="3.5" fill="var(--color-topic-blue)" stroke="none" />
+<rect x="34" y="167" width="207.2" height="7" rx="3.5" fill="var(--color-signal)" stroke="none" />
+<circle cx="38" cy="195" r="3.6" fill="var(--color-signal)" stroke="none" />
+<text x="50" y="199" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Réserve de liquidité</text>
+<text x="265" y="199" font-size="12" font-weight="400" fill="var(--color-signal)" text-anchor="end">131,9 M$</text>
+<circle cx="38" cy="218" r="3.6" fill="var(--color-topic-blue)" stroke="none" />
+<text x="50" y="222" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Produits projetés</text>
+<text x="265" y="222" font-size="12" font-weight="400" fill="var(--color-topic-blue)" text-anchor="end">15,1 M$</text>
+<rect x="293" y="78" width="287" height="178" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(305 88)" aria-hidden="true"><path d="m2 7 9-5 9 5v2H2Zm2 11h14m-16 3h18M5 9v9m4-9v9m4-9v9m4-9v9" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="334" y="104" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Projet de la SEC</text>
+<path d="M382 142H404M458 142H501" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M400 138l4 4-4 4" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M497 138l4 4-4 4" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="308" y="125" width="74" height="34" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<rect x="404" y="125" width="54" height="34" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<rect x="501" y="125" width="58" height="34" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<text x="345" y="146" font-size="12.5" font-weight="400" fill="var(--color-paper)" text-anchor="middle">Congrès</text>
+<text x="431" y="146" font-size="12.5" font-weight="400" fill="var(--color-paper)" text-anchor="middle">SEC</text>
+<text x="530" y="146" font-size="12.5" font-weight="400" fill="var(--color-paper)" text-anchor="middle">CAT</text>
+<path d="M307 174H566" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4" />
+<text x="307" y="195" font-size="13" font-weight="400" fill="var(--color-topic-blue)" text-anchor="start">Frais de transaction · section 31</text>
+<text x="307" y="215" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Compensent la dotation de la SEC</text>
+<text x="307" y="235" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Crédits votés → dépenses du système</text>
+</svg>

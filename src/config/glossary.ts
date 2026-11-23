@@ -887,6 +887,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
     accent: 'var(--color-topic-blue)',
     entries: [
       {
+        sigle: 'Consolidated Audit Trail',
+        nom: 'CAT, registre des ordres des marchés américains',
+        def: 'Système américain qui retrace les ordres sur les actions et options éligibles, de leur réception à leur exécution ou leur annulation. Les bourses et la FINRA le gouvernent dans le cadre d’un plan commun. La proposition de la SEC du 20 novembre 2026 placerait le CAT sous le contrôle direct de l’agence.',
+        guide: '/posts/sec-cat-memoire-wall-street/',
+      },
+      {
         sigle: 'Chaîne de Ponzi',
         nom: 'Fraude au placement alimentée par les nouvelles souscriptions',
         def: 'Fraude dans laquelle l’argent des nouveaux investisseurs sert à payer les précédents sous couvert de gains issus d’un placement. Les paiements dépendent de la poursuite de la collecte. Dans une plainte, le terme désigne le mécanisme allégué par l’autorité. La culpabilité pénale relève du jugement.',
@@ -2733,6 +2739,13 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Gaz européen : tenir entre deux cargaisons', href: '/posts/gaz-europeen-tenir-entre-deux-cargaisons/', kind: 'article' }],
     sources: [{ label: 'JRC, EU Gas Transmission Network Facilities Review, 2020', href: 'https://publications.jrc.ec.europa.eu/repository/bitstream/JRC122592/jrc122592_v5.pdf', detail: 'Section 3.3, p. 11–12 : fonction du cushion gas dans le maintien de la pression et du débit. Définitions techniques, sans reprise de l’inventaire de 2020.', kind: 'source' }],
     related: ['gaz-utile', 'capacite-de-soutirage'],
+  },
+  'consolidated-audit-trail': {
+    articles: [{ label: 'Le registre des ordres de Wall Street', href: '/posts/sec-cat-memoire-wall-street/', kind: 'article' }],
+    sources: [
+      { label: 'SEC, approbation du plan CAT (2016)', href: 'https://www.sec.gov/files/rules/sro/nms/2016/34-79318.pdf', detail: 'Gouvernance du plan et déclaration des événements du cycle de vie des ordres.', kind: 'source' },
+      { label: 'SEC, projet de réforme du CAT (2026)', href: 'https://www.sec.gov/rules-regulations/2026/11/s7-2026-40', detail: 'Proposition de contrôle direct et de déclaration à la SEC ou à son délégataire.', kind: 'source' },
+    ],
   },
   'chaine-de-ponzi': {
     articles: [{ label: 'L’affaire Backward Hat Capital', href: '/posts/backward-hat-capital-rendements-ponzi/', kind: 'article' }],

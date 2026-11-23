@@ -2231,6 +2231,20 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'consolidated-audit-trail',
+    sigle: 'Consolidated Audit Trail',
+    nom: 'CAT, the U.S. market order audit trail',
+    def: 'A U.S. system that tracks orders in eligible stocks and options from receipt through execution or cancellation. Exchanges and FINRA govern it under a joint plan. The SEC’s November 20, 2026 proposal would give the agency direct control of the CAT.',
+    guide: '/en/analysis/sec-cat-wall-street-audit-trail/', ...usRegulationSection, robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Wall Street’s audit trail', href: '/en/analysis/sec-cat-wall-street-audit-trail/', kind: 'article' }],
+      sources: [
+        { label: 'SEC, order approving the CAT plan (2016)', href: 'https://www.sec.gov/files/rules/sro/nms/2016/34-79318.pdf', detail: 'Plan governance and reporting of order events throughout their lifecycle.', kind: 'source' },
+        { label: 'SEC, proposed CAT restructuring (2026)', href: 'https://www.sec.gov/rules-regulations/2026/11/s7-2026-40', detail: 'The proposal would give the SEC direct control and require reporting to the agency or its designee.', kind: 'source' },
+      ],
+    },
+  },
+  {
     slug: 'chaine-de-ponzi',
     sigle: 'Ponzi scheme',
     nom: 'Investment fraud funded by new deposits',

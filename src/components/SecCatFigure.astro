@@ -1,0 +1,64 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'lifecycle' | 'governance' | 'funding';
+  number: number;
+}
+
+const { lang, kind, number } = Astro.props;
+const captions = {
+  fr: {
+    lifecycle: 'Exemple fictif. Un même ordre peut laisser des traces chez plusieurs acteurs. Le CAT rapproche leurs déclarations pour permettre aux enquêteurs autorisés de reconstituer le trajet.',
+    governance: 'Les 21 voix sont réparties entre quatre familles de Bourses. La part de FINRA se rapporte uniquement aux coûts attribués aux organismes d’autorégulation (SRO).',
+    funding: 'Le budget de mars 2026 prévoit de mobiliser la réserve, avec des montants représentés en dollars courants et arrondis au dixième de million. Le circuit fédéral reste à l’état de projet. Les frais de la section 31 compensent la dotation générale de la SEC.',
+  },
+  en: {
+    lifecycle: 'Illustrative example. The same order can leave records with several firms and venues. The CAT links their reports so authorized investigators can reconstruct its path.',
+    governance: 'The 21 votes are spread across four exchange groups. FINRA’s cost share applies only to the costs allocated to self-regulatory organizations (SROs).',
+    funding: 'The March 2026 budget draws on the reserve. Amounts are in nominal US dollars, rounded to the nearest tenth of a million. The federal funding route is proposed. Section 31 fees offset the SEC’s general appropriation.',
+  },
+} as const;
+const references = {
+  lifecycle: [{ id: 'S02', fr: 'Proposition SEC, § II.A', en: 'SEC proposal, § II.A' }],
+  governance: [{ id: 'S02', fr: 'Proposition SEC, § V.B.3 et notes 492–494', en: 'SEC proposal, § V.B.3 and notes 492–494' }],
+  funding: [
+    { id: 'S03', fr: 'Budget de CAT LLC, 31 mars 2026', en: 'CAT LLC budget, 31 March 2026' },
+    { id: 'S02', fr: 'Proposition SEC, § II.C.5', en: 'SEC proposal, § II.C.5' },
+  ],
+} as const;
+
+const caption = captions[lang]?.[kind];
+const sources = references[kind];
+if (!caption || !sources || !Number.isInteger(number) || number < 1) throw new TypeError('Invalid SEC CAT figure.');
+
+const assets = import.meta.glob('../figures/sec-cat/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/sec-cat/${kind}.${lang}`;
+const desktop = assets[`${base}.desktop.svg`];
+const mobile = assets[`${base}.mobile.svg`];
+if (typeof desktop !== 'string' || typeof mobile !== 'string') throw new TypeError('Missing SEC CAT figure layout.');
+---
+<figure class="sec-cat-figure" id={`figure-${number}`} data-kind={kind}>
+  <div class="scene-wide" set:html={desktop} />
+  <div class="scene-narrow" set:html={mobile} />
+  <figcaption>
+    <span class="figure-number">FIG. {String(number).padStart(2, '0')}</span>
+    {caption}
+    <span class="figure-source">
+      {sources.map((source, index) => <>{index > 0 && ' · '}<a href={`#source-${source.id}`}>{source[lang]}</a></>)}
+    </span>
+  </figcaption>
+</figure>
+
+<style>
+  .sec-cat-figure { width: 100%; max-width: 600px; margin: 1.7rem auto 1.8rem; padding-bottom: .8rem; container-type: inline-size; }
+  .sec-cat-figure :global(svg) { display: block; width: 100%; height: auto; font-family: var(--font-read); font-weight: 400; letter-spacing: normal; font-variant-numeric: tabular-nums; }
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; width: 100%; max-width: 332px; margin-inline: auto; }
+  figcaption { margin-top: .6rem; color: var(--color-muted); font-family: var(--font-read); font-size: .79rem; font-weight: 400; line-height: 1.55; }
+  .figure-number { display: inline-block; margin-right: .45rem; color: var(--color-signal); font-variant-numeric: tabular-nums; }
+  .figure-source { display: block; margin-top: .2rem; }
+  .figure-source a { color: inherit; text-underline-offset: .2em; }
+  .figure-source a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 538px) { .scene-wide { display: none; } .scene-narrow { display: block; } }
+  @media print { .sec-cat-figure { break-inside: avoid; } .scene-wide { display: block; } .scene-narrow { display: none; } }
+</style>

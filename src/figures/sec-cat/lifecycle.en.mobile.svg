@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 332 350" role="img" aria-labelledby="sec-cat-lifecycle-en-mobile-title sec-cat-lifecycle-en-mobile-description" width="100%" height="auto" style="width:100%;height:auto" font-family="Inter Variable, Inter, sans-serif" font-weight="400" xml:lang="en">
+<title id="sec-cat-lifecycle-en-mobile-title">An order’s route through the market</title>
+<desc id="sec-cat-lifecycle-en-mobile-description">A hypothetical 300-share order is split between two destinations. One hundred shares are executed and two hundred are cancelled. The CAT links the events reported by brokers and venues using identifiers and timestamps.</desc>
+<rect x="0" y="0" width="332" height="350" rx="8" fill="var(--color-ink)" stroke="none" />
+<text x="20" y="29" font-size="17" font-weight="400" fill="var(--color-paper)" text-anchor="start">An order’s route through the market</text>
+<text x="20" y="50" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Hypothetical example for a stock order</text>
+<path d="M20 61H312" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M152 105H177" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M173 101l4 4-4 4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M244 134V148H86V164M244 148V164" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M82 160l4 4 4-4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M240 160l4 4 4-4" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<path d="M20 105H11V232H321V105H312M86 216V232M244 216V232M166 232V262" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4" />
+<path d="M162 258l4 4 4-4" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" />
+<rect x="20" y="77" width="135" height="57" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(30 93)" aria-hidden="true"><path d="M4 2h10l4 4v15H4Zm10 0v5h4M7 10h8m-8 4h8m-8 4h5" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="59" y="101" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Order received</text>
+<text x="59" y="120" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">300 shares</text>
+<rect x="177" y="77" width="135" height="57" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(187 93)" aria-hidden="true"><path d="M3 11h6m0-7v14m0-14h11m-4-3 4 3-4 3m-7 11h11m-4-3 4 3-4 3" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="216" y="101" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">Order split</text>
+<text x="216" y="120" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">100 + 200</text>
+<rect x="20" y="164" width="135" height="52" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(30 179)" aria-hidden="true"><path d="M3 11l5 5L19 5" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="59" y="196" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">100 executed</text>
+<rect x="177" y="164" width="135" height="52" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(187 179)" aria-hidden="true"><path d="m5 5 12 12m0-12L5 17" fill="none" stroke="var(--color-amber)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="216" y="196" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">200 cancelled</text>
+<text x="20" y="252" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Reported events</text>
+<rect x="20" y="263" width="292" height="67" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)" />
+<g transform="translate(31 284)" aria-hidden="true"><path d="M3 6a8 3 0 1 0 16 0A8 3 0 1 0 3 6Zm0 0v10a8 3 0 0 0 16 0V6M3 11a8 3 0 0 0 16 0" fill="none" stroke="var(--color-signal)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round" /></g>
+<text x="61" y="285" font-size="16" font-weight="400" fill="var(--color-signal)" text-anchor="start">CAT</text>
+<text x="61" y="303" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="start">Identifiers and timestamps</text>
+<text x="61" y="318" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Order lifecycle reconstructed</text>
+</svg>
