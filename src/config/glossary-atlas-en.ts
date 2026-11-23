@@ -274,6 +274,18 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
   },
   {"slug": "ead", "sigle": "EAD", "nom": "Exposure at default", "guide": "/en/analysis/european-banks-ai-loans-exposures/", "sectionTitle": "Banking & balance-sheet management", "accent": "var(--color-topic-blue)", "robots": "noindex,follow", "atlas": {"articles": [{"label": "European banks and the debt behind AI", "href": "/en/analysis/european-banks-ai-loans-exposures/", "kind": "article"}], "sources": [{"label": "Société Générale, Pillar 3 at 31 December 2025", "href": "https://www.societegenerale.com/sites/default/files/documents/2026-03/pillar-3-31122025-en.pdf", "detail": "Section 6.6, printed page 130: EAD definition and prudential adjustments. Not a formula specific to the Q3 2026 portfolio.", "kind": "source"}, {"label": "Basel Committee, disclosure framework DIS40", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/dis/40/inforce/2023-01-01/published/2020-03-27", "detail": "Definitions of credit exposures, credit conversion factors and credit risk mitigation.", "kind": "source"}], "related": ["ddtl", "lc"]}, "def": "A prudential measure of credit exposure in the event of default. Depending on the method, it includes on- and off-balance-sheet positions, conversion factors and recognition of credit protection. Compare published dates, scopes and adjustments before combining amounts. EAD differs from drawn lending and expected loss."},
   {
+    slug: 'chief-compliance-officer', sigle: 'Chief compliance officer', nom: 'Executive responsible for company compliance',
+    def: 'An executive who coordinates how a company meets its obligations, handles reports of possible violations and follows up on corrective action. The mandate determines the officer’s reporting line, resources and authority to stop an operation. Nvidia announced a role in November 2026 that would report to the Nominating and Corporate Governance Committee.',
+    guide: '/en/analysis/nvidia-jensen-huang-return-board-oversight/',
+    ...usRegulationSection, robots: 'noindex,follow',
+    atlas: {
+      intuition: 'The mandate determines which issues reach management or directors and how the company tracks corrective action.',
+      articles: [{ label: 'Nvidia brings back Jensen Huang as its inquiry continues', href: '/en/analysis/nvidia-jensen-huang-return-board-oversight/', kind: 'article' }],
+      sources: [{ label: 'Nvidia / SEC, November 23, 2026 statement', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nov23pressrelease.htm', detail: 'The newly announced role, company-wide remit and reporting line to the Nominating and Corporate Governance Committee.', kind: 'source' }],
+      related: ['controle-export'],
+    },
+  },
+  {
     slug: 'inspection-publique', sigle: 'Public inspection', nom: 'Advance access to a Federal Register document',
     def: 'The Office of the Federal Register makes a document available for inspection before publication in an official edition of the Federal Register. The announced publication schedule remains tentative. The effective date depends on the text’s provisions and the published official edition, including any calculated dates or placeholders that need to be checked.',
     guide: '/en/analysis/nvidia-board-national-security-export-controls/',

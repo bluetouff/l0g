@@ -899,6 +899,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
         guide: '/posts/backward-hat-capital-rendements-ponzi/',
       },
       {
+        sigle: 'Chief Compliance Officer',
+        nom: 'Responsable de la conformité',
+        def: 'Dirigeant chargé de coordonner le respect des obligations de l’entreprise, d’organiser les remontées d’alertes et de faire suivre les mesures correctives. Son rattachement, ses moyens et son pouvoir d’interrompre une opération dépendent du mandat adopté. Nvidia a annoncé en novembre 2026 un poste destiné à rendre compte au comité des nominations et de la gouvernance.',
+        guide: '/posts/nvidia-retour-jensen-huang-controle-conseil/',
+      },
+      {
         sigle: 'Inspection publique', nom: 'Mise à disposition avant publication au Federal Register',
         def: 'Mise à disposition, par l’Office of the Federal Register, d’un document avant sa publication dans une édition officielle du Federal Register. Le calendrier annoncé reste provisoire. La date d’entrée en vigueur se détermine selon les dispositions du texte et l’édition officielle publiée, avec une vérification des dates calculées ou encore à compléter.',
         guide: '/posts/nvidia-conseil-securite-nationale-controles-exportation/',
@@ -1387,6 +1393,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['cash-trap', 'ddtl', 'covenant'],
   },
   "ead": {"articles": [{"label": "Les banques européennes derrière la dette de l’IA", "href": "/posts/banques-europeennes-ia-contrats-expositions/", "kind": "article"}], "sources": [{"label": "Société Générale, Pilier 3 au 31 décembre 2025", "href": "https://www.societegenerale.com/sites/default/files/documents/2026-03/pillar-3-31122025-en.pdf", "detail": "Section 6.6, page imprimée 130 : définition de l’EaD et traitements prudentiels. Utilisé pour la définition, pas pour une formule particulière du portefeuille T3 2026.", "kind": "source"}, {"label": "Comité de Bâle, cadre de publication DIS40", "href": "https://www.bis.org/committees/bcbs/basel-framework/standard/dis/40/inforce/2023-01-01/published/2020-03-27", "detail": "Définition des expositions au risque de crédit, facteurs de conversion et techniques de réduction du risque.", "kind": "source"}], "related": ["ddtl", "lc"]},
+  'chief-compliance-officer': {
+    intuition: 'Son mandat détermine quelles alertes remontent aux dirigeants ou au conseil et comment les corrections sont suivies.',
+    articles: [{ label: 'Nvidia rappelle Jensen Huang, l’enquête se poursuit', href: '/posts/nvidia-retour-jensen-huang-controle-conseil/', kind: 'article' }],
+    sources: [{ label: 'Nvidia / SEC, communiqué du 23 novembre 2026', href: 'https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nov23pressrelease.htm', detail: 'Création du poste, périmètre du groupe et rattachement au comité des nominations et de la gouvernance.', kind: 'source' }],
+    related: ['controle-export'],
+  },
   'inspection-publique': {
     articles: [{ label: 'Nvidia : le conseil sous pression et les contrôles export', href: '/posts/nvidia-conseil-securite-nationale-controles-exportation/', kind: 'article' }],
     sources: [

@@ -1,0 +1,257 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  variant: 'timeline' | 'oversight';
+}
+
+const { lang = 'fr', variant } = Astro.props;
+const copy = {
+  fr: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Le retour de Jensen Huang',
+      desc: 'Le 17 novembre 2026, Harvey Jones indique aux investisseurs que le conseil ne compte pas réintégrer Jensen Huang à la direction. Le 22, le conseil réintègre Huang à l’unanimité avec effet immédiat. Le 23, Nvidia rend la décision publique. La SEC accepte le formulaire 8-K à 14 h 57 min 54 s, heure de Paris. L’heure du vote du 22 reste inconnue.',
+      caption: 'La date du 22 novembre est celle de la décision et de sa prise d’effet selon le 8-K. L’heure du 23 correspond à l’acceptation du dépôt par la SEC, en heure de Paris.',
+      steps: [
+        { date: '17 novembre', name: 'Jones écarte un retour', detail: 'Lors de l’appel aux investisseurs' },
+        { date: '22 novembre', name: 'Le conseil réintègre Huang', detail: 'Vote unanime · effet immédiat' },
+        { date: '23 novembre', name: 'Nvidia annonce le retour', detail: '8-K accepté à 14 h 57 min 54 s' },
+      ],
+      note: 'Heure du vote inconnue · dépôt en heure de Paris',
+    },
+    oversight: {
+      title: 'Direction et contrôle chez Nvidia',
+      desc: 'Le conseil présidé par Harvey Jones réintègre Jensen Huang à la direction. Colette Kress conserve la direction financière. Un comité d’administrateurs indépendants poursuit son enquête. Un comité distinct, lui aussi composé d’indépendants, supervise la sécurité nationale et les contrôles à l’exportation. Nvidia compte recruter un responsable de la conformité qui rendra compte au comité des nominations et de la gouvernance.',
+      caption: 'Le comité d’enquête et le comité chargé de la sécurité nationale et des contrôles à l’exportation sont composés d’administrateurs indépendants. Le futur responsable de la conformité rendra compte au comité des nominations et de la gouvernance.',
+      board: 'Conseil d’administration', chair: 'Harvey Jones · président',
+      reinstates: 'Réintègre', executive: 'Jensen Huang · DG', finance: 'Colette Kress · finances',
+      investigation: 'Comité d’enquête', investigationRole: 'Enquête en cours',
+      exports: 'Comité sécurité et export', exportsRole: 'Supervision des contrôles',
+      governance: 'Comité des nominations', governanceRole: 'et de la gouvernance',
+      compliance: 'Resp. conformité', recruitment: 'Recrutement lancé',
+      independent: 'Administrateurs indépendants',
+    },
+  },
+  en: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Nvidia’s board brings back Jensen Huang',
+      desc: 'On November 17, 2026, Harvey Jones tells investors the board does not intend to reinstate Jensen Huang as CEO. On November 22, the board votes unanimously to reinstate Huang with immediate effect. Nvidia announces the decision on November 23. The SEC accepts the 8-K at 8:57:54 a.m. Eastern. The time of the November 22 vote is unknown.',
+      caption: 'November 22 is the date of the decision and its immediate effect under the 8-K. The time shown for November 23 is when the SEC accepted the filing, in Eastern time.',
+      steps: [
+        { date: 'November 17', name: 'No return planned', detail: 'Jones on the earnings call' },
+        { date: 'November 22', name: 'The board reinstates Huang', detail: 'Unanimous vote · immediate effect' },
+        { date: 'November 23', name: 'Nvidia announces the return', detail: '8-K accepted at 8:57:54 a.m.' },
+      ],
+      note: 'Vote time undisclosed · filing time shown in ET',
+    },
+    oversight: {
+      title: 'Leadership and oversight at Nvidia',
+      desc: 'The board, chaired by Harvey Jones, reinstates Jensen Huang as CEO. Colette Kress remains CFO. A committee of independent directors continues its investigation. A separate committee of independent directors oversees national security and export controls. Nvidia plans to hire a chief compliance officer who will report to the Nominating and Corporate Governance Committee.',
+      caption: 'Independent directors serve on both the investigation committee and the separate committee overseeing national security and export controls. The future chief compliance officer will report to the Nominating and Corporate Governance Committee.',
+      board: 'Board of directors', chair: 'Harvey Jones · chair',
+      reinstates: 'Reinstates', executive: 'Jensen Huang · CEO', finance: 'Colette Kress · CFO',
+      investigation: 'Investigation committee', investigationRole: 'Inquiry under way',
+      exports: 'Security and export committee', exportsRole: 'Oversees controls',
+      governance: 'Nominating and Corporate', governanceRole: 'Governance Committee',
+      compliance: 'Compliance chief', recruitment: 'Search under way',
+      independent: 'Independent directors',
+    },
+  },
+} as const;
+const icons = {
+  statement: 'M1 2H21V16H11L6 21V16H1Z M5 7H17 M5 11H14',
+  ballot: 'M2 11H6 M16 11H20L22 14V22H0V14Z M0 14H22 M6 17H16 M5 6L10 10L17 2 M4 19H5 M17 19H18',
+  filing: 'M3 1H14L20 7V23H3Z M14 1V7H20 M7 11H16 M7 15H16 M7 19H12',
+  board: 'M1 6L11 1L21 6Z M2 9H20 M1 22H21 M4 19V12 M11 19V12 M18 19V12 M2 19H20',
+  executive: 'M5 20V17C5 14 8 13 11 13S17 14 17 17V20 M2 20H20 M14 6C14 8 13 10 11 10S8 8 8 6S9 2 11 2S14 4 14 6Z',
+  inquiry: 'M2 1H15V8 M2 1V22H14 M6 6H11 M6 10H9 M6 14H8 M18 15L22 20 M18 12A4 4 0 1 1 10 12A4 4 0 1 1 18 12Z',
+  security: 'M11 1L20 4V11C20 16 16 20 11 23C6 20 2 16 2 11V4Z M7 11L10 14L15 8 M5 6L11 4L17 6',
+  governance: 'M2 4H20V20H2Z M2 8H20 M6 6H7 M11 6H12 M16 6H17 M6 13L8 15L11 11 M13 14H17 M6 17H17',
+} as const;
+const timelinePositions = [{ x: 107, y: 95 }, { x: 300, y: 95 }, { x: 493, y: 95 }];
+const timelineIcons = [icons.statement, icons.ballot, icons.filing];
+const palettes = ['var(--color-muted)', 'var(--color-signal)', 'var(--color-topic-blue)'];
+const { timeline, oversight, sources } = copy[lang];
+const selected = copy[lang][variant];
+const stem = `nv23-${variant}-${lang}`;
+const sourceIds = variant === 'timeline' ? ['S01', 'S02', 'S03'] : ['S01', 'S02', 'S04'];
+const roleRows = [
+  { title: oversight.investigation, detail: oversight.investigationRole, icon: icons.inquiry, color: 'var(--color-amber)', x: 104 },
+  { title: oversight.exports, detail: oversight.exportsRole, icon: icons.security, color: 'var(--color-topic-blue)', x: 300 },
+  { title: oversight.governance, detail: oversight.governanceRole, icon: icons.governance, color: 'var(--color-signal)', x: 496 },
+];
+---
+<figure class="nvidia-leadership-figure" id={stem}>
+  <div class="scene desktop">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 230" width="100%" style="height:auto" role="img" aria-labelledby={`${stem}-desktop-title ${stem}-desktop-desc`}>
+        <title id={`${stem}-desktop-title`}>{timeline.title}</title>
+        <desc id={`${stem}-desktop-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="228" rx="7" />
+        <text class="heading" x="22" y="31" font-size="17">{timeline.title}</text>
+        <path class="rule" d="M22 49H578 M22 194H578" />
+        <path class="line" d="M107 127H493" />
+        {timeline.steps.map((step, index) => (
+          <g transform={`translate(${timelinePositions[index].x} ${timelinePositions[index].y})`}>
+            <text class="date" x="0" y="-23" text-anchor="middle" font-size="13" fill={palettes[index]}>{step.date}</text>
+            <path class="icon" d={timelineIcons[index]} transform="translate(-11 -10)" stroke={palettes[index]} />
+            <circle class="node" cx="0" cy="32" r="3.5" stroke={palettes[index]} />
+            <text class="label" x="0" y="59" text-anchor="middle" font-size="14">{step.name}</text>
+            <text class="detail" x="0" y="79" text-anchor="middle" font-size="12">{step.detail}</text>
+          </g>
+        ))}
+        <text class="detail" x="22" y="215" font-size="12">{timeline.note}</text>
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 305" width="100%" style="height:auto" role="img" aria-labelledby={`${stem}-desktop-title ${stem}-desktop-desc`}>
+        <title id={`${stem}-desktop-title`}>{oversight.title}</title>
+        <desc id={`${stem}-desktop-desc`}>{oversight.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="303" rx="7" />
+        <text class="heading" x="22" y="31" font-size="17">{oversight.title}</text>
+        <path class="rule" d="M22 49H578" />
+        <rect class="surface" x="22" y="62" width="203" height="45" rx="4" />
+        <path class="icon signal" d={icons.board} transform="translate(35 72)" />
+        <text class="label" x="69" y="80" font-size="14">{oversight.board}</text>
+        <text class="detail" x="69" y="98" font-size="12">{oversight.chair}</text>
+        <path class="arrow" d="M226 86H372 M366 82L372 86L366 90" />
+        <text class="relation" x="300" y="78" text-anchor="middle" font-size="12">{oversight.reinstates}</text>
+        <rect class="surface" x="375" y="62" width="203" height="45" rx="4" />
+        <path class="icon signal" d={icons.executive} transform="translate(388 72)" />
+        <text class="label" x="422" y="80" font-size="14">{oversight.executive}</text>
+        <text class="detail" x="422" y="98" font-size="12">{oversight.finance}</text>
+        <path class="line" d="M104 108V151 M104 133H496V151 M300 133V151" />
+        {roleRows.map((row) => (
+          <g transform={`translate(${row.x} 161)`}>
+            <circle class="node" cx="0" cy="-10" r="3" stroke={row.color} />
+            <path class="icon" d={row.icon} transform="translate(-11 0)" stroke={row.color} />
+            <text class="label" x="0" y="45" text-anchor="middle" font-size="13">{row.title}</text>
+            <text class="detail" x="0" y="63" text-anchor="middle" font-size="12">{row.detail}</text>
+          </g>
+        ))}
+        <path class="line" d="M104 237V243H300V237" />
+        <text class="detail" x="202" y="263" text-anchor="middle" font-size="12">{oversight.independent}</text>
+        <path class="arrow dashed" d="M496 251V231 M492 236L496 231L500 236" />
+        <rect class="planned" x="421" y="250" width="150" height="40" rx="4" />
+        <text class="label" x="496" y="267" text-anchor="middle" font-size="13">{oversight.compliance}</text>
+        <text class="detail" x="496" y="283" text-anchor="middle" font-size="12">{oversight.recruitment}</text>
+      </svg>
+    )}
+  </div>
+  <div class="scene mobile">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 254" width="100%" style="height:auto" role="img" aria-labelledby={`${stem}-mobile-title ${stem}-mobile-desc`}>
+        <title id={`${stem}-mobile-title`}>{timeline.title}</title>
+        <desc id={`${stem}-mobile-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="252" rx="7" />
+        <text class="heading" x="17" y="27" font-size="16">{timeline.title}</text>
+        <path class="rule" d="M17 42H303 M17 220H303" />
+        <path class="line" d="M27 75V181" />
+        {timeline.steps.map((step, index) => (
+          <g transform={`translate(27 ${75 + index * 53})`}>
+            <circle class="node" cx="0" cy="0" r="3.5" stroke={palettes[index]} />
+            <path class="icon" d={timelineIcons[index]} transform="translate(14 -11)" stroke={palettes[index]} />
+            <text class="date" x="48" y="-8" font-size="12" fill={palettes[index]}>{step.date}</text>
+            <text class="label" x="48" y="8" font-size="14">{step.name}</text>
+            <text class="detail" x="48" y="24" font-size="12">{step.detail}</text>
+          </g>
+        ))}
+        <text class="detail" x="17" y="240" font-size="12">{timeline.note}</text>
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 313" width="100%" style="height:auto" role="img" aria-labelledby={`${stem}-mobile-title ${stem}-mobile-desc`}>
+        <title id={`${stem}-mobile-title`}>{oversight.title}</title>
+        <desc id={`${stem}-mobile-desc`}>{oversight.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="311" rx="7" />
+        <text class="heading" x="17" y="27" font-size="16">{oversight.title}</text>
+        <path class="rule" d="M17 42H303" />
+        <rect class="surface" x="17" y="53" width="286" height="41" rx="4" />
+        <path class="icon signal" d={icons.board} transform="translate(25 61)" />
+        <text class="label" x="60" y="70" font-size="14">{oversight.board}</text>
+        <text class="detail" x="60" y="86" font-size="12">{oversight.chair}</text>
+        <path class="line" d="M36 94V275H50 M36 173H50 M36 224H50" />
+        <path class="arrow" d="M36 122H51 M47 118L51 122L47 126" />
+        <path class="icon signal" d={icons.executive} transform="translate(58 112)" />
+        <text class="label" x="91" y="122" font-size="14">{oversight.executive}</text>
+        <text class="detail" x="91" y="139" font-size="12">{oversight.finance}</text>
+        {roleRows.map((row, index) => (
+          <g transform={`translate(58 ${173 + index * 51})`}>
+            <path class="icon" d={row.icon} transform="translate(0 -11)" stroke={row.color} />
+            {(index === 2 ? (lang === 'fr' ? ['Nominations', 'et gouvernance'] : ['Nominating', 'and Governance']) : [row.title, oversight.independent]).map((line, lineIndex) => (
+              <text class={lineIndex === 0 ? 'label' : 'detail'} x="33" y={lineIndex * 16} font-size={lineIndex === 0 ? 13 : 12}>{line}</text>
+            ))}
+          </g>
+        ))}
+        <path class="arrow dashed" d="M203 275H183 M187 271L183 275L187 279" />
+        <rect class="planned" x="203" y="255" width="100" height="40" rx="4" />
+        <text class="label" x="253" y="272" text-anchor="middle" font-size="12">{oversight.compliance}</text>
+        <text class="detail" x="253" y="288" text-anchor="middle" font-size="12">{oversight.recruitment}</text>
+      </svg>
+    )}
+  </div>
+  <figcaption>
+    {selected.caption}{' '}
+    <span class="sources" aria-label={sources}>
+      {sourceIds.map((id) => <a href={`#source-${id}`} aria-label={`${sources} ${id}`}>[{id}]</a>)}
+    </span>
+  </figcaption>
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Nvidia Leadership';
+    src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  .nvidia-leadership-figure {
+    max-width: 37.5rem;
+    margin: 1.5rem auto 1.8rem;
+    padding-bottom: .8rem;
+    container-type: inline-size;
+  }
+  .scene { line-height: 0; }
+  .scene > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-family: 'l0g Nvidia Leadership', 'Liberation Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .mobile { display: none; }
+  .frame { fill: var(--color-surface); stroke: var(--color-line-strong); }
+  .surface { fill: var(--surface-inset); stroke: var(--color-line-strong); }
+  .planned { fill: var(--surface-inset); stroke: var(--color-line-strong); stroke-dasharray: 3 3; }
+  .rule { fill: none; stroke: var(--color-line); }
+  .line { fill: none; stroke: var(--color-line-strong); }
+  .heading, .label { fill: var(--color-paper); }
+  .detail { fill: var(--color-muted); }
+  .relation { fill: var(--color-signal); }
+  .icon, .arrow {
+    fill: none;
+    stroke-width: 1.2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .signal, .arrow { stroke: var(--color-signal); }
+  .dashed { stroke-dasharray: 2.5 3; }
+  .node { fill: var(--color-surface); stroke-width: 1.3; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font: 400 .75rem/1.5 var(--font-read);
+  }
+  .sources { display: inline-flex; gap: .3rem; }
+  .sources a { text-underline-offset: .18em; }
+  @container (max-width: 520px) {
+    .desktop { display: none; }
+    .mobile { display: block; max-width: 20rem; margin-inline: auto; }
+  }
+  @media print {
+    .desktop { display: block; }
+    .mobile { display: none; }
+    .nvidia-leadership-figure { break-inside: avoid; }
+  }
+</style>
