@@ -1,0 +1,110 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'scope' | 'incidence' | 'france';
+}
+
+const { lang, kind } = Astro.props;
+
+const copy = {
+  fr: {
+    scope: {
+      caption: 'Les deux seuils de chiffre d’affaires doivent être franchis. Le taux porterait sur les recettes des services visés.',
+      source: 'Projet du Conseil européen, §145',
+    },
+    incidence: {
+      caption: 'Exemple fictif calculé par l0g. Amazon documente une majoration sur certains frais existants. Dans ce scénario, le vendeur choisit quelle part de la hausse absorber sur sa marge.',
+      source: 'Conditions tarifaires d’Amazon',
+    },
+    france: {
+      caption: 'La ligne budgétaire compare une recette exécutée, une prévision révisée et un projet de budget. Montants en millions d’euros courants.',
+      source: 'Projet de loi de finances 2027, ligne 1430',
+    },
+  },
+  en: {
+    scope: {
+      caption: 'A business would have to exceed both turnover thresholds. The rate would apply to revenue from the services covered by the proposal.',
+      source: 'European Council draft, paragraph 145',
+    },
+    incidence: {
+      caption: 'Illustrative example calculated by l0g. Amazon documents a surcharge on some existing fees. In this example, the seller decides how much of the increase to absorb.',
+      source: 'Amazon fee schedule',
+    },
+    france: {
+      caption: 'The budget line shows actual receipts, a revised forecast and a draft budget. Figures are in millions of euros at current prices.',
+      source: '2027 draft budget, line 1430',
+    },
+  },
+} as const;
+const sourceIds = { scope: 'S01', incidence: 'S06', france: 'S10' } as const;
+const item = copy[lang]?.[kind];
+const sourceId = sourceIds[kind];
+if (!item || !sourceId) throw new TypeError('Unknown digital services tax figure.');
+
+const figures = import.meta.glob('../figures/digital-services-tax/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/digital-services-tax/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing digital services tax figure layout.');
+---
+<figure class="digital-services-tax-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {item.caption}
+    <a href={`#source-${sourceId}`}>{item.source}</a>
+  </figcaption>
+</figure>
+
+<style>
+  .digital-services-tax-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .digital-services-tax-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a {
+    display: block;
+    width: fit-content;
+    margin-top: .2rem;
+    color: inherit;
+    text-underline-offset: .2em;
+  }
+
+  figcaption a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .digital-services-tax-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

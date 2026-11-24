@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 264" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="dst-fr-france-desktop-title dst-fr-france-desktop-desc" xml:lang="fr">
+<title id="dst-fr-france-desktop-title">La taxe sur les services numériques</title>
+<desc id="dst-fr-france-desktop-desc">En France, la ligne budgétaire de taxe sur les services numériques indique 902 millions d’euros exécutés en 2025, 906 millions d’euros en prévision révisée pour 2026 et 981 millions d’euros dans le projet de loi de finances pour 2027.</desc>
+<rect x=".5" y=".5" width="571" height="263" rx="8" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="20" y="27" font-size="17" fill="var(--color-paper)" text-anchor="start">La taxe sur les services numériques</text>
+<text x="20" y="46" font-size="12" fill="var(--color-muted)" text-anchor="start">France · recettes budgétaires en M€ courants</text>
+<path d="M20 58H552" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M125.0 67V225" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="125.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">0</text>
+<path d="M320.0 67V225" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="320.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">500</text>
+<path d="M515.0 67V225" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="515.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">1 000</text>
+<text x="20" y="90" font-size="13" fill="var(--color-paper)" text-anchor="start">2025</text>
+<text x="20" y="107" font-size="12" fill="var(--color-muted)" text-anchor="start">Exécution</text>
+<rect x="125" y="78" width="351.8" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".7"/>
+<text x="484.8" y="94" font-size="15" fill="var(--color-signal)" text-anchor="start">902</text>
+<text x="20" y="142" font-size="13" fill="var(--color-paper)" text-anchor="start">2026</text>
+<text x="20" y="159" font-size="12" fill="var(--color-muted)" text-anchor="start">Prévision révisée</text>
+<rect x="125" y="130" width="353.3" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".12" stroke-dasharray="3 3"/>
+<text x="486.3" y="146" font-size="15" fill="var(--color-signal)" text-anchor="start">906</text>
+<text x="20" y="194" font-size="13" fill="var(--color-paper)" text-anchor="start">2027</text>
+<text x="20" y="211" font-size="12" fill="var(--color-muted)" text-anchor="start">Projet de loi</text>
+<rect x="125" y="182" width="382.6" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".12" stroke-dasharray="3 3"/>
+<text x="515.6" y="198" font-size="15" fill="var(--color-signal)" text-anchor="start">981</text>
+</svg>

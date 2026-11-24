@@ -277,6 +277,12 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Principe actif', nom: 'Active pharmaceutical ingredient', def: 'Substance responsable de l’effet du médicament. Elle doit encore être transformée et conditionnée pour obtenir le produit destiné au patient. Un stock de principe actif et un stock de médicaments prêts à délivrer protègent donc des étapes différentes de l’approvisionnement.', guide: '/posts/penuries-medicaments-prix-disponibilite/' },
       { sigle: 'Reverse Yankee', nom: 'Obligation américaine en devise étrangère', def: "Obligation émise par une entreprise américaine dans une devise étrangère, notamment l’euro. Son coût dépend du taux de référence, de la prime de crédit et, le cas échéant, de la couverture du change. Un coupon plus faible dans une autre monnaie ne suffit donc pas à établir une économie de financement.", guide: '/posts/dette-ia-concurrence-etats-taux-credit/' },
       { sigle: 'Incidence fiscale', nom: 'Tax incidence', def: "Répartition économique finale de la charge d’un impôt entre les agents. Elle peut différer de l’identité du redevable légal qui verse la taxe. Pour un droit de douane, les ajustements de prix et de marges peuvent répartir la charge entre fournisseurs, importateurs et clients. Cette répartition dépend des conditions du marché et doit être estimée.", guide: '/posts/trump-5000-dollars-dividende-promesse-dette/' },
+      {
+        sigle: 'Taxe sur les services numériques',
+        nom: 'TSN, prélèvement sur certaines recettes numériques',
+        def: 'Prélèvement calculé sur les recettes de services numériques définis par la loi. En France, la TSN concerne certaines prestations d’intermédiation et de publicité ciblée. Le taux s’applique aux recettes taxables rattachées à la France après franchissement des seuils mondial et national.',
+        guide: '/posts/taxe-numerique-ue-facture/',
+      },
       { sigle: 'Stérilisation monétaire', nom: 'Monetary sterilisation', def: "Opération par laquelle une banque centrale compense l’effet d’une intervention sur la liquidité bancaire. Après un achat de devises ou d’or payé en monnaie locale, elle peut retirer la liquidité créée, notamment en émettant des titres rémunérés. Les intérêts versés constituent un coût distinct du résultat de l’achat initial.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Activité quasi budgétaire', nom: 'Quasi-fiscal activity', def: "Intervention d’une banque centrale ou d’un organisme public qui produit des effets comparables à une dépense, une subvention ou une recette de l’État, tout en étant comptabilisée hors du budget de l’administration centrale. Transférer cette activité au budget rend son coût plus visible sans le supprimer automatiquement.", guide: '/posts/ghana-or-cedi-goldbod-cout-devises/' },
       { sigle: 'Équivalent-subvention', nom: 'Grant equivalent', def: "Valeur monétaire de l’avantage accordé par une aide, notamment un prêt à taux favorable ou une garantie sous-tarifée. Pour un prêt, elle dépend de l’écart avec des conditions de financement comparables et de l’actualisation des flux. Elle se distingue du capital prêté, du risque couvert et de la perte finalement supportée par le prêteur.", guide: '/posts/aides-entreprises-211-milliards-chiffre-trompeur/' },
@@ -4350,6 +4356,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
       { label: '19 CFR § 141.1', href: 'https://www.law.cornell.edu/cfr/text/19/141.1', detail: 'Obligation douanière de l’importateur.', kind: 'source' },
       { label: 'Réserve fédérale, transmission des droits de douane', href: 'https://www.federalreserve.gov/econres/notes/feds-notes/detecting-tariff-effects-on-consumer-prices-in-real-time-part-II-20260408.html', detail: 'Estimation des effets des changements tarifaires sur les prix à la consommation.', kind: 'source' },
     ],
+  },
+  'taxe-sur-les-services-numeriques': {
+    articles: [{ label: 'Taxe numérique européenne : qui paierait la facture ?', href: '/posts/taxe-numerique-ue-facture/', kind: 'article' }],
+    sources: [
+      { label: 'Légifrance, Code des impositions sur les biens et services', href: 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000044595989/LEGISCTA000048626177/', detail: 'En France, les articles L453-45 à L453-83 fixent le champ de la taxe, les seuils et le calcul du montant dû.', kind: 'source' },
+      { label: 'Commission européenne, proposition de directive de 2018', href: 'https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:52018PC0148', detail: 'Les articles 3 et 4 définissent l’assiette et les seuils du modèle proposé en 2018.', kind: 'source' },
+    ],
+    related: ['incidence-fiscale'],
   },
   'cout-de-portage': {
     articles: [{ label: 'Droits de douane : financer le cycle', href: '/posts/droits-douane-tresorerie-proces-section-301/', detail: 'Avance des droits, encaissement du client et portée conditionnelle des remboursements.', kind: 'article' }, { label: 'Logement en Europe : le coût des délais de permis de construire', href: '/posts/logement-permis-cout-attente-europe-2026/', detail: 'Portage du terrain et financement entre le permis et le chantier.', kind: 'article' }],

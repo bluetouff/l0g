@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 264" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="dst-en-france-desktop-title dst-en-france-desktop-desc" xml:lang="en">
+<title id="dst-en-france-desktop-title">France’s digital services tax</title>
+<desc id="dst-en-france-desktop-desc">France’s budget line for the digital services tax shows €902 million in actual 2025 receipts, €906 million in the revised 2026 forecast and €981 million in the draft 2027 budget.</desc>
+<rect x=".5" y=".5" width="571" height="263" rx="8" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="20" y="27" font-size="17" fill="var(--color-paper)" text-anchor="start">France’s digital services tax</text>
+<text x="20" y="46" font-size="12" fill="var(--color-muted)" text-anchor="start">Budget receipts in €m, current prices</text>
+<path d="M20 58H552" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M125.0 67V225" fill="none" stroke="var(--color-line-strong)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="125.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">0</text>
+<path d="M320.0 67V225" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="320.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">500</text>
+<path d="M515.0 67V225" fill="none" stroke="var(--color-line)" stroke-width="1.15" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="515.0" y="246" font-size="12" fill="var(--color-muted)" text-anchor="middle">1,000</text>
+<text x="20" y="90" font-size="13" fill="var(--color-paper)" text-anchor="start">2025</text>
+<text x="20" y="107" font-size="12" fill="var(--color-muted)" text-anchor="start">Actual</text>
+<rect x="125" y="78" width="351.8" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".7"/>
+<text x="484.8" y="94" font-size="15" fill="var(--color-signal)" text-anchor="start">902</text>
+<text x="20" y="142" font-size="13" fill="var(--color-paper)" text-anchor="start">2026</text>
+<text x="20" y="159" font-size="12" fill="var(--color-muted)" text-anchor="start">Revised forecast</text>
+<rect x="125" y="130" width="353.3" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".12" stroke-dasharray="3 3"/>
+<text x="486.3" y="146" font-size="15" fill="var(--color-signal)" text-anchor="start">906</text>
+<text x="20" y="194" font-size="13" fill="var(--color-paper)" text-anchor="start">2027</text>
+<text x="20" y="211" font-size="12" fill="var(--color-muted)" text-anchor="start">Draft budget</text>
+<rect x="125" y="182" width="382.6" height="21" rx="1.5" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1" fill-opacity=".12" stroke-dasharray="3 3"/>
+<text x="515.6" y="198" font-size="15" fill="var(--color-signal)" text-anchor="start">981</text>
+</svg>

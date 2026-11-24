@@ -4838,6 +4838,21 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'taxe-sur-les-services-numeriques',
+    sigle: 'Digital services tax',
+    nom: 'DST, a levy on certain digital revenues',
+    def: 'A levy calculated on revenue from digital services specified by law. In France, it covers certain intermediation and targeted advertising services. The rate applies to covered receipts attributable to France once the global and domestic thresholds are met.',
+    guide: '/en/analysis/eu-digital-services-tax-bill/', ...macroSection,
+    atlas: {
+      articles: [{ label: 'Who would pay for the EU digital services tax?', href: '/en/analysis/eu-digital-services-tax-bill/', kind: 'article' }],
+      sources: [
+        { label: 'Légifrance, French taxes on goods and services code', href: 'https://www.legifrance.gouv.fr/codes/section_lc/LEGITEXT000044595989/LEGISCTA000048626177/', detail: 'Articles L453-45 to L453-83 set the French tax’s scope, thresholds and calculation rules.', kind: 'source' },
+        { label: 'European Commission, 2018 draft directive', href: 'https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=CELEX:52018PC0148', detail: 'Articles 3 and 4 define the taxable services and thresholds in the 2018 proposal.', kind: 'source' },
+      ],
+      related: ['incidence-fiscale'],
+    },
+  },
+  {
     slug: 'entrepot-sous-douane', sigle: 'Customs bonded warehouse', nom: 'US storage under customs control',
     def: 'A warehouse under customs control where imported merchandise can be held before entry for consumption. In the United States, goods entered for warehousing generally attract the duty rate in effect on withdrawal for consumption, subject to specific provisions. Withdrawal requires formalities and an estimated-duty deposit. COMEX approval does not establish the customs status of individual lots.',
     guide: '/en/analysis/copper-us-stockpiles-conditions-for-return/', ...energySection, robots: 'noindex,follow',
