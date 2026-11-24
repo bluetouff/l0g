@@ -2753,7 +2753,10 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     related: ['gaz-utile', 'capacite-de-soutirage'],
   },
   'consolidated-audit-trail': {
-    articles: [{ label: 'Le registre des ordres de Wall Street', href: '/posts/sec-cat-memoire-wall-street/', kind: 'article' }],
+    articles: [
+      { label: 'Le registre des ordres de Wall Street', href: '/posts/sec-cat-memoire-wall-street/', kind: 'article' },
+      { label: 'Nvidia, le patrimoine de Trump et les ordres avant l’annonce', href: '/posts/nvidia-trump-positions-avant-annonce/', kind: 'article' },
+    ],
     sources: [
       { label: 'SEC, approbation du plan CAT (2016)', href: 'https://www.sec.gov/files/rules/sro/nms/2016/34-79318.pdf', detail: 'Gouvernance du plan et déclaration des événements du cycle de vie des ordres.', kind: 'source' },
       { label: 'SEC, projet de réforme du CAT (2026)', href: 'https://www.sec.gov/rules-regulations/2026/11/s7-2026-40', detail: 'Proposition de contrôle direct et de déclaration à la SEC ou à son délégataire.', kind: 'source' },

@@ -1,0 +1,280 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  variant: 'timeline' | 'holdings';
+}
+
+const { lang = 'fr', variant } = Astro.props;
+const copy = {
+  fr: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Le retour de Huang, heure par heure',
+      subtitle: '23 novembre 2026 · heure de Paris',
+      desc: 'Le 23 novembre 2026, heure de Paris, la séance matinale de Cboe C1 ouvre à 13 h 30 pour les options éligibles. À 14 h 29, Liz Landers de PBS publie son compte rendu. Nvidia annonce le retour de Jensen Huang à 14 h 55. À 15 h 15, le compte MrMikeInvesting évoque un pari allégué sur des options d’achat. À 15 h 45, le sénateur Ruben Gallego demande un examen des opérations.',
+      caption: 'Les horaires situent l’ouverture du pré-marché Cboe C1 pour les options éligibles et la diffusion publique des informations. L’heure du vote du conseil, daté du 22 novembre dans le 8-K, reste inconnue.',
+      labels: [
+        ['Pré-marché Cboe C1', 'Options éligibles'],
+        ['Liz Landers (PBS)', 'Compte rendu public'],
+        ['Communiqué Nvidia', 'Annonce du retour'],
+        ['MrMikeInvesting', 'Pari allégué sur des calls'],
+        ['Demande de Gallego', 'Examen des opérations'],
+      ],
+    },
+    holdings: {
+      title: 'Nvidia dans les déclarations de Trump',
+      subtitle: 'Valeurs déclarées, opérations et inconnues',
+      desc: 'Deux lignes du rapport financier 2025 indiquent chacune une valeur comprise entre 5 et 25 millions de dollars. Le relevé des transactions de septembre 2026 mentionne séparément quatre achats et une vente sous le nom Nvidia. La position exacte et le gain réalisé au 23 novembre 2026 restent à établir.',
+      caption: 'Chacune des deux fourchettes correspond à une ligne d’actifs du rapport de 2025. En septembre 2026, le relevé dénombre les opérations sous le nom Nvidia. La position exacte et le gain réalisé le 23 novembre restent inconnus.',
+      report: 'Rapport 2025',
+      first: 'Ligne 1', second: 'Ligne 2', unit: '25 M$',
+      trades: 'Septembre 2026', buys: '4 achats', sale: '1 vente',
+      unknown: '23 novembre 2026', position: 'Position exacte inconnue', gain: 'Gain réalisé inconnu',
+    },
+  },
+  en: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Huang’s return, minute by minute',
+      subtitle: 'November 23, 2026 · Paris time',
+      desc: 'On November 23, 2026, Paris time, Cboe C1 opens premarket trading for eligible options at 13:30. PBS correspondent Liz Landers publishes her account at 14:29. Nvidia announces Jensen Huang’s return at 14:55. At 15:15, the MrMikeInvesting account posts about a purported call-options bet. At 15:45, Senator Ruben Gallego calls for a review of the trades.',
+      caption: 'The timeline marks the start of Cboe C1 premarket trading for eligible options and when the information became public. The 8-K dates the board vote to November 22. Its time remains unknown.',
+      labels: [
+        ['Cboe C1 premarket', 'Eligible options'],
+        ['Liz Landers (PBS)', 'Publishes her account'],
+        ['Nvidia statement', 'Announces Huang’s return'],
+        ['MrMikeInvesting', 'Purported call-options bet'],
+        ['Gallego’s request', 'Calls for a trade review'],
+      ],
+    },
+    holdings: {
+      title: 'Trump’s Nvidia disclosures',
+      subtitle: 'Reported values, transactions and unknowns',
+      desc: 'Two asset entries in the 2025 financial disclosure each value Nvidia holdings at 5 million to 25 million dollars. The separate September 2026 transaction report lists four purchases and one sale under Nvidia’s name. The exact holdings and any realized gain on November 23, 2026 remain unknown.',
+      caption: 'Each range covers one asset entry in the 2025 report. The September 2026 filing counts transactions listed under Nvidia’s name. The exact position and any realized gain on November 23 remain unknown.',
+      report: '2025 report',
+      first: 'Entry 1', second: 'Entry 2', unit: '$25m',
+      trades: 'September 2026', buys: '4 purchases', sale: '1 sale',
+      unknown: 'November 23, 2026', position: 'Exact position unknown', gain: 'Realized gain unknown',
+    },
+  },
+} as const;
+
+const icons = {
+  premarket: 'M1 17V4H17V11 M1 7H17 M4 2V6 M13 2V6 M4 11H7 M4 14H7 M14 15V11 M14 15H17 M14 10A5 5 0 1 1 14 20A5 5 0 1 1 14 10Z',
+  reporter: 'M1 2H19V14H10L5 19V14H1Z M4 6H16 M4 10H13',
+  issuer: 'M3 1H13L18 6V19H3Z M13 1V6H18 M6 10H15 M6 13H15 M6 16H11',
+  claim: 'M1 3H19V15H9L5 19V15H1Z M10 6V10 M10 12H10.1',
+  review: 'M1 5L10 1L19 5Z M2 8H18 M4 10V16 M10 10V16 M16 10V16 M2 16H18 M1 19H19',
+  unknown: 'M11 2A9 9 0 1 1 11 20A9 9 0 1 1 11 2Z M8 8C8 5 14 5 14 8C14 10 11 10 11 13 M11 16H11.1',
+};
+const sequence = [
+  { at: '13:30', minutes: 0, icon: icons.premarket, color: 'var(--color-muted)', anchor: 'start' },
+  { at: '14:29', minutes: 59, icon: icons.reporter, color: 'var(--color-topic-blue)', anchor: 'middle' },
+  { at: '14:55', minutes: 85, icon: icons.issuer, color: 'var(--color-signal)', anchor: 'middle' },
+  { at: '15:15', minutes: 105, icon: icons.claim, color: 'var(--color-amber)', anchor: 'middle' },
+  { at: '15:45', minutes: 135, icon: icons.review, color: 'var(--color-topic-blue)', anchor: 'end' },
+] as const;
+const { timeline, holdings, sources } = copy[lang];
+const selected = copy[lang][variant];
+const sourceIds = variant === 'timeline' ? ['S01', 'S02', 'S04', 'S05', 'S15', 'S17'] : ['S07', 'S08', 'S09', 'S10'];
+const id = `nv24-${variant}-${lang}`;
+---
+<figure class="nvidia-market-disclosure" id={id}>
+  <div class="scene desktop">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 256" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-desktop-title ${id}-desktop-desc`}>
+        <title id={`${id}-desktop-title`}>{timeline.title}</title>
+        <desc id={`${id}-desktop-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="254" rx="7" />
+        <text class="heading" x="22" y="30" font-size="17">{timeline.title}</text>
+        <text class="detail" x="22" y="50" font-size="12">{timeline.subtitle}</text>
+        <path class="rule" d="M22 63H578" />
+        <path class="line" d="M34 155H562" />
+        {sequence.map((event, index) => {
+          const x = Math.round(34 + event.minutes * 528 / 135);
+          const upper = index % 2 === 0;
+          const tx = index === 0 ? 22 : index === 4 ? 578 : x;
+          const [label, detail] = timeline.labels[index];
+          return (
+            <g data-time={event.at}>
+              <circle cx={x} cy="155" r="3.6" class="node" stroke={event.color} />
+              <path class="line" d={upper ? `M${x} 145V151` : `M${x} 159V165`} />
+              <path class="icon" d={event.icon} stroke={event.color} transform={`translate(${x - 10} ${upper ? 124 : 167})`} />
+              <text x={tx} y={upper ? 84 : 205} text-anchor={event.anchor} font-size="13" fill={event.color}>{event.at}</text>
+              <text class="label" x={tx} y={upper ? 102 : 223} text-anchor={event.anchor} font-size="14">{label}</text>
+              <text class="detail" x={tx} y={upper ? 119 : 240} text-anchor={event.anchor} font-size="12">{detail}</text>
+            </g>
+          );
+        })}
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 268" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-desktop-title ${id}-desktop-desc`}>
+        <title id={`${id}-desktop-title`}>{holdings.title}</title>
+        <desc id={`${id}-desktop-desc`}>{holdings.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="266" rx="7" />
+        <text class="heading" x="22" y="30" font-size="17">{holdings.title}</text>
+        <text class="detail" x="22" y="50" font-size="12">{holdings.subtitle}</text>
+        <path class="rule" d="M22 63H578 M298 80V183 M22 192H578" />
+        <text class="label" x="22" y="88" font-size="14">{holdings.report}</text>
+        <path class="rule" d="M92 99V150 M127 99V150 M267 99V150" />
+        <path class="line" d="M92 155H267 M92 155V160 M127 155V160 M267 155V160" />
+        <text class="label" x="22" y="115" font-size="13">{holdings.first}</text>
+        <text class="label" x="22" y="142" font-size="13">{holdings.second}</text>
+        <g class="ranges" data-unit="usd-million">
+          <path class="range" data-low="5" data-high="25" d="M127 111H267 M127 106V116 M267 106V116" />
+          <path class="range" data-low="5" data-high="25" d="M127 138H267 M127 133V143 M267 133V143" />
+        </g>
+        <text class="detail" x="92" y="177" text-anchor="middle" font-size="12">0</text>
+        <text class="detail" x="127" y="177" text-anchor="middle" font-size="12">5</text>
+        <text class="detail" x="267" y="177" text-anchor="middle" font-size="12">{holdings.unit}</text>
+        <text class="label" x="321" y="88" font-size="14">{holdings.trades}</text>
+        {[328, 376, 424, 472].map((x) => (
+          <g transform={`translate(${x} 125)`} class="buy" data-transaction="purchase">
+            <circle cx="0" cy="0" r="9" />
+            <path d="M-4 0H4 M0 -4V4" />
+          </g>
+        ))}
+        <g transform="translate(552 125)" class="sale" data-transaction="sale">
+          <rect x="-9" y="-9" width="18" height="18" rx="3" />
+          <path d="M-4 0H4" />
+        </g>
+        <path class="line" d="M328 146V150H472V146" />
+        <text class="detail" x="400" y="172" text-anchor="middle" font-size="12">{holdings.buys}</text>
+        <text class="detail" x="552" y="172" text-anchor="middle" font-size="12">{holdings.sale}</text>
+        <path class="icon" stroke="var(--color-muted)" d={icons.unknown} transform="translate(22 218)" />
+        <text class="label" x="54" y="233" font-size="13">{holdings.unknown}</text>
+        <path class="dash" d="M188 229H222" />
+        <text class="detail" x="241" y="233" font-size="13">{holdings.position}</text>
+        <text class="detail" x="433" y="233" font-size="13">{holdings.gain}</text>
+      </svg>
+    )}
+  </div>
+  <div class="scene mobile">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 309" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-mobile-title ${id}-mobile-desc`}>
+        <title id={`${id}-mobile-title`}>{timeline.title}</title>
+        <desc id={`${id}-mobile-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="307" rx="7" />
+        <text class="heading" x="17" y="28" font-size="16">{timeline.title}</text>
+        <text class="detail" x="17" y="47" font-size="12">{timeline.subtitle}</text>
+        <path class="rule" d="M17 58H303" />
+        <path class="line" d="M22 76V276" />
+        {sequence.map((event, index) => {
+          const y = Math.round(76 + event.minutes * 200 / 135);
+          const [label, detail] = timeline.labels[index];
+          return (
+            <g data-time={event.at}>
+              <circle cx="22" cy={y} r="3.3" class="node" stroke={event.color} />
+              <path class="icon" d={event.icon} stroke={event.color} transform={`translate(35 ${y - 9})`} />
+              <text x="67" y={y + 4} font-size="13" fill={event.color}>{event.at}</text>
+              <text class="label" x="112" y={y + 4} font-size="13">{label}</text>
+              <text class="detail" x="112" y={y + 19} font-size="12">{detail}</text>
+            </g>
+          );
+        })}
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 333" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-mobile-title ${id}-mobile-desc`}>
+        <title id={`${id}-mobile-title`}>{holdings.title}</title>
+        <desc id={`${id}-mobile-desc`}>{holdings.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="331" rx="7" />
+        <text class="heading" x="17" y="28" font-size="16">{holdings.title}</text>
+        <text class="detail" x="17" y="47" font-size="12">{holdings.subtitle}</text>
+        <path class="rule" d="M17 58H303 M17 169H303 M17 257H303" />
+        <text class="label" x="17" y="79" font-size="13">{holdings.report}</text>
+        <path class="rule" d="M84 89V129 M122 89V129 M274 89V129" />
+        <path class="line" d="M84 135H274 M84 135V140 M122 135V140 M274 135V140" />
+        <text class="label" x="17" y="104" font-size="12">{holdings.first}</text>
+        <text class="label" x="17" y="126" font-size="12">{holdings.second}</text>
+        <g class="ranges" data-unit="usd-million">
+          <path class="range" data-low="5" data-high="25" d="M122 100H274 M122 95V105 M274 95V105" />
+          <path class="range" data-low="5" data-high="25" d="M122 122H274 M122 117V127 M274 117V127" />
+        </g>
+        <text class="detail" x="84" y="157" text-anchor="middle" font-size="12">0</text>
+        <text class="detail" x="122" y="157" text-anchor="middle" font-size="12">5</text>
+        <text class="detail" x="274" y="157" text-anchor="middle" font-size="12">{holdings.unit}</text>
+        <text class="label" x="17" y="190" font-size="13">{holdings.trades}</text>
+        {[31, 85, 139, 193].map((x) => (
+          <g transform={`translate(${x} 211)`} class="buy" data-transaction="purchase">
+            <circle cx="0" cy="0" r="8" />
+            <path d="M-4 0H4 M0 -4V4" />
+          </g>
+        ))}
+        <g transform="translate(273 211)" class="sale" data-transaction="sale">
+          <rect x="-8" y="-8" width="16" height="16" rx="3" />
+          <path d="M-4 0H4" />
+        </g>
+        <path class="line" d="M31 227V231H193V227" />
+        <text class="detail" x="112" y="247" text-anchor="middle" font-size="12">{holdings.buys}</text>
+        <text class="detail" x="273" y="247" text-anchor="middle" font-size="12">{holdings.sale}</text>
+        <path class="icon" stroke="var(--color-muted)" d={icons.unknown} transform="translate(17 271)" />
+        <text class="label" x="48" y="285" font-size="13">{holdings.unknown}</text>
+        <text class="detail" x="17" y="312" font-size="12">{holdings.position}</text>
+        <text class="detail" x="175" y="312" font-size="12">{holdings.gain}</text>
+      </svg>
+    )}
+  </div>
+  <figcaption>
+    {selected.caption}{' '}
+    <span class="sources" aria-label={sources}>
+      {sourceIds.map((source) => <a href={`#source-${source}`} aria-label={`${sources} ${source}`}>[{source}]</a>)}
+    </span>
+  </figcaption>
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Nvidia Market Disclosure';
+    src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+  }
+  .nvidia-market-disclosure {
+    max-width: 37.5rem;
+    margin: 1.5rem auto 1.8rem;
+    padding-bottom: .8rem;
+    container-type: inline-size;
+  }
+  .scene { line-height: 0; }
+  .scene > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-family: 'l0g Nvidia Market Disclosure', 'Liberation Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .mobile { display: none; }
+  .frame { fill: var(--color-surface); stroke: var(--color-line-strong); }
+  .rule, .line, .dash { fill: none; stroke: var(--color-line); }
+  .line, .dash { stroke: var(--color-line-strong); }
+  .dash { stroke-dasharray: 3 3; }
+  .heading, .label { fill: var(--color-paper); }
+  .detail { fill: var(--color-muted); }
+  .icon, .range, .buy, .sale {
+    fill: none;
+    stroke-width: 1.15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .range, .buy { stroke: var(--color-signal); }
+  .sale { stroke: var(--color-amber); }
+  .node { fill: var(--color-surface); stroke-width: 1.3; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font: 400 .75rem/1.5 var(--font-read);
+  }
+  .sources { display: inline-flex; flex-wrap: wrap; gap: .3rem; }
+  .sources a { text-underline-offset: .18em; }
+  @container (max-width: 520px) {
+    .desktop { display: none; }
+    .mobile { display: block; max-width: 20rem; margin-inline: auto; }
+  }
+  @media print {
+    .desktop { display: block; }
+    .mobile { display: none; }
+    .nvidia-market-disclosure { break-inside: avoid; }
+  }
+</style>
