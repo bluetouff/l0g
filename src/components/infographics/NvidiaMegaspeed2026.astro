@@ -1,0 +1,268 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  variant: 'timeline' | 'controls';
+}
+
+const { lang = 'fr', variant } = Astro.props;
+const copy = {
+  fr: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Nvidia et les décisions de Washington',
+      subtitle: 'Actes publics et transactions déclarées · dates sélectionnées',
+      desc: 'Dates choisies en 2025 et 2026. Cercles pour les actes publics ou diplomatiques, losanges pour les transactions déclarées, contour pointillé pour un fait rapporté et contesté. Les espaces entre dates ne sont pas proportionnels. Les déclarations de transaction désignent Nvidia et donnent des montants par fourchette.',
+      caption: 'Les assurances de juillet sur le H20 ont précédé les licences d’août. L’escale à Anchorage est documentée. Le briefing rapporté à cette occasion fait l’objet de versions divergentes. Les montants des transactions sont des fourchettes et le dessin place les repères à intervalles réguliers.',
+      publicLabel: 'Acte public', tradeLabel: 'Opération déclarée', disputedLabel: 'Contesté',
+      prior: [
+        ['29 janv.', 'Achat · 1 à 5 M$'],
+        ['9 avr.', 'Licence exigée pour le H20'],
+        ['14–15 juil.', 'H20 · assurance de licences'],
+        ['18 août', 'Achat · 5 à 25 M$'],
+        ['8 déc.', 'H200 · annonce de Trump'],
+      ],
+      present: [
+        ['15 janv.', 'Règle H200'],
+        ['Mai', 'Anchorage · briefing contesté'],
+        ['18 mai', 'Vente · 0,5 à 1 M$'],
+        ['22–23 nov.', 'Réintégration de Huang'],
+        ['23 nov.', 'BIS · sept entités inscrites'],
+      ],
+    },
+    controls: {
+      title: 'Trois juridictions, trois mesures',
+      subtitle: 'États-Unis, Malaisie et Singapour · 23–24 novembre 2026',
+      desc: 'Aux États-Unis, le BIS inscrit sept entités. Une licence est requise pour une opération touchant un article soumis aux EAR lorsqu’une entité inscrite est partie à la transaction. La politique est la présomption de refus. En Malaisie, le MITI annonce un avis à venir de la MIDA sur la location, l’hébergement et les services. À Singapour, l’enquête est propre à ses autorités, qui demandent des documents et des informations.',
+      caption: 'L’inscription américaine concerne les opérations relevant des EAR dans lesquelles intervient une entité listée. L’avis malaisien reste annoncé par le MITI. Les demandes de documents à Singapour relèvent de l’enquête de ses autorités.',
+      branches: [
+        { area: 'États-Unis', agency: 'BIS', act: 'Sept entités inscrites', detail: 'Entité listée partie à l’opération', result: 'Licence pour articles EAR', extra: 'Présomption de refus', mobile: ['Sept entités inscrites', 'Licence pour articles EAR', 'Présomption de refus'] },
+        { area: 'Malaisie', agency: 'MITI / MIDA', act: 'Avis MIDA annoncé', detail: 'Publication à venir', result: 'S’abstenir de louer, héberger', extra: 'ou fournir des services', mobile: ['Avis MIDA annoncé', 'Éviter bail, hébergement', 'et services'] },
+        { area: 'Singapour', agency: 'Autorités locales', act: 'Enquête singapourienne', detail: 'Procédure propre au pays', result: 'Documents demandés', extra: 'Collecte d’informations', mobile: ['Enquête singapourienne', 'Documents demandés', 'Collecte d’informations'] },
+      ],
+    },
+  },
+  en: {
+    sources: 'Sources',
+    timeline: {
+      title: 'Nvidia and Washington’s decisions',
+      subtitle: 'Public actions and disclosed trades · selected dates',
+      desc: 'Selected dates in 2025 and 2026. Circles mark public or diplomatic events. Diamonds mark disclosed transactions. A dashed outline marks disputed reporting. The spacing is not a measure of elapsed time. The transaction reports list Nvidia and give amounts in ranges.',
+      caption: 'July’s H20 assurances preceded licenses in August. The Anchorage stop is documented. Accounts of the reported briefing differ. Transaction amounts are reported in ranges, and the markers are evenly spaced.',
+      publicLabel: 'Public event', tradeLabel: 'Disclosed trade', disputedLabel: 'Disputed',
+      prior: [
+        ['Jan 29', 'Purchase · $1m–$5m'],
+        ['Apr 9', 'H20 license required'],
+        ['Jul 14–15', 'H20 · licensing assurance'],
+        ['Aug 18', 'Purchase · $5m–$25m'],
+        ['Dec 8', 'Trump announces H200 policy'],
+      ],
+      present: [
+        ['Jan 15', 'H200 rule'],
+        ['May', 'Anchorage · disputed briefing'],
+        ['May 18', 'Sale · $0.5m–$1m'],
+        ['Nov 22–23', 'Huang reinstated'],
+        ['Nov 23', 'BIS adds seven entities'],
+      ],
+    },
+    controls: {
+      title: 'Three jurisdictions, three measures',
+      subtitle: 'United States, Malaysia and Singapore · November 23–24, 2026',
+      desc: 'In the United States, the BIS lists seven entities. A license is required for a transaction involving an item subject to the EAR if a listed entity is a party to the transaction. Applications face a presumption of denial. In Malaysia, MITI announces a future MIDA advisory covering leasing, hosting and services. In Singapore, authorities are requesting documents and information as part of their own investigation.',
+      caption: 'The U.S. listing applies to transactions under the EAR involving a named entity. Malaysia’s MITI announced a forthcoming advisory. The requests for documents in Singapore are part of its own authorities’ investigation.',
+      branches: [
+        { area: 'United States', agency: 'BIS', act: 'Seven entities listed', detail: 'Listed entity is a party', result: 'License for EAR items', extra: 'Presumption of denial', mobile: ['Seven entities listed', 'License for EAR items', 'Presumption of denial'] },
+        { area: 'Malaysia', agency: 'MITI / MIDA', act: 'MIDA advisory announced', detail: 'Advisory forthcoming', result: 'Avoid leasing, hosting', extra: 'or providing services', mobile: ['MIDA advisory to come', 'Avoid leasing, hosting', 'or providing services'] },
+        { area: 'Singapore', agency: 'Local authorities', act: 'Singapore investigation', detail: 'Domestic proceedings', result: 'Documents requested', extra: 'Information gathering', mobile: ['Singapore investigation', 'Documents requested', 'Information gathering'] },
+      ],
+    },
+  },
+} as const;
+
+const timelineKinds = [
+  ['trade', 'public', 'public', 'trade', 'public'],
+  ['public', 'disputed', 'trade', 'public', 'public'],
+] as const;
+const branchIcons = [
+  'M3 2H13L19 8V23H3Z M13 2V8H19 M7 12H15 M7 16H15 M7 20H11',
+  'M2 3H20V10H2Z M2 15H20V22H2Z M5 6H7 M10 6H17 M5 18H7 M10 18H17',
+  'M2 2H14V8 M2 2V22H15 M6 7H10 M6 11H8 M6 15H8 M17 15L21 19 M17 12A4 4 0 1 1 9 12A4 4 0 1 1 17 12Z',
+] as const;
+const branchTones = ['signal', 'amber', 'blue'] as const;
+const jurisdictions = ['us', 'my', 'sg'] as const;
+const { timeline, controls, sources } = copy[lang];
+const yearRows = [timeline.prior, timeline.present];
+const selected = copy[lang][variant];
+const sourceIds = variant === 'timeline' ? ['S11', 'S13', 'S15', 'S18', 'S20', 'S21', 'S26', 'S01'] : ['S01', 'S02', 'S03', 'S04'];
+const id = `nv25-${variant}-${lang}`;
+---
+<figure class="nvidia-megaspeed-figure" id={id}>
+  <div class="scene desktop">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 292" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-desktop-title ${id}-desktop-desc`}>
+        <title id={`${id}-desktop-title`}>{timeline.title}</title>
+        <desc id={`${id}-desktop-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="290" rx="7" />
+        <text class="heading" x="21" y="29" font-size="17">{timeline.title}</text>
+        <text class="detail" x="21" y="49" font-size="12">{timeline.subtitle}</text>
+        <path class="rule" d="M21 61H579 M300 75V245 M21 254H579" />
+        {yearRows.map((rows, year) => (
+          <g transform={`translate(${year * 295 + 21} 0)`} data-year={2025 + year}>
+            <text class="heading" x="0" y="85" font-size="16">{2025 + year}</text>
+            <path class="line" d="M8 111V235" />
+            {rows.map(([date, label], index) => {
+              const kind = timelineKinds[year][index];
+              return (
+                <g transform={`translate(0 ${111 + index * 31})`} data-kind={kind}>
+                  {kind === 'trade' ? <path class="trade" d="M8 -5L13 0L8 5L3 0Z" /> : <circle class={kind} cx="8" cy="0" r="4.1" />}
+                  <text class="detail" x="23" y="4" font-size="12">{date}</text>
+                  <text class="label" x="93" y="4" font-size="13">{label}</text>
+                </g>
+              );
+            })}
+          </g>
+        ))}
+        <circle class="public" cx="27" cy="273" r="4" />
+        <text class="detail" x="39" y="277" font-size="12">{timeline.publicLabel}</text>
+        <path class="trade" d="M199 268L204 273L199 278L194 273Z" />
+        <text class="detail" x="211" y="277" font-size="12">{timeline.tradeLabel}</text>
+        <circle class="disputed" cx="392" cy="273" r="4" />
+        <text class="detail" x="404" y="277" font-size="12">{timeline.disputedLabel}</text>
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 276" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-desktop-title ${id}-desktop-desc`}>
+        <title id={`${id}-desktop-title`}>{controls.title}</title>
+        <desc id={`${id}-desktop-desc`}>{controls.desc}</desc>
+        <rect class="frame" x="1" y="1" width="598" height="274" rx="7" />
+        <text class="heading" x="21" y="29" font-size="17">{controls.title}</text>
+        <text class="detail" x="21" y="49" font-size="12">{controls.subtitle}</text>
+        <path class="rule" d="M21 62H579 M202 77V253 M398 77V253" />
+        {controls.branches.map((branch, index) => (
+          <g transform={`translate(${104 + index * 196} 0)`} data-jurisdiction={jurisdictions[index]}>
+            <path class={`icon ${branchTones[index]}`} d={branchIcons[index]} transform="translate(-11 76)" />
+            <text class="heading" x="0" y="120" text-anchor="middle" font-size="14">{branch.area}</text>
+            <text class="detail" x="0" y="137" text-anchor="middle" font-size="12">{branch.agency}</text>
+            <text class="label" x="0" y="166" text-anchor="middle" font-size="13">{branch.act}</text>
+            <text class="detail" x="0" y="184" text-anchor="middle" font-size="12">{branch.detail}</text>
+            <path class:list={['connector', branchTones[index], { planned: index === 1 }]} d="M0 194V215 M-4 210L0 215L4 210" />
+            <text class="label" x="0" y="238" text-anchor="middle" font-size="13">{branch.result}</text>
+            <text class="detail" x="0" y="255" text-anchor="middle" font-size="12">{branch.extra}</text>
+          </g>
+        ))}
+      </svg>
+    )}
+  </div>
+  <div class="scene mobile">
+    {variant === 'timeline' ? (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 345" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-mobile-title ${id}-mobile-desc`}>
+        <title id={`${id}-mobile-title`}>{timeline.title}</title>
+        <desc id={`${id}-mobile-desc`}>{timeline.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="343" rx="7" />
+        <text class="heading" x="17" y="27" font-size="16">{timeline.title}</text>
+        <path class="rule" d="M17 40H303 M17 173H303 M17 307H303" />
+        {yearRows.map((rows, year) => (
+          <g transform={`translate(17 ${year * 132})`} data-year={2025 + year}>
+            <text class="heading" x="0" y="62" font-size="15">{2025 + year}</text>
+            <path class="line" d="M8 81V157" />
+            {rows.map(([date, label], index) => {
+              const kind = timelineKinds[year][index];
+              return (
+                <g transform={`translate(0 ${81 + index * 19})`} data-kind={kind}>
+                  {kind === 'trade' ? <path class="trade" d="M8 -4L12 0L8 4L4 0Z" /> : <circle class={kind} cx="8" cy="0" r="3.6" />}
+                  <text class="detail" x="23" y="4" font-size="12">{date}</text>
+                  <text class="label" x="96" y="4" font-size="12">{label}</text>
+                </g>
+              );
+            })}
+          </g>
+        ))}
+        <circle class="public" cx="21" cy="326" r="3.4" />
+        <text class="detail" x="30" y="330" font-size="12">{timeline.publicLabel}</text>
+        <path class="trade" d="M101 322L105 326L101 330L97 326Z" />
+        <text class="detail" x="110" y="330" font-size="12">{timeline.tradeLabel}</text>
+        <circle class="disputed" cx="224" cy="326" r="3.4" />
+        <text class="detail" x="233" y="330" font-size="12">{timeline.disputedLabel}</text>
+      </svg>
+    ) : (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 286" width="100%" style="height:auto" role="img" aria-labelledby={`${id}-mobile-title ${id}-mobile-desc`}>
+        <title id={`${id}-mobile-title`}>{controls.title}</title>
+        <desc id={`${id}-mobile-desc`}>{controls.desc}</desc>
+        <rect class="frame" x="1" y="1" width="318" height="284" rx="7" />
+        <text class="heading" x="17" y="27" font-size="16">{controls.title}</text>
+        <path class="rule" d="M17 42H303 M17 120H303 M17 198H303" />
+        {controls.branches.map((branch, index) => (
+          <g transform={`translate(0 ${index * 78})`} data-jurisdiction={jurisdictions[index]}>
+            <path class={`icon ${branchTones[index]}`} d={branchIcons[index]} transform="translate(20 65)" />
+            <text class="heading" x="49" y="73" font-size="13">{branch.area}</text>
+            <text class="detail" x="49" y="91" font-size="12">{branch.agency}</text>
+            <path class:list={['connector', branchTones[index], { planned: index === 1 }]} d="M138 76H158 M153 72L158 76L153 80" />
+            {branch.mobile.map((line, lineIndex) => <text class={lineIndex === 0 ? 'label' : 'detail'} x="171" y={63 + lineIndex * 17} font-size="12">{line}</text>)}
+          </g>
+        ))}
+      </svg>
+    )}
+  </div>
+  <figcaption>
+    {selected.caption}{' '}
+    <span class="sources" aria-label={sources}>
+      {sourceIds.map((source) => <a href={`#source-${source}`} aria-label={`${sources} ${source}`}>[{source}]</a>)}
+    </span>
+  </figcaption>
+</figure>
+<style>
+  @font-face {
+    font-family: 'l0g Nvidia Megaspeed';
+    src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');
+    font-weight: 400;
+    font-display: swap;
+  }
+  .nvidia-megaspeed-figure {
+    max-width: 37.5rem;
+    margin: 1.5rem auto 1.8rem;
+    padding-bottom: .8rem;
+    container-type: inline-size;
+  }
+  .scene { line-height: 0; }
+  .scene > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    font-family: 'l0g Nvidia Megaspeed', 'Liberation Sans', sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .mobile { display: none; }
+  .frame { fill: var(--color-surface); stroke: var(--color-line-strong); }
+  .rule, .line { fill: none; stroke: var(--color-line); }
+  .line { stroke: var(--color-line-strong); }
+  .heading, .label { fill: var(--color-paper); }
+  .detail { fill: var(--color-muted); }
+  .public, .trade, .disputed { fill: var(--color-surface); stroke-width: 1.3; }
+  .public, .signal { stroke: var(--color-signal); }
+  .trade, .amber { stroke: var(--color-amber); }
+  .disputed, .blue { stroke: var(--color-topic-blue); }
+  .disputed { stroke-dasharray: 2 2; }
+  .icon, .connector {
+    fill: none;
+    stroke-width: 1.15;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+  .planned { stroke-dasharray: 2 3; }
+  figcaption {
+    margin-top: .65rem;
+    color: var(--color-muted);
+    font: 400 .75rem/1.5 var(--font-read);
+  }
+  .sources { display: inline-flex; flex-wrap: wrap; gap: .3rem; }
+  .sources a { text-underline-offset: .18em; }
+  @container (max-width: 520px) {
+    .desktop { display: none; }
+    .mobile { display: block; max-width: 20rem; margin-inline: auto; }
+  }
+  @media print {
+    .desktop { display: block; }
+    .mobile { display: none; }
+    .nvidia-megaspeed-figure { break-inside: avoid; }
+  }
+</style>

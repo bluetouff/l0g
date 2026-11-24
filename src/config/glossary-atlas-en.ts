@@ -382,6 +382,7 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     guide: '/en/analysis/nvidia-trump-warning-at-the-top/', sectionTitle: 'US regulation & institutions', accent: 'var(--color-topic-blue)', robots: 'noindex,follow',
     atlas: {
       articles: [
+        { label: 'Megaspeed’s US listing puts data center contracts under scrutiny', href: '/en/analysis/nvidia-megaspeed-data-center-controls/', detail: 'US licenses, hosting and checks on end users.', kind: 'article' },
         { label: 'Nvidia, Trump and Lutnick: national security under influence', href: '/en/analysis/nvidia-trump-lutnick-national-security-influence/', kind: 'article' },
         { label: 'Nvidia, Trump: a warning at the top', href: '/en/analysis/nvidia-trump-warning-at-the-top/', detail: 'Licenses, remote use and scrutiny of recipients.', kind: 'article' },
         { label: 'Chinese AI faces the factory test', href: '/en/analysis/ai-slowdown-4-china-chips-memory-factories/', kind: 'article' },
