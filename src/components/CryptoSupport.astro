@@ -1,0 +1,118 @@
+---
+import { supportCrypto } from '../config/support-crypto.mjs';
+import bitcoinQr from '../assets/support-bitcoin-qr.svg?url';
+import ethereumQr from '../assets/support-ethereum-qr.svg?url';
+import solanaQr from '../assets/support-solana-qr.svg?url';
+
+interface Props { lang?: 'fr' | 'en' }
+const { lang = 'fr' } = Astro.props;
+const en = lang === 'en';
+const qrByNetwork: Record<string, string> = { bitcoin: bitcoinQr, ethereum: ethereumQr, solana: solanaQr };
+---
+
+<section class="crypto-support" aria-labelledby="crypto-title">
+  <header class="crypto-header">
+    <h2 id="crypto-title">{en ? 'Support with crypto' : 'Soutenir en cryptomonnaies'}</h2>
+    <p>{en
+      ? 'Send a contribution from your wallet in the amount of your choice.'
+      : 'Contribuez depuis votre portefeuille au montant de votre choix.'}</p>
+  </header>
+
+  <div class="crypto-options">
+    {supportCrypto.map(({ id, asset, network, address, uri }) => (
+      <article
+        class="crypto-option"
+        aria-labelledby={`${id}-title`}
+        data-crypto-support
+        data-copied={en ? `${asset} address copied.` : `Adresse ${asset} copiée.`}
+        data-copy-failed={en ? 'Automatic copying is unavailable. Copy the selected address.' : 'La copie automatique est indisponible. Copiez l’adresse sélectionnée.'}
+      >
+        <header class="crypto-network">
+          <h3 id={`${id}-title`}>{network} <span>{asset}</span></h3>
+          <p>{en ? 'Mainnet only' : 'Réseau principal uniquement'}</p>
+        </header>
+        <div class="crypto-address-box">
+          <span id={`${id}-address-label`}>{en ? `${asset} receiving address` : `Adresse de réception ${asset}`}</span>
+          <code id={`${id}-address`} tabindex="0" aria-labelledby={`${id}-address-label`} data-crypto-address>{address}</code>
+        </div>
+        <div class="crypto-actions">
+          <button type="button" class="crypto-copy" data-crypto-copy aria-describedby={`${id}-address-label`} hidden>
+            <svg viewBox="0 0 20 20" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.4" aria-hidden="true"><rect x="7" y="7" width="10" height="10" rx="2" /><path d="M12 4V3a1 1 0 0 0-1-1H3a1 1 0 0 0-1 1v8a1 1 0 0 0 1 1h1" /></svg>
+            {en ? 'Copy address' : 'Copier l’adresse'}
+          </button>
+          <a class="crypto-wallet" href={uri} aria-describedby={`${id}-address-label crypto-note`}>
+            {en ? 'Open wallet' : 'Ouvrir mon portefeuille'} <span aria-hidden="true">↗</span>
+          </a>
+        </div>
+        <p class="crypto-status" role="status" aria-atomic="true" data-crypto-status></p>
+        <img class="crypto-qr" src={qrByNetwork[id]} width="128" height="128" alt={en ? `Payment QR code for ${asset} on ${network}` : `QR code de paiement en ${asset} sur ${network}`} loading="lazy" decoding="async" />
+      </article>
+    ))}
+  </div>
+
+  <p class="crypto-note" id="crypto-note">
+    {en
+      ? 'Send the asset shown on its own network. Check the address, network and fees before confirming. Transactions are public and irreversible.'
+      : 'Envoyez l’actif indiqué sur son réseau d’origine. Vérifiez l’adresse, le réseau et les frais avant de confirmer. Les transactions sont publiques et irréversibles.'}
+    {' '}<a href="/rgpd/#bitcoin">{en ? 'Privacy' : 'Confidentialité'} <span aria-hidden="true">↗</span></a>
+  </p>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-crypto-support]').forEach((root) => {
+    const button = root.querySelector<HTMLButtonElement>('[data-crypto-copy]');
+    const address = root.querySelector<HTMLElement>('[data-crypto-address]');
+    const status = root.querySelector<HTMLElement>('[data-crypto-status]');
+    if (!button || !address || !status) return;
+
+    button.hidden = false;
+    button.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(address.textContent ?? '');
+        status.textContent = root.dataset.copied ?? '';
+      } catch {
+        address.focus();
+        const range = document.createRange();
+        range.selectNodeContents(address);
+        const selection = window.getSelection();
+        selection?.removeAllRanges();
+        selection?.addRange(range);
+        status.textContent = root.dataset.copyFailed ?? '';
+      }
+    });
+  });
+</script>
+
+<style>
+  .crypto-support { margin-top: 1rem; padding: clamp(1rem, 3vw, 2rem); border: 1px solid var(--color-line-strong); border-radius: 6px 20px 20px 20px; background: var(--surface-elevated); box-shadow: inset 0 1px 0 var(--edge-highlight); }
+  .crypto-header h2 { color: var(--color-bright); font: 600 clamp(1.1rem, 2.2vw, 1.4rem)/1.35 var(--font-display); letter-spacing: -.03em; }
+  .crypto-header p { margin-top: .45rem; color: var(--color-paper); font: 400 .85rem/1.65 var(--font-read); }
+  .crypto-options { margin-top: .6rem; }
+  .crypto-option { display: grid; grid-template-columns: minmax(0, 1fr) 8rem; gap: .55rem clamp(1rem, 3vw, 2rem); padding: 1rem 0; border-bottom: 1px solid var(--color-line); }
+  .crypto-network { display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .85rem; }
+  .crypto-network h3 { color: var(--color-bright); font: 600 1rem/1.35 var(--font-display); }
+  .crypto-network h3 span { margin-left: .25rem; color: var(--color-amber); font: 600 .68rem/1.4 var(--font-mono); }
+  .crypto-network p { color: var(--color-muted); font: 500 .65rem/1.4 var(--font-mono); }
+  .crypto-address-box { grid-column: 1; padding: .6rem .75rem; border: 1px solid var(--color-line); border-radius: 8px; background: var(--surface-inset); }
+  .crypto-address-box > span { display: block; color: var(--color-muted); font: 500 .65rem/1.5 var(--font-mono); }
+  .crypto-address-box code { display: block; margin-top: .25rem; color: var(--color-paper); font: 500 clamp(.7rem, 1.25vw, .85rem)/1.65 var(--font-mono); overflow-wrap: anywhere; user-select: all; }
+  .crypto-actions { grid-column: 1; display: flex; flex-wrap: wrap; gap: .5rem; }
+  .crypto-actions > * { display: inline-flex; align-items: center; justify-content: center; gap: .5rem; min-height: 44px; padding: .5rem .75rem; border: 1px solid var(--color-line-strong); border-radius: 7px 3px 7px 7px; font: 600 .73rem/1.4 var(--font-read); text-decoration: none; cursor: pointer; transition: border-color 160ms ease, background-color 160ms ease; }
+  .crypto-actions > [hidden] { display: none; }
+  .crypto-copy { color: var(--color-amber); border-color: color-mix(in srgb, var(--color-amber) 45%, var(--color-line)); background: color-mix(in srgb, var(--color-amber) 7%, transparent); }
+  .crypto-wallet { color: var(--color-paper); background: transparent; }
+  .crypto-wallet > span { color: var(--color-amber); }
+  .crypto-actions > *:hover { border-color: var(--color-amber); background-color: color-mix(in srgb, var(--color-amber) 10%, transparent); }
+  .crypto-actions > *:focus-visible, .crypto-address-box code:focus-visible, .crypto-note a:focus-visible { outline: 2px solid var(--color-amber); outline-offset: 3px; }
+  .crypto-status { grid-column: 1; color: var(--color-muted); font: 400 .73rem/1.4 var(--font-read); }
+  .crypto-status:empty { margin-top: -.55rem; }
+  .crypto-qr { grid-column: 2; grid-row: 1 / span 4; align-self: center; display: block; width: 100%; height: auto; border-radius: 6px; }
+  .crypto-note { margin-top: .85rem; color: var(--color-muted); font: 400 .75rem/1.65 var(--font-read); }
+  .crypto-note a { display: inline-block; color: var(--color-signal); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 520px) {
+    .crypto-option { grid-template-columns: minmax(0, 1fr) 5rem; gap: .55rem .75rem; }
+    .crypto-network, .crypto-address-box { grid-column: 1 / -1; }
+    .crypto-qr { grid-row: 3 / span 2; justify-self: end; }
+  }
+  @media (prefers-reduced-motion: reduce) { .crypto-actions > * { transition: none; } }
+</style>

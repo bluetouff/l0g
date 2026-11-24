@@ -8,6 +8,7 @@ import {
   supportBitcoin,
   validateBitcoinSupportAddress,
 } from '../src/config/support-bitcoin.mjs';
+import { supportCrypto } from '../src/config/support-crypto.mjs';
 
 // Official BIP 173 examples and vectors, including both supported v0 lengths:
 // https://github.com/bitcoin/bips/blob/master/bip-0173.mediawiki
@@ -95,16 +96,36 @@ test('URI, paramètres, fragments, espaces et contenus injectables sont refusés
   }
 });
 
-test('le QR local reste passif et conserve la destination ainsi que sa zone de silence', () => {
-  const bytes = readFileSync(new URL('../src/assets/support-bitcoin-qr.svg', import.meta.url));
+test('les nouvelles destinations conservent les adresses fournies et le montant libre', () => {
+  const [bitcoin, ethereum, solana] = supportCrypto;
+  assert.equal(bitcoin.uri, supportBitcoin.uri);
+  assert.equal(ethereum.address, '0xA9Aae53FF8be7A8E60Dc8D295418f5af490392E9');
+  assert.equal(ethereum.uri, `ethereum:${ethereum.address}@1`);
+  assert.equal(solana.address, 'BJpTf4Fq4bL7oZaF1CDbkenTMHhTFeKhDEgA6WZ2QVar');
+  assert.equal(solana.uri, `solana:${solana.address}`);
+});
+
+const qrFingerprints = {
+  bitcoin: 'bc1546ac11c933a8b9c2e3a3ff4076a61d197853217922460f27a129ac937267',
+  ethereum: '73026084afcb554617639380475c48f078273228f7b9c95d7854697c97b66fb8',
+  solana: '262ba570554f8005b79b688ee4f592e67d0d13e044d1d7fdb591b6f1a08b4bc8',
+};
+
+for (const { id, uri } of supportCrypto) {
+  test(`le QR ${id} reste passif et conserve la destination et sa zone de silence`, () => {
+    assertSupportQr(id, uri);
+  });
+}
+
+function assertSupportQr(id, uri) {
+  const bytes = readFileSync(new URL(`../src/assets/support-${id}-qr.svg`, import.meta.url));
   const svg = bytes.toString('utf8');
 
-  // Generated offline with ReportLab 4.4.9, error correction Q. Re-decode the
-  // resulting QR image before any update to this digest; metadata alone cannot
-  // establish which payment destination its visible modules encode.
+  // Re-decode the rendered QR before updating its digest. The metadata alone
+  // cannot establish which destination the visible modules encode.
   assert.equal(
     createHash('sha256').update(bytes).digest('hex'),
-    'bc1546ac11c933a8b9c2e3a3ff4076a61d197853217922460f27a129ac937267',
+    qrFingerprints[id],
     'Le QR a changé : redécoder son image avant de renouveler son empreinte.',
   );
   assert.doesNotMatch(svg, /<!DOCTYPE|<!ENTITY|<\?/iu);
@@ -127,7 +148,7 @@ test('le QR local reste passif et conserve la destination ainsi que sa zone de s
   assert.equal(root['@_width'], root['@_height']);
   assert.match(root['@_width'], /^[1-9][0-9]*$/u);
   assert.equal(root['@_shape-rendering'], 'crispEdges');
-  assert.equal(root.metadata, supportBitcoin.uri);
+  assert.equal(root.metadata, uri);
   assert.deepEqual(root.rect, { '@_width': '100%', '@_height': '100%', '@_fill': '#fff' });
   assert.deepEqual(Object.keys(root.path).sort(), ['@_d', '@_fill']);
   assert.equal(root.path['@_fill'], '#000');
@@ -150,4 +171,4 @@ test('le QR local reste passif et conserve la destination ainsi que sa zone de s
   assert.equal(Math.min(...bounds.map(run => run.y)), 4);
   assert.equal(Math.max(...bounds.map(run => run.x + run.width)), 41);
   assert.equal(Math.max(...bounds.map(run => run.y + 1)), 41);
-});
+}

@@ -1,5 +1,5 @@
 ---
-import BitcoinSupport from './BitcoinSupport.astro';
+import CryptoSupport from './CryptoSupport.astro';
 import {
   configuredSupportPaymentLinkCount,
   supportPaymentLinks,
@@ -60,8 +60,8 @@ const trust = en ? [
       </header>
 
       {!paymentLinksReady && <p class="setup-note" role="status">{en
-        ? 'The Stripe payment links are not active. Bitcoin support is available below.'
-        : 'Les liens de paiement Stripe ne sont pas encore activés. Le soutien en bitcoin est disponible ci-dessous.'}</p>}
+        ? 'Card payments are currently unavailable. You can contribute in BTC, ETH or SOL below.'
+        : 'Le paiement par carte est actuellement indisponible. Vous pouvez contribuer en BTC, ETH ou SOL ci-dessous.'}</p>}
 
       {paymentLinksReady && supportPaymentLinks.oneTime ? (
         <a class="payment-link payment-once" href={supportPaymentLinks.oneTime} rel="external nofollow" aria-describedby="payment-note">
@@ -93,7 +93,7 @@ const trust = en ? [
     </section>
   </section>
 
-  <BitcoinSupport lang={lang} />
+  <CryptoSupport lang={lang} />
 
   <section class="support-purpose" aria-labelledby="support-purpose-title">
     <p class="support-eyebrow">{en ? 'behind the pages' : 'derrière les pages'}</p>
