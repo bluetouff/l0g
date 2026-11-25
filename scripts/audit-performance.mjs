@@ -17,6 +17,8 @@ const publicationCovers = new Map([
   ['en/publications/russias-shadow-fleet/index.html', 'russias-shadow-fleet'],
   ['publications/le-systeme-nvidia/index.html', 'le-systeme-nvidia'],
   ['en/publications/the-nvidia-system/index.html', 'the-nvidia-system'],
+  ['publications/qui-gouverne-nvidia/index.html', 'qui-gouverne-nvidia'],
+  ['en/publications/who-governs-nvidia/index.html', 'who-governs-nvidia'],
   ['publications/le-cout-d-une-porte-derobee/index.html', 'le-cout-d-une-porte-derobee'],
   ['en/publications/the-cost-of-a-backdoor/index.html', 'the-cost-of-a-backdoor'],
   ['publications/la-guerre-des-machines-ordinaires/index.html', 'la-guerre-des-machines-ordinaires'],
