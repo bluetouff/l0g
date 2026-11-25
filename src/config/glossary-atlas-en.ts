@@ -876,6 +876,24 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'amortissement-comptable',
+    sigle: 'Depreciation',
+    nom: 'Allocation of an asset’s depreciable amount over its useful life',
+    def: 'Allocation of the depreciable amount of a tangible asset over its estimated useful life. Straight-line depreciation produces a constant charge while the estimates hold. If the useful life changes, the carrying amount less estimated residual value is spread over the revised remaining life. Impairment is assessed separately.',
+    ...privateCreditSection,
+    robots: 'noindex,follow',
+    guide: '/en/analysis/gpu-resale-value-depreciation-whitefiber-coreweave/',
+    atlas: {
+      formula: 'Initial annual straight-line charge = (initial cost − estimated residual value) / useful life',
+      articles: [{ label: 'The second life of GPUs', href: '/en/analysis/gpu-resale-value-depreciation-whitefiber-coreweave/', kind: 'article' }],
+      sources: [
+        { label: 'IFRS Foundation, IAS 16', href: 'https://www.ifrs.org/content/dam/ifrs/publications/html-standards/english/2026/issued/ias16.html', detail: 'Paragraphs 50–51 and 60–63: depreciable amount, revised estimates, straight-line depreciation and separate impairment treatment.', kind: 'source' },
+        { label: 'SEC, Staff Accounting Bulletin, Topic 5.CC', href: 'https://www.sec.gov/oca/sab-code-t5', detail: 'Questions 1 and 2: recoverability test under US GAAP and useful-life reassessment in the mainframe example.', kind: 'source' },
+      ],
+      related: ['capex'],
+    },
+  },
+  {
     slug: 'capex', sigle: 'Capex', nom: 'Capital expenditure',
     sectionTitle: 'Private credit & markets', accent: 'var(--color-accent)', robots: 'noindex,follow',
     guide: '/en/analysis/tsmc-chip-demand-data-center-power-risk/',

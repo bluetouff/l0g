@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 264" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="gpu-second-life-en-exit-wide-title gpu-second-life-en-exit-wide-desc" xml:lang="en">
+<title id="gpu-second-life-en-exit-wide-title">One sale, two accounting outcomes</title>
+<desc id="gpu-second-life-en-exit-wide-desc">Equipment purchased for 120 million dollars has a book value of 80 million at the end of year two under both estimates. At the end of year four it still carries 40 million on the six-year schedule, or zero on the revised four-year schedule. Reselling it for 12 million gives either a 28 million loss or a 12 million gain. Purchase cost net of proceeds is 108 million in both cases.</desc>
+<rect x=".5" y=".5" width="571" height="263" rx="9" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="22" y="29" font-size="18" text-anchor="start" fill="var(--color-paper)">One sale, two accounting outcomes</text>
+<text x="22" y="47" font-size="12" text-anchor="start" fill="var(--color-muted)">Illustrative example · book value in USD millions</text>
+<path d="M22 59H550" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M53 171.0H536" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44" y="175.0" font-size="11" text-anchor="end" fill="var(--color-muted)">0</text>
+<path d="M53 141.67H536" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4"/>
+<text x="44" y="145.67" font-size="11" text-anchor="end" fill="var(--color-muted)">40</text>
+<path d="M53 112.33H536" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4"/>
+<text x="44" y="116.33" font-size="11" text-anchor="end" fill="var(--color-muted)">80</text>
+<path d="M53 83.0H536" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="2 4"/>
+<text x="44" y="87.0" font-size="11" text-anchor="end" fill="var(--color-muted)">120</text>
+<path d="M294.5 83V171" fill="none" stroke="var(--color-line-strong)" stroke-width="0.9" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<path d="M53 83.0L536 141.67" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M294.5 112.33L536 171.0" fill="none" stroke="var(--color-signal)" stroke-width="1.85" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<circle cx="294.5" cy="112.33" r="3" fill="var(--color-ink)" stroke="var(--color-paper)" stroke-width="1.5"/>
+<circle cx="536" cy="141.67" r="3" fill="var(--color-ink)" stroke="var(--color-topic-blue)" stroke-width="1.5"/>
+<circle cx="536" cy="171.0" r="3" fill="var(--color-ink)" stroke="var(--color-signal)" stroke-width="1.5"/>
+<text x="53.0" y="190" font-size="11" text-anchor="middle" fill="var(--color-muted)">0</text>
+<text x="173.75" y="190" font-size="11" text-anchor="middle" fill="var(--color-muted)">1</text>
+<text x="294.5" y="190" font-size="11" text-anchor="middle" fill="var(--color-muted)">2</text>
+<text x="415.25" y="190" font-size="11" text-anchor="middle" fill="var(--color-muted)">3</text>
+<text x="536.0" y="190" font-size="11" text-anchor="middle" fill="var(--color-muted)">4</text>
+<path d="M22 204H550" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="22" y="225" font-size="13" text-anchor="start" fill="var(--color-paper)">Sale in year 4 · $12m</text>
+<path d="M22 243H38" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44" y="247" font-size="12" text-anchor="start" fill="var(--color-paper)">Original six-year schedule</text>
+<text x="257" y="247" font-size="13" text-anchor="end" fill="var(--color-topic-blue)">−$28m</text>
+<path d="M315 243H331" fill="none" stroke="var(--color-signal)" stroke-width="1.55" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 3"/>
+<text x="337" y="247" font-size="12" text-anchor="start" fill="var(--color-paper)">Revised four-year schedule</text>
+<text x="550" y="247" font-size="13" text-anchor="end" fill="var(--color-signal)">+$12m</text>
+</svg>

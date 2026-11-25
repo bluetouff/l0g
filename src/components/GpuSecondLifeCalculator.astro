@@ -1,0 +1,238 @@
+---
+import { calculateGpuSecondLife, gpuSecondLifeFields } from '../lib/gpu-second-life.mjs';
+
+interface Props {
+  lang: 'fr' | 'en';
+}
+const { lang } = Astro.props;
+const copy = lang === 'fr' ? {
+  title: 'Simuler la revente du parc',
+  intro: 'Changez les durées et le prix de cession pour comparer les deux plans d’amortissement.',
+  legend: 'Hypothèses du scénario fictif',
+  fields: ['Coût d’achat (M$ US)', 'Durée initiale (ans)', 'Révision après (années pleines)', 'Durée totale révisée (ans)', 'Vente après (ans)', 'Prix encaissé (M$ US)'],
+  metric: 'Montants en millions de dollars US',
+  original: 'Plan initial',
+  revised: 'Plan révisé',
+  carrying: 'Valeur comptable à la révision',
+  annual: 'Charge annuelle juste après la révision',
+  saleBook: 'Valeur comptable à la vente',
+  saleResult: 'Gain ou perte à la vente',
+  netCost: 'Coût d’achat diminué du prix de vente',
+  reset: 'Rétablir l’exemple',
+  invalid: 'Vérifiez les plages des champs. La révision doit précéder la fin des deux durées, et la vente peut avoir lieu dès la révision.',
+  nojs: 'Le tableau affiche l’exemple de l’article. JavaScript permet d’ajuster les hypothèses.',
+  limits: 'Amortissement linéaire avec une valeur résiduelle estimée à zéro. Le prix de cession est découvert à la vente. L’exploitation, le financement, la fiscalité et l’actualisation restent hors du calcul.',
+  unavailable: 'Indisponible',
+  updated: 'Résultat de cession, en millions de dollars US.',
+} : {
+  title: 'Model the equipment sale',
+  intro: 'Change the useful lives and sale price to compare the two depreciation schedules.',
+  legend: 'Assumptions for the hypothetical scenario',
+  fields: ['Purchase cost (USD millions)', 'Original life (years)', 'Revision after (full years)', 'Revised total life (years)', 'Sale after (years)', 'Sale proceeds (USD millions)'],
+  metric: 'Figures in millions of US dollars',
+  original: 'Original schedule',
+  revised: 'Revised schedule',
+  carrying: 'Book value at revision',
+  annual: 'Annual expense just after revision',
+  saleBook: 'Book value at sale',
+  saleResult: 'Gain or loss on sale',
+  netCost: 'Purchase cost less sale proceeds',
+  reset: 'Restore example',
+  invalid: 'Check the field ranges. Both useful lives must end after the revision, and the sale can occur from the revision date onward.',
+  nojs: 'The table shows the example from the article. JavaScript lets you change the assumptions.',
+  limits: 'The model uses straight-line depreciation and a zero estimated residual value. The price becomes known at sale. Operating costs and revenue, financing, taxes and discounting sit outside the model.',
+  unavailable: 'Unavailable',
+  updated: 'Result on sale, in millions of US dollars.',
+};
+
+const initial = calculateGpuSecondLife(Object.fromEntries(
+  gpuSecondLifeFields.map(({ key, initial }) => [key, initial])
+));
+if (!initial) throw new Error('Invalid starting scenario');
+
+type ResultKey = keyof NonNullable<ReturnType<typeof calculateGpuSecondLife>>;
+const resultRows: { label: string; original: ResultKey; revised: ResultKey; signed?: boolean }[] = [
+  { label: copy.carrying, original: 'bookAtRevision', revised: 'bookAtRevision' },
+  { label: copy.annual, original: 'originalAnnual', revised: 'revisedAnnual' },
+  { label: copy.saleBook, original: 'originalBookAtSale', revised: 'revisedBookAtSale' },
+  { label: copy.saleResult, original: 'originalSaleResult', revised: 'revisedSaleResult', signed: true },
+  { label: copy.netCost, original: 'netCost', revised: 'netCost' },
+];
+const locale = lang === 'fr' ? 'fr-FR' : 'en-US';
+const formatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 3 });
+const signedFormatter = new Intl.NumberFormat(locale, { maximumFractionDigits: 3, signDisplay: 'exceptZero' });
+---
+
+<section
+  id="simulation"
+  class="gpu-sale-calculator"
+  data-gpu-sale-calculator
+  data-locale={locale}
+  data-unavailable={copy.unavailable}
+  data-updated={copy.updated}
+  data-original={copy.original}
+  data-revised={copy.revised}
+  aria-labelledby="gpu-sale-title"
+>
+  <h3 id="gpu-sale-title">{copy.title}</h3>
+  <p>{copy.intro}</p>
+  <form data-controls novalidate>
+    <fieldset disabled>
+      <legend>{copy.legend}</legend>
+      <div class="gpu-sale-fields">
+        {gpuSecondLifeFields.map(({ key, initial, min, max, step }, index) => (
+          <label>
+            <span>{copy.fields[index]}</span>
+            <input
+              type="number"
+              name={key}
+              value={initial}
+              min={min}
+              max={max}
+              step={step}
+              inputmode={step === 1 ? 'numeric' : 'decimal'}
+              required
+            />
+          </label>
+        ))}
+      </div>
+      <button type="reset">{copy.reset}</button>
+    </fieldset>
+    <p id="gpu-sale-error" data-error role="alert" hidden>{copy.invalid}</p>
+  </form>
+  <noscript><p>{copy.nojs}</p></noscript>
+  <table>
+    <caption>{copy.metric}</caption>
+    <thead><tr><td></td><th scope="col">{copy.original}</th><th scope="col">{copy.revised}</th></tr></thead>
+    <tbody>
+      {resultRows.map(row => (
+        <tr>
+          <th scope="row">{row.label}</th>
+          {[row.original, row.revised].map(key => (
+            <td data-result={key} data-signed={row.signed ? 'true' : undefined}>
+              {(row.signed ? signedFormatter : formatter).format(initial[key])}
+            </td>
+          ))}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p data-status class="gpu-sale-status" role="status" aria-live="polite" aria-atomic="true"></p>
+  <p class="gpu-sale-limits">{copy.limits}</p>
+</section>
+
+<script>
+  import { calculateGpuSecondLife } from '../lib/gpu-second-life.mjs';
+
+  function bindGpuSaleCalculator() {
+    const root = document.querySelector<HTMLElement>('[data-gpu-sale-calculator]');
+    const form = root?.querySelector<HTMLFormElement>('[data-controls]');
+    const fieldset = form?.querySelector('fieldset');
+    const error = form?.querySelector<HTMLElement>('[data-error]');
+    const status = root?.querySelector<HTMLElement>('[data-status]');
+    if (!root || !form || !fieldset || !error || !status || !fieldset.disabled) return;
+
+    const inputs = [...form.querySelectorAll<HTMLInputElement>('input[type="number"]')];
+    const cells = [...root.querySelectorAll<HTMLTableCellElement>('td[data-result]')];
+    const formatter = new Intl.NumberFormat(root.dataset.locale, { maximumFractionDigits: 3 });
+    const signedFormatter = new Intl.NumberFormat(root.dataset.locale, { maximumFractionDigits: 3, signDisplay: 'exceptZero' });
+
+    const update = () => {
+      const values = Object.fromEntries(inputs.map(input => [input.name, input.valueAsNumber]));
+      const result = calculateGpuSecondLife(values);
+      error.hidden = result !== null;
+      for (const input of inputs) {
+        const invalidRelation = (input.name === 'revisionYear'
+          && (values.revisionYear >= values.originalLife || values.revisionYear >= values.revisedLife))
+          || (input.name === 'saleYear' && values.saleYear < values.revisionYear);
+        input.setAttribute('aria-invalid', String(!input.validity.valid || invalidRelation));
+      }
+
+      for (const cell of cells) {
+        const key = cell.dataset.result as keyof NonNullable<typeof result>;
+        cell.textContent = result
+          ? (cell.dataset.signed === 'true' ? signedFormatter : formatter).format(result[key])
+          : root.dataset.unavailable ?? '';
+      }
+
+      if (result) {
+        status.textContent = [
+          root.dataset.updated,
+          `${root.dataset.original}, ${signedFormatter.format(result.originalSaleResult)}.`,
+          `${root.dataset.revised}, ${signedFormatter.format(result.revisedSaleResult)}.`,
+        ].join(' ');
+      } else {
+        status.textContent = '';
+      }
+    };
+
+    form.addEventListener('input', update);
+    form.addEventListener('submit', event => event.preventDefault());
+    form.addEventListener('reset', () => requestAnimationFrame(update));
+    fieldset.disabled = false;
+  }
+
+  bindGpuSaleCalculator();
+  document.addEventListener('astro:page-load', bindGpuSaleCalculator);
+</script>
+
+<style>
+  .gpu-sale-calculator {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    background: var(--color-surface);
+    border: 1px solid var(--color-line-strong);
+    border-radius: .5rem;
+    padding: clamp(.85rem, 3vw, 1.35rem);
+    scroll-margin-top: 5rem;
+  }
+
+  .gpu-sale-calculator h3 { margin: 0 0 .5rem; }
+  .gpu-sale-calculator p { margin: .5rem 0; line-height: 1.55; }
+  .gpu-sale-calculator fieldset { padding: 0; margin: 1rem 0; border: 0; min-width: 0; }
+  .gpu-sale-calculator legend { color: var(--color-muted); margin-bottom: .5rem; font-size: .875rem; }
+
+  .gpu-sale-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
+    gap: .8rem;
+  }
+
+  .gpu-sale-fields label { display: grid; grid-template-rows: 1fr auto; gap: .3rem; min-width: 0; font-size: .8rem; }
+
+  .gpu-sale-fields input, .gpu-sale-calculator button {
+    box-sizing: border-box;
+    min-height: 2.75rem;
+    padding: .45rem .55rem;
+    background: var(--color-surface-2);
+    border: 1px solid var(--color-line-strong);
+    border-radius: .3rem;
+    color: var(--color-paper);
+    font: inherit;
+  }
+
+  .gpu-sale-fields input { width: 100%; font: 1rem/1.4 var(--font-mono); }
+  .gpu-sale-fields input[aria-invalid="true"] { border-color: var(--color-accent); }
+  .gpu-sale-calculator :is(input, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+  .gpu-sale-calculator button { margin-top: .85rem; cursor: pointer; font-size: .8rem; }
+  .gpu-sale-calculator [data-error] { color: var(--color-accent); font-size: .85rem; }
+
+  .gpu-sale-calculator table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin: 1rem 0 .8rem;
+    border-collapse: collapse;
+    font-size: .78rem;
+    overflow: visible;
+  }
+
+  .gpu-sale-calculator caption { text-align: left; color: var(--color-muted); margin-bottom: .2rem; }
+  .gpu-sale-calculator :is(th, td) { padding: .36rem .15rem; border-bottom: 1px solid var(--color-line-strong); }
+  .gpu-sale-calculator th:first-child { width: 48%; text-align: left; font-weight: 400; }
+  .gpu-sale-calculator :is(th:not(:first-child), td) { text-align: right; overflow-wrap: anywhere; }
+  .gpu-sale-calculator td { font-variant-numeric: tabular-nums; }
+  .gpu-sale-calculator td[data-signed] { color: var(--color-signal); font-weight: 600; }
+  .gpu-sale-calculator .gpu-sale-limits { color: var(--color-muted); font-size: .78rem; }
+  .gpu-sale-calculator .gpu-sale-status { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+</style>

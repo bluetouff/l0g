@@ -1,0 +1,76 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'sale' | 'amazon' | 'exit';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    sale: 'Prix et valeur comptable d’un seul lot. WhiteFiber indique avoir encaissé le prix intégral au dépôt du 14 mai 2026. Source : WhiteFiber, Form 10-Q du premier trimestre 2026.',
+    amazon: 'Les montants se rapportent à deux exercices et à des périmètres distincts. Sources : Amazon, Form 10-K 2024 et 2025.',
+    exit: 'Exemple l0g. La révision intervient après deux ans, avec une valeur résiduelle initialement estimée à zéro. Pour un prix de revente de 12 millions de dollars, le coût d’achat net du prix de vente atteint 108 millions dans les deux scénarios.',
+  },
+  en: {
+    sale: 'Sale price and carrying amount for a single lot. WhiteFiber reported that it had received full payment by the 14 May 2026 filing. Source: WhiteFiber’s first-quarter 2026 Form 10-Q.',
+    amazon: 'The amounts cover two fiscal years and different groups of assets. Sources: Amazon’s 2024 and 2025 Form 10-K filings.',
+    exit: 'Illustrative example by l0g. The estimate changes after two years. The assumed residual value at purchase is zero. Resale proceeds of $12 million leave a net purchase cost of $108 million on either schedule.',
+  },
+} as const;
+const caption = captions[lang]?.[kind];
+if (!caption) throw new TypeError('Unknown GPU second life figure.');
+
+const figures = import.meta.glob('../figures/gpu-second-life/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/gpu-second-life/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing GPU second life figure layout.');
+---
+<figure class="gpu-second-life-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .gpu-second-life-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .gpu-second-life-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .gpu-second-life-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>
