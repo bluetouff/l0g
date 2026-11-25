@@ -1,11 +1,13 @@
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
-import { readFileSync, readdirSync } from 'node:fs';
+import { mkdtempSync, readFileSync, readdirSync, rmSync, symlinkSync, truncateSync, unlinkSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 import { test } from 'node:test';
 import { fromHtml } from 'hast-util-from-html';
 import { XMLValidator } from 'fast-xml-parser';
 import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
-import { extractNvidiaVolumeTwoBody, offlineNvidiaVolumeTwoSvg, renderNvidiaVolumeTwoBody } from './generate-nvidia-volume-two-epub.mjs';
+import { extractNvidiaVolumeTwoBody, generateNvidiaVolumeTwoEpub, offlineNvidiaVolumeTwoSvg, renderNvidiaVolumeTwoBody } from './generate-nvidia-volume-two-epub.mjs';
 
 const chapter = { number: 13, title: 'Title', route: '/posts/test/', chapter: 'ch002.xhtml' };
 const tree = source => fromHtml(source, { fragment: true }).children[0];
@@ -37,6 +39,21 @@ test('converter rejects execution, remote SVG resources and broken local paint r
   assert.throws(() => offlineNvidiaVolumeTwoSvg(tree(svg(320, 'Test', '<script>bad()</script>'))), /Unexpected offline SVG node/);
   assert.throws(() => offlineNvidiaVolumeTwoSvg(tree(svg(320, 'Test', '<use href="https://elsewhere.invalid/#shape"/>'))), /External or broken SVG reference/);
   assert.throws(() => offlineNvidiaVolumeTwoSvg(tree(svg(320, 'Test', '<rect fill="url(#missing)"/>'))), /Unexpected offline SVG paint/);
+});
+
+test('generator rejects a symlink or oversized file at the snapshot manifest path', async t => {
+  const root = mkdtempSync(join(tmpdir(), 'nvidia-volume-two-test-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const manifest = join(root, 'manifest.json');
+  const other = join(root, 'other.json');
+  const generate = () => generateNvidiaVolumeTwoEpub(root, '0'.repeat(40), 'fr');
+  writeFileSync(other, '{}');
+  symlinkSync(other, manifest);
+  await assert.rejects(generate, { code: 'ELOOP' });
+  unlinkSync(manifest);
+  writeFileSync(manifest, '{}');
+  truncateSync(manifest, 3_000_001);
+  await assert.rejects(generate, /Invalid input file/);
 });
 
 for (const book of Object.values(nvidiaVolumeTwoEditions)) {

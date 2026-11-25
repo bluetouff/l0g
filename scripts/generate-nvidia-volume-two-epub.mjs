@@ -1,5 +1,5 @@
 import { createHash } from 'node:crypto';
-import { copyFileSync, lstatSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'node:fs';
+import { closeSync, constants, copyFileSync, fstatSync, mkdirSync, openSync, readFileSync, readSync, rmSync, writeFileSync } from 'node:fs';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
@@ -42,9 +42,26 @@ const normalized = value => value.replace(/\s+/gu, ' ').trim();
 const proseText = node => nodes(node).filter(item => item.type === 'text').map(item => item.value).join('');
 
 function fileBytes(file, maxBytes = 3_000_000) {
-  const stat = lstatSync(file);
-  if (!stat.isFile() || stat.size === 0 || stat.size > maxBytes) throw new Error(`Invalid input file: ${file}`);
-  return readFileSync(file);
+  const fd = openSync(file, constants.O_RDONLY | constants.O_NOFOLLOW | constants.O_NONBLOCK);
+  try {
+    const before = fstatSync(fd);
+    if (!before.isFile() || before.size === 0 || before.size > maxBytes) throw new Error(`Invalid input file: ${file}`);
+    // Read at most one byte beyond the checked size, even if the file grows.
+    const buffer = Buffer.alloc(before.size + 1);
+    let length = 0;
+    while (length < buffer.length) {
+      const count = readSync(fd, buffer, length, buffer.length - length, null);
+      if (count === 0) break;
+      length += count;
+    }
+    const after = fstatSync(fd);
+    if (length !== before.size || after.size !== before.size || after.mtimeMs !== before.mtimeMs || after.ctimeMs !== before.ctimeMs) {
+      throw new Error(`Input changed while reading: ${file}`);
+    }
+    return buffer.subarray(0, length);
+  } finally {
+    closeSync(fd);
+  }
 }
 
 function svgPaint(value, ids) {
