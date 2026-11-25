@@ -1,0 +1,82 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'incident' | 'delta' | 'cost';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    incident: 'Chronologie publiée par Microsoft. La première barre s’arrête à la fin de l’impact actif. La surveillance se poursuit jusqu’au lendemain.',
+    delta: 'Delta estime l’effet sur le résultat d’exploitation du trimestre de septembre 2024. Le carburant économisé compense une partie des recettes perdues et des dépenses additionnelles.',
+    cost: 'Scénario fictif l0g sur sept jours. Les bandes ont la même échelle. Sur les ventes exposées, le secours traite 200 000 € et la reprise en rattrape 225 000. La marge perdue représente 35 % des ventes annulées.',
+  },
+  en: {
+    incident: 'Timeline published by Microsoft. The first bar ends when active impact ceased. Monitoring continued into the next day.',
+    delta: 'Delta’s estimate of the impact on operating income in the September 2024 quarter. Fuel savings offset part of the lost revenue and extra costs.',
+    cost: 'Hypothetical seven-day l0g scenario. The bars share a scale. The fallback processes €200,000 of exposed sales and recovery saves €225,000. Lost contribution is 35% of lost sales.',
+  },
+} as const;
+const sourceRefs = { incident: ['S02', 'S03'], delta: ['S15', 'S16', 'S17'], cost: [] } as const;
+const caption = captions[lang]?.[kind];
+if (!caption) throw new TypeError('Unknown Microsoft week figure.');
+
+const figures = import.meta.glob('../figures/microsoft-week/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/microsoft-week/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing Microsoft week figure layout.');
+---
+<figure class="microsoft-week-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {caption}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .microsoft-week-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .microsoft-week-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .microsoft-week-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

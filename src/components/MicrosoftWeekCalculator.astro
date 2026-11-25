@@ -1,0 +1,222 @@
+---
+import { calculateMicrosoftWeek, microsoftWeekFields, microsoftWeekRecoveryRates } from '../lib/microsoft-week.mjs';
+
+interface Props {
+  lang: 'fr' | 'en';
+}
+
+const { lang } = Astro.props;
+const copy = lang === 'fr' ? {
+  title: 'Simuler le coût d’une semaine',
+  legend: 'Hypothèses du scénario',
+  fields: ['Ventes prévues hors taxes (€)', 'Part des ventes exposée (%)', 'Part traitée par le secours (%)', 'Part du solde rattrapée (%)', 'Marge sur coûts variables (%)', 'Surcoûts de continuité et de reprise (€)'],
+  market: 'Parcours des ventes et coût d’exploitation',
+  rows: ['Ventes prévues', 'Ventes exposées', 'Traitées par le secours', 'En attente à la reprise', 'Rattrapées après la reprise', 'Ventes définitivement perdues', 'Marge perdue', 'Surcoûts directs'],
+  total: 'Coût d’exploitation estimé',
+  presets: 'Rattrapage du solde en attente',
+  reset: 'Rétablir l’exemple',
+  invalid: 'Vérifiez les champs signalés. Les montants doivent être compris entre 0 et 1 000 milliards d’euros, les pourcentages entre 0 et 100.',
+  unavailable: 'Indisponible',
+  limits: 'Modèle d’une entreprise fictive. Le rattrapage peut se poursuivre au-delà des sept jours. Assurance, crédits contractuels, financement et fiscalité restent hors du calcul.',
+  nojs: 'Les résultats de l’exemple restent consultables. JavaScript permet de modifier les hypothèses.',
+} : {
+  title: 'Estimate the cost of a week',
+  legend: 'Scenario assumptions',
+  fields: ['Forecast sales excluding VAT (€)', 'Share of sales exposed (%)', 'Exposed sales handled by fallback (%)', 'Share of the backlog recovered (%)', 'Contribution margin (%)', 'Extra continuity and recovery costs (€)'],
+  market: 'Sales and operating cost',
+  rows: ['Forecast sales', 'Sales exposed', 'Handled by the fallback', 'Backlog at restoration', 'Recovered after restoration', 'Permanently lost sales', 'Lost contribution margin', 'Direct extra costs'],
+  total: 'Estimated operating cost',
+  presets: 'Backlog recovery',
+  reset: 'Restore example',
+  invalid: 'Check the marked fields. Amounts must be between €0 and €1 trillion and percentages between 0 and 100.',
+  unavailable: 'Unavailable',
+  limits: 'Illustrative company. Sales can be recovered after day seven. Insurance, service credits, financing and tax sit outside the model.',
+  nojs: 'The results show the example from the article. JavaScript lets you change the assumptions.',
+};
+const locale = lang === 'fr' ? 'fr-FR' : 'en-IE';
+const formatter = new Intl.NumberFormat(locale, { style: 'currency', currency: 'EUR', maximumFractionDigits: 2 });
+const baseline = Object.fromEntries(microsoftWeekFields.map(({ key, initial }) => [key, initial]));
+const initial = calculateMicrosoftWeek(baseline);
+if (!initial) throw new Error('Invalid Microsoft week example');
+
+const rows = ['revenue', 'exposed', 'served', 'backlog', 'recovered', 'lost', 'contribution', 'extra'] as const;
+---
+
+<section
+  id="simulation"
+  class="microsoft-week-calculator"
+  data-microsoft-week
+  data-locale={locale}
+  data-unavailable={copy.unavailable}
+  aria-labelledby="microsoft-week-title"
+>
+  <h3 id="microsoft-week-title">{copy.title}</h3>
+  <form data-controls novalidate>
+    <fieldset disabled>
+      <legend>{copy.legend}</legend>
+      <div class="microsoft-week-fields">
+        {microsoftWeekFields.map(({ key, initial, max }, index) => (
+          <label>
+            <span>{copy.fields[index]}</span>
+            <input
+              type="number"
+              name={key}
+              value={initial}
+              min="0"
+              max={max}
+              step="any"
+              inputmode="decimal"
+              required
+            />
+          </label>
+        ))}
+      </div>
+      <div class="microsoft-week-actions">
+        <div role="group" aria-label={copy.presets} class="microsoft-week-presets">
+          {microsoftWeekRecoveryRates.map(rate => (
+            <button type="button" data-recovery={rate} aria-pressed={String(rate === baseline.recovery)}>
+              {(rate / 100).toLocaleString(locale, { style: 'percent' })}
+            </button>
+          ))}
+        </div>
+        <button type="reset">{copy.reset}</button>
+      </div>
+    </fieldset>
+    <p data-error role="alert" hidden>{copy.invalid}</p>
+  </form>
+  <noscript><p>{copy.nojs}</p></noscript>
+  <table>
+    <caption>{copy.market}</caption>
+    <tbody>
+      {rows.map((key, index) => (
+        <tr>
+          <th scope="row">{copy.rows[index]}</th>
+          <td data-result={key}>{formatter.format(initial[key])}</td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  <p class="microsoft-week-total">
+    <span id="microsoft-week-total">{copy.total}</span>
+    <output data-result="total" data-value={initial.total} aria-labelledby="microsoft-week-total">
+      {formatter.format(initial.total)}
+    </output>
+  </p>
+  <p class="microsoft-week-limits">{copy.limits}</p>
+</section>
+
+<script>
+  import { calculateMicrosoftWeek } from '../lib/microsoft-week.mjs';
+
+  function bindMicrosoftWeekCalculator() {
+    const root = document.querySelector<HTMLElement>('[data-microsoft-week]');
+    const form = root?.querySelector<HTMLFormElement>('[data-controls]');
+    const fieldset = form?.querySelector('fieldset');
+    const error = form?.querySelector<HTMLElement>('[data-error]');
+    const total = root?.querySelector<HTMLOutputElement>('output[data-result="total"]');
+    const recovery = form?.querySelector<HTMLInputElement>('input[name="recovery"]');
+    if (!root || !form || !fieldset || !error || !total || !recovery || !fieldset.disabled) return;
+
+    const inputs = Array.from(form.querySelectorAll<HTMLInputElement>('input[type="number"]'));
+    const cells = Array.from(root.querySelectorAll<HTMLTableCellElement>('td[data-result]'));
+    const presets = Array.from(form.querySelectorAll<HTMLButtonElement>('button[data-recovery]'));
+    const formatter = new Intl.NumberFormat(root.dataset.locale, {
+      style: 'currency', currency: 'EUR', maximumFractionDigits: 2,
+    });
+
+    function update() {
+      const values = Object.fromEntries(inputs.map(input => [input.name, input.valueAsNumber]));
+      const result = calculateMicrosoftWeek(values);
+      error.hidden = result !== null;
+      for (const input of inputs) {
+        input.setAttribute('aria-invalid', String(!input.validity.valid));
+      }
+      for (const preset of presets) {
+        preset.setAttribute('aria-pressed', String(Number(preset.dataset.recovery) === recovery.valueAsNumber));
+      }
+      const unavailable = root.dataset.unavailable ?? '';
+      for (const cell of cells) {
+        const key = cell.dataset.result as keyof NonNullable<typeof result>;
+        cell.textContent = result ? formatter.format(result[key]) : unavailable;
+      }
+      total.value = result ? formatter.format(result.total) : unavailable;
+      total.dataset.value = result ? String(result.total) : '';
+    }
+
+    for (const preset of presets) {
+      preset.addEventListener('click', () => {
+        recovery.value = preset.dataset.recovery ?? '';
+        update();
+      });
+    }
+    form.addEventListener('input', update);
+    form.addEventListener('submit', event => event.preventDefault());
+    form.addEventListener('reset', () => requestAnimationFrame(update));
+    fieldset.disabled = false;
+  }
+
+  bindMicrosoftWeekCalculator();
+  document.addEventListener('astro:page-load', bindMicrosoftWeekCalculator);
+</script>
+
+<style>
+  .microsoft-week-calculator {
+    box-sizing: border-box;
+    margin: 2rem 0;
+    border: 1px solid var(--color-line-strong);
+    border-radius: .5rem;
+    padding: clamp(.85rem, 3vw, 1.35rem);
+    background: var(--color-surface);
+    scroll-margin-top: 5rem;
+  }
+
+  h3, fieldset { margin: 0 0 .85rem; }
+  fieldset { border: 0; padding: 0; min-width: 0; }
+  legend, caption, .microsoft-week-limits { color: var(--color-muted); font-size: .8rem; }
+  legend { margin-bottom: .7rem; }
+  .microsoft-week-fields {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(10rem, 100%), 1fr));
+    gap: .75rem;
+  }
+
+  label { display: grid; grid-template-rows: 1fr auto; gap: .3rem; min-width: 0; font-size: .8rem; }
+
+  input, button {
+    box-sizing: border-box;
+    min-height: 2.75rem;
+    padding: .4rem .55rem;
+    border: 1px solid var(--color-line-strong);
+    border-radius: .3rem;
+    background: var(--color-surface-2);
+    color: var(--color-paper);
+    font: inherit;
+  }
+
+  input { width: 100%; font: 1rem/1.4 var(--font-mono); }
+  button { cursor: pointer; font-size: .8rem; }
+  [aria-invalid="true"], button[aria-pressed="true"] { border-color: var(--color-signal); }
+  [aria-invalid="true"] { border-color: var(--color-accent); }
+  :is(input, button):focus-visible { outline: 2px solid var(--color-signal); outline-offset: 2px; }
+  [data-error] { color: var(--color-accent); font-size: .85rem; }
+
+  .microsoft-week-actions, .microsoft-week-presets { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .microsoft-week-actions { justify-content: space-between; margin-top: .8rem; }
+
+  table {
+    display: table;
+    table-layout: fixed;
+    width: 100%;
+    margin: 1rem 0 .8rem;
+    border-collapse: collapse;
+    font-size: .82rem;
+    overflow: visible;
+  }
+
+  caption { text-align: left; margin-bottom: .25rem; }
+  :is(th, td) { padding: .4rem .15rem; border-bottom: 1px solid var(--color-line-strong); }
+  th { width: 59%; text-align: left; font-weight: 400; }
+  td { text-align: right; overflow-wrap: anywhere; font-variant-numeric: tabular-nums; }
+  .microsoft-week-total { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .35rem .8rem; align-items: baseline; }
+  output { color: var(--color-signal); font: 1.15rem var(--font-mono); overflow-wrap: anywhere; }
+</style>

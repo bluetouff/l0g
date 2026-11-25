@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 309" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="microsoft-week-fr-cost-mobile-title microsoft-week-fr-cost-mobile-desc" xml:lang="fr">
+<title id="microsoft-week-fr-cost-mobile-title">Du retard à la perte</title>
+<desc id="microsoft-week-fr-cost-mobile-desc">Sur un million d’euros de ventes hors taxes, 500 000 euros sont exposés. Le secours en traite 200 000, puis 225 000 sont récupérés et 75 000 sont perdus. Les 26 250 euros de marge perdue et 40 000 euros de frais exceptionnels donnent un coût de 66 250 euros, avant assurance, crédits contractuels, financement et impôt.</desc>
+<rect x="0.5" y="0.5" width="319" height="308" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="16" fill="var(--color-paper)" text-anchor="start">Du retard à la perte</text>
+<text x="16" y="48" font-size="12" fill="var(--color-muted)" text-anchor="start">Cas fictif · 1 000 000 € de ventes HT</text>
+<g transform="translate(287 17)" aria-hidden="true"><path d="M5 2h7l4 4v12H5zm7 0v4h4M8 9h5m-5 3h5m-5 3h3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<path d="M16 60L304 60" fill="none" stroke="var(--color-line)" stroke-width="1"/>
+<text x="16" y="83" font-size="13" fill="var(--color-paper)" text-anchor="start">Début de panne</text>
+<text x="304" y="83" font-size="12" fill="var(--color-accent)" text-anchor="end">500 000 € exposés</text>
+<rect x="16.5" y="91" width="143" height="10" rx="0" fill="var(--color-topic-blue)" fill-opacity="0.22" stroke="var(--color-topic-blue)"/>
+<rect x="160.5" y="91" width="143" height="10" rx="0" fill="var(--color-accent)" fill-opacity="0.22" stroke="var(--color-accent)"/>
+<text x="16" y="125" font-size="13" fill="var(--color-paper)" text-anchor="start">Fin de panne</text>
+<text x="304" y="125" font-size="12" fill="var(--color-accent)" text-anchor="end">300 000 € en attente</text>
+<rect x="16.5" y="133" width="143" height="10" rx="0" fill="var(--color-topic-blue)" fill-opacity="0.22" stroke="var(--color-topic-blue)"/>
+<rect x="160.5" y="133" width="56.6" height="10" rx="0" fill="var(--color-signal)" fill-opacity="0.22" stroke="var(--color-signal)"/>
+<rect x="218.1" y="133" width="85.4" height="10" rx="0" fill="var(--color-accent)" fill-opacity="0.22" stroke="var(--color-accent)"/>
+<text x="16" y="167" font-size="13" fill="var(--color-paper)" text-anchor="start">Après reprise</text>
+<text x="304" y="167" font-size="12" fill="var(--color-accent)" text-anchor="end">75 000 € perdus</text>
+<rect x="16.5" y="175" width="143" height="10" rx="0" fill="var(--color-topic-blue)" fill-opacity="0.22" stroke="var(--color-topic-blue)"/>
+<rect x="160.5" y="175" width="56.6" height="10" rx="0" fill="var(--color-signal)" fill-opacity="0.22" stroke="var(--color-signal)"/>
+<rect x="218.1" y="175" width="63.8" height="10" rx="0" fill="var(--color-amber)" fill-opacity="0.22" stroke="var(--color-amber)"/>
+<rect x="282.9" y="175" width="20.6" height="10" rx="0" fill="var(--color-accent)" fill-opacity="0.22" stroke="var(--color-accent)"/>
+<circle cx="19" cy="199" r="3" fill="var(--color-topic-blue)"/>
+<text x="28" y="203" font-size="11" fill="var(--color-muted)" text-anchor="start">Hors panne</text>
+<circle cx="163" cy="199" r="3" fill="var(--color-signal)"/>
+<text x="172" y="203" font-size="11" fill="var(--color-muted)" text-anchor="start">En secours</text>
+<circle cx="19" cy="218" r="3" fill="var(--color-amber)"/>
+<text x="28" y="222" font-size="11" fill="var(--color-muted)" text-anchor="start">Rattrapées</text>
+<circle cx="163" cy="218" r="3" fill="var(--color-accent)"/>
+<text x="172" y="222" font-size="11" fill="var(--color-muted)" text-anchor="start">À traiter ou perdues</text>
+<path d="M16 240L304 240" fill="none" stroke="var(--color-line)" stroke-width="1"/>
+<text x="64" y="266" font-size="15" fill="var(--color-paper)" text-anchor="middle">26 250 €</text>
+<text x="64" y="286" font-size="11" fill="var(--color-muted)" text-anchor="middle">Marge perdue</text>
+<text x="112" y="266" font-size="14" fill="var(--color-muted)" text-anchor="middle">+</text>
+<text x="160" y="266" font-size="15" fill="var(--color-paper)" text-anchor="middle">40 000 €</text>
+<text x="160" y="286" font-size="11" fill="var(--color-muted)" text-anchor="middle">Frais de reprise</text>
+<text x="208" y="266" font-size="14" fill="var(--color-muted)" text-anchor="middle">=</text>
+<text x="256" y="266" font-size="15" fill="var(--color-signal)" text-anchor="middle">66 250 €</text>
+<text x="256" y="286" font-size="11" fill="var(--color-muted)" text-anchor="middle">Coût total</text>
+</svg>
