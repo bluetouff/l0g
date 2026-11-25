@@ -1,5 +1,6 @@
 ---
 import NavigationBadge from './NavigationBadge.astro';
+import NavigationIcon from './NavigationIcon.astro';
 interface Props {
   path: string;
   compact?: boolean;
@@ -75,7 +76,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
     <div class="en-utilities">
       <a class="en-search" href="/en/search/" aria-current={isActive('/en/search/') ? 'page' : undefined}>Search</a>
       {!compact && <a class="en-start" href="/en/start/">Start here <span aria-hidden="true">↗</span></a>}
-      <a href="/en/support/" class="en-support" aria-current={isActive('/en/support/') ? 'page' : undefined}>Support l0g <span aria-hidden="true">↗</span></a>
+      <a href="/en/support/" class="en-support" aria-current={isActive('/en/support/') ? 'page' : undefined}>Support l0g <NavigationIcon name="support" compact /></a>
       <div class="en-language" aria-label="Edition"><span lang="en">EN</span><a href="/" lang="fr" hreflang="fr" aria-label="Lire l0g en français">FR</a></div>
       <button type="button" class="en-theme" aria-label="Light theme" aria-pressed="false" hidden>
         <svg class="en-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4" /><path d="M12 2v2m0 16v2M2 12h2m16 0h2M5 5l1.5 1.5m11 11L19 19M5 19l1.5-1.5m11-11L19 5" /></svg>
@@ -167,7 +168,7 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
   .en-utilities .en-start { border-color: color-mix(in srgb, var(--color-signal) 30%, var(--color-line)); background: color-mix(in srgb, var(--color-signal) 4%, var(--color-surface)); }
   .en-start > span { color: var(--color-signal); }
   .en-utilities .en-support { border-color: color-mix(in srgb, var(--color-accent) 58%, var(--color-line)); background: color-mix(in srgb, var(--color-accent) 11%, var(--color-surface)); }
-  .en-support > span { display: grid; place-items: center; width: 22px; height: 22px; border: 1px solid color-mix(in srgb, var(--color-accent) 27%, transparent); border-radius: 50%; color: var(--color-accent); }
+  .en-support :global(.navigation-icon) { width: 22px; height: 22px; padding: 0; border: 0; background: transparent; box-shadow: none; }
   .en-utilities .en-start:hover { border-color: color-mix(in srgb, var(--color-signal) 75%, var(--color-line)); background: color-mix(in srgb, var(--color-signal) 9%, var(--color-surface)); color: var(--color-signal); }
   .en-utilities .en-support:is(:hover, [aria-current]) { border-color: var(--color-accent); background: color-mix(in srgb, var(--color-accent) 18%, var(--color-surface)); color: var(--color-bright); }
   .english-header :is(.en-start, .en-support):focus-visible { border-radius: 8px; outline-offset: 4px; }
@@ -245,7 +246,6 @@ const mobileExploreActive = exploreActive || primary.some((item) => !item.mobile
     .en-brand-caption { display: none; }
     .en-utilities { min-width: 0; flex-wrap: wrap; justify-content: flex-end; gap: .2rem .55rem; }
     .en-utilities .en-support { gap: .5rem; padding: .35rem .65rem; font-size: .67rem; }
-    .en-support > span { width: 18px; height: 18px; }
     .en-language { padding-left: 0; border: 0; gap: .5rem; }
     .en-language > span { display: none; }
     .en-theme { width: 44px; margin-left: 0; border: 0; }

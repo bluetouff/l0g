@@ -10,7 +10,9 @@ const { name, compact = false } = Astro.props;
 ---
 
 <svg class:list={['navigation-icon', { 'is-compact': compact, 'is-support': name === 'support' }]} aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" focusable="false">
-  <use href={`#l0g-nav-${name}`} />
+  {name === 'support'
+    ? <path fill="currentColor" stroke="none" d="M16 25.5 7.3 17A6.2 6.2 0 0 1 16 8.2 6.2 6.2 0 0 1 24.7 17Z" />
+    : <use href={`#l0g-nav-${name}`} />}
 </svg>
 
 <style is:global>
@@ -28,7 +30,7 @@ const { name, compact = false } = Astro.props;
     color: var(--color-nav-idle);
     transition: color 180ms, border-color 180ms;
   }
-  .navigation-icon.is-support { --icon-accent: var(--color-accent); }
+  .navigation-icon.is-support { --icon-accent: var(--color-accent); color: var(--icon-accent); }
   .navigation-icon.is-compact { width: 2rem; height: 2rem; padding: 0.22rem; border-radius: 9px; }
   a:hover > .navigation-icon,
   a:focus-visible > .navigation-icon,

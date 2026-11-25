@@ -5,9 +5,10 @@ import NavigationItemText from './NavigationItemText.astro';
 
 interface Props {
   path: string;
+  lang?: 'fr' | 'en';
 }
 
-const { path } = Astro.props;
+const { path, lang = 'fr' } = Astro.props;
 const norm = (value: string) => (value.length > 1 ? value.replace(/\/$/, '') : value);
 const currentPath = norm(path);
 
@@ -21,12 +22,16 @@ type NavItem = {
   glyph?: NavigationIconName;
 };
 
+const supportItem: NavItem & { glyph: NavigationIconName } = lang === 'en'
+  ? { href: '/en/support/', label: 'Support l0g', glyph: 'support' }
+  : { href: '/soutenir/', label: 'Soutenir', glyph: 'support' };
+
 const primary: Array<NavItem & { glyph: NavigationIconName }> = [
   { href: '/', label: 'Lire', glyph: 'read', matches: ['/', '/maintenant', '/posts', '/sujet', '/sujets', '/hebdo', '/publications'] },
   { href: '/demarrer/', label: 'Comprendre', glyph: 'understand', matches: ['/demarrer', '/guides', '/glossaire', '/outils'] },
   { href: '/radar/', label: 'Observer', glyph: 'observe', matches: ['/radar', '/atlas', '/dashboards', '/confluence', '/risk-diff', '/series'] },
   { href: '/methodologie/', label: 'Vérifier', glyph: 'verify', matches: ['/methodologie', '/sources', '/preuves', '/backtests', '/protocole-editorial'] },
-  { href: '/soutenir/', label: 'Soutenir', glyph: 'support', matches: ['/soutenir'] },
+  supportItem,
 ];
 
 const groups: Array<{ label: string; glyph: NavigationIconName; items: NavItem[] }> = [
@@ -87,7 +92,7 @@ const developerItems: NavItem[] = [
 ];
 
 const utilityItems: NavItem[] = [
-  { href: '/soutenir/', label: 'Soutenir', glyph: 'support' },
+  supportItem,
   { href: '/demarrer/#fonctionnalites', label: 'Toutes les fonctionnalités' },
   { href: '/about/', label: 'À propos' },
   { href: '/status/', label: 'Statut' },
@@ -96,7 +101,7 @@ const utilityItems: NavItem[] = [
 ];
 const mobileUtilityItems: NavItem[] = [
   { href: '/auditer-l-opacite/', label: 'Auditer l’opacité' },
-  ...utilityItems,
+  ...utilityItems.filter((item) => item.href !== supportItem.href),
 ];
 
 function isActive(item: NavItem): boolean {
@@ -176,6 +181,10 @@ function isGroupItemActive(item: NavItem, items: NavItem[]): boolean {
         <path d="m16 16 4 4"></path>
       </svg>
       Rechercher
+    </a>
+    <a href={supportItem.href} class="mobile-support" aria-current={isActive(supportItem) ? 'page' : undefined}>
+      <NavigationIcon name={supportItem.glyph} compact />
+      {supportItem.label}
     </a>
     <details class="mobile-menu">
       <summary>
@@ -488,27 +497,42 @@ function isGroupItemActive(item: NavItem, items: NavItem[]): boolean {
 
   .mobile-nav {
     display: flex;
+    flex-wrap: wrap;
     align-items: stretch;
     justify-content: flex-start;
-    gap: 0.35rem 0.75rem;
+    gap: 0.35rem 0.45rem;
     margin-top: 1rem;
     border-top: 1px solid var(--color-line);
     border-bottom: 1px solid var(--color-line);
   }
   .mobile-search,
+  .mobile-support,
   .mobile-menu > summary {
     display: inline-flex;
     min-height: 3.15rem;
     align-items: center;
-    gap: 0.55rem;
+    gap: 0.4rem;
     color: var(--color-paper);
     font-family: var(--font-mono);
     font-size: 0.75rem;
     font-weight: 600;
-    letter-spacing: 0.09em;
+    letter-spacing: 0.055em;
     text-transform: uppercase;
   }
   .mobile-search { color: var(--color-signal); }
+  .mobile-support { padding-inline: 0.25rem; color: var(--color-accent); }
+  .mobile-support :global(.navigation-icon) {
+    width: 1.3rem;
+    height: 1.3rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    box-shadow: none;
+  }
+  .mobile-support:is(:hover, [aria-current='page']) {
+    text-decoration: underline;
+    text-underline-offset: 0.3em;
+  }
   .mobile-menu { position: static; margin-left: auto; }
   .mobile-menu > summary {
     min-height: 2.35rem;
@@ -576,6 +600,10 @@ function isGroupItemActive(item: NavItem, items: NavItem[]): boolean {
     gap: 0.45rem;
   }
 
+  @media (max-width: 360px) {
+    .mobile-search svg { display: none; }
+    .mobile-support { padding-inline: 0; }
+  }
   @media (min-width: 980px) and (max-width: 1099px) {
     .desktop-nav { gap: 0.75rem; }
     .nav-primary { gap: 0.45rem; font-size: 0.76rem; letter-spacing: 0.04em; }

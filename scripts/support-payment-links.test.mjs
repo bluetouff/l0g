@@ -97,6 +97,8 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(englishPage, /\{ hreflang: 'fr', href: frenchUrl \}/);
   assert.doesNotMatch(englishPage, /<iframe|<script[^>]+src=|js\.stripe\.com|stripe\.com\/v3/iu);
   assert.match(navigation, /\{ href: '\/soutenir\/', label: 'Soutenir'/);
+  const mobileBeforeMenu = navigation.match(/<nav class="mobile-nav"[^>]*>([\s\S]*?)<details class="mobile-menu">/u)?.[1] ?? '';
+  assert.match(mobileBeforeMenu, /class="mobile-support"[^>]*>\s*<NavigationIcon name=\{supportItem\.glyph\} compact/u);
   assert.match(navigation, /href="\/recherche\/"/);
   assert.match(navigation, /aria-keyshortcuts="\/ Meta\+K Control\+K"/);
   assert.match(navigation, /location\.assign\('\/recherche\/\?focus=1'\)/);
@@ -115,7 +117,7 @@ test('la page active est visible dans la navigation, la recherche et les colonne
   assert.match(englishGuidePage, /grid-template-columns: minmax\(0, 42rem\) 290px/);
   const englishNavigation = await readFile(new URL('../src/components/EnglishNavigation.astro', import.meta.url), 'utf8');
   assert.match(englishLayout, /<EnglishNavigation path=\{Astro.url.pathname\} compact=\{compactNavigation\}/);
-  assert.match(englishNavigation, /href="\/en\/support\/"[^>]*>Support l0g/);
+  assert.match(englishNavigation, /href="\/en\/support\/"[^>]*>Support l0g\s+<NavigationIcon name="support" compact/u);
   const englishFooter = await readFile(new URL('../src/components/EnglishFooter.astro', import.meta.url), 'utf8');
   assert.match(englishLayout, /<EnglishFooter\b/);
   assert.match(englishFooter, /\{ href: '\/en\/support\/', label: 'Support l0g'/);
@@ -131,6 +133,15 @@ test('la page active est visible dans la navigation, la recherche et les colonne
     />l0g ne dépose aucun cookie/,
   );
   assert.doesNotMatch(astroConfig, /page !== 'https:\/\/l0g\.fr\/soutenir\/'/);
+});
+
+test('les en-têtes des simulateurs autonomes affichent le soutien FR et EN', async () => {
+  for (const slug of ['aluminium-scrap', 'cacao-tresorerie', 'leasing-decote', 'moteurs-avion']) {
+    const markup = await readFile(new URL(`../public/outils/${slug}/index.html`, import.meta.url), 'utf8');
+    const header = markup.match(/<nav\b[^>]*>([\s\S]*?)<\/nav>/u)?.[1] ?? '';
+    assert.match(header, /href="https:\/\/l0g\.fr\/soutenir\/" lang="fr"><span aria-hidden="true">♥<\/span> Soutenir/u, slug);
+    assert.match(header, /href="https:\/\/l0g\.fr\/en\/support\/" lang="en"><span aria-hidden="true">♥<\/span> Support l0g/u, slug);
+  }
 });
 
 test('les pages de soutien FR et EN déclarent leurs JPEG dédiés en 1200 × 630', async () => {
