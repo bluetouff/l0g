@@ -138,7 +138,7 @@ test('the production catalogue accounts for every raw generator and every source
  const pkg=JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'),'utf8'));
  const raw=[...pkg.scripts['build:epub:generate'].matchAll(/node (scripts\/[^ &]+\.mjs)/gu)].map(match=>match[1]).filter(file=>file!=='scripts/build-epub.mjs');
  assert.deepEqual(groups.flatMap(group=>group.generators).sort(),raw.sort());
- assert.equal(groups.length,23);
+ assert.equal(groups.length,24);
  assert.ok(groups.every(group=>group.snapshot&&group.books.length&&group.outputs.length));
  assert.ok(groups.every(group=>!group.inputs.includes('src/content')));
  assert.ok(groups.every(group=>!['scripts','src/components','src/lib','src/config','src/figures'].some(directory=>group.inputs.includes(directory))));
@@ -173,6 +173,11 @@ test('the production catalogue accounts for every raw generator and every source
  assert.equal(nvidia.inputs.filter(file=>file.startsWith('src/components/')&&/Nvidia[^/]*\.astro$/u.test(file)).length,12,'the twenty-four chapter imports include every controlled figure component');
  assert.ok(nvidia.inputs.includes('public/publications/le-systeme-nvidia-cover.jpg'));
  assert.ok(!nvidia.outputs.includes('public/publications/le-systeme-nvidia-cover.jpg'),'artwork retains ownership of the new book covers');
+ const volumeTwo=groups.find(group=>group.name==='epub-nvidia-volume-two');
+ assert.deepEqual(volumeTwo.books,['qui-gouverne-nvidia','who-governs-nvidia']);
+ assert.deepEqual(volumeTwo.generators,[],'build reads the checked-in works and does not fetch publication snapshots');
+ assert.deepEqual(volumeTwo.outputs,['public/publications/qui-gouverne-nvidia-l0g.epub','public/publications/who-governs-nvidia-l0g.epub']);
+ for(const directory of volumeTwo.books) assert.ok(volumeTwo.stableInputs.includes(`src/epub/${directory}`));
  const insurance=groups.find(group=>group.name==='epub-insurance');
  assert.ok(insurance.inputs.some(file=>file.startsWith('src/content/posts-en/')));
  assert.ok(insurance.inputs.some(file=>file.startsWith('public/illustrations/')));

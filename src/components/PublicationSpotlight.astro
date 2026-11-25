@@ -13,6 +13,7 @@ import { ordinaryMachinesEditions } from '../config/ordinary-machines-publicatio
 import { shadowFleetEditions } from '../config/shadow-fleet-publication.mjs';
 import { aiCreditorsEditions } from '../config/ai-creditors-publication.mjs';
 import { nvidiaEditions } from '../config/nvidia-publication.mjs';
+import { nvidiaVolumeTwoEditions } from '../config/nvidia-volume-two-publication.mjs';
 import { encryptionBackdoorEditions } from '../config/encryption-backdoor-publication.mjs';
 import { scpiEditions } from '../config/scpi-publication.mjs';
 import { recouvrementBookEn } from '../config/ia-recouvrement-publication-en.mjs';
@@ -35,8 +36,10 @@ const isShadowFleet = publication === 'shadow-fleet';
 const shadowFleet = shadowFleetEditions[lang];
 const isAiCreditors = publication === 'ai-creditors';
 const aiCreditors = aiCreditorsEditions[lang];
-const isNvidia = publication === 'nvidia';
-const nvidia = nvidiaEditions[lang];
+const isNvidiaVolumeTwo = publication === 'nvidia-volume-two';
+const isNvidia = publication === 'nvidia' || isNvidiaVolumeTwo;
+const nvidiaVolumeTwo = nvidiaVolumeTwoEditions[lang];
+const nvidia = isNvidiaVolumeTwo ? nvidiaVolumeTwo : nvidiaEditions[lang];
 const isEncryptionBackdoor = publication === 'encryption-backdoor';
 const encryptionBackdoor = encryptionBackdoorEditions[lang];
 const isOrdinaryMachines = publication === 'ordinary-machines';
@@ -138,9 +141,10 @@ const copy = isShadowFleet ? {
   discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Dark EPUB' : 'EPUB sombre', fileName: epubFile,
 } : isNvidia ? {
   coverLabel: `${isEnglish ? 'Explore' : 'Découvrir'} ${nvidia.title}`, coverAlt: nvidia.title,
-  meta: isEnglish ? '// documentary investigation · November 2026' : '// enquête documentaire · novembre 2026',
-  titleLead: isEnglish ? 'The Nvidia' : 'Le système', titleAccent: isEnglish ? 'System' : 'Nvidia',
-  deck: nvidia.subtitle, description: nvidia.readerGuide[0],
+  meta: isNvidiaVolumeTwo ? nvidiaVolumeTwo.volumeLabel : isEnglish ? '// documentary investigation · November 2026' : '// enquête documentaire · novembre 2026',
+  titleLead: isNvidiaVolumeTwo ? isEnglish ? 'Who Governs' : 'Qui gouverne' : isEnglish ? 'The Nvidia' : 'Le système',
+  titleAccent: isNvidiaVolumeTwo ? isEnglish ? 'Nvidia?' : 'Nvidia ?' : isEnglish ? 'System' : 'Nvidia',
+  deck: nvidia.subtitle, description: isNvidiaVolumeTwo ? nvidiaVolumeTwo.description : nvidiaEditions[lang].readerGuide[0],
   factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
   facts: [{ value: String(nvidia.chapters.length), label: isEnglish ? 'chapters' : 'chapitres' }, { value: String(nvidia.figureCount), label: isEnglish ? 'infographics' : 'infographies' }, { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' }, { value: 'CC BY 4.0', label: 'licence' }],
   discover: isEnglish ? 'Explore the book' : 'Découvrir le livre', downloadLabel: isEnglish ? 'Dark EPUB' : 'EPUB sombre', fileName: epubFile,

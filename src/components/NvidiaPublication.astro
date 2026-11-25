@@ -6,19 +6,31 @@ import sharp from 'sharp';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
 import { nvidiaEditions } from '../config/nvidia-publication.mjs';
+import { nvidiaVolumeTwoEditions } from '../config/nvidia-volume-two-publication.mjs';
+import { nvidiaVolumeTwoText } from '../publication-text/nvidia-volume-two.mjs';
 import { atlases, englishAtlases } from '../config/atlases';
 import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
 import { serializeInlineScriptData } from '../lib/security.ts';
 
-interface Props { lang: 'fr' | 'en'; }
-const { lang } = Astro.props;
+interface Props { lang: 'fr' | 'en'; volume?: 1 | 2; }
+const { lang, volume = 1 } = Astro.props;
+const isSecondVolume = volume === 2;
 if (lang !== 'fr' && lang !== 'en') throw new TypeError('Invalid nvidia publication language');
 const isEn = lang === 'en';
 const Layout = isEn ? EnglishGuidesLayout : BaseLayout;
 const shellProps = isEn ? {} : { lang: 'fr' as const, ogLocale: 'fr_FR' as const, sidebar: false };
 const tr = (fr: string, en: string) => isEn ? en : fr;
-const book = nvidiaEditions[lang];
-const alternate = nvidiaEditions[isEn ? 'fr' : 'en'];
+const editions = isSecondVolume ? nvidiaVolumeTwoEditions : nvidiaEditions;
+const book = isSecondVolume ? { ...nvidiaVolumeTwoText[lang], ...nvidiaVolumeTwoEditions[lang] } : nvidiaEditions[lang];
+const alternate = editions[isEn ? 'fr' : 'en'];
+const companion = (isSecondVolume ? nvidiaEditions : nvidiaVolumeTwoEditions)[lang];
+const volumeLabel = nvidiaVolumeTwoEditions[lang].volumeLabel;
+const volumeLink = {
+  href: companion.path, title: companion.title,
+  description: isSecondVolume
+    ? tr('Tome I. Les douze premières enquêtes, de l’alerte au sommet aux contrats et garanties de Nvidia.', 'Volume I. The first twelve investigations, from the initial allegations to Nvidia’s contracts and guarantees.')
+    : tr('Tome II. L’enquête se poursuit avec le retour de Huang, les contrôles à l’exportation et les leviers de Washington.', 'Volume II. The investigation continues with Huang’s return, export controls and Washington’s leverage.'),
+};
 const chapters = await Promise.all(book.chapters.map(async chapter => {
   if (!/^\/illustrations\/news\/[a-z0-9-]+\.jpg$/u.test(chapter.image)) throw new Error('Unsafe Nvidia chapter image path');
   const { width, height } = await sharp(join(process.cwd(), 'public', chapter.image)).metadata();
@@ -59,6 +71,7 @@ const excerptParts = (paragraph: string) => paragraph.split(/(\[B\d{2}\])/u).fil
 });
 const atlas = (isEn ? englishAtlases : atlases).find(item => item.id === 'financement-ia')!;
 const related = [
+  volumeLink,
   { href: atlas.href, title: tr('L’atlas du financement de l’IA', 'The AI financing atlas'), description: atlas.description },
   { href: isEn ? '/en/publications/the-price-of-slowing-down/' : '/publications/le-prix-du-ralentissement/', title: tr('Le prix du ralentissement', 'The Price of Slowing Down'), description: tr('Les arbitrages entre sécurité de l’IA, concurrence et engagements financiers.', 'The choices connecting AI safety, competition and financial commitments.') },
 ];
@@ -68,11 +81,11 @@ const related = [
   seoTitle={`${book.title}, ${tr('EPUB gratuit', 'free EPUB')} | l0g`}
   ogTitle={book.title}
   description={book.description} searchDate={book.date} searchTags={tr('Nvidia, financement de l’IA, Chine, politique américaine', 'Nvidia, AI financing, China, US politics').split(', ')}
-  ogImage={book.social} ogImageAlt={tr('Le système Nvidia. Douze analyses documentées sur les puces, le crédit et le pouvoir, réunies en EPUB gratuit.', 'The Nvidia System. Twelve documented analyses of chips, credit and power, collected in a free EPUB.')}
+  ogImage={book.social} ogImageAlt={isSecondVolume ? book.title : tr('Le système Nvidia. Douze analyses documentées sur les puces, le crédit et le pouvoir, réunies en EPUB gratuit.', 'The Nvidia System. Twelve documented analyses of chips, credit and power, collected in a free EPUB.')}
   alternateLinks={[
-    { hreflang: 'fr', href: `${SITE_URL}${nvidiaEditions.fr.path}` },
-    { hreflang: 'en', href: `${SITE_URL}${nvidiaEditions.en.path}` },
-    { hreflang: 'x-default', href: `${SITE_URL}${nvidiaEditions.fr.path}` },
+    { hreflang: 'fr', href: `${SITE_URL}${editions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${editions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${editions.fr.path}` },
   ]}>
   <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
   <article class="nvidia-book rise" data-pagefind-body>
@@ -87,8 +100,8 @@ const related = [
         <p class="cover-caption">{tr('Édition française', 'English edition')} · <time datetime={book.date}>{formatDate(book.date)}</time></p>
       </div>
       <div class="hero-copy">
-        <p class="mono-label">// {tr('enquête l0g · puces, crédit et pouvoir', 'l0g investigation · chips, credit and power')}</p>
-        <h1 id="book-title">{tr('Le système', 'The')} <span>{tr('Nvidia', 'Nvidia System')}</span></h1>
+        <p class="mono-label">{isSecondVolume ? volumeLabel : tr('// enquête l0g · puces, crédit et pouvoir', '// l0g investigation · chips, credit and power')}</p>
+        <h1 id="book-title">{isSecondVolume ? tr('Qui gouverne', 'Who Governs') : tr('Le système', 'The')} <span>{isSecondVolume ? tr('Nvidia ?', 'Nvidia?') : tr('Nvidia', 'Nvidia System')}</span></h1>
         <p class="hero-deck">{book.subtitle}</p>
         <p class="hero-lede">{book.readerGuide[0]}</p>
         <div class="hero-actions">
@@ -107,20 +120,20 @@ const related = [
     <figure class="panorama">
       <img src={book.panorama} srcset={[640, 960, 1600].map(w => `${book.panorama.replace('.jpg', `-${w}.webp`)} ${w}w`).join(', ')}
         sizes="(max-width: 780px) 100vw, 1120px" width="1600" height="800" loading="lazy" decoding="async"
-        alt={tr('Illustration conceptuelle d’une puce au centre de circuits de calcul et de financement, dans la palette de l0g.', 'Conceptual artwork of a chip at the centre of computing and financing circuits, in the l0g palette.')} />
+        alt={isSecondVolume ? tr('Illustration conceptuelle des rapports entre le pouvoir politique et l’industrie des puces.', 'Conceptual artwork about political power and the chip industry.') : tr('Illustration conceptuelle d’une puce au centre de circuits de calcul et de financement, dans la palette de l0g.', 'Conceptual artwork of a chip at the centre of computing and financing circuits, in the l0g palette.')} />
       <figcaption>{tr('Illustration conceptuelle. Les schémas du livre expliquent les mécanismes documentés et gardent leurs sources, leurs dates et leurs limites.', 'Conceptual artwork. The book’s diagrams explain documented mechanisms and retain their sources, dates and limitations.')}</figcaption>
     </figure>
 
     <section class="reading-section" aria-labelledby="intro-title">
-      <div class="section-heading"><p class="mono-label">01 / introduction</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
+      <div class="section-heading"><p class="mono-label">{isSecondVolume ? tr("Préface", "Preface") : "01 / introduction"}</p><h2 id="intro-title">{book.introductionTitle}</h2></div>
       <div class="prose-copy">{book.introduction.slice(0, 2).map(paragraph => <p>{excerptParts(paragraph).map(part => part.href ? <a class="synthesis-citation" href={part.href} title={part.title}>{part.text}</a> : part.text)}</p>)}
-        <p class="excerpt-note">{tr('Une introduction originale ouvre le livre et relie les douze analyses.', 'An original introduction opens the book and connects the twelve analyses.')}</p>
+        {!isSecondVolume && <p class="excerpt-note">{tr('Une introduction originale ouvre le livre et relie les douze analyses.', 'An original introduction opens the book and connects the twelve analyses.')}</p>}
         <p class="excerpt-note">{tr('Documents de la synthèse :', 'Sources for the synthesis:')} {book.synthesisSources.slice(0, 2).map((source, index) => <>{index > 0 && ' · '}<a href={source.url}>{source.title}</a></>)}.</p>
       </div>
     </section>
 
     <section id="sommaire" class="contents-section" aria-labelledby="contents-title">
-      <div class="section-heading"><p class="mono-label">02 / {tr('parcours de lecture', 'reading journey')}</p><h2 id="contents-title">{tr('Une crise suivie à travers douze analyses', 'A crisis traced through twelve analyses')}</h2><p>{tr('Les douze analyses intégrales, dans leur ordre de publication. Chaque chapitre reste accessible en ligne avec ses références et ses limites.', 'The twelve complete analyses, in publication order. Each chapter remains available online with its references and limitations.')}</p></div>
+      <div class="section-heading">{!isSecondVolume && <p class="mono-label">02 / {tr('parcours de lecture', 'reading journey')}</p>}<h2 id="contents-title">{isSecondVolume ? tr('Les chapitres XIII à XXVI', 'Chapters XIII to XXVI') : tr('Une crise suivie à travers douze analyses', 'A crisis traced through twelve analyses')}</h2><p>{isSecondVolume ? tr('Quatorze enquêtes intégrales, dans leur ordre de publication. Les articles en ligne donnent accès aux pièces citées.', 'Fourteen complete investigations, in publication order. The original articles link to the documents cited in each chapter.') : tr('Les douze analyses intégrales, dans leur ordre de publication. Chaque chapitre reste accessible en ligne avec ses références et ses limites.', 'The twelve complete analyses, in publication order. Each chapter remains available online with its references and limitations.')}</p></div>
       <ol class="chapter-grid">{chapters.map(chapter => <li><a href={chapter.route}>
         <img src={chapter.image} width={chapter.imageWidth} height={chapter.imageHeight} alt={chapter.imageAlt} loading="lazy" decoding="async" />
         <div class="chapter-copy"><span class="chapter-number">{String(chapter.number).padStart(2, '0')}</span><div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div><span class="chapter-arrow" aria-hidden="true">↗</span></div>
@@ -128,17 +141,17 @@ const related = [
     </section>
 
     <section class="reading-section glossary-section" aria-labelledby="glossary-title">
-      <div class="section-heading"><p class="mono-label">03 / {tr('repères', 'reference')}</p><h2 id="glossary-title">{tr('Les mots du crédit et du risque', 'The language of credit and risk')}</h2><p>{tr('Un glossaire accompagne le livre. Ces fiches permettent aussi de poursuivre la lecture en ligne.', 'A glossary accompanies the book. These reference pages also support further reading online.')}</p></div>
-      <div><dl class="glossary-list">{book.glossary.slice(0, 6).map(entry => <div><dt><a href={entry.path}>{entry.title} <span aria-hidden="true">↗</span></a></dt><dd>{entry.definition}</dd></div>)}</dl><a class="text-link" href={isEn ? '/en/glossary/' : '/glossaire/'}>{tr('Ouvrir le glossaire l0g', 'Open the l0g glossary')} <span aria-hidden="true">↗</span></a></div>
+      <div class="section-heading">{!isSecondVolume && <p class="mono-label">03 / {tr('repères', 'reference')}</p>}<h2 id="glossary-title">{isSecondVolume ? tr('Glossaire', 'Glossary') : tr('Les mots du crédit et du risque', 'The language of credit and risk')}</h2><p>{tr('Un glossaire accompagne le livre. Ces fiches permettent aussi de poursuivre la lecture en ligne.', 'A glossary accompanies the book. These reference pages also support further reading online.')}</p></div>
+      <div><dl class="glossary-list">{book.glossary.slice(0, 6).map(entry => <div><dt>{entry.path ? <a href={entry.path}>{entry.title} <span aria-hidden="true">↗</span></a> : entry.title}</dt><dd>{entry.definition}</dd></div>)}</dl><a class="text-link" href={isEn ? '/en/glossary/' : '/glossaire/'}>{tr('Ouvrir le glossaire l0g', 'Open the l0g glossary')} <span aria-hidden="true">↗</span></a></div>
     </section>
 
     <section class="reading-section" aria-labelledby="conclusion-title">
-      <div class="section-heading"><p class="mono-label">04 / conclusion</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
-      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{excerptParts(paragraph).map(part => part.href ? <a class="synthesis-citation" href={part.href} title={part.title}>{part.text}</a> : part.text)}</p>)}<p class="excerpt-note">{tr('La conclusion complète ouvre sur les responsabilités politiques, le financement de l’IA et les décisions qui restent à prendre.', 'The full conclusion turns to political accountability, AI financing and the decisions still ahead.')}</p></div>
+      <div class="section-heading"><p class="mono-label">{isSecondVolume ? tr('Conclusion', 'Conclusion') : '04 / conclusion'}</p><h2 id="conclusion-title">{book.conclusionTitle}</h2></div>
+      <div class="prose-copy">{book.conclusion.slice(0, 2).map(paragraph => <p>{excerptParts(paragraph).map(part => part.href ? <a class="synthesis-citation" href={part.href} title={part.title}>{part.text}</a> : part.text)}</p>)}{!isSecondVolume && <p class="excerpt-note">{tr('La conclusion complète ouvre sur les responsabilités politiques, le financement de l’IA et les décisions qui restent à prendre.', 'The full conclusion turns to political accountability, AI financing and the decisions still ahead.')}</p>}</div>
     </section>
 
     <section class="reading-section edition-section" aria-labelledby="edition-title">
-      <div class="section-heading"><p class="mono-label">05 / {tr('sources et édition', 'sources and edition')}</p><h2 id="edition-title">{book.methodTitle}</h2></div>
+      <div class="section-heading">{!isSecondVolume && <p class="mono-label">05 / {tr('sources et édition', 'sources and edition')}</p>}<h2 id="edition-title">{book.methodTitle}</h2></div>
       <div class="prose-copy">
         <p>{tr('Édition du', 'Edition dated')} {formatDate(book.date)}. {tr('Documentation arrêtée au', 'Documentary cut-off:')} {formatDate(book.documentationDate)}.</p>
         {book.method.slice(0, 1).map(paragraph => <p>{excerptParts(paragraph).map(part => part.href ? <a class="synthesis-citation" href={part.href} title={part.title}>{part.text}</a> : part.text)}</p>)}
@@ -150,7 +163,7 @@ const related = [
       </div>
     </section>
 
-    <section class="related-section" aria-labelledby="related-title"><div class="section-heading"><p class="mono-label">06 / {tr('prolonger la lecture', 'further reading')}</p><h2 id="related-title">{tr('Poursuivre la lecture', 'Further reading')}</h2></div><div class="related-grid">{related.map(item => <a href={item.href}><h3>{item.title} <span aria-hidden="true">↗</span></h3><p>{item.description}</p></a>)}</div><p class="back-link"><a href={isEn ? '/en/publications/' : '/publications/'}>← {tr('Toutes les publications', 'All publications')}</a></p></section>
+    <section class="related-section" aria-labelledby="related-title"><div class="section-heading">{!isSecondVolume && <p class="mono-label">06 / {tr('prolonger la lecture', 'further reading')}</p>}<h2 id="related-title">{tr('Poursuivre la lecture', 'Further reading')}</h2></div><div class="related-grid">{related.map(item => <a href={item.href}><h3>{item.title} <span aria-hidden="true">↗</span></h3><p>{item.description}</p></a>)}</div><p class="back-link"><a href={isEn ? '/en/publications/' : '/publications/'}>← {tr('Toutes les publications', 'All publications')}</a></p></section>
   </article>
 </Layout>
 

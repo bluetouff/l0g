@@ -17,6 +17,7 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
@@ -176,6 +177,14 @@ export function epubDerivedTasks(root) {
   modern('machines','scripts/generate-ordinary-machines-epub.mjs',ordinaryMachinesEditions,{coverInput:true});
   modern('ai-creditors','scripts/generate-ai-creditors-epub.mjs',aiCreditorsEditions,{coverInput:true});
   modern('nvidia','scripts/generate-nvidia-epub.mjs',nvidiaEditions,{coverInput:true});
+  // The frozen volume II source trees were rendered offline from the pinned
+  // publication snapshots. The build only packages these versioned inputs.
+  const volumeTwoBooks = Object.values(nvidiaVolumeTwoEditions);
+  add({
+    name: 'nvidia-volume-two',
+    books: volumeTwoBooks.map(book => ({ directory: book.directory, file: book.epub.split('/').at(-1) })),
+    extraInputs: volumeTwoBooks.map(book => source(book.directory)),
+  });
   modern('encryption-backdoor','scripts/generate-encryption-backdoor-epub.mjs',encryptionBackdoorEditions,{coverInput:true});
   modern('shadow-fleet','scripts/generate-shadow-fleet-epub.mjs',shadowFleetEditions,{coverInput:true});
   const owners = new Set();

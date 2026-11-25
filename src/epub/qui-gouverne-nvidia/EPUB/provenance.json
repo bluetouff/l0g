@@ -1,0 +1,504 @@
+{
+  "schemaVersion": 1,
+  "edition": "urn:uuid:7e228728-be77-4e03-8c17-c3061eece082",
+  "lang": "fr",
+  "modified": "2026-11-25T10:48:44Z",
+  "deployedSourceSha": "bdb1d65c5fb1c11ccbe7398038a890d22838c11c",
+  "captureStart": "2026-11-25T10:48:43+00:00",
+  "captureStop": "2026-11-25T10:48:44+00:00",
+  "sourceArticles": [
+    {
+      "number": 13,
+      "file": "src/content/posts/nvidia-succession-washington-champions-ia.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-succession-washington-champions-ia/",
+      "sourceSha256": "411fcf3ca5a13cb07f19a2804008170250ad31f750378f4dc176d468650b3d95",
+      "snapshotSha256": "1a123867cf23e6085dd7bd63ad72f4c8ae162b3e0a7379d5619c9d6d845840d4",
+      "bodyTextSha256": "98ed8059a9e58f17ed34fdd402523c4e040a5cf38298d67e0609eb80614a0510",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-16T11:54:35+01:00",
+      "updated": "2026-11-16T11:54:35+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10",
+        "source-S11"
+      ],
+      "figures": [
+        {
+          "filename": "figure-13-1.svg",
+          "sourceSha256": "a16a9785baaf51f017ef89fcbafab12c260b5a3f8540582afa0ed02de358df98",
+          "epubSha256": "35d11b02d7401ed1da737f97e31e02a200a546c9ee33df93b0360f9e4f895ee1"
+        },
+        {
+          "filename": "figure-13-2.svg",
+          "sourceSha256": "41dd949555668fc58b240d0ade9122a6db9d71c97dca32e809fe76d6786b94e6",
+          "epubSha256": "9be495bc3990efa432b40b3629de0c81542b45dd53831b298b74d33a38a2c0ae"
+        }
+      ]
+    },
+    {
+      "number": 14,
+      "file": "src/content/posts/nvidia-apres-huang-financement-clients.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-apres-huang-financement-clients/",
+      "sourceSha256": "9305dbf59d1ad841b7d2e4a9815021af2fbca92f3d8e41ba54b7d12de490744e",
+      "snapshotSha256": "1384d1faa4df5df85bd76fca9ab7c88dfc9aee7c2a5ea7f7cb6d2dcea8449b07",
+      "bodyTextSha256": "06324cb020a368f27e3a5f8c55b530cfae5a039b18ed2964b568500cc667e78c",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-16T13:57:16+01:00",
+      "updated": "2026-11-16T13:57:16+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07"
+      ],
+      "figures": [
+        {
+          "filename": "figure-14-1.svg",
+          "sourceSha256": "f4af05cc1b8f18c1132039c3fc99f7c063be15fa759984fbafe0efaa2db61c94",
+          "epubSha256": "5e82750cdea55bf99e89f5251093843cb2baf13e017821213e0ad7d1d002f99d"
+        },
+        {
+          "filename": "figure-14-2.svg",
+          "sourceSha256": "ddc105ea3a07da24c74f8a6776874997f8fd89f461fc26ff4a5cd523182850dc",
+          "epubSha256": "541b2e48993388044fb9d383e9729dd5a735b85a0e8854be5f344db56bb09f3b"
+        }
+      ]
+    },
+    {
+      "number": 15,
+      "file": "src/content/posts/nvidia-lutnick-cantor-exportations-bitdeer.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-lutnick-cantor-exportations-bitdeer/",
+      "sourceSha256": "a4e07eb751aea7942d74b604074853d43e361abd39c9219013428e969868120d",
+      "snapshotSha256": "bf38cf2f2d90388d73e9a7ae27f40f0026a2a3aa498a189214a104fe8b46c142",
+      "bodyTextSha256": "e24b19ee1645e63f891b261ff14c7a7154fdcfc0a9c9528afda6951ed236154f",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-16T15:20:48+01:00",
+      "updated": "2026-11-16T15:20:48+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10"
+      ],
+      "figures": [
+        {
+          "filename": "figure-15-1.svg",
+          "sourceSha256": "51ac8fa807e6db4b7d7734bfddfbdefc9ee2e303a470d2fb3fa09c0092f7db50",
+          "epubSha256": "cc619885b2490da3fcf92e4cb7a8d2e7fbedc6a1cb9d59fbc9efbf962a023c1f"
+        },
+        {
+          "filename": "figure-15-2.svg",
+          "sourceSha256": "9df4d0e9432690d98ad238d812bb2d40fef390a66a38eeae0b112d5a52cc915e",
+          "epubSha256": "c9873232fc82403051f569b620b575fd0129281f69d624582ea2deadb2521220"
+        }
+      ]
+    },
+    {
+      "number": 16,
+      "file": "src/content/posts/nvidia-taiwan-demarches-politiques-proces-serveurs.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-taiwan-demarches-politiques-proces-serveurs/",
+      "sourceSha256": "54b74def7911cb30212dc9a7694046a4516341d3d5b280c517bb18140a1c0eee",
+      "snapshotSha256": "2779ae6dccfb98578be191b0eaf590a4f466be13d4d2b1645d1fa500d6b1c994",
+      "bodyTextSha256": "aa93076fd675fc59aa7d16998e617d03dd88b7ed51327797cec05f94a5fd887d",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-16T16:56:13+01:00",
+      "updated": "2026-11-16T16:56:13+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07"
+      ],
+      "figures": [
+        {
+          "filename": "figure-16-1.svg",
+          "sourceSha256": "4c747d35a6d59f732ceb31fe4b578c97e090f898562260025e359f89f6538c7c",
+          "epubSha256": "059ca031852f909b28193e76d1372c69a39a823d2e88f5fd7938441a2d86a9eb"
+        },
+        {
+          "filename": "figure-16-2.svg",
+          "sourceSha256": "875040775fcec66399d9628decaf228c62f2cd8bd9f0dba35ca6baee92e148fb",
+          "epubSha256": "ec7440273660b19cea238c707bcce42ae66aecc1dc0b8ecbc159ec08139177c3"
+        }
+      ]
+    },
+    {
+      "number": 17,
+      "file": "src/content/posts/nvidia-bis-acces-distant-controles-cloud.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-bis-acces-distant-controles-cloud/",
+      "sourceSha256": "2bf7366adcdc06218529f99adc8c7962afe43f0225ca8cca22132db33bc1ad35",
+      "snapshotSha256": "2db18421646817499fb330a7858778e24b27888d5baba4bcd067cbf3af3b3225",
+      "bodyTextSha256": "9a03d62a80c53a50cf8b3dd696989f6ff65c4ce13deac81f87f44dc17c8d5221",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-16T19:31:16+01:00",
+      "updated": "2026-11-16T19:31:16+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05"
+      ],
+      "figures": [
+        {
+          "filename": "figure-17-1.svg",
+          "sourceSha256": "1400d58d711058094e6bc33fec83c818bdbae4a48d2ab82a2b690fc1cc296e20",
+          "epubSha256": "2f7459a2ef016213824e5d2fd3be931f9ea714a698c6634a1ca98f63e83413f2"
+        },
+        {
+          "filename": "figure-17-2.svg",
+          "sourceSha256": "c8c32c2cd43d3b534afc2e4c95b624d1090e0c3afb810ef2ca6ee1d96f762b67",
+          "epubSha256": "bff224616ab1f27d6a5891fcdb853b8b39ea67c4735c1863030cd267d3f206c5"
+        }
+      ]
+    },
+    {
+      "number": 18,
+      "file": "src/content/posts/nvidia-conseil-securite-nationale-controles-exportation.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-conseil-securite-nationale-controles-exportation/",
+      "sourceSha256": "94685ecba71ff9c0845e9318e558b010a6dea082481237145aeddaa18075b18d",
+      "snapshotSha256": "de944f11d3abff610ff08551c22aa5c8371caab0f9a1c75c47b843f44b4591fd",
+      "bodyTextSha256": "1b48b59ea5e3ad9d69344cb1cc84e631d693d79a79279b3b12a30067762c0039",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-17T12:21:19+01:00",
+      "updated": "2026-11-17T12:21:19+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07"
+      ],
+      "figures": [
+        {
+          "filename": "figure-18-1.svg",
+          "sourceSha256": "01e01ee90e2b9343f1c4aefaa527e6750d3a15d9820752eec47998fd900f8c9e",
+          "epubSha256": "f0870ed81c844f9f3ffa28bc383f55f6308f32182f4f3dd9376f8e72d12f6201"
+        },
+        {
+          "filename": "figure-18-2.svg",
+          "sourceSha256": "3263b991e583beca7ed9345ddd16733e4ddf928438deb1b8640d5ab85fe86f8b",
+          "epubSha256": "dedbb4ccf229183d573d29766ba4e81013fc5ddb31b9487d9fc3ef273279aa41"
+        }
+      ]
+    },
+    {
+      "number": 19,
+      "file": "src/content/posts/nvidia-financement-garanties-pret-aolani.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-financement-garanties-pret-aolani/",
+      "sourceSha256": "3057b2275bccc390d7ebe33eb39f9f504c65d379dbe86919516d2a9e18e21b5d",
+      "snapshotSha256": "826a7cf742b2dd7dbf96f673d4f49626c33b970e6baa63ab747a73a4b1982435",
+      "bodyTextSha256": "24e09275a82f565c41aeefb8ac6d33ccae5ce60241f53758c8a86375da0bb1b3",
+      "retrievedAt": "2026-11-25T10:48:43+00:00",
+      "published": "2026-11-18T12:37:05+01:00",
+      "updated": "2026-11-18T12:37:05+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06"
+      ],
+      "figures": [
+        {
+          "filename": "figure-19-1.svg",
+          "sourceSha256": "0579d07b8ebb4cf3416c7a8a9f3491650b76da27603cebcc29ff33425af4ebc5",
+          "epubSha256": "8eeb66ecabc14d93edf71ef8b45ab60241a549695ad27543bbc475c55a184cab"
+        },
+        {
+          "filename": "figure-19-2.svg",
+          "sourceSha256": "9cc732fd141a74941c8129c0b7d2d2689f892d04280befa8a72dc69937f6ac6a",
+          "epubSha256": "006044b6e07445d7813b8af219b96e4e1c9fc6c539a1636e5a819b26f5c53580"
+        }
+      ]
+    },
+    {
+      "number": 20,
+      "file": "src/content/posts/nvidia-credit-moodys-wall-street-anthropic.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-credit-moodys-wall-street-anthropic/",
+      "sourceSha256": "2df8e0001445aaf633cf0e308ed9b071ecd36091abb9aa3bb4276b8abc4f0f2d",
+      "snapshotSha256": "cb00e7ac31d648b514c87ecbb13fa11e7b6a9fa8a6cb4edc323dea3592130e41",
+      "bodyTextSha256": "c29743c2d28db3ae1226e8b3a09f6167e798c2e6194e89ca5598fc39da5d2b70",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-19T09:44:30+01:00",
+      "updated": "2026-11-19T09:44:30+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07"
+      ],
+      "figures": [
+        {
+          "filename": "figure-20-1.svg",
+          "sourceSha256": "40933b9b1fc44681db4623d66d4570dd576f35cfbc3ee37af7c61a517e511561",
+          "epubSha256": "1de8ab211ccee1dfc12a24782bbd830c82944fcd10d2ea0434ac94be7403f6d9"
+        }
+      ]
+    },
+    {
+      "number": 21,
+      "file": "src/content/posts/nvidia-h200-licences-chine-bis.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-h200-licences-chine-bis/",
+      "sourceSha256": "d4ccef3e2decb7a3d67356bf6c7cd0e2a09c3f74c3a89269feac62235539bb55",
+      "snapshotSha256": "09923cb1cac2de3ccd47d9cfda9eeb3f3d129d1d29f940530fbd9584e4660c25",
+      "bodyTextSha256": "dfd771e3c19f7848fbf9d8116d495eac7366cf764a1c86244d19f5ab42cbc57a",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-20T00:42:10+01:00",
+      "updated": "2026-11-20T00:42:10+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07"
+      ],
+      "figures": [
+        {
+          "filename": "figure-21-1.svg",
+          "sourceSha256": "fcc23f226743a878d480f946c413c94df346d6dc1ce55928334a2ba0dd30a85b",
+          "epubSha256": "7da30843aa8ed9412835a386afe79269450a68a7d57276dc52beea6b4f30b830"
+        }
+      ]
+    },
+    {
+      "number": 22,
+      "file": "src/content/posts/nvidia-anthropic-spacex-financement-puces.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-anthropic-spacex-financement-puces/",
+      "sourceSha256": "12c8df9a7a4edd437473b25e6df8af22e7018d853696148ec20d5dfb340cc05a",
+      "snapshotSha256": "7f9c758bb8ec49c1bf03e43e6615aa9d507d502baedf00f5cfd90aa3912b6884",
+      "bodyTextSha256": "3fdc90afa71ab31d42dfc4132ea064ec06a2e647ce3c74177e6f634a574a48f4",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-22T21:56:00+01:00",
+      "updated": "2026-11-22T21:56:00+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06"
+      ],
+      "figures": [
+        {
+          "filename": "figure-22-1.svg",
+          "sourceSha256": "facb1f4d86ec65c82a77eb30685cff8580a977fae28e02b49c9aa6ef8224afa4",
+          "epubSha256": "13f5f7bad6385ca1452f8cc541724d074dbe71fcb4ba6f3c5a8691853fee144a"
+        }
+      ]
+    },
+    {
+      "number": 23,
+      "file": "src/content/posts/nvidia-retour-jensen-huang-controle-conseil.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-retour-jensen-huang-controle-conseil/",
+      "sourceSha256": "3b32af193da86fd31f9ac50a423d37a1600d0ebf3b2651278367214186ec4716",
+      "snapshotSha256": "8ff4fa25d9045ec02dffd57f9533af456ff2d5cc712f373e2d7a9aa094e9cd92",
+      "bodyTextSha256": "d0bc68dddf3f1c5f9f3dc84e8ed63c990596b2c8ada1f17096b37de06aa991f4",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-23T19:46:57+01:00",
+      "updated": "2026-11-23T19:46:57+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10",
+        "source-S11",
+        "source-S12",
+        "source-S13",
+        "source-S14",
+        "source-S15",
+        "source-S16",
+        "source-S17",
+        "source-S18",
+        "source-S19",
+        "source-S20"
+      ],
+      "figures": [
+        {
+          "filename": "figure-23-1.svg",
+          "sourceSha256": "d4251957878be5a62a2bfd587598afb979473440caa7cc6e58fcd6ed650e2f3d",
+          "epubSha256": "12fb70f5f8230b4de4512b5f1f7ea08e7d55b4705bbbc3511014a6009f731756"
+        },
+        {
+          "filename": "figure-23-2.svg",
+          "sourceSha256": "5574523d1bac75e7cf0733e62478f4a4e2376bdfc9e5d210838c8cfd660cc0b4",
+          "epubSha256": "de65a3e765fb5993aec61b18640721412aec12fb6cb6583607cca220b24241c9"
+        }
+      ]
+    },
+    {
+      "number": 24,
+      "file": "src/content/posts/nvidia-trump-positions-avant-annonce.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-trump-positions-avant-annonce/",
+      "sourceSha256": "8de80bec473564ca64bb38c8a561a5390cb3c69e20b599567cf58429ae58f12a",
+      "snapshotSha256": "f212e9ff212c838af115cb958fa8e5995a8dcfa3104834be134bd96e9c5bcbb0",
+      "bodyTextSha256": "3eee0d4f118abf4c75f38551325d31090ebf1f6837141c553e6ecabdb57b1bad",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-24T10:28:20+01:00",
+      "updated": "2026-11-24T10:28:20+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10",
+        "source-S11",
+        "source-S12",
+        "source-S13",
+        "source-S14",
+        "source-S15",
+        "source-S16",
+        "source-S17",
+        "source-S18",
+        "source-S19",
+        "source-S20",
+        "source-S21",
+        "source-S22",
+        "source-S23"
+      ],
+      "figures": [
+        {
+          "filename": "figure-24-1.svg",
+          "sourceSha256": "fc766cbde60d8216dbbc2c6b8ef50716d7fc6d377e7c0a04ab6c97e1f976afb2",
+          "epubSha256": "e125635bae2f9e4791be9ad442b0173247ca2eafe061b28c7592fe35636a6159"
+        },
+        {
+          "filename": "figure-24-2.svg",
+          "sourceSha256": "fd69aafaa275bdcc60c3e84dffda099a9dae827cd29a3956a07be7643247e41f",
+          "epubSha256": "c45f842fbaf0fe587de3b2a75c340f36746aafae7f860797fec5e2d2cc4075e7"
+        }
+      ]
+    },
+    {
+      "number": 25,
+      "file": "src/content/posts/nvidia-megaspeed-centres-de-donnees.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-megaspeed-centres-de-donnees/",
+      "sourceSha256": "f2156b987255fe6c18090421f2eb294879b55080c7be634ab8e0653f1a6f303e",
+      "snapshotSha256": "d90b5baee030571cbc5483c3e25f532499a732952fd5ea4ab1ee367c2b43961c",
+      "bodyTextSha256": "25921d57e08a292d2cd5ed5c749c3659f57711c36d38c9671ab27b0460f241cf",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-24T15:27:49+01:00",
+      "updated": "2026-11-24T15:27:49+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10",
+        "source-S11",
+        "source-S12",
+        "source-S13",
+        "source-S14",
+        "source-S15",
+        "source-S16",
+        "source-S17",
+        "source-S18",
+        "source-S19",
+        "source-S20",
+        "source-S21",
+        "source-S22",
+        "source-S23",
+        "source-S24",
+        "source-S25",
+        "source-S26",
+        "source-S27"
+      ],
+      "figures": [
+        {
+          "filename": "figure-25-1.svg",
+          "sourceSha256": "f95a941ee923b5e00f30f80965f494b5ccf7f0d2d3cd826f1997e7e761fe2330",
+          "epubSha256": "82f6c22ceba75da4ec00f1317658d5829c54bd088475f3326701a1e9cd530e03"
+        },
+        {
+          "filename": "figure-25-2.svg",
+          "sourceSha256": "b43290c3d41bc9ed43e308987d7316ba4bbb93c0ebe6bf56688c671bef66d5db",
+          "epubSha256": "02b964b4169b3e8401acc282317514b02ca9faa21356a83bd22c8a20d9a93cfc"
+        }
+      ]
+    },
+    {
+      "number": 26,
+      "file": "src/content/posts/nvidia-trump-participation-etat.mdx",
+      "canonical": "https://l0g.fr/posts/nvidia-trump-participation-etat/",
+      "sourceSha256": "ff2f906384c78dbf7f8b7c9284b946bdb78aa9099d4c671ff9d6f175f57ffa54",
+      "snapshotSha256": "b8786e73f697d4cc4c96a50a5c71539ce5d6ee7294f3b84beceff6dd4bcb6f96",
+      "bodyTextSha256": "3324cf1cd270020a5a39329acce53fcf33ce6fbfa7fb24621e108f5d972926d4",
+      "retrievedAt": "2026-11-25T10:48:44+00:00",
+      "published": "2026-11-25T08:18:27+01:00",
+      "updated": "2026-11-25T08:18:27+01:00",
+      "references": [
+        "source-S01",
+        "source-S02",
+        "source-S03",
+        "source-S04",
+        "source-S05",
+        "source-S06",
+        "source-S07",
+        "source-S08",
+        "source-S09",
+        "source-S10",
+        "source-S11",
+        "source-S12",
+        "source-S13",
+        "source-S14"
+      ],
+      "figures": [
+        {
+          "filename": "figure-26-1.svg",
+          "sourceSha256": "35d2501348303a7be273538661381ade080261b67924795d1301955b724a0f15",
+          "epubSha256": "da3adf5d1e7c5219683fb9ae86d054f41f00c539560ae2cec8b65119d7b3c28a"
+        },
+        {
+          "filename": "figure-26-2.svg",
+          "sourceSha256": "97e7d986e5b5e6ea6e78984e3ec2cb02f0ad4953376b841138aabf34e757f96e",
+          "epubSha256": "227b6684e2424677e14a68a3f8adc118ddf00f1fa6c7f57d5b021d836e3cb07d"
+        }
+      ]
+    }
+  ],
+  "coverSha256": "962f75814fe71589e2b3e58fb09fb5301f72eea140eb6f1c5bb37c18818432af"
+}

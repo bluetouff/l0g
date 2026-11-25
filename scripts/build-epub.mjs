@@ -9,6 +9,7 @@ import { insurancePromiseEditions } from '../src/config/insurance-promise-public
 import { cumcumEditions } from '../src/config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-publication.mjs';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
@@ -26,7 +27,7 @@ const BOOKS = [
     output: join(ROOT, 'public', book.epub),
     fixedTime: new Date(book.modified),
   })),
-  ...Object.values(nvidiaEditions).map(book => ({
+  ...[...Object.values(nvidiaEditions), ...Object.values(nvidiaVolumeTwoEditions)].map(book => ({
     source: join(ROOT, 'src/epub', book.directory),
     output: join(ROOT, 'public', book.epub),
     fixedTime: new Date(book.modified),

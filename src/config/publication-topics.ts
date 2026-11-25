@@ -13,6 +13,7 @@ export const publicationTopicKeys: Record<string, Topic[]> = {
   'shadow-fleet':['energy','finance','money'],
   'ai-creditors':['ai','finance'],
   nvidia:['ai','finance','technology'],
+  'nvidia-volume-two':['ai','finance','technology'],
   'encryption-backdoor':['technology'],
   'ordinary-machines':['technology'],cumcum:['tax'], 'insurance-promise':['finance'],
   'cyber-recovery':['technology'], 'debt-chain':['finance'], microsoft:['technology'],

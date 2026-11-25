@@ -6,6 +6,7 @@ export const publicationCatalog = /** @type {const} */ ([
   { id: 'shadow-fleet', english: true },
   { id: 'ai-creditors', english: true },
   { id: 'nvidia', english: true },
+  { id: 'nvidia-volume-two', english: true },
   { id: 'encryption-backdoor', english: true },
   { id: 'ordinary-machines', english: true },
   { id: 'cumcum', english: true },

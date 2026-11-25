@@ -8,6 +8,8 @@ import { parse } from 'parse5';
 import sharp from 'sharp';
 import postcss from 'postcss';
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
+import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
+import { nvidiaVolumeTwoText } from '../src/publication-text/nvidia-volume-two.mjs';
 import { getPublicationSocial } from '../src/config/publication-social.mjs';
 import { editorialTitleViolation } from './editorial-title-policy.mjs';
 import { getLatestEnglishEpub } from '../src/lib/latest-english-epub.mjs';
@@ -31,7 +33,7 @@ const sole = (all, predicate, label) => {
 };
 const meta = (all, key, value) => attr(sole(all, node => node.tagName === 'meta' && attr(node, key) === value, value), 'content');
 
-function checkPage(html, book) {
+function checkPage(html, book, editions = nvidiaEditions) {
   const all = nodes(parse(html));
   const article = sole(all, node => node.tagName === 'article' && hasClass(node, 'nvidia-book'), 'one publication article');
   const inside = nodes(article);
@@ -47,7 +49,7 @@ function checkPage(html, book) {
   assert.equal(meta(all, 'name', 'description'), book.description);
   const alternates = all.filter(node => node.tagName === 'link' && attr(node, 'rel') === 'alternate' && attr(node, 'hreflang'));
   assert.deepEqual(alternates.map(node => [attr(node, 'hreflang'), attr(node, 'href')]).sort(), [
-    ['fr', `${SITE}${nvidiaEditions.fr.path}`], ['en', `${SITE}${nvidiaEditions.en.path}`], ['x-default', `${SITE}${nvidiaEditions.fr.path}`],
+    ['fr', `${SITE}${editions.fr.path}`], ['en', `${SITE}${editions.en.path}`], ['x-default', `${SITE}${editions.fr.path}`],
   ].sort());
   const social = getPublicationSocial(book.path);
   assert(social, 'dedicated social artwork must be registered');
@@ -66,7 +68,7 @@ function checkPage(html, book) {
   const chapters = sole(inside, node => node.tagName === 'ol' && hasClass(node, 'chapter-grid'), 'chapter sequence');
   const chapterLinks = nodes(chapters).filter(node => node.tagName === 'a');
   assert.deepEqual(chapterLinks.map(node => attr(node, 'href')), book.chapters.map(chapter => chapter.route));
-  assert.equal(chapterLinks.length, 12);
+  assert.equal(chapterLinks.length, book.chapters.length);
   for (const [index, link] of chapterLinks.entries()) {
     assert.equal(plain(sole(nodes(link), node => node.tagName === 'h3', 'chapter title')), book.chapters[index].title.replace(/\s+/gu, ' ').trim());
     assert(plain(link).includes(book.chapters[index].summary.replace(/\s+/gu, ' ').trim()));
@@ -81,10 +83,12 @@ function checkPage(html, book) {
     assert.equal(attr(citation, 'href'), source.url);
   }
   const glossary = sole(inside, node => node.tagName === 'dl' && hasClass(node, 'glossary-list'), 'glossary');
-  assert.deepEqual(nodes(glossary).filter(node => node.tagName === 'a').map(node => attr(node, 'href')), book.glossary.slice(0, 6).map(entry => entry.path));
+  assert.deepEqual(nodes(glossary).filter(node => node.tagName === 'a').map(node => attr(node, 'href')), book.glossary.slice(0, 6).map(entry => entry.path).filter(Boolean));
   for (const entry of book.glossary.slice(0, 6)) assert(plain(glossary).includes(entry.definition));
   for (const source of book.synthesisSources.slice(0, 2)) assert(links.some(node => attr(node, 'href') === source.url), 'opening evidence remains directly accessible');
-  const alternate = nvidiaEditions[book.lang === 'fr' ? 'en' : 'fr'];
+  const alternate = editions[book.lang === 'fr' ? 'en' : 'fr'];
+  const companion = (editions === nvidiaVolumeTwoEditions ? nvidiaEditions : nvidiaVolumeTwoEditions)[book.lang];
+  assert(links.some(node => attr(node, 'href') === companion.path), 'series volumes are linked in the same language');
   assert(links.some(node => attr(node, 'href') === alternate.path && attr(node, 'hreflang') === alternate.lang));
   assert(links.some(node => attr(node, 'href') === (book.lang === 'fr' ? '/publications/' : '/en/publications/')));
   assert(links.some(node => attr(node, 'href') === (book.lang === 'fr' ? '/atlas/financement-ia/' : '/en/atlas/ai-financing/')));
@@ -130,6 +134,18 @@ test('Nvidia editions preserve the twelve-chapter bilingual publication contract
 
 test('both compiled Nvidia pages preserve native metadata, twelve chapters and authentic file integrity', () => {
   for (const book of Object.values(nvidiaEditions)) checkPage(compiled(book), book);
+});
+
+test('volume II publishes the whole paired continuation with distinct downloads and canonical metadata', () => {
+  for (const edition of Object.values(nvidiaVolumeTwoEditions)) {
+    const book = { ...nvidiaVolumeTwoText[edition.lang], ...edition };
+    assert.deepEqual(book.chapters.map(chapter => chapter.number), Array.from({ length: 14 }, (_, index) => index + 13));
+    assert.equal(book.figureCount, 25);
+    assert.equal(book.sourceCount, 157);
+    const { article } = checkPage(compiled(book), book, nvidiaVolumeTwoEditions);
+    assert(plain(article).includes(book.volumeLabel));
+    assert.notEqual(book.epub, nvidiaEditions[edition.lang].epub);
+  }
 });
 
 test('Nvidia page contract rejects complete URL substitutions, altered hashes and missing chapter links', () => {
@@ -186,10 +202,15 @@ test('publication presentation preserves theme tokens, responsive images and key
 test('both catalogues retain the Nvidia edition after AI creditors and before their older editions', () => {
   for (const book of Object.values(nvidiaEditions)) {
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 22 : 19);
+    assert.equal(cards.length, book.lang === 'fr' ? 23 : 20);
     assert(hasClass(cards[1], 'publication-spotlight--ai-creditors'));
     assert(hasClass(cards[2], 'publication-spotlight--nvidia'));
-    assert(hasClass(cards[3], 'publication-spotlight--encryption-backdoor'));
+    assert(hasClass(cards[4], 'publication-spotlight--encryption-backdoor'));
+    const second = nvidiaVolumeTwoEditions[book.lang];
+    const secondCard = nodes(cards[3]);
+    assert.equal(plain(sole(secondCard, node => node.tagName === 'h2', 'volume II catalogue title')), second.title);
+    assert.equal(attr(sole(secondCard, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'volume II catalogue download'), 'href'), second.epub);
+    assert(secondCard.some(node => node.tagName === 'a' && attr(node, 'href') === second.path));
     const first = nodes(cards[2]);
     assert.equal(plain(sole(first, node => node.tagName === 'h2', 'catalogue title')), book.title);
     assert.equal(attr(sole(first, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'catalogue download'), 'href'), book.epub);
