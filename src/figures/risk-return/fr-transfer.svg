@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 264" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="risk-return-fr-transfer-wide-title risk-return-fr-transfer-wide-desc" xml:lang="fr">
+<title id="risk-return-fr-transfer-wide-title">Les pertes se répartissent par tranche</title>
+<desc id="risk-return-fr-transfer-wide-desc">Dans cet exemple fictif, la banque conserve les prêts et paie une prime au fonds. Sur 6 millions d’euros de pertes, la banque prend les 2 premiers et le fonds les 4 suivants. Sur 15 millions, le fonds prend 8 millions et la banque 7, dont les 5 au-delà de la protection.</desc>
+<rect x=".5" y=".5" width="571" height="263" rx="9" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="22" y="29" text-anchor="start" font-size="18" fill="var(--color-paper)">Les pertes se répartissent par tranche</text>
+<text x="22" y="47" text-anchor="start" font-size="12" fill="var(--color-muted)">Exemple fictif · portefeuille de 100 M€</text>
+<path d="M22 59H550" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(77 71)" aria-hidden="true"><path d="M3 8 11 3l8 5H3Zm2 2v8m4-8v8m4-8v8m4-8v8M3 20h16" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(473 71)" aria-hidden="true"><path d="M11 3 18 6v5c0 3.8-2.9 6.8-7 8.5C6.9 17.8 4 14.8 4 11V6l7-3Zm-3 8 2 2 4-4" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="88" y="109" text-anchor="middle" font-size="14" fill="var(--color-paper)">Banque A</text>
+<text x="88" y="126" text-anchor="middle" font-size="12" fill="var(--color-muted)">Conserve les prêts</text>
+<text x="484" y="109" text-anchor="middle" font-size="14" fill="var(--color-paper)">Fonds</text>
+<text x="484" y="126" text-anchor="middle" font-size="12" fill="var(--color-muted)">Protège 8 M€</text>
+<text x="286" y="80" text-anchor="middle" font-size="12" fill="var(--color-topic-blue)">Prime</text>
+<path d="M171 88H401m-5 -4 5 4-5 4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="286" y="108" text-anchor="middle" font-size="12" fill="var(--color-signal)">Indemnisation</text>
+<path d="M401 116H171m5 -4-5 4 5 4" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 139H557" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="22" y="159" text-anchor="start" font-size="12" fill="var(--color-muted)">Pertes cumulées</text>
+<text x="22" y="186" text-anchor="start" font-size="13" fill="var(--color-paper)">6 M€</text>
+<rect x="129" y="171" width="53.4" height="22" rx="2" fill="var(--color-topic-blue)" fill-opacity=".12" stroke="var(--color-topic-blue)" stroke-width=".75"/>
+<text x="155.7" y="186" text-anchor="middle" font-size="13" fill="var(--color-topic-blue)">2</text>
+<rect x="184.0" y="171" width="108.4" height="22" rx="2" fill="var(--color-signal)" fill-opacity=".12" stroke="var(--color-signal)" stroke-width=".75"/>
+<text x="238.2" y="186" text-anchor="middle" font-size="13" fill="var(--color-signal)">4</text>
+<text x="22" y="220" text-anchor="start" font-size="13" fill="var(--color-paper)">15 M€</text>
+<rect x="129" y="205" width="53.4" height="22" rx="2" fill="var(--color-topic-blue)" fill-opacity=".12" stroke="var(--color-topic-blue)" stroke-width=".75"/>
+<text x="155.7" y="220" text-anchor="middle" font-size="13" fill="var(--color-topic-blue)">2</text>
+<rect x="184.0" y="205" width="218.4" height="22" rx="2" fill="var(--color-signal)" fill-opacity=".12" stroke="var(--color-signal)" stroke-width=".75"/>
+<text x="293.2" y="220" text-anchor="middle" font-size="13" fill="var(--color-signal)">8</text>
+<rect x="404.0" y="205" width="135.9" height="22" rx="2" fill="var(--color-topic-blue)" fill-opacity=".12" stroke="var(--color-topic-blue)" stroke-width=".75"/>
+<text x="471.95" y="220" text-anchor="middle" font-size="13" fill="var(--color-topic-blue)">5</text>
+<rect x="22" y="242" width="10" height="10" rx="2" fill="var(--color-topic-blue)" fill-opacity=".12" stroke="var(--color-topic-blue)" stroke-width=".75"/>
+<text x="39" y="251" text-anchor="start" font-size="12" fill="var(--color-paper)">Pertes de la banque</text>
+<rect x="234" y="242" width="10" height="10" rx="2" fill="var(--color-signal)" fill-opacity=".12" stroke="var(--color-signal)" stroke-width=".75"/>
+<text x="251" y="251" text-anchor="start" font-size="12" fill="var(--color-paper)">Pertes du fonds</text>
+</svg>

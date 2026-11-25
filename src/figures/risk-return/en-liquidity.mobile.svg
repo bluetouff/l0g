@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 277" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="risk-return-en-liquidity-narrow-title risk-return-en-liquidity-narrow-desc" xml:lang="en">
+<title id="risk-return-en-liquidity-narrow-title">Two credit lines come under pressure</title>
+<desc id="risk-return-en-liquidity-narrow-desc">The company can draw on its credit line with Bank A. A credit fund in need of cash can draw on its own line with Bank B. Both draws increase the lending banks’ cash needs.</desc>
+<rect x=".5" y=".5" width="319" height="276" rx="9" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="15" y="29" text-anchor="start" font-size="16" fill="var(--color-paper)">Two credit lines come under pressure</text>
+<text x="15" y="47" text-anchor="start" font-size="12" fill="var(--color-muted)">Possible scenarios · credit shock</text>
+<path d="M15 59H305" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(15 76)" aria-hidden="true"><path d="M3 19V9l6 3V8l6 4V5h4v14H3Zm4-3h1m3 0h1m3 0h1" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(233 76)" aria-hidden="true"><path d="M3 8 11 3l8 5H3Zm2 2v8m4-8v8m4-8v8m4-8v8M3 20h16" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="15" y="115" text-anchor="start" font-size="13" fill="var(--color-paper)">Company</text>
+<text x="15" y="134" text-anchor="start" font-size="11.5" fill="var(--color-muted)">Cash shortfall</text>
+<text x="233" y="115" text-anchor="start" font-size="13" fill="var(--color-paper)">Bank A</text>
+<text x="233" y="134" text-anchor="start" font-size="11.5" fill="var(--color-muted)">Company loan</text>
+<text x="164" y="104" text-anchor="middle" font-size="11.5" fill="var(--color-topic-blue)">Draws on line</text>
+<path d="M115 112H216m-5 -4 5 4-5 4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 144H305" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(15 159)" aria-hidden="true"><path d="M4 5h14v13H4Zm2-2h14v13M7 10h8m-8 4h8" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(233 159)" aria-hidden="true"><path d="M3 8 11 3l8 5H3Zm2 2v8m4-8v8m4-8v8m4-8v8M3 20h16" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="15" y="198" text-anchor="start" font-size="13" fill="var(--color-paper)">Credit fund</text>
+<text x="15" y="217" text-anchor="start" font-size="11.5" fill="var(--color-muted)">Needs liquidity</text>
+<text x="233" y="198" text-anchor="start" font-size="13" fill="var(--color-paper)">Bank B</text>
+<text x="233" y="217" text-anchor="start" font-size="11.5" fill="var(--color-muted)">Fund financing</text>
+<text x="164" y="187" text-anchor="middle" font-size="11.5" fill="var(--color-signal)">Draws on line</text>
+<path d="M115 195H216m-5 -4 5 4-5 4" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15 227H305" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="160" y="255" text-anchor="middle" font-size="11.5" fill="var(--color-amber)">A draw uses up some of the lender’s cash.</text>
+</svg>

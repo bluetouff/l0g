@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 277" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="risk-return-fr-liquidity-wide-title risk-return-fr-liquidity-wide-desc" xml:lang="fr">
+<title id="risk-return-fr-liquidity-wide-title">Deux lignes de crédit sous pression</title>
+<desc id="risk-return-fr-liquidity-wide-desc">L’entreprise peut tirer sur sa ligne de trésorerie auprès de la banque A. Un fonds de crédit confronté à un besoin de liquidités peut mobiliser sa propre facilité auprès de la banque B. Les deux tirages augmentent les besoins de trésorerie des prêteurs.</desc>
+<rect x=".5" y=".5" width="571" height="276" rx="9" fill="var(--color-ink)" stroke="var(--color-line)"/>
+<text x="22" y="29" text-anchor="start" font-size="18" fill="var(--color-paper)">Deux lignes de crédit sous pression</text>
+<text x="22" y="47" text-anchor="start" font-size="12" fill="var(--color-muted)">Scénarios possibles · choc de crédit</text>
+<path d="M22 59H550" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(24 76)" aria-hidden="true"><path d="M3 19V9l6 3V8l6 4V5h4v14H3Zm4-3h1m3 0h1m3 0h1" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(409 76)" aria-hidden="true"><path d="M3 8 11 3l8 5H3Zm2 2v8m4-8v8m4-8v8m4-8v8M3 20h16" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="24" y="115" text-anchor="start" font-size="14" fill="var(--color-paper)">Entreprise</text>
+<text x="24" y="134" text-anchor="start" font-size="12" fill="var(--color-muted)">Trésorerie sous pression</text>
+<text x="409" y="115" text-anchor="start" font-size="14" fill="var(--color-paper)">Banque A</text>
+<text x="409" y="134" text-anchor="start" font-size="12" fill="var(--color-muted)">Finance l’entreprise</text>
+<text x="283" y="104" text-anchor="middle" font-size="12" fill="var(--color-topic-blue)">Tire sa ligne</text>
+<path d="M177 112H390m-5 -4 5 4-5 4" fill="none" stroke="var(--color-topic-blue)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 144H548" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<g transform="translate(24 159)" aria-hidden="true"><path d="M4 5h14v13H4Zm2-2h14v13M7 10h8m-8 4h8" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<g transform="translate(409 159)" aria-hidden="true"><path d="M3 8 11 3l8 5H3Zm2 2v8m4-8v8m4-8v8m4-8v8M3 20h16" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="24" y="198" text-anchor="start" font-size="14" fill="var(--color-paper)">Fonds de crédit</text>
+<text x="24" y="217" text-anchor="start" font-size="12" fill="var(--color-muted)">Besoin de liquidités</text>
+<text x="409" y="198" text-anchor="start" font-size="14" fill="var(--color-paper)">Banque B</text>
+<text x="409" y="217" text-anchor="start" font-size="12" fill="var(--color-muted)">Finance le fonds</text>
+<text x="283" y="187" text-anchor="middle" font-size="12" fill="var(--color-signal)">Tire sa facilité</text>
+<path d="M177 195H390m-5 -4 5 4-5 4" fill="none" stroke="var(--color-signal)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M24 227H548" fill="none" stroke="var(--color-line)" stroke-width="1.1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="286" y="255" text-anchor="middle" font-size="13" fill="var(--color-amber)">Le tirage mobilise la trésorerie du prêteur.</text>
+</svg>

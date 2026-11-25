@@ -1,0 +1,76 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'transfer' | 'liquidity' | 'waterfall';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    transfer: 'Exemple l0g. La banque supporte les deux premiers millions de pertes et tout montant au-delà de la tranche de protection. Le fonds prend les pertes intermédiaires, jusqu’à 8 millions d’euros.',
+    liquidity: 'Schéma l0g, d’après le FSB (mai 2026) et la BRI (mars 2026). Les tirages peuvent se produire simultanément. La perte éventuelle de chaque banque dépend du remboursement et des garanties.',
+    waterfall: 'Exemple l0g. Les investisseurs apportent 4 millions d’euros et la banque prête 4 millions. Le calcul suppose une liquidation à la valeur indiquée et que la tranche est la seule sûreté, sans autre recours, appel de marge ni frais.',
+  },
+  en: {
+    transfer: 'Illustrative example by l0g. The bank takes the first €2 million in losses and any losses above the protected tranche. The fund takes the losses in between, up to €8 million.',
+    liquidity: 'l0g diagram based on the FSB (May 2026) and BIS (March 2026). Borrowers can draw on both lines at once. Any losses for the lenders depend on repayment and collateral.',
+    waterfall: 'Illustrative example by l0g. Investors put up €4 million and the bank lends €4 million. The calculation assumes liquidation at the stated value and treats the tranche as the only collateral, with no additional recourse, margin calls or fees.',
+  },
+} as const;
+const caption = captions[lang]?.[kind];
+if (!caption) throw new TypeError('Unknown risk transfer figure.');
+
+const figures = import.meta.glob('../figures/risk-return/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/risk-return/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing risk transfer figure layout.');
+---
+<figure class="risk-return-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>{caption}</figcaption>
+</figure>
+
+<style>
+  .risk-return-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .risk-return-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .risk-return-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>
