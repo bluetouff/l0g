@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 235" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="trump-treasury-fr-circuit-wide-title trump-treasury-fr-circuit-wide-desc" xml:lang="fr">
+<title id="trump-treasury-fr-circuit-wide-title">Le circuit des paiements fédéraux</title>
+<desc id="trump-treasury-fr-circuit-wide-desc">Le Congrès vote les crédits. L’OMB les répartit. L’agence engage la dépense et certifie la demande de paiement. Le Bureau of the Fiscal Service traite le paiement et le transmet à la Réserve fédérale pour règlement. L’accès du DOGE étudié ici concernait les systèmes du Trésor.</desc>
+<rect x="0.5" y="0.5" width="571" height="234" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="17" fill="var(--color-paper)" text-anchor="start" font-weight="500">Le circuit des paiements fédéraux</text>
+<text x="16" y="49" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Du vote des crédits au règlement</text>
+<path d="M16 61H556" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M80 104H154m-5-3 5 3-5 3" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M192 104H266m-5-3 5 3-5 3" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M304 104H378m-5-3 5 3-5 3" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M416 104H490m-5-3 5 3-5 3" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="62" cy="104" r="17" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(51 93)" aria-hidden="true"><path d="M2 8l9-5 9 5M4 9h14M5 10v7m4-7v7m4-7v7m4-7v7M3 19h16" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="62" y="144" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="500">Congrès</text>
+<text x="62" y="162" font-size="12" fill="var(--color-muted)" text-anchor="middle" font-weight="400">Vote les crédits</text>
+<circle cx="174" cy="104" r="17" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1"/>
+<g transform="translate(163 93)" aria-hidden="true"><path d="M4 4h14v4H4zM11 8v4M6 16v-4h10v4M3 16h6v3H3zM13 16h6v3h-6z" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="174" y="144" font-size="14" fill="var(--color-signal)" text-anchor="middle" font-weight="500">OMB</text>
+<text x="174" y="162" font-size="12" fill="var(--color-muted)" text-anchor="middle" font-weight="400">Répartit les crédits</text>
+<circle cx="286" cy="104" r="17" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(275 93)" aria-hidden="true"><path d="M6 3h8l3 3v13H6zM14 3v4h3M9 12l1.5 1.5 3-3M9 16h5" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="286" y="144" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="500">Agence</text>
+<text x="286" y="162" font-size="12" fill="var(--color-muted)" text-anchor="middle" font-weight="400">Engage et certifie</text>
+<circle cx="398" cy="104" r="17" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<g transform="translate(387 93)" aria-hidden="true"><path d="M4 7h14v10H4zM4 10h14M6.5 14H9M7 4h8M7 19h8" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="398" y="144" font-size="14" fill="var(--color-accent)" text-anchor="middle" font-weight="500">Trésor · BFS</text>
+<text x="398" y="162" font-size="12" fill="var(--color-muted)" text-anchor="middle" font-weight="400">Traite le paiement</text>
+<circle cx="510" cy="104" r="17" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(499 93)" aria-hidden="true"><path d="M3 8h15m-3-3 3 3-3 3m4 4H4m3-3-3 3 3 3" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="510" y="144" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="500">Réserve fédérale</text>
+<text x="510" y="162" font-size="12" fill="var(--color-muted)" text-anchor="middle" font-weight="400">Règle le paiement</text>
+<path d="M174 171v13m-32 0h64" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="174" y="203" font-size="12" fill="var(--color-signal)" text-anchor="middle" font-weight="400">Crédits</text>
+<text x="174" y="218" font-size="12" fill="var(--color-signal)" text-anchor="middle" font-weight="400">disponibles</text>
+<path d="M398 171v13m-32 0h64" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="398" y="203" font-size="12" fill="var(--color-accent)" text-anchor="middle" font-weight="400">Accès aux données</text>
+<text x="398" y="218" font-size="12" fill="var(--color-accent)" text-anchor="middle" font-weight="400">de paiement</text>
+</svg>

@@ -933,6 +933,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
       },
       {"sigle": "NDA", "nom": "Accord de confidentialité", "def": "Contrat ou clause définissant les informations à conserver confidentielles, leurs destinataires et les usages autorisés. Sa portée dépend du texte et du droit applicable. Aux États-Unis, une restriction entravant un signalement direct à la SEC concernant une possible violation boursière peut relever de la règle 21F-17. Les clauses et le contexte doivent être examinés.", "guide": "/posts/nvidia-huang-nda-conseil-financement-ia/"},
       {
+        sigle: 'Apportionment', nom: 'Répartition administrative des crédits fédéraux américains',
+        def: 'Décision par laquelle l’Office of Management and Budget répartit l’autorisation budgétaire d’une agence fédérale par période, programme ou activité, parfois en combinant ces critères. Elle fixe la part de cette autorisation que l’agence peut engager. Une note contraignante peut conditionner la disponibilité des crédits à une action précise. Le paiement intervient après l’engagement.',
+        guide: '/posts/trump-doge-controle-paiements-federaux/',
+      },
+      {
         sigle: 'Crédits budgétaires américains', nom: 'Appropriations fédérales',
         def: 'Autorité accordée par la loi à une administration fédérale pour engager des obligations et effectuer des paiements du Trésor dans un but déterminé. Les crédits fixent un périmètre et une période de disponibilité. Le contrat crée ensuite un engagement juridique ; le versement constitue une étape distincte. Une loi de financement provisoire peut prolonger temporairement cette autorité.',
         guide: '/posts/midterms-pouvoirs-milliards-engages/',
@@ -1554,6 +1559,11 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Souveraineté numérique européenne : le relais financier', href: '/posts/souverainete-numerique-europe-financement-2026/', detail: 'Fin des financements de relance et continuité des infrastructures numériques.', kind: 'article' }],
     sources: [{ label: 'Commission européenne, rapport annuel FRR 2026', href: 'https://reforms-investments.ec.europa.eu/publications-0/recovery-and-resilience-facility-annual-report-2026_en', detail: 'Rapport du 7 octobre 2026 : réformes, jalons, demandes de paiement et trois échéances de clôture.', kind: 'source' }],
     related: ['capex', 'financement-mixte', 'additionnalite-financiere'],
+  },
+  apportionment: {
+    articles: [{ label: 'Trump et le contrôle des paiements fédéraux', href: '/posts/trump-doge-controle-paiements-federaux/', kind: 'article' }],
+    sources: [{ label: 'Congressional Research Service, OMB Reporting on Apportionments', href: 'https://www.congress.gov/crs_external_products/IN/PDF/IN12538/IN12538.9.pdf', detail: 'Version du 21 août 2025. Modes de répartition, portée des notes et obligations de publication.', kind: 'source' }],
+    related: ['credits-budgetaires-americains'],
   },
   'credits-budgetaires-americains': {
     articles: [{ label: 'Midterms : pouvoirs publics et milliards engagés', href: '/posts/midterms-pouvoirs-milliards-engages/', kind: 'article' }],

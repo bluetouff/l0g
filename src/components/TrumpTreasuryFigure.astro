@@ -1,0 +1,80 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'circuit' | 'controls' | 'timeline';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    circuit: 'Circuit simplifié des paiements fédéraux traités par le Bureau of the Fiscal Service (BFS). L’OMB agit sur les crédits disponibles en amont. L’accès de l’équipe DOGE examiné par le GAO concernait les systèmes du Trésor, en aval.',
+    controls: 'Le Government Accountability Office (GAO) a sélectionné 14 contrôles de sécurité pour examiner les accès de l’équipe DOGE du 20 janvier au 11 avril 2025. Chaque case représente un contrôle. Résultats publiés le 28 avril 2026.',
+    timeline: 'Le retrait a visé le site où l’OMB publiait ses décisions de répartition des crédits. La frise s’arrête à la remise en ligne en août 2025. Les intervalles entre les dates ne sont pas à l’échelle.',
+  },
+  en: {
+    circuit: 'Simplified path for federal payments processed by the Bureau of the Fiscal Service (BFS). OMB apportions funding upstream. The DOGE team access examined by GAO involved Treasury systems further down the chain.',
+    controls: 'The Government Accountability Office (GAO) selected 14 security controls to assess DOGE team access from January 20 to April 11, 2025. Each square represents one control. Findings published April 28, 2026.',
+    timeline: 'The site that went offline hosted OMB’s decisions on the apportionment of federal funds. This timeline ends with publication restarting in August 2025. Intervals are schematic.',
+  },
+} as const;
+const sourceRefs = { circuit: ['S01', 'S02'], controls: ['S01'], timeline: ['S02', 'S07'] } as const;
+
+const figures = import.meta.glob('../figures/trump-treasury/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/trump-treasury/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing Treasury figure layout.');
+---
+<figure class="trump-treasury-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .trump-treasury-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .trump-treasury-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .trump-treasury-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

@@ -479,6 +479,18 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'apportionment', sigle: 'Apportionment', nom: 'Allocation of US federal budget authority',
+    def: 'A decision by the Office of Management and Budget that divides a federal agency’s budget authority by period, programme or activity, sometimes combining those criteria. It sets how much of that authority the agency can obligate. A binding footnote can make funds available for obligation only after a specified action. Payment follows the obligation.',
+    guide: '/en/analysis/trump-doge-federal-spending-controls/',
+    ...usRegulationSection,
+    robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Trump and the fight for control of federal payments', href: '/en/analysis/trump-doge-federal-spending-controls/', kind: 'article' }],
+      sources: [{ label: 'Congressional Research Service, OMB Reporting on Apportionments', href: 'https://www.congress.gov/crs_external_products/IN/PDF/IN12538/IN12538.9.pdf', detail: '21 August 2025 version. Allocation methods, the effect of footnotes and publication requirements.', kind: 'source' }],
+      related: ['credits-budgetaires-americains'],
+    },
+  },
+  {
     slug: 'credits-budgetaires-americains', sigle: 'US appropriations', nom: 'Federal spending authority',
     def: 'Legal authority for a federal agency to incur obligations and make Treasury payments for specified purposes. An appropriation defines the scope and period of funding availability. A contract creates a legal commitment; the subsequent payment is a separate stage. A continuing resolution can provide temporary funding authority.',
     guide: '/en/analysis/us-midterms-authority-financial-commitments/',

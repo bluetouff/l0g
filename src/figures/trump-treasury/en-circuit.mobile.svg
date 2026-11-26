@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342 321" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="trump-treasury-en-circuit-mobile-title trump-treasury-en-circuit-mobile-desc" xml:lang="en">
+<title id="trump-treasury-en-circuit-mobile-title">The federal payment chain</title>
+<desc id="trump-treasury-en-circuit-mobile-desc">Congress appropriates funds. OMB apportions them. The agency incurs the obligation and certifies the payment request. The Bureau of the Fiscal Service processes the payment and sends it to the Federal Reserve for settlement. The DOGE access examined here involved Treasury systems.</desc>
+<rect x="0.5" y="0.5" width="341" height="320" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="17" fill="var(--color-paper)" text-anchor="start" font-weight="500">The federal payment chain</text>
+<text x="16" y="49" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">From appropriations to settlement</text>
+<path d="M16 61H326" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 102V122m-3-5 3 5 3-5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 151V171m-3-5 3 5 3-5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 200V220m-3-5 3 5 3-5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 249V269m-3-5 3 5 3-5" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="33" cy="88" r="14" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(22 77)" aria-hidden="true"><path d="M2 8l9-5 9 5M4 9h14M5 10v7m4-7v7m4-7v7m4-7v7M3 19h16" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="57" y="85" font-size="14" fill="var(--color-paper)" text-anchor="start" font-weight="500">Congress</text>
+<text x="57" y="102" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Appropriates funds</text>
+<circle cx="33" cy="137" r="14" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1"/>
+<g transform="translate(22 126)" aria-hidden="true"><path d="M4 4h14v4H4zM11 8v4M6 16v-4h10v4M3 16h6v3H3zM13 16h6v3h-6z" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="57" y="134" font-size="14" fill="var(--color-signal)" text-anchor="start" font-weight="500">OMB</text>
+<text x="57" y="151" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Apportions funds</text>
+<circle cx="33" cy="186" r="14" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(22 175)" aria-hidden="true"><path d="M6 3h8l3 3v13H6zM14 3v4h3M9 12l1.5 1.5 3-3M9 16h5" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="57" y="183" font-size="14" fill="var(--color-paper)" text-anchor="start" font-weight="500">Agency</text>
+<text x="57" y="200" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Commits, certifies</text>
+<circle cx="33" cy="235" r="14" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<g transform="translate(22 224)" aria-hidden="true"><path d="M4 7h14v10H4zM4 10h14M6.5 14H9M7 4h8M7 19h8" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="57" y="232" font-size="14" fill="var(--color-accent)" text-anchor="start" font-weight="500">Treasury · BFS</text>
+<text x="57" y="249" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Processes payment</text>
+<circle cx="33" cy="284" r="14" fill="var(--color-surface)" stroke="var(--color-line)" stroke-width="1"/>
+<g transform="translate(22 273)" aria-hidden="true"><path d="M3 8h15m-3-3 3 3-3 3m4 4H4m3-3-3 3 3 3" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="57" y="281" font-size="14" fill="var(--color-paper)" text-anchor="start" font-weight="500">Federal Reserve</text>
+<text x="57" y="298" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Settles payment</text>
+<path d="M183 125v24" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="135" font-size="12" fill="var(--color-signal)" text-anchor="start" font-weight="400">Funds available</text>
+<text x="194" y="150" font-size="12" fill="var(--color-signal)" text-anchor="start" font-weight="400">to the agency</text>
+<path d="M183 223v24" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="194" y="233" font-size="12" fill="var(--color-accent)" text-anchor="start" font-weight="400">Access to</text>
+<text x="194" y="248" font-size="12" fill="var(--color-accent)" text-anchor="start" font-weight="400">payment data</text>
+</svg>
