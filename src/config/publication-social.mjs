@@ -1,5 +1,7 @@
 // Dedicated landscape cards. Portrait covers remain the book and catalogue artwork.
 const entries = [
+  ['trump-war-chest', 'fr', 'le-tresor-de-guerre-du-clan-trump', ['Le trésor de guerre', 'du clan Trump'], ['L’argent public et le pouvoir de décider'], 'Illustration conceptuelle des documents budgétaires et du pouvoir fédéral américain'],
+  ['trump-war-chest', 'en', 'trump-clans-war-chest', ['The Trump Clan’s', 'War Chest'], ['Public money and the power to spend'], 'Conceptual artwork of budget records and US federal power'],
   ['shadow-fleet', 'fr', 'flotte-fantome-russe', ['La flotte', 'fantôme russe'], ['Propriétaires,', 'paiements et risques'], 'Illustration d’un pétrolier traversant une mer sombre'],
   ['shadow-fleet', 'en', 'russias-shadow-fleet', ['Russia’s', 'Shadow Fleet'], ['Ownership, payments', 'and risks'], 'Illustration of an oil tanker crossing dark water'],
   ['ai-creditors', 'fr', 'les-creanciers-de-l-ia', ['Les créanciers', 'de l’IA'], ['Banques, fonds, assureurs', 'et dette des data centers'], 'Illustration conceptuelle des centres de données et des circuits de crédit reliant banques, fonds et assureurs'],

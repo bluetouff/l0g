@@ -11,6 +11,7 @@ import { insurancePromiseEditions } from '../config/insurance-promise-publicatio
 import { cumcumEditions } from '../config/cumcum-publication.mjs';
 import { ordinaryMachinesEditions } from '../config/ordinary-machines-publication.mjs';
 import { shadowFleetEditions } from '../config/shadow-fleet-publication.mjs';
+import { trumpWarChestEditions } from '../config/trump-war-chest-publication.mjs';
 import { aiCreditorsEditions } from '../config/ai-creditors-publication.mjs';
 import { nvidiaEditions } from '../config/nvidia-publication.mjs';
 import { nvidiaVolumeTwoEditions } from '../config/nvidia-volume-two-publication.mjs';
@@ -32,6 +33,8 @@ const { headingLevel = 'h2', lang = 'fr', publication = 'epstein', showAllPublic
 const Heading = headingLevel;
 const isEnglish = lang === 'en';
 const displayText = (text: string) => isEnglish ? text : keepFrenchPunctuation(text);
+const isTrumpWarChest = publication === 'trump-war-chest';
+const trumpWarChest = trumpWarChestEditions[lang];
 const isShadowFleet = publication === 'shadow-fleet';
 const shadowFleet = shadowFleetEditions[lang];
 const isAiCreditors = publication === 'ai-creditors';
@@ -70,7 +73,7 @@ const isDigitalIdentity = !isEnglish && publication === 'digital-identity';
 const isDigitalEuro = publication === 'digital-euro';
 const isWaterElectricity = publication === 'water-electricity';
 const isEInvoicing = publication === 'e-invoicing';
-const publicationUrl = isShadowFleet ? shadowFleet.path : isAiCreditors ? aiCreditors.path : isNvidia ? nvidia.path : isEncryptionBackdoor ? encryptionBackdoor.path : isOrdinaryMachines ? ordinaryMachines.path : isCumCum ? cumcum.path : isInsurancePromise ? insurancePromise.path : isCyberRecovery ? cyberRecovery.path : isDebt ? debt.path : isMicrosoft ? microsoft.path : isReserves ? reserves.path : isSlowdown ? slowdown.path : isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
+const publicationUrl = isTrumpWarChest ? trumpWarChest.path : isShadowFleet ? shadowFleet.path : isAiCreditors ? aiCreditors.path : isNvidia ? nvidia.path : isEncryptionBackdoor ? encryptionBackdoor.path : isOrdinaryMachines ? ordinaryMachines.path : isCumCum ? cumcum.path : isInsurancePromise ? insurancePromise.path : isCyberRecovery ? cyberRecovery.path : isDebt ? debt.path : isMicrosoft ? microsoft.path : isReserves ? reserves.path : isSlowdown ? slowdown.path : isRecouvrement ? recouvrement.path : isCommerceTraces ? commerceTracesBook.path : isScpi ? scpi.path : isOil ? isEnglish ? '/en/publications/banking-on-oil/' : '/publications/les-banquiers-du-baril/' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone/'
   : isEInvoicing
   ? isEnglish ? '/en/publications/great-e-invoicing-toll/' : '/publications/grand-peage-facture/'
@@ -83,7 +86,7 @@ const publicationUrl = isShadowFleet ? shadowFleet.path : isAiCreditors ? aiCred
   : isEnglish
     ? '/en/publications/epsteins-money/'
     : '/publications/l-argent-d-epstein/';
-const epubFile = isShadowFleet ? shadowFleet.epub.split('/').at(-1)! : isAiCreditors ? aiCreditors.epub.split('/').at(-1)! : isNvidia ? nvidia.epub.split('/').at(-1)! : isEncryptionBackdoor ? encryptionBackdoor.epub.split('/').at(-1)! : isOrdinaryMachines ? ordinaryMachines.epub.split('/').at(-1)! : isCumCum ? cumcum.epub.split('/').at(-1)! : isInsurancePromise ? insurancePromise.epub.split('/').at(-1)! : isCyberRecovery ? cyberRecovery.epub.split('/').at(-1)! : isDebt ? debtDark.epub.split('/').at(-1)! : isMicrosoft ? microsoft.epub.split('/').at(-1)! : isReserves ? reserves.epub.split('/').at(-1)! : isSlowdown ? slowdown.epub.split('/').at(-1)! : isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
+const epubFile = isTrumpWarChest ? trumpWarChest.epub.split('/').at(-1)! : isShadowFleet ? shadowFleet.epub.split('/').at(-1)! : isAiCreditors ? aiCreditors.epub.split('/').at(-1)! : isNvidia ? nvidia.epub.split('/').at(-1)! : isEncryptionBackdoor ? encryptionBackdoor.epub.split('/').at(-1)! : isOrdinaryMachines ? ordinaryMachines.epub.split('/').at(-1)! : isCumCum ? cumcum.epub.split('/').at(-1)! : isInsurancePromise ? insurancePromise.epub.split('/').at(-1)! : isCyberRecovery ? cyberRecovery.epub.split('/').at(-1)! : isDebt ? debtDark.epub.split('/').at(-1)! : isMicrosoft ? microsoft.epub.split('/').at(-1)! : isReserves ? reserves.epub.split('/').at(-1)! : isSlowdown ? slowdown.epub.split('/').at(-1)! : isRecouvrement ? recouvrement.epub.split('/').at(-1)! : isCommerceTraces ? commerceTracesBook.epub.split('/').at(-1)! : isScpi ? scpi.epub.split('/').at(-1)! : isOil ? isEnglish ? 'banking-on-oil-l0g.epub' : 'les-banquiers-du-baril-l0g.epub' : isDigitalIdentity
   ? 'votre-identite-dans-un-telephone-enquete-l0g.epub'
   : isEInvoicing
   ? isEnglish ? 'great-e-invoicing-toll-investigation-l0g.epub' : 'grand-peage-facture-enquete-l0g.epub'
@@ -97,7 +100,7 @@ const epubFile = isShadowFleet ? shadowFleet.epub.split('/').at(-1)! : isAiCredi
     ? 'epsteins-money-l0g.epub'
     : 'l-argent-d-epstein-l0g.epub';
 const epubUrl = `/publications/${epubFile}`;
-const coverUrl = isShadowFleet ? shadowFleet.cover : isAiCreditors ? aiCreditors.cover : isNvidia ? nvidia.cover : isEncryptionBackdoor ? encryptionBackdoor.cover : isOrdinaryMachines ? ordinaryMachines.cover : isCumCum ? cumcum.cover : isInsurancePromise ? insurancePromise.cover : isCyberRecovery ? cyberRecovery.cover : isDebt ? debt.cover : isMicrosoft ? microsoft.cover : isReserves ? reserves.cover : isSlowdown ? slowdown.cover : isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
+const coverUrl = isTrumpWarChest ? trumpWarChest.cover : isShadowFleet ? shadowFleet.cover : isAiCreditors ? aiCreditors.cover : isNvidia ? nvidia.cover : isEncryptionBackdoor ? encryptionBackdoor.cover : isOrdinaryMachines ? ordinaryMachines.cover : isCumCum ? cumcum.cover : isInsurancePromise ? insurancePromise.cover : isCyberRecovery ? cyberRecovery.cover : isDebt ? debt.cover : isMicrosoft ? microsoft.cover : isReserves ? reserves.cover : isSlowdown ? slowdown.cover : isRecouvrement ? recouvrement.cover : isCommerceTraces ? commerceTracesBook.cover : isScpi ? scpi.cover : isOil ? isEnglish ? '/publications/banking-on-oil-cover.jpg' : '/publications/les-banquiers-du-baril-cover.jpg' : isDigitalIdentity
   ? '/publications/votre-identite-dans-un-telephone-cover.jpg'
   : isEInvoicing
   ? isEnglish ? '/publications/great-e-invoicing-toll-cover.png' : '/publications/grand-peage-facture-cover.png'
@@ -110,10 +113,25 @@ const coverUrl = isShadowFleet ? shadowFleet.cover : isAiCreditors ? aiCreditors
   : isEnglish
     ? '/publications/epsteins-money-cover.png'
     : '/publications/l-argent-d-epstein-cover.png';
+const hasResponsiveCover = isTrumpWarChest || isShadowFleet || isAiCreditors || isNvidia || isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro;
 const epubPath = join(process.cwd(), 'public/publications', epubFile);
 const epubBytes = readFileSync(epubPath).length;
 const formattedSize = `${new Intl.NumberFormat(isEnglish ? 'en-US' : 'fr-FR', { maximumFractionDigits: 0 }).format(epubBytes / 1024)} ${isEnglish ? 'KB' : 'Ko'}`;
-const copy = isShadowFleet ? {
+const copy = isTrumpWarChest ? {
+  coverLabel: `${isEnglish ? 'Explore' : 'Découvrir'} ${trumpWarChest.title}`, coverAlt: trumpWarChest.coverAlt,
+  meta: isEnglish ? '// complete investigation · November 2026' : '// enquête intégrale · novembre 2026',
+  titleLead: isEnglish ? 'The Trump Clan’s' : 'Le trésor de guerre', titleAccent: isEnglish ? 'War Chest' : 'du clan Trump',
+  deck: trumpWarChest.subtitle, description: trumpWarChest.description,
+  factsLabel: isEnglish ? 'Edition contents' : 'Contenu de l’édition',
+  facts: [
+    { value: String(trumpWarChest.chapters.length), label: isEnglish ? 'chapters' : 'chapitres' },
+    { value: String(trumpWarChest.figureCount), label: isEnglish ? 'infographics' : 'infographies' },
+    { value: formattedSize, label: isEnglish ? 'download' : 'téléchargement' },
+    { value: 'CC BY 4.0', label: 'licence' },
+  ],
+  discover: isEnglish ? 'Explore the book' : 'Découvrir le livre',
+  downloadLabel: 'EPUB 3', fileName: epubFile,
+} : isShadowFleet ? {
   coverLabel: `${isEnglish ? 'Explore' : 'Découvrir'} ${shadowFleet.title}`, coverAlt: shadowFleet.coverAlt,
   meta: isEnglish ? '// maritime investigation · November 2026' : '// enquête maritime · novembre 2026',
   titleLead: isEnglish ? 'Russia’s' : 'La flotte', titleAccent: isEnglish ? 'Shadow Fleet' : 'fantôme russe',
@@ -397,14 +415,14 @@ const copy = isShadowFleet ? {
     };
 ---
 
-<article class:list={['publication-spotlight', { 'publication-spotlight--shadow-fleet': isShadowFleet, 'publication-spotlight--ai-creditors': isAiCreditors, 'publication-spotlight--nvidia': isNvidia, 'publication-spotlight--encryption-backdoor': isEncryptionBackdoor, 'publication-spotlight--ordinary-machines': isOrdinaryMachines, 'publication-spotlight--cumcum': isCumCum, 'publication-spotlight--insurance-promise': isInsurancePromise, 'publication-spotlight--cyber-recovery': isCyberRecovery, 'publication-spotlight--debt': isDebt, 'publication-spotlight--microsoft': isMicrosoft, 'publication-spotlight--recouvrement': isReserves || isRecouvrement || isSlowdown, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
+<article class:list={['publication-spotlight', { 'publication-spotlight--trump-war-chest': isTrumpWarChest, 'publication-spotlight--shadow-fleet': isShadowFleet, 'publication-spotlight--ai-creditors': isAiCreditors, 'publication-spotlight--nvidia': isNvidia, 'publication-spotlight--encryption-backdoor': isEncryptionBackdoor, 'publication-spotlight--ordinary-machines': isOrdinaryMachines, 'publication-spotlight--cumcum': isCumCum, 'publication-spotlight--insurance-promise': isInsurancePromise, 'publication-spotlight--cyber-recovery': isCyberRecovery, 'publication-spotlight--debt': isDebt, 'publication-spotlight--microsoft': isMicrosoft, 'publication-spotlight--recouvrement': isReserves || isRecouvrement || isSlowdown, 'publication-spotlight--auditer': isAuditer, 'publication-spotlight--digital-euro': isDigitalEuro, 'publication-spotlight--water': isWaterElectricity, 'publication-spotlight--invoice': isEInvoicing, 'publication-spotlight--identity': isDigitalIdentity }]}>
   <a class="publication-cover" href={publicationUrl} aria-label={copy.coverLabel}>
     <img
       src={coverUrl}
-      srcset={isShadowFleet || isAiCreditors || isNvidia || isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
-      sizes={isShadowFleet || isAiCreditors || isNvidia || isEncryptionBackdoor || isOrdinaryMachines || isCumCum || isInsurancePromise || isCyberRecovery || isDebt || isMicrosoft || isReserves || isSlowdown || isRecouvrement || isCommerceTraces || isScpi || isOil || isWaterElectricity || isDigitalEuro ? "(max-width: 640px) 140px, 200px" : undefined}
-      width={isShadowFleet ? shadowFleet.coverWidth : isAiCreditors ? aiCreditors.coverWidth : isNvidia ? nvidia.coverWidth : 1024}
-      height={isShadowFleet ? shadowFleet.coverHeight : isAiCreditors ? aiCreditors.coverHeight : isNvidia ? nvidia.coverHeight : 1638}
+      srcset={hasResponsiveCover ? [320, 640, 960].map((width) => `${coverUrl.replace(/\.jpg$/, "")}-${width}.webp ${width}w`).join(", ") : undefined}
+      sizes={hasResponsiveCover ? "(max-width: 640px) 140px, 200px" : undefined}
+      width={isTrumpWarChest ? trumpWarChest.coverWidth : isShadowFleet ? shadowFleet.coverWidth : isAiCreditors ? aiCreditors.coverWidth : isNvidia ? nvidia.coverWidth : 1024}
+      height={isTrumpWarChest ? trumpWarChest.coverHeight : isShadowFleet ? shadowFleet.coverHeight : isAiCreditors ? aiCreditors.coverHeight : isNvidia ? nvidia.coverHeight : 1638}
       alt={copy.coverAlt}
       loading="lazy"
       decoding="async"
@@ -472,6 +490,7 @@ const copy = isShadowFleet ? {
   .publication-spotlight--water { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--invoice { --publication-card-accent: var(--color-accent); }
   .publication-spotlight--identity { --publication-card-accent: var(--color-signal); }
+  .publication-spotlight--trump-war-chest { --publication-card-accent: var(--color-amber); }
   .publication-spotlight--shadow-fleet { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--ai-creditors { --publication-card-accent: var(--color-signal); }
   .publication-spotlight--nvidia { --publication-card-accent: var(--color-signal); }

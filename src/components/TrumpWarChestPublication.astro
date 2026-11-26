@@ -1,0 +1,189 @@
+---
+import { createHash } from 'node:crypto';
+import { readFileSync } from 'node:fs';
+import { join } from 'node:path';
+import sharp from 'sharp';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EnglishGuidesLayout from '../layouts/EnglishGuidesLayout.astro';
+import { AUTHOR_ID, ORGANIZATION_ID, SITE_URL } from '../config/entities.ts';
+import { trumpWarChestEditions } from '../config/trump-war-chest-publication.mjs';
+import { serializeInlineScriptData } from '../lib/security.ts';
+
+interface Props { lang: 'fr' | 'en'; }
+const { lang } = Astro.props;
+const isEn = lang === 'en';
+const tr = (fr: string, en: string) => isEn ? en : fr;
+const Layout = isEn ? EnglishGuidesLayout : BaseLayout;
+const shellProps = isEn ? {} : { lang: 'fr' as const, ogLocale: 'fr_FR' as const, sidebar: false };
+const book = trumpWarChestEditions[lang];
+const alternate = trumpWarChestEditions[isEn ? 'fr' : 'en'];
+const library = tr('/publications/', '/en/publications/');
+const glossary = tr('/glossaire/', '/en/glossary/');
+const license = 'https://creativecommons.org/licenses/by/4.0/';
+const publicPath = (path: string) => join(process.cwd(), 'public', path);
+const archive = readFileSync(publicPath(book.epub));
+if (!archive.length) throw new Error('The Trump war chest EPUB is empty');
+const sha256 = createHash('sha256').update(archive).digest('hex');
+const size = `${new Intl.NumberFormat(book.locale, { maximumFractionDigits: 1 }).format(archive.length / 1024 / 1024)} ${tr('Mo', 'MB')}`;
+const date = new Intl.DateTimeFormat(book.locale, { dateStyle: 'long', timeZone: 'UTC' }).format(new Date(book.date));
+const titleLead = tr('Le trésor de guerre', 'The Trump Clan’s');
+const titleAccent = tr('du clan Trump', 'War Chest');
+const panoramaAlt = tr('Illustration conceptuelle de dossiers budgétaires et du Capitole américain.', 'Conceptual illustration of budget records and the US Capitol.');
+const imageVariants = (path: string, widths: number[]) =>
+  widths.map(width => `${path.replace('.jpg', `-${width}.webp`)} ${width}w`).join(', ');
+const chapters = await Promise.all(book.chapters.map(async chapter => {
+  const { width, height } = await sharp(publicPath(chapter.image)).metadata();
+  if (!width || !height) throw new Error(`Missing chapter image dimensions: ${chapter.image}`);
+  return { ...chapter, width, height };
+}));
+const url = `${SITE_URL}${book.path}`;
+const translation = { '@type': 'Book', '@id': `${SITE_URL}${alternate.path}#book`, inLanguage: alternate.lang };
+const jsonLd = {
+  '@context': 'https://schema.org', '@type': 'Book', '@id': `${url}#book`,
+  name: book.title, alternativeHeadline: book.subtitle, description: book.description, inLanguage: lang,
+  author: { '@id': AUTHOR_ID }, publisher: { '@id': ORGANIZATION_ID },
+  datePublished: book.date, dateModified: book.modified,
+  bookFormat: 'https://schema.org/EBook', isAccessibleForFree: true,
+  url, image: `${SITE_URL}${book.cover}`, license,
+  ...(isEn ? { translationOfWork: translation } : { workTranslation: translation }),
+  hasPart: chapters.map(chapter => ({ '@type': 'Article', name: chapter.title, url: `${SITE_URL}${chapter.route}` })),
+  associatedMedia: {
+    '@type': 'MediaObject', name: `${book.title} · EPUB`, contentUrl: `${SITE_URL}${book.epub}`,
+    encodingFormat: 'application/epub+zip', contentSize: `${archive.length} bytes`, sha256,
+  },
+};
+---
+<Layout
+  {...shellProps}
+  title={book.title}
+  seoTitle={`${book.title} · ${tr('EPUB gratuit', 'Free EPUB')} | l0g`}
+  ogTitle={book.title}
+  description={book.description}
+  canonical={url}
+  searchDate={book.date}
+  searchTags={isEn ? ['Trump', 'US Treasury', 'ICE', 'federal budget', 'Venezuela'] : ['Trump', 'Trésor américain', 'ICE', 'budget fédéral', 'Venezuela']}
+  ogImage={book.social}
+  ogImageAlt={panoramaAlt}
+  alternateLinks={[
+    { hreflang: 'fr', href: `${SITE_URL}${trumpWarChestEditions.fr.path}` },
+    { hreflang: 'en', href: `${SITE_URL}${trumpWarChestEditions.en.path}` },
+    { hreflang: 'x-default', href: `${SITE_URL}${trumpWarChestEditions.fr.path}` },
+  ]}
+>
+  <script type="application/ld+json" is:inline set:html={serializeInlineScriptData(jsonLd)} />
+  <article class="war-chest-book rise" data-pagefind-body>
+    <header class="book-hero">
+      <div class="hero-copy">
+        <a class="text-link" href={library}>← {tr('Publications l0g', 'l0g publications')}</a>
+        <h1>{titleLead}{' '}<span>{titleAccent}</span></h1>
+        <p class="subtitle">{book.subtitle}</p>
+        <p class="prose-copy">{book.lede}</p>
+        <div class="hero-actions">
+          <a class="download-action" id="telecharger" href={book.epub} download>
+            {tr('Télécharger le livre', 'Download the book')}
+            <small>EPUB 3 · {size} · {tr('gratuit', 'free')}</small>
+          </a>
+          <a class="text-link" href="#sommaire">{tr('Voir le sommaire', 'See the contents')} <span aria-hidden="true">↓</span></a>
+        </div>
+        <p class="edition-language">
+          <time datetime={book.date}>{date}</time>
+          <a class="text-link" href={alternate.path} lang={alternate.lang} hreflang={alternate.lang}>{tr('Read in English', 'Lire en français')} <span aria-hidden="true">↗</span></a>
+        </p>
+      </div>
+      <figure class="cover-stage">
+        <img src={book.cover} srcset={imageVariants(book.cover, [320, 640, 960])} sizes="(max-width: 720px) 245px, 322px"
+          width={book.coverWidth} height={book.coverHeight} alt={book.coverAlt} loading="eager" fetchpriority="high" decoding="async" />
+      </figure>
+    </header>
+
+    <figure class="panorama">
+      <img src={book.panorama} srcset={imageVariants(book.panorama, [640, 960, 1600])} sizes="(max-width: 1120px) 100vw, 1120px"
+        width="1600" height="840" alt={panoramaAlt} loading="lazy" decoding="async" />
+      <figcaption>{tr('Illustration éditoriale créée avec assistance d’intelligence artificielle.', 'Editorial illustration created with AI assistance.')}</figcaption>
+    </figure>
+
+    <section class="contents" id="sommaire" aria-labelledby="contents-heading">
+      <h2 id="contents-heading">{tr('Du Trésor au vote du Congrès', 'From the Treasury to a vote in Congress')}</h2>
+      <p class="prose-copy">{book.summary}</p>
+      <ol class="chapter-grid" role="list">
+        {chapters.map(chapter => (
+          <li>
+            <a href={chapter.route}>
+              <img src={chapter.image} width={chapter.width} height={chapter.height} alt="" loading="lazy" decoding="async" />
+              <div class="chapter-copy">
+                <div><h3>{chapter.title}</h3><p>{chapter.summary}</p></div>
+                <span aria-hidden="true">↗</span>
+              </div>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <section class="edition" aria-labelledby="edition-heading">
+      <h2 id="edition-heading">{tr('Lire hors ligne, retrouver les sources', 'Read offline, follow the sources')}</h2>
+      <div>
+        <p class="prose-copy">{tr(
+          'Les six enquêtes intégrales sont accompagnées d’une introduction, d’une conclusion et d’un glossaire. Le texte et les infographies restent accessibles hors ligne. Chaque chapitre conserve ses références et un lien vers l’article en ligne.',
+          'The six complete investigations come with a new introduction, conclusion and glossary. The text and figures are available offline. Each chapter retains its sources and a link to the original article.',
+        )}</p>
+        <ul class="further-reading">
+          <li><a class="text-link" href={`${glossary}credits-budgetaires-americains/`}>{tr('Les crédits budgétaires américains', 'US budget authority')}</a></li>
+          <li><a class="text-link" href={`${glossary}apportionment/`}>{tr('La répartition des crédits', 'Apportionment')}</a></li>
+        </ul>
+        <p class="edition-note"><a class="text-link" href={license}>Creative Commons Attribution 4.0 International</a></p>
+        <details class="integrity">
+          <summary>{tr('Vérifier l’intégrité du fichier', 'Check file integrity')}</summary>
+          <p>SHA-256 <code>{sha256}</code></p>
+        </details>
+      </div>
+    </section>
+  </article>
+</Layout>
+
+<style>
+  .war-chest-book { max-width: 1120px; margin: 1.5rem auto 0; }
+  .book-hero { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr); align-items: center; gap: clamp(2rem, 6vw, 6rem); padding: 1rem 0 clamp(2.5rem, 5vw, 4rem); }
+  .text-link { color: var(--color-signal); font-family: var(--font-mono); font-size: .8rem; text-underline-offset: .25rem; }
+  .hero-copy h1 { color: var(--color-bright); font: clamp(2.3rem, 5vw, 4.2rem)/1.04 var(--font-display); letter-spacing: -.045em; margin: 1rem 0; text-wrap: balance; }
+  .hero-copy h1 span { display: block; color: var(--color-signal); }
+  .subtitle { color: var(--color-bright); font: clamp(1.08rem, 2.4vw, 1.34rem)/1.5 var(--font-read); margin: 1.15rem 0 .85rem; }
+  .prose-copy { color: var(--color-prose); font: 1.05rem/1.8 var(--font-read); max-width: 66ch; margin: 0 0 1rem; }
+  .hero-actions, .edition-language { display: flex; flex-wrap: wrap; align-items: center; gap: .8rem 1.15rem; }
+  .hero-actions { margin: 1.5rem 0; }
+  .edition-language, .edition-note { color: var(--color-muted); font: .78rem/1.5 var(--font-mono); }
+  .download-action { display: inline-flex; flex-direction: column; gap: .35rem; color: var(--color-bright); background: color-mix(in srgb, var(--color-signal) 11%, var(--color-surface)); border: 1px solid var(--color-signal); border-radius: 6px; text-decoration: none; padding: .85rem 1.05rem; font: .9rem/1.45 var(--font-mono); }
+  .download-action:hover { background: color-mix(in srgb, var(--color-signal) 19%, var(--color-surface)); }
+  .download-action small { color: var(--color-muted); font-size: .75rem; }
+  .cover-stage { margin: 0 auto; width: min(85%, 322px); }
+  .cover-stage img { width: 100%; height: auto; display: block; border-radius: 2px 8px 8px 2px; border-left: 3px solid color-mix(in srgb, var(--color-signal) 32%, var(--color-line)); box-shadow: 1rem 1.2rem 2.3rem rgb(7 12 17 / .34); }
+  .panorama { margin: 0 0 clamp(2.25rem, 5vw, 4rem); }
+  .panorama img { width: 100%; height: auto; display: block; border-radius: 8px; border: 1px solid var(--color-line); }
+  figcaption { color: var(--color-muted); font: .8rem/1.5 var(--font-read); margin-top: .65rem; }
+  h2 { color: var(--color-bright); font: var(--section-title-size)/1.2 var(--font-display); letter-spacing: -.03em; margin: 0 0 .8rem; }
+  .contents { scroll-margin-top: 2rem; }
+  .chapter-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem; list-style: none; padding: 0; margin: 1.65rem 0 0; }
+  .chapter-grid a { display: block; height: 100%; overflow: hidden; text-decoration: none; border: 1px solid var(--color-line); border-radius: 8px; background: var(--color-surface); }
+  .chapter-grid a:hover { border-color: var(--color-signal); }
+  .chapter-grid img { display: block; width: 100%; aspect-ratio: 2.3; height: auto; object-fit: cover; }
+  .chapter-copy { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: .85rem; padding: 1rem 1.05rem 1.2rem; }
+  .chapter-copy h3 { color: var(--color-bright); font: 650 1.1rem/1.4 var(--font-read); margin: 0 0 .45rem; }
+  .chapter-copy p { color: var(--color-muted); font: .9rem/1.6 var(--font-read); margin: 0; }
+  .chapter-copy span { color: var(--color-signal); font: .85rem/1.4 var(--font-mono); }
+  .edition { display: grid; grid-template-columns: minmax(0, .65fr) minmax(0, 1.35fr); gap: .6rem 2rem; border-top: 1px solid var(--color-line); padding-top: 2rem; margin: 2.75rem 0 3rem; }
+  .further-reading { padding-left: 1.15rem; margin: 1rem 0; line-height: 1.8; }
+  .integrity { font: .76rem/1.6 var(--font-mono); border: 1px solid var(--color-line); border-radius: 6px; padding: .8rem 1rem; }
+  .integrity summary { color: var(--color-signal); cursor: pointer; }
+  .integrity p { color: var(--color-muted); overflow-wrap: anywhere; margin: .65rem 0 0; }
+  .integrity code { display: block; }
+  a:focus-visible, summary:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 4px; }
+
+  @media (max-width: 720px) {
+    .war-chest-book { margin-top: .5rem; }
+    .book-hero, .edition { grid-template-columns: 1fr; }
+    .cover-stage { width: min(74%, 245px); }
+  }
+  @media (max-width: 560px) {
+    .chapter-grid { grid-template-columns: 1fr; }
+  }
+</style>

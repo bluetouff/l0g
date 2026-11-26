@@ -54,9 +54,10 @@ for (const book of Object.values(shadowFleetEditions)) {
     assert.equal(schema.associatedMedia.sha256, sha256);
     assert.equal(plain(content.find(node => node.tagName === 'code')), sha256);
 
-    const [newCard] = renderedPublicationCards(ROOT, book.lang);
-    const card = nodes(newCard);
-    assert(hasClass(newCard, 'publication-spotlight--shadow-fleet'));
+    const catalogueCard = renderedPublicationCards(ROOT, book.lang)
+      .find(node => hasClass(node, 'publication-spotlight--shadow-fleet'));
+    assert.ok(catalogueCard, 'Shadow fleet retains a catalogue card');
+    const card = nodes(catalogueCard);
     assert.equal(plain(card.find(node => node.tagName === 'h2')), book.title);
     assert.equal(attr(card.find(node => node.tagName === 'a' && attr(node, 'download') !== undefined), 'href'), book.epub);
     assert.equal(attr(card.find(node => node.tagName === 'img'), 'src'), book.cover);

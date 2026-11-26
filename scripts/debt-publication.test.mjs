@@ -1,4 +1,4 @@
-import { renderedPublicationCards } from './publication-catalog-test-utils.mjs';
+import { assertPublicationCardOrder, renderedPublicationCards } from './publication-catalog-test-utils.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -165,16 +165,8 @@ test('both catalogues retain the debt book after the machines, cum-cum, insurer 
     const route = book.lang === 'fr' ? 'publications' : 'en/publications';
     const html = readFileSync(join(ROOT, 'dist', route, 'index.html'), 'utf8');
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 23 : 20);
-    assert(hasClass(cards[1], 'publication-spotlight--ai-creditors'));
-    assert(hasClass(cards[2], 'publication-spotlight--nvidia'));
-    assert(hasClass(cards[4], 'publication-spotlight--encryption-backdoor'));
-    assert(hasClass(cards[5], 'publication-spotlight--ordinary-machines'));
-    assert(hasClass(cards[6], 'publication-spotlight--cumcum'));
-    assert(hasClass(cards[7], 'publication-spotlight--insurance-promise'));
-    assert(hasClass(cards[8], 'publication-spotlight--cyber-recovery'));
-    assert(hasClass(cards[9], 'publication-spotlight--debt'));
-    const debtCard = cards[9];
+    assertPublicationCardOrder(cards, ['ai-creditors', 'nvidia', 'encryption-backdoor', 'ordinary-machines', 'cumcum', 'insurance-promise', 'cyber-recovery', 'debt']);
+    const debtCard = cards.find(card => hasClass(card, 'publication-spotlight--debt'));
     const first = nodes(debtCard);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));
     const downloads = first.filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined);
@@ -195,7 +187,6 @@ test('both catalogues retain the debt book after the machines, cum-cum, insurer 
       }, 0);
       const totalDownloads = cards.reduce((total, card) => total + nodes(card).filter(node => node.tagName === 'a' && attr(node, 'download') !== undefined).length, 0);
       assert.deepEqual(values, [cards.length, totalChapters, totalDownloads]);
-      assert.deepEqual(values, [23, 170, 23]);
     }
   }
 });

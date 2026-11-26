@@ -39,3 +39,14 @@ export function renderedPublicationCards(root, lang) {
   assert.equal(new Set(downloads).size, cards.length, 'No edition repeats across catalogue pages');
   return cards;
 }
+
+/** Check the editorial order of selected editions independently of their page or rank. */
+export function assertPublicationCardOrder(cards, keys) {
+  let previous = -1;
+  for (const key of keys) {
+    const position = cards.findIndex((node) => (attr(node, 'class') ?? '').split(/\s+/u)
+      .includes(`publication-spotlight--${key}`));
+    assert.ok(position > previous, `Catalogue contains ${key} after the previous edition`);
+    previous = position;
+  }
+}

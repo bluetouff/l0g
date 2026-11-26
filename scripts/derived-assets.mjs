@@ -13,6 +13,7 @@ import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-public
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
 import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
+import { trumpWarChestEditions } from '../src/config/trump-war-chest-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 import { runDerivedTask } from './derived-assets-cache.mjs';
@@ -28,12 +29,12 @@ const coverOutputs = covers.flatMap((name) => [
 const artworkOutputs = [
   ...Object.values(aiCreditorsEditions), ...Object.values(nvidiaEditions), ...Object.values(nvidiaVolumeTwoEditions), ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions),
 ].map((book) => `src/epub-assets/${book.directory}-cover.png`);
-for (const prefix of ['shadow-fleet', 'ai-creditors', 'nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor']) {
+for (const prefix of ['trump-war-chest', 'shadow-fleet', 'ai-creditors', 'nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor']) {
   artworkOutputs.push(`public/publications/${prefix}-publication-panorama.jpg`);
   for (const width of [640, 960, 1600]) artworkOutputs.push(`public/publications/${prefix}-publication-panorama-${width}.webp`);
   artworkOutputs.push(`public/publications/og/art/${prefix}-v1.jpg`);
 }
-for (const book of [...Object.values(shadowFleetEditions), ...Object.values(aiCreditorsEditions), ...Object.values(nvidiaEditions), ...Object.values(nvidiaVolumeTwoEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions)]) {
+for (const book of [...Object.values(trumpWarChestEditions), ...Object.values(shadowFleetEditions), ...Object.values(aiCreditorsEditions), ...Object.values(nvidiaEditions), ...Object.values(nvidiaVolumeTwoEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions)]) {
   artworkOutputs.push(publicPath(book.cover));
   for (const width of [320, 640, 960]) artworkOutputs.push(publicPath(book.cover.replace('.jpg', `-${width}.webp`)));
 }
@@ -56,7 +57,7 @@ export const derivedTasks = {
   },
   artwork: {
     script: 'build:artwork:generate',
-    inputs: [...commonInputs, ...fonts, 'src/config', 'src/epub-assets/shadow-fleet-cover-art.jpg', 'src/epub-assets/shadow-fleet-panorama.jpg', 'src/epub-assets/ai-creditors-cover-art.png', 'src/epub-assets/ai-creditors-publication-art.png', ...['nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
+    inputs: [...commonInputs, ...fonts, 'src/config', 'src/epub-assets/trump-war-chest-cover-art.jpg', 'src/epub-assets/trump-war-chest-panorama.jpg', 'src/epub-assets/shadow-fleet-cover-art.jpg', 'src/epub-assets/shadow-fleet-panorama.jpg', 'src/epub-assets/ai-creditors-cover-art.png', 'src/epub-assets/ai-creditors-publication-art.png', ...['nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
     outputs: artworkOutputs,
   },
   og: {

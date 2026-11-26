@@ -1,4 +1,4 @@
-import { renderedPublicationCards } from './publication-catalog-test-utils.mjs';
+import { assertPublicationCardOrder, renderedPublicationCards } from './publication-catalog-test-utils.mjs';
 import assert from 'node:assert/strict';
 import { createHash } from 'node:crypto';
 import { readFileSync } from 'node:fs';
@@ -202,16 +202,14 @@ test('publication presentation preserves theme tokens, responsive images and key
 test('both catalogues retain the Nvidia edition after AI creditors and before their older editions', () => {
   for (const book of Object.values(nvidiaEditions)) {
     const cards = renderedPublicationCards(ROOT, book.lang);
-    assert.equal(cards.length, book.lang === 'fr' ? 23 : 20);
-    assert(hasClass(cards[1], 'publication-spotlight--ai-creditors'));
-    assert(hasClass(cards[2], 'publication-spotlight--nvidia'));
-    assert(hasClass(cards[4], 'publication-spotlight--encryption-backdoor'));
+    assertPublicationCardOrder(cards, ['ai-creditors', 'nvidia', 'encryption-backdoor']);
     const second = nvidiaVolumeTwoEditions[book.lang];
-    const secondCard = nodes(cards[3]);
+    const firstIndex = cards.findIndex(card => hasClass(card, 'publication-spotlight--nvidia'));
+    const secondCard = nodes(cards[firstIndex + 1]);
     assert.equal(plain(sole(secondCard, node => node.tagName === 'h2', 'volume II catalogue title')), second.title);
     assert.equal(attr(sole(secondCard, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'volume II catalogue download'), 'href'), second.epub);
     assert(secondCard.some(node => node.tagName === 'a' && attr(node, 'href') === second.path));
-    const first = nodes(cards[2]);
+    const first = nodes(cards[firstIndex]);
     assert.equal(plain(sole(first, node => node.tagName === 'h2', 'catalogue title')), book.title);
     assert.equal(attr(sole(first, node => node.tagName === 'a' && attr(node, 'download') !== undefined, 'catalogue download'), 'href'), book.epub);
     assert(first.some(node => node.tagName === 'a' && attr(node, 'href') === book.path));

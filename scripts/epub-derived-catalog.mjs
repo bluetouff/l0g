@@ -19,6 +19,7 @@ import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-public
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
 import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
+import { trumpWarChestEditions } from '../src/config/trump-war-chest-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
@@ -187,6 +188,7 @@ export function epubDerivedTasks(root) {
   });
   modern('encryption-backdoor','scripts/generate-encryption-backdoor-epub.mjs',encryptionBackdoorEditions,{coverInput:true});
   modern('shadow-fleet','scripts/generate-shadow-fleet-epub.mjs',shadowFleetEditions,{coverInput:true});
+  modern('trump-war-chest','scripts/generate-trump-war-chest-epub.mjs',trumpWarChestEditions,{coverInput:true});
   const owners = new Set();
   for (const group of groups) for (const output of group.outputs) {
     if (owners.has(output)) throw new Error(`EPUB output has multiple owners: ${output}`);

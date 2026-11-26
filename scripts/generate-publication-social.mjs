@@ -8,6 +8,7 @@ import { publicationSocialCards } from '../src/config/publication-social.mjs';
 import { renderAiCreditorsPublicationSocial } from './generate-ai-creditors-artwork.mjs';
 import { renderArticleSocialSvg } from './article-social-card.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
+import { trumpWarChestEditions } from '../src/config/trump-war-chest-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 
@@ -16,8 +17,9 @@ export async function renderPublicationSocial(card, art, options = {}) {
   if (card.key === 'ai-creditors') return renderAiCreditorsPublicationSocial(card, art, options);
   const meta = await sharp(art).metadata();
   if (meta.width !== 1200 || meta.height !== 630) throw new Error(`Incorrect social artwork dimensions: ${card.art}`);
-  if (card.key === 'shadow-fleet') {
-    const book = shadowFleetEditions[card.lang];
+  if (card.key === 'shadow-fleet' || card.key === 'trump-war-chest') {
+    const editions = card.key === 'shadow-fleet' ? shadowFleetEditions : trumpWarChestEditions;
+    const book = editions[card.lang];
     const dateLabel = new Intl.DateTimeFormat(book.locale, {
       day: 'numeric', month: 'short', year: 'numeric', timeZone: 'Europe/Paris',
     }).format(new Date(book.date)).toLocaleUpperCase(book.locale);

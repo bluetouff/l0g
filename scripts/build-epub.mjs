@@ -11,12 +11,18 @@ import { ordinaryMachinesEditions } from '../src/config/ordinary-machines-public
 import { nvidiaEditions } from '../src/config/nvidia-publication.mjs';
 import { nvidiaVolumeTwoEditions } from '../src/config/nvidia-volume-two-publication.mjs';
 import { shadowFleetEditions } from '../src/config/shadow-fleet-publication.mjs';
+import { trumpWarChestEditions } from '../src/config/trump-war-chest-publication.mjs';
 import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs';
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const FIXED_TIME = new Date('2026-08-09T17:32:00Z');
 const BOOKS = [
+  ...Object.values(trumpWarChestEditions).map(book => ({
+    source: join(ROOT, 'src/epub', book.directory),
+    output: join(ROOT, 'public', book.epub),
+    fixedTime: new Date(book.modified),
+  })),
   ...Object.values(shadowFleetEditions).map(book => ({
     source: join(ROOT, 'src/epub', book.directory),
     output: join(ROOT, 'public', book.epub),

@@ -138,7 +138,7 @@ test('the production catalogue accounts for every raw generator and every source
  const pkg=JSON.parse(fs.readFileSync(path.join(ROOT,'package.json'),'utf8'));
  const raw=[...pkg.scripts['build:epub:generate'].matchAll(/node (scripts\/[^ &]+\.mjs)/gu)].map(match=>match[1]).filter(file=>file!=='scripts/build-epub.mjs');
  assert.deepEqual(groups.flatMap(group=>group.generators).sort(),raw.sort());
- assert.equal(groups.length,24);
+ assert.equal(groups.length,25);
  assert.ok(groups.every(group=>group.snapshot&&group.books.length&&group.outputs.length));
  assert.ok(groups.every(group=>!group.inputs.includes('src/content')));
  assert.ok(groups.every(group=>!['scripts','src/components','src/lib','src/config','src/figures'].some(directory=>group.inputs.includes(directory))));
