@@ -74,7 +74,7 @@ const rows = ['revenue', 'exposed', 'served', 'backlog', 'recovered', 'lost', 'c
       <div class="microsoft-week-actions">
         <div role="group" aria-label={copy.presets} class="microsoft-week-presets">
           {microsoftWeekRecoveryRates.map(rate => (
-            <button type="button" data-recovery={rate} aria-pressed={String(rate === baseline.recovery)}>
+            <button type="button" data-recovery={rate} aria-pressed={rate === baseline.recovery ? "true" : "false"}>
               {(rate / 100).toLocaleString(locale, { style: 'percent' })}
             </button>
           ))}
@@ -124,7 +124,7 @@ const rows = ['revenue', 'exposed', 'served', 'backlog', 'recovered', 'lost', 'c
       style: 'currency', currency: 'EUR', maximumFractionDigits: 2,
     });
 
-    function update() {
+    const update = () => {
       const values = Object.fromEntries(inputs.map(input => [input.name, input.valueAsNumber]));
       const result = calculateMicrosoftWeek(values);
       error.hidden = result !== null;
@@ -141,7 +141,7 @@ const rows = ['revenue', 'exposed', 'served', 'backlog', 'recovered', 'lost', 'c
       }
       total.value = result ? formatter.format(result.total) : unavailable;
       total.dataset.value = result ? String(result.total) : '';
-    }
+    };
 
     for (const preset of presets) {
       preset.addEventListener('click', () => {
