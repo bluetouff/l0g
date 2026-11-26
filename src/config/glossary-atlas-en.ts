@@ -491,6 +491,21 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'compte-de-garde', sigle: 'Custody account', nom: 'Assets held on behalf of another party',
+    def: 'An account in which a custodian holds cash or securities on behalf of another party. The governing agreement or law determines who owns the assets and who can direct a transfer. For revenue covered by US Executive Order 14373, Venezuela retains ownership of the funds while the US Treasury follows the secretary of state’s disbursement instructions.',
+    guide: '/en/analysis/trump-venezuela-oil-custody-accounts/',
+    ...usRegulationSection,
+    robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Venezuelan oil and custody accounts', href: '/en/analysis/trump-venezuela-oil-custody-accounts/', kind: 'article' }],
+      sources: [
+        { label: 'US Executive Order 14373 of January 9, 2026, §5', href: 'https://www.govinfo.gov/content/pkg/DCPD-202600013/html/DCPD-202600013.htm', detail: 'Sovereign ownership of Venezuelan funds and instructions for disbursements or transfers.', kind: 'source' },
+        { label: 'Office of Foreign Assets Control, FAQ 1263', href: 'https://ofac.treasury.gov/faqs/1263', detail: 'Deposit requirements under certain licences and the earthquake relief exception.', kind: 'source' },
+      ],
+      related: ['credits-budgetaires-americains'],
+    },
+  },
+  {
     slug: 'rescission', sigle: 'Rescission', nom: 'Cancellation of US federal budget authority',
     def: 'Cancellation by law of all or part of previously enacted budget authority. The president may propose a rescission in a special message. Under that procedure, the funds must be made available for obligation if Congress does not complete action on a rescission bill within 45 calendar days of continuous session.',
     guide: '/en/analysis/trump-frozen-funds-federal-transfers/',

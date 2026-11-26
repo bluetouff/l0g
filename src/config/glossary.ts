@@ -938,6 +938,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
         guide: '/posts/trump-doge-controle-paiements-federaux/',
       },
       {
+        sigle: 'Compte de garde', nom: 'Conservation d’actifs pour le compte d’un tiers',
+        def: 'Compte sur lequel un dépositaire conserve des fonds ou des titres pour un tiers. La propriété des actifs et le pouvoir d’en ordonner un transfert relèvent du mandat ou du droit applicable. Pour les recettes vénézuéliennes visées par le décret américain 14373, le Venezuela conserve la propriété des fonds et le Trésor américain suit les instructions de versement du secrétaire d’État.',
+        guide: '/posts/trump-petrole-venezuela-comptes-garde/',
+      },
+      {
         sigle: 'Rescission', nom: 'Annulation de crédits fédéraux américains',
         def: 'Suppression, par une loi, de tout ou partie d’une autorisation budgétaire déjà accordée. Le président peut proposer l’annulation par un message spécial. Dans cette procédure, les crédits visés doivent être remis à disposition pour de nouveaux engagements si le Congrès n’a pas achevé l’examen d’un texte d’annulation dans le délai légal de 45 jours calendaires de session continue.',
         guide: '/posts/trump-credits-geles-transferts-federaux/',
@@ -1568,6 +1573,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
   apportionment: {
     articles: [{ label: 'Trump et le contrôle des paiements fédéraux', href: '/posts/trump-doge-controle-paiements-federaux/', kind: 'article' }],
     sources: [{ label: 'Congressional Research Service, OMB Reporting on Apportionments', href: 'https://www.congress.gov/crs_external_products/IN/PDF/IN12538/IN12538.9.pdf', detail: 'Version du 21 août 2025. Modes de répartition, portée des notes et obligations de publication.', kind: 'source' }],
+    related: ['credits-budgetaires-americains'],
+  },
+  'compte-de-garde': {
+    articles: [{ label: 'Pétrole vénézuélien et comptes de garde', href: '/posts/trump-petrole-venezuela-comptes-garde/', kind: 'article' }],
+    sources: [
+      { label: 'Décret américain 14373 du 9 janvier 2026, §5', href: 'https://www.govinfo.gov/content/pkg/DCPD-202600013/html/DCPD-202600013.htm', detail: 'Propriété souveraine des fonds vénézuéliens et instructions de versement ou de transfert.', kind: 'source' },
+      { label: 'Office of Foreign Assets Control, FAQ 1263', href: 'https://ofac.treasury.gov/faqs/1263', detail: 'Obligations de dépôt au titre de certaines licences et exception pour l’aide liée au séisme.', kind: 'source' },
+    ],
     related: ['credits-budgetaires-americains'],
   },
   rescission: {

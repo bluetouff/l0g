@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342 266" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="trump-custody-en-ledger-mobile-title trump-custody-en-ledger-mobile-desc" xml:lang="en">
+<title id="trump-custody-en-ledger-mobile-title">Reconciling the custody account</title>
+<desc id="trump-custody-en-ledger-mobile-desc">Deposits of 12,263.715 million, minus 12,107.622 million in disbursements, plus 12.515 million in interest, minus the 0.050 million left in Qatar. The active custody account balance at the end of September 2026 was 168.558 million dollars. Amounts rounded to the nearest thousand.</desc>
+<rect x="0.5" y="0.5" width="341" height="265" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="17" fill="var(--color-paper)" text-anchor="start" font-weight="500">Reconciling the custody account</text>
+<text x="16" y="49" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">US$ millions · as of September 30, 2026</text>
+<path d="M16 61H326" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="16" y="82" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Cumulative flows · January to September</text>
+<path d="M16 166H326" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="16" y="188" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Balances · end of September</text>
+<rect x="16.5" y="221.5" width="309" height="29" rx="4" fill="var(--color-signal)" fill-opacity="0.08" stroke="var(--color-line)"/>
+<text x="26" y="108" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="400">+</text>
+<text x="43" y="108" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Cumulative deposits</text>
+<text x="318" y="108" font-size="13" fill="var(--color-paper)" text-anchor="end" font-weight="400">12,263.715</text>
+<text x="26" y="132" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="400">−</text>
+<text x="43" y="132" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Cumulative disbursements</text>
+<text x="318" y="132" font-size="13" fill="var(--color-paper)" text-anchor="end" font-weight="400">12,107.622</text>
+<text x="26" y="156" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="400">+</text>
+<text x="43" y="156" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Reinvestment interest</text>
+<text x="318" y="156" font-size="13" fill="var(--color-paper)" text-anchor="end" font-weight="400">12.515</text>
+<text x="26" y="211" font-size="14" fill="var(--color-paper)" text-anchor="middle" font-weight="400">−</text>
+<text x="43" y="211" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Balance left in Qatar</text>
+<text x="318" y="211" font-size="13" fill="var(--color-paper)" text-anchor="end" font-weight="400">0.050</text>
+<text x="26" y="241" font-size="14" fill="var(--color-signal)" text-anchor="middle" font-weight="500">=</text>
+<text x="43" y="241" font-size="13" fill="var(--color-signal)" text-anchor="start" font-weight="500">Active account balance</text>
+<text x="318" y="241" font-size="14" fill="var(--color-signal)" text-anchor="end" font-weight="500">168.558</text>
+</svg>

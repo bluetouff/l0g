@@ -1,0 +1,80 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'custody' | 'ledger' | 'parks';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    custody: 'Les acheteurs versent les recettes au compte de garde lorsque leur licence l’exige. Le Venezuela en reste propriétaire selon le décret 14373. La banque centrale vénézuélienne (BCV) présente les demandes. Le département d’État fixe les instructions que le Trésor exécute. Le circuit opérationnel suit la copie conservée du rapport KPMG.',
+    ledger: 'Rapprochement l0g d’après la copie conservée du rapport KPMG, figures 3 et 23. Les trois premières lignes cumulent les flux de janvier à septembre 2026. Les deux dernières donnent des soldes à fin septembre. Les 50 000 $ restés au Qatar sont retranchés pour isoler le compte actif. Montants arrondis au millier de dollars.',
+    parks: 'Le compte fédéral 014-8037 recueille les dons destinés aux missions du réseau des parcs. Le NPS dispose d’une autorisation budgétaire permanente et suit les conditions attachées aux dons. Les droits d’entrée et autres redevances de visite relèvent de règles et de comptes distincts.',
+  },
+  en: {
+    custody: 'Buyers pay into the custody account when their licenses require it. Venezuela retains ownership under Executive Order 14373. Venezuela’s central bank (BCV) submits requests. The State Department directs disbursements, and Treasury executes them. The operating steps follow the preserved copy of the KPMG report.',
+    ledger: 'l0g reconciliation using figures 3 and 23 of the preserved KPMG report. The first three rows show cumulative flows from January to September 2026. The final two show balances at the end of September. Subtracting the $50,000 left in Qatar isolates the active account. Amounts rounded to the nearest thousand dollars.',
+    parks: 'Federal account 014-8037 receives gifts for National Park System purposes. The NPS has permanent budget authority and tracks donor restrictions. Entrance and other recreation fees have separate rules and accounts.',
+  },
+} as const;
+const sourceRefs = { custody: ['S01', 'S04', 'S05'], ledger: ['S01'], parks: ['S10', 'S11', 'S12'] } as const;
+
+const figures = import.meta.glob('../figures/trump-custody/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/trump-custody/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing custody figure layout.');
+---
+<figure class="trump-custody-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .trump-custody-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .trump-custody-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .trump-custody-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>
