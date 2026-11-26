@@ -13,6 +13,8 @@ const failures = [];
 const metadataOverFormerCutoffs = [];
 const pages = new Map();
 const publicationCovers = new Map([
+  ['publications/le-tresor-de-guerre-du-clan-trump/index.html', 'le-tresor-de-guerre-du-clan-trump'],
+  ['en/publications/trump-clans-war-chest/index.html', 'trump-clans-war-chest'],
   ['publications/flotte-fantome-russe/index.html', 'flotte-fantome-russe'],
   ['en/publications/russias-shadow-fleet/index.html', 'russias-shadow-fleet'],
   ['publications/le-systeme-nvidia/index.html', 'le-systeme-nvidia'],
