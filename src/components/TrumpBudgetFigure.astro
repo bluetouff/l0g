@@ -1,0 +1,80 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'contract' | 'expiry' | 'transfer';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    contract: 'Exemple fictif. La résiliation libère 15 M$ avant paiement, sans frais. Les fonds restent dans le même compte. Leur réemploi dépend de l’objet et de la durée du crédit. Un transfert vers un autre compte exige une autorisation légale.',
+    expiry: 'Selon l’avis du GAO du 29 septembre 2026, le délai d’examen au Congrès s’achevait au plus tôt le 9 novembre. Les crédits en cause arrivaient à échéance dès le 30 septembre. Le devenir des fonds reste à établir compte par compte. Les espacements sont schématiques.',
+    transfer: 'Le GAO documente le transfert du fonds de roulement de la marine via le compte de lutte antidrogue du Pentagone. La répartition entre les deux usages vient des responsables militaires interrogés. Les traits indiquent le trajet des crédits et leur destination déclarée.',
+  },
+  en: {
+    contract: 'Fictional example. Termination releases $15 million before payment, with no termination costs. The funds stay in the same account. Reuse depends on the appropriation’s purpose and period of availability. Moving funds to another account requires statutory authority.',
+    expiry: 'In its September 29, 2026 opinion, GAO put the end of congressional review at November 9 at the earliest. The appropriations were due to expire September 30. The final disposition remains unverified account by account. Intervals are schematic.',
+    transfer: 'GAO documents the transfer from the Navy’s working capital fund through the Pentagon’s counterdrug account. The split between the two uses comes from the military officials it interviewed. The lines trace the transfer and its reported purposes.',
+  },
+} as const;
+const sourceRefs = { contract: ['S03', 'S04'], expiry: ['S19', 'S20', 'S21'], transfer: ['S01'] } as const;
+
+const figures = import.meta.glob('../figures/trump-budget/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/trump-budget/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing federal budget figure layout.');
+---
+<figure class="trump-budget-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .trump-budget-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .trump-budget-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .trump-budget-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

@@ -938,6 +938,11 @@ const rawGlossarySections: GlossarySourceSection[] = [
         guide: '/posts/trump-doge-controle-paiements-federaux/',
       },
       {
+        sigle: 'Rescission', nom: 'Annulation de crédits fédéraux américains',
+        def: 'Suppression, par une loi, de tout ou partie d’une autorisation budgétaire déjà accordée. Le président peut proposer l’annulation par un message spécial. Dans cette procédure, les crédits visés doivent être remis à disposition pour de nouveaux engagements si le Congrès n’a pas achevé l’examen d’un texte d’annulation dans le délai légal de 45 jours calendaires de session continue.',
+        guide: '/posts/trump-credits-geles-transferts-federaux/',
+      },
+      {
         sigle: 'Crédits budgétaires américains', nom: 'Appropriations fédérales',
         def: 'Autorité accordée par la loi à une administration fédérale pour engager des obligations et effectuer des paiements du Trésor dans un but déterminé. Les crédits fixent un périmètre et une période de disponibilité. Le contrat crée ensuite un engagement juridique ; le versement constitue une étape distincte. Une loi de financement provisoire peut prolonger temporairement cette autorité.',
         guide: '/posts/midterms-pouvoirs-milliards-engages/',
@@ -1564,6 +1569,14 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     articles: [{ label: 'Trump et le contrôle des paiements fédéraux', href: '/posts/trump-doge-controle-paiements-federaux/', kind: 'article' }],
     sources: [{ label: 'Congressional Research Service, OMB Reporting on Apportionments', href: 'https://www.congress.gov/crs_external_products/IN/PDF/IN12538/IN12538.9.pdf', detail: 'Version du 21 août 2025. Modes de répartition, portée des notes et obligations de publication.', kind: 'source' }],
     related: ['credits-budgetaires-americains'],
+  },
+  rescission: {
+    articles: [{ label: 'Crédits gelés et transferts fédéraux sous Trump', href: '/posts/trump-credits-geles-transferts-federaux/', kind: 'article' }],
+    sources: [
+      { label: 'Code des États-Unis, titre 2, §683', href: 'https://uscode.house.gov/us/usc/t2/s683/', detail: 'Message spécial, examen d’une proposition d’annulation et obligation de remettre les crédits à disposition.', kind: 'source' },
+      { label: 'Government Accountability Office, Impoundment Control Act', href: 'https://www.gao.gov/legal/appropriations-law/impoundment-control-act', detail: 'Procédures applicables aux propositions d’annulation et aux reports, avec décisions du GAO.', kind: 'source' },
+    ],
+    related: ['credits-budgetaires-americains', 'apportionment'],
   },
   'credits-budgetaires-americains': {
     articles: [{ label: 'Midterms : pouvoirs publics et milliards engagés', href: '/posts/midterms-pouvoirs-milliards-engages/', kind: 'article' }],

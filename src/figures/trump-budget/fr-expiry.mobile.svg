@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 342 284" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="trump-budget-fr-expiry-mobile-title trump-budget-fr-expiry-mobile-desc" xml:lang="fr">
+<title id="trump-budget-fr-expiry-mobile-title">Crédits et délais du Congrès</title>
+<desc id="trump-budget-fr-expiry-mobile-desc">Le président propose une annulation de crédits le 25 septembre 2026. Le GAO situe leur échéance au 30 septembre et la fin de l’examen au Congrès au 9 novembre au plus tôt. Devenir des crédits non établi.</desc>
+<rect x="0.5" y="0.5" width="341" height="283" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="17" fill="var(--color-paper)" text-anchor="start" font-weight="500">Crédits et délais du Congrès</text>
+<text x="16" y="49" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Annulation proposée · 810 M$ · 11 comptes</text>
+<path d="M16 61H326" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 93V155" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M33 155v62" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round" stroke-dasharray="2 3"/>
+<circle cx="33" cy="93" r="13" fill="var(--color-surface)" stroke="var(--color-paper)" stroke-width="1"/>
+<g transform="translate(22 82)" aria-hidden="true"><path d="M6 3h8l3 3v13H6zM14 3v4h3m-8 4h5m-5 4h5" fill="none" stroke="var(--color-paper)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="73" y="91" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="500">25 sept. 2026</text>
+<text x="73" y="109" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Proposition au Congrès</text>
+<circle cx="33" cy="155" r="13" fill="var(--color-surface)" stroke="var(--color-accent)" stroke-width="1"/>
+<g transform="translate(22 144)" aria-hidden="true"><path d="M4 6h14v12H4zM4 9h14M7 4v4m8-4v4m-6 5 4 3m0-3-4 3" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="73" y="153" font-size="13" fill="var(--color-accent)" text-anchor="start" font-weight="500">30 sept. 2026</text>
+<text x="73" y="171" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Échéance des crédits</text>
+<circle cx="33" cy="217" r="13" fill="var(--color-surface)" stroke="var(--color-signal)" stroke-width="1"/>
+<g transform="translate(22 206)" aria-hidden="true"><path d="M2 8l9-5 9 5M4 9h14M5 10v7m4-7v7m4-7v7m4-7v7M3 19h16" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/></g>
+<text x="73" y="215" font-size="13" fill="var(--color-signal)" text-anchor="start" font-weight="500">9 nov. 2026</text>
+<text x="73" y="233" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="400">Fin de l’examen au plus tôt</text>
+<path d="M16 243H326" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="16" y="264" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Issue par compte non établie</text>
+</svg>

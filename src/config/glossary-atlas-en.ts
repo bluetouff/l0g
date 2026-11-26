@@ -491,6 +491,21 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     },
   },
   {
+    slug: 'rescission', sigle: 'Rescission', nom: 'Cancellation of US federal budget authority',
+    def: 'Cancellation by law of all or part of previously enacted budget authority. The president may propose a rescission in a special message. Under that procedure, the funds must be made available for obligation if Congress does not complete action on a rescission bill within 45 calendar days of continuous session.',
+    guide: '/en/analysis/trump-frozen-funds-federal-transfers/',
+    ...usRegulationSection,
+    robots: 'noindex,follow',
+    atlas: {
+      articles: [{ label: 'Frozen funds and federal transfers under Trump', href: '/en/analysis/trump-frozen-funds-federal-transfers/', kind: 'article' }],
+      sources: [
+        { label: 'United States Code, title 2, §683', href: 'https://uscode.house.gov/us/usc/t2/s683/', detail: 'Special messages, congressional consideration and release of funds for obligation.', kind: 'source' },
+        { label: 'Government Accountability Office, Impoundment Control Act', href: 'https://www.gao.gov/legal/appropriations-law/impoundment-control-act', detail: 'Rescission and deferral procedures, with GAO decisions.', kind: 'source' },
+      ],
+      related: ['credits-budgetaires-americains', 'apportionment'],
+    },
+  },
+  {
     slug: 'credits-budgetaires-americains', sigle: 'US appropriations', nom: 'Federal spending authority',
     def: 'Legal authority for a federal agency to incur obligations and make Treasury payments for specified purposes. An appropriation defines the scope and period of funding availability. A contract creates a legal commitment; the subsequent payment is a separate stage. A continuing resolution can provide temporary funding authority.',
     guide: '/en/analysis/us-midterms-authority-financial-commitments/',

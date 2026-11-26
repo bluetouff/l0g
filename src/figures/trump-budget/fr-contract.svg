@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 572 249" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="trump-budget-fr-contract-wide-title trump-budget-fr-contract-wide-desc" xml:lang="fr">
+<title id="trump-budget-fr-contract-wide-title">Un contrat résilié, des crédits libérés</title>
+<desc id="trump-budget-fr-contract-wide-desc">Exemple fictif en millions de dollars américains avant et après une résiliation sans frais. Les paiements cumulés restent à 40. Les engagements non payés baissent de 20 à 5. Les crédits non engagés passent de 40 à 55 après désengagement de 15. Le réemploi dans le même compte dépend de la loi et du délai.</desc>
+<rect x="0.5" y="0.5" width="571" height="248" rx="9" fill="var(--color-ink)" fill-opacity="1" stroke="var(--color-line)"/>
+<text x="16" y="30" font-size="17" fill="var(--color-paper)" text-anchor="start" font-weight="500">Un contrat résilié, des crédits libérés</text>
+<text x="16" y="49" font-size="12" fill="var(--color-muted)" text-anchor="start" font-weight="400">Exemple fictif · crédit de 100 M$ US</text>
+<path d="M16 61H556" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="16" y="88" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="500">Avant la résiliation</text>
+<rect x="16.5" y="96" width="215.0" height="28" rx="3" fill="var(--color-topic-blue)" fill-opacity="0.13" stroke="var(--color-topic-blue)"/>
+<text x="124.0" y="114" font-size="12" fill="var(--color-topic-blue)" text-anchor="middle" font-weight="500">40</text>
+<rect x="232.5" y="96" width="107.0" height="28" rx="3" fill="var(--color-accent)" fill-opacity="0.13" stroke="var(--color-accent)"/>
+<text x="286.0" y="114" font-size="12" fill="var(--color-accent)" text-anchor="middle" font-weight="500">20</text>
+<rect x="340.5" y="96" width="215.0" height="28" rx="3" fill="var(--color-signal)" fill-opacity="0.13" stroke="var(--color-signal)"/>
+<text x="448.0" y="114" font-size="12" fill="var(--color-signal)" text-anchor="middle" font-weight="500">40</text>
+<text x="16" y="151" font-size="13" fill="var(--color-paper)" text-anchor="start" font-weight="500">Après la résiliation</text>
+<rect x="16.5" y="159" width="215.0" height="28" rx="3" fill="var(--color-topic-blue)" fill-opacity="0.13" stroke="var(--color-topic-blue)"/>
+<text x="124.0" y="177" font-size="12" fill="var(--color-topic-blue)" text-anchor="middle" font-weight="500">40</text>
+<rect x="232.5" y="159" width="26.0" height="28" rx="3" fill="var(--color-accent)" fill-opacity="0.13" stroke="var(--color-accent)"/>
+<text x="245.5" y="177" font-size="12" fill="var(--color-accent)" text-anchor="middle" font-weight="500">5</text>
+<rect x="259.5" y="159" width="296.0" height="28" rx="3" fill="var(--color-signal)" fill-opacity="0.13" stroke="var(--color-signal)"/>
+<text x="407.5" y="177" font-size="12" fill="var(--color-signal)" text-anchor="middle" font-weight="500">55</text>
+<path d="M340.0 124v14" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<path d="M259.0 151v-13H340.0v13" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="348.0" y="141" font-size="12" fill="var(--color-signal)" text-anchor="start" font-weight="400">15 M$ libérés</text>
+<path d="M16 200H556" fill="none" stroke="var(--color-line)" stroke-width="1" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="20" cy="220" r="3" fill="var(--color-topic-blue)" stroke="var(--color-topic-blue)" stroke-width="1"/>
+<text x="30" y="224" font-size="12" fill="var(--color-paper)" text-anchor="start" font-weight="400">Déjà payés</text>
+<circle cx="192" cy="220" r="3" fill="var(--color-accent)" stroke="var(--color-accent)" stroke-width="1"/>
+<text x="202" y="224" font-size="12" fill="var(--color-paper)" text-anchor="start" font-weight="400">Engagés, non payés</text>
+<circle cx="394" cy="220" r="3" fill="var(--color-signal)" stroke="var(--color-signal)" stroke-width="1"/>
+<text x="404" y="224" font-size="12" fill="var(--color-paper)" text-anchor="start" font-weight="400">Non engagés</text>
+</svg>
