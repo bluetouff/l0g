@@ -1,0 +1,173 @@
+---
+interface Props {
+  kind: 'calendar' | 'balances';
+  lang: 'fr' | 'en';
+}
+
+const { kind, lang } = Astro.props;
+const translations = {
+  fr: {
+    calendar: {
+      title: 'Le budget et ses échéances',
+      subtitle: 'Calendrier à partir du 1er octobre 2026',
+      description: 'Le financement provisoire expire au plus tard le 11 décembre 2026. Le mandat présidentiel prend fin le 20 janvier 2029. Le Congrès a ouvert 45 milliards de dollars pour la détention de l’ICE, utilisables jusqu’au 30 septembre 2029 dans les limites de la loi.',
+      interim: 'Financement provisoire',
+      interimDate: '11 déc. 2026',
+      detention: '45 Md$ · détention ICE',
+      detentionDate: '30 sept. 2029',
+      termEnd: 'Fin du mandat · 20 janv. 2029',
+      caption: 'Le trait turquoise indique la période légale d’engagement des crédits de détention.',
+    },
+    balances: {
+      title: 'Les crédits après la clôture',
+      subtitle: 'États-Unis · 30 septembre 2025',
+      description: 'À la clôture de l’exercice 2025, l’OMB recense environ 2 404 milliards de dollars de crédits non engagés et 2 698 milliards de dollars d’engagements en attente de paiement.',
+      unobligated: 'Crédits non engagés',
+      unobligatedValue: '2 404 Md$',
+      obligated: 'Engagements restant à payer',
+      obligatedValue: '2 698 Md$',
+      scale: 'Échelle commune · milliards de dollars',
+      caption: 'Les montants arrondis du tableau 2 de l’OMB regroupent fonds fédéraux et fonds fiduciaires.',
+    },
+  },
+  en: {
+    calendar: {
+      title: 'The federal funding calendar',
+      subtitle: 'Timeline from October 1, 2026',
+      description: 'Stopgap funding expires no later than December 11, 2026. The presidential term ends on January 20, 2029. Congress appropriated $45 billion for ICE detention, available through September 30, 2029 under the terms of the law.',
+      interim: 'Stopgap funding',
+      interimDate: 'Dec. 11, 2026',
+      detention: '$45bn · ICE detention',
+      detentionDate: 'Sept. 30, 2029',
+      termEnd: 'Term ends · Jan. 20, 2029',
+      caption: 'The turquoise line shows the legal window for committing the detention funds.',
+    },
+    balances: {
+      title: 'Funding after the fiscal year',
+      subtitle: 'United States · September 30, 2025',
+      description: 'At the end of fiscal year 2025, OMB recorded about $2,404 billion in unobligated funds and $2,698 billion in unpaid obligations.',
+      unobligated: 'Unobligated funds',
+      unobligatedValue: '$2,404bn',
+      obligated: 'Unpaid obligations',
+      obligatedValue: '$2,698bn',
+      scale: 'Common scale · billions of dollars',
+      caption: 'Rounded figures from OMB table 2 combine federal and trust funds.',
+    },
+  },
+} as const;
+
+const refs = { calendar: ['S08', 'S05', 'S04'], balances: ['S01'] } as const;
+const { calendar, balances } = translations[lang];
+const figure = translations[lang][kind];
+const layouts = [
+  { mode: 'wide', width: 560 },
+  { mode: 'narrow', width: 334 },
+] as const;
+const totalDays = 1096;
+const interimDays = 72;
+const termDays = 842;
+const unobligatedBillions = 2404.443;
+const obligatedBillions = 2698.247;
+const scaleBillions = 3000;
+---
+
+<figure class="federal-funding-figure">
+  {layouts.map(({ mode, width }) => {
+    const heading = `federal-funding-${lang}-${kind}-${mode}`;
+    const right = width - 20;
+    const plotWidth = width - 40;
+    const interimEnd = 20 + plotWidth * interimDays / totalDays;
+    const termEnd = 20 + plotWidth * termDays / totalDays;
+    return (
+      <div class={`layout layout-${mode}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${width} 215`} width="100%" height="auto"
+          role="img" aria-labelledby={`${heading}-title ${heading}-description`} xml:lang={lang}>
+          <title id={`${heading}-title`}>{figure.title}</title>
+          <desc id={`${heading}-description`}>{figure.description}</desc>
+          <rect x=".5" y=".5" width={width - 1} height="214" rx="9" fill="var(--color-ink)" stroke="var(--color-line)" />
+          <text x="20" y="31" font-size="17" fill="var(--color-paper)">{figure.title}</text>
+          <text x="20" y="52" font-size="13" fill="var(--color-muted)">{figure.subtitle}</text>
+          <path d={`M20 66H${right}`} stroke="var(--color-line)" />
+          {kind === 'calendar' ? (
+            <>
+              <path transform={`translate(${right - 22} 17)`} d="M2 7h19v16H2Zm0 5h19M7 4v6m9-6v6M7 16h2m3 0h2m3 0h2M7 19h2m3 0h2"
+                fill="none" stroke="var(--color-signal)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" />
+              <text x="20" y="90" font-size="14" fill="var(--color-paper)">{calendar.interim}</text>
+              <text x={right} y="90" font-size="13" fill="var(--color-amber)" text-anchor="end">{calendar.interimDate}</text>
+              <path d={`M20 105H${right}`} stroke="var(--color-line)" stroke-dasharray="2 5" />
+              <path d={`M20 105H${interimEnd}`} stroke="var(--color-amber)" stroke-width="2" />
+              <circle cx={interimEnd} cy="105" r="3" fill="var(--color-amber)" />
+              <text x="20" y="137" font-size="14" fill="var(--color-paper)">{calendar.detention}</text>
+              <text x={right} y="137" font-size="13" fill="var(--color-signal)" text-anchor="end">{calendar.detentionDate}</text>
+              <path d={`M20 152H${right}`} stroke="var(--color-signal)" stroke-width="2" />
+              <circle cx={right} cy="152" r="3" fill="var(--color-signal)" />
+              <path d={`M${termEnd} 150V174h-8`} fill="none" stroke="var(--color-topic-blue)" stroke-linejoin="round" />
+              <circle cx={termEnd} cy="152" r="3" fill="var(--color-ink)" stroke="var(--color-topic-blue)" />
+              <text x={termEnd - 10} y="178" font-size="13" fill="var(--color-paper)" text-anchor="end">{calendar.termEnd}</text>
+            </>
+          ) : (
+            <>
+              <path transform={`translate(${right - 22} 18)`} d="M4 4h13l4 4v16H4ZM17 4v5h4M8 12h9m-9 4h9m-9 4h5"
+                fill="none" stroke="var(--color-signal)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" />
+              <text x="20" y="91" font-size="14" fill="var(--color-paper)">{balances.unobligated}</text>
+              <text x={right} y="91" font-size="15" fill="var(--color-signal)" text-anchor="end">{balances.unobligatedValue}</text>
+              <rect x="20" y="103" width={plotWidth} height="7" rx="3.5" fill="var(--color-line)" />
+              <rect x="20" y="103" width={plotWidth * unobligatedBillions / scaleBillions} height="7" rx="3.5" fill="var(--color-signal)" />
+              <text x="20" y="143" font-size="14" fill="var(--color-paper)">{balances.obligated}</text>
+              <text x={right} y="143" font-size="15" fill="var(--color-topic-blue)" text-anchor="end">{balances.obligatedValue}</text>
+              <rect x="20" y="155" width={plotWidth} height="7" rx="3.5" fill="var(--color-line)" />
+              <rect x="20" y="155" width={plotWidth * obligatedBillions / scaleBillions} height="7" rx="3.5" fill="var(--color-topic-blue)" />
+              <text x="20" y="191" font-size="13" fill="var(--color-muted)">{balances.scale}</text>
+            </>
+          )}
+        </svg>
+      </div>
+    );
+  })}
+  <figcaption>
+    {figure.caption}
+    {refs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .federal-funding-figure {
+    width: 100%;
+    max-width: 560px;
+    margin: 1.6rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+  .layout svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+  .layout-narrow {
+    display: none;
+    max-width: 334px;
+    margin-inline: auto;
+  }
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  figcaption a { margin-inline-start: .35rem; }
+  @container (max-width: 489px) {
+    .layout-wide { display: none; }
+    .layout-narrow { display: block; }
+  }
+  @media print {
+    .federal-funding-figure { break-inside: avoid; }
+    .layout-wide { display: block; }
+    .layout-narrow { display: none; }
+  }
+</style>
