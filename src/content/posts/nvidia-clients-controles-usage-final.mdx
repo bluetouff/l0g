@@ -1,0 +1,168 @@
+---
+title: "Nvidia et les clients derrière les serveurs"
+seoTitle: "Nvidia, Megaspeed et le contrôle des clients finaux | l0g"
+ogTitle: "Nvidia et les clients derrière les serveurs"
+description: "De RiCloud à Aolani, les nouvelles enquêtes suivent les serveurs Nvidia au-delà du premier acheteur. Les banques et le Sénat veulent remonter la même chaîne."
+pubDate: "2026-11-26T16:32:15+01:00"
+tags: ["Nvidia", "Megaspeed", "Aolani", "Asie", "Financement de l’IA", "Contrôles d’exportation"]
+draft: false
+ogImage: "/illustrations/news/nvidia-clients-controles-usage-final-v1.jpg"
+ogLayout: "immersive"
+quickTake:
+  fact: "CBS et TIME ont enquêté sur les partenaires de Nvidia. Le FT rapporte une suspension de livraisons vers quatre pays d’Asie du Sud-Est."
+  importance: "Le destinataire du serveur et le client qui loue son calcul peuvent être deux entreprises différentes. Les licences et les revenus sur lesquels comptent les banques dépendent de cette distinction."
+  uncertainty: "Les expéditions touchées, le statut du prêt Aolani et les vérifications internes de Nvidia restent à documenter."
+---
+
+import NvidiaEndUser2026 from "../../components/infographics/NvidiaEndUser2026.astro";
+
+**Un importateur de whisky taïwanais veut se lancer dans le calcul pour l’intelligence artificielle. Pour démarrer, il envisage de louer quelque 300 serveurs équipés de puces Nvidia B300 auprès d’un partenaire californien du fabricant.** Agencia Comercial Spirits signe une lettre d’intention en janvier. Son prospectus du 17 juin, joint au dossier déposé en juillet, indique qu’il a versé un dépôt de 3,5 millions de dollars, remboursable sous conditions. Le bail envisagé vaut environ 120 millions de dollars. À la date du prospectus, il reste à signer. [S01](#source-S01) [S02](#source-S02)
+
+CBS a retrouvé cette opération dans son enquête sur deux partenaires de Nvidia, publiée dans la nuit du 25 au 26 novembre, heure de Paris. Son récit présente les 120 millions comme un accord signé. Le document déposé à la SEC permet de voir où en était le projet en juin. On a un fournisseur, un client et de l’argent déjà engagé sous forme de dépôt. Les pièces accessibles laissent ouvertes deux questions. Où seraient installées ces machines et qui utiliserait leur puissance ? [S01](#source-S01) [S02](#source-S02)
+
+Ce vingt-septième volet reprend le dossier là où [l’inscription de Megaspeed et d’Apex](/posts/nvidia-megaspeed-centres-de-donnees/) l’avait laissé. Entre le vendeur de la puce et l’entreprise qui l’utilise, il peut y avoir un assembleur, un loueur de serveurs et un centre de données. Le retour de Jensen Huang a remis la décision du conseil au centre du débat. Dans la même semaine, les fabricants de serveurs et les banques se retrouvent à vérifier les clients dont dépendent les projets. [S05](#source-S05) [S07](#source-S07) [S09](#source-S09) [S11](#source-S11)
+
+Agencia déclare ensuite, le 16 octobre, avoir signé un contrat de cinq ans pour l’accès à des capacités de calcul en Indonésie. Ce dépôt rattache l’accord à un projet annoncé en juillet et situe le fournisseur à Singapour. Il ne rattache pas ce contrat au projet de bail des B300 de RiCloud AI. Ces deux dossiers illustrent les deux façons d’acheter de la puissance de calcul, en louant des machines ou en réservant un service. [S17](#source-S17)
+
+## Deux sociétés presque homonymes
+
+Le prestataire nommé dans la lettre d’intention d’Agencia est **RiCloud AI Inc.** CBS le rattache au groupe Yuxing. Le prospectus oblige à lire les dénominations jusqu’au bout. Il identifie **Ricloud Corp.**, une autre société, comme filiale détenue intégralement par Yuxing. Le rapport annuel de Yuxing confirme cette filiation pour Corp. Pour AI Inc., Agencia indique que son président Li Qiang, également président de Yuxing, dirige l’activité de centres de données de cette société. Agencia affirme qu’il n’y détient ni participation ni pouvoir de contrôle. Le lien entre les dirigeants est documenté. La chaîne exacte de propriété d’AI Inc. demande une pièce propre à cette société. [S01](#source-S01) [S02](#source-S02) [S03](#source-S03)
+
+L’enquête de CBS suit un second partenaire, **Aivres**. Dans son rapport annuel, Nvidia explique comment une vente peut être comptée aux États-Unis même si la puce est livrée ailleurs. Le groupe classe le chiffre d’affaires selon le siège de son client direct. Pour savoir où un serveur a été déployé et qui s’en sert, il faut remonter jusqu’au site et au contrat de service. La comptabilité de Nvidia et les contrôles à l’exportation ne répondent donc pas à la même question. [S01](#source-S01)
+
+## Megaspeed et les vérifications à faire avant de livrer
+
+D’après les registres examinés par *TIME*, trois entités publiques chinoises détenaient indirectement **1,9 % de 7Road Holdings**, l’ancienne maison mère de Megaspeed, avant sa séparation en 2023. Le magazine retrace ensuite la cession des titres de Megaspeed à Swiftdata en novembre de la même année. Le rapport annuel de 7Road confirme qu’à la fin de 2022, le groupe détenait la société singapourienne qui allait devenir Megaspeed. 7Road situe sa propre sortie en mars 2023. La participation minoritaire décrite par TIME concerne la période où 7Road était encore propriétaire. Pour établir qui contrôle Megaspeed aujourd’hui, il faudrait remonter la chaîne de propriété actuelle de Swiftdata. *TIME* indique que Nvidia, Megaspeed et 7Road n’ont pas répondu à ses questions. [S04](#source-S04)
+
+Swiftdata, Megaspeed International et Speedmatrix font désormais partie des sept sociétés inscrites sur l’*Entity List* par le BIS, le service américain chargé des contrôles à l’exportation. L’inscription a pris effet le 23 novembre. Elle soumet à licence les exportations, réexportations et transferts couverts portant sur du matériel, des logiciels ou des technologies soumis aux règles américaines lorsque l’une des entités intervient dans l’opération. Le texte retient un risque de détournement. Commerce et Justice font remonter à 2024 l’ouverture des vérifications américaines dans le dossier Megaspeed. [S05](#source-S05) [S16](#source-S16)
+
+L’analyse de Tim Fernholz pour *TechCrunch* ramène cette histoire à une question de travail quotidien. Un client remet une déclaration sur l’usage des puces et sur l’[utilisateur final](/glossaire/utilisateur-final/), l’entreprise qui doit s’en servir. Si le fabricant reçoit ensuite des informations incompatibles avec cette déclaration, qui les examine, à qui les signale-t-il et la livraison peut-elle partir pendant ce temps ? Dans les [règles américaines](/glossaire/controle-export/), ignorer délibérément des faits peut compter pour établir qu’un fournisseur avait conscience d’un risque élevé. L’enjeu, pour Nvidia, est donc de reconstituer les alertes effectivement reçues, leur circulation interne et les décisions qui ont suivi. Les dossiers de conformité et les échanges avec les partenaires sont les pièces qui permettraient de le faire. [S06](#source-S06) [S08](#source-S08)
+
+<NvidiaEndUser2026 lang="fr" variant="buyers" />
+
+## Une livraison et un accès à distance
+
+Le **19 novembre**, le BIS a fait entrer en vigueur une règle provisoire qui ajoute des exigences pour certaines expéditions de puces avancées vers cinq pays. Le Brésil y figure avec l’Indonésie, la Malaisie, Singapour et la Thaïlande. Le texte fixe les caractéristiques du matériel visé et prévoit des exclusions soumises à conditions. Il traite aussi de l’[accès distant](/posts/nvidia-bis-acces-distant-controles-cloud/) dans un autre article. Un hébergeur peut laisser toutes ses machines sur place et devoir examiner l’identité de son client, l’usage prévu et la puissance mise à disposition. Chaque obligation a son propre périmètre. [S08](#source-S08)
+
+Cette distinction explique les décisions rapportées le **26 novembre** par le *Financial Times*. Selon le journal, Nvidia a demandé à ses partenaires de suspendre des livraisons de serveurs équipés de ses puces vers quatre pays d’Asie du Sud-Est. Le FT rapporte que Dell et Supermicro ont prévenu des acheteurs. Nvidia a refusé de commenter auprès du journal. Le détail des commandes touchées et la durée de la suspension restent inconnus. Le Brésil figure bien dans le texte du BIS. Le reportage sur la consigne de livraison porte, lui, sur les quatre destinations asiatiques. [S07](#source-S07) [S08](#source-S08)
+
+Pour une entreprise qui remplit un centre de données à mesure que les machines arrivent, quelques semaines peuvent suffire à désorganiser le calendrier. La clause transitoire du BIS protège sous conditions certaines commandes déjà chargées et en route le 19 novembre. Un serveur réservé qui attend encore son départ relève d’une autre situation. Et quand le matériel est déjà en service, la possibilité de continuer à louer sa puissance dépend des dispositions sur l’accès distant, des clients servis et des conditions applicables. Le BIS a publié des instructions pour certaines déclarations d’exclusion. Une déclaration et une licence répondent à des démarches différentes. [S08](#source-S08)
+
+## Les banques veulent des clients qui pourront payer
+
+Le [prêt Aolani](/posts/nvidia-financement-garanties-pret-aolani/) donne un visage à ce changement. En Malaisie, le fournisseur de calcul préparait un projet dont ByteDance devait utiliser les capacités, selon Bloomberg. Le 17 novembre, l’agence rapportait une pause dans les travaux sur un financement envisagé de **480 millions de dollars**. Le FT évoque depuis environ **500 millions de dollars** de crédit que certains prêteurs auraient cessé d’accorder et un retrait possible de ByteDance. Les deux chiffres renvoient au projet Aolani–ByteDance. Les sources décrivent des étapes différentes, sans donner de détail permettant de rapprocher les montants. Les contrats de financement, les tirages et le statut du contrat avec ByteDance restent à vérifier. [S07](#source-S07) [S09](#source-S09)
+
+Un prêteur qui s’attend à être remboursé grâce aux ventes de calcul doit pouvoir rapprocher trois dates. Celle où les serveurs seront disponibles, celle où le client aura le droit de les utiliser et celle où les factures commenceront à être payées. Si la seconde bouge, laisser le matériel arriver et fonctionner peut coûter de l’argent avant même de rapporter un dollar. Trouver un autre client devient alors une question de crédit autant que de commerce. [S08](#source-S08) [S10](#source-S10)
+
+<NvidiaEndUser2026 lang="fr" variant="credit" />
+
+Les réactions des prêteurs diffèrent déjà. Bloomberg rapporte le 25 que certains prolongent leurs vérifications chez **Bridge Data Centres**. Une banque a choisi de ne pas participer au prêt envisagé pour **Digital Halo**, et au moins un fonds s’est retiré d’un montage pour **GMI Cloud**. Le sort de chaque financement reste ouvert. La banque singapourienne **OCBC** a confirmé avoir pris contact avec des clients et dit s’attendre à peu de difficultés, son exposition étant surtout liée à de grands groupes américains. La question se pose donc à l’échelle de chaque projet. Qui doit utiliser le centre, quelle part des recettes est déjà contractualisée et quel autre client pourrait prendre la place du premier ? [S09](#source-S09) [S10](#source-S10)
+
+## Au conseil de Nvidia, la chronologie des alertes
+
+Le **24 novembre**, des responsables américains ont dit à des collaborateurs du Congrès que les éléments dont ils disposaient ne montraient pas que le renseignement chinois avait chargé Alice Huang d’espionner Jensen Huang, selon le *Wall Street Journal*. Alice Huang était dirigeante de Megaspeed. Cette appréciation rapportée porte sur le rôle prêté à Pékin dans leur relation. La destination des serveurs et les avertissements qu’a pu recevoir Nvidia relèvent d’autres questions. Selon CBS, les assurances données au conseil portaient sur la situation personnelle de Jensen Huang. [S12](#source-S12) [S13](#source-S13) [S16](#source-S16)
+
+Le conseil de Nvidia a lui-même ouvert la question. Dans son communiqué du 23 novembre, il reconnaît avoir reçu l’avis de hauts responsables américains avant de [rétablir Huang dans ses fonctions](/posts/nvidia-retour-jensen-huang-controle-conseil/). Le conseil en tire sa propre conclusion sur le risque pour la sécurité nationale. Il promet aussi de conduire son enquête interne à son terme et de coopérer avec les autorités. Il a aussi confié la surveillance des contrôles à l’exportation à un comité d’administrateurs indépendants. [S18](#source-S18)
+
+Le 25, **Cory Booker**, principal démocrate de la sous-commission antitrust du Sénat, demande à Harvey Jones, président du conseil, d’identifier les responsables intervenus dans le retour de Huang et de préciser la portée de leurs assurances. Il veut savoir si les échanges ont porté sur l’application des contrôles à l’exportation ou du droit de la concurrence. La conservation des documents remonte au **1er janvier 2026** et la réponse est demandée pour le **16 décembre**. Son raisonnement part du pouvoir de marché de Nvidia. Quand la même entreprise fournit les puces, le logiciel qui rend leur remplacement coûteux et une partie du capital de ses clients, les conditions auxquelles elle vend et finance comptent bien au-delà de son conseil d’administration. [S11](#source-S11)
+
+À Londres, le député Calum Miller a déposé le 25 novembre cinq questions écrites, inscrites au bulletin de la Chambre des communes du 26. Il demande notamment si le gouvernement britannique avait reçu des avertissements sur les liens avec Megaspeed, s’il envisage de contrôler l’accès distant et comment les infrastructures publiques de calcul réagiraient si l’approvisionnement Nvidia était perturbé. Les réponses sont attendues le 30 novembre. Le même fournisseur occupe ainsi deux places dans le débat. Il faut pouvoir demander des comptes à son conseil tout en préparant la continuité des machines dont dépendent les chercheurs et les entreprises. [S14](#source-S14)
+
+**Le conseil a tranché sur la direction de Nvidia.** Un conseil peut décider en un week-end de rappeler un dirigeant. Les partenaires, eux, ont besoin de savoir quel serveur part, à qui il est livré et qui pourra l’utiliser une fois installé. Pour mesurer les effets du retour de Huang, le document le plus éclairant pourrait être très ordinaire. Une alerte de conformité datée, jointe à une décision de poursuivre, de suspendre ou de modifier une commande, montrerait comment Nvidia a arbitré quand un doute sur le client final est arrivé jusqu’à la personne habilitée à agir.
+
+*Complément à notre [enquête sur les transactions précédant le retour de Huang](/posts/nvidia-trump-positions-avant-annonce/).* Le 25 novembre, FT Alphaville a examiné la série d’options citée dans le récit viral d’un gain de 312 millions de dollars. D’après le compte rendu spécialisé de son analyse, les primes négociées sur cette série pendant la séance sont très inférieures à la mise alléguée. Bloomberg a retrouvé d’autres paris gagnants. L’identité des opérateurs et les informations dont ils disposaient demeurent inconnues. Ce contrôle affaiblit nettement l’exemple viral. [S15](#source-S15)
+
+## Sources
+
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · CBS News / Josh Boswell · Publication : 2026-11-25 · 23:10 UTC · Consulté le : 2026-11-26</span>
+<a href="https://www.cbsnews.com/news/nvidia-china-ai-chips-computing-sales/" target="_blank" rel="noopener noreferrer">Enquête sur RiCloud AI et Aivres</a>
+<details><summary>Passages et périmètre</summary><p>Reportage sur les partenaires californiens. Voir S02 pour le bail projeté. La note 16 du rapport annuel de Nvidia explique la géographie du chiffre d’affaires. <a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000021/nvda-20260125.htm" target="_blank" rel="noopener noreferrer">10-K de Nvidia, exercice clos le 25 janvier 2026</a>.</p></details>
+</li>
+<li id="source-S02">
+<span class="source-meta">S02 · Agencia Comercial Spirits / SEC · Publication : 2026-07-20 · Consulté le : 2026-11-26</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2060016/000121390026079442/ea0295913-424b4_agencia.htm" target="_blank" rel="noopener noreferrer">Prospectus définitif d’Agencia et projet de bail B300</a>
+<details><summary>Passages et périmètre</summary><p>Sections High-Performance AI Server Lease et Certain Relationships and Related Party Transactions. Montant envisagé, dépôt payé, caractère non contraignant et absence de bail définitif à la date du dossier. Ricloud Corp. et Ricloud AI Inc. ont des rôles distincts. La qualification de fournisseur indépendant vient de l’émetteur. <a href="https://www.sec.gov/Archives/edgar/data/2060016/000121390026015831/ea0277008-6k_agencia.htm" target="_blank" rel="noopener noreferrer">6-K de février et lettre d’intention</a></p></details>
+</li>
+<li id="source-S03">
+<span class="source-meta">S03 · Yuxing / HKEX · Publication : 2026-04-22 · Consulté le : 2026-11-26</span>
+<a href="https://www.hkexnews.hk/listedco/listconews/gem/2026/0422/2026042200921.pdf" target="_blank" rel="noopener noreferrer">Rapport annuel 2025 de Yuxing</a>
+<details><summary>Passages et périmètre</summary><p>Annexe Particulars of Principal Subsidiaries. La table présente Ricloud Corp. comme une filiale détenue intégralement par Yuxing. Elle porte sur cette dénomination juridique.</p></details>
+</li>
+<li id="source-S04">
+<span class="source-meta">S04 · TIME / Manisha Ganguly · Publication : 2026-11-25 · 16:42 UTC · Consulté le : 2026-11-26</span>
+<a href="https://time.com/article/2026/11/25/nvidia-megaspeed-china-investment/" target="_blank" rel="noopener noreferrer">Historique de l’actionnariat de Megaspeed</a>
+<details><summary>Passages et périmètre</summary><p>Sections Ownership history et A complicated corporate structure. Le calcul du 1,9 % est attribué à l’enquête, à partir de données recueillies par Quantifind. Le rapport 2022 de 7Road, p. 235, confirme la filiation historique de 7Road International Pte. Ltd. La déclaration de 7Road date sa sortie de mars 2023. <a href="https://www1.hkexnews.hk/listedco/listconews/sehk/2023/0426/2023042602037.pdf" target="_blank" rel="noopener noreferrer">Rapport annuel 2022 de 7Road</a> <a href="https://7road.com/about" target="_blank" rel="noopener noreferrer">Déclaration de 7Road du 10 novembre 2026</a></p></details>
+</li>
+<li id="source-S05">
+<span class="source-meta">S05 · BIS / Federal Register · Publication : 2026-11-25 · Consulté le : 2026-11-26</span>
+<a href="https://www.federalregister.gov/documents/2026/11/25/2026-23999/additions-to-the-entity-list" target="_blank" rel="noopener noreferrer">Règle finale inscrivant sept sociétés sur l’Entity List</a>
+<details><summary>Passages et périmètre</summary><p>Document 2026-23999, mis à disposition et entré en vigueur le 23 novembre. Le motif et le traitement des demandes figurent dans le préambule et la table nominative. La transition prévue dans ce texte est propre à ces inscriptions.</p></details>
+</li>
+<li id="source-S06">
+<span class="source-meta">S06 · TechCrunch / Tim Fernholz · Publication : 2026-11-25 · 13:00 UTC · Consulté le : 2026-11-26</span>
+<a href="https://techcrunch.com/2026/11/25/the-questions-jensen-huang-and-nvidia-will-still-have-to-answer-about-megaspeed/" target="_blank" rel="noopener noreferrer">Questions ouvertes sur Nvidia et Megaspeed</a>
+<details><summary>Passages et périmètre</summary><p>Analyse des déclarations d’usage final et des informations qui auraient dû déclencher leur réexamen. Le spécialiste Dan Fisher-Owens est cité dans le reportage. Les avis juridiques rapportés décrivent les questions d’enquête.</p></details>
+</li>
+<li id="source-S07">
+<span class="source-meta">S07 · Financial Times · Publication : 2026-11-26 · Consulté le : 2026-11-26</span>
+<a href="https://www.ft.com/content/7838a715-07d4-4605-aa60-21f5af2b2370" target="_blank" rel="noopener noreferrer">Livraisons suspendues en Asie du Sud-Est et prêt Aolani</a>
+<details><summary>Passages et périmètre</summary><p>Titre canonique vérifié. Corps consulté via l’édition licenciée de CNA. Trois sources anonymes décrivent la suspension et son périmètre. Le récit donne aussi l’état rapporté du crédit Aolani. L’heure originale, les commandes individuelles et les contrats de prêt ne sont pas publics dans les pièces consultées. <a href="https://www.channelnewsasia.com/asia/nvidia-halts-chip-shipments-southeast-asia-6584351" target="_blank" rel="noopener noreferrer">Édition licenciée de CNA</a></p></details>
+</li>
+<li id="source-S08">
+<span class="source-meta">S08 · BIS / Federal Register · Publication : 2026-11-19 · Consulté le : 2026-11-26</span>
+<a href="https://www.federalregister.gov/documents/2026/11/19/2026-23529/addressing-remote-access-to-advanced-semiconductors" target="_blank" rel="noopener noreferrer">Règle provisoire sur les semiconducteurs avancés et l’accès distant</a>
+<details><summary>Passages et périmètre</summary><p>Document 2026-23529. La section 742.6 fixe les conditions de livraison. La section 744.24 traite de l’usage à distance. Voir aussi la clause transitoire pour les cargaisons déjà en route et la définition de Knowledge au § 772.1. Les consignes du BIS précisent les déclarations pour certaines exclusions. <a href="https://www.bis.gov/regulations/ear/772" target="_blank" rel="noopener noreferrer">Définitions des règles EAR</a> <a href="https://www.bis.gov/si/exclusionnotesubmission" target="_blank" rel="noopener noreferrer">Instructions du BIS sur les déclarations</a></p></details>
+</li>
+<li id="source-S09">
+<span class="source-meta">S09 · Bloomberg · Publication : 2026-11-17 · 2026-11-25 à 16:01 UTC · Consulté le : 2026-11-26</span>
+<a href="https://www.bloomberg.com/news/articles/2026-11-25/billions-in-data-center-deals-grind-to-halt-after-ai-chip-curbs" target="_blank" rel="noopener noreferrer">Financements en discussion chez Bridge, Digital Halo et GMI</a>
+<details><summary>Passages et périmètre</summary><p>Articles lus en éditions licenciées. Le 17, les sources décrivent une pause dans la préparation du prêt Aolani. Le 25, elles évoquent des délais ou retraits de participants sur des montages distincts. L’issue contractuelle de ces projets de prêt reste à suivre. <a href="https://www.businesstimes.com.sg/companies-markets/telcos-media-tech/banks-pause-us480-million-chip-loan-tied-chinas-bytedance/" target="_blank" rel="noopener noreferrer">Reportage du 17 sur Aolani</a> <a href="https://finance.yahoo.com/technology/ai/articles/billions-data-center-deals-grind-160100809.html" target="_blank" rel="noopener noreferrer">Édition licenciée du 25</a></p></details>
+</li>
+<li id="source-S10">
+<span class="source-meta">S10 · Bloomberg / OCBC · Publication : 2026-11-25 · 01:09 UTC · Consulté le : 2026-11-26</span>
+<a href="https://news.bgov.com/artificial-intelligence/banks-put-data-center-clients-under-the-microscope-on-ai-chips" target="_blank" rel="noopener noreferrer">Vérifications des banques et réponse d’OCBC</a>
+<details><summary>Passages et périmètre</summary><p>Bloomberg cite Pauline Ho, responsable du crédit de gros chez OCBC. Le périmètre de clientèle et l’appréciation du risque sont ceux de la banque. Le reportage décrit des vérifications et des déclarations de prêteurs. <a href="https://finance.yahoo.com/technology/ai/articles/banks-put-data-center-clients-010957157.html" target="_blank" rel="noopener noreferrer">Édition licenciée intégrale</a></p></details>
+</li>
+<li id="source-S11">
+<span class="source-meta">S11 · Cory Booker / Sénat des États-Unis · Publication : 2026-11-25 · Consulté le : 2026-11-26</span>
+<a href="https://www.booker.senate.gov/news/press/booker-demands-answers-from-nvidia-on-trumps-intervention-in-ceo-jensen-huangs-reinstatement" target="_blank" rel="noopener noreferrer">Demande adressée à Harvey Jones et au conseil de Nvidia</a>
+<details><summary>Passages et périmètre</summary><p>Communiqué intégral. Contacts, assurances, application éventuelle du droit de la concurrence et des contrôles d’exportation, conservation des pièces depuis le 1er janvier et réponse demandée pour le 16 décembre. La publication expose la position du sénateur.</p></details>
+</li>
+<li id="source-S12">
+<span class="source-meta">S12 · The Wall Street Journal / Alexander Ward et Amrith Ramkumar · Publication : 2026-11-25 · Consulté le : 2026-11-26</span>
+<a href="https://www.wsj.com/politics/national-security/no-evidence-china-orchestrated-jensen-huangs-affair-officials-brief-congress-00228bb7" target="_blank" rel="noopener noreferrer">Briefing classifié du 24 novembre et appréciation rapportée</a>
+<details><summary>Passages et périmètre</summary><p>Passage public de l’original et dépêche Reuters attribuée au WSJ. L’appréciation rapportée porte sur une opération qui aurait été dirigée par le renseignement chinois. Aucun compte rendu déclassifié consulté. <a href="https://wtvbam.com/2026/11/25/us-finds-no-evidence-china-directed-executive-to-spy-on-nvidia-ceo-wsj-reports/" target="_blank" rel="noopener noreferrer">Dépêche Reuters en édition licenciée</a></p></details>
+</li>
+<li id="source-S13">
+<span class="source-meta">S13 · CBS News · Mise à jour : 2026-11-25 · 14:25 UTC · Consulté le : 2026-11-26</span>
+<a href="https://www.cbsnews.com/news/trump-jensen-huang-nvidia-ceo-reinstated/" target="_blank" rel="noopener noreferrer">Récit des discussions ayant précédé le retour de Jensen Huang</a>
+<details><summary>Passages et périmètre</summary><p>Horodatage de mise à jour affiché. Voir aussi le communiqué du conseil annexé au 8-K, S18.</p></details>
+</li>
+<li id="source-S14">
+<span class="source-meta">S14 · Chambre des communes / UK House of Commons · Publication : 2026-11-26 · Consulté le : 2026-11-26</span>
+<a href="https://commonsbusiness.parliament.uk/Document/109304/Html?subType=Standard" target="_blank" rel="noopener noreferrer">Questions de Calum Miller sur Nvidia et les contrôles britanniques</a>
+<details><summary>Passages et périmètre</summary><p>Questions 46777, 46778, 46788, 46795 et 46832 déposées le 25 novembre. Le bulletin du 26 indique des réponses attendues le 30. Les sujets couvrent les contacts, les alertes, le risque de détournement, l’accès distant et les infrastructures publiques.</p></details>
+</li>
+<li id="source-S15">
+<span class="source-meta">S15 · FT Alphaville / John Lothian News / Bloomberg · Publication : 2026-11-24 et 2026-11-25 · Consulté le : 2026-11-26</span>
+<a href="https://www.ft.com/content/1d5c7f01-c1e8-471c-8017-d0f064499456" target="_blank" rel="noopener noreferrer">Vérification du pari viral sur les options Nvidia</a>
+<details><summary>Passages et périmètre</summary><p>Original du FT identifié. Le passage sur les primes a été consulté dans le compte rendu de John Lothian News. La vérification porte sur la série et la séance du récit viral. Bloomberg rapporte des transactions distinctes. <a href="https://johnlothiannews.com/nvidia-options-trader-nets-1984-gain-after-ceo-jensen-huang-reinstated/" target="_blank" rel="noopener noreferrer">Compte rendu détaillé de l’analyse du FT</a> <a href="https://news.bloomberglaw.com/capital-markets/nvidia-option-trader-scores-1-984-gain-after-ceo-huangs-return" target="_blank" rel="noopener noreferrer">Reportage Bloomberg sur des transactions distinctes</a></p></details>
+</li>
+<li id="source-S16">
+<span class="source-meta">S16 · US Department of Justice / US Department of Commerce · Publication : 2026-11-17 · Consulté le : 2026-11-26</span>
+<a href="https://www.justice.gov/opa/pr/joint-statement-department-commerce-and-justice-megaspeed-investigation" target="_blank" rel="noopener noreferrer">Déclaration officielle sur les investigations Megaspeed</a>
+<details><summary>Passages et périmètre</summary><p>Déclaration datée du 16 et mise en ligne le 17. Les autorités retracent l’ouverture de leur enquête en 2024 et un contrôle en 2025. Il s’agit de leur chronologie publique.</p></details>
+</li>
+<li id="source-S17">
+<span class="source-meta">S17 · Agencia Comercial Spirits / SEC · Publication : 2026-10-16 · Consulté le : 2026-11-26</span>
+<a href="https://www.sec.gov/Archives/edgar/data/2060016/000121390026110132/ea0308882-6k_agencia.htm" target="_blank" rel="noopener noreferrer">Contrat d’accès à des capacités de calcul en Indonésie</a>
+<details><summary>Passages et périmètre</summary><p>6-K du 16 octobre. Contrat de cinq ans par tranche livrée et acceptée, issu d’un projet annoncé le 17 juillet. Le fournisseur, établi à Singapour, et les modèles de puces ne sont pas nommés.</p></details>
+</li>
+<li id="source-S18">
+<span class="source-meta">S18 · Nvidia / SEC · Publication : 2026-11-23 · Décision : 2026-11-22 · Consulté le : 2026-11-26</span>
+<a href="https://www.sec.gov/Archives/edgar/data/1045810/000104581026000090/nov23pressrelease.htm" target="_blank" rel="noopener noreferrer">Annonce du conseil sur le retour de Jensen Huang</a>
+<details><summary>Passages et périmètre</summary><p>Annexe 99.1 du 8-K. Le conseil indique avoir reçu l’avis de hauts responsables américains, expose son appréciation de la sécurité nationale et confirme la poursuite de l’enquête interne. L’Item 5.02 du 8-K date la décision du 22 novembre.</p></details>
+</li>
+</ol>

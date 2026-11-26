@@ -1,0 +1,163 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  variant: 'buyers' | 'credit';
+  number?: string;
+}
+
+const { lang = 'fr', variant, number = variant === 'buyers' ? '01' : '02' } = Astro.props;
+const copy = {
+  buyers: {
+    fr: {
+      title: 'Du serveur à l’utilisateur',
+      description: 'Schéma de principe à deux branches. Le flux physique relie un équipement au destinataire déclaré. L’accès à distance relie la capacité du centre à son utilisateur effectif. Les vérifications portent sur la destination et les parties à la livraison sur une branche, sur l’utilisateur, son contrôle et l’usage sur l’autre.',
+      labels: ['Serveurs', 'Livraison du matériel', 'Destinataire physique', 'Accès à la capacité', 'Utilisateur distant', 'Destination et parties', 'Identité et contrôle', 'à la livraison', 'Usage déclaré'],
+      caption: 'Schéma de principe. Les règles applicables à une livraison et à l’accès distant dépendent de la transaction, des parties et de l’usage. Le dessin illustre les vérifications à mener.',
+    },
+    en: {
+      title: 'From server to end user',
+      description: 'An illustrative fork. Physical delivery connects a piece of equipment to its stated consignee. Remote access connects a data center’s capacity to the eventual user. Checks cover the destination and parties to the delivery on one branch, and the user, ownership or control and end use on the other.',
+      labels: ['Servers', 'Hardware shipment', 'Physical consignee', 'Access to capacity', 'Remote user', 'Destination and parties', 'Identity and control', 'to the shipment', 'Declared end use'],
+      caption: 'Illustrative model. Rules for shipments and remote access depend on the transaction, the parties and the end use. The diagram shows where checks apply.',
+    },
+  },
+  credit: {
+    fr: {
+      title: 'De la capacité au remboursement',
+      description: 'Schéma de financement de projet. Le client doit pouvoir utiliser la capacité pour que le projet puisse encaisser les recettes attendues. Ces recettes entrent dans l’examen des tirages et du remboursement. Le prêteur examine les clauses et peut attendre leur clarification.',
+      labels: ['Client et capacité', 'Recettes du contrat', 'Tirage et remboursement', 'Service disponible', 'Paiements attendus', 'Selon les clauses de crédit', 'Vérifier les conditions', 'Attendre si elles restent incertaines'],
+      caption: 'Dans un financement de projet, la disponibilité du service peut peser sur les recettes attendues. Le droit de tirer sur le prêt et les obligations de remboursement dépendent des contrats.',
+    },
+    en: {
+      title: 'From capacity to repayment',
+      description: 'An illustrative project financing chain. The customer’s ability to use the capacity can affect expected contract receipts. Those receipts inform the lender’s assessment of drawdowns and repayment. A lender checks the contract terms and can wait for outstanding conditions to be clarified.',
+      labels: ['Customer and capacity', 'Contract receipts', 'Drawdown and repayment', 'Service available', 'Expected payments', 'Subject to the credit terms', 'Check the conditions', 'Wait while they remain uncertain'],
+      caption: 'In project finance, service availability can affect expected receipts. The credit agreements determine drawdown rights and repayment obligations.',
+    },
+  },
+} as const;
+
+const figure = copy[variant][lang];
+const sourceIds = variant === 'buyers' ? ['S08'] : ['S09', 'S10'];
+const rack = 'M-12-12H12V-3H-12Z M-12 2H12V11H-12Z M-8-8H-6 M0-8H8 M-8 6H-6 M0 6H8 M-8 11V15 M8 11V15';
+const carton = 'M0-13L13-6V9L0 15L-13 9V-6Z M-13-6L0 1L13-6 M0 1V15 M-7-9L6-2V3';
+const terminal = 'M-13-11H13V7H-13Z M-16 13H16 M0 7V13 M-7-4L-3-1L-7 2 M0 2H7';
+const receipt = 'M-10-13H10V14L6 11L2 14L-2 11L-6 14L-10 11Z M-5-6H5 M-5-1H5 M-5 4H3';
+const bank = 'M-14-6L0-14L14-6Z M-13-2H13 M-10 1V10 M-3 1V10 M4 1V10 M11 1V10 M-15 14H15';
+const lens = 'M6-2A6 6 0 1 1-6-2A6 6 0 1 1 6-2 M4 3L10 9';
+const hourglass = 'M-6-8H6 M-6 8H6 M-5-8V-5L-1 0L-5 5V8 M5-8V-5L1 0L5 5V8';
+---
+
+<figure class="nvidia-end-user" id={`nv27-${variant}-${lang}`}>
+  {(['desktop', 'mobile'] as const).map((layout) => {
+    const mobile = layout === 'mobile';
+    const width = mobile ? 340 : 600;
+    const height = mobile ? 322 : 260;
+    const id = `nv27-${variant}-${lang}-${layout}`;
+    return (
+      <div class:list={['scene', layout]}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby={`${id}-title ${id}-desc`} xml:lang={lang} data-variant={layout}>
+          <title id={`${id}-title`}>{figure.title}</title>
+          <desc id={`${id}-desc`}>{figure.description}</desc>
+          <rect class="frame" x=".6" y=".6" width={width - 1.2} height={height - 1.2} rx="4" />
+          <text class="title" x="18" y="29">{figure.title}</text>
+          {variant === 'buyers' ? (
+            <g>
+              <path class="line rule" d={mobile ? 'M18 44H322' : 'M18 44H582 M422 65V237'} />
+              <g class="icon" transform={mobile ? 'translate(44 72)' : 'translate(86 133)'}><path d={rack} /></g>
+              <text class="label" x={mobile ? 71 : 86} y={mobile ? 77 : 174} text-anchor={mobile ? 'start' : 'middle'}>{figure.labels[0]}</text>
+              <path class="line" d={mobile ? 'M44 92V122H72 M67 118L72 122L67 126' : 'M106 133H157V93H208 M203 89L208 93L203 97'} />
+              <path class="line dashed" d={mobile ? 'M44 122V222H72 M67 218L72 222L67 226' : 'M157 133V182H208 M203 178L208 182L203 186'} />
+              <g class="icon" transform={mobile ? 'translate(94 122)' : 'translate(231 93)'}><path d={carton} /></g>
+              <g class="icon" transform={mobile ? 'translate(94 222)' : 'translate(231 182)'}><path d={terminal} /></g>
+              <text class="minor" x={mobile ? 119 : 262} y={mobile ? 110 : 80}>{figure.labels[1]}</text>
+              <text class="label" x={mobile ? 119 : 262} y={mobile ? 130 : 101}>{figure.labels[2]}</text>
+              <text class="minor" x={mobile ? 119 : 262} y={mobile ? 210 : 169}>{figure.labels[3]}</text>
+              <text class="label" x={mobile ? 119 : 262} y={mobile ? 230 : 190}>{figure.labels[4]}</text>
+              <path class="line rule" d={mobile ? 'M83 146H310 M83 246H310' : 'M440 133H572'} />
+              <g class="icon check" transform={mobile ? 'translate(93 167)' : 'translate(434 83)'}><path d={lens} /></g>
+              <g class="icon check" transform={mobile ? 'translate(93 268)' : 'translate(434 172)'}><path d={lens} /></g>
+              <text class="minor emphasis" x={mobile ? 111 : 453} y={mobile ? 164 : 82}>{figure.labels[5]}</text>
+              <text class="minor" x={mobile ? 111 : 453} y={mobile ? 182 : 99}>{figure.labels[7]}</text>
+              <text class="minor emphasis" x={mobile ? 111 : 453} y={mobile ? 265 : 171}>{figure.labels[6]}</text>
+              <text class="minor" x={mobile ? 111 : 453} y={mobile ? 283 : 188}>{figure.labels[8]}</text>
+            </g>
+          ) : (
+            <g>
+              <path class="line rule" d={mobile ? 'M18 44H322 M18 241H322' : 'M18 44H582 M18 193H582'} />
+              <path class="line" d={mobile ? 'M43 91V111 M39 106L43 111L47 106 M43 154V174 M39 169L43 174L47 169' : 'M112 103H276 M271 99L276 103L271 107 M324 103H477 M472 99L477 103L472 107'} />
+              <g class="icon" transform={mobile ? 'translate(43 72)' : 'translate(90 103)'}><path d={rack} /></g>
+              <g class="icon" transform={mobile ? 'translate(43 135)' : 'translate(300 103)'}><path d={receipt} /></g>
+              <g class="icon" transform={mobile ? 'translate(43 198)' : 'translate(501 103)'}><path d={bank} /></g>
+              {figure.labels.slice(0, 3).map((label, index) => (
+                <g>
+                  <text class="label" x={mobile ? 71 : [90, 300, 501][index]} y={mobile ? 71 + index * 63 : 147} text-anchor={mobile ? 'start' : 'middle'}>{label}</text>
+                  <text class="minor" x={mobile ? 71 : [90, 300, 501][index]} y={mobile ? 91 + index * 63 : 167} text-anchor={mobile ? 'start' : 'middle'}>{figure.labels[index + 3]}</text>
+                </g>
+              ))}
+              <path class="line check dashed" d={mobile ? 'M43 217V273H61 M43 273V298H61' : 'M501 176V210H102V223 M359 210V223'} />
+              <g class="icon check" transform={mobile ? 'translate(73 273)' : 'translate(102 237)'}><path d={lens} /></g>
+              <g class="icon check" transform={mobile ? 'translate(73 298)' : 'translate(359 237)'}><path d={hourglass} /></g>
+              <text class="minor emphasis" x={mobile ? 90 : 125} y={mobile ? 276 : 241}>{figure.labels[6]}</text>
+              <text class="minor emphasis" x={mobile ? 90 : 383} y={mobile ? 301 : 241}>{figure.labels[7]}</text>
+            </g>
+          )}
+        </svg>
+      </div>
+    );
+  })}
+  <figcaption><span class="number">FIG. {number}</span>{' '}{figure.caption}{' '}
+    {sourceIds.map((id) => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  @font-face {
+    font-family: 'l0g Nvidia End User';
+    src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  .nvidia-end-user {
+    width: 100%;
+    max-width: 37.5rem;
+    margin: 1.5rem auto 1.7rem;
+    padding-bottom: .9rem;
+    container-type: inline-size;
+  }
+  .scene { width: 100%; line-height: 0; }
+  .mobile { display: none; }
+  svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    font-family: 'l0g Nvidia End User', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .frame { fill: var(--color-surface); stroke: var(--color-line-strong); stroke-width: 1.1; }
+  .title, .label { fill: var(--color-paper); }
+  .title { font-size: 17px; }
+  .label { font-size: 14px; }
+  .minor { fill: var(--color-muted); font-size: 12.5px; }
+  .line, .icon { fill: none; stroke: var(--color-signal); stroke-width: 1.15; stroke-linejoin: round; stroke-linecap: round; }
+  .rule { stroke: var(--color-line-strong); }
+  .dashed { stroke-dasharray: 3 4; }
+  .check { stroke: var(--color-amber); }
+  .emphasis { fill: var(--color-paper); }
+  figcaption { margin-top: .64rem; color: var(--color-muted); font: 400 .75rem/1.5 var(--font-read); }
+  .number { margin-right: .36rem; color: var(--color-signal); font: .6875rem var(--font-mono); letter-spacing: .08em; }
+  figcaption a { display: inline-block; margin-inline-end: .24rem; text-underline-offset: .18em; }
+  figcaption a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 520px) {
+    .desktop { display: none; }
+    .mobile { display: block; max-width: 21.25rem; margin-inline: auto; }
+  }
+  @media print {
+    .desktop { display: block; }
+    .mobile { display: none; }
+    .nvidia-end-user { break-inside: avoid; }
+  }
+</style>
