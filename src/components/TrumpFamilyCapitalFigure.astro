@@ -1,0 +1,184 @@
+---
+interface Props {
+  kind: 'hadrian' | 'swaps';
+  lang: 'fr' | 'en';
+}
+
+const { kind, lang } = Astro.props;
+const content = {
+  fr: {
+    hadrian: {
+      title: 'Le financement d’Hadrian',
+      date: 'Cherokee, Alabama · 20 mars 2026',
+      description: 'La Marine annonce 900 millions de dollars de fonds publics et 1,5 milliard de capitaux privés pour le programme naval. Le prêt évoqué en novembre relève de discussions séparées et préliminaires.',
+      publicAmount: '900 M$',
+      privateAmount: '1,5 Md$',
+      public: 'Fonds de la Marine',
+      private: 'Capitaux privés',
+      loan: 'Prêt discuté en novembre',
+      status: 'Conditions à préciser',
+      caption: 'Les deux montants proviennent de l’annonce de la Marine en mars. Le prêt évoqué en novembre relève d’un projet distinct.',
+    },
+    swaps: {
+      title: 'Les actions et leur rendement',
+      subtitle: 'Principe du swap de rendement total',
+      description: 'Un intermédiaire peut acheter les actions pour se couvrir et transférer leur rendement au client par contrat. En cas de baisse, le flux peut s’inverser selon les modalités du swap.',
+      market: 'Marché',
+      dealer: 'Intermédiaire',
+      investor: 'Client',
+      stock: 'L’intermédiaire achète et détient les titres',
+      returns: 'Le client peut recevoir la hausse du titre',
+      risk: 'Si le titre baisse, le paiement peut s’inverser.',
+      caption: 'Schéma de principe. Un formulaire 13F peut montrer les titres détenus sans décrire le partage du risque avec le client.',
+    },
+  },
+  en: {
+    hadrian: {
+      title: 'Funding the Hadrian program',
+      date: 'Cherokee, Alabama · March 20, 2026',
+      description: 'The Navy announced $900 million in public funding and $1.5 billion in private capital for the shipbuilding program. A separate prospective loan was at an early stage in November.',
+      publicAmount: '$900m',
+      privateAmount: '$1.5bn',
+      public: 'Navy funding',
+      private: 'Private capital',
+      loan: 'Loan discussed in November',
+      status: 'Terms still unsettled',
+      caption: 'The two figures come from the Navy’s March announcement. The loan discussed in November was a separate proposal.',
+    },
+    swaps: {
+      title: 'Shares and their returns',
+      subtitle: 'How a total return swap can work',
+      description: 'A dealer can buy the shares to hedge and transfer their returns to its client under a swap. Payments can flow the other way when the share price falls, depending on the contract.',
+      market: 'Market',
+      dealer: 'Dealer',
+      investor: 'Client',
+      stock: 'The dealer buys and holds the shares',
+      returns: 'The client can receive the gain',
+      risk: 'A falling share price can reverse the payment.',
+      caption: 'Illustrative mechanism. A Form 13F can show shares held without detailing how the dealer and client share the risk.',
+    },
+  },
+} as const;
+
+const layouts = [
+  { mode: 'wide', width: 560, market: 74, dealer: 280, investor: 486 },
+  { mode: 'narrow', width: 334, market: 51, dealer: 167, investor: 283 },
+] as const;
+const refs = { hadrian: ['S07', 'S06'], swaps: ['S13', 'S17'] } as const;
+const { hadrian, swaps } = content[lang];
+const figure = content[lang][kind];
+---
+
+<figure class="capital-figure">
+  {layouts.map(({ mode, width, market, dealer, investor }) => {
+    const heading = `family-capital-${lang}-${kind}-${mode}`;
+    const end = width - 20;
+    // The March announcement gives $900m in Navy funds and $1,500m in private capital.
+    const fundingWidth = width - 40;
+    const navyWidth = fundingWidth * 0.375;
+    return (
+      <div class={`scene scene-${mode}`}>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox={`0 0 ${width} 225`} width="100%" height="auto"
+          role="img" aria-labelledby={`${heading}-title ${heading}-description`} xml:lang={lang}>
+          <title id={`${heading}-title`}>{figure.title}</title>
+          <desc id={`${heading}-description`}>{figure.description}</desc>
+          <rect x=".5" y=".5" width={width - 1} height="224" rx="9" fill="var(--color-ink)" stroke="var(--color-line)" />
+          <text x="20" y="31" font-size="17" fill="var(--color-paper)">{figure.title}</text>
+          <text x="20" y="52" font-size="13" fill="var(--color-muted)">{kind === 'hadrian' ? hadrian.date : swaps.subtitle}</text>
+          <path d={`M20 66H${end}`} stroke="var(--color-line)" />
+          {kind === 'hadrian' ? (
+            <>
+              <g transform={`translate(${width - 54} 21)`} fill="none" stroke="var(--color-signal)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M2 26V15l9-5v5l9-5v5h8V4h4v22ZM8 21h3m4 0h3m4 0h3" />
+              </g>
+              <rect x="20" y="85" width={fundingWidth} height="9" rx="4.5" fill="var(--color-topic-blue)" fill-opacity=".67" />
+              <path d={`M24.5 85H${20 + navyWidth}V94H24.5a4.5 4.5 0 0 1 0-9Z`} fill="var(--color-signal)" />
+              <path d={`M${20 + navyWidth} 84V95`} stroke="var(--color-ink)" stroke-width="2" />
+              <text x="20" y="123" font-size="17" fill="var(--color-paper)">{hadrian.publicAmount}</text>
+              <text x="20" y="144" font-size="13" fill="var(--color-signal)">{hadrian.public}</text>
+              <text x={end} y="123" text-anchor="end" font-size="17" fill="var(--color-paper)">{hadrian.privateAmount}</text>
+              <text x={end} y="144" text-anchor="end" font-size="13" fill="var(--color-topic-blue)">{hadrian.private}</text>
+              <path d={`M20 159H${end}`} stroke="var(--color-line)" />
+              <circle cx="34" cy="191" r="14" fill="var(--color-surface)" stroke="var(--color-line)" />
+              <g transform="translate(24 181)" fill="none" stroke="var(--color-amber)" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 2h7l3 3v13H5Zm7 0v4h3M8 10h4m-4 4h3" />
+              </g>
+              <text x="58" y="185" font-size="14" fill="var(--color-amber)">{hadrian.loan}</text>
+              <text x="58" y="205" font-size="13" fill="var(--color-muted)">{hadrian.status}</text>
+            </>
+          ) : (
+            <>
+              <path d={`M${market + 19} 96H${dealer - 21}m-5-3 5 3-5 3`} fill="none" stroke="var(--color-signal)" stroke-linecap="round" stroke-linejoin="round" />
+              <path d={`M${dealer + 19} 96H${investor - 21}m-5-3 5 3-5 3`} fill="none" stroke="var(--color-amber)" stroke-linecap="round" stroke-linejoin="round" />
+              <circle cx={market} cy="96" r="16" fill="var(--color-surface)" stroke="var(--color-line)" />
+              <circle cx={dealer} cy="96" r="16" fill="var(--color-surface)" stroke="var(--color-signal)" />
+              <circle cx={investor} cy="96" r="16" fill="var(--color-surface)" stroke="var(--color-amber)" />
+              <g fill="none" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path transform={`translate(${market - 10} 86)`} d="M3 16V5m0 11h14M5 12l4-4 4 2 4-5m-4 0h4v4" stroke="var(--color-paper)" />
+                <path transform={`translate(${dealer - 10} 86)`} d="m10 3 6 3v4c0 3-2 6-6 8-4-2-6-5-6-8V6Zm-3 7 2 2 4-4" stroke="var(--color-signal)" />
+                <path transform={`translate(${investor - 10} 86)`} d="M14 6a4 4 0 1 1-8 0 4 4 0 0 1 8 0ZM3 17c1-5 4-6 7-6s6 1 7 6" stroke="var(--color-amber)" />
+              </g>
+              <g font-size="13" text-anchor="middle" fill="var(--color-paper)">
+                <text x={market} y="126">{swaps.market}</text>
+                <text x={dealer} y="126">{swaps.dealer}</text>
+                <text x={investor} y="126">{swaps.investor}</text>
+              </g>
+              <path d={`M20 140H${end}`} stroke="var(--color-line)" />
+              <circle cx="24" cy="157" r="2.5" fill="var(--color-signal)" />
+              <circle cx="24" cy="178" r="2.5" fill="var(--color-amber)" />
+              <text x="34" y="161" font-size="13" fill="var(--color-paper)">{swaps.stock}</text>
+              <text x="34" y="182" font-size="13" fill="var(--color-paper)">{swaps.returns}</text>
+              <text x="20" y="207" font-size="12" fill="var(--color-muted)">{swaps.risk}</text>
+            </>
+          )}
+        </svg>
+      </div>
+    );
+  })}
+  <figcaption>
+    {figure.caption}
+    {refs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .capital-figure {
+    width: 100%;
+    max-width: 560px;
+    margin: 1.6rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+  .scene svg {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+  .scene-narrow {
+    display: none;
+    max-width: 334px;
+    margin-inline: auto;
+  }
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+  figcaption a { margin-inline-start: .35rem; }
+  @container (max-width: 489px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+  @media print {
+    .capital-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>
