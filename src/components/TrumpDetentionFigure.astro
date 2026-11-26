@@ -1,0 +1,80 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'ownership' | 'acquisitions' | 'buybacks';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    ownership: 'L’État fédéral acquiert le centre de Tacoma le 17 novembre 2026 par l’intermédiaire du département de la Sécurité intérieure (DHS). GEO continue de fournir les services sous un contrat de gestion de dix ans avec l’ICE, effectif le 28 octobre et annoncé le 29. L’ICE conserve des droits de résiliation.',
+    acquisitions: 'Prix bruts et dates de clôture déclarés à la SEC. Le complexe d’Adelanto réunit Adelanto West, Adelanto East et Desert View, vendus en une seule opération pour 950 M$. Le total de 3 608,8 M$ couvre ces six cessions.',
+    buybacks: 'CoreCivic a signé son accord de rachat accéléré le 7 août et confirmé le versement de 500 M$ le 4 novembre. Chez GEO, le communiqué du 18 novembre décrit le financement prévu du rachat, dont le produit net estimé de Tacoma et des flux d’exploitation.',
+  },
+  en: {
+    ownership: 'The federal government acquired the Tacoma facility on November 17, 2026, through the Department of Homeland Security (DHS). GEO continues to provide services under a ten-year management contract with ICE, effective October 28 and announced October 29. ICE retains termination rights.',
+    acquisitions: 'Gross prices and closing dates reported to the SEC. The Adelanto complex comprises Adelanto West, Adelanto East and Desert View, sold together for $950 million. The $3,608.8 million total covers these six sales.',
+    buybacks: 'CoreCivic signed its accelerated repurchase agreement on August 7 and confirmed the $500 million payment on November 4. GEO’s November 18 release describes the proposed financing for its buyback, including estimated net proceeds from Tacoma and operating cash flow.',
+  },
+} as const;
+const sourceRefs = { ownership: ['S12', 'S14'], acquisitions: ['S04', 'S07', 'S12'], buybacks: ['S05', 'S06', 'S13'] } as const;
+
+const figures = import.meta.glob('../figures/trump-detention/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/trump-detention/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing detention figure layout.');
+---
+<figure class="trump-detention-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .trump-detention-figure {
+    width: 100%;
+    max-width: 572px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .trump-detention-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 342px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 515px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .trump-detention-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>
