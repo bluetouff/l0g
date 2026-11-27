@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 282" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="oss-finance-en-dependencies-title oss-finance-en-dependencies-desc" xml:lang="en">
+<title id="oss-finance-en-dependencies-title">One dependency, several banks</title>
+<desc id="oss-finance-en-dependencies-desc">A vulnerable shared component may be bundled in a commercial product, called by an internal service or used by a hosted service. Three fictional institutions use this software for payments, customer services or market operations. Impact depends on the version, exposure and safeguards.</desc>
+<rect x="0.5" y="0.5" width="559" height="281" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="29" font-size="18" font-weight="500" fill="var(--color-paper)" text-anchor="start">One dependency, several banks</text>
+<path d="M16 42H544" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="186.0" y="56" width="188" height="48" rx="6" fill="var(--color-surface)" stroke="var(--color-accent)"/>
+<g transform="translate(194.0 68)" aria-hidden="true"><path d="M2 6 9 2l7 4v7l-7 4-7-4Zm0 0 7 4 7-4m-7 4v7M6 4l7 4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="216.0" y="73" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Shared component</text>
+<text x="216.0" y="90" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Vulnerable version</text>
+<path d="M280.0 104V121M102.0 121H458.0" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M102.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="137" width="156" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(34 149)" aria-hidden="true"><path d="M3 3h12v12H3zm3 3h6v6H6zM6 1v2m6-2v2M1 6h2m-2 6h2m12-6h2m-2 6h2M6 15v2m6-2v2" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="58" y="160" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Vendor product</text>
+<text x="102.0" y="178" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Bundled dependency</text>
+<path d="M102.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="24" y="220" width="156" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="102.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Bank A</text>
+<text x="102.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Payments</text>
+<path d="M280.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="202" y="137" width="156" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(212 149)" aria-hidden="true"><path d="M2 4h14v10H2zm4 13h6m-3-3v3M5 7h2v3H5m4-3h4m-4 3h4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="236" y="160" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Internal service</text>
+<text x="280.0" y="178" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Direct dependency</text>
+<path d="M280.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="202" y="220" width="156" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="280.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Bank B</text>
+<text x="280.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Client services</text>
+<path d="M458.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="380" y="137" width="156" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(390 149)" aria-hidden="true"><path d="M5 13a3 3 0 1 1 .5-5.96 4 4 0 0 1 7.6 1.15A2.5 2.5 0 0 1 14 13ZM6 16h6m-3-3v3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="414" y="160" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Hosted service</text>
+<text x="458.0" y="178" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Indirect dependency</text>
+<path d="M458.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="380" y="220" width="156" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="458.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Bank C</text>
+<text x="458.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Market operations</text>
+</svg>

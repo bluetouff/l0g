@@ -1,0 +1,84 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'dependencies' | 'survey' | 'osera';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    dependencies: 'Le même composant peut être intégré à un produit commercial, appelé par un service interne ou utilisé dans un service hébergé. L’exposition dépend de la version, de l’usage et des protections. Les banques sont fictives.',
+    survey: 'FINOS et Linux Foundation Research, enquête 2026, figure 9, question 16. Les 215 répondants estiment leurs économies annuelles. Les réponses « ne sait pas » restent dans le total.',
+    osera: 'Le modèle s’inspire d’OSERA, projet de FINOS. Le correctif commun est accompagné d’éléments qui documentent sa provenance. Chaque banque garde la vérification et le déploiement.',
+  },
+  en: {
+    dependencies: 'A shared component can be bundled in a commercial product, called by an internal service or used in hosted software. Exposure depends on the version, usage and safeguards. The banks are fictional.',
+    survey: 'FINOS and Linux Foundation Research, 2026 survey, figure 9, question 16. The 215 respondents estimate their annual savings. “Unsure” responses are included in the total.',
+    osera: 'The diagram draws on OSERA, a FINOS project. A shared fix comes with evidence of its provenance. Each bank retains responsibility for verification and deployment.',
+  },
+} as const;
+const sourceRefs = {
+  dependencies: ['S01', 'S08'],
+  survey: ['S05'],
+  osera: ['S02', 'S12'],
+} as const;
+
+const figures = import.meta.glob('../figures/oss-finance/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/oss-finance/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing open-source finance figure layout.');
+---
+<figure class="oss-finance-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .oss-finance-figure {
+    width: 100%;
+    max-width: 560px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .oss-finance-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 352px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 500px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .oss-finance-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

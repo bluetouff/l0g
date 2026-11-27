@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 280" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="oss-finance-fr-dependencies-mobile-title oss-finance-fr-dependencies-mobile-desc" xml:lang="fr">
+<title id="oss-finance-fr-dependencies-mobile-title">Une dépendance, plusieurs banques</title>
+<desc id="oss-finance-fr-dependencies-mobile-desc">Un composant partagé vulnérable peut être intégré à un produit commercial, appelé par un service interne ou embarqué dans un service hébergé. Trois établissements fictifs utilisent ces logiciels pour les paiements, les services clients ou les opérations de marché. Les effets dépendent de la version, de l’exposition et des protections.</desc>
+<rect x="0.5" y="0.5" width="351" height="279" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="29" font-size="18" font-weight="500" fill="var(--color-paper)" text-anchor="start">Une dépendance, plusieurs banques</text>
+<path d="M16 42H336" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="82.0" y="56" width="188" height="48" rx="6" fill="var(--color-surface)" stroke="var(--color-accent)"/>
+<g transform="translate(90.0 68)" aria-hidden="true"><path d="M2 6 9 2l7 4v7l-7 4-7-4Zm0 0 7 4 7-4m-7 4v7M6 4l7 4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="112.0" y="73" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Composant partagé</text>
+<text x="112.0" y="90" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Version vulnérable</text>
+<path d="M176.0 104V121M66.0 121H286.0" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M66.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="137" width="100" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="66.0" y="157" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Produit</text>
+<text x="66.0" y="176" font-size="14" font-weight="400" fill="var(--color-muted)" text-anchor="middle">commercial</text>
+<path d="M66.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="16" y="220" width="100" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="66.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque A</text>
+<text x="66.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Paiements</text>
+<path d="M176.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="126" y="137" width="100" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="176.0" y="157" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Service</text>
+<text x="176.0" y="176" font-size="14" font-weight="400" fill="var(--color-muted)" text-anchor="middle">interne</text>
+<path d="M176.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="126" y="220" width="100" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="176.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque B</text>
+<text x="176.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Service client</text>
+<path d="M286.0 121V137m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="236" y="137" width="100" height="56" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="286.0" y="157" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Service</text>
+<text x="286.0" y="176" font-size="14" font-weight="400" fill="var(--color-muted)" text-anchor="middle">hébergé</text>
+<path d="M286.0 193V220m-3-4 3 4 3-4" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="3 4"/>
+<rect x="236" y="220" width="100" height="43" rx="6" fill="var(--color-surface)" stroke="var(--color-amber)"/>
+<text x="286.0" y="237" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque C</text>
+<text x="286.0" y="254" font-size="13" font-weight="400" fill="var(--color-amber)" text-anchor="middle">Marchés</text>
+</svg>

@@ -4027,6 +4027,12 @@ export const glossaryAtlasEn: GlossaryAtlasEnEntry[] = [
     ],
     "articles": [
       {
+        "label": "The open-source code that holds finance together",
+        "href": "/en/analysis/open-source-finance-maintenance-systemic-risk/",
+        "detail": "Open-source libraries supporting critical functions and the case for sharing fixes.",
+        "kind": "article"
+      },
+      {
         "label": "The invisible suppliers of European banking risk",
         "href": "/en/analysis/invisible-suppliers-european-banking-risk/",
         "kind": "article"

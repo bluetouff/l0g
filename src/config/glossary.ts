@@ -3924,6 +3924,12 @@ const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
     "intuition": "Un fournisseur commun peut transmettre une perturbation à plusieurs établissements. DORA associe la gestion des risques de chaque entité à une surveillance des prestataires critiques.",
     "articles": [
         {
+            "label": "Le logiciel libre, infrastructure invisible de la finance",
+            "href": "/posts/finance-logiciel-libre-maintenance-risque-systemique/",
+            "detail": "Les bibliothèques ouvertes utilisées pour des fonctions critiques et le partage des correctifs.",
+            "kind": "article"
+        },
+        {
             "label": "Les fournisseurs invisibles du risque bancaire européen",
             "href": "/posts/les-fournisseurs-invisibles-du-risque-bancaire-europeen/",
             "kind": "article"

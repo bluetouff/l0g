@@ -1724,8 +1724,10 @@ for (const slug of ['dora', 'ctpp']) {
   assert.deepEqual(fr.atlas.sources.map(source => source.href), en.atlas.sources.map(source => source.href));
   assert(fr.atlas.sources.every(source => source.href.startsWith('https://www.eba.europa.eu/')));
   assert.deepEqual(fr.atlas.related, en.atlas.related);
-  assert.deepEqual(fr.atlas.articles.map(link => link.href), [fr.guide, googleCloudBankingArticleFr]);
-  assert.deepEqual(en.atlas.articles.map(link => link.href), [en.guide, googleCloudBankingArticleEn]);
+  const openSourceArticleFr = slug === 'dora' ? ['/posts/finance-logiciel-libre-maintenance-risque-systemique/'] : [];
+  const openSourceArticleEn = slug === 'dora' ? ['/en/analysis/open-source-finance-maintenance-systemic-risk/'] : [];
+  assert.deepEqual(fr.atlas.articles.map(link => link.href), [...openSourceArticleFr, fr.guide, googleCloudBankingArticleFr]);
+  assert.deepEqual(en.atlas.articles.map(link => link.href), [...openSourceArticleEn, en.guide, googleCloudBankingArticleEn]);
 }
 
 for (const slug of ['dora', 'ctpp', 'rto', 'rpo-reprise']) {

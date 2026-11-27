@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 292" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="oss-finance-en-osera-title oss-finance-en-osera-desc" xml:lang="en">
+<title id="oss-finance-en-osera-title">A shared fix</title>
+<desc id="oss-finance-en-osera-desc">Three fictional banks compare two approaches. Working separately, each prepares or obtains its own fix, verifies it and deploys it. In the model inspired by OSERA, they share preparation of the fix and evidence of its provenance. Each bank retains verification and deployment.</desc>
+<rect x="0.5" y="0.5" width="559" height="291" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="29" font-size="18" font-weight="500" fill="var(--color-paper)" text-anchor="start">A shared fix</text>
+<path d="M16 42H544" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="65" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Separate remediation</text>
+<rect x="16" y="78" width="168" height="47" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(25 91)" aria-hidden="true"><path d="M2 6 9 2l7 4ZM3 15h12m-11 2h10M5 8v5m4-5v5m4-5v5" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="51" y="96" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Bank A</text>
+<text x="51" y="115" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Separate fix</text>
+<rect x="196" y="78" width="168" height="47" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(205 91)" aria-hidden="true"><path d="M2 6 9 2l7 4ZM3 15h12m-11 2h10M5 8v5m4-5v5m4-5v5" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="231" y="96" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Bank B</text>
+<text x="231" y="115" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Separate fix</text>
+<rect x="376" y="78" width="168" height="47" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(385 91)" aria-hidden="true"><path d="M2 6 9 2l7 4ZM3 15h12m-11 2h10M5 8v5m4-5v5m4-5v5" fill="none" stroke="var(--color-amber)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="411" y="96" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Bank C</text>
+<text x="411" y="115" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Separate fix</text>
+<path d="M16 145H544" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="167" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Joint preparation</text>
+<rect x="16" y="181" width="120" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<g transform="translate(24 193)" aria-hidden="true"><path d="M2 6 9 2l7 4ZM3 15h12m-11 2h10M5 8v5m4-5v5m4-5v5" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="46" y="198" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Banks</text>
+<text x="46" y="215" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">A, B and C</text>
+<path d="M138 206H148m-4-3 4 3-4 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="150" y="181" width="120" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<g transform="translate(158 193)" aria-hidden="true"><path d="M5 2h6l3 3v11H5Zm6 0v4h3M7 8h5m-5 3h5m-5 3h3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="180" y="211" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Shared fix</text>
+<path d="M272 206H282m-4-3 4 3-4 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="284" y="181" width="120" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<g transform="translate(292 193)" aria-hidden="true"><path d="M9 2l6 2v5c0 3-3 6-6 7-3-1-6-4-6-7V4Zm-3 7 2 2 4-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="314" y="198" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Verification</text>
+<text x="314" y="215" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">at each bank</text>
+<path d="M406 206H416m-4-3 4 3-4 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="418" y="181" width="126" height="50" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<g transform="translate(426 193)" aria-hidden="true"><path d="M3 9h5m0-5v10m0-10h5m-5 10h5m0-10 3 0m-3 10 3 0m-3-10-2-2m2 2-2 2m2 8-2-2m2 2-2 2" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="448" y="198" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Deployment</text>
+<text x="448" y="215" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">at each bank</text>
+<text x="16" y="264" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">Documented provenance accompanies the shared fix.</text>
+</svg>

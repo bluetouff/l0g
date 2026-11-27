@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 326" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="oss-finance-fr-osera-mobile-title oss-finance-fr-osera-mobile-desc" xml:lang="fr">
+<title id="oss-finance-fr-osera-mobile-title">Un correctif partagé</title>
+<desc id="oss-finance-fr-osera-mobile-desc">Trois banques fictives comparent deux méthodes. En traitement séparé, chacune prépare ou obtient son propre correctif, le vérifie et le déploie. Dans le modèle inspiré d’OSERA, elles partagent la préparation du correctif et les éléments de provenance. Chacune conserve la vérification et le déploiement.</desc>
+<rect x="0.5" y="0.5" width="351" height="325" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="29" font-size="18" font-weight="500" fill="var(--color-paper)" text-anchor="start">Un correctif partagé</text>
+<path d="M16 42H336" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="65" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Traitement séparé</text>
+<rect x="16" y="77" width="100" height="52" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="66" y="97" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque A</text>
+<text x="66" y="116" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Son correctif</text>
+<rect x="126" y="77" width="100" height="52" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="176" y="97" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque B</text>
+<text x="176" y="116" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Son correctif</text>
+<rect x="236" y="77" width="100" height="52" rx="6" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<text x="286" y="97" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque C</text>
+<text x="286" y="116" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Son correctif</text>
+<path d="M16 145H336" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="167" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Préparation en commun</text>
+<rect x="89" y="180" width="174" height="44" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<g transform="translate(97 192)" aria-hidden="true"><path d="M5 2h6l3 3v11H5Zm6 0v4h3M7 8h5m-5 3h5m-5 3h3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="119" y="207" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Correctif commun</text>
+<path d="M176 224V239M66 239H286" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M66 239V253m-3-4 3 4 3-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="16" y="253" width="100" height="54" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<text x="66" y="274" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque A</text>
+<text x="66" y="293" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Teste, déploie</text>
+<path d="M176 239V253m-3-4 3 4 3-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="126" y="253" width="100" height="54" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<text x="176" y="274" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque B</text>
+<text x="176" y="293" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Teste, déploie</text>
+<path d="M286 239V253m-3-4 3 4 3-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="236" y="253" width="100" height="54" rx="6" fill="var(--color-surface)" stroke="var(--color-signal)"/>
+<text x="286" y="274" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="middle">Banque C</text>
+<text x="286" y="293" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Teste, déploie</text>
+</svg>
