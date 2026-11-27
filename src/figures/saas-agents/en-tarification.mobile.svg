@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 279" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="saas-agents-en-tarification-mobile-title saas-agents-en-tarification-mobile-desc" xml:lang="en">
+<title id="saas-agents-en-tarification-mobile-title">How agents are billed</title>
+<desc id="saas-agents-en-tarification-mobile-desc">Salesforce credits cover actions. Workday credits are based on the operation performed. SAP offers an annual pool of AI Units. Microsoft has subscriptions and Copilot Studio consumption credits, depending on the offer. An illustrative sequence links requests, orchestration, inference and action.</desc>
+<rect x="0.5" y="0.5" width="339" height="278" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="28" font-size="17" font-weight="500" fill="var(--color-paper)" text-anchor="start">How agents are billed</text>
+<path d="M16 42H324" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="12" y="54" width="153" height="50" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(21 63)" aria-hidden="true"><path d="M3 4h12v10H3zM5 10l3-3 2 2 3-3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="44" y="77" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Salesforce</text>
+<text x="24" y="93" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Credits per action</text>
+<rect x="175" y="54" width="153" height="50" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(184 63)" aria-hidden="true"><path d="M3 5h12v9H3zM3 5l2-2h8v2m-2 4h4m-4 2h4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="207" y="77" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Workday</text>
+<text x="187" y="93" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Credits by task</text>
+<rect x="12" y="113" width="153" height="50" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(21 122)" aria-hidden="true"><path d="M3 3h5v5H3zm7 0h5v5h-5zM3 10h5v5H3zm7 0h5v5h-5z" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="44" y="136" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">SAP</text>
+<text x="24" y="152" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Annual AI Units</text>
+<rect x="175" y="113" width="153" height="50" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(184 122)" aria-hidden="true"><path d="m2 7 7-4 7 4-7 4Zm0 3 7 4 7-4m-14 3 7 4 7-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="207" y="136" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Microsoft</text>
+<text x="187" y="152" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Usage credits</text>
+<path d="M16 173H324" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="193" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">From request to action</text>
+<rect x="15" y="205" width="66" height="47" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(39.0 210)" aria-hidden="true"><path d="M2 3h14v10h-5l-3 3v-3H2zM5 7h8m-8 3h6" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="48.0" y="242" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="middle">Request</text>
+<path d="M84 228H93m-3-3 3 3-3 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="96" y="205" width="66" height="47" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(120.0 210)" aria-hidden="true"><path d="M8 3h3v3H8zm-5 9h3v3H3zm9 0h3v3h-3zM9.5 6v3H4.5v3m5-3h4v3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="129.0" y="242" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="middle">Routing</text>
+<path d="M165 228H174m-3-3 3 3-3 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="177" y="205" width="66" height="47" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(201.0 210)" aria-hidden="true"><path d="M4 4h10v10H4zm3 3h4v4H7zM6 2v2m6-2v2M6 14v2m6-2v2M2 6h2m-2 6h2m10-6h2m-2 6h2" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="210.0" y="242" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="middle">Inference</text>
+<path d="M246 228H255m-3-3 3 3-3 3" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="258" y="205" width="66" height="47" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(282.0 210)" aria-hidden="true"><path d="M3 3h12v12H3zm3 6 2 2 4-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="291.0" y="242" font-size="12" font-weight="400" fill="var(--color-paper)" text-anchor="middle">Action</text>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 268" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="saas-agents-fr-circuit-title saas-agents-fr-circuit-desc" xml:lang="fr">
+<title id="saas-agents-fr-circuit-title">Quand l’automatisation change la facture</title>
+<desc id="saas-agents-fr-circuit-desc">Un gain de productivité peut réduire le nombre de licences achetées au renouvellement si le client réduit l’équipe. Le même client peut aussi acheter des opérations exécutées par des agents. L’effet combiné sur le bénéfice brut dépend des recettes et des coûts directs.</desc>
+<rect x="0.5" y="0.5" width="559" height="267" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="28" font-size="18" font-weight="500" fill="var(--color-paper)" text-anchor="start">Quand l’automatisation change la facture</text>
+<path d="M16 42H544" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="164" y="54" width="232" height="50" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(173 63)" aria-hidden="true"><path d="M2 14a7 7 0 1 1 14 0m-7-2 3-4m-9 7h12M9 3v2m-5 1 1 1m9-1-1 1" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="196" y="77" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Travail automatisé</text>
+<text x="176" y="93" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Plus de tâches par heure</text>
+<path d="M280.0 104v12m-135.0 0H415.0" fill="none" stroke="var(--color-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M145.0 116v15m-3-4 3 4 3-4" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M415.0 116v15m-3-4 3 4 3-4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="24" y="132" width="242" height="65" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(33 142)" aria-hidden="true"><path d="M10.5 6a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0ZM2 14v-1a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v1m0-10a2 2 0 0 1 0 4m1 2a3 3 0 0 1 2 3v1" fill="none" stroke="var(--color-accent)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="55" y="155" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Licences</text>
+<text x="36" y="174" font-size="13" font-weight="400" fill="var(--color-accent)" text-anchor="start">Moins de sièges</text>
+<text x="36" y="189" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Si l’équipe se réduit</text>
+<rect x="294" y="132" width="242" height="65" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(303 142)" aria-hidden="true"><path d="M4 2h10v14H4zM7 6h4m-4 3h4m-4 3h2" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="325" y="155" font-size="14" font-weight="500" fill="var(--color-paper)" text-anchor="start">Usage des agents</text>
+<text x="306" y="174" font-size="13" font-weight="400" fill="var(--color-signal)" text-anchor="start">Opérations facturées</text>
+<text x="306" y="189" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Si le client en achète</text>
+<path d="M145.0 197v8H415.0v-8M280.0 205V208m-3-4 3 4 3-4" fill="none" stroke="var(--color-muted)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<rect x="164" y="208" width="232" height="48" rx="7" fill="var(--color-surface)" stroke="var(--color-line-strong)"/>
+<g transform="translate(173 217)" aria-hidden="true"><path d="M3 14h12M4 12V9m3 3V6m4 6V8m3 4V4" fill="none" stroke="var(--color-signal)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/></g>
+<text x="196" y="231" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="start">Bénéfice brut de l’éditeur</text>
+<text x="176" y="245" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Recettes après coûts directs</text>
+</svg>

@@ -47,6 +47,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
     },
     {"sigle": "Règlement par compensation", "nom": "Extinction d’obligations selon un mécanisme convenu", "def": "Mode de règlement par imputation d’obligations selon les conditions du contrat, avec un transfert d’espèces réduit ou remplacé. Dans l’accord Anthropic–Broadcom de mars 2026, une note convertible peut servir à régler des obligations de services puis des loyers éligibles. L’extinction d’une échéance s’accompagne alors d’une nouvelle créance sur l’émetteur de la note.", "guide": "/posts/broadcom-anthropic-blackstone-risque-63-milliards/"},
     {"sigle": "Parc installé", "nom": "Équipements déjà livrés et en service", "def": "Ensemble d’équipements déjà déployés chez les clients. Son activité commerciale peut associer maintenance, pièces, assistance et mises à niveau. Les revenus dépendent des contrats, de l’utilisation et du calendrier des interventions. Le nombre de machines et leur longévité renseignent sur une base potentielle de services, dont chaque prestation suit ses propres conditions.", "guide": "/posts/asml-seconde-vie-financiere-machines-puces/"},
+    {"sigle": "ACV", "nom": "Valeur contractuelle annuelle", "def": "Valeur d’un engagement commercial exprimée sur une année selon la méthode de l’éditeur. Une nouvelle ACV mesure les nouveaux engagements comptés sur une période. La reconnaissance du chiffre d’affaires dépend de la prestation livrée et des règles comptables.", "guide": "/posts/ia-saas-licences-marges-economie-agents/"},
+    {"sigle": "ARR", "nom": "Revenu récurrent annualisé", "def": "Indicateur qui ramène à une année les revenus ou engagements récurrents compris dans le périmètre défini par l’éditeur à une date donnée. Les comparaisons dépendent des règles d’inclusion, notamment après un changement de définition ou une acquisition.", "guide": "/posts/ia-saas-licences-marges-economie-agents/"},
     {"sigle": "Profit brut", "nom": "Revenus après coût des ventes", "def": "Différence entre le chiffre d’affaires et les coûts classés en coût des ventes. La marge brute rapporte ce montant au chiffre d’affaires. Les frais de recherche, de vente, d’administration, de financement et l’impôt doivent encore être pris en compte pour les résultats correspondants. La comparaison exige un référentiel comptable, une période et un périmètre identiques.", "guide": "/posts/asml-seconde-vie-financiere-machines-puces/"},
     {"sigle": "Financement mixte", "nom": "Association de capitaux concessionnels et commerciaux", "def": "Montage associant des capitaux publics ou philanthropiques à des investisseurs commerciaux pour financer un objectif de développement. Dans le cadre AIE–Convergence, les premiers acceptent des conditions concessionnelles afin d’absorber, de partager ou de réduire certains risques. Le rang des créances, les garanties et la rémunération déterminent la répartition effective des risques et des revenus.", "guide": "/posts/transition-energetique-premiere-perte-finance-mixte/"},
     {"sigle": "Première perte", "nom": "Tranche absorbant les pertes avant les autres", "def": "Position contractuelle qui absorbe les premières pertes d’un investissement ou d’un portefeuille, jusqu’au montant prévu, avant les tranches de rang supérieur. Elle protège les autres apporteurs dans les limites et selon les événements définis par le contrat. Le montant exposé, la perte réalisée et le coût attendu d’un soutien correspondent à des mesures distinctes.", "guide": "/posts/transition-energetique-premiere-perte-finance-mixte/"},
@@ -1399,6 +1401,14 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  acv: {
+    articles: [{label: "Les agents IA bousculent le prix du SaaS", href: "/posts/ia-saas-licences-marges-economie-agents/", kind: 'article'}],
+    related: ['arr'],
+  },
+  arr: {
+    articles: [{label: "Les agents IA bousculent le prix du SaaS", href: "/posts/ia-saas-licences-marges-economie-agents/", kind: 'article'}],
+    related: ['acv'],
+  },
   'crack-spread': {
     articles: [{ label: 'Gazole en France : pourquoi le prix baisse moins vite que le pétrole', href: '/posts/gazole-baisse-petrole-raffinage-novembre-2026/', kind: 'article' }],
     sources: [{ label: 'BCE, coûts et marges du raffinage', href: 'https://www.ecb.europa.eu/press/economic-bulletin/focus/2026/html/ecb.ebbox202607_05~d82730508f.en.html', detail: 'Note 1 et graphique B : écart entre le produit raffiné et le prix du brut.', kind: 'source' }],

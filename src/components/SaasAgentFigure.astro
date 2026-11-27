@@ -1,0 +1,84 @@
+---
+interface Props {
+  lang: 'fr' | 'en';
+  kind: 'circuit' | 'tarification' | 'seuils';
+}
+
+const { lang, kind } = Astro.props;
+const captions = {
+  fr: {
+    circuit: 'Schéma de deux évolutions possibles à partir d’un gain de productivité. Les contrats, la demande et les coûts directs déterminent le résultat pour l’éditeur.',
+    tarification: 'Unités présentées par les éditeurs au 27 novembre 2026. Chez Microsoft, cet exemple désigne Copilot Studio. Les crédits ont un périmètre propre à chaque offre. Le parcours inférieur illustre les coûts possibles derrière une opération facturée.',
+    seuils: 'Simulation l0g en milliers de dollars américains par mois. Départ à 100 k$ de ventes et 80 % de marge brute historique, prix par licence constant. Avec 20 % de licences en moins et 50 % de marge brute IA, il faudrait 32 k$ de ventes IA par mois pour retrouver le bénéfice brut de départ.',
+  },
+  en: {
+    circuit: 'Two possible paths from a productivity gain. Contracts, demand and direct costs determine the outcome for the software vendor.',
+    tarification: 'Billing units described by the vendors as of November 27, 2026. The Microsoft example refers to Copilot Studio. What a credit covers varies by offer. The workflow below illustrates potential costs behind a billable operation.',
+    seuils: 'Illustrative l0g model in thousands of US dollars per month. Starting sales of $100k at an 80% legacy gross margin, with the price per seat held constant. With 20% fewer seats and a 50% AI gross margin, restoring initial gross profit would take $32k in monthly AI sales.',
+  },
+} as const;
+const sourceRefs = {
+  circuit: ['S02', 'S11'],
+  tarification: ['S07', 'S08', 'S09', 'S10'],
+  seuils: [],
+} as const;
+
+const figures = import.meta.glob('../figures/saas-agents/*.svg', { query: '?raw', import: 'default', eager: true });
+const base = `../figures/saas-agents/${lang}-${kind}`;
+const wide = figures[`${base}.svg`];
+const narrow = figures[`${base}.mobile.svg`];
+if (typeof wide !== 'string' || typeof narrow !== 'string') throw new TypeError('Missing SaaS agent figure layout.');
+---
+<figure class="saas-agent-figure" data-kind={kind}>
+  <div class="scene-wide" set:html={wide} />
+  <div class="scene-narrow" set:html={narrow} />
+  <figcaption>
+    {captions[lang][kind]}
+    {sourceRefs[kind].map(ref => <a href={`#source-${ref}`}>{ref}</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  .saas-agent-figure {
+    width: 100%;
+    max-width: 560px;
+    margin: 1.7rem auto;
+    padding-bottom: .6rem;
+    container-type: inline-size;
+  }
+
+  .saas-agent-figure :global(svg) {
+    display: block;
+    width: 100%;
+    height: auto;
+    font-family: var(--font-read);
+    font-weight: 400;
+    letter-spacing: normal;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .scene-wide { display: block; }
+  .scene-narrow { display: none; max-width: 352px; margin-inline: auto; }
+
+  figcaption {
+    margin-top: .6rem;
+    color: var(--color-muted);
+    font-family: var(--font-read);
+    font-size: .79rem;
+    font-weight: 400;
+    line-height: 1.55;
+  }
+
+  figcaption a { margin-inline-start: .35rem; }
+
+  @container (max-width: 500px) {
+    .scene-wide { display: none; }
+    .scene-narrow { display: block; }
+  }
+
+  @media print {
+    .saas-agent-figure { break-inside: avoid; }
+    .scene-wide { display: block; }
+    .scene-narrow { display: none; }
+  }
+</style>

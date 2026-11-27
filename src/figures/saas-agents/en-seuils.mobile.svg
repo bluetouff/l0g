@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 313" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="saas-agents-en-seuils-mobile-title saas-agents-en-seuils-mobile-desc" xml:lang="en">
+<title id="saas-agents-en-seuils-mobile-title">Required AI sales</title>
+<desc id="saas-agents-en-seuils-mobile-desc">Monthly AI revenue in thousands of US dollars needed to restore initial gross profit, by seats lost and the AI gross margin. Starting from $100,000 in monthly revenue at an 80% legacy gross margin, a 20% reduction in seats at unchanged prices requires $32,000 in monthly AI revenue at a 50% AI gross margin.</desc>
+<rect x="0.5" y="0.5" width="339" height="312" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)"/>
+<text x="16" y="28" font-size="17" font-weight="500" fill="var(--color-paper)" text-anchor="start">Required AI sales</text>
+<path d="M16 42H324" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="61" font-size="13" font-weight="400" fill="var(--color-muted)" text-anchor="start">$k per month</text>
+<text x="186.5" y="61" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">AI gross margin</text>
+<text x="14" y="80" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Seats</text>
+<text x="14" y="94" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">lost</text>
+<text x="80.5" y="89" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">25%</text>
+<text x="133.5" y="89" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">40%</text>
+<text x="186.5" y="89" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">50%</text>
+<text x="239.5" y="89" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">65%</text>
+<text x="292.5" y="89" font-size="13" font-weight="500" fill="var(--color-paper)" text-anchor="middle">80%</text>
+<text x="14" y="116" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">5%</text>
+<rect x="56" y="100" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.08"/>
+<text x="80.5" y="115.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">16</text>
+<rect x="109" y="100" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.071"/>
+<text x="133.5" y="115.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">10</text>
+<rect x="162" y="100" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.068"/>
+<text x="186.5" y="115.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">8</text>
+<rect x="215" y="100" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.065"/>
+<text x="239.5" y="115.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">6.2</text>
+<rect x="268" y="100" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.063"/>
+<text x="292.5" y="115.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">5</text>
+<text x="14" y="141" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">10%</text>
+<rect x="56" y="125" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.105"/>
+<text x="80.5" y="140.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">32</text>
+<rect x="109" y="125" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.086"/>
+<text x="133.5" y="140.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">20</text>
+<rect x="162" y="125" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.08"/>
+<text x="186.5" y="140.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">16</text>
+<rect x="215" y="125" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.074"/>
+<text x="239.5" y="140.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">12.3</text>
+<rect x="268" y="125" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.071"/>
+<text x="292.5" y="140.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">10</text>
+<text x="14" y="166" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">15%</text>
+<rect x="56" y="150" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.13"/>
+<text x="80.5" y="165.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">48</text>
+<rect x="109" y="150" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.102"/>
+<text x="133.5" y="165.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">30</text>
+<rect x="162" y="150" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.092"/>
+<text x="186.5" y="165.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">24</text>
+<rect x="215" y="150" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.084"/>
+<text x="239.5" y="165.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">18.5</text>
+<rect x="268" y="150" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.078"/>
+<text x="292.5" y="165.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">15</text>
+<text x="14" y="191" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">20%</text>
+<rect x="56" y="175" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.155"/>
+<text x="80.5" y="190.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">64</text>
+<rect x="109" y="175" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.117"/>
+<text x="133.5" y="190.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">40</text>
+<rect x="162" y="175" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="var(--color-signal)" fill-opacity="0.2"/>
+<text x="186.5" y="190.7" font-size="13" font-weight="500" fill="var(--color-signal)" text-anchor="middle">32</text>
+<rect x="215" y="175" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.093"/>
+<text x="239.5" y="190.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">24.6</text>
+<rect x="268" y="175" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.086"/>
+<text x="292.5" y="190.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">20</text>
+<text x="14" y="216" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">25%</text>
+<rect x="56" y="200" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.18"/>
+<text x="80.5" y="215.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">80</text>
+<rect x="109" y="200" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.133"/>
+<text x="133.5" y="215.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">50</text>
+<rect x="162" y="200" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.117"/>
+<text x="186.5" y="215.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">40</text>
+<rect x="215" y="200" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.103"/>
+<text x="239.5" y="215.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">30.8</text>
+<rect x="268" y="200" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.094"/>
+<text x="292.5" y="215.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">25</text>
+<text x="14" y="241" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">30%</text>
+<rect x="56" y="225" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.205"/>
+<text x="80.5" y="240.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">96</text>
+<rect x="109" y="225" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.149"/>
+<text x="133.5" y="240.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">60</text>
+<rect x="162" y="225" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.13"/>
+<text x="186.5" y="240.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">48</text>
+<rect x="215" y="225" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.113"/>
+<text x="239.5" y="240.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">36.9</text>
+<rect x="268" y="225" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.102"/>
+<text x="292.5" y="240.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">30</text>
+<text x="14" y="266" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="start">40%</text>
+<rect x="56" y="250" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.255"/>
+<text x="80.5" y="265.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">128</text>
+<rect x="109" y="250" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.18"/>
+<text x="133.5" y="265.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">80</text>
+<rect x="162" y="250" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.155"/>
+<text x="186.5" y="265.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">64</text>
+<rect x="215" y="250" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.132"/>
+<text x="239.5" y="265.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">49.2</text>
+<rect x="268" y="250" width="49" height="22" rx="4" fill="var(--color-signal)" stroke="none" fill-opacity="0.117"/>
+<text x="292.5" y="265.7" font-size="13" font-weight="400" fill="var(--color-paper)" text-anchor="middle">40</text>
+<path d="M16 282H324" fill="none" stroke="var(--color-line-strong)" stroke-width="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="301" font-size="13" font-weight="500" fill="var(--color-signal)" text-anchor="start">Example · 20% fewer seats ⇒ $32k</text>
+</svg>
