@@ -1,0 +1,225 @@
+---
+interface Props {
+  lang?: 'fr' | 'en';
+  variant: 'serial' | 'security';
+  number?: string;
+}
+
+const { lang = 'fr', variant, number = variant === 'serial' ? '01' : '02' } = Astro.props;
+const copy = {
+  serial: {
+    fr: {
+      title: 'La piste du numéro de série',
+      description: 'Bloomberg a relevé un numéro de série dans un dossier de financement. La base de garanties l’associait à un rack Gigabyte GB300 NVL72. Le premier acheteur, les documents de livraison et la licence restent à établir.',
+      dossier: 'Dossier de financement',
+      serial: 'Numéro de série',
+      warranty: 'Base de garanties',
+      open: 'Pièces manquantes',
+      gaps: ['Premier acheteur', 'Livraison', 'Licence'],
+      caption: 'Bloomberg a retrouvé le numéro dans un dossier de financement et l’a rapproché de la base de garanties du fabricant. Le trajet du rack et le régime de licence de la transaction restent à établir.',
+    },
+    en: {
+      title: 'The serial-number trail',
+      description: 'Bloomberg found a serial number in a financing file. A warranty database linked it to a Gigabyte GB300 NVL72 rack. The first buyer, shipping records and licence remain unverified.',
+      dossier: 'Financing file',
+      serial: 'Serial number',
+      warranty: 'Warranty database',
+      open: 'Missing records',
+      gaps: ['First buyer', 'Shipment', 'Licence'],
+      caption: 'Bloomberg matched a number in a financing file to the manufacturer’s warranty database. The rack’s route and the licence requirements for the transaction remain open questions.',
+    },
+  },
+  security: {
+    fr: {
+      title: 'La sûreté et son inscription',
+      description: 'Le prêt et le matériel en garantie relèvent du contrat. Le registre rend l’avis consultable avec les parties, le matériel décrit et la durée. La banque vérifie le matériel et les sûretés existantes.',
+      loan: 'Contrat de prêt',
+      equipment: 'Matériel en garantie',
+      filing: 'Avis déposé',
+      fields: 'Parties · matériel décrit · durée',
+      lookup: 'Consultable au registre',
+      lender: 'Vérifications de la banque',
+      checks: 'Matériel et sûretés existantes',
+      caption: 'Le registre chinois rend l’avis consultable. Le contrat signé, le versement du prêt et la validité de la sûreté demandent des vérifications distinctes.',
+    },
+    en: {
+      title: 'The security interest and its filing',
+      description: 'The loan and the equipment securing it are governed by contract. The registry makes notice of the parties, described equipment and term searchable. The lender checks the equipment and existing security interests.',
+      loan: 'Loan agreement',
+      equipment: 'Equipment as collateral',
+      filing: 'Filed notice',
+      fields: 'Parties · listed equipment · term',
+      lookup: 'Searchable in the registry',
+      lender: 'Lender checks',
+      checks: 'Equipment and prior security interests',
+      caption: 'The Chinese registry makes the notice searchable. The signed agreement, loan disbursement and validity of the security interest each require separate verification.',
+    },
+  },
+} as const;
+
+const dossier = 'M-13-13H-3L1-9H13V11H-13Z M-13-4H13 M-8 2H5 M-8 6H8';
+const tag = 'M-13-8H3L13 0L3 8H-13Z M-9-4V4 M-5-4V4 M-1-4V4 M3-3V3 M8 0H8.2';
+const rack = 'M-12-15H12V14H-12Z M-12-7H12 M-12 1H12 M-12 9H12 M-8-11H-6 M-8-3H-6 M-8 5H-6 M-1-11H8 M-1-3H8 M-1 5H8 M-8 14V17 M8 14V17';
+const buyer = 'M0-2A3.5 3.5 0 1 0 0-9A3.5 3.5 0 1 0 0-2 M-7 7V4L-4 1H4L7 4V7';
+const carton = 'M0-8L8-4V4L0 8L-8 4V-4Z M-8-4L0 0L8-4 M0 0V8';
+const licence = 'M-5-9H2L6-5V9H-5Z M2-9V-5H6 M-2-1H3 M-2 3H3';
+const contract = 'M-12-15H3L11-7V15H-12Z M3-15V-7H11 M-7-3H6 M-7 2H6 M-7 9L-3 6L0 10L5 6';
+const notice = 'M-8-15H6L12-9V11H-8Z M6-15V-9H12 M-12-10V15H7 M-3-5H7 M-3 0H7 M-3 5H4';
+const search = 'M3-1A5 5 0 1 1-7-1A5 5 0 1 1 3-1 M1 3L7 9';
+const bank = 'M-14-6L0-14L14-6Z M-12-2H12 M-9 1V10 M0 1V10 M9 1V10 M-14 14H14';
+
+const sourceIds = variant === 'serial' ? ['S01', 'S02'] : ['S03'];
+const figure = copy[variant][lang];
+const gapIcons = [buyer, carton, licence];
+---
+
+<figure class="blackwell-collateral" id={`nv28-${variant}-${lang}`}>
+  {(['desktop', 'mobile'] as const).map(layout => {
+    const mobile = layout === 'mobile';
+    const width = mobile ? 340 : 600;
+    const height = variant === 'serial' ? (mobile ? 262 : 239) : (mobile ? 324 : 270);
+    const id = `nv28-${variant}-${lang}-${layout}`;
+    return (
+      <div class:list={['scene', layout]}>
+        <svg xmlns="http://www.w3.org/2000/svg" width="100%" style="height:auto" viewBox={`0 0 ${width} ${height}`} role="img" aria-labelledby={`${id}-title ${id}-desc`} xml:lang={lang} data-variant={layout}>
+          <title id={`${id}-title`}>{figure.title}</title>
+          <desc id={`${id}-desc`}>{figure.description}</desc>
+          <rect class="frame" x=".6" y=".6" width={width - 1.2} height={height - 1.2} rx="4" />
+          <text class="title" x="18" y="30">{figure.title}</text>
+          <path class="line rule" d={mobile ? 'M18 44H322' : 'M18 44H582'} />
+          {variant === 'serial' ? (
+            <g>
+              {mobile ? (
+                <g>
+                  <path class="line trace" d="M42 97V127 M42 145V163" />
+                  <g class="icon" transform="translate(42 81)"><path d={dossier} /></g>
+                  <g class="icon small-tag" transform="translate(42 135)"><path d={tag} /></g>
+                  <g class="icon" transform="translate(42 182)"><path d={rack} /></g>
+                  <text class="label" x="72" y="86">{copy.serial[lang].dossier}</text>
+                  <text class="minor" x="72" y="140">{copy.serial[lang].serial}</text>
+                  <text class="label" x="72" y="179">{copy.serial[lang].warranty}</text>
+                  <text class="minor" x="72" y="197">Gigabyte GB300 NVL72</text>
+                </g>
+              ) : (
+                <g>
+                  <path class="line trace" d="M126 94H280 M320 94H478" />
+                  <path class="line trace" d="M126 91V97 M280 91V97 M320 91V97 M478 91V97" />
+                  <g class="icon" transform="translate(106 94)"><path d={dossier} /></g>
+                  <g class="icon" transform="translate(300 94)"><path d={tag} /></g>
+                  <g class="icon" transform="translate(498 94)"><path d={rack} /></g>
+                  <text class="label" x="106" y="136" text-anchor="middle">{copy.serial[lang].dossier}</text>
+                  <text class="minor" x="300" y="136" text-anchor="middle">{copy.serial[lang].serial}</text>
+                  <text class="label" x="498" y="136" text-anchor="middle">{copy.serial[lang].warranty}</text>
+                  <text class="minor" x="498" y="154" text-anchor="middle">Gigabyte GB300 NVL72</text>
+                </g>
+              )}
+              <path class="line rule" d={mobile ? 'M18 209H322' : 'M18 171H582'} />
+              <text class="minor" x="18" y={mobile ? 227 : 193}>{copy.serial[lang].open}</text>
+              {copy.serial[lang].gaps.map((label, index) => {
+                const x = (mobile ? [27, 160, 250] : [29, 240, 430])[index];
+                const y = mobile ? 245 : 215;
+                return (
+                  <g>
+                    <g class="icon amber" transform={`translate(${x} ${y})`}><path d={gapIcons[index]} /></g>
+                    <text class="minor" x={x + 15} y={y + 4}>{label}</text>
+                  </g>
+                );
+              })}
+            </g>
+          ) : (
+            <g>
+              {mobile ? (
+                <g>
+                  <path class="line trace" d="M102 89H238 M102 86V92 M238 86V92" />
+                  <g class="icon" transform="translate(81 89)"><path d={contract} /></g>
+                  <g class="icon" transform="translate(259 89)"><path d={rack} /></g>
+                  <text class="label" x="81" y="131" text-anchor="middle">{copy.security[lang].loan}</text>
+                  <text class="label" x="259" y="131" text-anchor="middle">{copy.security[lang].equipment}</text>
+                  <path class="line rule" d="M18 150H322" />
+                  <g class="icon" transform="translate(43 191)"><path d={notice} /></g>
+                  <text class="label" x="69" y="181">{copy.security[lang].filing}</text>
+                  <text class="minor" x="69" y="201">{copy.security[lang].fields}</text>
+                  <path class="line trace" d="M43 213V232H59" />
+                  <g class="icon" transform="translate(69 232)"><path d={search} /></g>
+                  <text class="minor" x="83" y="237">{copy.security[lang].lookup}</text>
+                </g>
+              ) : (
+                <g>
+                  <path class="line trace" d="M95 96H211 M95 93V99 M211 93V99" />
+                  <g class="icon" transform="translate(74 96)"><path d={contract} /></g>
+                  <g class="icon" transform="translate(232 96)"><path d={rack} /></g>
+                  <text class="label" x="74" y="143" text-anchor="middle">{copy.security[lang].loan}</text>
+                  <text class="label" x="226" y="143" text-anchor="middle">{copy.security[lang].equipment}</text>
+                  <path class="line rule" d="M314 64V173" />
+                  <g class="icon" transform="translate(349 96)"><path d={notice} /></g>
+                  <text class="label" x="374" y="86">{copy.security[lang].filing}</text>
+                  <text class="minor" x="374" y="107">{copy.security[lang].fields}</text>
+                  <path class="line trace" d="M349 118V147H365" />
+                  <g class="icon" transform="translate(375 147)"><path d={search} /></g>
+                  <text class="minor" x="389" y="152">{copy.security[lang].lookup}</text>
+                </g>
+              )}
+              <path class="line rule" d={mobile ? 'M18 255H322' : 'M18 191H582'} />
+              <g class="icon amber" transform={mobile ? 'translate(42 288)' : 'translate(43 228)'}><path d={bank} /></g>
+              <text class="label" x="68" y={mobile ? 283 : 222}>{copy.security[lang].lender}</text>
+              <text class="minor" x="68" y={mobile ? 303 : 243}>{copy.security[lang].checks}</text>
+            </g>
+          )}
+        </svg>
+      </div>
+    );
+  })}
+  <figcaption><span class="number">FIG. {number}</span>{' '}{figure.caption}{' '}
+    {sourceIds.map(id => <a href={`#source-${id}`} aria-label={`Source ${id}`}>[{id}]</a>)}
+  </figcaption>
+</figure>
+
+<style>
+  @font-face {
+    font-family: 'l0g Nvidia Collateral';
+    src: url('/fonts/ukraine-reparations/liberation-sans-400.ttf') format('truetype');
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+  }
+  .blackwell-collateral {
+    width: 100%;
+    max-width: 37.5rem;
+    margin: 1.5rem auto 1.7rem;
+    padding-bottom: .9rem;
+    container-type: inline-size;
+  }
+  .scene { width: 100%; line-height: 0; }
+  .mobile { display: none; }
+  svg {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    height: auto;
+    font-family: 'l0g Nvidia Collateral', Arial, sans-serif;
+    font-weight: 400;
+    letter-spacing: normal;
+  }
+  .frame { fill: var(--color-surface); stroke: var(--color-line-strong); stroke-width: 1.1; }
+  .title, .label { fill: var(--color-paper); }
+  .title { font-size: 17px; }
+  .label { font-size: 14px; }
+  .minor { fill: var(--color-muted); font-size: 12.5px; }
+  .line, .icon { fill: none; stroke: var(--color-signal); stroke-width: 1.15; stroke-linejoin: round; stroke-linecap: round; }
+  .trace { stroke-opacity: .78; }
+  .rule { stroke: var(--color-line-strong); }
+  .amber { stroke: var(--color-amber); }
+  figcaption { margin-top: .64rem; color: var(--color-muted); font: 400 .75rem/1.5 var(--font-read); }
+  .number { margin-right: .36rem; color: var(--color-signal); font: .6875rem var(--font-mono); letter-spacing: .08em; }
+  figcaption a { display: inline-block; margin-inline-end: .24rem; text-underline-offset: .18em; }
+  figcaption a:focus-visible { outline: 2px solid var(--color-signal); outline-offset: 3px; }
+  @container (max-width: 520px) {
+    .desktop { display: none; }
+    .mobile { display: block; max-width: 21.25rem; margin-inline: auto; }
+  }
+  @media print {
+    .desktop { display: block; }
+    .mobile { display: none; }
+    .blackwell-collateral { break-inside: avoid; }
+  }
+</style>
