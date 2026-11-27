@@ -989,6 +989,8 @@ const rawGlossarySections: GlossarySourceSection[] = [
       { sigle: 'Open interest', nom: 'Position ouverte', def: "Nombre total de contrats à terme ouverts et non encore dénoués à un instant donné. Le total des positions longues y égale toujours le total des positions courtes. Masse que le COT répartit entre catégories de traders." },
       { sigle: 'Option', nom: 'Option (call / put)', def: "Contrat donnant le droit, non l'obligation, d'acheter (call) ou de vendre (put) un actif à un prix fixé jusqu'à une échéance. L'acheteur paie une prime ; le vendeur l'encaisse et supporte le risque. Le comportement de couverture des vendeurs d'options, souvent des teneurs de marché, influence fortement le sous-jacent.", guide: '/guides/lire-le-gamma-des-dealers/' },
       { sigle: 'Delta', nom: 'Delta', def: "Sensibilité du prix d'une option à une variation du sous-jacent : un delta de 0,5 signifie que l'option gagne 0,50 pour un mouvement de 1 du sous-jacent. Les teneurs de marché neutralisent leur delta en achetant ou vendant le sous-jacent, d'où des flux de couverture mécaniques.", guide: '/guides/lire-le-gamma-des-dealers/' },
+      {"sigle": "Or non alloué", "nom": "Compte d’or sans barres individualisées", "def": "Créance en or sur la contrepartie d’un compte. Le titulaire a droit à une quantité de métal selon le contrat, sans identification de barres particulières. Les règles du FMI permettent à une autorité monétaire de l’inclure dans ses réserves si les conditions de livraison et de disponibilité sont remplies.", "guide": "/posts/or-argentin-londres-couverture-bcra/"},
+      {"sigle": "Collar", "nom": "Couverture par plancher et plafond", "def": "Couverture qui associe une option de vente achetée fixant un plancher et une option d’achat vendue fixant un plafond. Sur la quantité couverte, le détenteur se protège contre la baisse sous le premier seuil et cède la hausse au-dessus du second. Un coût initial nul désigne l’équilibre des primes à la signature.", "guide": "/posts/or-argentin-londres-couverture-bcra/"},
       { sigle: 'Gamma', nom: 'Gamma', def: "Vitesse à laquelle le delta d'une option change quand le sous-jacent bouge. Maximal près du prix d'exercice et à l'approche de l'échéance. Un gamma élevé oblige les teneurs de marché à réajuster sans cesse leur couverture, ce qui peut amortir ou amplifier les mouvements selon le sens de leur position.", guide: '/guides/lire-le-gamma-des-dealers/' },
       { sigle: 'GEX', nom: 'Gamma Exposure', def: "Estimation du gamma net que les teneurs de marché doivent couvrir sur un indice. Un GEX positif (dealers longs gamma) tend à étouffer la volatilité ; un GEX négatif (dealers courts gamma) l'amplifie. Le niveau où il bascule, le « gamma flip », est un repère suivi de près.", guide: '/guides/lire-le-gamma-des-dealers/' },
       { sigle: '0DTE', nom: 'Zero Days to Expiration', def: "Options qui expirent le jour même. Leur essor en a fait une part majeure du volume d'options sur le S&P 500, de l'ordre de 40 à 50 %. Leur gamma très concentré force une couverture des dealers en temps réel, devenue un moteur dominant des mouvements intrajournaliers.", guide: '/guides/lire-le-gamma-des-dealers/' },
@@ -1401,6 +1403,16 @@ const treasuryRelated = [
 ];
 
 const glossaryKnowledgeGraph: Record<string, GlossaryKnowledgeGraph> = {
+  "or-non-alloue": {
+    articles: [{ label: "L’or argentin envoyé à Londres et le prix de sa couverture", href: "/posts/or-argentin-londres-couverture-bcra/", kind: 'article' }],
+    sources: [{ label: "FMI, classement de l’or monétaire", href: "https://www.elibrary.imf.org/display/book/9781484304228/ch002.xml", kind: 'source' }],
+    related: ['collar'],
+  },
+  "collar": {
+    articles: [{ label: "L’or argentin envoyé à Londres et le prix de sa couverture", href: "/posts/or-argentin-londres-couverture-bcra/", kind: 'article' }],
+    sources: [{ label: "BCRA, rapport de politique monétaire, encadré 2", href: "https://www.bcra.gob.ar/publicaciones/informe-de-politica-monetaria-ipom-tercer-trimestre-de-2026/", kind: 'source' }],
+    related: ['or-non-alloue'],
+  },
   acv: {
     articles: [{label: "Les agents IA bousculent le prix du SaaS", href: "/posts/ia-saas-licences-marges-economie-agents/", kind: 'article'}],
     related: ['arr'],

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 340 288" width="100%" height="auto" style="width:100%;height:auto" role="img" aria-labelledby="argentina-gold-en-collar-mobile-title argentina-gold-en-collar-mobile-desc" xml:lang="en">
+<title id="argentina-gold-en-collar-mobile-title">The price of a floor</title>
+<desc id="argentina-gold-en-collar-mobile-desc">Illustrative example for one unit of gold, starting index 100. The holder buys a put at 90 and sells a call at 110. At expiry, with gold at 70, 100 or 130, the hedged value is 90, 100 or 110 before premiums and fees.</desc>
+<rect x="0.5" y="0.5" width="339" height="287" rx="9" fill="var(--color-ink)" stroke="var(--color-line-strong)" opacity="1"/>
+<text x="16" y="28" font-size="17" font-weight="500" fill="var(--color-paper)" text-anchor="start">The price of a floor</text>
+<path d="M16 42H324" fill="none" stroke="var(--color-line-strong)" stroke-width="1" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="16" y="62" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="start">Value at expiry</text>
+<text x="324" y="62" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">Illustrative example</text>
+<rect x="44" y="125.0" width="272" height="44.0" rx="0" fill="var(--color-signal)" stroke="none" opacity="0.07"/>
+<path d="M44 213.0H316" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="217.0" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">70</text>
+<path d="M44.0 213v5" fill="none" stroke="var(--color-muted)" stroke-width="0.75" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44.0" y="232" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">70</text>
+<path d="M44 169.0H316" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="173.0" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">90</text>
+<path d="M134.67 213v5" fill="none" stroke="var(--color-muted)" stroke-width="0.75" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="134.67" y="232" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">90</text>
+<path d="M44 125.0H316" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="129.0" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">110</text>
+<path d="M225.33 213v5" fill="none" stroke="var(--color-muted)" stroke-width="0.75" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="225.33" y="232" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">110</text>
+<path d="M44 81.0H316" fill="none" stroke="var(--color-line-strong)" stroke-width="0.8" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="36" y="85.0" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="end">130</text>
+<path d="M316.0 213v5" fill="none" stroke="var(--color-muted)" stroke-width="0.75" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="316.0" y="232" font-size="12" font-weight="400" fill="var(--color-muted)" text-anchor="middle">130</text>
+<path d="M44 81V213H316" fill="none" stroke="var(--color-muted)" stroke-width="0.9" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M44.0 213.0L316.0 81.0" fill="none" stroke="var(--color-muted)" stroke-width="1.2" opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+<path d="M44.0 169.0H134.67L225.33 125.0H316.0" fill="none" stroke="var(--color-signal)" stroke-width="2" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<circle cx="134.67" cy="169.0" r="2.8" fill="var(--color-signal)"/>
+<circle cx="225.33" cy="125.0" r="2.8" fill="var(--color-signal)"/>
+<text x="52" y="161.0" font-size="12" font-weight="400" fill="var(--color-signal)" text-anchor="start">Floor 90</text>
+<text x="309" y="117.0" font-size="12" font-weight="400" fill="var(--color-signal)" text-anchor="end">Cap 110</text>
+<text x="180.0" y="249" font-size="12.5" font-weight="400" fill="var(--color-muted)" text-anchor="middle">Gold price at expiry</text>
+<path d="M19 268h19" fill="none" stroke="var(--color-signal)" stroke-width="2" opacity="1" stroke-linecap="round" stroke-linejoin="round"/>
+<text x="44" y="272" font-size="12.5" font-weight="400" fill="var(--color-paper)" text-anchor="start">Hedged position</text>
+<path d="M204 268h19" fill="none" stroke="var(--color-muted)" stroke-width="1.2" opacity="1" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="4 4"/>
+<text x="228" y="272" font-size="12.5" font-weight="400" fill="var(--color-paper)" text-anchor="start">Gold alone</text>
+</svg>
