@@ -1,0 +1,139 @@
+---
+title: "Le jour où Quad9 a cessé de répondre à la France"
+seoTitle: "Quad9 quitte la France après un blocage DNS demandé par beIN | l0g"
+ogTitle: "Quad9 coupe son DNS en France"
+description: "Un litige sur le tennis de beIN a conduit Quad9 à fermer l’accès à son DNS en France. Les jugements et le rôle de l’Arcom."
+tags: ["Quad9", "France", "DNS", "Cybersécurité", "Arcom", "Droits sportifs"]
+quickTake: {"fact": "Quad9 a annoncé la coupure de son DNS le 24 novembre pour les requêtes qu’il localise en France.", "importance": "Les mesures demandées par beIN visaient des services diffusant le tennis WTA. Le retrait de Quad9 concerne aussi la navigation ordinaire.", "uncertainty": "Le nombre d’internautes touchés et l’effet propre du blocage DNS sur le piratage restent à établir."}
+pubDate: "2026-11-28T11:45:00+01:00"
+draft: false
+ogImage: "/illustrations/news/quad9-france-dns-2026-11-28.jpg"
+ogLayout: "immersive"
+---
+
+import Quad9Figure from "../../components/Quad9Figure.astro";
+
+Mirra Andreeva bat Elina Svitolina à Indian Wells le 15 novembre et clôt la saison du tennis féminin. Neuf jours plus tard, à 9 heures à Paris, Quad9 programme la coupure de son service pour les internautes qu’il situe en France. Si votre appareil lui demandait jusque-là l’adresse d’un site, il pouvait désormais se heurter à un refus, même pour lire vos mails. Le tribunal judiciaire de Paris avait demandé à la fondation suisse de bloquer des services qui rediffusaient le circuit WTA sans autorisation. Quad9 a choisi de fermer l’accès à son résolveur. Entre les deux décisions, il y a une astreinte et une frontière qu’une adresse IP dessine mal. [S01](#source-S01) [S02](#source-S02) [S04](#source-S04) [S05](#source-S05) [S18](#source-S18)
+
+## Le service qui retrouve les sites
+
+Avant de charger une page, votre appareil a généralement besoin de connaître l’adresse du serveur. Il confie la recherche à un résolveur, qui répond depuis son cache ou interroge les serveurs du [DNS](/glossaire/#dns), le système de noms de domaine. L’appareil utilise ensuite la réponse pour joindre le site. Si le résolveur refuse la requête et que l’appareil ne dispose d’aucune autre réponse, la connexion peut échouer alors même que le site fonctionne. Un ayant droit peut ainsi gêner l’accès au service visé sans intervenir chez son hébergeur. [S06](#source-S06)
+
+<Quad9Figure lang="fr" kind="resolution" />
+
+Avec son offre protectrice, Quad9 filtre aussi des noms associés à des menaces. Si une fausse page de connexion bancaire se trouve sur un domaine que le résolveur sait dangereux, sa réponse peut empêcher l’appareil d’atteindre la page. Pour les internautes qui comptaient sur ce filtre, le départ de Quad9 signifie qu’il faut retrouver ailleurs à la fois un annuaire et la protection qu’ils avaient choisie. [S04](#source-S04)
+
+## beIN gagne en mai, le tribunal fixe une astreinte en octobre
+
+Un match vendu en direct perd l’essentiel de sa valeur une fois terminé. En janvier, beIN Sports France saisit la justice pour protéger ses droits français sur des rencontres du circuit WTA. L’affaire porte d’abord sur six noms de domaine et leurs sous-domaines. Le 13 mai, le tribunal ordonne des mesures de blocage qui visent aussi les services pirates identifiés en cours de saison. L’injonction s’étend au-delà de la métropole, avec des exceptions dont la Nouvelle-Calédonie, Wallis-et-Futuna et la Polynésie française. Ce [blocage dynamique](/glossaire/#blocage-dynamique) permet à beIN de signaler de nouveaux identifiants à l’Arcom. L’autorité peut alors les notifier aux intermédiaires visés par le jugement. En cas de blocage excessif, les parties peuvent revenir devant le juge. Le tribunal écarte l’astreinte à ce stade. [S01](#source-S01) [S17](#source-S17)
+
+En septembre, le responsable technique de Quad9 atteste que la fondation n’a bloqué aucun des noms litigieux jusqu’au 25 septembre. beIN soutient que certaines adresses sont tout de même devenues inaccessibles. Pour le tribunal, la question décisive est celle des moyens mis en œuvre par Quad9. Le jugement de mai reste exécutoire pendant l’appel et le tribunal estime que la fondation n’a ni essayé de l’exécuter ni établi qu’il était impossible de le faire. beIN demande 10 000 euros par jour de retard et par domaine ou sous-domaine encore accessible. Le 21 octobre, le tribunal fixe une seule astreinte provisoire de 1 000 euros par jour de retard pour l’ensemble des mesures, avec le 14 novembre pour échéance. [S02](#source-S02)
+
+<Quad9Figure lang="fr" kind="timeline" />
+
+Dès le lendemain, Quad9 annonce son départ et dit faire face à une vingtaine d’autres affaires en France. La fondation estime à 24 000 euros son exposition dans le dossier WTA, un montant dont le paiement reste à établir. Le jugement d’octobre indiquait le 14 novembre comme terme des mesures. La finale a eu lieu le 15 et la coupure générale a été programmée pour le 24 novembre. Pour expliquer son retrait, Quad9 invoque le risque de devoir recommencer à chaque nouvelle procédure. La fondation a annoncé qu’elle poursuivrait son appel. [S02](#source-S02) [S03](#source-S03) [S05](#source-S05) [S18](#source-S18)
+
+## Une frontière tracée à l’adresse IP
+
+Quad9 identifie les requêtes à refuser avec une base GeoIP, qui rattache des plages d’adresses IP à un pays. Elle situe l’adresse réseau, dont le point de sortie peut se trouver loin de l’utilisateur. En fonctionnement normal, la politique de Quad9 prévoit de traiter temporairement l’adresse nécessaire à la réponse et de conserver des statistiques agrégées. La fondation dit s’attendre à des erreurs de localisation dans les deux sens, sans en connaître l’ampleur. Elle peut laisser passer des requêtes provenant de France et en refuser ailleurs. La portée est différente selon l’usage : une erreur sur un filtre sélectif touche les noms inscrits sur la liste. Sur un retrait de service, elle peut toucher n’importe quel nom. [S04](#source-S04) [S07](#source-S07)
+
+C’est aussi l’objection que soulève le retrait : si Quad9 sait appliquer une frontière approximative pour couper le service, pourquoi ne pas utiliser la même frontière pour la liste du tribunal ? La fondation reconnaît la possibilité technique et refuse d’en faire un outil de filtrage territorial, notamment parce qu’elle craint de bloquer des utilisateurs en dehors du ressort de l’injonction. Le tribunal avait retenu une obligation de moyens. Sa décision et celle de la fondation font porter à l’internaute des risques différents. Ce débat sur la portée d’une injonction rejoint celui des [portes dérobées dans les messageries chiffrées](/posts/chiffrement-portes-derobees-gouvernement/) : les choix d’infrastructure affectent des usagers étrangers au dossier d’origine. [S02](#source-S02) [S04](#source-S04)
+
+## Le blocage entre dans le temps du direct
+
+L’Arcom recensait 772 services sportifs notifiés pour blocage en 2022 et 6 496 en 2025, soit 71 % de plus qu’en 2024. Son rapport annuel indique aussi que, depuis janvier 2025, 81 % des demandes adressées aux fournisseurs d’accès ont également été transmises à des résolveurs alternatifs. Ces chiffres mesurent l’extension du dispositif. Une autre étude de l’autorité estime que le public des services illicites de sport et de culture est passé de 11,7 millions d’internautes en 2021 à 7,7 millions en 2025. Cette série couvre plusieurs années de lutte contre le piratage. Elle ne permet pas d’isoler la part du recul due au blocage par les résolveurs publics. [S08](#source-S08) [S09](#source-S09)
+
+<Quad9Figure lang="fr" kind="arcom" />
+
+Le cadre français a évolué depuis l’injonction de mai. La loi du 3 août permet au juge d’autoriser une transmission automatisée des identifiants à bloquer pendant un direct, sous le contrôle de l’Arcom. La délibération de novembre prévoit notamment un examen de la méthode de détection et la conservation des preuves. Le 26 novembre, la LFP a annoncé avoir obtenu une décision pour la Ligue 1 et la Ligue 2, avec une mise en œuvre prévue dans les semaines suivantes. C’est un dossier distinct de celui de beIN sur le tennis. [S10](#source-S10) [S11](#source-S11) [S12](#source-S12)
+
+Pour un diffuseur, gagner quelques minutes sur un blocage peut compter. Pour l’abonné qui perd par erreur l’accès à un site, c’est le délai de correction qui importe. Dans un arrêt de 2014 portant sur un fournisseur d’accès, la Cour de justice de l’Union européenne a admis des mesures qui rendent l’accès illicite difficile tout en protégeant l’accès aux contenus licites. Son arrêt donne un cadre pour discuter de la proportionnalité, avec des faits distincts de ceux de Quad9. Le comité de sécurité et de stabilité de l’ICANN recommande de son côté des procédures de révision et des messages d’erreur explicites. [S13](#source-S13) [S14](#source-S14)
+
+Le départ de Quad9 laisse deux coûts à mesurer. Combien de retransmissions le blocage par les résolveurs publics prive-t-il réellement de spectateurs, en plus des mesures déjà appliquées ? Et combien d’internautes perdent un service de protection ou subissent une erreur de blocage, pendant combien de temps ? Il existe un chiffre précis pour l’astreinte. On attend encore de pouvoir chiffrer les effets d’un blocage pour ceux qui regardent le match et pour tous les autres.
+
+**Méthode.** Enquête documentaire arrêtée au 28 novembre 2026. Le jugement de mai a été lu dans une copie anonymisée et celui d’octobre dans le PDF intégral publié par Quad9. L’heure du retrait vient de l’opérateur. Le nombre d’usagers touchés, le périmètre effectif de la coupure et la liquidation de l’astreinte restent à établir.
+
+## Sources
+
+<ol class="sources-list" role="list">
+<li id="source-S01">
+<span class="source-meta">S01 · Tribunal judiciaire de Paris · Publication : 2026-05-13 · Consulté le : 2026-11-28</span>
+<a href="https://www.courdecassation.fr/decision/6a0af10ccdc6046d4710cff6" target="_blank" rel="noopener noreferrer">Jugement du 13 mai 2026, RG 26/02207</a>
+<details><summary>Passages et périmètre</summary><p>Exposé du litige et dispositif : droits de diffusion, six noms initiaux, extension de la liste, exécution provisoire et retour au juge en cas de difficulté. <a href="https://justice.pappers.fr/decision/d9f5f2383726bba23173da8516844586c930af44" target="_blank" rel="noopener noreferrer">Copie anonymisée consultée</a>.</p></details>
+</li>
+<li id="source-S02">
+<span class="source-meta">S02 · Tribunal judiciaire de Paris · Publication : 2026-10-21 · Consulté le : 2026-11-28</span>
+<a href="https://quad9.net/uploads/20261021_-_Jugement_selon_la_PAF.PDF" target="_blank" rel="noopener noreferrer">Jugement du 21 octobre 2026, RG 26/11882</a>
+<details><summary>Passages et périmètre</summary><p>Paragraphes 3 à 6, 12 à 21 et dispositif. Copie intégrale publiée par Quad9. Le tribunal fixe l’astreinte provisoire et se réserve sa liquidation.</p></details>
+</li>
+<li id="source-S03">
+<span class="source-meta">S03 · Quad9 · Publication : 2026-10-22 · Consulté le : 2026-11-28</span>
+<a href="https://quad9.net/fr/news/blog/au-revoir-france/" target="_blank" rel="noopener noreferrer">Annonce du retrait de France</a>
+<details><summary>Passages et périmètre</summary><p>Motifs invoqués, estimation de l’astreinte et autres procédures selon la fondation. L’annonce ne documente aucun versement.</p></details>
+</li>
+<li id="source-S04">
+<span class="source-meta">S04 · Quad9 · Publication : 2026-11-24 · Consulté le : 2026-11-28</span>
+<a href="https://quad9.net/fr/news/blog/quad9-service-deactivation-in-france/" target="_blank" rel="noopener noreferrer">Désactivation du service en France</a>
+<details><summary>Passages et périmètre</summary><p>La fondation explique son choix et décrit les erreurs possibles du classement par adresse IP, sans estimation de leur fréquence.</p></details>
+</li>
+<li id="source-S05">
+<span class="source-meta">S05 · Quad9 · Publication : 2026-11-24 · Consulté le : 2026-11-28</span>
+<a href="https://uptime.quad9.net/maintenance/1131466" target="_blank" rel="noopener noreferrer">Page d’état du retrait</a>
+<details><summary>Passages et périmètre</summary><p>La fiche d’état indique le début de l’opération à 08:00 UTC.</p></details>
+</li>
+<li id="source-S06">
+<span class="source-meta">S06 · IETF · Publication : 2024-03 · Consulté le : 2026-11-28</span>
+<a href="https://www.rfc-editor.org/rfc/rfc9499.html" target="_blank" rel="noopener noreferrer">RFC 9499, terminologie du DNS</a>
+<details><summary>Passages et périmètre</summary><p>Sections sur la résolution, les domaines et le cache. La norme décrit le mécanisme général.</p></details>
+</li>
+<li id="source-S07">
+<span class="source-meta">S07 · Quad9 · Publication : 2026-06-24 · Consulté le : 2026-11-28</span>
+<a href="https://quad9.net/privacy/policy/" target="_blank" rel="noopener noreferrer">Politique de confidentialité, version 1.1</a>
+<details><summary>Passages et périmètre</summary><p>Sections 2.1 et 2.2. Engagements déclarés en fonctionnement normal.</p></details>
+</li>
+<li id="source-S08">
+<span class="source-meta">S08 · Arcom · Publication : 2026-06-10 · Consulté le : 2026-11-28</span>
+<a href="https://www.arcom.fr/sites/default/files/2026-07/Arcom-rapport-annuel-2025.pdf_0.pdf" target="_blank" rel="noopener noreferrer">Rapport d’activité 2025</a>
+<details><summary>Passages et périmètre</summary><p>Pages 49 et 50. Série des services sportifs notifiés et élargissement aux résolveurs alternatifs. Rapport adopté le 10 juin 2026.</p></details>
+</li>
+<li id="source-S09">
+<span class="source-meta">S09 · Arcom · Publication : 2026-03-23 · Consulté le : 2026-11-28</span>
+<a href="https://www.arcom.fr/se-documenter/etudes-et-donnees/etudes-bilans-et-rapports-de-larcom/la-lutte-contre-le-piratage-des-contenus-culturels-et-sportifs-en-2025-intensification-et-elargissement-de-nouveaux-acteurs" target="_blank" rel="noopener noreferrer">Bilan 2025 de la lutte contre le piratage</a>
+<details><summary>Passages et périmètre</summary><p>Audience des services illicites, ensemble du sport et de la culture. La mesure d’audience porte sur les internautes.</p></details>
+</li>
+<li id="source-S10">
+<span class="source-meta">S10 · Légifrance · Publication : 2026-08-05 · Consulté le : 2026-11-28</span>
+<a href="https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000054616722/2026-09-02" target="_blank" rel="noopener noreferrer">Code du sport, article L. 333-10</a>
+<details><summary>Passages et périmètre</summary><p>Version en vigueur depuis le 5 août 2026. Le III bis encadre la transmission automatisée pendant la diffusion en direct.</p></details>
+</li>
+<li id="source-S11">
+<span class="source-meta">S11 · Arcom · Publication : 2026-11-06 · Consulté le : 2026-11-28</span>
+<a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000055064407" target="_blank" rel="noopener noreferrer">Délibération du 4 novembre 2026, n° 2026-08</a>
+<details><summary>Passages et périmètre</summary><p>Chapitre II : méthode de détection approuvée par l’Arcom, vérifications et conservation des preuves.</p></details>
+</li>
+<li id="source-S12">
+<span class="source-meta">S12 · Ligue de football professionnel · Publication : 2026-11-26 · Consulté le : 2026-11-28</span>
+<a href="https://www.lfp.fr/article/le-groupe-lfp-obtient-du-tribunal-judiciaire-de-paris-une-decision-autorisant-le-blocage-automatise-en-temps-reel-de-services-pirates" target="_blank" rel="noopener noreferrer">Annonce sur le blocage automatisé pendant les matchs de Ligue 1 et Ligue 2</a>
+<details><summary>Passages et périmètre</summary><p>La LFP rapporte un jugement du 20 novembre et prévoit un déploiement dans les semaines suivantes.</p></details>
+</li>
+<li id="source-S13">
+<span class="source-meta">S13 · ICANN SSAC · Publication : 2025-05-16 · Consulté le : 2026-11-28</span>
+<a href="https://www.icann.org/en/ssac/publications/documents/sac127-executive-summary-for-dns-blocking-revisited-16-05-2025-en" target="_blank" rel="noopener noreferrer">SAC127, recommandations sur le blocage DNS</a>
+<details><summary>Passages et périmètre</summary><p>Synthèse des recommandations sur les dommages collatéraux, la révision des blocages et le signalement des refus.</p></details>
+</li>
+<li id="source-S14">
+<span class="source-meta">S14 · CJUE · Publication : 2014-03-27 · Consulté le : 2026-11-28</span>
+<a href="https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:62012CJ0314" target="_blank" rel="noopener noreferrer">Arrêt UPC Telekabel Wien, C-314/12</a>
+<details><summary>Passages et périmètre</summary><p>Dispositif : conditions de proportionnalité d’une mesure imposée à un fournisseur d’accès à Internet.</p></details>
+</li>
+<li id="source-S17">
+<span class="source-meta">S17 · Arcom · Publication : 2026-05-22 · Consulté le : 2026-11-28</span>
+<a href="https://www.legifrance.gouv.fr/jorf/id/JORFTEXT000054122784" target="_blank" rel="noopener noreferrer">Recommandation du 6 mai 2026 sur les modèles d’accord</a>
+<details><summary>Passages et périmètre</summary><p>Cadre de coopération des ayants droit et intermédiaires, sur la base d’une mesure judiciaire.</p></details>
+</li>
+<li id="source-S18">
+<span class="source-meta">S18 · WTA · Publication : non précisée · Consulté le : 2026-11-28</span>
+<a href="https://www.wtatennis.com/tournaments/808/wta-finals/2026/" target="_blank" rel="noopener noreferrer">Finales WTA 2026 à Indian Wells</a>
+<details><summary>Passages et périmètre</summary><p>Le calendrier officiel situe le tournoi du 8 au 15 novembre.</p></details>
+</li>
+</ol>

@@ -5,6 +5,8 @@ import EnglishLayout from '../../../layouts/EnglishGuidesLayout.astro';
 import { glossaryAtlasEn } from '../../../config/glossary-atlas-en.ts';
 const SITE = (Astro.site?.toString() ?? 'https://l0g.fr/').replace(/\/$/, '');
 const terms = [
+  ['DNS', 'The Domain Name System, a distributed system that associates domain names with data such as the IP addresses needed to reach servers. A resolver looks up the data or returns a cached answer before the device connects to the service.', '/en/analysis/quad9-france-bein-dns-blocking/'],
+  ['Dynamic blocking', 'A court-ordered measure that allows additional services to be added after the original decision. Under French sports law, Arcom can notify intermediaries of newly identified unauthorised streams within the terms and timeframe of the order.', '/en/analysis/quad9-france-bein-dns-blocking/'],
   ['CPI', 'Consumer Price Index, the market-moving U.S. inflation release from the BLS.', '/en/guides/read-cpi-inflation-us/'],
   ['PCE', 'Personal Consumption Expenditures Price Index, the inflation gauge targeted by the Federal Reserve.', '/en/guides/read-pce-inflation-fed/'],
   ['GDP', 'The total value of goods and services produced within an economy over a period. It is the standard measure of aggregate economic activity.', '/en/analysis/us-gdp-private-demand-q2-2026/'],

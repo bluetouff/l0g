@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 344 310" style="display:block;width:100%;height:auto" role="img" aria-labelledby="quad9-fr-resolution.mobile-title quad9-fr-resolution.mobile-desc" xml:lang="fr" font-family="system-ui, sans-serif">
+  <title id="quad9-fr-resolution.mobile-title">Du nom à la connexion</title>
+  <desc id="quad9-fr-resolution.mobile-desc">Le résolveur cherche une adresse. L’appareil peut ensuite contacter le site. Un refus du résolveur empêche la connexion dans cet exemple.</desc>
+  <rect x="0" y="0" width="344" height="310" rx="13" fill="#0b0d10" stroke="none"/>
+  <text x="17" y="35" font-size="17" fill="#f5f6f8" text-anchor="start">Du nom à la connexion</text>
+  <line x1="17" y1="49" x2="327" y2="49" stroke="#424751"/>
+  <text x="17" y="72" font-size="13" fill="#5eead4" text-anchor="start">En temps normal</text>
+  <rect x="17" y="82" width="88" height="52" rx="7" fill="#15191f" stroke="#424751"/>
+  <rect x="52" y="90" width="18" height="12" rx="2" fill="none" stroke="#5eead4"/>
+  <line x1="57" y1="106" x2="65" y2="106" stroke="#5eead4"/>
+  <line x1="61" y1="102" x2="61" y2="106" stroke="#5eead4"/>
+  <text x="61" y="122" font-size="12" fill="#f5f6f8" text-anchor="middle">Appareil</text>
+  <rect x="128" y="82" width="88" height="52" rx="7" fill="#15191f" stroke="#424751"/>
+  <circle cx="164" cy="97" r="2" fill="#0b0d10" stroke="#5eead4"/>
+  <circle cx="179" cy="92" r="2" fill="#0b0d10" stroke="#5eead4"/>
+  <circle cx="179" cy="102" r="2" fill="#0b0d10" stroke="#5eead4"/>
+  <line x1="166" y1="97" x2="177" y2="92" stroke="#5eead4"/>
+  <line x1="166" y1="97" x2="177" y2="102" stroke="#5eead4"/>
+  <text x="172" y="122" font-size="12" fill="#f5f6f8" text-anchor="middle">Résolveur</text>
+  <rect x="239" y="82" width="88" height="52" rx="7" fill="#15191f" stroke="#424751"/>
+  <rect x="274" y="90" width="18" height="7" rx="2" fill="none" stroke="#5eead4"/>
+  <rect x="274" y="100" width="18" height="7" rx="2" fill="none" stroke="#5eead4"/>
+  <circle cx="278" cy="93.5" r="0.85" fill="#5eead4" stroke="none"/>
+  <circle cx="278" cy="103.5" r="0.85" fill="#5eead4" stroke="none"/>
+  <text x="283" y="122" font-size="12" fill="#f5f6f8" text-anchor="middle">DNS de zone</text>
+  <line x1="108" y1="100" x2="125" y2="100" stroke="#5eead4"/>
+  <path d="M120 97 L125 100 L120 103" stroke="#5eead4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="219" y1="100" x2="236" y2="100" stroke="#5eead4"/>
+  <path d="M231 97 L236 100 L231 103" stroke="#5eead4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="125" y1="116" x2="108" y2="116" stroke="#8db5ff"/>
+  <path d="M113 113 L108 116 L113 119" stroke="#8db5ff" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="236" y1="116" x2="219" y2="116" stroke="#8db5ff"/>
+  <path d="M224 113 L219 116 L224 119" stroke="#8db5ff" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="17" y="153" font-size="12" fill="#a9adb7" text-anchor="start">Puis l’appareil contacte le site en HTTPS.</text>
+  <line x1="17" y1="168" x2="327" y2="168" stroke="#424751"/>
+  <text x="17" y="190" font-size="13" fill="#fa8585" text-anchor="start">Après le retrait annoncé</text>
+  <rect x="17" y="200" width="88" height="52" rx="7" fill="#15191f" stroke="#424751"/>
+  <rect x="52" y="208" width="18" height="12" rx="2" fill="none" stroke="#5eead4"/>
+  <line x1="57" y1="224" x2="65" y2="224" stroke="#5eead4"/>
+  <line x1="61" y1="220" x2="61" y2="224" stroke="#5eead4"/>
+  <text x="61" y="240" font-size="12" fill="#f5f6f8" text-anchor="middle">Appareil</text>
+  <rect x="128" y="200" width="88" height="52" rx="7" fill="#15191f" stroke="#954549"/>
+  <circle cx="164" cy="215" r="2" fill="#0b0d10" stroke="#fa8585"/>
+  <circle cx="179" cy="210" r="2" fill="#0b0d10" stroke="#fa8585"/>
+  <circle cx="179" cy="220" r="2" fill="#0b0d10" stroke="#fa8585"/>
+  <line x1="166" y1="215" x2="177" y2="210" stroke="#fa8585"/>
+  <line x1="166" y1="215" x2="177" y2="220" stroke="#fa8585"/>
+  <text x="172" y="240" font-size="12" fill="#f5f6f8" text-anchor="middle">Quad9</text>
+  <rect x="239" y="200" width="88" height="52" rx="7" fill="#15191f" stroke="#424751"/>
+  <circle cx="283" cy="215" r="8" fill="none" stroke="#a9adb7"/>
+  <line x1="275" y1="215" x2="291" y2="215" stroke="#a9adb7"/>
+  <path d="M283 207 Q276 215 283 223 M283 207 Q290 215 283 223" stroke="#a9adb7" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="283" y="240" font-size="12" fill="#f5f6f8" text-anchor="middle">Site web</text>
+  <line x1="108" y1="218" x2="125" y2="218" stroke="#5eead4"/>
+  <path d="M120 215 L125 218 L120 221" stroke="#5eead4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="125" y1="234" x2="108" y2="234" stroke="#fa8585"/>
+  <path d="M113 231 L108 234 L113 237" stroke="#fa8585" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <line x1="219" y1="226" x2="236" y2="226" stroke="#424751" stroke-dasharray="3 4"/>
+  <path d="M224 222 L231 230 M231 222 L224 230" stroke="#fa8585" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+  <text x="17" y="273" font-size="12" fill="#a9adb7" text-anchor="start">Quad9 refuse la requête classée comme française.</text>
+  <text x="17" y="294" font-size="11" fill="#a9adb7" text-anchor="start">Sources : RFC 9499 et Quad9, 24 nov. 2026</text>
+</svg>

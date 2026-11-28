@@ -1069,6 +1069,16 @@ const rawGlossarySections: GlossarySourceSection[] = [
     titre: 'Économie numérique & données',
     accent: 'var(--color-signal)',
     entries: [
+      {
+        sigle: 'DNS', nom: 'Système de noms de domaine',
+        def: 'Système distribué qui associe des noms de domaine à des données, dont les adresses IP nécessaires pour joindre des serveurs. L’appareil interroge généralement un résolveur, qui répond depuis son cache ou consulte les serveurs du DNS. La connexion au service intervient ensuite.',
+        guide: '/posts/quad9-france-bein-blocage-dns/',
+      },
+      {
+        sigle: 'Blocage dynamique', nom: 'Injonction dont le périmètre évolue après la décision',
+        def: 'Mesure judiciaire dont la liste des services visés peut être mise à jour sans saisir à nouveau le juge pour chaque nom. En France, le code du sport prévoit la notification par l’Arcom de services de retransmission illicite identifiés après le jugement, dans les conditions et les délais de la mesure.',
+        guide: '/posts/quad9-france-bein-blocage-dns/',
+      },
       {"sigle": "AI washing", "nom": "Communication trompeuse sur l’usage de l’IA", "def": "Communication fausse ou trompeuse sur l’usage ou les capacités de l’intelligence artificielle. La SEC a employé le terme dans des affaires concernant des conseillers en investissement. Son application à une entreprise ou à une restructuration exige d’examiner les affirmations précises et les preuves disponibles.", "guide": "/posts/licenciements-ia-delocalisations-qantas-ai-washing/"},
       {"sigle": "Rejeu de session", "nom": "Restitution d’un parcours de navigation enregistré", "def": "Restitution du parcours d’une personne sur un site web ou une application à partir d’éléments enregistrés : pages, clics, défilements ou saisies selon l’outil et ses réglages. Certaines solutions web reconstruisent la page à partir d’événements structurés. La collecte effective, le masquage et les accès aux enregistrements dépendent du dispositif déployé.", "guide": "/posts/rejeu-session-valeur-visite/"},
       {"sigle": "Masquage avant envoi", "nom": "Transformer une donnée avant sa transmission", "def": "Remplacement ou suppression d’une valeur dans le navigateur avant son envoi au service de collecte. Le contrôle porte sur chaque canal : contenu de la page, adresse, propriétés ou événements peuvent suivre des règles différentes. Une valeur écartée d’un flux peut rester accessible ailleurs dans la page. Le mot masquage recouvre aussi des protections avec conservation de la donnée ; préciser le mécanisme permet d’évaluer l’exposition.", "guide": "/posts/rejeu-session-valeur-visite/"},
