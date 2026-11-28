@@ -158,3 +158,10 @@ if (indexability.sitemapUndesirable.length || indexability.undesirableInternalDe
 }
 
 console.log(`Liens internes et indexabilité OK : ${checked} liens sur ${htmlFiles.length} pages, aucune destination cassée ou non canonique.`);
+
+// Both checks inspect the same immutable build. Reuse the canonical/indexation
+// audit when running them together instead of parsing each page twice for it.
+if (process.argv.includes('--check-visibility')) {
+  const { checkBuildVisibility } = await import('./visibility/check-build.mjs');
+  await checkBuildVisibility(indexability);
+}

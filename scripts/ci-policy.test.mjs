@@ -14,6 +14,7 @@ async function fixture(t) {
   await mkdir(join(root, '.github'));
   await Promise.all([
     copyFile(new URL('./audit-ci-policy.mjs', import.meta.url), join(root, 'scripts/audit-ci-policy.mjs')),
+    copyFile(new URL('./run-build-checks.mjs', import.meta.url), join(root, 'scripts/run-build-checks.mjs')),
     copyFile(new URL('package.json', sourceRoot), join(root, 'package.json')),
     cp(new URL('.github/workflows/', sourceRoot), join(root, '.github/workflows'), { recursive: true }),
   ]);
@@ -151,6 +152,14 @@ test('CI policy rejects an extra schemeless HTTPS curl operand', async t => {
 const workflowRegressions = [
   ['an unbounded PR build', 'validate-pr-build',
     (job) => replace(job, '    timeout-minutes: 30\n', ''), /validation PR doit être bornée/],
+  ['a gzip timestamp in the static archive', 'build',
+    (job) => replace(job, 'gzip -n -3', 'gzip -3'), /archive doit rester déterministe/],
+  ['ignored tar failures', 'build',
+    (job) => replace(job, 'set -o pipefail', 'true'), /archive doit rester déterministe/],
+  ['publication without preflight', 'build',
+    (job) => replace(job, 'npm run build:preflight', 'true'), /contrôle des dépendances et tous les contrats/],
+  ['PR without preflight', 'validate-pr-build',
+    (job) => replace(job, 'npm run build:preflight', 'true'), /contrôle des dépendances et tous les contrats/],
   ['an oversized static build budget', 'build',
     (job) => replace(job, 'timeout-minutes: 30', 'timeout-minutes: 360'), /build statique doit rester borné/],
   ['binary release payload returning to Git', 'publish',
@@ -232,9 +241,11 @@ for (const [name, jobName, mutate, reason] of workflowRegressions) {
 }
 
 const packageRegressions = [
+  ['all builds running an incomplete preflight', 'build:preflight', 'node scripts/run-build-checks.mjs preflight', 'npm run test:deploy', /contrôle des dépendances et tous les contrats/],
   ['local build dropping SVG validation', 'build', ' && npm run test:inline-svg', '', /mêmes contrôles complets/],
   ['CI build dropping rendered SVG validation', 'build:ci', ' && npm run test:inline-svg:rendered', '', /mêmes contrôles complets/],
   ['all builds dropping secret scanning', 'build:verify', ' && npm run test:secrets', '', /analyser les secrets/],
+  ['all builds dropping artifact checks', 'build:verify', ' && node scripts/run-build-checks.mjs verify', '', /vérifier la sécurité des artefacts/],
   ['a second Astro invocation in the CI script', 'build:ci', 'astro build', 'astro build && astro build', /rendu Astro unique/],
   ['skipping native cache preflight', 'build:ci', 'node scripts/incremental-cache.mjs prepare && ', '', /mêmes contrôles complets/],
   ['sealing before output validation', 'build:ci', 'npm run build:verify && node scripts/incremental-cache.mjs seal', 'node scripts/incremental-cache.mjs seal && npm run build:verify', /mêmes contrôles complets/],
@@ -253,3 +264,12 @@ for (const [name, script, before, after, reason] of packageRegressions) {
     assert.match(result.stderr, reason);
   });
 }
+
+test('CI policy rejects verification without the security suite', async t => {
+  const root = await fixture(t);
+  const file = join(root, 'scripts/run-build-checks.mjs');
+  await writeFile(file, replace(await readFile(file, 'utf8'), "  ['test:security'],\n", ''));
+  const result = audit(root);
+  assert.equal(result.status, 1, result.stderr);
+  assert.match(result.stderr, /vérifier la sécurité des artefacts/);
+});

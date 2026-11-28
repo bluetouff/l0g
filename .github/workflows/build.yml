@@ -135,10 +135,7 @@ jobs:
           L0G_OG_CACHE_DIR: ${{ github.workspace }}/.cache/l0g-og
         run: |
           node scripts/black-box-archive.mjs validate --archive .black-box-archive
-          npm run test:dependencies
-          npm run test:ci-policy
-          npm run test:editorial-protocol
-          npm run test:deploy
+          npm run build:preflight
           npm run check
           npm run build:ci
 
@@ -231,10 +228,7 @@ jobs:
 
       - name: Test release and deployment contracts
         run: |
-          npm run test:dependencies
-          npm run test:ci-policy
-          npm run test:editorial-protocol
-          npm run test:deploy
+          npm run build:preflight
 
       - name: Build once from the new immutable Black Box frame
         env:
@@ -276,6 +270,7 @@ jobs:
         env:
           SOURCE_DATE_EPOCH: ${{ env.L0G_SOURCE_DATE_EPOCH }}
         run: |
+          set -o pipefail
           mkdir -p release
           {
             echo 'L0G_RELEASE_SCHEMA=1'
@@ -288,7 +283,7 @@ jobs:
           install -m 0644 release/source.env dist/source.env
           tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner \
             --pax-option=delete=atime,delete=ctime -C dist -cf - . \
-            | gzip -n -9 > release/l0g-site.tar.gz
+            | gzip -n -3 > release/l0g-site.tar.gz
           (cd release && sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256)
 
       - name: Stage checked release and single new archive frame

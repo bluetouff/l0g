@@ -88,10 +88,10 @@ async function contentEntries() {
   return results;
 }
 
-export async function audit(distPath = 'dist') {
+export async function audit(distPath = 'dist', indexability) {
   const dist = resolve(distPath);
   const started = performance.now();
-  const existing = await auditBuiltSite(dist);
+  const existing = indexability ?? await auditBuiltSite(dist);
   const content = await contentEntries();
   const byUrl = new Map(content.map(e => [e.url, e]));
   const catalog = JSON.parse(await readFile(join(dist, 'api/v1/catalog.json'), 'utf8'));

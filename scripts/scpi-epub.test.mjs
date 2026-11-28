@@ -1,6 +1,7 @@
 import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -76,7 +77,7 @@ for (const [lang, book] of Object.entries(scpiEditions)) {
     assert.match(execFileSync('unzip', ['-lv', output], { encoding: 'utf8' }).split('\n').find((line) => /\bmimetype$/u.test(line)), /Stored/u);
     assert.match(execFileSync('unzip', ['-t', output], { encoding: 'utf8' }), /No errors detected/u);
     assert.deepEqual(entries.sort(), files(source).map((f) => relative(source, f)).sort());
-    for (const file of files(source)) assert.deepEqual(execFileSync('unzip', ['-p', output, relative(source, file)]), readFileSync(file));
+    assertEpubEntriesMatchSource(output, source, files(source));
     for (const file of textual().filter((f) => !f.endsWith('.css'))) assert.equal(XMLValidator.validate(readFileSync(file, 'utf8')), true, file);
   });
   test(`${lang}: all six analyses preserve paragraphs, sources, anchors and dark figures`, async () => {

@@ -18,6 +18,7 @@ import { aiCreditorsEditions } from '../src/config/ai-creditors-publication.mjs'
 import { encryptionBackdoorEditions } from '../src/config/encryption-backdoor-publication.mjs';
 import { runDerivedTask } from './derived-assets-cache.mjs';
 import { epubDerivedTasks } from './epub-derived-catalog.mjs';
+import { epubDependencyClosure } from './epub-dependencies.mjs';
 
 const ROOT = fileURLToPath(new URL('..', import.meta.url));
 const publicPath = (name) => `public${name}`;
@@ -29,7 +30,13 @@ const coverOutputs = covers.flatMap((name) => [
 const artworkOutputs = [
   ...Object.values(aiCreditorsEditions), ...Object.values(nvidiaEditions), ...Object.values(nvidiaVolumeTwoEditions), ...Object.values(cyberRecoveryEditions), ...Object.values(insurancePromiseEditions), ...Object.values(cumcumEditions), ...Object.values(ordinaryMachinesEditions), ...Object.values(encryptionBackdoorEditions),
 ].map((book) => `src/epub-assets/${book.directory}-cover.png`);
-for (const prefix of ['trump-war-chest', 'shadow-fleet', 'ai-creditors', 'nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor']) {
+const artworkPrefixes = [
+  'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor',
+  'nvidia', 'nvidia-volume-two', 'ai-creditors', 'shadow-fleet', 'trump-war-chest',
+];
+const artworkGenerators = artworkPrefixes.map(prefix => `scripts/generate-${prefix}-artwork.mjs`);
+const artworkCommand = artworkGenerators.map(generator => `node ${generator}`).join(' && ');
+for (const prefix of artworkPrefixes) {
   artworkOutputs.push(`public/publications/${prefix}-publication-panorama.jpg`);
   for (const width of [640, 960, 1600]) artworkOutputs.push(`public/publications/${prefix}-publication-panorama-${width}.webp`);
   artworkOutputs.push(`public/publications/og/art/${prefix}-v1.jpg`);
@@ -47,8 +54,8 @@ const ogOutputs = [...new Set([
 const commonInputs = ['package.json', 'package-lock.json', 'scripts'];
 const fonts = ['public/fonts', 'node_modules/@fontsource', 'node_modules/@fontsource-variable'];
 
-// Deliberately broad source trees protect imported figure helpers and templates.
-// Exclusions only separate outputs owned by a different, later stage.
+// Broad inputs cover generators that consume project-wide content. Artwork
+// reads a fixed set of source images and tracks executable imports separately.
 export const derivedTasks = {
   icons: {
     script: 'icons:generate',
@@ -57,7 +64,14 @@ export const derivedTasks = {
   },
   artwork: {
     script: 'build:artwork:generate',
-    inputs: [...commonInputs, ...fonts, 'src/config', 'src/epub-assets/trump-war-chest-cover-art.jpg', 'src/epub-assets/trump-war-chest-panorama.jpg', 'src/epub-assets/shadow-fleet-cover-art.jpg', 'src/epub-assets/shadow-fleet-panorama.jpg', 'src/epub-assets/ai-creditors-cover-art.png', 'src/epub-assets/ai-creditors-publication-art.png', ...['nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor'].flatMap((name) => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`])],
+    inputs: ['package-lock.json', 'scripts/derived-assets.mjs', 'scripts/derived-assets-cache.mjs',
+      'scripts/epub-dependencies.mjs', ...fonts,
+      'src/epub-assets/trump-war-chest-cover-art.jpg', 'src/epub-assets/trump-war-chest-panorama.jpg',
+      'src/epub-assets/shadow-fleet-cover-art.jpg', 'src/epub-assets/shadow-fleet-panorama.jpg',
+      'src/epub-assets/ai-creditors-cover-art.png', 'src/epub-assets/ai-creditors-publication-art.png',
+      ...['nvidia', 'nvidia-volume-two', 'cyber-recovery', 'insurance-promise', 'cumcum', 'ordinary-machines', 'encryption-backdoor']
+        .flatMap(name => [`src/epub-assets/${name}-cover-art.png`, `src/epub-assets/${name}-panorama.png`]),
+    ],
     outputs: artworkOutputs,
   },
   og: {
@@ -121,11 +135,20 @@ export async function generateDerivedAssets(name) {
     console.log(`[derived] epub: ${reused}/${results.length} groups reused; ${results.length - reused} regenerated`);
     return results;
   }
+  // The fixed artwork inputs and outputs describe the known command only.
+  // Custom npm commands and lifecycle hooks must generate fresh outputs.
+  const artwork = name === 'artwork';
+  const artworkCache = artwork && identity.command === artworkCommand
+    && !['pre', 'post'].some(prefix => Object.hasOwn(packageJson.scripts, prefix + task.script));
+  const inputs = artworkCache
+    ? [...task.inputs, ...epubDependencyClosure(ROOT, artworkGenerators)]
+    : task.inputs;
   await runDerivedTask({
-    root: ROOT, name, inputs: task.inputs, outputs: task.outputs, stableInputs: task.stableInputs, identity,
-    // Keep existing one-off generator overrides effective, without trusting a
-    // manifest whose declared outputs do not cover a caller's custom paths.
-    cache: !task.overrides?.some((key) => process.env[key] !== undefined),
+    root: ROOT, name, inputs, outputs: task.outputs, stableInputs: task.stableInputs, identity,
+    snapshot: artworkCache,
+    // Keep existing one-off generator overrides effective when the declared
+    // outputs do not include a caller's custom paths.
+    cache: (!artwork || artworkCache) && !task.overrides?.some((key) => process.env[key] !== undefined),
     run: () => execute('npm', ['run', task.script]),
   });
 }

@@ -1,6 +1,7 @@
 import { publicationEntries } from '../src/config/publication-catalog.mjs';
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -26,7 +27,7 @@ test('commerce EPUB container packages all source files without corruption', () 
   assert.match(execFileSync('unzip', ['-lv', EPUB], { encoding: 'utf8' }).split('\n').find(line => /\bmimetype$/u.test(line)), /Stored/u);
   assert.match(execFileSync('unzip', ['-t', EPUB], { encoding: 'utf8' }), /No errors detected/u);
   assert.deepEqual(entries.sort(), files(SOURCE).map(f => relative(SOURCE, f)).sort());
-  for (const file of files(SOURCE)) assert.deepEqual(execFileSync('unzip', ['-p', EPUB, relative(SOURCE, file)]), readFileSync(file));
+  assertEpubEntriesMatchSource(EPUB, SOURCE, files(SOURCE));
 });
 
 test('all six complete articles retain paragraphs, sources, anchors and figure captions', async () => {

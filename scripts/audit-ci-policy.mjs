@@ -1,6 +1,7 @@
 import { readdir, readFile } from 'node:fs/promises';
 import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { preflightScripts, verificationScripts } from './run-build-checks.mjs';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const workflowsDir = join(root, '.github', 'workflows');
@@ -85,13 +86,22 @@ requireCondition(
   build.includes('mcp-server/package-lock.json'),
   'le cache npm doit couvrir le lockfile MCP',
 );
+const packaging = buildJob.match(/^      - name: Package deterministic static release\n([\s\S]*?)(?=^      - name:)/mu)?.[1] ?? '';
 requireCondition(
-  build.includes('npm run test:ci-policy'),
-  'le build doit vérifier la politique CI avant publication',
+  packaging.includes('set -o pipefail')
+    && packaging.includes('tar --sort=name --mtime="@${SOURCE_DATE_EPOCH}" --owner=0 --group=0 --numeric-owner')
+    && /^            \| gzip -n -[1-9] > release\/l0g-site\.tar\.gz$/mu.test(packaging)
+    && packaging.includes('sha256sum l0g-site.tar.gz > l0g-site.tar.gz.sha256'),
+  'l’archive doit rester déterministe, contrôlée par SHA-256 et échouer en cas d’erreur du flux tar',
 );
+const validatePr = job('validate-pr-build');
 requireCondition(
-  build.includes('npm run test:dependencies'),
-  'le build doit refuser les dépendances vulnérables avant publication',
+  rootPackage.scripts?.['build:preflight'] === 'node scripts/run-build-checks.mjs preflight'
+    && [buildJob, validatePr].every(body => /^          npm run build:preflight$/mu.test(body))
+    && JSON.stringify([...preflightScripts].sort()) === JSON.stringify([
+      'test:ci-policy', 'test:dependencies', 'test:deploy', 'test:editorial-protocol',
+    ]),
+  'les builds et les PR doivent exécuter le contrôle des dépendances et tous les contrats de publication',
 );
 requireCondition(
   build.includes('npm run build:ci') && rootPackage.scripts?.['build:verify']?.includes('npm run test:secrets')
@@ -99,7 +109,11 @@ requireCondition(
     && rootPackage.scripts?.['build:ci']?.includes('npm run build:verify'),
   'le build doit analyser les secrets accidentels dans les sources et artefacts',
 );
-const validatePr = job('validate-pr-build');
+requireCondition(
+  rootPackage.scripts?.['build:verify']?.includes('pagefind --site dist && node scripts/run-build-checks.mjs verify')
+    && verificationScripts.some(([name, ...args]) => name === 'test:security' && args.length === 0),
+  'le build doit vérifier la sécurité des artefacts après la génération de l’index de recherche',
+);
 requireCondition(
   publicationJob.includes('sparse-checkout-cone-mode: false')
     && ['scripts/stage-ci-release.mjs', 'scripts/black-box-archive.mjs',

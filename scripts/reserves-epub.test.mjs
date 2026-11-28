@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
@@ -42,7 +43,7 @@ for (const book of Object.values(reservesEditions)) {
     assert.match(execFileSync('unzip', ['-lv', EPUB], { encoding:'utf8' }).split('\n').find(line => /\bmimetype$/u.test(line)), /Stored/u);
     assert.match(execFileSync('unzip', ['-t', EPUB], { encoding:'utf8' }), /No errors detected/u);
     assert.deepEqual(entries.sort(), files(SOURCE).map(f => relative(SOURCE, f)).sort());
-    for (const file of files(SOURCE)) assert.deepEqual(execFileSync('unzip', ['-p', EPUB, relative(SOURCE, file)]), readFileSync(file));
+    assertEpubEntriesMatchSource(EPUB, SOURCE, files(SOURCE));
     assert(statSync(EPUB).size < 5_000_000);
   });
 

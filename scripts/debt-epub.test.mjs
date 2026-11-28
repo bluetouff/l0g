@@ -1,5 +1,7 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
+import { publicationSuites } from './run-build-checks.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -98,7 +100,7 @@ for(const book of Object.values(debtEditions)) {
       assert.equal(execFileSync('unzip',['-p',EPUB,'mimetype'],{encoding:'utf8'}),'application/epub+zip');
       assert.match(execFileSync('unzip',['-lv',EPUB],{encoding:'utf8'}).split('\n').find(l=>/\bmimetype$/u.test(l)),/Stored/u);
       assert.deepEqual(entries.sort(),files(SOURCE).map(f=>relative(SOURCE,f)).sort());
-      for(const file of files(SOURCE))assert.deepEqual(execFileSync('unzip',['-p',EPUB,relative(SOURCE,file)]),readFileSync(file));
+      assertEpubEntriesMatchSource(EPUB, SOURCE, files(SOURCE));
       const parser=new XMLParser({ignoreAttributes:false}),opf=parser.parse(readFileSync(join(SOURCE,'EPUB/content.opf'),'utf8')).package;
       assert.equal(opf.metadata['dc:language'],book.lang);assert.equal(opf.metadata['dc:title'],book.title);
       assert.equal(opf.metadata['dc:identifier']['#text'],edition.id);assert.equal(opf.metadata['dc:date'],book.date);
@@ -270,6 +272,7 @@ test('publication identities, source counts and generation commands are explicit
   assert.equal(pkg.scripts['build:epub'],'node scripts/derived-assets.mjs epub');
   assert.ok(pkg.scripts['build:epub:generate'].includes('node scripts/generate-debt-epub.mjs'));
   assert.ok(pkg.scripts['test:epub'].includes('scripts/debt-epub.test.mjs'));
-  assert.ok(pkg.scripts['build:verify'].includes('scripts/debt-publication.test.mjs'));
+  assert.ok(pkg.scripts['build:verify'].includes('node scripts/run-build-checks.mjs verify'));
+  assert.ok(publicationSuites.includes('scripts/debt-publication.test.mjs'));
   assert.throws(()=>execFileSync(process.execPath,['scripts/build-epub.mjs','../unconfigured'],{cwd:ROOT,stdio:'pipe'}));
 });

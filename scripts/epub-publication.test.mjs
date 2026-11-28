@@ -1,9 +1,11 @@
 import assert from 'node:assert/strict';
 import { execFileSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
-import { existsSync, readFileSync, readdirSync } from 'node:fs';
+import { existsSync, mkdirSync, mkdtempSync, readFileSync, readdirSync, rmSync, writeFileSync } from 'node:fs';
+import { tmpdir } from 'node:os';
 import { dirname, join, normalize, relative, resolve } from 'node:path';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource, readEpubEntries } from './epub-test-archive.mjs';
 
 const ROOT = resolve(new URL('..', import.meta.url).pathname);
 const SOURCE = join(ROOT, 'src/epub/l-argent-d-epstein');
@@ -100,6 +102,39 @@ function jpegDimensions(image) {
   }
   throw new Error('dimensions JPEG introuvables');
 }
+
+test('le contrôle groupé vérifie la taille réelle, le contenu et le nom de chaque entrée', (t) => {
+  const root = mkdtempSync(join(tmpdir(), 'l0g-epub-test-archive-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  const archive = join(root, 'fixture.epub');
+  const first = join(root, 'first');
+  const second = join(root, 'dir/other');
+  mkdirSync(join(root, 'dir'));
+  writeFileSync(first, 'alpha');
+  writeFileSync(second, 'bravo!!');
+  execFileSync('zip', ['-0', '-q', archive, 'first', 'dir/', 'dir/other'], { cwd: root });
+  assert.deepEqual([...readEpubEntries(archive).keys()], ['first', 'dir/', 'dir/other']);
+  assertEpubEntriesMatchSource(archive, root, [first, second]);
+  writeFileSync(first, 'alter');
+  assert.throws(() => assertEpubEntriesMatchSource(archive, root, [first, second]), /first differs/u);
+
+  // The fixture has a stored first member. Corrupt independent pieces of its
+  // ZIP metadata to exercise CRC, local identity and declared size checks.
+  const original = readFileSync(archive);
+  const malformed = join(root, 'malformed.epub');
+  const central = original.indexOf(Buffer.from([0x50, 0x4b, 0x01, 0x02]));
+  assert.ok(central > 30);
+  for (const [change, error] of [
+    [bytes => { bytes[30] = 0x78; }, /differ/u],
+    [bytes => { bytes[bytes.indexOf('alpha')] = 0x78; }, /CRC/u],
+    [bytes => { bytes.writeUInt32LE(4, central + 24); }, /size|CRC/u],
+  ]) {
+    const bytes = Buffer.from(original);
+    change(bytes);
+    writeFileSync(malformed, bytes);
+    assert.throws(() => readEpubEntries(malformed), error);
+  }
+});
 
 test('l’archive EPUB respecte les contraintes de conteneur', () => {
   assert.ok(existsSync(EPUB), 'le fichier EPUB public doit exister');

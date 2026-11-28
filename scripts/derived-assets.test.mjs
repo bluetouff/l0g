@@ -5,6 +5,7 @@ import os from 'node:os';
 import path from 'node:path';
 import { fingerprintPaths, runDerivedTask } from './derived-assets-cache.mjs';
 import { derivedTasks } from './derived-assets.mjs';
+import { verificationScripts } from './run-build-checks.mjs';
 
 function fixture(t) {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'l0g-derived-test-'));
@@ -211,12 +212,15 @@ test('production groups retain raw generators and all build validation stages', 
   for (const task of Object.values(derivedTasks)) {
     assert.ok(pkg.scripts[task.script]);
     assert.ok(task.inputs.includes('package-lock.json'));
-    assert.ok(task.inputs.includes('scripts'));
     assert.ok(task.outputs.length);
   }
+  assert.ok(derivedTasks.artwork.inputs.includes('scripts/epub-dependencies.mjs'));
+  assert.ok(!derivedTasks.artwork.inputs.includes('scripts'));
+  assert.ok(!derivedTasks.artwork.inputs.includes('src/config'));
   assert.match(pkg.scripts['build:prepare'], /test:derived-assets/);
   assert.match(pkg.scripts['build:prepare'], /test:epub/);
-  assert.match(pkg.scripts['build:verify'], /test:security/);
-  assert.match(pkg.scripts['build:verify'], /test:performance/);
+  assert.match(pkg.scripts['build:verify'], /node scripts\/run-build-checks\.mjs verify/);
+  assert.ok(verificationScripts.some(([name]) => name === 'test:security'));
+  assert.ok(verificationScripts.some(([name]) => name === 'test:performance'));
   assert.match(pkg.scripts['build:ci'], /build:prepare.*test:inline-svg:rendered.*build:verify/);
 });

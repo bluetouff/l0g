@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
 import { execFileSync } from 'node:child_process';
 import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs';
 import { createHash } from 'node:crypto';
@@ -90,7 +91,7 @@ for(const book of Object.values(microsoftEditions)) {
     assert.equal(execFileSync('unzip',['-p',EPUB,'mimetype'],{encoding:'utf8'}),'application/epub+zip');
     assert.match(execFileSync('unzip',['-lv',EPUB],{encoding:'utf8'}).split('\n').find(l=>/\bmimetype$/u.test(l)),/Stored/u);
     assert.deepEqual(entries.sort(),files(SOURCE).map(f=>relative(SOURCE,f)).sort());
-    for(const file of files(SOURCE))assert.deepEqual(execFileSync('unzip',['-p',EPUB,relative(SOURCE,file)]),readFileSync(file));
+    assertEpubEntriesMatchSource(EPUB, SOURCE, files(SOURCE));
     const parser=new XMLParser({ignoreAttributes:false}),opf=parser.parse(readFileSync(join(SOURCE,'EPUB/content.opf'),'utf8')).package;
     assert.equal(opf.metadata['dc:language'],book.lang);assert.equal(opf.metadata['dc:title'],book.title);
     assert.equal(opf.metadata['dc:identifier']['#text'],book.id);assert.equal(opf.metadata['dc:date'],'2026-10-09');

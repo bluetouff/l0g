@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { readEpubEntries } from './epub-test-archive.mjs';
 import { readFileSync } from 'node:fs';
 import { dirname, join, posix } from 'node:path';
 import test from 'node:test';
@@ -14,10 +14,11 @@ const documents = ['ch001', 'method', 'conclusion', 'glossary', 'figures', 'colo
 
 for (const book of Object.values(shadowFleetEditions)) {
   const archive = join(root, 'public', book.epub);
-  const entry = file => execFileSync('unzip', ['-p', archive, file]);
-  const read = file => entry(file).toString('utf8');
   test(`${book.lang}: complete EPUB 3 package with the published four-part series`, () => {
-    const files = execFileSync('unzip', ['-Z1', archive], { encoding: 'utf8' }).trim().split('\n');
+    const entries = readEpubEntries(archive);
+    const files = [...entries.keys()];
+    const entry = file => entries.get(file);
+    const read = file => entry(file).toString('utf8');
     const start = readFileSync(archive);
     assert.equal(start.readUInt16LE(8), 0, 'EPUB requires a stored mimetype');
     assert.equal(files[0], 'mimetype');

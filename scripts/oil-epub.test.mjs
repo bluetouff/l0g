@@ -4,6 +4,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, readdirSync, statSync } from 'node:fs';
 import { dirname, join, relative, resolve } from 'node:path';
 import test from 'node:test';
+import { assertEpubEntriesMatchSource } from './epub-test-archive.mjs';
 import { XMLValidator } from 'fast-xml-parser';
 import { parseFrontmatter } from '@astrojs/markdown-remark';
 import { fromHtml } from 'hast-util-from-html';
@@ -68,7 +69,7 @@ test(`${lang}: oil EPUB has a valid container and packages exactly its versioned
   assert.match(execFileSync('unzip', ['-lv', EPUB], { encoding: 'utf8' }).split('\n').find((s) => /\bmimetype\s*$/u.test(s)), /Stored/u);
   assert.match(execFileSync('unzip', ['-t', EPUB], { encoding: 'utf8' }), /No errors detected/u);
   assert.deepEqual(entries.sort(), files(SOURCE).map((p) => relative(SOURCE, p)).sort());
-  for (const path of files(SOURCE)) assert.deepEqual(execFileSync('unzip', ['-p', EPUB, relative(SOURCE, path)]), readFileSync(path));
+  assertEpubEntriesMatchSource(EPUB, SOURCE, files(SOURCE));
   for (const path of textual().filter((p) => !p.endsWith('.css'))) assert.equal(XMLValidator.validate(readFileSync(path, 'utf8')), true, path);
 });
 

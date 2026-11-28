@@ -23,8 +23,8 @@ function fixture(t, html, files = []) {
   return root;
 }
 
-function runChecker(cwd) {
-  return spawnSync(process.execPath, ['--experimental-strip-types', checker], {
+function runChecker(cwd, args = []) {
+  return spawnSync(process.execPath, ['--experimental-strip-types', checker, ...args], {
     cwd,
     encoding: 'utf8',
   });
@@ -65,4 +65,17 @@ test('une URL noindex dans le sitemap fait échouer le contrôle', (t) => {
 
   assert.notEqual(result.status, 0);
   assert.match(result.stderr, /Sitemap indésirable.*noindex/u);
+});
+
+test('le contrôle combiné échoue si des contenus publics manquent malgré un maillage valide', (t) => {
+  const cwd = fixture(t, '<html><head><title>Accueil</title></head><body>Accueil</body></html>', [
+    ['api/v1/catalog.json', '{"articles":[],"guides":[]}'],
+    'robots.txt',
+  ]);
+  const result = runChecker(cwd, ['--check-visibility']);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stdout, /Liens internes et indexabilité OK/u);
+  assert.match(result.stdout, /"check":"visibility-build"/u);
+  assert.match(result.stderr, /"id":"source-build-missing"/u);
 });
