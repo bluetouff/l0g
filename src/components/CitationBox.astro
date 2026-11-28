@@ -1,6 +1,5 @@
 ---
 import { formatDateFr, formatDateFrIsoDate } from '../lib/freshness.ts';
-import { buildDate } from '../lib/build-clock.mjs';
 
 type CitationDate = Date | string;
 
@@ -15,15 +14,14 @@ interface Props {
 
 const { title, url, kind = 'page', published, updated, locale = 'fr' } = Astro.props;
 const labels = locale === 'en'
-  ? { heading: 'cite this page', permalink: 'permalink', canonical: 'canonical', copy: 'copy', copied: 'copied', unavailable: 'unavailable', reviewed: 'reviewed', published: 'published', accessed: 'accessed' }
-  : { heading: 'citer cette page', permalink: 'permalien', canonical: 'canonique', copy: 'copier', copied: 'copié', unavailable: 'indisponible', reviewed: 'revu le', published: 'publié le', accessed: 'consulté le' };
+  ? { heading: 'cite this page', permalink: 'permalink', canonical: 'canonical', copy: 'copy', copied: 'copied', unavailable: 'unavailable', reviewed: 'reviewed', published: 'published' }
+  : { heading: 'citer cette page', permalink: 'permalien', canonical: 'canonique', copy: 'copier', copied: 'copié', unavailable: 'indisponible', reviewed: 'revu le', published: 'publié le' };
 const date = updated ?? published;
 const formatCitationDate = (value: CitationDate) => locale === 'en'
   ? new Date(value).toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' })
   : (typeof value === 'string' ? formatDateFrIsoDate(value) : formatDateFr(value));
 const year = typeof date === 'string' ? date.slice(0, 4) : date?.getFullYear();
 const datePart = date ? `, ${updated ? labels.reviewed : labels.published} ${formatCitationDate(date)}` : '';
-const accessed = formatCitationDate(buildDate());
 const citation = `l0g.fr, « ${title} » (${kind}${datePart}), ${url}`;
 const md = `[${title}](${url}), l0g.fr${date ? `, ${formatCitationDate(date)}` : ''}.`;
 const bibKey = `l0g-${title
@@ -37,12 +35,12 @@ const bibtex = `@online{${bibKey},
   title = {${title.replace(/[{}]/g, '')}},
   author = {{l0g.fr}},
   ${year ? `year = {${year}},\n  ` : ''}url = {${url}},
-  note = {${kind}${datePart}; ${labels.accessed} ${accessed}}
+  note = {${kind}${datePart}}
 }`;
 const formats = [
   { label: labels.canonical, value: citation },
   { label: 'markdown', value: md },
-  { label: 'bibtex', value: bibtex },
+  { label: 'bibtex', value: bibtex, includeAccessDate: true },
 ];
 ---
 
@@ -56,7 +54,7 @@ const formats = [
       <div class="citation-format">
         <div class="citation-format-head">
           <span>{format.label}</span>
-          <button type="button" data-copy-citation={format.value} data-copied={labels.copied} data-unavailable={labels.unavailable}>
+          <button type="button" data-copy-citation={format.value} data-citation-access-date={format.includeAccessDate ? 'true' : undefined} data-copied={labels.copied} data-unavailable={labels.unavailable}>
             {labels.copy}
           </button>
         </div>
@@ -69,8 +67,16 @@ const formats = [
 <script>
   // @ts-nocheck -- script navigateur autonome, validé sur le DOM construit.
   document.querySelectorAll('[data-copy-citation]').forEach(function (btn) {
+    let value = btn.getAttribute('data-copy-citation');
+    if (value && btn.hasAttribute('data-citation-access-date')) {
+      const today = new Date();
+      const accessed = [today.getFullYear(), today.getMonth() + 1, today.getDate()]
+        .map(part => String(part).padStart(2, '0')).join('-');
+      value = value.replace(/\n\}$/u, `,\n  urldate = {${accessed}}\n}`);
+      const displayed = btn.closest('.citation-format')?.querySelector('code');
+      if (displayed) displayed.textContent = value;
+    }
     btn.addEventListener('click', function () {
-      var value = btn.getAttribute('data-copy-citation');
       var original = btn.textContent;
       var flash = function (text) {
         btn.textContent = text;

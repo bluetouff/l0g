@@ -4,7 +4,6 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import test from 'node:test';
-import { buildDateKey } from '../src/lib/build-clock.mjs';
 import { editorialCacheKey, glossaryCacheKey, createStaticEntryEligibility } from '../src/lib/editorial-build-cache.mjs';
 
 const now = new Date('2026-11-04T12:00:00.000Z');
@@ -78,19 +77,26 @@ test('French dossier mapping follows the linked source article', () => {
   assert.notEqual(key('posts', 'first', collections, config), before);
 });
 
-test('cache time covers citation calendar dates and exact elapsed freshness days', () => {
-  const date = new Date('2026-11-03T13:00:00Z');
-  const before = new Date('2026-11-04T12:59:59Z'), after = new Date('2026-11-04T13:00:00Z');
-  assert.notDeepEqual(buildDateKey([date], before), buildDateKey([date], after));
-  assert.notDeepEqual(buildDateKey([], new Date('2026-11-04T22:59:59Z')), buildDateKey([], new Date('2026-11-04T23:00:00Z')));
-  assert.deepEqual(buildDateKey([date], new Date('2026-11-04T14:00:00Z')), buildDateKey([date], new Date('2026-11-04T15:00:00Z')));
+test('article and glossary cache keys survive day changes and refresh the copyright year', () => {
+  const collections = fixture();
+  const term = { slug: 'fob', title: 'FOB' };
+  const evening = new Date('2026-11-04T22:59:59Z');
+  const nextDay = new Date('2026-11-05T14:00:00Z');
+  const nextYear = new Date('2027-01-02T12:00:00Z');
+  for (const [collection, id] of [['posts', 'first'], ['postsEn', 'first-en']]) {
+    const before = key(collection, id, collections, emptyConfig, evening);
+    assert.equal(key(collection, id, collections, emptyConfig, nextDay), before);
+    assert.notEqual(key(collection, id, collections, emptyConfig, nextYear), before);
+  }
+  assert.equal(glossaryCacheKey(term, {}, evening), glossaryCacheKey(term, {}, nextDay));
+  assert.notEqual(glossaryCacheKey(term, {}, evening), glossaryCacheKey(term, {}, nextYear));
 });
 
 test('glossary entries, related values and translation existence are keyed', () => {
   const term = { slug: 'fob', title: 'FOB' }, related = { english: false, related: [{ slug: 'ttf', title: 'TTF' }] };
-  const before = glossaryCacheKey(term, related, undefined, now);
-  assert.notEqual(glossaryCacheKey(term, { ...related, english: true }, undefined, now), before);
-  assert.notEqual(glossaryCacheKey(term, { ...related, related: [] }, undefined, now), before);
+  const before = glossaryCacheKey(term, related, now);
+  assert.notEqual(glossaryCacheKey(term, { ...related, english: true }, now), before);
+  assert.notEqual(glossaryCacheKey(term, { ...related, related: [] }, now), before);
 });
 
 test('one validated environment timestamp drives all server-rendered dates', () => {

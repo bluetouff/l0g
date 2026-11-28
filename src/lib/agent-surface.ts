@@ -3486,15 +3486,40 @@ export function sortGuides<T extends GuideEntry>(guides: T[]): T[] {
   return [...guides].sort((a, b) => b.data.pubDate.getTime() - a.data.pubDate.getTime());
 }
 
-export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimIds?: boolean } = {}) {
-  const language = contentLanguage(post);
-  const evidence = buildArticleEvidence(post.body ?? '', {
+const parsedArticleEvidence = new Map<string, {
+  body: string;
+  title: string;
+  published: number;
+  updated: number | undefined;
+  evidence: ReturnType<typeof buildArticleEvidence>;
+}>();
+
+function articleEvidence(post: PostEntry) {
+  const url = postUrl(post);
+  const body = post.body ?? '';
+  const title = post.data.title;
+  const published = post.data.pubDate.getTime();
+  const updated = post.data.updatedDate?.getTime();
+  const cached = parsedArticleEvidence.get(url);
+  // Astro returns fresh entry objects for each collection read. Compare the
+  // actual parser inputs and keep financial/Black Box data out of this cache.
+  if (cached?.body === body && cached.title === title && cached.published === published && cached.updated === updated) {
+    return cached.evidence;
+  }
+  const evidence = buildArticleEvidence(body, {
     published: post.data.pubDate,
     updated: post.data.updatedDate,
-    url: postUrl(post),
-    title: post.data.title,
+    url,
+    title,
     articleSlug: post.id,
   });
+  parsedArticleEvidence.set(url, { body, title, published, updated, evidence });
+  return evidence;
+}
+
+export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimIds?: boolean } = {}) {
+  const language = contentLanguage(post);
+  const evidence = articleEvidence(post);
 
   return {
     claims: evidence.claims.map((claim) => ({
@@ -3504,6 +3529,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
         const review = language === 'fr' ? claimReviewById.get(reviewId) : undefined;
         const id = opts.globalClaimIds ? globalId : claim.id;
         const kind = review?.kind ?? claim.kind;
+        const evidenceLocator = review?.evidenceLocator ?? claim.evidenceLocator;
         return {
           id,
           localId: claim.id,
@@ -3529,7 +3555,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
           reviewedBy: review?.reviewedBy ?? claim.reviewedBy ?? null,
           reviewNote: review?.note ?? claim.reviewNote ?? null,
           reviewedProofDepth: review?.proofDepth ?? claim.reviewedProofDepth ?? null,
-          evidenceLocator: review?.evidenceLocator ?? claim.evidenceLocator ?? null,
+          evidenceLocator: evidenceLocator ? { ...evidenceLocator } : null,
           reviewSourceUrl: review?.sourceUrl ?? claim.reviewSourceUrl ?? null,
           reviewSourceDate: review?.sourceDate ?? claim.reviewSourceDate ?? null,
           reviewSourceType: review?.sourceType ?? claim.reviewSourceType ?? null,
@@ -3555,7 +3581,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
         };
       })(),
     })),
-    depth: evidence.depth,
+    depth: { ...evidence.depth },
     badges: evidence.badges.map((badge) => ({
       id: badge.id,
       label: badge.label,
@@ -3567,7 +3593,7 @@ export function buildArticleEvidenceRecord(post: PostEntry, opts: { globalClaimI
       url: `${AGENT_SITE}/sources/${item.source.slug}/`,
       reason: item.reason,
     })),
-    counts: evidence.stats,
+    counts: { ...evidence.stats },
   };
 }
 
@@ -3919,11 +3945,8 @@ export function buildSearchIndexSurface(posts: PostEntry[], guides: GuideEntry[]
 
 export function buildClaimsSurface(posts: PostEntry[]) {
   const canonicalPosts = posts.filter((post): post is CollectionEntry<'posts'> => post.collection === 'posts');
-  const articles = sortPosts(canonicalPosts).map((post) => ({
-    ...buildArticleRecord(post),
-    evidence: buildArticleEvidenceRecord(post, { globalClaimIds: true }),
-  }));
-  const claims = articles.flatMap((article) => article.evidence.claims);
+  const claims = sortPosts(canonicalPosts)
+    .flatMap((post) => buildArticleEvidenceRecord(post, { globalClaimIds: true }).claims);
   const references = claims.flatMap((claim) => claim.references.map((reference) => ({
     claimId: claim.id,
     canonicalId: claim.canonicalId,
@@ -3950,7 +3973,7 @@ export function buildClaimsSurface(posts: PostEntry[]) {
     version: AGENT_VERSION,
     generated: generatedAt(),
     counts: {
-      articles: articles.length,
+      articles: canonicalPosts.length,
       articlesByLanguage: languageCounts(canonicalPosts),
       claims: claims.length,
       reviewedClaims: claims.filter((claim) => claim.reviewStatus === 'reviewed').length,
@@ -4678,19 +4701,19 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       path: `/api/v1/signals/${series.slug}/history.json`,
       role: `Série ${series.name} en JSON`,
       mediaType: 'application/json',
-      payload: buildSignalSeriesSurface(series.key),
+      payload: buildSignalSeriesSurface(series.key, signalHistory),
     },
     {
       path: `/api/v1/signals/${series.slug}/history.ndjson`,
       role: `Série ${series.name} en NDJSON`,
       mediaType: 'application/x-ndjson',
-      body: toNdjson(buildSignalHistoryNdjsonRows(series.key)),
+      body: toNdjson(buildSignalHistoryNdjsonRows(series.key, signalHistory)),
     },
     {
       path: `/api/v1/signals/${series.slug}/history.csv`,
       role: `Série ${series.name} en CSV`,
       mediaType: 'text/csv',
-      body: buildSignalHistoryCsv(series.key),
+      body: buildSignalHistoryCsv(series.key, signalHistory),
     },
   ]);
   const resources = [
@@ -4807,13 +4830,13 @@ export function buildIntegritySurface(posts: PostEntry[], guides: GuideEntry[]) 
       path: '/api/v1/signals/history.ndjson',
       role: 'Historique des signaux en NDJSON',
       mediaType: 'application/x-ndjson',
-      body: toNdjson(buildSignalHistoryNdjsonRows()),
+      body: toNdjson(buildSignalHistoryNdjsonRows(undefined, signalHistory)),
     },
     {
       path: '/api/v1/signals/history.csv',
       role: 'Historique des signaux en CSV',
       mediaType: 'text/csv',
-      body: buildSignalHistoryCsv(),
+      body: buildSignalHistoryCsv(undefined, signalHistory),
     },
     {
       path: '/api/v1/signals/schema.json',

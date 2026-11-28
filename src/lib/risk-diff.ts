@@ -134,8 +134,8 @@ function sourceFreshness(risk: RiskSnapshotInput | null, since: string, anchor: 
   };
 }
 
-function articleChanges(posts: PostEntry[], guides: GuideEntry[], since: string) {
-  return buildChangefeedSurface(sortPosts(posts), sortGuides(guides)).entries
+function articleChanges(changefeed: ReturnType<typeof buildChangefeedSurface>, since: string) {
+  return changefeed.entries
     .filter((entry: any) => entry.date && Date.parse(entry.date) >= Date.parse(since))
     .slice(0, 24);
 }
@@ -144,8 +144,7 @@ function isCorrectionReview(entry: any) {
   return /corrig|rectifi|correction|modifi|révis|revis|mise à jour/i.test(String(entry.note ?? ''));
 }
 
-function claimChanges(posts: PostEntry[], since: string) {
-  const claimsSurface = buildClaimsSurface(sortPosts(posts));
+function claimChanges(claimsSurface: ReturnType<typeof buildClaimsSurface>, since: string) {
   const added = claimsSurface.claims
     .filter((claim: any) => {
       const date = claim.observationDate ?? claim.claimDate ?? claim.date;
@@ -190,9 +189,7 @@ function modelChanges(guides: GuideEntry[], changes: any[]) {
   };
 }
 
-function buildSignalMoves(window: WindowSpec, anchor: string) {
-  const history = buildSignalHistorySurface();
-  const since = addDays(anchor, -window.days);
+function buildSignalMoves(history: ReturnType<typeof buildSignalHistorySurface>, since: string) {
   const grouped = new Map<string, SignalObservation[]>();
   for (const observation of history.observations) {
     const list = grouped.get(observation.instrument) ?? [];
@@ -259,14 +256,18 @@ export function buildRiskDiffSurface(posts: PostEntry[], guides: GuideEntry[], r
     signalHistory.coverage.lastSeriesDate ??
     iso(risk?.updated) ??
     generatedAt();
-  const freshness = buildFreshnessSurface(sortPosts(posts), sortGuides(guides), risk);
+  const sortedPosts = sortPosts(posts);
+  const sortedGuides = sortGuides(guides);
+  const freshness = buildFreshnessSurface(sortedPosts, sortedGuides, risk);
+  const changefeed = buildChangefeedSurface(sortedPosts, sortedGuides);
+  const claimsSurface = buildClaimsSurface(sortedPosts);
 
   const windows = WINDOW_SPECS.map((window) => {
     const since = addDays(anchor, -window.days);
-    const signalMoves = buildSignalMoves(window, anchor);
+    const signalMoves = buildSignalMoves(signalHistory, since);
     const sources = sourceFreshness(risk, since, anchor);
-    const changes = articleChanges(posts, guides, since);
-    const claims = claimChanges(posts, since);
+    const changes = articleChanges(changefeed, since);
+    const claims = claimChanges(claimsSurface, since);
     const models = modelChanges(guides, changes);
     const articles = changes
       .filter((entry: any) => entry.contentType === 'article')

@@ -2,7 +2,7 @@ import { createHash } from 'node:crypto';
 import { lstatSync, readFileSync, realpathSync } from 'node:fs';
 import { dirname, extname, isAbsolute, relative, resolve, sep } from 'node:path';
 import ts from 'typescript';
-import { buildDateKey } from './build-clock.mjs';
+import { buildDate } from './build-clock.mjs';
 
 const hash = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 const published = entries => entries.filter(entry => !entry.data.draft);
@@ -58,7 +58,7 @@ export function relatedReadingState(collection, id, collections, config) {
   return { resolvedPaths, requested, curated };
 }
 
-export function editorialCacheKey(collection, entry, collections, config, now) {
+export function editorialCacheKey(collection, entry, collections, config, now = buildDate()) {
   const french = collection === 'posts' || collection === 'guides';
   const guide = collection.startsWith('guides');
   const translation = french
@@ -68,12 +68,12 @@ export function editorialCacheKey(collection, entry, collections, config, now) {
     : (translation ? { id: translation.id, updated: translation.data.updatedDate ?? translation.data.pubDate } : null);
   return hash({ version: 1, collection, entry: entryState(entry), counterpart,
     related: relatedReadingState(collection, entry.id, collections, config),
-    time: buildDateKey([entry.data.updatedDate ?? entry.data.pubDate], now),
+    copyrightYear: now.getFullYear(),
   });
 }
 
-export function glossaryCacheKey(entry, dependencies, freshnessDate, now) {
-  return hash({ version: 1, entry, dependencies, time: buildDateKey(freshnessDate ? [freshnessDate] : [], now) });
+export function glossaryCacheKey(entry, dependencies, now = buildDate()) {
+  return hash({ version: 1, entry, dependencies, copyrightYear: now.getFullYear() });
 }
 
 const staticExtensions = new Set(['.svg', '.json', '.css', '.png', '.jpg', '.jpeg', '.webp', '.avif', '.woff', '.woff2', '.ttf']);

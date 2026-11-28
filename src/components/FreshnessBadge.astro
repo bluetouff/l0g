@@ -1,5 +1,5 @@
 ---
-import { dateFromIsoDate, formatDateFr, formatDateFrIsoDate, freshnessFor } from '../lib/freshness.ts';
+import { dateFromIsoDate, formatDateFr, formatDateFrIsoDate } from '../lib/freshness.ts';
 
 interface Props {
   date: Date | string;
@@ -10,22 +10,42 @@ interface Props {
 
 const { date, locale = 'fr', label = locale === 'en' ? 'freshness' : 'fraîcheur', compact = false } = Astro.props;
 const freshnessDate = typeof date === 'string' ? dateFromIsoDate(date) : date;
-const info = freshnessFor(freshnessDate);
-const statusLabel = locale === 'en' ? { fresh: 'fresh', current: 'current', watch: 'review due', archive: 'archive' }[info.tone] : info.label;
-const detail = locale === 'en' ? `reviewed ${info.days} day${info.days === 1 ? '' : 's'} ago` : info.detail;
+const reviewed = locale === 'en' ? 'reviewed' : 'revu';
+const reviewedAt = freshnessDate.toISOString();
 const dateLabel = locale === 'en'
   ? freshnessDate.toLocaleDateString('en-GB', { day: '2-digit', month: 'long', year: 'numeric', timeZone: 'UTC' })
   : typeof date === 'string' ? formatDateFrIsoDate(date) : formatDateFr(date);
 ---
 
 <span
-  class={`freshness freshness-${info.tone} ${compact ? 'is-compact' : ''}`}
-  title={`${label} : ${dateLabel} · ${detail}`}
+  class={`freshness ${compact ? 'is-compact' : ''}`}
+  data-freshness={reviewedAt}
+  data-locale={locale}
+  title={`${label} : ${dateLabel}`}
 >
   <span class="fresh-dot" aria-hidden="true"></span>
-  <span>{statusLabel}</span>
-  {!compact && <span class="fresh-detail">{detail}</span>}
+  <span data-freshness-label>{reviewed}</span>
+  {!compact && <time class="fresh-detail" datetime={reviewedAt}>{dateLabel}</time>}
 </span>
+
+<script>
+  import { freshnessFor } from '../lib/freshness.ts';
+
+  const now = new Date();
+  const englishStatus = { fresh: 'fresh', current: 'current', watch: 'review due', archive: 'archive' };
+  for (const badge of document.querySelectorAll<HTMLElement>('[data-freshness]')) {
+    const status = badge.querySelector('[data-freshness-label]');
+    if (!badge.dataset.freshness || !status) continue;
+    const info = freshnessFor(new Date(badge.dataset.freshness), now);
+    const english = badge.dataset.locale === 'en';
+    const detail = english ? `reviewed ${info.days} day${info.days === 1 ? '' : 's'} ago` : info.detail;
+    badge.classList.add(`fresh-${info.tone}`);
+    status.textContent = english ? englishStatus[info.tone] : info.label;
+    const date = badge.querySelector('.fresh-detail');
+    if (date) date.textContent = detail;
+    badge.title += ` · ${detail}`;
+  }
+</script>
 
 <style>
   .freshness {

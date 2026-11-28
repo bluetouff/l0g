@@ -829,8 +829,7 @@ export function buildSignalHistorySurface(): SignalSurface {
   };
 }
 
-export function buildSignalSeriesSurface(key: SignalKey) {
-  const history = buildSignalHistorySurface();
+export function buildSignalSeriesSurface(key: SignalKey, history = buildSignalHistorySurface()) {
   const observations = history.observations.filter((item) => item.instrument === key);
   const levelChanges = history.levelChanges.filter((item) => item.instrument === key);
   const series = seriesMetadata(key, observations);
@@ -858,8 +857,8 @@ export function buildSignalSeriesSurface(key: SignalKey) {
   };
 }
 
-export function buildSignalHistoryNdjsonRows(key?: SignalKey) {
-  const surface = key ? buildSignalSeriesSurface(key) : buildSignalHistorySurface();
+export function buildSignalHistoryNdjsonRows(key?: SignalKey, history = buildSignalHistorySurface()) {
+  const surface = key ? buildSignalSeriesSurface(key, history) : history;
   const observations = surface.observations;
   const levelChanges = surface.levelChanges;
   return [
@@ -883,7 +882,7 @@ function csvCell(value: unknown) {
   return /[",\n]/.test(text) ? `"${text.replace(/"/g, '""')}"` : text;
 }
 
-export function buildSignalHistoryCsv(key?: SignalKey) {
+export function buildSignalHistoryCsv(key?: SignalKey, history = buildSignalHistorySurface()) {
   const headers = [
     'seriesDate',
     'instrument',
@@ -921,7 +920,7 @@ export function buildSignalHistoryCsv(key?: SignalKey) {
     'backtestUsable',
     'limitations',
   ];
-  const observations = buildSignalHistorySurface().observations.filter((item) => !key || item.instrument === key);
+  const observations = history.observations.filter((item) => !key || item.instrument === key);
   const rows = observations.map((observation) =>
     headers.map((header) => csvCell(observation[header as keyof SignalObservation])).join(',')
   );

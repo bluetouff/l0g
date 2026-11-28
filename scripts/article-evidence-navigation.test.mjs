@@ -4,13 +4,20 @@ import { build } from 'esbuild';
 import { fileURLToPath } from 'node:url';
 
 const bundled = await build({
-  entryPoints: [fileURLToPath(new URL('../src/lib/article-evidence.ts', import.meta.url))],
+  stdin: {
+    contents: `
+      export { buildArticleEvidence, isStableClaimIdentifier } from './src/lib/article-evidence.ts';
+      export { buildArticleEvidenceRecord, buildClaimsSurface } from './src/lib/agent-surface.ts';
+    `,
+    resolveDir: fileURLToPath(new URL('../', import.meta.url)),
+  },
   bundle: true,
   platform: 'node',
   format: 'esm',
   write: false,
 });
-const { buildArticleEvidence, isStableClaimIdentifier } = await import(`data:text/javascript;base64,${Buffer.from(bundled.outputFiles[0].text).toString('base64')}`);
+const { buildArticleEvidence, isStableClaimIdentifier, buildArticleEvidenceRecord, buildClaimsSurface } =
+  await import(`data:text/javascript;base64,${Buffer.from(bundled.outputFiles[0].text).toString('base64')}`);
 
 const options = {
   published: new Date('2026-09-25T06:00:07Z'),
@@ -18,6 +25,26 @@ const options = {
   title: 'Example',
 };
 const paragraph = 'Une correction doit parvenir aux outils qui utilisent les données du dossier. Le contrôle porte sur les opérations suivantes et sur les informations effectivement utilisées.';
+
+test('shared evidence keeps local and global IDs and invalidates changed content', () => {
+  const entry = { collection: 'posts', id: 'example', body: paragraph, data: { title: 'Original', pubDate: options.published } };
+  const local = buildArticleEvidenceRecord(entry);
+  const global = buildClaimsSurface([{ ...entry, data: { ...entry.data } }]);
+  assert.equal(global.claims[0].id, `example:${local.claims[0].id}`);
+  assert.equal(global.claims[0].claim, paragraph);
+
+  local.counts.claimRelations = -1;
+  assert.notEqual(buildArticleEvidenceRecord(entry).counts.claimRelations, -1);
+
+  const revisedBody = 'L’autorité publie la liste des opérations contrôlées et précise les critères de décision.';
+  const revised = buildArticleEvidenceRecord({ ...entry, body: revisedBody });
+  assert.notEqual(revised.claims[0].id, local.claims[0].id);
+  const renamed = buildArticleEvidenceRecord({ ...entry, body: revisedBody, data: { ...entry.data, title: 'Révision' } });
+  assert.equal(renamed.claims[0].references[0].label, 'Article l0g : Révision');
+  const moved = buildArticleEvidenceRecord({ ...entry, data: { ...entry.data, pubDate: new Date('2026-09-28T06:00:07Z') } });
+  assert.equal(moved.claims[0].references[0].sourcePublicationDate, '2026-09-28');
+  assert.equal(buildArticleEvidenceRecord(entry).claims[0].id, local.claims[0].id);
+});
 
 test('fallback claims skip long French and English series navigation', () => {
   for (const prefix of ['Lire aussi', 'Read also']) {

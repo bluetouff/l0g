@@ -19,9 +19,11 @@ Les pages collectives, les flux, les API éditoriales, les sitemaps et les donn�
 Black Box restent recalculés. Pagefind réindexe la sortie complète, y compris
 les pages restaurées. Une suppression disparaît du site et du prochain index.
 
-Un changement de modèle commun, de dépendances ou de dates affichées peut
-invalider de nombreuses pages. Le cache accélère les publications successives
-sans promettre un temps fixe ou ignorer ces changements.
+Un changement de modèle commun, de dépendance ou de millésime du pied de page
+peut invalider de nombreuses pages. La date de révision reste inscrite dans le
+HTML. Le navigateur calcule le temps écoulé et ajoute la date de consultation
+aux citations BibTeX. Le passage au jour suivant conserve ainsi les sorties
+éditoriales dont le contenu et les dépendances restent identiques.
 
 ## Contrôles SVG
 

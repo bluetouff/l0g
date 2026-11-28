@@ -6,7 +6,6 @@ import OperationalGlossaryReference from '../../components/OperationalGlossaryRe
 import { glossaryEntries, glossaryEntryBySlug, glossaryUpdatedIso } from '../../config/glossary.ts';
 import { glossaryAtlasEnBySlug } from '../../config/glossary-atlas-en.ts';
 import { glossaryCacheKey } from '../../lib/editorial-build-cache.mjs';
-import { dateFromIsoDate } from '../../lib/freshness.ts';
 
 export function getStaticPaths() {
   return glossaryEntries.map((entry) => ({
@@ -20,7 +19,7 @@ export function getStaticPaths() {
       related: glossaryEntries.filter(candidate => candidate.sectionSlug === entry.sectionSlug),
       explicitRelated: [...(entry.reference?.relatedSlugs ?? []), ...(entry.atlas?.related ?? [])]
         .map(slug => glossaryEntryBySlug.get(slug) ?? null),
-    }, dateFromIsoDate(entry.reference?.updatedIso ?? glossaryUpdatedIso)),
+    }),
   }));
 }
 

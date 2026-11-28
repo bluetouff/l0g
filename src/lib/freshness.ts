@@ -1,5 +1,3 @@
-import { buildDate } from './build-clock.mjs';
-
 export type FreshnessTone = 'fresh' | 'current' | 'watch' | 'archive';
 
 export interface FreshnessInfo {
@@ -12,11 +10,11 @@ export interface FreshnessInfo {
 const DAY = 24 * 60 * 60 * 1000;
 const ISO_DATE_RE = /^(\d{4})-(\d{2})-(\d{2})$/;
 
-export function daysSince(date: Date, now = buildDate()): number {
+export function daysSince(date: Date, now: Date): number {
   return Math.max(0, Math.floor((now.getTime() - date.getTime()) / DAY));
 }
 
-export function freshnessFor(date: Date, now = buildDate()): FreshnessInfo {
+export function freshnessFor(date: Date, now: Date): FreshnessInfo {
   const days = daysSince(date, now);
   if (days <= 14) {
     return { tone: 'fresh', label: 'frais', detail: `revu il y a ${days || 0} j`, days };
